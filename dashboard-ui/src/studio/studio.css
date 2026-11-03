@@ -857,6 +857,8 @@ details.advanced > summary { cursor: pointer; font-weight: 600; color: var(--mut
 .hana-steps li p { margin: 0; }
 .hana-actions { display: flex; gap: 6px; align-items: center; margin-top: 8px; flex-wrap: wrap; }
 .hana-form { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 8px; }
+.hana-placement { display: grid; gap: 6px; margin-top: 8px; max-width: 100%; overflow-x: auto; }
+.hana-placement > .btn { justify-self: start; }
 .hana-form label { display: flex; flex-direction: column; gap: 2px; font-size: 12px; color: var(--muted); min-width: 0; }
 .hana-form label.wide { grid-column: 1 / -1; }
 .hana-form .input, .hana-form .select { width: 100%; }

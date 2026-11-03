@@ -6,6 +6,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [2.11.1] - 2026-11-03
+
 ### Added
 - **Structured end-to-end documentation** (about 125 new pages, every task both in studio and as terminal commands):
   `docs/guide/` (concepts and one full application built from the terminal, in studio, and on premises with a
@@ -23,6 +25,22 @@ All notable changes to this project are documented here. The format follows [Kee
 - The repository moved to https://github.com/kavion-ai/py-serverless-kit: project URLs, README links, the security
   advisory link, the `pskit.yml` header studio writes and the PyPI trusted-publisher settings now use it.
 - The README and the docs index no longer link the PyPI release guides; they stay in `deploy_docs/`.
+
+- Hana now starts with **Studio actions answer first (then the model)** checked. Choosing *Hana's model answers
+  first* in the menu is remembered in the browser.
+
+### Fixed
+- Hana searched the docs before every answer, even for "hi" or "thanks". A router (`studio/hana/router.py`) now
+  decides first: small talk skips the search, pskit questions search at once, and only messages the rules cannot
+  place get a tiny DOCS/CHAT call to the model (on failure it searches to be safe). The `ROUTER` log line says
+  which way it went and why.
+- Hana's *Create on-prem service* card had no user or password fields, so a database always got the default user
+  and a generated password. The card now has optional **User** and **Password** fields, as in Resources > On-prem
+  services (empty: the default user and a strong random password; services without a login say so instead).
+- Hana's *Deploy this project* card (on premises) could only pick one machine. It now has the Deploy page's
+  **Where functions run** editor: *All functions on one target* or *Split functions across servers* (groups of
+  functions, or one function per group, each on its own server or cluster). Pending edits are saved to `pskit.yml`
+  before the deploy starts, and with every group on its own target the card shows the groups instead of *Run on*.
 
 ## [2.11.0] - 2026-11-02
 

@@ -12,7 +12,7 @@ from typing import Any, Dict, List
 
 import pytest
 
-from py_serverless_kit.studio.hana import docs_index, prompt
+from py_serverless_kit.studio.hana import docs_index, prompt, router
 from py_serverless_kit.studio.hana import session as hana_session
 from py_serverless_kit.studio.hana.knowledge import search
 from py_serverless_kit.studio.hana.model import parse_message
@@ -239,6 +239,57 @@ def test_docs_first_short_reply_searches_with_the_previous_question(tmp_path):
     second = run_turn(hana, "ok", sid=first["session_id"])
     call = next(e for e in second["events"] if e["type"] == "tool_call")
     assert call["args"] == {"query": "how do I scale postgres with read replicas? ok"}
+
+
+def test_docs_first_skips_the_search_for_small_talk(tmp_path):
+    model = FakeModel([("text", "Hi! How can I help with your pskit project?")])
+    snap = run_turn(Hana(tmp_path, lambda: model), "hi")
+    assert snap["status"] == "done" and types_of(snap) == ["user", "answer", "end"]
+    assert len(model.sent) == 1  # no classifier call: the rules know "hi"
+    assert model.sent[0][0]["content"].split("\n")[-2] == prompt.NO_DOCS_LINE
+    assert [m["role"] for m in model.sent[0]] == ["system", "user"]
+
+
+def test_docs_first_asks_the_model_when_the_rules_cannot_tell(tmp_path):
+    class Classifier(FakeModel):
+        def chat(self, messages, tools, max_tokens=900):
+            if not tools:  # the router's classification call
+                self.sent.append(messages)
+                return {"content": "CHAT", "tool_calls": [], "usage": {}}
+            return super().chat(messages, tools, max_tokens)
+
+    model = Classifier([("text", "Sure.")])
+    snap = run_turn(Hana(tmp_path, lambda: model), "tell me a joke")
+    assert types_of(snap) == ["user", "answer", "end"]
+    assert model.sent[0][0]["content"] == router.CLASSIFY_PROMPT
+
+
+@pytest.mark.parametrize("text,history,expected", [
+    ("hi", [], False),
+    ("Hello Hana!", [], False),
+    ("thanks a lot", [{"role": "user", "content": "how do I deploy?"}], False),
+    ("good morning", [], False),
+    ("who are you?", [], False),
+    ("ok", [], False),
+    ("ok", [{"role": "user", "content": "how do I deploy?"}], True),
+    ("how do I add a cron schedule", [], True),
+    ("hi, how do I deploy to azure?", [], True),
+    ("is redis supported on azure?", [], True),
+    ("?!", [], False),
+])
+def test_router_rules(text, history, expected):
+    assert router.needs_docs(text, history)[0] is expected
+
+
+def test_router_asks_only_when_unsure_and_searches_when_the_model_fails():
+    asked = []
+    assert router.needs_docs("hi", [], ask=lambda t: asked.append(t) or True)[0] is False
+    assert router.needs_docs("deploy to gcp", [], ask=lambda t: asked.append(t) or False)[0] is True
+    assert asked == []
+    assert router.needs_docs("tell me a joke", [], ask=lambda t: False)[0] is False
+    assert router.needs_docs("what can you do for me?", [], ask=lambda t: None)[0] is True  # unsure: search
+    broken = type("M", (), {"chat": lambda self, *a, **k: (_ for _ in ()).throw(RuntimeError("down"))})()
+    assert router.classify(broken, "x") is None
 
 
 def test_plan_approved_then_changes_run(make_project, tmp_path):

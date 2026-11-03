@@ -29,6 +29,7 @@ from . import ailog
 from .knowledge import search, words
 from .model import Model, ModelError
 from .prompt import MODES, PAGES, PROVIDERS, TOOLS, system_message
+from .router import classify, needs_docs
 from .tools import CHANGE_TOOLS, ProjectTools
 
 MAX_STEPS = 14
@@ -401,8 +402,6 @@ class Hana:
         session.messages.append({"role": "user", "content": turn.text})
         session.display.append({"role": "user", "text": turn.text, "m": start})
         turn.emit("user", text=turn.text)
-        system = {"role": "system", "content": system_message(env["provider"], env["stage"], env["mode"], env["page"],
-                                                              servers=self._server_names())}
         tid = turn.id
         clock = ailog.Timer()
         ailog.log(tid, "user", f"chat {session.id} · provider={env['provider']} stage={env['stage']} "
@@ -425,7 +424,16 @@ class Hana:
             ailog.log(tid, "model", "the model answers first" + (
                 "; studio has an action ready for after it" if action is not None else ""), None, "yellow")
             query = docs_query(turn.text, session.messages[:start])
-            if PRE_SEARCH_CARDS and not ran and query:  # docs first: the model answers from them (DOCS_LINE)
+            searched = False
+            if PRE_SEARCH_CARDS and not ran and query:  # the router decides whether "hi" needs the docs at all
+                timer = ailog.Timer()
+                searched, why = needs_docs(turn.text, session.messages[:start], ask=lambda t: classify(model, t))
+                ailog.log(tid, "router", f"{'search the docs' if searched else 'no docs search'}: {why} "
+                                         f"({timer.ms()} ms)", None, "magenta")
+            system = {"role": "system", "content": system_message(env["provider"], env["stage"], env["mode"],
+                                                                  env["page"], servers=self._server_names(),
+                                                                  docs=searched or not PRE_SEARCH_CARDS or bool(ran))}
+            if searched:  # docs first: the model answers from them (DOCS_LINE)
                 ailog.log(tid, "studio", "searches the docs before the model answers", query, "magenta")
                 self._tool_step(turn, "search_docs", {"query": query}, "call_00",
                                 result=search()(query, k=PRE_SEARCH_CARDS)[0])

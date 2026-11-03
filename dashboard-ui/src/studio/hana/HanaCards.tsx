@@ -1,6 +1,9 @@
 import { useEffect, useId, useState, type ReactNode } from "react";
 import { api, errorMessage } from "../api";
 import { useConfirm } from "../components/Feedback";
+import { PlacementEditor } from "../components/Placement";
+import { readPlacement, targetLabel } from "../placement";
+import { useStudio } from "../store";
 import { useJob } from "../jobs";
 import type { HanaCard, JsonObject, OnPremServer } from "../types";
 
@@ -766,6 +769,9 @@ interface CatalogItem {
   roles: string[];
   kind: string;
   port: number;
+  /** false: the service runs without a login (no user / password fields) */
+  auth?: boolean;
+  default_user?: string;
   replication?: {
     method: string;
     balancer: string;
@@ -809,6 +815,10 @@ function ServiceCard({
     card.sync === "sync" ? "sync" : "async",
   );
   const [lbServer, setLbServer] = useState(card.primary || card.server || "");
+  // the service's login: empty user = the service's default, empty password = a strong generated one
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const server = where.startsWith("server:") ? where.slice(7) : "";
   const cluster = where.startsWith("cluster:") ? where.slice(8) : "";
   const whereLabel = cluster
@@ -847,6 +857,15 @@ function ServiceCard({
         : !replicas.length
           ? "pick at least one replica server"
           : "";
+  const hasLogin = spec?.auth !== false;
+  const loginError =
+    hasLogin && login && !/^[A-Za-z][A-Za-z0-9_.-]{2,63}$/.test(login)
+      ? "user: 3-64 characters, starting with a letter"
+      : "";
+  const passwordError =
+    hasLogin && password && !/^[A-Za-z0-9!#%*+,.:=?@^_~-]{8,128}$/.test(password)
+      ? "password: 8-128 characters of letters, digits and !#%*+,.:=?@^_~-"
+      : "";
   useEffect(() => {
     if (spec && !spec.roles.includes(role)) setRole(spec.roles[0]);
   }, [spec, role]);
@@ -883,6 +902,8 @@ function ServiceCard({
           ? { method: "ssh", server }
           : { method: "local" },
     };
+    if (hasLogin && login.trim()) body.user = login.trim();
+    if (hasLogin && password) body.password = password;
     if (replicated && rep) {
       delete body.target;
       body.topology = {
@@ -1102,6 +1123,61 @@ function ServiceCard({
             </select>
           </label>
         )}
+        {hasLogin ? (
+          <>
+            <label>
+              <span>User</span>
+              <input
+                className="input input-sm mono"
+                value={login}
+                placeholder={spec?.default_user || "pskit"}
+                onChange={(e) => setLogin(e.target.value)}
+                disabled={busy || done}
+                autoComplete="off"
+              />
+            </label>
+            <label>
+              <span>Password</span>
+              <span className="row-gap">
+                <input
+                  className="input input-sm mono"
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  placeholder="generated"
+                  onChange={(e) => setPassword(e.target.value)}
+                  disabled={busy || done}
+                  autoComplete="new-password"
+                />
+                <button
+                  type="button"
+                  className="btn btn-sm"
+                  onClick={() => setShowPassword((v) => !v)}
+                >
+                  {showPassword ? "Hide" : "Show"}
+                </button>
+              </span>
+            </label>
+            <em className="wide muted small" style={{ fontStyle: "normal" }}>
+              Empty user: {spec?.default_user || "pskit"}. Empty password: a
+              strong random one. Both go to the env file and .pskit/ (never
+              pskit.yml); see them in Resources &gt; On-prem services &gt; How
+              to use.
+              {replicated
+                ? " Replication uses its own generated user and password."
+                : ""}
+            </em>
+            {(loginError || passwordError) && (
+              <span className="wide hana-err">{loginError || passwordError}</span>
+            )}
+          </>
+        ) : (
+          spec && (
+            <em className="wide muted small" style={{ fontStyle: "normal" }}>
+              {spec.label} runs without a login here: keep it on this machine
+              or a private network.
+            </em>
+          )
+        )}
       </div>
       {error && <div className="hana-note err">{error}</div>}
       {!done && (
@@ -1109,7 +1185,9 @@ function ServiceCard({
           <button
             type="button"
             className="btn btn-primary btn-sm"
-            disabled={!key.trim() || busy || !!scaleError}
+            disabled={
+              !key.trim() || busy || !!scaleError || !!loginError || !!passwordError
+            }
             onClick={() => void create()}
           >
             {busy ? "Creating…" : "Create"}
@@ -1466,6 +1544,7 @@ function DeployCard({
   onNote: Note;
 }) {
   const confirm = useConfirm();
+  const { draft, dirty, save } = useStudio();
   const [stage, setStage] = useState(card.stage || "dev");
   const [where, setWhere] = useState(
     card.cluster
@@ -1478,11 +1557,25 @@ function DeployCard({
   const [error, setError] = useState("");
   const job = useJob(jobId);
   const onprem = card.provider === "onprem";
-  const label = where.startsWith("cluster:")
+  // Where functions run (provider.options.placement): all on one target, or groups of functions on different servers
+  const placement = onprem && draft ? readPlacement(draft) : null;
+  const groupTargets = placement
+    ? placement.groups.map((g) => ({ name: g.name, where: targetLabel(g.body) }))
+    : [];
+  // every group (the default one too) names its own target: the "Run on" pick does not apply
+  const byGroups =
+    !!placement && !!groupTargets.find((g) => g.name === placement.default)?.where;
+  const [showPlacement, setShowPlacement] = useState(!!placement);
+  const where1 = where.startsWith("cluster:")
     ? `cluster ${where.slice(8)}`
     : where.startsWith("server:")
       ? where.slice(7)
       : "this machine";
+  const label = byGroups && placement
+    ? groupTargets.map((g) => `${g.name} on ${g.where}`).join(", ")
+    : placement
+      ? `${where1} (default group ${placement.default}; the other groups where their group says)`
+      : where1;
 
   useEffect(() => {
     if (job.status === "succeeded") {
@@ -1505,15 +1598,24 @@ function DeployCard({
     const prod = /^prod/.test(stage);
     const ok = await confirm({
       title: `Deploy to ${card.provider} / ${stage}?`,
-      body: `This builds the project and applies it${onprem ? ` on ${label}` : ` to your ${card.provider} account`}. Running functions are replaced by this version.`,
+      body: `This builds the project and applies it${onprem ? ` on ${label}` : ` to your ${card.provider} account`}. Running functions are replaced by this version.${dirty ? " Your unsaved changes (pskit.yml) are saved first." : ""}`,
       confirmLabel: "Deploy",
       danger: prod,
       typed: prod ? stage : undefined,
     });
     if (!ok) return;
+    if (dirty) {
+      // the deploy reads pskit.yml from disk: save the placement (and any other pending edit) first
+      try {
+        if (!(await save())) return;
+      } catch (exc) {
+        setError(`Save failed: ${errorMessage(exc)}`);
+        return;
+      }
+    }
     const args: JsonObject = {};
-    if (where.startsWith("server:")) args.server = where.slice(7);
-    if (where.startsWith("cluster:")) args.cluster = where.slice(8);
+    if (!byGroups && where.startsWith("server:")) args.server = where.slice(7);
+    if (!byGroups && where.startsWith("cluster:")) args.cluster = where.slice(8);
     try {
       setJobId(
         (await api.startJob("deploy", card.provider, stage, args)).job_id,
@@ -1546,8 +1648,24 @@ function DeployCard({
             disabled={busy || done}
           />
         </Field>
-        {onprem && (
+        {onprem && byGroups && placement && (
           <Field label="Run on" wide>
+            <span className="small">
+              Split over {groupTargets.length} group
+              {groupTargets.length === 1 ? "" : "s"}:{" "}
+              {groupTargets.map((g, i) => (
+                <span key={g.name}>
+                  {i > 0 && ", "}
+                  <b className="mono">{g.name}</b>
+                  {g.name === placement.default ? " (default)" : ""} on{" "}
+                  <b>{g.where}</b>
+                </span>
+              ))}
+            </span>
+          </Field>
+        )}
+        {onprem && !byGroups && (
+          <Field label={placement ? `Run on (default group ${placement.default})` : "Run on"} wide>
             <select
               className="select select-sm"
               value={where}
@@ -1569,6 +1687,27 @@ function DeployCard({
           </Field>
         )}
       </div>
+      {onprem && draft && (
+        <div className="hana-placement">
+          <button
+            type="button"
+            className="btn btn-sm"
+            onClick={() => setShowPlacement((v) => !v)}
+            aria-expanded={showPlacement}
+          >
+            {showPlacement ? "▾" : "▸"} Where functions run:{" "}
+            {placement
+              ? `split into ${placement.groups.length} group${placement.groups.length === 1 ? "" : "s"}`
+              : "all functions on one target"}
+          </button>
+          {showPlacement && !busy && !done && <PlacementEditor />}
+          {dirty && (
+            <div className="muted small">
+              Unsaved changes: saved to pskit.yml when you click Deploy.
+            </div>
+          )}
+        </div>
+      )}
       {error && <div className="hana-note err">{error}</div>}
       {!done && (
         <div className="hana-actions">

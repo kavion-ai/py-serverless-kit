@@ -300,22 +300,25 @@ export function HanaPanel({ onClose }: { onClose: () => void }) {
   const [text, setText] = useState("");
   const [mode, setMode] = useState<Mode>(readMode);
   const [size, setSize] = useState<Size>(readSize);
-  const [first, setFirst] = useState<"model" | "studio">(() => {
+  // Default: studio actions answer first. Only an explicit pick in the menu is remembered (a new key: the old one,
+  // pskit-hana-first, was written on every start and holds "model" for everyone).
+  const [first, setFirstState] = useState<"model" | "studio">(() => {
     try {
-      return window.localStorage.getItem("pskit-hana-first") === "studio"
-        ? "studio"
-        : "model";
+      return window.localStorage.getItem("pskit-hana-first-choice") === "model"
+        ? "model"
+        : "studio";
     } catch {
-      return "model";
+      return "studio";
     }
   });
-  useEffect(() => {
+  const setFirst = (value: "model" | "studio") => {
+    setFirstState(value);
     try {
-      window.localStorage.setItem("pskit-hana-first", first);
+      window.localStorage.setItem("pskit-hana-first-choice", value);
     } catch {
       /* convenience only */
     }
-  }, [first]);
+  };
   const confirm = useConfirm();
 
   useEffect(() => {

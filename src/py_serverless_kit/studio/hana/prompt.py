@@ -186,12 +186,17 @@ DOCS_LINE = ("Docs: before you answer, studio runs search_docs with the user's m
              "tool result of this turn. Answer from those excerpts and cite them as [path#anchor]. If they do not "
              "cover the question, call search_docs again with other words. If the docs still do not say it, tell the "
              "user you did not find it in the docs instead of guessing.")
+# Said instead of DOCS_LINE when the router (router.py) decided the message needs no docs ("hi", "thanks")
+NO_DOCS_LINE = ("Docs: studio did not search the docs for this message (it needs no pskit facts). Answer it directly "
+                "and briefly without tools; call search_docs only if it does ask about pskit.")
 
 
-def system_message(provider: str, stage: str, mode: str, page: str, servers: Optional[List[str]] = None) -> str:
+def system_message(provider: str, stage: str, mode: str, page: str, servers: Optional[List[str]] = None,
+                   docs: bool = True) -> str:
     """The system prompt and the Environment line; with ``servers`` (studio always passes them) the docs and the
-    terminal lines (the terminal line last: a small model follows the end of the system message best)."""
+    terminal lines (the terminal line last: a small model follows the end of the system message best). ``docs=False``:
+    studio did not search the docs first, and the docs line says so."""
     text = SYSTEM_PROMPT + "\n" + ENV_LINE.format(provider=provider, stage=stage, mode=mode, page=page)
     if servers is not None:
-        text += "\n" + DOCS_LINE + "\n" + TERMINAL_LINE.format(servers=", ".join(servers) or "none")
+        text += "\n" + (DOCS_LINE if docs else NO_DOCS_LINE) + "\n" + TERMINAL_LINE.format(servers=", ".join(servers) or "none")
     return text
