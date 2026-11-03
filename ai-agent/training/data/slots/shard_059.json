@@ -1,0 +1,769 @@
+[
+ {
+  "id": "k_res_0661",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-custom.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-usage.md#the-five-steps-for-any-resource"
+  ],
+  "excerpt": "[docs/resource-usage.md#the-five-steps-for-any-resource]\n1. **Install** the client library: add it to `requirements.txt` (Python) or `package.json` (Node.js), then `pip install -r requirements.txt` / `npm install` locally so `pskit invoke` and `pskit dev` can import it. 2. **Declare** the resource under `resources:` and, for queues, buckets and topics, add a trigger (`events: [{queue: {resource: jobs}}]`). Secrets go in variables, never in `pskit.yml`. 3. **Read** it in the handler with `resource(\"<key>\")`: `native_name` / `nativeName`, `url`, `arn`, `id` and your `connection` values. A `<name>_env` value is the *name* of a variable: `ctx.env[r[\"password_env\"]]`. 4. **Test locally** with fake events (`pskit invoke -f worker -t queue -d '[...]'`) or `pskit dev`. 5. **Deploy and test** with `pskit resources send` (queues, buckets, topics), `pskit resources check` (reachability, from the on-prem host when deployed there) and `pskit logs -f`.",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0662",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-custom.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resources.md#fields",
+   "docs/resources.md#provider-support"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0663",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-custom.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-usage.md#the-five-steps-for-any-resource"
+  ],
+  "excerpt": "[docs/resource-usage.md#the-five-steps-for-any-resource]\n1. **Install** the client library: add it to `requirements.txt` (Python) or `package.json` (Node.js), then `pip install -r requirements.txt` / `npm install` locally so `pskit invoke` and `pskit dev` can import it. 2. **Declare** the resource under `resources:` and, for queues, buckets and topics, add a trigger (`events: [{queue: {resource: jobs}}]`). Secrets go in variables, never in `pskit.yml`. 3. **Read** it in the handler with `resource(\"<key>\")`: `native_name` / `nativeName`, `url`, `arn`, `id` and your `connection` values. A `<name>_env` value is the *name* of a variable: `ctx.env[r[\"password_env\"]]`. 4. **Test locally** with fake events (`pskit invoke -f worker -t queue -d '[...]'`) or `pskit dev`. 5. **Deploy and test** with `pskit resources send` (queues, buckets, topics), `pskit resources check` (reachability, from the on-prem host when deployed there) and `pskit logs -f`.",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0664",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-custom.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-usage.md#the-five-steps-for-any-resource"
+  ],
+  "excerpt": "[docs/resource-usage.md#the-five-steps-for-any-resource]\n1. **Install** the client library: add it to `requirements.txt` (Python) or `package.json` (Node.js), then `pip install -r requirements.txt` / `npm install` locally so `pskit invoke` and `pskit dev` can import it. 2. **Declare** the resource under `resources:` and, for queues, buckets and topics, add a trigger (`events: [{queue: {resource: jobs}}]`). Secrets go in variables, never in `pskit.yml`. 3. **Read** it in the handler with `resource(\"<key>\")`: `native_name` / `nativeName`, `url`, `arn`, `id` and your `connection` values. A `<name>_env` value is the *name* of a variable: `ctx.env[r[\"password_env\"]]`. 4. **Test locally** with fake events (`pskit invoke -f worker -t queue -d '[...]'`) or `pskit dev`. 5. **Deploy and test** with `pskit resources send` (queues, buckets, topics), `pskit resources check` (reachability, from the on-prem host when deployed there) and `pskit logs -f`.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0665",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0666",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0667",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0668",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-database.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resources.md#fields",
+   "docs/resources.md#provider-support"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0669",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0670",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0671",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0672",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0673",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0674",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resources.md#provider-support",
+   "docs/events.md#queue"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0675",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0676",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-queue.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0677",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-queue.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0678",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-queue.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0679",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-queue.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0680",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-smtp"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-smtp.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#events-triggers"
+  ],
+  "excerpt": "[docs/events.md#events-triggers]\n`smtp` (on premises) runs a function when mail arrives for your domain: `- smtp: {resource: inbound-mail}` on the SMTP server created under *On-prem services* (an `smtp` resource). The handler gets from, to, cc, subject, text, html, headers and attachments, plus the same mail as an Amazon SES event (`Records[0].ses`). Setup and DNS records: [smtp/README.md](smtp/README.md).",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0681",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-smtp"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-smtp.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#events-triggers",
+   "docs/smtp/README.md#create-it"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0682",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-smtp"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-smtp.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#events-triggers"
+  ],
+  "excerpt": "[docs/events.md#events-triggers]\n`smtp` (on premises) runs a function when mail arrives for your domain: `- smtp: {resource: inbound-mail}` on the SMTP server created under *On-prem services* (an `smtp` resource). The handler gets from, to, cc, subject, text, html, headers and attachments, plus the same mail as an Amazon SES event (`Records[0].ses`). Setup and DNS records: [smtp/README.md](smtp/README.md).",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0683",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-smtp"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-smtp.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#events-triggers"
+  ],
+  "excerpt": "[docs/events.md#events-triggers]\n`smtp` (on premises) runs a function when mail arrives for your domain: `- smtp: {resource: inbound-mail}` on the SMTP server created under *On-prem services* (an `smtp` resource). The handler gets from, to, cc, subject, text, html, headers and attachments, plus the same mail as an Amazon SES event (`Records[0].ses`). Setup and DNS records: [smtp/README.md](smtp/README.md).",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0684",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-smtp"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-smtp.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#events-triggers"
+  ],
+  "excerpt": "[docs/events.md#events-triggers]\n`smtp` (on premises) runs a function when mail arrives for your domain: `- smtp: {resource: inbound-mail}` on the SMTP server created under *On-prem services* (an `smtp` resource). The handler gets from, to, cc, subject, text, html, headers and attachments, plus the same mail as an Amazon SES event (`Records[0].ses`). Setup and DNS records: [smtp/README.md](smtp/README.md).",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0685",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-smtp"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-smtp.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#events-triggers"
+  ],
+  "excerpt": "[docs/events.md#events-triggers]\n`smtp` (on premises) runs a function when mail arrives for your domain: `- smtp: {resource: inbound-mail}` on the SMTP server created under *On-prem services* (an `smtp` resource). The handler gets from, to, cc, subject, text, html, headers and attachments, plus the same mail as an Amazon SES event (`Records[0].ses`). Setup and DNS records: [smtp/README.md](smtp/README.md).",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0686",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-smtp"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-smtp.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#events-triggers"
+  ],
+  "excerpt": "[docs/events.md#events-triggers]\n`smtp` (on premises) runs a function when mail arrives for your domain: `- smtp: {resource: inbound-mail}` on the SMTP server created under *On-prem services* (an `smtp` resource). The handler gets from, to, cc, subject, text, html, headers and attachments, plus the same mail as an Amazon SES event (`Records[0].ses`). Setup and DNS records: [smtp/README.md](smtp/README.md).",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0687",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-storage.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resources.md#provider-support",
+   "docs/resources.md#what-handlers-receive"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0688",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-storage.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0689",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-storage.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0690",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-storage.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0691",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-storage.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0692",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-storage.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0693",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-storage.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resources.md#provider-support",
+   "docs/resources.md#what-handlers-receive"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0694",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-topic.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resources.md#aws-iam"
+  ],
+  "excerpt": "[docs/resources.md#aws-iam]\nEach role pskit creates gets a `pskit-resources` policy for the storage, queue and topic resources bound to its functions: If you bring your own role (`iam.role`), pskit can't change it. The plan prints a warning, and granting access is up to you. Narrow the grant by listing `functions:` on the resource.",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0695",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-topic.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resources.md#aws-iam"
+  ],
+  "excerpt": "[docs/resources.md#aws-iam]\nEach role pskit creates gets a `pskit-resources` policy for the storage, queue and topic resources bound to its functions: If you bring your own role (`iam.role`), pskit can't change it. The plan prints a warning, and granting access is up to you. Narrow the grant by listing `functions:` on the resource.",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0696",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-topic.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resources.md#aws-iam"
+  ],
+  "excerpt": "[docs/resources.md#aws-iam]\nEach role pskit creates gets a `pskit-resources` policy for the storage, queue and topic resources bound to its functions: If you bring your own role (`iam.role`), pskit can't change it. The plan prints a warning, and granting access is up to you. Narrow the grant by listing `functions:` on the resource.",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0697",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-topic.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resources.md#aws-iam"
+  ],
+  "excerpt": "[docs/resources.md#aws-iam]\nEach role pskit creates gets a `pskit-resources` policy for the storage, queue and topic resources bound to its functions: If you bring your own role (`iam.role`), pskit can't change it. The plan prints a warning, and granting access is up to you. Narrow the grant by listing `functions:` on the resource.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0698",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-topic.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resources.md#aws-iam"
+  ],
+  "excerpt": "[docs/resources.md#aws-iam]\nEach role pskit creates gets a `pskit-resources` policy for the storage, queue and topic resources bound to its functions: If you bring your own role (`iam.role`), pskit can't change it. The plan prints a warning, and granting access is up to you. Narrow the grant by listing `functions:` on the resource.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0699",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-topic.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#topic",
+   "docs/resources.md#provider-support"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0700",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-topic.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resources.md#aws-iam"
+  ],
+  "excerpt": "[docs/resources.md#aws-iam]\nEach role pskit creates gets a `pskit-resources` policy for the storage, queue and topic resources bound to its functions: If you bring your own role (`iam.role`), pskit can't change it. The plan prints a warning, and granting access is up to you. Narrow the grant by listing `functions:` on the resource.",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ }
+]

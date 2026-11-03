@@ -1,0 +1,773 @@
+[
+ {
+  "id": "k_nav_0461",
+  "category": "k_nav",
+  "card_ids": [
+   "page-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0462",
+  "category": "k_nav",
+  "card_ids": [
+   "page-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0463",
+  "category": "k_nav",
+  "card_ids": [
+   "page-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Resources.tsx",
+   "dashboard-ui/src/studio/components/OnPremServices.tsx"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0464",
+  "category": "k_nav",
+  "card_ids": [
+   "page-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0465",
+  "category": "k_nav",
+  "card_ids": [
+   "page-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0466",
+  "category": "k_nav",
+  "card_ids": [
+   "page-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0467",
+  "category": "k_nav",
+  "card_ids": [
+   "page-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0468",
+  "category": "k_nav",
+  "card_ids": [
+   "page-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0469",
+  "category": "k_nav",
+  "card_ids": [
+   "page-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Resources.tsx",
+   "dashboard-ui/src/studio/components/OnPremServices.tsx"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0470",
+  "category": "k_nav",
+  "card_ids": [
+   "page-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0471",
+  "category": "k_nav",
+  "card_ids": [
+   "page-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0472",
+  "category": "k_nav",
+  "card_ids": [
+   "page-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0473",
+  "category": "k_nav",
+  "card_ids": [
+   "page-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0474",
+  "category": "k_nav",
+  "card_ids": [
+   "page-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0475",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Test.tsx",
+   "docs/studio.md#test-functions"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0476",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#test-functions"
+  ],
+  "excerpt": "[docs/studio.md#test-functions]\n1. Pick the function and the event: one of its triggers (HTTP, schedule, queue, storage, topic) or **Direct invoke**. 2. Edit the payload. It starts from a sample for that trigger type (a storage sample matches the trigger's prefix and suffix; a schedule uses its own `input`). **Save event** keeps named payloads per function in `.pskit/studio/test-events.json`, like test events in the Lambda console. 3. **Run locally** runs the handler on this machine with a synthetic event (`pskit invoke`): no cloud, no deploy. **Send to <provider>/<stage>** fires the real trigger of the deployed function (`pskit trigger`): a queue message, an uploaded object, a topic message, an HTTP request or an invocation. Turn on *Show the function's logs* to watch it.",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0477",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#test-functions"
+  ],
+  "excerpt": "[docs/studio.md#test-functions]\n1. Pick the function and the event: one of its triggers (HTTP, schedule, queue, storage, topic) or **Direct invoke**. 2. Edit the payload. It starts from a sample for that trigger type (a storage sample matches the trigger's prefix and suffix; a schedule uses its own `input`). **Save event** keeps named payloads per function in `.pskit/studio/test-events.json`, like test events in the Lambda console. 3. **Run locally** runs the handler on this machine with a synthetic event (`pskit invoke`): no cloud, no deploy. **Send to <provider>/<stage>** fires the real trigger of the deployed function (`pskit trigger`): a queue message, an uploaded object, a topic message, an HTTP request or an invocation. Turn on *Show the function's logs* to watch it.",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0478",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#test-functions"
+  ],
+  "excerpt": "[docs/studio.md#test-functions]\n1. Pick the function and the event: one of its triggers (HTTP, schedule, queue, storage, topic) or **Direct invoke**. 2. Edit the payload. It starts from a sample for that trigger type (a storage sample matches the trigger's prefix and suffix; a schedule uses its own `input`). **Save event** keeps named payloads per function in `.pskit/studio/test-events.json`, like test events in the Lambda console. 3. **Run locally** runs the handler on this machine with a synthetic event (`pskit invoke`): no cloud, no deploy. **Send to <provider>/<stage>** fires the real trigger of the deployed function (`pskit trigger`): a queue message, an uploaded object, a topic message, an HTTP request or an invocation. Turn on *Show the function's logs* to watch it.",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0479",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#test-functions"
+  ],
+  "excerpt": "[docs/studio.md#test-functions]\n1. Pick the function and the event: one of its triggers (HTTP, schedule, queue, storage, topic) or **Direct invoke**. 2. Edit the payload. It starts from a sample for that trigger type (a storage sample matches the trigger's prefix and suffix; a schedule uses its own `input`). **Save event** keeps named payloads per function in `.pskit/studio/test-events.json`, like test events in the Lambda console. 3. **Run locally** runs the handler on this machine with a synthetic event (`pskit invoke`): no cloud, no deploy. **Send to <provider>/<stage>** fires the real trigger of the deployed function (`pskit trigger`): a queue message, an uploaded object, a topic message, an HTTP request or an invocation. Turn on *Show the function's logs* to watch it.",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0480",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#test-functions"
+  ],
+  "excerpt": "[docs/studio.md#test-functions]\n1. Pick the function and the event: one of its triggers (HTTP, schedule, queue, storage, topic) or **Direct invoke**. 2. Edit the payload. It starts from a sample for that trigger type (a storage sample matches the trigger's prefix and suffix; a schedule uses its own `input`). **Save event** keeps named payloads per function in `.pskit/studio/test-events.json`, like test events in the Lambda console. 3. **Run locally** runs the handler on this machine with a synthetic event (`pskit invoke`): no cloud, no deploy. **Send to <provider>/<stage>** fires the real trigger of the deployed function (`pskit trigger`): a queue message, an uploaded object, a topic message, an HTTP request or an invocation. Turn on *Show the function's logs* to watch it.",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0481",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Test.tsx",
+   "docs/studio.md#test-functions"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0482",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#test-functions"
+  ],
+  "excerpt": "[docs/studio.md#test-functions]\n1. Pick the function and the event: one of its triggers (HTTP, schedule, queue, storage, topic) or **Direct invoke**. 2. Edit the payload. It starts from a sample for that trigger type (a storage sample matches the trigger's prefix and suffix; a schedule uses its own `input`). **Save event** keeps named payloads per function in `.pskit/studio/test-events.json`, like test events in the Lambda console. 3. **Run locally** runs the handler on this machine with a synthetic event (`pskit invoke`): no cloud, no deploy. **Send to <provider>/<stage>** fires the real trigger of the deployed function (`pskit trigger`): a queue message, an uploaded object, a topic message, an HTTP request or an invocation. Turn on *Show the function's logs* to watch it.",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0483",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#test-functions"
+  ],
+  "excerpt": "[docs/studio.md#test-functions]\n1. Pick the function and the event: one of its triggers (HTTP, schedule, queue, storage, topic) or **Direct invoke**. 2. Edit the payload. It starts from a sample for that trigger type (a storage sample matches the trigger's prefix and suffix; a schedule uses its own `input`). **Save event** keeps named payloads per function in `.pskit/studio/test-events.json`, like test events in the Lambda console. 3. **Run locally** runs the handler on this machine with a synthetic event (`pskit invoke`): no cloud, no deploy. **Send to <provider>/<stage>** fires the real trigger of the deployed function (`pskit trigger`): a queue message, an uploaded object, a topic message, an HTTP request or an invocation. Turn on *Show the function's logs* to watch it.",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0484",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#test-functions"
+  ],
+  "excerpt": "[docs/studio.md#test-functions]\n1. Pick the function and the event: one of its triggers (HTTP, schedule, queue, storage, topic) or **Direct invoke**. 2. Edit the payload. It starts from a sample for that trigger type (a storage sample matches the trigger's prefix and suffix; a schedule uses its own `input`). **Save event** keeps named payloads per function in `.pskit/studio/test-events.json`, like test events in the Lambda console. 3. **Run locally** runs the handler on this machine with a synthetic event (`pskit invoke`): no cloud, no deploy. **Send to <provider>/<stage>** fires the real trigger of the deployed function (`pskit trigger`): a queue message, an uploaded object, a topic message, an HTTP request or an invocation. Turn on *Show the function's logs* to watch it.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0485",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#test-functions"
+  ],
+  "excerpt": "[docs/studio.md#test-functions]\n1. Pick the function and the event: one of its triggers (HTTP, schedule, queue, storage, topic) or **Direct invoke**. 2. Edit the payload. It starts from a sample for that trigger type (a storage sample matches the trigger's prefix and suffix; a schedule uses its own `input`). **Save event** keeps named payloads per function in `.pskit/studio/test-events.json`, like test events in the Lambda console. 3. **Run locally** runs the handler on this machine with a synthetic event (`pskit invoke`): no cloud, no deploy. **Send to <provider>/<stage>** fires the real trigger of the deployed function (`pskit trigger`): a queue message, an uploaded object, a topic message, an HTTP request or an invocation. Turn on *Show the function's logs* to watch it.",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0486",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#test-functions"
+  ],
+  "excerpt": "[docs/studio.md#test-functions]\n1. Pick the function and the event: one of its triggers (HTTP, schedule, queue, storage, topic) or **Direct invoke**. 2. Edit the payload. It starts from a sample for that trigger type (a storage sample matches the trigger's prefix and suffix; a schedule uses its own `input`). **Save event** keeps named payloads per function in `.pskit/studio/test-events.json`, like test events in the Lambda console. 3. **Run locally** runs the handler on this machine with a synthetic event (`pskit invoke`): no cloud, no deploy. **Send to <provider>/<stage>** fires the real trigger of the deployed function (`pskit trigger`): a queue message, an uploaded object, a topic message, an HTTP request or an invocation. Turn on *Show the function's logs* to watch it.",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0487",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#test-functions"
+  ],
+  "excerpt": "[docs/studio.md#test-functions]\n1. Pick the function and the event: one of its triggers (HTTP, schedule, queue, storage, topic) or **Direct invoke**. 2. Edit the payload. It starts from a sample for that trigger type (a storage sample matches the trigger's prefix and suffix; a schedule uses its own `input`). **Save event** keeps named payloads per function in `.pskit/studio/test-events.json`, like test events in the Lambda console. 3. **Run locally** runs the handler on this machine with a synthetic event (`pskit invoke`): no cloud, no deploy. **Send to <provider>/<stage>** fires the real trigger of the deployed function (`pskit trigger`): a queue message, an uploaded object, a topic message, an HTTP request or an invocation. Turn on *Show the function's logs* to watch it.",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0488",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Test.tsx",
+   "docs/studio.md#test-functions"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0489",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#test-functions"
+  ],
+  "excerpt": "[docs/studio.md#test-functions]\n1. Pick the function and the event: one of its triggers (HTTP, schedule, queue, storage, topic) or **Direct invoke**. 2. Edit the payload. It starts from a sample for that trigger type (a storage sample matches the trigger's prefix and suffix; a schedule uses its own `input`). **Save event** keeps named payloads per function in `.pskit/studio/test-events.json`, like test events in the Lambda console. 3. **Run locally** runs the handler on this machine with a synthetic event (`pskit invoke`): no cloud, no deploy. **Send to <provider>/<stage>** fires the real trigger of the deployed function (`pskit trigger`): a queue message, an uploaded object, a topic message, an HTTP request or an invocation. Turn on *Show the function's logs* to watch it.",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0490",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#test-functions"
+  ],
+  "excerpt": "[docs/studio.md#test-functions]\n1. Pick the function and the event: one of its triggers (HTTP, schedule, queue, storage, topic) or **Direct invoke**. 2. Edit the payload. It starts from a sample for that trigger type (a storage sample matches the trigger's prefix and suffix; a schedule uses its own `input`). **Save event** keeps named payloads per function in `.pskit/studio/test-events.json`, like test events in the Lambda console. 3. **Run locally** runs the handler on this machine with a synthetic event (`pskit invoke`): no cloud, no deploy. **Send to <provider>/<stage>** fires the real trigger of the deployed function (`pskit trigger`): a queue message, an uploaded object, a topic message, an HTTP request or an invocation. Turn on *Show the function's logs* to watch it.",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0491",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#test-functions"
+  ],
+  "excerpt": "[docs/studio.md#test-functions]\n1. Pick the function and the event: one of its triggers (HTTP, schedule, queue, storage, topic) or **Direct invoke**. 2. Edit the payload. It starts from a sample for that trigger type (a storage sample matches the trigger's prefix and suffix; a schedule uses its own `input`). **Save event** keeps named payloads per function in `.pskit/studio/test-events.json`, like test events in the Lambda console. 3. **Run locally** runs the handler on this machine with a synthetic event (`pskit invoke`): no cloud, no deploy. **Send to <provider>/<stage>** fires the real trigger of the deployed function (`pskit trigger`): a queue message, an uploaded object, a topic message, an HTTP request or an invocation. Turn on *Show the function's logs* to watch it.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0492",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#test-functions"
+  ],
+  "excerpt": "[docs/studio.md#test-functions]\n1. Pick the function and the event: one of its triggers (HTTP, schedule, queue, storage, topic) or **Direct invoke**. 2. Edit the payload. It starts from a sample for that trigger type (a storage sample matches the trigger's prefix and suffix; a schedule uses its own `input`). **Save event** keeps named payloads per function in `.pskit/studio/test-events.json`, like test events in the Lambda console. 3. **Run locally** runs the handler on this machine with a synthetic event (`pskit invoke`): no cloud, no deploy. **Send to <provider>/<stage>** fires the real trigger of the deployed function (`pskit trigger`): a queue message, an uploaded object, a topic message, an HTTP request or an invocation. Turn on *Show the function's logs* to watch it.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0493",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#test-functions"
+  ],
+  "excerpt": "[docs/studio.md#test-functions]\n1. Pick the function and the event: one of its triggers (HTTP, schedule, queue, storage, topic) or **Direct invoke**. 2. Edit the payload. It starts from a sample for that trigger type (a storage sample matches the trigger's prefix and suffix; a schedule uses its own `input`). **Save event** keeps named payloads per function in `.pskit/studio/test-events.json`, like test events in the Lambda console. 3. **Run locally** runs the handler on this machine with a synthetic event (`pskit invoke`): no cloud, no deploy. **Send to <provider>/<stage>** fires the real trigger of the deployed function (`pskit trigger`): a queue message, an uploaded object, a topic message, an HTTP request or an invocation. Turn on *Show the function's logs* to watch it.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0494",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Test.tsx",
+   "docs/studio.md#test-functions"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0495",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#test-functions"
+  ],
+  "excerpt": "[docs/studio.md#test-functions]\n1. Pick the function and the event: one of its triggers (HTTP, schedule, queue, storage, topic) or **Direct invoke**. 2. Edit the payload. It starts from a sample for that trigger type (a storage sample matches the trigger's prefix and suffix; a schedule uses its own `input`). **Save event** keeps named payloads per function in `.pskit/studio/test-events.json`, like test events in the Lambda console. 3. **Run locally** runs the handler on this machine with a synthetic event (`pskit invoke`): no cloud, no deploy. **Send to <provider>/<stage>** fires the real trigger of the deployed function (`pskit trigger`): a queue message, an uploaded object, a topic message, an HTTP request or an invocation. Turn on *Show the function's logs* to watch it.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0496",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test-resource"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test-resource.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/ResourceTester.tsx",
+   "src/py_serverless_kit/studio/jobs.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0497",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test-resource"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test-resource.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/ResourceTester.tsx",
+   "src/py_serverless_kit/studio/jobs.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0498",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test-resource"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test-resource.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/ResourceTester.tsx",
+   "src/py_serverless_kit/studio/jobs.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0499",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test-resource"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test-resource.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/ResourceTester.tsx",
+   "src/py_serverless_kit/studio/jobs.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0500",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test-resource"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test-resource.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/ResourceTester.tsx",
+   "src/py_serverless_kit/studio/jobs.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ }
+]

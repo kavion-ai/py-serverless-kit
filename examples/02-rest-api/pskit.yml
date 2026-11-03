@@ -1,0 +1,88 @@
+service: books-api
+
+provider:
+  name: aws
+  region: us-east-1
+  memory: 256
+  timeout: 10
+
+custom:
+  # Allowed browser origins for CORS - defined once, reused below.
+  cors:
+    origins: ["https://books.example.com", "http://localhost:5173"]
+    allow_credentials: true
+
+functions:
+  list-books:
+    handler: app.handlers.list_books
+    events:
+      - http: {method: GET, path: /books, cors: "${self:custom.cors}"}
+
+  get-book:
+    handler: app.handlers.get_book
+    events:
+      - http: {method: GET, path: "/books/{id}", cors: "${self:custom.cors}"}
+
+  create-book:
+    handler: app.handlers.create_book
+    events:
+      - http: {method: POST, path: /books, cors: "${self:custom.cors}"}
+
+  update-book:
+    handler: app.handlers.update_book
+    events:
+      - http: {method: PUT, path: "/books/{id}", cors: "${self:custom.cors}"}
+
+  delete-book:
+    handler: app.handlers.delete_book
+    events:
+      - http: {method: DELETE, path: "/books/{id}", cors: "${self:custom.cors}"}
+
+  cover:
+    handler: app.handlers.cover
+    events:
+      - http: GET /books/{id}/cover
+
+  docs:
+    handler: app.handlers.docs
+    events:
+      - http: GET /docs
+
+  session:
+    handler: app.handlers.create_session
+    events:
+      - http: POST /session
+
+  admin-stats:
+    handler: app.handlers.admin_stats
+    events:
+      - http:
+          method: GET
+          path: /admin/stats
+          auth: jwt                       # API Gateway JWT authorizer (AWS only)
+          authorizer:
+            issuer: "${env:JWT_ISSUER, https://example.auth0.com/}"
+            audience: ["${env:JWT_AUDIENCE, books-api}"]
+
+# Gateway-level JWT validation is an AWS feature. On other clouds the route is
+# public and the handler checks the Authorization header itself. Overrides
+# replace lists instead of merging them, so the whole `events` list is restated.
+providers:
+  gcp:
+    region: us-central1
+    options: {project: "${env:GOOGLE_CLOUD_PROJECT, my-gcp-project}"}
+    functions:
+      admin-stats:
+        events: [{http: GET /admin/stats}]
+  azure:
+    region: eastus
+    options: {subscription_id: "${env:ARM_SUBSCRIPTION_ID, 00000000-0000-0000-0000-000000000000}"}
+    functions:
+      admin-stats:
+        events: [{http: GET /admin/stats}]
+  onprem:
+    region: local
+    options: {host: 127.0.0.1, port: 8082}
+    functions:
+      admin-stats:
+        events: [{http: GET /admin/stats}]

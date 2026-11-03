@@ -1,0 +1,771 @@
+[
+ {
+  "id": "k_res_0061",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-custom.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/custom.md#other-aws-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/aws/custom.md#other-aws-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: DynamoDB, Secrets Manager, Kinesis, EventBridge, Bedrock, a third-party API. pskit only passes its details to your functions (`external: true` is required). pskit grants **no IAM permissions** for `custom` resources: add them under `provider.iam.statements`. Use `${tf:...}` only for resources you also define in `provider.terraform.extra`; for console-created ones, paste the ARN.",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0062",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-custom.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/custom.md#other-aws-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/aws/custom.md#other-aws-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: DynamoDB, Secrets Manager, Kinesis, EventBridge, Bedrock, a third-party API. pskit only passes its details to your functions (`external: true` is required). pskit grants **no IAM permissions** for `custom` resources: add them under `provider.iam.statements`. Use `${tf:...}` only for resources you also define in `provider.terraform.extra`; for console-created ones, paste the ARN.",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0063",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-custom.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/custom.md#other-aws-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/aws/custom.md#other-aws-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: DynamoDB, Secrets Manager, Kinesis, EventBridge, Bedrock, a third-party API. pskit only passes its details to your functions (`external: true` is required). pskit grants **no IAM permissions** for `custom` resources: add them under `provider.iam.statements`. Use `${tf:...}` only for resources you also define in `provider.terraform.extra`; for console-created ones, paste the ARN.",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0064",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-custom.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/custom.md#other-aws-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/aws/custom.md#other-aws-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: DynamoDB, Secrets Manager, Kinesis, EventBridge, Bedrock, a third-party API. pskit only passes its details to your functions (`external: true` is required). pskit grants **no IAM permissions** for `custom` resources: add them under `provider.iam.statements`. Use `${tf:...}` only for resources you also define in `provider.terraform.extra`; for console-created ones, paste the ARN.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0065",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/database.md#networking-first"
+  ],
+  "excerpt": "[docs/resource-guides/aws/database.md#networking-first]\nAn RDS instance lives in a VPC. pskit deploys Lambda functions **outside any VPC** unless you set `functions.<fn>.options.vpc_config` (merged into `aws_lambda_function`). Pick one: A Lambda in a VPC has no internet access and can't reach AWS APIs (SQS, S3, Secrets Manager, ...) unless the subnets have a NAT gateway or VPC endpoints.",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0066",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-database.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/aws/database.md#amazon-rds-aurora-type-database",
+   "docs/resource-guides/aws/database.md#networking-first"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0067",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/database.md#networking-first"
+  ],
+  "excerpt": "[docs/resource-guides/aws/database.md#networking-first]\nAn RDS instance lives in a VPC. pskit deploys Lambda functions **outside any VPC** unless you set `functions.<fn>.options.vpc_config` (merged into `aws_lambda_function`). Pick one: A Lambda in a VPC has no internet access and can't reach AWS APIs (SQS, S3, Secrets Manager, ...) unless the subnets have a NAT gateway or VPC endpoints.",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0068",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/database.md#networking-first"
+  ],
+  "excerpt": "[docs/resource-guides/aws/database.md#networking-first]\nAn RDS instance lives in a VPC. pskit deploys Lambda functions **outside any VPC** unless you set `functions.<fn>.options.vpc_config` (merged into `aws_lambda_function`). Pick one: A Lambda in a VPC has no internet access and can't reach AWS APIs (SQS, S3, Secrets Manager, ...) unless the subnets have a NAT gateway or VPC endpoints.",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0069",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/database.md#networking-first"
+  ],
+  "excerpt": "[docs/resource-guides/aws/database.md#networking-first]\nAn RDS instance lives in a VPC. pskit deploys Lambda functions **outside any VPC** unless you set `functions.<fn>.options.vpc_config` (merged into `aws_lambda_function`). Pick one: A Lambda in a VPC has no internet access and can't reach AWS APIs (SQS, S3, Secrets Manager, ...) unless the subnets have a NAT gateway or VPC endpoints.",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0070",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/database.md#networking-first"
+  ],
+  "excerpt": "[docs/resource-guides/aws/database.md#networking-first]\nAn RDS instance lives in a VPC. pskit deploys Lambda functions **outside any VPC** unless you set `functions.<fn>.options.vpc_config` (merged into `aws_lambda_function`). Pick one: A Lambda in a VPC has no internet access and can't reach AWS APIs (SQS, S3, Secrets Manager, ...) unless the subnets have a NAT gateway or VPC endpoints.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0071",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/database.md#networking-first"
+  ],
+  "excerpt": "[docs/resource-guides/aws/database.md#networking-first]\nAn RDS instance lives in a VPC. pskit deploys Lambda functions **outside any VPC** unless you set `functions.<fn>.options.vpc_config` (merged into `aws_lambda_function`). Pick one: A Lambda in a VPC has no internet access and can't reach AWS APIs (SQS, S3, Secrets Manager, ...) unless the subnets have a NAT gateway or VPC endpoints.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0072",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-database.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/aws/database.md#amazon-rds-aurora-type-database",
+   "docs/resource-guides/aws/database.md#networking-first"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0073",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/queue.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/aws/queue.md#3-declare-it-in-pskityml]\n- looks the queue up by name (`data \"aws_sqs_queue\"`) in the deploy account and region, - creates an event source mapping (`batch_size`, `batch_window`, partial batch failures) for `worker`, - adds `sqs:SendMessage`, `ReceiveMessage`, `DeleteMessage`, ... on the queue ARN to the functions' IAM role, - sets `PSKIT_RESOURCE_JOBS_ARN` and `PSKIT_RESOURCE_JOBS_URL`.",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0074",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/queue.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/aws/queue.md#3-declare-it-in-pskityml]\n- looks the queue up by name (`data \"aws_sqs_queue\"`) in the deploy account and region, - creates an event source mapping (`batch_size`, `batch_window`, partial batch failures) for `worker`, - adds `sqs:SendMessage`, `ReceiveMessage`, `DeleteMessage`, ... on the queue ARN to the functions' IAM role, - sets `PSKIT_RESOURCE_JOBS_ARN` and `PSKIT_RESOURCE_JOBS_URL`.",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0075",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/queue.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/aws/queue.md#3-declare-it-in-pskityml]\n- looks the queue up by name (`data \"aws_sqs_queue\"`) in the deploy account and region, - creates an event source mapping (`batch_size`, `batch_window`, partial batch failures) for `worker`, - adds `sqs:SendMessage`, `ReceiveMessage`, `DeleteMessage`, ... on the queue ARN to the functions' IAM role, - sets `PSKIT_RESOURCE_JOBS_ARN` and `PSKIT_RESOURCE_JOBS_URL`.",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0076",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-queue.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/queue.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/aws/queue.md#3-declare-it-in-pskityml]\n- looks the queue up by name (`data \"aws_sqs_queue\"`) in the deploy account and region, - creates an event source mapping (`batch_size`, `batch_window`, partial batch failures) for `worker`, - adds `sqs:SendMessage`, `ReceiveMessage`, `DeleteMessage`, ... on the queue ARN to the functions' IAM role, - sets `PSKIT_RESOURCE_JOBS_ARN` and `PSKIT_RESOURCE_JOBS_URL`.",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0077",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-queue.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/queue.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/aws/queue.md#3-declare-it-in-pskityml]\n- looks the queue up by name (`data \"aws_sqs_queue\"`) in the deploy account and region, - creates an event source mapping (`batch_size`, `batch_window`, partial batch failures) for `worker`, - adds `sqs:SendMessage`, `ReceiveMessage`, `DeleteMessage`, ... on the queue ARN to the functions' IAM role, - sets `PSKIT_RESOURCE_JOBS_ARN` and `PSKIT_RESOURCE_JOBS_URL`.",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0078",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-queue.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/aws/queue.md#amazon-sqs-queue-type-queue",
+   "docs/resource-guides/aws/queue.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0079",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-queue.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/queue.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/aws/queue.md#3-declare-it-in-pskityml]\n- looks the queue up by name (`data \"aws_sqs_queue\"`) in the deploy account and region, - creates an event source mapping (`batch_size`, `batch_window`, partial batch failures) for `worker`, - adds `sqs:SendMessage`, `ReceiveMessage`, `DeleteMessage`, ... on the queue ARN to the functions' IAM role, - sets `PSKIT_RESOURCE_JOBS_ARN` and `PSKIT_RESOURCE_JOBS_URL`.",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0080",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-queue.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/queue.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/aws/queue.md#3-declare-it-in-pskityml]\n- looks the queue up by name (`data \"aws_sqs_queue\"`) in the deploy account and region, - creates an event source mapping (`batch_size`, `batch_window`, partial batch failures) for `worker`, - adds `sqs:SendMessage`, `ReceiveMessage`, `DeleteMessage`, ... on the queue ARN to the functions' IAM role, - sets `PSKIT_RESOURCE_JOBS_ARN` and `PSKIT_RESOURCE_JOBS_URL`.",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0081",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/aws/storage.md#3-declare-it-in-pskityml]\nWhat pskit does with it: looks the bucket up by name (`data \"aws_s3_bucket\"`), allows S3 to invoke the function, creates an `aws_s3_bucket_notification` on the bucket, adds `s3:GetObject`, `PutObject`, `DeleteObject`, `ListBucket` (bucket and `/*`) to the IAM role of bound functions, and sets `PSKIT_RESOURCE_INVOICES_ARN`.",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0082",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/aws/storage.md#3-declare-it-in-pskityml]\nWhat pskit does with it: looks the bucket up by name (`data \"aws_s3_bucket\"`), allows S3 to invoke the function, creates an `aws_s3_bucket_notification` on the bucket, adds `s3:GetObject`, `PutObject`, `DeleteObject`, `ListBucket` (bucket and `/*`) to the IAM role of bound functions, and sets `PSKIT_RESOURCE_INVOICES_ARN`.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0083",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/aws/storage.md#3-declare-it-in-pskityml]\nWhat pskit does with it: looks the bucket up by name (`data \"aws_s3_bucket\"`), allows S3 to invoke the function, creates an `aws_s3_bucket_notification` on the bucket, adds `s3:GetObject`, `PutObject`, `DeleteObject`, `ListBucket` (bucket and `/*`) to the IAM role of bound functions, and sets `PSKIT_RESOURCE_INVOICES_ARN`.",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0084",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/aws/storage.md#amazon-s3-bucket-type-storage",
+   "docs/resource-guides/aws/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0085",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/aws/storage.md#3-declare-it-in-pskityml]\nWhat pskit does with it: looks the bucket up by name (`data \"aws_s3_bucket\"`), allows S3 to invoke the function, creates an `aws_s3_bucket_notification` on the bucket, adds `s3:GetObject`, `PutObject`, `DeleteObject`, `ListBucket` (bucket and `/*`) to the IAM role of bound functions, and sets `PSKIT_RESOURCE_INVOICES_ARN`.",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0086",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-storage.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/aws/storage.md#3-declare-it-in-pskityml]\nWhat pskit does with it: looks the bucket up by name (`data \"aws_s3_bucket\"`), allows S3 to invoke the function, creates an `aws_s3_bucket_notification` on the bucket, adds `s3:GetObject`, `PutObject`, `DeleteObject`, `ListBucket` (bucket and `/*`) to the IAM role of bound functions, and sets `PSKIT_RESOURCE_INVOICES_ARN`.",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0087",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-storage.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/aws/storage.md#3-declare-it-in-pskityml]\nWhat pskit does with it: looks the bucket up by name (`data \"aws_s3_bucket\"`), allows S3 to invoke the function, creates an `aws_s3_bucket_notification` on the bucket, adds `s3:GetObject`, `PutObject`, `DeleteObject`, `ListBucket` (bucket and `/*`) to the IAM role of bound functions, and sets `PSKIT_RESOURCE_INVOICES_ARN`.",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0088",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-storage.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/aws/storage.md#3-declare-it-in-pskityml]\nWhat pskit does with it: looks the bucket up by name (`data \"aws_s3_bucket\"`), allows S3 to invoke the function, creates an `aws_s3_bucket_notification` on the bucket, adds `s3:GetObject`, `PutObject`, `DeleteObject`, `ListBucket` (bucket and `/*`) to the IAM role of bound functions, and sets `PSKIT_RESOURCE_INVOICES_ARN`.",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0089",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-topic.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/topic.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/aws/topic.md#3-declare-it-in-pskityml]\nWhat pskit does with it: looks the topic up by name (`data \"aws_sns_topic\"`), creates a Lambda subscription for `notify` with the filter policy, allows SNS to invoke it, adds `sns:Publish` on the topic to the IAM role of bound functions, and sets `PSKIT_RESOURCE_ORDER_EVENTS_ARN`. `pskit remove` deletes the subscription, never the topic.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0090",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-topic.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/aws/topic.md#amazon-sns-topic-type-topic",
+   "docs/resource-guides/aws/topic.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0091",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-topic.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/topic.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/aws/topic.md#3-declare-it-in-pskityml]\nWhat pskit does with it: looks the topic up by name (`data \"aws_sns_topic\"`), creates a Lambda subscription for `notify` with the filter policy, allows SNS to invoke it, adds `sns:Publish` on the topic to the IAM role of bound functions, and sets `PSKIT_RESOURCE_ORDER_EVENTS_ARN`. `pskit remove` deletes the subscription, never the topic.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0092",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-topic.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/topic.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/aws/topic.md#3-declare-it-in-pskityml]\nWhat pskit does with it: looks the topic up by name (`data \"aws_sns_topic\"`), creates a Lambda subscription for `notify` with the filter policy, allows SNS to invoke it, adds `sns:Publish` on the topic to the IAM role of bound functions, and sets `PSKIT_RESOURCE_ORDER_EVENTS_ARN`. `pskit remove` deletes the subscription, never the topic.",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0093",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-topic.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/topic.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/aws/topic.md#3-declare-it-in-pskityml]\nWhat pskit does with it: looks the topic up by name (`data \"aws_sns_topic\"`), creates a Lambda subscription for `notify` with the filter policy, allows SNS to invoke it, adds `sns:Publish` on the topic to the IAM role of bound functions, and sets `PSKIT_RESOURCE_ORDER_EVENTS_ARN`. `pskit remove` deletes the subscription, never the topic.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0094",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-topic.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/topic.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/aws/topic.md#3-declare-it-in-pskityml]\nWhat pskit does with it: looks the topic up by name (`data \"aws_sns_topic\"`), creates a Lambda subscription for `notify` with the filter policy, allows SNS to invoke it, adds `sns:Publish` on the topic to the IAM role of bound functions, and sets `PSKIT_RESOURCE_ORDER_EVENTS_ARN`. `pskit remove` deletes the subscription, never the topic.",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0095",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-topic.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/topic.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/aws/topic.md#3-declare-it-in-pskityml]\nWhat pskit does with it: looks the topic up by name (`data \"aws_sns_topic\"`), creates a Lambda subscription for `notify` with the filter policy, allows SNS to invoke it, adds `sns:Publish` on the topic to the IAM role of bound functions, and sets `PSKIT_RESOURCE_ORDER_EVENTS_ARN`. `pskit remove` deletes the subscription, never the topic.",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0096",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-topic.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/topic.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/aws/topic.md#3-declare-it-in-pskityml]\nWhat pskit does with it: looks the topic up by name (`data \"aws_sns_topic\"`), creates a Lambda subscription for `notify` with the filter policy, allows SNS to invoke it, adds `sns:Publish` on the topic to the IAM role of bound functions, and sets `PSKIT_RESOURCE_ORDER_EVENTS_ARN`. `pskit remove` deletes the subscription, never the topic.",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0097",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-cache.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/cache.md#azure-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0098",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-cache.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/cache.md#azure-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0099",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-cache.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/cache.md#azure-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0100",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-cache.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/cache.md#azure-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ }
+]

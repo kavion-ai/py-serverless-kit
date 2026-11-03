@@ -1,0 +1,771 @@
+[
+ {
+  "id": "k_res_0461",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-database.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/database.md#ibm-cloud-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0462",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-database.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/database.md#ibm-cloud-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0463",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-database.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/database.md#ibm-cloud-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0464",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-database.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/database.md#ibm-cloud-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0465",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/queue.md#ibm-mq-queue-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/queue.md#ibm-mq-queue-type-queue]\nSend messages to (or read them from) a queue on an IBM MQ queue manager from a handler. **Not supported on IBM Cloud:** `queue` triggers. pskit can't make a Code Engine function run for each message. Options: For Kafka-style messaging, [Event Streams](topic.md) is usually simpler to reach from Python.",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0466",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/queue.md#ibm-mq-queue-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/queue.md#ibm-mq-queue-type-queue]\nSend messages to (or read them from) a queue on an IBM MQ queue manager from a handler. **Not supported on IBM Cloud:** `queue` triggers. pskit can't make a Code Engine function run for each message. Options: For Kafka-style messaging, [Event Streams](topic.md) is usually simpler to reach from Python.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0467",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/queue.md#ibm-mq-queue-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/queue.md#ibm-mq-queue-type-queue]\nSend messages to (or read them from) a queue on an IBM MQ queue manager from a handler. **Not supported on IBM Cloud:** `queue` triggers. pskit can't make a Code Engine function run for each message. Options: For Kafka-style messaging, [Event Streams](topic.md) is usually simpler to reach from Python.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0468",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/queue.md#ibm-mq-queue-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/queue.md#ibm-mq-queue-type-queue]\nSend messages to (or read them from) a queue on an IBM MQ queue manager from a handler. **Not supported on IBM Cloud:** `queue` triggers. pskit can't make a Code Engine function run for each message. Options: For Kafka-style messaging, [Event Streams](topic.md) is usually simpler to reach from Python.",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0469",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/queue.md#ibm-mq-queue-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/queue.md#ibm-mq-queue-type-queue]\nSend messages to (or read them from) a queue on an IBM MQ queue manager from a handler. **Not supported on IBM Cloud:** `queue` triggers. pskit can't make a Code Engine function run for each message. Options: For Kafka-style messaging, [Event Streams](topic.md) is usually simpler to reach from Python.",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0470",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/queue.md#ibm-mq-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0471",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/queue.md#ibm-mq-queue-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/queue.md#ibm-mq-queue-type-queue]\nSend messages to (or read them from) a queue on an IBM MQ queue manager from a handler. **Not supported on IBM Cloud:** `queue` triggers. pskit can't make a Code Engine function run for each message. Options: For Kafka-style messaging, [Event Streams](topic.md) is usually simpler to reach from Python.",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0472",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/queue.md#ibm-mq-queue-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/queue.md#ibm-mq-queue-type-queue]\nSend messages to (or read them from) a queue on an IBM MQ queue manager from a handler. **Not supported on IBM Cloud:** `queue` triggers. pskit can't make a Code Engine function run for each message. Options: For Kafka-style messaging, [Event Streams](topic.md) is usually simpler to reach from Python.",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0473",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-storage.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/storage.md#ibm-cloud-object-storage-bucket-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/storage.md#ibm-cloud-object-storage-bucket-type-storage]\nRead and write objects in a Cloud Object Storage (COS) bucket from a handler. **Not supported on IBM Cloud:** `storage` triggers (a function that runs when an object is uploaded). Watch the bucket from the [on-premises host](../../resources.md#storage-drivers) with `driver: ibm_cos` instead, or have the uploader call the function's URL.",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0474",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-storage.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/storage.md#ibm-cloud-object-storage-bucket-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/storage.md#ibm-cloud-object-storage-bucket-type-storage]\nRead and write objects in a Cloud Object Storage (COS) bucket from a handler. **Not supported on IBM Cloud:** `storage` triggers (a function that runs when an object is uploaded). Watch the bucket from the [on-premises host](../../resources.md#storage-drivers) with `driver: ibm_cos` instead, or have the uploader call the function's URL.",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0475",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-storage.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/storage.md#ibm-cloud-object-storage-bucket-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/storage.md#ibm-cloud-object-storage-bucket-type-storage]\nRead and write objects in a Cloud Object Storage (COS) bucket from a handler. **Not supported on IBM Cloud:** `storage` triggers (a function that runs when an object is uploaded). Watch the bucket from the [on-premises host](../../resources.md#storage-drivers) with `driver: ibm_cos` instead, or have the uploader call the function's URL.",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0476",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/storage.md#ibm-cloud-object-storage-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0477",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/storage.md#ibm-cloud-object-storage-bucket-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/storage.md#ibm-cloud-object-storage-bucket-type-storage]\nRead and write objects in a Cloud Object Storage (COS) bucket from a handler. **Not supported on IBM Cloud:** `storage` triggers (a function that runs when an object is uploaded). Watch the bucket from the [on-premises host](../../resources.md#storage-drivers) with `driver: ibm_cos` instead, or have the uploader call the function's URL.",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0478",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/storage.md#ibm-cloud-object-storage-bucket-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/storage.md#ibm-cloud-object-storage-bucket-type-storage]\nRead and write objects in a Cloud Object Storage (COS) bucket from a handler. **Not supported on IBM Cloud:** `storage` triggers (a function that runs when an object is uploaded). Watch the bucket from the [on-premises host](../../resources.md#storage-drivers) with `driver: ibm_cos` instead, or have the uploader call the function's URL.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0479",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/storage.md#ibm-cloud-object-storage-bucket-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/storage.md#ibm-cloud-object-storage-bucket-type-storage]\nRead and write objects in a Cloud Object Storage (COS) bucket from a handler. **Not supported on IBM Cloud:** `storage` triggers (a function that runs when an object is uploaded). Watch the bucket from the [on-premises host](../../resources.md#storage-drivers) with `driver: ibm_cos` instead, or have the uploader call the function's URL.",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0480",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/storage.md#ibm-cloud-object-storage-bucket-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/storage.md#ibm-cloud-object-storage-bucket-type-storage]\nRead and write objects in a Cloud Object Storage (COS) bucket from a handler. **Not supported on IBM Cloud:** `storage` triggers (a function that runs when an object is uploaded). Watch the bucket from the [on-premises host](../../resources.md#storage-drivers) with `driver: ibm_cos` instead, or have the uploader call the function's URL.",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0481",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-topic.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/topic.md#ibm-event-streams-topic-type-topic"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/topic.md#ibm-event-streams-topic-type-topic]\n**Not supported on IBM Cloud:** `topic` triggers. pskit can't subscribe a Code Engine function to a topic. Consume it from the [on-premises host](../../resources.md#custom-drivers) with a `custom` Kafka driver class ([`examples/19-custom-drivers`](../../../examples/19-custom-drivers) has a Kafka template), or poll from an HTTP function that something calls.",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0482",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-topic.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/topic.md#ibm-event-streams-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0483",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-topic.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/topic.md#ibm-event-streams-topic-type-topic"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/topic.md#ibm-event-streams-topic-type-topic]\n**Not supported on IBM Cloud:** `topic` triggers. pskit can't subscribe a Code Engine function to a topic. Consume it from the [on-premises host](../../resources.md#custom-drivers) with a `custom` Kafka driver class ([`examples/19-custom-drivers`](../../../examples/19-custom-drivers) has a Kafka template), or poll from an HTTP function that something calls.",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0484",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-topic.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/topic.md#ibm-event-streams-topic-type-topic"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/topic.md#ibm-event-streams-topic-type-topic]\n**Not supported on IBM Cloud:** `topic` triggers. pskit can't subscribe a Code Engine function to a topic. Consume it from the [on-premises host](../../resources.md#custom-drivers) with a `custom` Kafka driver class ([`examples/19-custom-drivers`](../../../examples/19-custom-drivers) has a Kafka template), or poll from an HTTP function that something calls.",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0485",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-topic.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/topic.md#ibm-event-streams-topic-type-topic"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/topic.md#ibm-event-streams-topic-type-topic]\n**Not supported on IBM Cloud:** `topic` triggers. pskit can't subscribe a Code Engine function to a topic. Consume it from the [on-premises host](../../resources.md#custom-drivers) with a `custom` Kafka driver class ([`examples/19-custom-drivers`](../../../examples/19-custom-drivers) has a Kafka template), or poll from an HTTP function that something calls.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0486",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-topic.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/topic.md#ibm-event-streams-topic-type-topic"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/topic.md#ibm-event-streams-topic-type-topic]\n**Not supported on IBM Cloud:** `topic` triggers. pskit can't subscribe a Code Engine function to a topic. Consume it from the [on-premises host](../../resources.md#custom-drivers) with a `custom` Kafka driver class ([`examples/19-custom-drivers`](../../../examples/19-custom-drivers) has a Kafka template), or poll from an HTTP function that something calls.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0487",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-topic.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/topic.md#ibm-event-streams-topic-type-topic"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/topic.md#ibm-event-streams-topic-type-topic]\n**Not supported on IBM Cloud:** `topic` triggers. pskit can't subscribe a Code Engine function to a topic. Consume it from the [on-premises host](../../resources.md#custom-drivers) with a `custom` Kafka driver class ([`examples/19-custom-drivers`](../../../examples/19-custom-drivers) has a Kafka template), or poll from an HTTP function that something calls.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0488",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-topic.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/topic.md#ibm-event-streams-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0489",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-cache.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/cache.md#on-premises-caches-type-cache"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/cache.md#on-premises-caches-type-cache]\nA Redis / Valkey (or Memcached) server your functions use as a cache. pskit never creates or watches it: declare it with `external: true`. To use Redis as a **queue** that triggers functions, see [queue.md](queue.md#redis--valkey) instead. One Redis server can serve both; give them separate keys or databases (`/0`, `/1`).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0490",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-cache.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/cache.md#on-premises-caches-type-cache"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/cache.md#on-premises-caches-type-cache]\nA Redis / Valkey (or Memcached) server your functions use as a cache. pskit never creates or watches it: declare it with `external: true`. To use Redis as a **queue** that triggers functions, see [queue.md](queue.md#redis--valkey) instead. One Redis server can serve both; give them separate keys or databases (`/0`, `/1`).",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0491",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-cache.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/cache.md#on-premises-caches-type-cache"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/cache.md#on-premises-caches-type-cache]\nA Redis / Valkey (or Memcached) server your functions use as a cache. pskit never creates or watches it: declare it with `external: true`. To use Redis as a **queue** that triggers functions, see [queue.md](queue.md#redis--valkey) instead. One Redis server can serve both; give them separate keys or databases (`/0`, `/1`).",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0492",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-cache.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/cache.md#on-premises-caches-type-cache"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/cache.md#on-premises-caches-type-cache]\nA Redis / Valkey (or Memcached) server your functions use as a cache. pskit never creates or watches it: declare it with `external: true`. To use Redis as a **queue** that triggers functions, see [queue.md](queue.md#redis--valkey) instead. One Redis server can serve both; give them separate keys or databases (`/0`, `/1`).",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0493",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-cache.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/cache.md#on-premises-caches-type-cache"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/cache.md#on-premises-caches-type-cache]\nA Redis / Valkey (or Memcached) server your functions use as a cache. pskit never creates or watches it: declare it with `external: true`. To use Redis as a **queue** that triggers functions, see [queue.md](queue.md#redis--valkey) instead. One Redis server can serve both; give them separate keys or databases (`/0`, `/1`).",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0494",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-cache.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/cache.md#on-premises-caches-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0495",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-cache.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/cache.md#on-premises-caches-type-cache"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/cache.md#on-premises-caches-type-cache]\nA Redis / Valkey (or Memcached) server your functions use as a cache. pskit never creates or watches it: declare it with `external: true`. To use Redis as a **queue** that triggers functions, see [queue.md](queue.md#redis--valkey) instead. One Redis server can serve both; give them separate keys or databases (`/0`, `/1`).",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0496",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-cache.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/cache.md#on-premises-caches-type-cache"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/cache.md#on-premises-caches-type-cache]\nA Redis / Valkey (or Memcached) server your functions use as a cache. pskit never creates or watches it: declare it with `external: true`. To use Redis as a **queue** that triggers functions, see [queue.md](queue.md#redis--valkey) instead. One Redis server can serve both; give them separate keys or databases (`/0`, `/1`).",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0497",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-custom.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/custom.md#other-on-premises-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/custom.md#other-on-premises-services-type-custom]\n`custom` covers anything else functions talk to: an SMTP server, LDAP / Active Directory, an internal REST API, an Elasticsearch cluster, a file share. pskit only hands `connection` values to handlers (`external: true` is required). Not to be confused with the **custom driver** (`options.driver: custom`), which plugs your own class into a `queue` or `storage` resource so it can trigger functions: see [queue.md](queue.md#rabbitmq-or-kafka-nats--via-a-custom-driver).",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0498",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-custom.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/custom.md#other-on-premises-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/custom.md#other-on-premises-services-type-custom]\n`custom` covers anything else functions talk to: an SMTP server, LDAP / Active Directory, an internal REST API, an Elasticsearch cluster, a file share. pskit only hands `connection` values to handlers (`external: true` is required). Not to be confused with the **custom driver** (`options.driver: custom`), which plugs your own class into a `queue` or `storage` resource so it can trigger functions: see [queue.md](queue.md#rabbitmq-or-kafka-nats--via-a-custom-driver).",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0499",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-custom.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/custom.md#other-on-premises-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/custom.md#other-on-premises-services-type-custom]\n`custom` covers anything else functions talk to: an SMTP server, LDAP / Active Directory, an internal REST API, an Elasticsearch cluster, a file share. pskit only hands `connection` values to handlers (`external: true` is required). Not to be confused with the **custom driver** (`options.driver: custom`), which plugs your own class into a `queue` or `storage` resource so it can trigger functions: see [queue.md](queue.md#rabbitmq-or-kafka-nats--via-a-custom-driver).",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0500",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-custom.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/custom.md#other-on-premises-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/custom.md#other-on-premises-services-type-custom]\n`custom` covers anything else functions talk to: an SMTP server, LDAP / Active Directory, an internal REST API, an Elasticsearch cluster, a file share. pskit only hands `connection` values to handlers (`external: true` is required). Not to be confused with the **custom driver** (`options.driver: custom`), which plugs your own class into a `queue` or `storage` resource so it can trigger functions: see [queue.md](queue.md#rabbitmq-or-kafka-nats--via-a-custom-driver).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ }
+]

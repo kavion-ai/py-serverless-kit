@@ -1,0 +1,60 @@
+service: resources-demo
+
+provider:
+  name: aws
+  region: us-east-1
+
+# Services the functions use. Managed ones are created by pskit; `external: true`
+# ones already exist and pskit only hands their details to the handlers.
+resources:
+  uploads:                         # managed bucket, written by the API, no trigger
+    type: storage
+    name: resources-demo-uploads-1234
+  jobs:                            # managed queue, consumed by `worker`
+    type: queue
+    options: {visibility_timeout: 120}
+  notifications:                   # managed topic the worker publishes to
+    type: topic
+  orders-db:                       # an existing database pskit never touches
+    type: database
+    external: true
+    connection:
+      host: ${env:ORDERS_DB_HOST, localhost}
+      port: 5432
+      database: orders
+      password_env: ORDERS_DB_PASSWORD   # name of the secret variable, never the secret itself
+    functions: [api, worker]
+
+functions:
+  api:
+    handler: app.handlers.bindings
+    events:
+      - http: GET /bindings
+
+  worker:
+    handler: app.handlers.work
+    events:
+      - queue: {resource: jobs, batch_size: 5}
+
+providers:
+  gcp:
+    region: us-central1
+    options: {project: "${env:GOOGLE_CLOUD_PROJECT, my-gcp-project}"}
+  azure:
+    region: eastus
+    options: {subscription_id: "${env:ARM_SUBSCRIPTION_ID, 00000000-0000-0000-0000-000000000000}"}
+  onprem:
+    region: local
+    options: {host: 127.0.0.1, port: 8090}
+    # On-premises the same resources can live in services you already run:
+    # resources:
+    #   jobs:
+    #     external: true
+    #     options: {driver: redis, url: "redis://127.0.0.1:6379/0"}
+    #   uploads:
+    #     external: true
+    #     options:
+    #       driver: s3
+    #       endpoint: http://127.0.0.1:9000
+    #       access_key: ${env:MINIO_ACCESS_KEY}
+    #       secret_key: ${env:MINIO_SECRET_KEY}

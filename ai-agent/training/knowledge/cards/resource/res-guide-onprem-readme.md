@@ -1,0 +1,14 @@
+# On-premises resources How to give functions on an on-premises host
+
+(`provider.name: onprem`) the queues, buckets, topics, databases and caches they use: the host's own built-in ones, or services you already run (Redis, MinIO, RabbitMQ, PostgreSQL) or that live in a cloud (SQS, Azure Storage queues, Pub/Sub, S3, R2, ...). No service yet? **Create it in one click**: Redis, Valkey, Kafka, NATS, RabbitMQ, MinIO, PostgreSQL, MySQL, MongoDB and more as Docker containers, on this machine or any SSH server, added to `pskit.yml` with their triggers (studio: *Resources → On-prem services*; CLI: `pskit resources onprem create`). | `type` | Built in | Or an existing service | Guide | |---|---|---|---| | `queue` | directories under `data_dir` | Redis / Valkey (list or stream), Kafka, NATS, RabbitMQ (`custom`), another on-prem host, SQS, Azure Storage queue, Pub/Sub, MNS, Cloudflare Queues | queue.md | | `storage` | directories under `data_dir` | MinIO, any S3-compatible store, S3, R2, Azure Blob, GCS, a shared folder | storage.md | | `topic` | directories under `data_dir` | a shared directory only | topic.md | | `database` | — | self-hosted PostgreSQL / MySQL, a cloud database | database.md | | `cache` | — | Redis / Valkey, Memcached | cache.md | | `custom` | — | SMTP, LDAP, internal APIs, anything | custom.md | | secrets | — | OpenBao / Vault, AWS Secrets Manager (pskit's compatible server or LocalStack on premises), environment variables: `get_secret()` | secrets.md |
+## How the host uses resources - **Built in (`builtin`)**: a `queue`, `storage` or `topic`
+
+resource without `external: true` is a directory under the host's `data_dir`, created when the host starts. Nothing to set up. Unlike most clouds, a managed resource no event uses is fine on premises. - **Drivers**: `external: true` plus `options.driver` points the resource at another service. The host **watches** it: queues are polled and leased, buckets are listed and diffed every `provider.options.poll_seconds`, and each message or object change triggers the function like a local event. Allowed drivers per type: | Type | Drivers | |---|---| | queue | `builtin`, `directory`, `redis`, `redis_stream`, `pskit_host`, `sqs`, `azure_queue`, `pubsub`, `mns`, `cloudflare_queue`, `custom` | | storage | `builtin`, `directory`, `s3`, `aws`, `oss`, `cos`, `obs`, `oci`, `ibm_cos`, `spaces`, `r2`, `minio`, `azure_blob`, `gcs`, `custom` | | topic | `builtin`, `directory` | - `database`, `cache` and `custom` resources have no driver (`options.driver` is a validation error). pskit only hands their `connection` values to handlers, which connect with any client library (on premises `requirements.txt` **is** installed). Full parameter tables: resources.md → On-premises drivers.
+
+```text
+options:
+  driver: minio
+  endpoint: http://minio.internal:9000
+  access_key_env: MINIO_ACCESS_KEY     # read from the HOST's environment when it starts
+  secret_key_env: MINIO_SECRET_KEY
+```

@@ -1,0 +1,785 @@
+[
+ {
+  "id": "k_cmd_1001",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-tf"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-tf.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-tf----args"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1002",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-tf"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-tf.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-tf----args"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1003",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-tf"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-tf.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-tf----args"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1004",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-tf"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-tf.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-tf----args"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1005",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-tf"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-tf.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-tf----args"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1006",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-tf"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-tf.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-tf----args"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1007",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-tf"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-tf.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-tf----args"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1008",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-tf"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-tf.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-tf----args"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1009",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-tf"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-tf.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-tf----args"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1010",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-tf"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-tf.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-tf----args"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1011",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-trigger"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-trigger.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-trigger"
+  ],
+  "excerpt": "[docs/cli.md#pskit-trigger]\nSend a **real** test event to a deployed function, the way its trigger would: an HTTP request to its URL, a message to its queue, an object uploaded to its bucket, a message published to its topic, or a direct invocation (schedules are fired by invoking the function with the schedule's input). Test without deploying with `pskit invoke`.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1012",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-trigger"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-trigger.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-trigger"
+  ],
+  "excerpt": "[docs/cli.md#pskit-trigger]\nSend a **real** test event to a deployed function, the way its trigger would: an HTTP request to its URL, a message to its queue, an object uploaded to its bucket, a message published to its topic, or a direct invocation (schedules are fired by invoking the function with the schedule's input). Test without deploying with `pskit invoke`.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1013",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-trigger"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-trigger.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-trigger"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1014",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-trigger"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-trigger.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-trigger"
+  ],
+  "excerpt": "[docs/cli.md#pskit-trigger]\nSend a **real** test event to a deployed function, the way its trigger would: an HTTP request to its URL, a message to its queue, an object uploaded to its bucket, a message published to its topic, or a direct invocation (schedules are fired by invoking the function with the schedule's input). Test without deploying with `pskit invoke`.",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1015",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-trigger"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-trigger.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-trigger"
+  ],
+  "excerpt": "[docs/cli.md#pskit-trigger]\nSend a **real** test event to a deployed function, the way its trigger would: an HTTP request to its URL, a message to its queue, an object uploaded to its bucket, a message published to its topic, or a direct invocation (schedules are fired by invoking the function with the schedule's input). Test without deploying with `pskit invoke`.",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1016",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-trigger"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-trigger.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-trigger"
+  ],
+  "excerpt": "[docs/cli.md#pskit-trigger]\nSend a **real** test event to a deployed function, the way its trigger would: an HTTP request to its URL, a message to its queue, an object uploaded to its bucket, a message published to its topic, or a direct invocation (schedules are fired by invoking the function with the schedule's input). Test without deploying with `pskit invoke`.",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1017",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-trigger"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-trigger.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-trigger"
+  ],
+  "excerpt": "[docs/cli.md#pskit-trigger]\nSend a **real** test event to a deployed function, the way its trigger would: an HTTP request to its URL, a message to its queue, an object uploaded to its bucket, a message published to its topic, or a direct invocation (schedules are fired by invoking the function with the schedule's input). Test without deploying with `pskit invoke`.",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1018",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-trigger"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-trigger.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-trigger"
+  ],
+  "excerpt": "[docs/cli.md#pskit-trigger]\nSend a **real** test event to a deployed function, the way its trigger would: an HTTP request to its URL, a message to its queue, an object uploaded to its bucket, a message published to its topic, or a direct invocation (schedules are fired by invoking the function with the schedule's input). Test without deploying with `pskit invoke`.",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1019",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-trigger"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-trigger.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-trigger"
+  ],
+  "excerpt": "[docs/cli.md#pskit-trigger]\nSend a **real** test event to a deployed function, the way its trigger would: an HTTP request to its URL, a message to its queue, an object uploaded to its bucket, a message published to its topic, or a direct invocation (schedules are fired by invoking the function with the schedule's input). Test without deploying with `pskit invoke`.",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1020",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-trigger"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-trigger.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-trigger"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1021",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-validate"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-validate.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-validate"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1022",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-validate"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-validate.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-validate"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1023",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-validate"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-validate.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-validate"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1024",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-validate"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-validate.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-validate"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1025",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-validate"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-validate.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-validate"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1026",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-validate"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-validate.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-validate"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1027",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-validate"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-validate.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-validate"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1028",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-validate"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-validate.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-validate"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1029",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-validate"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-validate.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-validate"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1030",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-validate"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-validate.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-validate"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1031",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-workflow"
+  ],
+  "excerpt": "[docs/cli.md#pskit-workflow]\n- `run` executes the workflow locally on the embedded engine. `wait` states are skipped unless `--sleep` is given. A failed run prints `FAILED <error>: <cause>` and exits with code 2. - `show` prints the compiled definition. `auto` picks ASL for AWS, Cloud Workflows for GCP, and the portable JSON otherwise.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1032",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-workflow"
+  ],
+  "excerpt": "[docs/cli.md#pskit-workflow]\n- `run` executes the workflow locally on the embedded engine. `wait` states are skipped unless `--sleep` is given. A failed run prints `FAILED <error>: <cause>` and exits with code 2. - `show` prints the compiled definition. `auto` picks ASL for AWS, Cloud Workflows for GCP, and the portable JSON otherwise.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1033",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-workflow"
+  ],
+  "excerpt": "[docs/cli.md#pskit-workflow]\n- `run` executes the workflow locally on the embedded engine. `wait` states are skipped unless `--sleep` is given. A failed run prints `FAILED <error>: <cause>` and exits with code 2. - `show` prints the compiled definition. `auto` picks ASL for AWS, Cloud Workflows for GCP, and the portable JSON otherwise.",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1034",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-workflow"
+  ],
+  "excerpt": "[docs/cli.md#pskit-workflow]\n- `run` executes the workflow locally on the embedded engine. `wait` states are skipped unless `--sleep` is given. A failed run prints `FAILED <error>: <cause>` and exits with code 2. - `show` prints the compiled definition. `auto` picks ASL for AWS, Cloud Workflows for GCP, and the portable JSON otherwise.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1035",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-workflow"
+  ],
+  "excerpt": "[docs/cli.md#pskit-workflow]\n- `run` executes the workflow locally on the embedded engine. `wait` states are skipped unless `--sleep` is given. A failed run prints `FAILED <error>: <cause>` and exits with code 2. - `show` prints the compiled definition. `auto` picks ASL for AWS, Cloud Workflows for GCP, and the portable JSON otherwise.",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1036",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-workflow"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1037",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-workflow"
+  ],
+  "excerpt": "[docs/cli.md#pskit-workflow]\n- `run` executes the workflow locally on the embedded engine. `wait` states are skipped unless `--sleep` is given. A failed run prints `FAILED <error>: <cause>` and exits with code 2. - `show` prints the compiled definition. `auto` picks ASL for AWS, Cloud Workflows for GCP, and the portable JSON otherwise.",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1038",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-workflow"
+  ],
+  "excerpt": "[docs/cli.md#pskit-workflow]\n- `run` executes the workflow locally on the embedded engine. `wait` states are skipped unless `--sleep` is given. A failed run prints `FAILED <error>: <cause>` and exits with code 2. - `show` prints the compiled definition. `auto` picks ASL for AWS, Cloud Workflows for GCP, and the portable JSON otherwise.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1039",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-workflow"
+  ],
+  "excerpt": "[docs/cli.md#pskit-workflow]\n- `run` executes the workflow locally on the embedded engine. `wait` states are skipped unless `--sleep` is given. A failed run prints `FAILED <error>: <cause>` and exits with code 2. - `show` prints the compiled definition. `auto` picks ASL for AWS, Cloud Workflows for GCP, and the portable JSON otherwise.",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1040",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-workflow"
+  ],
+  "excerpt": "[docs/cli.md#pskit-workflow]\n- `run` executes the workflow locally on the embedded engine. `wait` states are skipped unless `--sleep` is given. A failed run prints `FAILED <error>: <cause>` and exits with code 2. - `show` prints the compiled definition. `auto` picks ASL for AWS, Cloud Workflows for GCP, and the portable JSON otherwise.",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ }
+]

@@ -1,0 +1,792 @@
+[
+ {
+  "id": "k_res_0381",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-readme.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0382",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-readme.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0383",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-readme.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0384",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-readme.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0385",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-tencent-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-tencent-readme.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/README.md#tencent-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0386",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-tencent-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-tencent-readme.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/README.md#tencent-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0387",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-tencent-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-tencent-readme.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/README.md#tencent-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0388",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-tencent-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-tencent-readme.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/README.md#tencent-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0389",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-tencent-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-tencent-readme.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/README.md#tencent-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0390",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-tencent-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-tencent-readme.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/README.md#tencent-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0391",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-tencent-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-tencent-readme.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/README.md#tencent-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0392",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-tencent-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-tencent-readme.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/README.md#tencent-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0393",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-cache.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/cache.md#huawei-dcs-for-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0394",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-cache.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/cache.md#huawei-dcs-for-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0395",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-cache.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/cache.md#huawei-dcs-for-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0396",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-cache.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/cache.md#huawei-dcs-for-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0397",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-cache.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/cache.md#huawei-dcs-for-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0398",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-cache.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/cache.md#huawei-dcs-for-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0399",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-cache.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/cache.md#huawei-dcs-for-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0400",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-cache.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/cache.md#huawei-dcs-for-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0401",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-custom.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/huawei/custom.md#other-huawei-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/huawei/custom.md#other-huawei-cloud-services-type-custom]\n`custom` is for anything that isn't a bucket, queue, topic, database or cache: CSMS secrets, Document Database (DDS), Cloud Search Service, a third-party API. pskit only passes connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and the **identifiers** in the console, give the function permissions through an agency (or keep a secret in an environment variable), and put the rest in `connection`.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0402",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-custom.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/huawei/custom.md#other-huawei-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/huawei/custom.md#other-huawei-cloud-services-type-custom]\n`custom` is for anything that isn't a bucket, queue, topic, database or cache: CSMS secrets, Document Database (DDS), Cloud Search Service, a third-party API. pskit only passes connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and the **identifiers** in the console, give the function permissions through an agency (or keep a secret in an environment variable), and put the rest in `connection`.",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0403",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-custom.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/custom.md#other-huawei-cloud-services-type-custom",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0404",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-custom.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/huawei/custom.md#other-huawei-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/huawei/custom.md#other-huawei-cloud-services-type-custom]\n`custom` is for anything that isn't a bucket, queue, topic, database or cache: CSMS secrets, Document Database (DDS), Cloud Search Service, a third-party API. pskit only passes connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and the **identifiers** in the console, give the function permissions through an agency (or keep a secret in an environment variable), and put the rest in `connection`.",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0405",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-custom.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/huawei/custom.md#other-huawei-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/huawei/custom.md#other-huawei-cloud-services-type-custom]\n`custom` is for anything that isn't a bucket, queue, topic, database or cache: CSMS secrets, Document Database (DDS), Cloud Search Service, a third-party API. pskit only passes connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and the **identifiers** in the console, give the function permissions through an agency (or keep a secret in an environment variable), and put the rest in `connection`.",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0406",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-custom.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/huawei/custom.md#other-huawei-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/huawei/custom.md#other-huawei-cloud-services-type-custom]\n`custom` is for anything that isn't a bucket, queue, topic, database or cache: CSMS secrets, Document Database (DDS), Cloud Search Service, a third-party API. pskit only passes connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and the **identifiers** in the console, give the function permissions through an agency (or keep a secret in an environment variable), and put the rest in `connection`.",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0407",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-custom.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/huawei/custom.md#other-huawei-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/huawei/custom.md#other-huawei-cloud-services-type-custom]\n`custom` is for anything that isn't a bucket, queue, topic, database or cache: CSMS secrets, Document Database (DDS), Cloud Search Service, a third-party API. pskit only passes connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and the **identifiers** in the console, give the function permissions through an agency (or keep a secret in an environment variable), and put the rest in `connection`.",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0408",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-custom.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/huawei/custom.md#other-huawei-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/huawei/custom.md#other-huawei-cloud-services-type-custom]\n`custom` is for anything that isn't a bucket, queue, topic, database or cache: CSMS secrets, Document Database (DDS), Cloud Search Service, a third-party API. pskit only passes connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and the **identifiers** in the console, give the function permissions through an agency (or keep a secret in an environment variable), and put the rest in `connection`.",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0409",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/database.md#huawei-rds-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0410",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/database.md#huawei-rds-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0411",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/database.md#huawei-rds-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0412",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/database.md#huawei-rds-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0413",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/database.md#huawei-rds-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0414",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/database.md#huawei-rds-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0415",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/database.md#huawei-rds-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0416",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/database.md#huawei-rds-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0417",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-queue.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/queue.md#huawei-dms-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0418",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-queue.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/queue.md#huawei-dms-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0419",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-queue.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/queue.md#huawei-dms-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0420",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-queue.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/queue.md#huawei-dms-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ }
+]

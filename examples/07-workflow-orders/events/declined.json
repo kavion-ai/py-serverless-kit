@@ -1,0 +1,5 @@
+{
+  "order_id": "o-1002",
+  "card": "tok_declined",
+  "items": [{"sku": "sku-book", "qty": 1, "price": 12.5}]
+}

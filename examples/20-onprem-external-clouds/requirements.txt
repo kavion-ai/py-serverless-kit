@@ -1,0 +1,1 @@
+# No dependencies: the cloud drivers are part of py-serverless-kit (standard library only).

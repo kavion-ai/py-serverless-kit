@@ -1,0 +1,769 @@
+[
+ {
+  "id": "k_nav_0061",
+  "category": "k_nav",
+  "card_ids": [
+   "page-code"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-code.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0062",
+  "category": "k_nav",
+  "card_ids": [
+   "page-code"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-code.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Code.tsx",
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0063",
+  "category": "k_nav",
+  "card_ids": [
+   "page-code"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-code.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0064",
+  "category": "k_nav",
+  "card_ids": [
+   "page-code"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-code.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0065",
+  "category": "k_nav",
+  "card_ids": [
+   "page-code"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-code.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0066",
+  "category": "k_nav",
+  "card_ids": [
+   "page-code"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-code.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0067",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-cluster.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0068",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-cluster.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0069",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-cluster.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0070",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-cluster.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0071",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-cluster.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0072",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-cluster.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0073",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-cluster.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0074",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-cluster.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0075",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-cluster.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0076",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-cluster.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0077",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-cluster.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0078",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-cluster.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0079",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-cluster.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0080",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-cluster.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0081",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-cluster.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0082",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-cluster.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0083",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-cluster.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0084",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-cluster.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0085",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-cluster.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0086",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-cluster.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0087",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-cluster.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0088",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-cluster.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0089",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-function-wizard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-function-wizard.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0090",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-function-wizard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-function-wizard.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0091",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-function-wizard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-function-wizard.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0092",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-function-wizard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-function-wizard.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0093",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-function-wizard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-function-wizard.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Functions.tsx",
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0094",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-function-wizard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-function-wizard.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0095",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-function-wizard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-function-wizard.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0096",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-function-wizard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-function-wizard.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0097",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-function-wizard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-function-wizard.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0098",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-function-wizard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-function-wizard.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0099",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-function-wizard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-function-wizard.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Functions.tsx",
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0100",
+  "category": "k_nav",
+  "card_ids": [
+   "page-create-function-wizard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-create-function-wizard.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ }
+]

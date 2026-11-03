@@ -1,0 +1,925 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S3 console</title>
+<style>
+:root {
+  --bg: #f6f7f9; --panel: #ffffff; --text: #16191f; --muted: #5f6b7a; --line: #d9dee5; --accent: #0b6bcb;
+  --accent-text: #ffffff; --danger: #c4251c; --warn-bg: #fff4e5; --warn: #8a4b00; --ok: #1d7a3a; --chip: #eef2f7;
+  --hover: #f0f4fa; --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1216; --panel: #171b21; --text: #e6e9ee; --muted: #9aa4b2; --line: #2b323c; --accent: #4c9ffe;
+    --accent-text: #0b1220; --danger: #ff6b61; --warn-bg: #3a2a12; --warn: #ffc56b; --ok: #5bd17f; --chip: #222a34;
+    --hover: #1d232b;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+button, input, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; border: 1px solid var(--line); background: var(--panel); border-radius: 6px; padding: 6px 12px; white-space: nowrap; }
+button:hover { border-color: var(--accent); }
+button.primary { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+button.danger { color: var(--danger); }
+button.link { border: 0; background: none; padding: 2px 4px; color: var(--accent); text-align: left; white-space: normal; }
+button:disabled { opacity: .5; cursor: default; }
+input, textarea, select { width: 100%; padding: 7px 9px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); }
+input[type=checkbox], input[type=radio] { width: auto; }
+textarea { font-family: var(--mono); min-height: 180px; resize: vertical; font-size: 13px; }
+label { display: block; margin: 12px 0 4px; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+label.check { text-transform: none; letter-spacing: 0; font-size: 14px; color: var(--text); display: flex; gap: 8px; align-items: center; }
+header { display: flex; align-items: center; gap: 12px; padding: 12px 20px; background: var(--panel); border-bottom: 1px solid var(--line); }
+header h1 { font-size: 16px; margin: 0; flex: 1; }
+header .who { color: var(--muted); }
+main { display: grid; grid-template-columns: minmax(220px, 300px) 1fr; gap: 16px; padding: 16px 20px; max-width: 1600px; margin: 0 auto; }
+@media (max-width: 900px) { main { grid-template-columns: 1fr; padding: 12px 16px; } }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; min-width: 0; }
+.list { list-style: none; margin: 12px 0 0; padding: 0; }
+.list li { padding: 8px 10px; border-radius: 6px; cursor: pointer; border: 1px solid transparent; }
+.list li:hover { background: var(--hover); }
+.list li.active { border-color: var(--accent); background: var(--chip); }
+.list .name { font-weight: 600; word-break: break-all; }
+.list .sub { color: var(--muted); font-size: 12px; }
+.row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.grow { flex: 1; }
+.muted { color: var(--muted); }
+.mono { font-family: var(--mono); word-break: break-all; }
+.chip { display: inline-block; padding: 1px 8px; border-radius: 10px; background: var(--chip); font-size: 12px; margin-right: 4px; }
+.chip.on { background: var(--accent); color: var(--accent-text); }
+.chip.warn { background: var(--warn-bg); color: var(--warn); }
+.warn { background: var(--warn-bg); color: var(--warn); padding: 10px 12px; border-radius: 6px; margin: 12px 0; }
+.error { color: var(--danger); margin: 8px 0; white-space: pre-wrap; }
+.ok { color: var(--ok); }
+table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+th { color: var(--muted); font-weight: 500; font-size: 12px; }
+td.num, th.num { text-align: right; white-space: nowrap; }
+td.when { white-space: nowrap; color: var(--muted); }
+tr.obj:hover { background: var(--hover); }
+tr.selected { background: var(--chip); }
+h2 { font-size: 18px; margin: 0 0 4px; word-break: break-all; }
+h3 { font-size: 14px; margin: 22px 0 6px; }
+dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 16px; margin: 12px 0; }
+dt { color: var(--muted); }
+dd { margin: 0; min-width: 0; word-break: break-all; }
+.login { max-width: 380px; margin: 10vh auto; }
+.kv { display: grid; grid-template-columns: 1fr 1.6fr auto; gap: 6px; margin-bottom: 6px; }
+.toast { position: fixed; bottom: 16px; right: 16px; background: var(--text); color: var(--bg); padding: 8px 14px; border-radius: 6px; opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 10; }
+.toast.show { opacity: .92; }
+dialog { border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--text); max-width: 560px; width: calc(100% - 32px); }
+dialog.wide { max-width: 860px; }
+dialog::backdrop { background: rgba(0, 0, 0, .4); }
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin: 12px 0 0; flex-wrap: wrap; }
+.tabs button { border-radius: 6px 6px 0 0; border-bottom: 0; }
+.tabs button.on { border-color: var(--accent); color: var(--accent); }
+.empty { color: var(--muted); padding: 24px 0; text-align: center; }
+.crumbs { display: flex; flex-wrap: wrap; gap: 2px; align-items: center; margin: 12px 0 4px; }
+.crumbs button.link { padding: 2px 3px; }
+.drop { border: 2px dashed var(--accent); border-radius: 8px; padding: 18px; text-align: center; color: var(--accent); margin-top: 8px; display: none; }
+.drop.show { display: block; }
+.progress { margin-top: 8px; font-size: 12px; }
+.bar { height: 4px; background: var(--chip); border-radius: 2px; overflow: hidden; margin: 2px 0 6px; }
+.bar > div { height: 100%; background: var(--accent); width: 0; transition: width .1s; }
+.side { display: grid; grid-template-columns: 1fr minmax(300px, 420px); gap: 16px; }
+@media (max-width: 1200px) { .side { grid-template-columns: 1fr; } }
+.card { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; margin-top: 12px; }
+.card h3 { margin-top: 0; }
+.preview img, .preview video { max-width: 100%; max-height: 320px; border-radius: 6px; border: 1px solid var(--line); }
+.preview pre { max-height: 260px; overflow: auto; background: var(--bg); padding: 8px; border-radius: 6px; font-size: 12px; }
+.icon { display: inline-block; width: 1.2em; text-align: center; margin-right: 4px; }
+.scroll { overflow-x: auto; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="toast" class="toast" role="status"></div>
+<script>
+"use strict";
+// The console calls /ui/api/<Operation> (JSON), PUT /ui/upload and GET /ui/download on this server. The session is
+// an HttpOnly cookie; the X-S3-CSRF header proves the request comes from this page.
+const state = {
+  csrf: "", user: "", auth: true, passwordLogin: false, region: "us-east-1", buckets: [], bucket: null, info: null,
+  tab: "objects", prefix: "", objects: [], folders: [], next: "", selected: new Set(), object: null, search: "",
+  showDeleted: false, filter: "",
+};
+const app = document.getElementById("app");
+const CLASSES = ["STANDARD", "STANDARD_IA", "ONEZONE_IA", "INTELLIGENT_TIERING", "GLACIER_IR", "GLACIER", "DEEP_ARCHIVE", "REDUCED_REDUNDANCY"];
+const CANNED = ["private", "public-read", "public-read-write", "authenticated-read", "bucket-owner-read", "bucket-owner-full-control"];
+const STD = ["Cache-Control", "Content-Disposition", "Content-Encoding", "Content-Language", "Expires"];
+
+function h(tag, attrs, ...children) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v === undefined || v === null || v === false) continue;
+    if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
+    else if (k === "class") el.className = v;
+    else if (k === "value") el.value = v;
+    else if (k === "checked") el.checked = Boolean(v);
+    else el.setAttribute(k, v === true ? "" : v);
+  }
+  for (const c of children.flat()) if (c !== null && c !== undefined && c !== false) el.append(c.nodeType ? c : String(c));
+  return el;
+}
+
+function toast(text) {
+  const t = document.getElementById("toast");
+  t.textContent = text;
+  t.classList.add("show");
+  clearTimeout(toast.timer);
+  toast.timer = setTimeout(() => t.classList.remove("show"), 2200);
+}
+
+const when = (iso) => (iso ? new Date(iso).toLocaleString() : "");
+function size(n) {
+  if (n === undefined || n === null) return "";
+  const units = ["B", "KB", "MB", "GB", "TB"];
+  let v = Number(n), i = 0;
+  while (v >= 1024 && i < units.length - 1) { v /= 1024; i++; }
+  return (i ? v.toFixed(v < 10 ? 1 : 0) : v) + " " + units[i];
+}
+const baseName = (key) => key.replace(/\/$/, "").split("/").pop() || key;
+const qs = (o) => Object.entries(o).filter(([, v]) => v !== undefined && v !== null && v !== "").map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`).join("&");
+
+async function api(op, body) {
+  const res = await fetch(`/ui/api/${op}`, {
+    method: "POST", credentials: "same-origin",
+    headers: { "Content-Type": "application/json", "X-S3-CSRF": state.csrf }, body: JSON.stringify(body || {}),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (res.status === 401) { state.csrf = ""; renderLogin("Your session ended; sign in again."); throw new Error("signed out"); }
+  if (!res.ok) throw new Error(`${data.code || res.status}: ${data.message || "request failed"}`);
+  return data;
+}
+
+async function attempt(fn, done) {
+  try { const out = await fn(); if (done) toast(done); return out; } catch (e) { if (e.message !== "signed out") alert(e.message); return undefined; }
+}
+
+async function copy(text) {
+  try { await navigator.clipboard.writeText(text); toast("Copied"); } catch { toast("Copy failed: select and copy by hand"); }
+}
+
+function modal(title, body, actions, wide) {
+  const dlg = h("dialog", { class: wide ? "wide" : "" });
+  const close = () => { dlg.close(); dlg.remove(); };
+  dlg.append(h("h2", {}, title), ...[].concat(body),
+    h("div", { class: "row", style: "margin-top:16px;justify-content:flex-end" },
+      h("button", { type: "button", onclick: close }, "Cancel"),
+      ...actions.map((a) => h("button", { type: "button", class: a.class || "primary", onclick: async () => {
+        const keep = await a.run();
+        if (keep !== false) close();
+      } }, a.label))));
+  document.body.append(dlg);
+  dlg.addEventListener("cancel", () => dlg.remove());
+  dlg.showModal();
+  return dlg;
+}
+
+function kvEditor(initial, keyLabel, valueLabel) {
+  const box = h("div");
+  const add = (k, v) => {
+    const row = h("div", { class: "kv" },
+      h("input", { placeholder: keyLabel || "Key", value: k || "" }),
+      h("input", { placeholder: valueLabel || "Value", value: v || "" }),
+      h("button", { type: "button", class: "danger", onclick: () => row.remove(), title: "Remove" }, "✕"));
+    box.append(row);
+  };
+  Object.entries(initial || {}).forEach(([k, v]) => add(k, v));
+  const wrap = h("div", {}, box, h("button", { type: "button", onclick: () => add("", "") }, "+ Add"));
+  wrap.value = () => {
+    const out = {};
+    for (const row of box.children) {
+      const [k, v] = row.querySelectorAll("input");
+      if (k.value.trim()) out[k.value.trim()] = v.value;
+    }
+    return out;
+  };
+  return wrap;
+}
+
+// ----------------------------------------------------------------------------- sign in
+
+async function start() {
+  const res = await fetch("/ui/session", { credentials: "same-origin" });
+  const s = await res.json();
+  state.auth = s.auth; state.passwordLogin = Boolean(s.password_login); state.region = s.region || "us-east-1";
+  if (s.authenticated) { state.csrf = s.csrf; state.user = s.user; renderMain(); loadBuckets(); }
+  else renderLogin();
+}
+
+function renderLogin(message) {
+  const err = h("div", { class: "error" }, message || "");
+  const user = h("input", { name: "user", autocomplete: "username", required: !state.passwordLogin });
+  const pass = h("input", { name: "password", type: "password", autocomplete: "current-password", required: true });
+  const form = h("form", { class: "panel login", onsubmit: async (e) => {
+    e.preventDefault();
+    err.textContent = "";
+    const res = await fetch("/ui/login", { method: "POST", credentials: "same-origin", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user: user.value.trim(), password: pass.value }) });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) { err.textContent = data.message || "Sign-in failed"; pass.value = ""; pass.focus(); return; }
+    state.csrf = data.csrf; state.user = data.user || user.value.trim();
+    renderMain(); loadBuckets();
+  } },
+    h("h2", {}, "S3 console"),
+    h("p", { class: "muted" }, state.passwordLogin ? "Sign in with the console password." : "Sign in with an access key ID and its secret access key."),
+    h("label", {}, state.passwordLogin ? "Name (optional)" : "Access key ID"), user,
+    h("label", {}, state.passwordLogin ? "Console password" : "Secret access key (password)"), pass,
+    err,
+    h("div", { class: "row", style: "margin-top:16px" }, h("button", { class: "primary grow", type: "submit" }, "Sign in")));
+  app.replaceChildren(form);
+  (state.passwordLogin ? pass : user).focus();
+}
+
+async function signOut() {
+  await fetch("/ui/logout", { method: "POST", credentials: "same-origin" });
+  state.csrf = ""; renderLogin("Signed out.");
+}
+
+// ----------------------------------------------------------------------------- layout and buckets
+
+let listPanel, mainPanel;
+
+function renderMain() {
+  listPanel = h("section", { class: "panel" });
+  mainPanel = h("section", { class: "panel" });
+  app.replaceChildren(
+    h("header", {}, h("h1", {}, "S3 console"),
+      h("span", { class: "who" }, state.auth ? (state.user ? `signed in as ${state.user}` : "signed in") : "no authentication"),
+      state.auth ? h("button", { onclick: signOut }, "Sign out") : null),
+    h("main", {}, listPanel, mainPanel));
+  renderBuckets();
+  renderWelcome();
+}
+
+async function loadBuckets() {
+  const data = await attempt(() => api("ListBuckets"));
+  if (!data) return;
+  state.buckets = data.buckets;
+  renderBuckets();
+  if (state.bucket && !state.buckets.some((b) => b.name === state.bucket)) { state.bucket = null; renderWelcome(); }
+  if (!state.bucket) renderWelcome();
+}
+
+function renderBuckets() {
+  const filter = h("input", { placeholder: "Find buckets", value: state.filter, oninput: (e) => { state.filter = e.target.value; drawList(); } });
+  const ul = h("ul", { class: "list" });
+  const drawList = () => {
+    const items = state.buckets.filter((b) => b.name.includes(state.filter.trim()));
+    ul.replaceChildren(...items.map((b) => h("li", { class: b.name === state.bucket ? "active" : "", onclick: () => openBucket(b.name) },
+      h("div", { class: "name" }, b.name),
+      h("div", { class: "sub" }, `${b.objects} object${b.objects === 1 ? "" : "s"}`,
+        b.versioning === "Enabled" ? " · versioned" : b.versioning === "Suspended" ? " · versioning suspended" : "",
+        b.objectLock ? " · object lock" : "", b.public ? " · public" : ""))));
+    if (!items.length) ul.append(h("li", { class: "empty" }, state.buckets.length ? "No match" : "No buckets yet"));
+  };
+  listPanel.replaceChildren(
+    h("div", { class: "row" }, h("h2", { class: "grow" }, "Buckets"),
+      h("button", { onclick: loadBuckets, title: "Refresh" }, "↻"),
+      h("button", { class: "primary", onclick: createBucket }, "Create")),
+    filter, ul);
+  drawList();
+}
+
+function renderWelcome() {
+  mainPanel.replaceChildren(h("div", { class: "empty" },
+    h("p", {}, state.buckets.length ? "Pick a bucket." : "Create a bucket to start."),
+    h("p", { class: "muted" }, "Endpoint for SDKs and the AWS CLI: ", h("span", { class: "mono" }, location.origin), ` (region ${state.region}, path-style or <bucket>.<domain>)`)));
+}
+
+function createBucket() {
+  const name = h("input", { placeholder: "my-bucket", autocomplete: "off" });
+  const versioning = h("input", { type: "checkbox" });
+  const lock = h("input", { type: "checkbox", onchange: () => { if (lock.checked) versioning.checked = true; } });
+  const err = h("div", { class: "error" });
+  modal("Create bucket", [
+    h("label", {}, "Bucket name"), name,
+    h("p", { class: "muted" }, "3-63 characters: lowercase letters, numbers, dots and hyphens."),
+    h("label", { class: "check" }, versioning, "Enable versioning (keep every version of every object)"),
+    h("label", { class: "check" }, lock, "Enable Object Lock (write once, read many; turns versioning on, cannot be turned off)"),
+    err,
+  ], [{ label: "Create", run: async () => {
+    try { await api("CreateBucket", { bucket: name.value.trim(), versioning: versioning.checked, objectLock: lock.checked }); }
+    catch (e) { err.textContent = e.message; return false; }
+    toast("Bucket created");
+    await loadBuckets();
+    openBucket(name.value.trim());
+  } }]);
+  name.focus();
+}
+
+async function openBucket(name, keepPrefix) {
+  state.bucket = name;
+  if (!keepPrefix) { state.prefix = ""; state.search = ""; state.tab = "objects"; }
+  state.objects = []; state.folders = []; state.next = ""; state.loaded = false;
+  state.object = null;
+  state.selected = new Set();
+  renderBuckets();
+  await loadInfo();
+  renderBucket();
+}
+
+async function loadInfo() {
+  state.info = await attempt(() => api("BucketInfo", { bucket: state.bucket }));
+}
+
+function renderBucket() {
+  const info = state.info;
+  if (!info) { mainPanel.replaceChildren(h("div", { class: "empty" }, "Could not load the bucket.")); return; }
+  const tabs = [["objects", "Objects"], ["properties", "Properties"], ["permissions", "Permissions"], ["management", "Management"]];
+  const body = h("div");
+  mainPanel.replaceChildren(
+    h("div", { class: "row" },
+      h("h2", { class: "grow" }, info.name),
+      h("span", { class: "chip" }, info.region),
+      info.versioning ? h("span", { class: info.versioning === "Enabled" ? "chip on" : "chip warn" }, "versioning " + info.versioning.toLowerCase()) : null,
+      info.objectLock ? h("span", { class: "chip on" }, "object lock") : null,
+      info.policyPublic || info.acl.startsWith("public") ? h("span", { class: "chip warn" }, "public") : null,
+      h("button", { class: "danger", onclick: deleteBucket }, "Delete bucket")),
+    h("div", { class: "muted" }, `${info.stats.objects} object${info.stats.objects === 1 ? "" : "s"} · ${info.stats.versions} version${info.stats.versions === 1 ? "" : "s"} · ${size(info.stats.bytes)}`,
+      info.stats.uploads ? ` · ${info.stats.uploads} unfinished uploads` : "", ` · created ${when(info.created)}`),
+    h("div", { class: "tabs" }, ...tabs.map(([id, label]) => h("button", { class: state.tab === id ? "on" : "", onclick: () => { state.tab = id; renderBucket(); } }, label))),
+    body);
+  if (state.tab === "objects") renderObjects(body);
+  else if (state.tab === "properties") renderProperties(body);
+  else if (state.tab === "permissions") renderPermissions(body);
+  else renderManagement(body);
+}
+
+function deleteBucket() {
+  const info = state.info;
+  const confirm = h("input", { placeholder: info.name, autocomplete: "off" });
+  const force = h("input", { type: "checkbox", checked: info.stats.versions > 0 });
+  const err = h("div", { class: "error" });
+  modal("Delete bucket", [
+    h("p", {}, "Deleting a bucket cannot be undone."),
+    info.stats.versions ? h("div", { class: "warn" }, `The bucket holds ${info.stats.versions} object versions.`) : null,
+    h("label", { class: "check" }, force, "Empty it first (delete every object, version and delete marker)"),
+    h("label", {}, `Type ${info.name} to confirm`), confirm, err,
+  ], [{ label: "Delete", class: "primary", run: async () => {
+    if (confirm.value.trim() !== info.name) { err.textContent = "The name does not match."; return false; }
+    try { await api("DeleteBucket", { bucket: info.name, force: force.checked }); }
+    catch (e) { err.textContent = e.message; return false; }
+    toast("Bucket deleted");
+    state.bucket = null;
+    loadBuckets();
+  } }]);
+}
+
+// ----------------------------------------------------------------------------- objects
+
+function renderObjects(body) {
+  const crumbs = h("div", { class: "crumbs" });
+  const parts = state.prefix ? state.prefix.replace(/\/$/, "").split("/") : [];
+  crumbs.append(h("button", { class: "link", onclick: () => go("") }, state.bucket));
+  parts.forEach((p, i) => {
+    crumbs.append(h("span", { class: "muted" }, "/"));
+    crumbs.append(h("button", { class: "link", onclick: () => go(parts.slice(0, i + 1).join("/") + "/") }, p));
+  });
+  const fileInput = h("input", { type: "file", multiple: true, style: "display:none", onchange: (e) => uploadFiles([...e.target.files]) });
+  const dirInput = h("input", { type: "file", multiple: true, webkitdirectory: true, style: "display:none", onchange: (e) => uploadFiles([...e.target.files]) });
+  const search = h("input", { placeholder: "Search in this folder (name contains)", value: state.search, onkeydown: (e) => { if (e.key === "Enter") { state.search = e.target.value.trim(); loadObjects(); } } });
+  const drop = h("div", { class: "drop" }, "Drop files or folders to upload to ", state.prefix || "the bucket root");
+  const progress = h("div", { class: "progress", id: "progress" });
+  const table = h("div", { id: "objtable", class: "scroll" });
+  const detail = h("div", { id: "objdetail" });
+  const selCount = state.selected.size;
+  body.append(
+    crumbs,
+    h("div", { class: "row" },
+      h("button", { class: "primary", onclick: () => fileInput.click() }, "Upload files"),
+      h("button", { onclick: () => dirInput.click() }, "Upload folder"),
+      h("button", { onclick: createFolder }, "Create folder"),
+      h("button", { onclick: () => loadObjects() }, "↻ Refresh"),
+      h("span", { class: "grow" }),
+      h("button", { disabled: !selCount, onclick: downloadSelected }, "Download"),
+      h("button", { disabled: !selCount, onclick: () => copyMove(false) }, "Copy"),
+      h("button", { disabled: !selCount, onclick: () => copyMove(true) }, "Move"),
+      h("button", { class: "danger", disabled: !selCount, onclick: deleteSelected }, `Delete${selCount ? " (" + selCount + ")" : ""}`)),
+    h("div", { class: "row", style: "margin-top:8px" }, h("div", { class: "grow" }, search),
+      state.info.versioning ? h("label", { class: "check" }, h("input", { type: "checkbox", checked: state.showDeleted, onchange: (e) => { state.showDeleted = e.target.checked; loadObjects(); } }), "Show deleted") : null),
+    fileInput, dirInput, drop, progress,
+    h("div", { class: state.object ? "side" : "" }, table, detail));
+  body.ondragover = (e) => { e.preventDefault(); drop.classList.add("show"); };
+  body.ondragleave = (e) => { if (!body.contains(e.relatedTarget)) drop.classList.remove("show"); };
+  body.ondrop = async (e) => {
+    e.preventDefault();
+    drop.classList.remove("show");
+    const files = await droppedFiles(e.dataTransfer);
+    if (files.length) uploadFiles(files);
+  };
+  drawObjects();
+  if (state.object) drawDetail();
+  if (!state.objects.length && !state.folders.length && !state.loaded) loadObjects();
+}
+
+function go(prefix) {
+  state.prefix = prefix; state.search = ""; state.object = null; state.selected = new Set(); state.loaded = false;
+  state.objects = []; state.folders = [];
+  renderBucket();
+}
+
+async function loadObjects(more) {
+  const data = await attempt(() => api("ListObjects", { bucket: state.bucket, prefix: state.prefix, search: state.search,
+    token: more ? state.next : "", deleted: state.showDeleted }));
+  if (!data) return;
+  state.loaded = true;
+  if (more) { state.objects = state.objects.concat(data.objects); state.folders = state.folders.concat(data.folders); }
+  else { state.objects = data.objects; state.folders = data.folders; state.selected = new Set(); }
+  state.next = data.next;
+  const table = document.getElementById("objtable");
+  if (table) drawObjects(); else renderBucket();
+}
+
+async function refresh() {
+  await loadInfo();
+  await loadObjects();
+  renderBucket();
+  loadBuckets();
+}
+
+function drawObjects() {
+  const box = document.getElementById("objtable");
+  if (!box) return;
+  const all = state.folders.map((f) => ({ key: f, folder: true })).concat(state.objects.filter((o) => o.key !== state.prefix));
+  const allBox = h("input", { type: "checkbox", checked: all.length && all.every((o) => state.selected.has(o.key)), onchange: (e) => {
+    state.selected = new Set(e.target.checked ? all.map((o) => o.key) : []);
+    renderBucket();
+  } });
+  const rows = all.map((o) => {
+    const name = state.search ? o.key.slice(state.prefix.length) : baseName(o.key) + (o.folder ? "/" : "");
+    const tick = h("input", { type: "checkbox", checked: state.selected.has(o.key), onclick: (e) => e.stopPropagation(), onchange: (e) => {
+      if (e.target.checked) state.selected.add(o.key); else state.selected.delete(o.key);
+      renderBucket();
+    } });
+    const isSel = state.object && state.object.key === o.key;
+    return h("tr", { class: "obj" + (isSel ? " selected" : ""), style: "cursor:pointer", onclick: () => (o.folder ? go(o.key) : openObject(o.key)) },
+      h("td", {}, tick),
+      h("td", { class: "mono" }, h("span", { class: "icon" }, o.folder ? "📁" : o.deleteMarker ? "🗑" : "📄"), name,
+        o.deleteMarker ? h("span", { class: "chip warn", style: "margin-left:6px" }, "deleted") : null),
+      h("td", { class: "num" }, o.folder || o.deleteMarker ? "" : size(o.size)),
+      h("td", { class: "when" }, o.folder ? "" : when(o.modified)),
+      h("td", { class: "muted" }, o.folder || o.deleteMarker ? "" : (o.class || "").replace("STANDARD", "Standard")));
+  });
+  box.replaceChildren(...[
+    h("table", {}, h("thead", {}, h("tr", {}, h("th", { style: "width:28px" }, allBox), h("th", {}, "Name"), h("th", { class: "num" }, "Size"), h("th", {}, "Last modified"), h("th", {}, "Class"))),
+      h("tbody", {}, rows)),
+    !all.length ? h("div", { class: "empty" }, state.loaded ? (state.search ? "Nothing matches." : "This folder is empty. Drop files here or use Upload.") : "Loading…") : null,
+    state.next ? h("div", { class: "row", style: "justify-content:center;margin-top:8px" }, h("button", { onclick: () => loadObjects(true) }, "Load more")) : null].filter(Boolean));
+}
+
+async function droppedFiles(dt) {
+  const out = [];
+  const entries = [...dt.items].map((i) => (i.webkitGetAsEntry ? i.webkitGetAsEntry() : null)).filter(Boolean);
+  if (!entries.length) return [...dt.files];
+  const walk = (entry, path) => new Promise((resolve) => {
+    if (entry.isFile) entry.file((f) => { f.relPath = path + f.name; out.push(f); resolve(); }, () => resolve());
+    else if (entry.isDirectory) {
+      const reader = entry.createReader();
+      const all = [];
+      const readBatch = () => reader.readEntries(async (batch) => {
+        if (!batch.length) { for (const e of all) await walk(e, path + entry.name + "/"); resolve(); }
+        else { all.push(...batch); readBatch(); }
+      }, () => resolve());
+      readBatch();
+    } else resolve();
+  });
+  for (const e of entries) await walk(e, "");
+  return out;
+}
+
+function uploadOne(file, key, onProgress) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("PUT", "/ui/upload?" + qs({ bucket: state.bucket, key }));
+    xhr.withCredentials = true;
+    xhr.setRequestHeader("X-S3-CSRF", state.csrf);
+    xhr.setRequestHeader("Content-Type", file.type || "application/octet-stream");
+    xhr.upload.onprogress = (e) => { if (e.lengthComputable) onProgress(e.loaded / e.total); };
+    xhr.onload = () => {
+      if (xhr.status === 200) resolve();
+      else { let msg = xhr.statusText; try { msg = JSON.parse(xhr.responseText).message; } catch {} reject(new Error(msg)); }
+    };
+    xhr.onerror = () => reject(new Error("network error"));
+    xhr.send(file);
+  });
+}
+
+async function uploadFiles(files) {
+  const box = document.getElementById("progress");
+  const bucket = state.bucket;
+  let done = 0, failed = 0;
+  const total = files.reduce((n, f) => n + f.size, 0);
+  let sent = 0;
+  const label = h("div");
+  const bar = h("div", { class: "bar" }, h("div"));
+  box.replaceChildren(label, bar);
+  for (const file of files) {
+    const rel = file.relPath || file.webkitRelativePath || file.name;
+    const key = state.prefix + rel;
+    label.textContent = `Uploading ${done + 1} of ${files.length}: ${rel}`;
+    try {
+      await uploadOne(file, key, (frac) => { bar.firstChild.style.width = `${total ? ((sent + frac * file.size) / total) * 100 : 100}%`; });
+      done++;
+    } catch (e) { failed++; box.append(h("div", { class: "error" }, `${rel}: ${e.message}`)); }
+    sent += file.size;
+  }
+  label.textContent = `Uploaded ${done} file${done === 1 ? "" : "s"} (${size(total)})` + (failed ? `, ${failed} failed` : "");
+  bar.firstChild.style.width = "100%";
+  setTimeout(() => { if (!failed) box.replaceChildren(); }, 4000);
+  if (state.bucket === bucket) { await refresh(); }
+}
+
+function createFolder() {
+  const name = h("input", { placeholder: "folder-name" });
+  modal("Create folder", [h("p", { class: "muted" }, `In ${state.bucket}/${state.prefix}`), h("label", {}, "Folder name"), name,
+    h("p", { class: "muted" }, "S3 has no real folders: this adds an empty object whose key ends with /.")],
+  [{ label: "Create", run: async () => {
+    const v = name.value.trim().replace(/^\/+|\/+$/g, "");
+    if (!v) return false;
+    if (await attempt(() => api("CreateFolder", { bucket: state.bucket, key: state.prefix + v + "/" }), "Folder created") === undefined) return false;
+    loadObjects();
+  } }]);
+  name.focus();
+}
+
+function downloadSelected() {
+  const keys = [...state.selected].filter((k) => !k.endsWith("/"));
+  if (!keys.length) { toast("Pick files (folders are not downloaded as a whole)"); return; }
+  keys.forEach((key, i) => setTimeout(() => download(key), i * 400));
+}
+
+function download(key, versionId, inline) {
+  const url = "/ui/download?" + qs({ bucket: state.bucket, key, versionId, inline: inline ? "1" : "" });
+  if (inline) { window.open(url, "_blank", "noopener"); return; }
+  const a = h("a", { href: url, download: baseName(key) });
+  document.body.append(a); a.click(); a.remove();
+}
+
+function deleteSelected() {
+  const keys = [...state.selected];
+  const folders = keys.filter((k) => k.endsWith("/"));
+  modal("Delete objects", [
+    h("p", {}, `Delete ${keys.length} item${keys.length === 1 ? "" : "s"}?`),
+    folders.length ? h("div", { class: "warn" }, `${folders.length} folder${folders.length === 1 ? "" : "s"}: everything inside is deleted too.`) : null,
+    state.info.versioning === "Enabled" ? h("p", { class: "muted" }, "Versioning is on: this adds delete markers; older versions stay and can be restored.") : h("p", { class: "muted" }, "This cannot be undone."),
+  ], [{ label: "Delete", run: async () => {
+    const out = await attempt(() => api("DeleteObjects", { bucket: state.bucket, objects: keys.map((key) => ({ key, recursive: key.endsWith("/") })) }));
+    if (!out) return false;
+    if (out.errors.length) alert(out.errors.map((e) => `${e.key}: ${e.message}`).join("\n"));
+    else toast(`Deleted ${out.deleted.length}`);
+    if (state.object && keys.includes(state.object.key)) state.object = null;
+    await refresh();
+  } }]);
+}
+
+function copyMove(move, single) {
+  const keys = single ? [single] : [...state.selected];
+  const dest = h("select", {}, state.buckets.map((b) => h("option", { value: b.name, selected: b.name === state.bucket }, b.name)));
+  const prefix = h("input", { value: keys.length === 1 ? keys[0] : state.prefix });
+  const err = h("div", { class: "error" });
+  modal(move ? (keys.length === 1 ? "Move or rename" : "Move objects") : "Copy objects", [
+    h("label", {}, "Destination bucket"), dest,
+    h("label", {}, keys.length === 1 ? "Destination key" : "Destination folder (prefix)"), prefix,
+    keys.length === 1 && keys[0].endsWith("/") ? h("p", { class: "muted" }, "A folder: every object inside is copied.") : null, err,
+  ], [{ label: move ? "Move" : "Copy", run: async () => {
+    try {
+      for (const key of keys) {
+        let toKey = prefix.value;
+        if (keys.length > 1) toKey = (toKey && !toKey.endsWith("/") ? toKey + "/" : toKey) + key.slice(state.prefix.length);
+        if (key.endsWith("/") && !toKey.endsWith("/")) toKey += "/";
+        await api("Copy", { bucket: state.bucket, key, toBucket: dest.value, toKey, move });
+      }
+    } catch (e) { err.textContent = e.message; return false; }
+    toast(move ? "Moved" : "Copied");
+    state.object = null;
+    await refresh();
+  } }]);
+}
+
+// ----------------------------------------------------------------------------- one object
+
+async function openObject(key, versionId) {
+  const data = await attempt(() => api("HeadObject", { bucket: state.bucket, key, versionId }));
+  if (!data) return;
+  state.object = data;
+  renderBucket();
+}
+
+function drawDetail() {
+  const box = document.getElementById("objdetail");
+  const o = state.object;
+  if (!box || !o) return;
+  const isText = /^(text\/|application\/(json|xml|javascript|x-yaml|yaml))/.test(o.type || "");
+  const isImage = /^image\/(png|jpe?g|gif|webp|bmp|avif)$/.test(o.type || "");
+  const isMedia = /^(video|audio)\//.test(o.type || "");
+  const preview = h("div", { class: "preview" });
+  const vparam = o.latest ? "" : o.versionId;
+  if (isImage && o.size < 20 * 1024 * 1024) preview.append(h("img", { src: "/ui/download?" + qs({ bucket: state.bucket, key: o.key, versionId: vparam, inline: "1" }), alt: o.key }));
+  else if (isMedia) preview.append(h(o.type.startsWith("video") ? "video" : "audio", { src: "/ui/download?" + qs({ bucket: state.bucket, key: o.key, versionId: vparam, inline: "1" }), controls: true }));
+  else if (isText && o.size < 256 * 1024) {
+    fetch("/ui/download?" + qs({ bucket: state.bucket, key: o.key, versionId: vparam }), { credentials: "same-origin" })
+      .then((r) => r.text()).then((t) => preview.append(h("pre", {}, t.slice(0, 20000))));
+  }
+  const cs = o.checksum ? `${o.checksum.alg} ${o.checksum.value} (${(o.checksum.type || "").toLowerCase().replace("_", " ")})` : "";
+  box.replaceChildren(h("div", { class: "card" },
+    h("div", { class: "row" }, h("h3", { class: "grow mono", style: "margin:0" }, baseName(o.key)), h("button", { onclick: () => { state.object = null; renderBucket(); } }, "✕")),
+    o.latest ? null : h("div", { class: "warn" }, "An older version. ", h("button", { class: "link", onclick: () => openObject(o.key) }, "Show the current one")),
+    h("div", { class: "row", style: "margin-top:8px" },
+      h("button", { class: "primary", onclick: () => download(o.key, vparam) }, "Download"),
+      h("button", { onclick: () => download(o.key, vparam, true) }, "Open"),
+      h("button", { onclick: () => share(o) }, "Share link"),
+      o.latest ? h("button", { onclick: () => copyMove(true, o.key) }, "Move / rename") : null,
+      o.latest ? h("button", { onclick: () => copyMove(false, o.key) }, "Copy") : null,
+      h("button", { class: "danger", onclick: () => deleteOne(o) }, o.latest ? "Delete" : "Delete version")),
+    preview,
+    h("dl", {},
+      h("dt", {}, "Key"), h("dd", { class: "mono" }, o.key),
+      h("dt", {}, "Size"), h("dd", {}, `${size(o.size)} (${o.size} bytes)`),
+      h("dt", {}, "Type"), h("dd", {}, o.type || ""),
+      h("dt", {}, "Modified"), h("dd", {}, when(o.modified)),
+      h("dt", {}, "ETag"), h("dd", { class: "mono" }, o.etag + (o.parts ? ` (${o.parts} parts)` : "")),
+      h("dt", {}, "Class"), h("dd", {}, o.class),
+      o.versionId !== "null" ? [h("dt", {}, "Version"), h("dd", { class: "mono" }, o.versionId)] : null,
+      cs ? [h("dt", {}, "Checksum"), h("dd", { class: "mono" }, cs)] : null,
+      o.sse["x-amz-server-side-encryption"] ? [h("dt", {}, "Encryption"), h("dd", {}, o.sse["x-amz-server-side-encryption"])] : null,
+      o.redirect ? [h("dt", {}, "Redirect"), h("dd", { class: "mono" }, o.redirect)] : null,
+      ["GLACIER", "DEEP_ARCHIVE"].includes(o.class) ? [h("dt", {}, "Restore"), h("dd", {}, o.restore ? "restored until " + when(o.restore) : h("button", { class: "link", onclick: () => restoreArchived(o) }, "Restore (archived class)"))] : null,
+      h("dt", {}, "Access"), h("dd", {}, o.acl)),
+    h("div", { class: "row" },
+      h("button", { onclick: () => editMeta(o), disabled: !o.latest }, "Edit metadata"),
+      h("button", { onclick: () => editTags(o) }, `Tags (${Object.keys(o.tags).length})`),
+      h("button", { onclick: () => editAcl(o) }, "Access (ACL)"),
+      o.objectLock ? h("button", { onclick: () => editLock(o) }, "Object lock") : null),
+    Object.keys(o.meta).length || Object.keys(o.headers).length ? h("div", {}, h("h3", {}, "Metadata"),
+      h("dl", {}, ...Object.entries(o.headers).map(([k, v]) => [h("dt", {}, k), h("dd", { class: "mono" }, v)]),
+        ...Object.entries(o.meta).map(([k, v]) => [h("dt", {}, "x-amz-meta-" + k), h("dd", { class: "mono" }, v)]))) : null,
+    Object.keys(o.tags).length ? h("div", {}, h("h3", {}, "Tags"), ...Object.entries(o.tags).map(([k, v]) => h("span", { class: "chip" }, `${k}=${v}`))) : null,
+    o.retention || o.legalHold ? h("div", {}, h("h3", {}, "Object lock"),
+      o.retention ? h("div", {}, `${o.retention.mode} retention until ${when(o.retention.until)}`) : null,
+      o.legalHold ? h("div", {}, "Legal hold ON") : null) : null,
+    o.versions.length > 1 || o.versionId !== "null" ? versionsTable(o) : null));
+}
+
+function versionsTable(o) {
+  return h("div", {}, h("h3", {}, `Versions (${o.versions.length})`),
+    h("table", {}, h("tbody", {}, o.versions.map((v) => h("tr", { class: v.versionId === o.versionId ? "selected" : "" },
+      h("td", {}, v.deleteMarker ? h("span", { class: "chip warn" }, "delete marker") : h("button", { class: "link mono", onclick: () => openObject(o.key, v.versionId) }, v.versionId.slice(0, 12) + (v.versionId.length > 12 ? "…" : "")),
+        v.latest ? h("span", { class: "chip on", style: "margin-left:4px" }, "current") : null),
+      h("td", { class: "num" }, v.deleteMarker ? "" : size(v.size)),
+      h("td", { class: "when" }, when(v.modified)),
+      h("td", {}, v.deleteMarker || v.latest ? null : h("button", { class: "link", onclick: () => makeCurrent(o.key, v.versionId) }, "Make current"),
+        v.deleteMarker ? null : h("button", { class: "link", onclick: () => download(o.key, v.versionId) }, "Download"),
+        h("button", { class: "link danger", onclick: () => deleteVersion(o.key, v.versionId) }, "Delete")))))));
+}
+
+async function makeCurrent(key, versionId) {
+  if (await attempt(() => api("RestoreVersion", { bucket: state.bucket, key, versionId }), "That version is current again") === undefined) return;
+  await loadInfo(); openObject(key); loadObjects();
+}
+
+function deleteVersion(key, versionId) {
+  modal("Delete version", [h("p", {}, "Delete this version for good? This cannot be undone."), h("p", { class: "mono muted" }, versionId)],
+    [{ label: "Delete", run: async () => {
+      const out = await attempt(() => api("DeleteObjects", { bucket: state.bucket, objects: [{ key, versionId }] }));
+      if (!out) return false;
+      if (out.errors.length) { alert(out.errors[0].message); return false; }
+      toast("Version deleted");
+      await refresh();
+      const still = await api("ListObjects", { bucket: state.bucket, prefix: key, delimiter: "", deleted: true }).catch(() => null);
+      if (still && still.objects.some((x) => x.key === key && !x.deleteMarker)) openObject(key); else { state.object = null; renderBucket(); }
+    } }]);
+}
+
+function deleteOne(o) {
+  if (!o.latest) { deleteVersion(o.key, o.versionId); return; }
+  state.selected = new Set([o.key]);
+  deleteSelected();
+}
+
+const SHARE_MAX = 604800; // the longest presigned URL: 7 days
+const SHARE_UNITS = [["1", "seconds"], ["60", "minutes"], ["3600", "hours"], ["86400", "days"]];
+
+function share(o) {
+  const expiry = h("select", {}, [["900", "15 minutes"], ["3600", "1 hour"], ["43200", "12 hours"], ["86400", "1 day"], ["604800", "7 days (the longest)"], ["custom", "Custom…"]]
+    .map(([v, l]) => h("option", { value: v, selected: v === "3600" }, l)));
+  const amount = h("input", { type: "number", min: "1", step: "1", value: "30" });
+  const unit = h("select", {}, SHARE_UNITS.map(([v, l]) => h("option", { value: v, selected: v === "60" }, l)));
+  const custom = h("div", { class: "row", style: "display:none" }, h("div", { class: "grow" }, amount), unit);
+  const method = h("select", {}, h("option", { value: "GET" }, "Download (GET)"), h("option", { value: "PUT" }, "Upload a new version (PUT)"));
+  const out = h("textarea", { readonly: true, style: "min-height:90px" });
+  const until = h("p", { class: "muted" });
+  const seconds = () => expiry.value === "custom" ? Math.round(Number(amount.value) * Number(unit.value)) : Number(expiry.value);
+  const make = async () => {
+    custom.style.display = expiry.value === "custom" ? "" : "none";
+    const expires = seconds();
+    if (!Number.isFinite(expires) || expires < 1 || expires > SHARE_MAX) {
+      out.value = "";
+      until.textContent = "A link is valid for 1 second to 7 days.";
+      return;
+    }
+    const data = await attempt(() => api("Presign", { bucket: state.bucket, key: o.key, versionId: o.latest ? "" : o.versionId, expires, method: method.value, host: location.host, scheme: location.protocol.replace(":", "") }));
+    if (data) {
+      out.value = data.url;
+      until.textContent = `Expires ${new Date(Date.now() + data.expires * 1000).toLocaleString()} (${data.expires} seconds).`;
+    }
+  };
+  expiry.onchange = make; method.onchange = make; unit.onchange = make; amount.onchange = make;
+  modal("Share link (presigned URL)", [
+    h("p", { class: "muted" }, "Anyone with the link can use it until it expires, without keys, even when the bucket is private. It is signed with your access key."),
+    h("label", {}, "Valid for"), expiry, custom, h("label", {}, "Allows"), method, h("label", {}, "Link"), out, until,
+  ], [{ label: "Copy link", run: async () => { await copy(out.value); return false; } }]);
+  make();
+}
+
+function editMeta(o) {
+  const type = h("input", { value: o.type || "" });
+  const sclass = h("select", {}, CLASSES.map((c) => h("option", { value: c, selected: c === o.class }, c)));
+  const stdBox = kvEditor(Object.fromEntries(Object.entries(o.headers).map(([k, v]) => [STD.find((s) => s.toLowerCase() === k) || k, v])), "Header (e.g. Cache-Control)", "Value");
+  const metaBox = kvEditor(o.meta, "name (x-amz-meta-…)", "value");
+  const err = h("div", { class: "error" });
+  modal("Edit metadata", [
+    h("p", { class: "muted" }, "Saving writes the object again with the new metadata (a new version when versioning is on)."),
+    h("label", {}, "Content-Type"), type, h("label", {}, "Storage class"), sclass,
+    h("label", {}, `System headers (${STD.join(", ")})`), stdBox, h("label", {}, "User metadata"), metaBox, err,
+  ], [{ label: "Save", run: async () => {
+    try { await api("UpdateMeta", { bucket: state.bucket, key: o.key, type: type.value, class: sclass.value, headers: stdBox.value(), meta: metaBox.value() }); }
+    catch (e) { err.textContent = e.message; return false; }
+    toast("Saved"); openObject(o.key); loadObjects();
+  } }], true);
+}
+
+function editTags(o) {
+  const box = kvEditor(o.tags);
+  const err = h("div", { class: "error" });
+  modal("Object tags", [h("p", { class: "muted" }, "Up to 10 tags. Lifecycle rules can filter on them."), box, err],
+    [{ label: "Save", run: async () => {
+      try { await api("PutObjectTags", { bucket: state.bucket, key: o.key, versionId: o.latest ? "" : o.versionId, tags: box.value() }); }
+      catch (e) { err.textContent = e.message; return false; }
+      toast("Tags saved"); openObject(o.key, o.latest ? "" : o.versionId);
+    } }]);
+}
+
+function editAcl(o) {
+  const sel = h("select", {}, CANNED.map((c) => h("option", { value: c, selected: c === o.acl }, c)));
+  const err = h("div", { class: "error" });
+  modal("Object access (ACL)", [h("p", { class: "muted" }, "public-read lets anyone download this object without keys (unless the bucket blocks public ACLs)."), sel, err],
+    [{ label: "Save", run: async () => {
+      try { await api("PutObjectAcl", { bucket: state.bucket, key: o.key, versionId: o.latest ? "" : o.versionId, acl: sel.value }); }
+      catch (e) { err.textContent = e.message; return false; }
+      toast("Saved"); openObject(o.key, o.latest ? "" : o.versionId);
+    } }]);
+}
+
+function editLock(o) {
+  const mode = h("select", {}, h("option", { value: "" }, "No retention"), ["GOVERNANCE", "COMPLIANCE"].map((m) => h("option", { value: m, selected: o.retention && o.retention.mode === m }, m)));
+  const until = h("input", { type: "datetime-local", value: o.retention ? o.retention.until.slice(0, 16) : "" });
+  const hold = h("input", { type: "checkbox", checked: o.legalHold });
+  const bypass = h("input", { type: "checkbox" });
+  const err = h("div", { class: "error" });
+  modal("Object lock", [
+    h("p", { class: "muted" }, "While retention or a legal hold is on, this version cannot be deleted. COMPLIANCE cannot be shortened by anyone; GOVERNANCE can with the bypass."),
+    h("label", {}, "Retention mode"), mode, h("label", {}, "Retain until (UTC)"), until,
+    h("label", { class: "check" }, hold, "Legal hold"), h("label", { class: "check" }, bypass, "Bypass governance retention"), err,
+  ], [{ label: "Save", run: async () => {
+    try {
+      await api("ObjectLock", { bucket: state.bucket, key: o.key, versionId: o.latest ? "" : o.versionId, legalHold: hold.checked,
+        mode: mode.value, until: until.value ? until.value + ":00Z" : "", bypass: bypass.checked });
+    } catch (e) { err.textContent = e.message; return false; }
+    toast("Saved"); openObject(o.key, o.latest ? "" : o.versionId);
+  } }]);
+}
+
+async function restoreArchived(o) {
+  if (await attempt(() => api("RestoreArchived", { bucket: state.bucket, key: o.key, versionId: o.latest ? "" : o.versionId, days: 7 }), "Restored for 7 days") !== undefined) openObject(o.key);
+}
+
+// ----------------------------------------------------------------------------- bucket settings
+
+async function setting(name, value, done) {
+  const info = await attempt(() => api("PutBucketSetting", { bucket: state.bucket, setting: name, value }), done || "Saved");
+  if (info) { state.info = info; renderBucket(); loadBuckets(); }
+  return info;
+}
+
+function xmlCard(title, name, help, example, extra) {
+  const current = state.info.configs[name] || "";
+  const area = h("textarea", { value: current, placeholder: example });
+  return h("div", { class: "card" },
+    h("h3", {}, title, current ? h("span", { class: "chip on", style: "margin-left:8px" }, "set") : h("span", { class: "chip", style: "margin-left:8px" }, "not set")),
+    h("p", { class: "muted" }, help), extra || null, area,
+    h("div", { class: "row", style: "margin-top:8px" },
+      h("button", { class: "primary", onclick: () => setting(name, area.value.trim()) }, "Save"),
+      example ? h("button", { onclick: () => { area.value = example; } }, "Insert example") : null,
+      current && name !== "object-lock" ? h("button", { class: "danger", onclick: () => setting(name, "", "Removed") }, "Remove") : null));
+}
+
+function renderProperties(body) {
+  const info = state.info;
+  const tags = kvEditor(info.tags);
+  const enc = (info.configs.encryption || "").includes("aws:kms") ? "aws:kms" : "AES256";
+  const encSel = h("select", {}, h("option", { value: "AES256", selected: enc === "AES256" }, "SSE-S3 (AES256)"), h("option", { value: "aws:kms", selected: enc === "aws:kms" }, "SSE-KMS (aws:kms)"));
+  const kms = h("input", { placeholder: "KMS key id (optional, kept as given)" });
+  const idx = h("input", { placeholder: "index.html" });
+  const errDoc = h("input", { placeholder: "error.html" });
+  const web = info.configs.website || "";
+  const m = web.match(/<Suffix>([^<]*)<\/Suffix>/); if (m) idx.value = m[1];
+  const e = web.match(/<ErrorDocument>\s*<Key>([^<]*)<\/Key>/); if (e) errDoc.value = e[1];
+  body.append(
+    h("div", { class: "card" }, h("h3", {}, "Versioning"),
+      h("p", { class: "muted" }, "Keep every version of every object: overwrites and deletes keep the old versions, which can be downloaded or made current again."),
+      h("div", { class: "row" }, h("span", { class: "grow" }, "Status: ", h("b", {}, info.versioning || "never enabled")),
+        info.versioning !== "Enabled" ? h("button", { class: "primary", onclick: () => setting("versioning", "Enabled") }, "Enable") : null,
+        info.versioning === "Enabled" && !info.objectLock ? h("button", { onclick: () => setting("versioning", "Suspended") }, "Suspend") : null)),
+    h("div", { class: "card" }, h("h3", {}, "Tags"), h("p", { class: "muted" }, "Up to 50 bucket tags."), tags,
+      h("div", { class: "row", style: "margin-top:8px" }, h("button", { class: "primary", onclick: () => setting("tags", tags.value()) }, "Save tags"))),
+    h("div", { class: "card" }, h("h3", {}, "Default encryption"),
+      h("p", { class: "muted" }, "New objects report this server-side encryption. The data on this server is not encrypted at rest: protect its disk."),
+      h("div", { class: "row" }, h("div", { class: "grow" }, encSel), h("div", { class: "grow" }, kms),
+        h("button", { class: "primary", onclick: () => setting("encryption", `<ServerSideEncryptionConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Rule><ApplyServerSideEncryptionByDefault><SSEAlgorithm>${encSel.value}</SSEAlgorithm>${encSel.value !== "AES256" && kms.value.trim() ? `<KMSMasterKeyID>${esc(kms.value.trim())}</KMSMasterKeyID>` : ""}</ApplyServerSideEncryptionByDefault></Rule></ServerSideEncryptionConfiguration>`) }, "Save"))),
+    h("div", { class: "card" }, h("h3", {}, "Static website hosting"),
+      h("p", { class: "muted" }, "Serves the bucket as a website (objects must be public: a bucket policy or public-read ACL). Open it at ",
+        h("a", { href: info.websiteUrl, target: "_blank", rel: "noopener" }, location.origin + info.websiteUrl), " or a <bucket>.s3-website.<domain> host."),
+      h("div", { class: "row" }, h("div", { class: "grow" }, h("label", {}, "Index document"), idx), h("div", { class: "grow" }, h("label", {}, "Error document"), errDoc)),
+      h("div", { class: "row", style: "margin-top:8px" },
+        h("button", { class: "primary", onclick: () => setting("website", `<WebsiteConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><IndexDocument><Suffix>${esc(idx.value.trim() || "index.html")}</Suffix></IndexDocument>${errDoc.value.trim() ? `<ErrorDocument><Key>${esc(errDoc.value.trim())}</Key></ErrorDocument>` : ""}</WebsiteConfiguration>`) }, web ? "Save" : "Enable"),
+        web ? h("button", { class: "danger", onclick: () => setting("website", "", "Website hosting off") }, "Disable") : null)),
+    info.objectLock
+      ? xmlCard("Object Lock", "object-lock", "Object Lock is on. Set a default retention for new objects (GOVERNANCE or COMPLIANCE, Days or Years).",
+        '<ObjectLockConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">\n  <ObjectLockEnabled>Enabled</ObjectLockEnabled>\n  <Rule><DefaultRetention><Mode>GOVERNANCE</Mode><Days>30</Days></DefaultRetention></Rule>\n</ObjectLockConfiguration>')
+      : h("div", { class: "card" }, h("h3", {}, "Object Lock"), h("p", { class: "muted" }, "Off. Turn it on (it needs versioning and cannot be turned off) to protect versions from deletion."),
+        h("button", { onclick: () => setting("object-lock", '<ObjectLockConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><ObjectLockEnabled>Enabled</ObjectLockEnabled></ObjectLockConfiguration>', "Object Lock on"), disabled: info.versioning !== "Enabled" }, info.versioning === "Enabled" ? "Turn on" : "Enable versioning first")),
+    xmlCard("Transfer acceleration", "accelerate", "Stored and returned (no effect on this server).", '<AccelerateConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Status>Enabled</Status></AccelerateConfiguration>'),
+    xmlCard("Requester pays", "requestPayment", "Stored and returned (no billing on this server).", '<RequestPaymentConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Payer>Requester</Payer></RequestPaymentConfiguration>'),
+  );
+}
+
+function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+
+function renderPermissions(body) {
+  const info = state.info;
+  const b = info.publicBlock;
+  const checks = ["BlockPublicAcls", "IgnorePublicAcls", "BlockPublicPolicy", "RestrictPublicBuckets"].map((n) => [n, h("input", { type: "checkbox", checked: b[n] })]);
+  const policy = h("textarea", { value: info.policy ? pretty(info.policy) : "" });
+  const acl = h("select", {}, CANNED.map((c) => h("option", { value: c, selected: c === info.acl }, c)), info.acl === "custom" ? h("option", { value: "custom", selected: true }, "custom grants") : null);
+  const own = (info.configs.ownershipControls || "").match(/<ObjectOwnership>([^<]*)</);
+  const ownSel = h("select", {}, h("option", { value: "" }, "Not set (ACLs enabled)"),
+    ["BucketOwnerEnforced", "BucketOwnerPreferred", "ObjectWriter"].map((v) => h("option", { value: v, selected: own && own[1] === v }, v)));
+  const publicPolicy = JSON.stringify({ Version: "2012-10-17", Statement: [{ Sid: "PublicRead", Effect: "Allow", Principal: "*", Action: "s3:GetObject", Resource: `arn:aws:s3:::${info.name}/*` }] }, null, 2);
+  body.append(
+    h("div", { class: "card" }, h("h3", {}, "Block public access"),
+      h("p", { class: "muted" }, "Requests without keys are refused unless a bucket policy or an ACL makes objects public. These switches stop that. With all four on the bucket is private: only signed requests and presigned share links reach its objects."),
+      ...checks.map(([n, el]) => h("label", { class: "check" }, el, n)),
+      h("div", { class: "row", style: "margin-top:8px" },
+        h("button", { class: "primary", onclick: () => setting("publicAccessBlock", `<PublicAccessBlockConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">${checks.map(([n, el]) => `<${n}>${el.checked}</${n}>`).join("")}</PublicAccessBlockConfiguration>`) }, "Save"),
+        h("button", { onclick: () => setting("publicAccessBlock", `<PublicAccessBlockConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">${checks.map(([n]) => `<${n}>true</${n}>`).join("")}</PublicAccessBlockConfiguration>`, "Bucket is private") }, "Block all (make private)"),
+        info.configs.publicAccessBlock ? h("button", { class: "danger", onclick: () => setting("publicAccessBlock", "", "Removed") }, "Remove") : null)),
+    h("div", { class: "card" }, h("h3", {}, "Bucket policy", info.policyPublic ? h("span", { class: "chip warn", style: "margin-left:8px" }, "public") : null),
+      h("p", { class: "muted" }, "IAM policy JSON. Statements for Principal \"*\" decide what requests without keys may do (GetObject, PutObject, ListBucket, ...). Every valid key has full access."),
+      policy,
+      h("div", { class: "row", style: "margin-top:8px" },
+        h("button", { class: "primary", onclick: () => setting("policy", policy.value.trim()) }, "Save"),
+        h("button", { onclick: () => { policy.value = publicPolicy; } }, "Insert public-read example"),
+        info.policy ? h("button", { class: "danger", onclick: () => setting("policy", "", "Policy removed") }, "Remove") : null)),
+    h("div", { class: "card" }, h("h3", {}, "Object ownership"), h("p", { class: "muted" }, "BucketOwnerEnforced turns ACLs off: only bucket policies grant access."),
+      h("div", { class: "row" }, h("div", { class: "grow" }, ownSel),
+        h("button", { class: "primary", onclick: () => setting("ownershipControls", ownSel.value ? `<OwnershipControls xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Rule><ObjectOwnership>${ownSel.value}</ObjectOwnership></Rule></OwnershipControls>` : "") }, "Save"))),
+    h("div", { class: "card" }, h("h3", {}, "Access control list (ACL)"), h("p", { class: "muted" }, "public-read lets anyone list the bucket; public-read-write also lets anyone upload and delete."),
+      h("div", { class: "row" }, h("div", { class: "grow" }, acl), h("button", { class: "primary", onclick: () => setting("acl", acl.value) }, "Save"))),
+    xmlCard("Cross-origin resource sharing (CORS)", "cors", "Lets web pages on other origins call this bucket from the browser. Applied to preflight (OPTIONS) and normal requests.",
+      '<CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">\n  <CORSRule>\n    <AllowedOrigin>https://example.com</AllowedOrigin>\n    <AllowedMethod>GET</AllowedMethod>\n    <AllowedMethod>PUT</AllowedMethod>\n    <AllowedHeader>*</AllowedHeader>\n    <ExposeHeader>ETag</ExposeHeader>\n    <MaxAgeSeconds>3000</MaxAgeSeconds>\n  </CORSRule>\n</CORSConfiguration>'),
+  );
+}
+
+function pretty(text) { try { return JSON.stringify(JSON.parse(text), null, 2); } catch { return text; } }
+
+async function renderManagement(body) {
+  const uploads = h("div", {}, h("div", { class: "muted" }, "Loading…"));
+  body.append(
+    xmlCard("Lifecycle rules", "lifecycle", "Applied by the server every hour: expire current versions after N days or on a date, delete noncurrent versions, remove expired delete markers, abort unfinished multipart uploads, change the storage class (transitions).",
+      '<LifecycleConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">\n  <Rule>\n    <ID>expire-tmp</ID>\n    <Filter><Prefix>tmp/</Prefix></Filter>\n    <Status>Enabled</Status>\n    <Expiration><Days>7</Days></Expiration>\n    <NoncurrentVersionExpiration><NoncurrentDays>30</NoncurrentDays></NoncurrentVersionExpiration>\n    <AbortIncompleteMultipartUpload><DaysAfterInitiation>2</DaysAfterInitiation></AbortIncompleteMultipartUpload>\n  </Rule>\n</LifecycleConfiguration>',
+      h("div", { class: "row", style: "margin-bottom:8px" }, h("button", { onclick: async () => { const r = await attempt(() => api("RunLifecycle")); if (r) { toast(`Lifecycle run: ${r.changes} changes`); await loadInfo(); renderBucket(); } } }, "Run lifecycle now"))),
+    h("div", { class: "card" }, h("h3", {}, "Unfinished multipart uploads"), uploads),
+    xmlCard("Replication", "replication", "Stored and returned; this server does not copy objects to another bucket. Needs versioning.", ""),
+    xmlCard("Event notifications", "notification", "Stored and returned; this server does not send events.", '<NotificationConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"/>'),
+    xmlCard("Server access logging", "logging", "Stored and returned; this server does not write access logs.", '<BucketLoggingStatus xmlns="http://s3.amazonaws.com/doc/2006-03-01/"/>'),
+    Object.keys(state.info.ids || {}).length ? h("div", { class: "card" }, h("h3", {}, "Other configurations"),
+      ...Object.entries(state.info.ids).map(([k, ids]) => ids.length ? h("div", {}, `${k}: `, ids.map((i) => h("span", { class: "chip" }, i))) : null)) : null,
+  );
+  const data = await attempt(() => api("ListUploads", { bucket: state.bucket }));
+  if (!data) return;
+  uploads.replaceChildren(data.uploads.length
+    ? h("table", {}, h("thead", {}, h("tr", {}, h("th", {}, "Key"), h("th", {}, "Started"), h("th", { class: "num" }, "Parts"), h("th", {}, ""))),
+      h("tbody", {}, data.uploads.map((u) => h("tr", {}, h("td", { class: "mono" }, u.key), h("td", { class: "when" }, when(u.initiated)),
+        h("td", { class: "num" }, `${u.parts} (${size(u.bytes)})`),
+        h("td", {}, h("button", { class: "link danger", onclick: async () => { if (await attempt(() => api("AbortUpload", { bucket: state.bucket, uploadId: u.uploadId }), "Aborted") !== undefined) { await loadInfo(); renderBucket(); } } }, "Abort"))))))
+    : h("div", { class: "muted" }, "None."));
+}
+
+start().catch((e) => { app.replaceChildren(h("div", { class: "panel login error" }, "The console could not start: " + e.message)); });
+</script>
+</body>
+</html>

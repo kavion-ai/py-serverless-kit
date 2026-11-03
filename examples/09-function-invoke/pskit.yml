@@ -1,0 +1,44 @@
+service: quotes
+
+provider:
+  name: aws
+  region: us-east-1
+  # On AWS invoke() needs lambda:InvokeFunction on the sibling functions.
+  # Their names are <service>-<stage>-<function>.
+  iam:
+    statements:
+      - actions: ["lambda:InvokeFunction"]
+        resources: ["arn:aws:lambda:*:*:function:${self:service}-${opt:stage}-*"]
+
+functions:
+  quote:
+    handler: app.quotes.quote
+    events:
+      - http: POST /quote
+
+  price-calculator:
+    handler: app.quotes.price_calculator      # no events: invoke-only
+
+  audit-log:
+    handler: app.quotes.audit_log
+
+providers:
+  gcp:
+    region: us-central1
+    options: {project: "${env:GOOGLE_CLOUD_PROJECT, my-gcp-project}"}
+    # invoke() calls https://<region>-<project>.cloudfunctions.net/<name> with an
+    # ID token. The functions share pskit's invoker service account.
+
+  azure:
+    region: eastus
+    options: {subscription_id: "${env:ARM_SUBSCRIPTION_ID, 00000000-0000-0000-0000-000000000000}"}
+    # Azure has no SDK-level "invoke function" API, so give the caller the URLs.
+    # Fill them in from `pskit info` after the first deploy (or in CI).
+    functions:
+      quote:
+        environment:
+          PSKIT_ENDPOINT_PRICE_CALCULATOR: "${env:PRICE_CALCULATOR_URL, }"
+          PSKIT_ENDPOINT_AUDIT_LOG: "${env:AUDIT_LOG_URL, }"
+  onprem:
+    region: local
+    options: {host: 127.0.0.1, port: 8089}

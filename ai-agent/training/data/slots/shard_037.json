@@ -1,0 +1,794 @@
+[
+ {
+  "id": "k_nav_0381",
+  "category": "k_nav",
+  "card_ids": [
+   "page-resources"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-resources.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Resources.tsx",
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0382",
+  "category": "k_nav",
+  "card_ids": [
+   "page-resources"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-resources.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0383",
+  "category": "k_nav",
+  "card_ids": [
+   "page-resources"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-resources.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0384",
+  "category": "k_nav",
+  "card_ids": [
+   "page-resources"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-resources.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0385",
+  "category": "k_nav",
+  "card_ids": [
+   "page-resources"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-resources.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0386",
+  "category": "k_nav",
+  "card_ids": [
+   "page-resources"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-resources.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0387",
+  "category": "k_nav",
+  "card_ids": [
+   "page-resources"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-resources.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Resources.tsx",
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0388",
+  "category": "k_nav",
+  "card_ids": [
+   "page-resources"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-resources.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0389",
+  "category": "k_nav",
+  "card_ids": [
+   "page-resources"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-resources.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0390",
+  "category": "k_nav",
+  "card_ids": [
+   "page-resources"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-resources.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0391",
+  "category": "k_nav",
+  "card_ids": [
+   "page-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-servers.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/OnPremMachines.tsx",
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0392",
+  "category": "k_nav",
+  "card_ids": [
+   "page-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-servers.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/OnPremMachines.tsx",
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0393",
+  "category": "k_nav",
+  "card_ids": [
+   "page-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-servers.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/OnPremMachines.tsx",
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0394",
+  "category": "k_nav",
+  "card_ids": [
+   "page-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-servers.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/OnPremMachines.tsx",
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0395",
+  "category": "k_nav",
+  "card_ids": [
+   "page-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-servers.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/OnPremMachines.tsx",
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0396",
+  "category": "k_nav",
+  "card_ids": [
+   "page-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-servers.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/OnPremMachines.tsx",
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0397",
+  "category": "k_nav",
+  "card_ids": [
+   "page-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-servers.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/OnPremMachines.tsx",
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0398",
+  "category": "k_nav",
+  "card_ids": [
+   "page-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-servers.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/OnPremMachines.tsx",
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0399",
+  "category": "k_nav",
+  "card_ids": [
+   "page-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-servers.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/OnPremMachines.tsx",
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0400",
+  "category": "k_nav",
+  "card_ids": [
+   "page-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-servers.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/OnPremMachines.tsx",
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0401",
+  "category": "k_nav",
+  "card_ids": [
+   "page-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-servers.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/OnPremMachines.tsx",
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0402",
+  "category": "k_nav",
+  "card_ids": [
+   "page-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-servers.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/OnPremMachines.tsx",
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0403",
+  "category": "k_nav",
+  "card_ids": [
+   "page-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-servers.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/OnPremMachines.tsx",
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0404",
+  "category": "k_nav",
+  "card_ids": [
+   "page-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-servers.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/OnPremMachines.tsx",
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0405",
+  "category": "k_nav",
+  "card_ids": [
+   "page-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-servers.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/OnPremMachines.tsx",
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0406",
+  "category": "k_nav",
+  "card_ids": [
+   "page-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-servers.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/OnPremMachines.tsx",
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0407",
+  "category": "k_nav",
+  "card_ids": [
+   "page-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-servers.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/OnPremMachines.tsx",
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0408",
+  "category": "k_nav",
+  "card_ids": [
+   "page-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-servers.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/OnPremMachines.tsx",
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0409",
+  "category": "k_nav",
+  "card_ids": [
+   "page-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-servers.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/OnPremMachines.tsx",
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0410",
+  "category": "k_nav",
+  "card_ids": [
+   "page-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-servers.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/OnPremMachines.tsx",
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0411",
+  "category": "k_nav",
+  "card_ids": [
+   "page-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-servers.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/OnPremMachines.tsx",
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0412",
+  "category": "k_nav",
+  "card_ids": [
+   "page-settings-transfer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-settings-transfer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "dashboard-ui/src/studio/App.tsx"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0413",
+  "category": "k_nav",
+  "card_ids": [
+   "page-settings-transfer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-settings-transfer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "dashboard-ui/src/studio/App.tsx"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0414",
+  "category": "k_nav",
+  "card_ids": [
+   "page-settings-transfer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-settings-transfer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "dashboard-ui/src/studio/App.tsx"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0415",
+  "category": "k_nav",
+  "card_ids": [
+   "page-settings-transfer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-settings-transfer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "dashboard-ui/src/studio/App.tsx"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0416",
+  "category": "k_nav",
+  "card_ids": [
+   "page-settings-transfer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-settings-transfer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "dashboard-ui/src/studio/App.tsx"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0417",
+  "category": "k_nav",
+  "card_ids": [
+   "page-settings-transfer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-settings-transfer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "dashboard-ui/src/studio/App.tsx"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0418",
+  "category": "k_nav",
+  "card_ids": [
+   "page-settings-transfer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-settings-transfer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "dashboard-ui/src/studio/App.tsx"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0419",
+  "category": "k_nav",
+  "card_ids": [
+   "page-settings-transfer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-settings-transfer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "dashboard-ui/src/studio/App.tsx"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0420",
+  "category": "k_nav",
+  "card_ids": [
+   "page-settings-transfer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-settings-transfer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "dashboard-ui/src/studio/App.tsx"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ }
+]

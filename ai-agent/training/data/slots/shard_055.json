@@ -1,0 +1,776 @@
+[
+ {
+  "id": "k_res_0501",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-custom.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/custom.md#other-on-premises-services-type-custom",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0502",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-custom.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/custom.md#other-on-premises-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/custom.md#other-on-premises-services-type-custom]\n`custom` covers anything else functions talk to: an SMTP server, LDAP / Active Directory, an internal REST API, an Elasticsearch cluster, a file share. pskit only hands `connection` values to handlers (`external: true` is required). Not to be confused with the **custom driver** (`options.driver: custom`), which plugs your own class into a `queue` or `storage` resource so it can trigger functions: see [queue.md](queue.md#rabbitmq-or-kafka-nats--via-a-custom-driver).",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0503",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-custom.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/custom.md#other-on-premises-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/custom.md#other-on-premises-services-type-custom]\n`custom` covers anything else functions talk to: an SMTP server, LDAP / Active Directory, an internal REST API, an Elasticsearch cluster, a file share. pskit only hands `connection` values to handlers (`external: true` is required). Not to be confused with the **custom driver** (`options.driver: custom`), which plugs your own class into a `queue` or `storage` resource so it can trigger functions: see [queue.md](queue.md#rabbitmq-or-kafka-nats--via-a-custom-driver).",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0504",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-custom.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/custom.md#other-on-premises-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/custom.md#other-on-premises-services-type-custom]\n`custom` covers anything else functions talk to: an SMTP server, LDAP / Active Directory, an internal REST API, an Elasticsearch cluster, a file share. pskit only hands `connection` values to handlers (`external: true` is required). Not to be confused with the **custom driver** (`options.driver: custom`), which plugs your own class into a `queue` or `storage` resource so it can trigger functions: see [queue.md](queue.md#rabbitmq-or-kafka-nats--via-a-custom-driver).",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0505",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/database.md#on-premises-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0506",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/database.md#on-premises-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0507",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/database.md#on-premises-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0508",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/database.md#on-premises-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0509",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/database.md#on-premises-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0510",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/database.md#on-premises-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0511",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/database.md#on-premises-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0512",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/database.md#on-premises-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0513",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-queue.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/queue.md#on-premises-queues-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/queue.md#on-premises-queues-type-queue]\nTrigger functions on the host from a queue: the host's built-in queue, Redis / Valkey, RabbitMQ or Kafka through a custom driver, or a queue in a cloud. Every option gives the same at-least-once handling: `batch_size`, `visibility_timeout`, `max_receive`, `dead_letter` and `BatchResult` work the same way.",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0514",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-queue.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/queue.md#on-premises-queues-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/queue.md#on-premises-queues-type-queue]\nTrigger functions on the host from a queue: the host's built-in queue, Redis / Valkey, RabbitMQ or Kafka through a custom driver, or a queue in a cloud. Every option gives the same at-least-once handling: `batch_size`, `visibility_timeout`, `max_receive`, `dead_letter` and `BatchResult` work the same way.",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0515",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-queue.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/queue.md#on-premises-queues-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0516",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-queue.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/queue.md#on-premises-queues-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/queue.md#on-premises-queues-type-queue]\nTrigger functions on the host from a queue: the host's built-in queue, Redis / Valkey, RabbitMQ or Kafka through a custom driver, or a queue in a cloud. Every option gives the same at-least-once handling: `batch_size`, `visibility_timeout`, `max_receive`, `dead_letter` and `BatchResult` work the same way.",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0517",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-queue.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/queue.md#on-premises-queues-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/queue.md#on-premises-queues-type-queue]\nTrigger functions on the host from a queue: the host's built-in queue, Redis / Valkey, RabbitMQ or Kafka through a custom driver, or a queue in a cloud. Every option gives the same at-least-once handling: `batch_size`, `visibility_timeout`, `max_receive`, `dead_letter` and `BatchResult` work the same way.",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0518",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-queue.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/queue.md#on-premises-queues-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/queue.md#on-premises-queues-type-queue]\nTrigger functions on the host from a queue: the host's built-in queue, Redis / Valkey, RabbitMQ or Kafka through a custom driver, or a queue in a cloud. Every option gives the same at-least-once handling: `batch_size`, `visibility_timeout`, `max_receive`, `dead_letter` and `BatchResult` work the same way.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0519",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-queue.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/queue.md#on-premises-queues-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/queue.md#on-premises-queues-type-queue]\nTrigger functions on the host from a queue: the host's built-in queue, Redis / Valkey, RabbitMQ or Kafka through a custom driver, or a queue in a cloud. Every option gives the same at-least-once handling: `batch_size`, `visibility_timeout`, `max_receive`, `dead_letter` and `BatchResult` work the same way.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0520",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-queue.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/queue.md#on-premises-queues-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/queue.md#on-premises-queues-type-queue]\nTrigger functions on the host from a queue: the host's built-in queue, Redis / Valkey, RabbitMQ or Kafka through a custom driver, or a queue in a cloud. Every option gives the same at-least-once handling: `batch_size`, `visibility_timeout`, `max_receive`, `dead_letter` and `BatchResult` work the same way.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0521",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-secrets"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-secrets.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0522",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-secrets"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-secrets.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/secrets.md#secret-managers-on-premises]\nKeep API keys, database passwords and certificates in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0523",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-secrets"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-secrets.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/secrets.md#secret-managers-on-premises]\nKeep API keys, database passwords and certificates in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0524",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-secrets"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-secrets.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/secrets.md#secret-managers-on-premises]\nKeep API keys, database passwords and certificates in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0525",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-secrets"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-secrets.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/secrets.md#secret-managers-on-premises]\nKeep API keys, database passwords and certificates in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0526",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-secrets"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-secrets.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/secrets.md#secret-managers-on-premises]\nKeep API keys, database passwords and certificates in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0527",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-secrets"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-secrets.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0528",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-secrets"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-secrets.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/secrets.md#secret-managers-on-premises]\nKeep API keys, database passwords and certificates in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0529",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-services"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-services.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0530",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-services"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-services.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0531",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-services"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-services.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0532",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-services"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-services.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0533",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-services"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-services.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0534",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-services"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-services.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0535",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-services"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-services.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0536",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-services"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-services.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0537",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage]\nRun functions when files appear in a bucket, and read or write objects: the host's built-in buckets, a shared folder, MinIO or another S3-compatible store, or a bucket in a cloud (S3, R2, Azure Blob, GCS, ...). The host lists each watched bucket every `poll_seconds` and compares ETags: a new or changed object emits `created`, a missing one `deleted`. Objects already there at the first start are recorded, not emitted.",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0538",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage]\nRun functions when files appear in a bucket, and read or write objects: the host's built-in buckets, a shared folder, MinIO or another S3-compatible store, or a bucket in a cloud (S3, R2, Azure Blob, GCS, ...). The host lists each watched bucket every `poll_seconds` and compares ETags: a new or changed object emits `created`, a missing one `deleted`. Objects already there at the first start are recorded, not emitted.",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0539",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage]\nRun functions when files appear in a bucket, and read or write objects: the host's built-in buckets, a shared folder, MinIO or another S3-compatible store, or a bucket in a cloud (S3, R2, Azure Blob, GCS, ...). The host lists each watched bucket every `poll_seconds` and compares ETags: a new or changed object emits `created`, a missing one `deleted`. Objects already there at the first start are recorded, not emitted.",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0540",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ }
+]

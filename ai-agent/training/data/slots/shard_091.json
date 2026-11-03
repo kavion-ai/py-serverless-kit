@@ -1,0 +1,772 @@
+[
+ {
+  "id": "k_arch_0091",
+  "category": "k_arch",
+  "card_ids": [
+   "code-workflows"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-workflows.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0092",
+  "category": "k_arch",
+  "card_ids": [
+   "code-workflows"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-workflows.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0093",
+  "category": "k_arch",
+  "card_ids": [
+   "code-workflows"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-workflows.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0094",
+  "category": "k_arch",
+  "card_ids": [
+   "code-workflows"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-workflows.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline",
+   "docs/architecture.md#runtime-flow"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0095",
+  "category": "k_arch",
+  "card_ids": [
+   "code-workflows"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-workflows.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0096",
+  "category": "k_arch",
+  "card_ids": [
+   "code-workflows"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-workflows.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0097",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-batch-result"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-batch-result.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0098",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-batch-result"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-batch-result.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0099",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-batch-result"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-batch-result.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0100",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-batch-result"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-batch-result.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/handlers.md#batchresult",
+   "docs/events.md#queue"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0101",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-batch-result"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-batch-result.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0102",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-batch-result"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-batch-result.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0103",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-config-file"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-config-file.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#top-level",
+   "docs/configuration.md#configuration-reference-pskityml"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0104",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-config-file"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-config-file.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#top-level",
+   "docs/configuration.md#configuration-reference-pskityml"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0105",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-config-file"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-config-file.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#top-level",
+   "docs/configuration.md#configuration-reference-pskityml"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0106",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-config-file"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-config-file.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#top-level",
+   "docs/configuration.md#configuration-reference-pskityml"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0107",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-config-file"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-config-file.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#top-level",
+   "docs/configuration.md#configuration-reference-pskityml"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0108",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-config-file"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-config-file.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#top-level",
+   "docs/configuration.md#configuration-reference-pskityml"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0109",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-contributing"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-contributing.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "deploy_docs/CONTRIBUTING.md"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0110",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-contributing"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-contributing.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "deploy_docs/CONTRIBUTING.md"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0111",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-contributing"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-contributing.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "deploy_docs/CONTRIBUTING.md"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0112",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-contributing"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-contributing.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "deploy_docs/CONTRIBUTING.md"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0113",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-contributing"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-contributing.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "deploy_docs/CONTRIBUTING.md"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0114",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-contributing"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-contributing.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "deploy_docs/CONTRIBUTING.md"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0115",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-dashboard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-dashboard.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/dashboard.md#dashboard"
+  ],
+  "excerpt": "[docs/dashboard.md#dashboard]\nThe dashboard is one self-contained HTML page (React, with all JS and CSS inline) listing everything the project has deployed, across all providers and stages. `pskit deploy` and `pskit remove` regenerate it at: It works in two modes: The **Executions** and **Logs** tabs in a static page say live data needs `pskit dashboard --serve`.",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0116",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-dashboard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-dashboard.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/dashboard.md#dashboard"
+  ],
+  "excerpt": "[docs/dashboard.md#dashboard]\nThe dashboard is one self-contained HTML page (React, with all JS and CSS inline) listing everything the project has deployed, across all providers and stages. `pskit deploy` and `pskit remove` regenerate it at: It works in two modes: The **Executions** and **Logs** tabs in a static page say live data needs `pskit dashboard --serve`.",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0117",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-dashboard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-dashboard.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/dashboard.md#dashboard"
+  ],
+  "excerpt": "[docs/dashboard.md#dashboard]\nThe dashboard is one self-contained HTML page (React, with all JS and CSS inline) listing everything the project has deployed, across all providers and stages. `pskit deploy` and `pskit remove` regenerate it at: It works in two modes: The **Executions** and **Logs** tabs in a static page say live data needs `pskit dashboard --serve`.",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0118",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-dashboard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-dashboard.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/dashboard.md#dashboard"
+  ],
+  "excerpt": "[docs/dashboard.md#dashboard]\nThe dashboard is one self-contained HTML page (React, with all JS and CSS inline) listing everything the project has deployed, across all providers and stages. `pskit deploy` and `pskit remove` regenerate it at: It works in two modes: The **Executions** and **Logs** tabs in a static page say live data needs `pskit dashboard --serve`.",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0119",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-dashboard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-dashboard.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/dashboard.md#dashboard",
+   "docs/dashboard.md#what-it-shows"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0120",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-dashboard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-dashboard.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/dashboard.md#dashboard"
+  ],
+  "excerpt": "[docs/dashboard.md#dashboard]\nThe dashboard is one self-contained HTML page (React, with all JS and CSS inline) listing everything the project has deployed, across all providers and stages. `pskit deploy` and `pskit remove` regenerate it at: It works in two modes: The **Executions** and **Logs** tabs in a static page say live data needs `pskit dashboard --serve`.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0121",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-deployment-json"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-deployment-json.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/dashboard.md#where-the-data-comes-from"
+  ],
+  "excerpt": "[docs/dashboard.md#where-the-data-comes-from]\nEach deploy writes `.pskit/<provider>-<stage>/deployment.json`, built from the config plus the `pskit` Terraform output. The dashboard reads all of these files: deploy `aws` and `gcp`, `dev` and `prod`, and they all appear on one page. `pskit info --json` prints the same record. It includes `key` and `resources` (connection key names only).",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0122",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-deployment-json"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-deployment-json.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/dashboard.md#where-the-data-comes-from"
+  ],
+  "excerpt": "[docs/dashboard.md#where-the-data-comes-from]\nEach deploy writes `.pskit/<provider>-<stage>/deployment.json`, built from the config plus the `pskit` Terraform output. The dashboard reads all of these files: deploy `aws` and `gcp`, `dev` and `prod`, and they all appear on one page. `pskit info --json` prints the same record. It includes `key` and `resources` (connection key names only).",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0123",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-deployment-json"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-deployment-json.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/dashboard.md#where-the-data-comes-from"
+  ],
+  "excerpt": "[docs/dashboard.md#where-the-data-comes-from]\nEach deploy writes `.pskit/<provider>-<stage>/deployment.json`, built from the config plus the `pskit` Terraform output. The dashboard reads all of these files: deploy `aws` and `gcp`, `dev` and `prod`, and they all appear on one page. `pskit info --json` prints the same record. It includes `key` and `resources` (connection key names only).",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0124",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-deployment-json"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-deployment-json.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/dashboard.md#where-the-data-comes-from"
+  ],
+  "excerpt": "[docs/dashboard.md#where-the-data-comes-from]\nEach deploy writes `.pskit/<provider>-<stage>/deployment.json`, built from the config plus the `pskit` Terraform output. The dashboard reads all of these files: deploy `aws` and `gcp`, `dev` and `prod`, and they all appear on one page. `pskit info --json` prints the same record. It includes `key` and `resources` (connection key names only).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0125",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-deployment-json"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-deployment-json.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/core/describe.py",
+   "src/py_serverless_kit/core/deployer.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0126",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-deployment-json"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-deployment-json.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/dashboard.md#where-the-data-comes-from"
+  ],
+  "excerpt": "[docs/dashboard.md#where-the-data-comes-from]\nEach deploy writes `.pskit/<provider>-<stage>/deployment.json`, built from the config plus the `pskit` Terraform output. The dashboard reads all of these files: deploy `aws` and `gcp`, `dev` and `prod`, and they all appear on one page. `pskit info --json` prints the same record. It includes `key` and `resources` (connection key names only).",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0127",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-docker-uses"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-docker-uses.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0128",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-docker-uses"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-docker-uses.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0129",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-docker-uses"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-docker-uses.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0130",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-docker-uses"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-docker-uses.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ }
+]

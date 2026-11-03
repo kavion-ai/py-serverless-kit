@@ -1,0 +1,782 @@
+[
+ {
+  "id": "k_nav_0501",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test-resource"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test-resource.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/ResourceTester.tsx",
+   "src/py_serverless_kit/studio/jobs.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0502",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test-resource"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test-resource.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/ResourceTester.tsx",
+   "src/py_serverless_kit/studio/jobs.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0503",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test-resource"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test-resource.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/ResourceTester.tsx",
+   "src/py_serverless_kit/studio/jobs.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0504",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test-resource"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test-resource.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/ResourceTester.tsx",
+   "src/py_serverless_kit/studio/jobs.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0505",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test-resource"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test-resource.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/ResourceTester.tsx",
+   "src/py_serverless_kit/studio/jobs.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0506",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test-resource"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test-resource.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/ResourceTester.tsx",
+   "src/py_serverless_kit/studio/jobs.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0507",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test-resource"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test-resource.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/ResourceTester.tsx",
+   "src/py_serverless_kit/studio/jobs.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0508",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test-resource"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test-resource.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/ResourceTester.tsx",
+   "src/py_serverless_kit/studio/jobs.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0509",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test-resource"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test-resource.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/ResourceTester.tsx",
+   "src/py_serverless_kit/studio/jobs.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0510",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test-resource"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test-resource.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/ResourceTester.tsx",
+   "src/py_serverless_kit/studio/jobs.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0511",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test-resource"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test-resource.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/ResourceTester.tsx",
+   "src/py_serverless_kit/studio/jobs.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0512",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test-resource"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test-resource.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/ResourceTester.tsx",
+   "src/py_serverless_kit/studio/jobs.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0513",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test-resource"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test-resource.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/ResourceTester.tsx",
+   "src/py_serverless_kit/studio/jobs.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0514",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test-resource"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test-resource.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/ResourceTester.tsx",
+   "src/py_serverless_kit/studio/jobs.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0515",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test-resource"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test-resource.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/ResourceTester.tsx",
+   "src/py_serverless_kit/studio/jobs.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0516",
+  "category": "k_nav",
+  "card_ids": [
+   "page-test-resource"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-test-resource.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/components/ResourceTester.tsx",
+   "src/py_serverless_kit/studio/jobs.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0517",
+  "category": "k_nav",
+  "card_ids": [
+   "page-token-screen"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-token-screen.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#security"
+  ],
+  "excerpt": "[docs/studio.md#security]\n- It binds to `127.0.0.1` by default. - Every API call needs the session token from the printed URL. Anyone who has that URL has full access, so don't share it. A new token is generated each time studio starts. - Requests with a foreign `Host` header (DNS rebinding) or a cross-site `Origin` are refused, and bodies are capped at 2 MiB. - The file editor only reaches files inside the project. It never touches `.pskit/`, `.git/`, `.venv/`, `node_modules/` or `__pycache__`, and refuses binary files or files over 1 MiB. - Deploy commands run as `python -m py_serverless_kit ...` with explicit arguments, never through a shell.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0518",
+  "category": "k_nav",
+  "card_ids": [
+   "page-token-screen"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-token-screen.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#security"
+  ],
+  "excerpt": "[docs/studio.md#security]\n- It binds to `127.0.0.1` by default. - Every API call needs the session token from the printed URL. Anyone who has that URL has full access, so don't share it. A new token is generated each time studio starts. - Requests with a foreign `Host` header (DNS rebinding) or a cross-site `Origin` are refused, and bodies are capped at 2 MiB. - The file editor only reaches files inside the project. It never touches `.pskit/`, `.git/`, `.venv/`, `node_modules/` or `__pycache__`, and refuses binary files or files over 1 MiB. - Deploy commands run as `python -m py_serverless_kit ...` with explicit arguments, never through a shell.",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0519",
+  "category": "k_nav",
+  "card_ids": [
+   "page-token-screen"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-token-screen.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#security"
+  ],
+  "excerpt": "[docs/studio.md#security]\n- It binds to `127.0.0.1` by default. - Every API call needs the session token from the printed URL. Anyone who has that URL has full access, so don't share it. A new token is generated each time studio starts. - Requests with a foreign `Host` header (DNS rebinding) or a cross-site `Origin` are refused, and bodies are capped at 2 MiB. - The file editor only reaches files inside the project. It never touches `.pskit/`, `.git/`, `.venv/`, `node_modules/` or `__pycache__`, and refuses binary files or files over 1 MiB. - Deploy commands run as `python -m py_serverless_kit ...` with explicit arguments, never through a shell.",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0520",
+  "category": "k_nav",
+  "card_ids": [
+   "page-token-screen"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-token-screen.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#security"
+  ],
+  "excerpt": "[docs/studio.md#security]\n- It binds to `127.0.0.1` by default. - Every API call needs the session token from the printed URL. Anyone who has that URL has full access, so don't share it. A new token is generated each time studio starts. - Requests with a foreign `Host` header (DNS rebinding) or a cross-site `Origin` are refused, and bodies are capped at 2 MiB. - The file editor only reaches files inside the project. It never touches `.pskit/`, `.git/`, `.venv/`, `node_modules/` or `__pycache__`, and refuses binary files or files over 1 MiB. - Deploy commands run as `python -m py_serverless_kit ...` with explicit arguments, never through a shell.",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0521",
+  "category": "k_nav",
+  "card_ids": [
+   "page-token-screen"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-token-screen.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/App.tsx",
+   "docs/studio.md#security"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0522",
+  "category": "k_nav",
+  "card_ids": [
+   "page-token-screen"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-token-screen.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#security"
+  ],
+  "excerpt": "[docs/studio.md#security]\n- It binds to `127.0.0.1` by default. - Every API call needs the session token from the printed URL. Anyone who has that URL has full access, so don't share it. A new token is generated each time studio starts. - Requests with a foreign `Host` header (DNS rebinding) or a cross-site `Origin` are refused, and bodies are capped at 2 MiB. - The file editor only reaches files inside the project. It never touches `.pskit/`, `.git/`, `.venv/`, `node_modules/` or `__pycache__`, and refuses binary files or files over 1 MiB. - Deploy commands run as `python -m py_serverless_kit ...` with explicit arguments, never through a shell.",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0523",
+  "category": "k_nav",
+  "card_ids": [
+   "page-token-screen"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-token-screen.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#security"
+  ],
+  "excerpt": "[docs/studio.md#security]\n- It binds to `127.0.0.1` by default. - Every API call needs the session token from the printed URL. Anyone who has that URL has full access, so don't share it. A new token is generated each time studio starts. - Requests with a foreign `Host` header (DNS rebinding) or a cross-site `Origin` are refused, and bodies are capped at 2 MiB. - The file editor only reaches files inside the project. It never touches `.pskit/`, `.git/`, `.venv/`, `node_modules/` or `__pycache__`, and refuses binary files or files over 1 MiB. - Deploy commands run as `python -m py_serverless_kit ...` with explicit arguments, never through a shell.",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0524",
+  "category": "k_nav",
+  "card_ids": [
+   "page-token-screen"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-token-screen.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#security"
+  ],
+  "excerpt": "[docs/studio.md#security]\n- It binds to `127.0.0.1` by default. - Every API call needs the session token from the printed URL. Anyone who has that URL has full access, so don't share it. A new token is generated each time studio starts. - Requests with a foreign `Host` header (DNS rebinding) or a cross-site `Origin` are refused, and bodies are capped at 2 MiB. - The file editor only reaches files inside the project. It never touches `.pskit/`, `.git/`, `.venv/`, `node_modules/` or `__pycache__`, and refuses binary files or files over 1 MiB. - Deploy commands run as `python -m py_serverless_kit ...` with explicit arguments, never through a shell.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0525",
+  "category": "k_nav",
+  "card_ids": [
+   "page-token-screen"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-token-screen.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#security"
+  ],
+  "excerpt": "[docs/studio.md#security]\n- It binds to `127.0.0.1` by default. - Every API call needs the session token from the printed URL. Anyone who has that URL has full access, so don't share it. A new token is generated each time studio starts. - Requests with a foreign `Host` header (DNS rebinding) or a cross-site `Origin` are refused, and bodies are capped at 2 MiB. - The file editor only reaches files inside the project. It never touches `.pskit/`, `.git/`, `.venv/`, `node_modules/` or `__pycache__`, and refuses binary files or files over 1 MiB. - Deploy commands run as `python -m py_serverless_kit ...` with explicit arguments, never through a shell.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0526",
+  "category": "k_nav",
+  "card_ids": [
+   "page-token-screen"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-token-screen.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#security"
+  ],
+  "excerpt": "[docs/studio.md#security]\n- It binds to `127.0.0.1` by default. - Every API call needs the session token from the printed URL. Anyone who has that URL has full access, so don't share it. A new token is generated each time studio starts. - Requests with a foreign `Host` header (DNS rebinding) or a cross-site `Origin` are refused, and bodies are capped at 2 MiB. - The file editor only reaches files inside the project. It never touches `.pskit/`, `.git/`, `.venv/`, `node_modules/` or `__pycache__`, and refuses binary files or files over 1 MiB. - Deploy commands run as `python -m py_serverless_kit ...` with explicit arguments, never through a shell.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0527",
+  "category": "k_nav",
+  "card_ids": [
+   "page-token-screen"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-token-screen.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/App.tsx",
+   "docs/studio.md#security"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0528",
+  "category": "k_nav",
+  "card_ids": [
+   "page-token-screen"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-token-screen.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#security"
+  ],
+  "excerpt": "[docs/studio.md#security]\n- It binds to `127.0.0.1` by default. - Every API call needs the session token from the printed URL. Anyone who has that URL has full access, so don't share it. A new token is generated each time studio starts. - Requests with a foreign `Host` header (DNS rebinding) or a cross-site `Origin` are refused, and bodies are capped at 2 MiB. - The file editor only reaches files inside the project. It never touches `.pskit/`, `.git/`, `.venv/`, `node_modules/` or `__pycache__`, and refuses binary files or files over 1 MiB. - Deploy commands run as `python -m py_serverless_kit ...` with explicit arguments, never through a shell.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0529",
+  "category": "k_nav",
+  "card_ids": [
+   "page-token-screen"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-token-screen.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#security"
+  ],
+  "excerpt": "[docs/studio.md#security]\n- It binds to `127.0.0.1` by default. - Every API call needs the session token from the printed URL. Anyone who has that URL has full access, so don't share it. A new token is generated each time studio starts. - Requests with a foreign `Host` header (DNS rebinding) or a cross-site `Origin` are refused, and bodies are capped at 2 MiB. - The file editor only reaches files inside the project. It never touches `.pskit/`, `.git/`, `.venv/`, `node_modules/` or `__pycache__`, and refuses binary files or files over 1 MiB. - Deploy commands run as `python -m py_serverless_kit ...` with explicit arguments, never through a shell.",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0530",
+  "category": "k_nav",
+  "card_ids": [
+   "page-token-screen"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-token-screen.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#security"
+  ],
+  "excerpt": "[docs/studio.md#security]\n- It binds to `127.0.0.1` by default. - Every API call needs the session token from the printed URL. Anyone who has that URL has full access, so don't share it. A new token is generated each time studio starts. - Requests with a foreign `Host` header (DNS rebinding) or a cross-site `Origin` are refused, and bodies are capped at 2 MiB. - The file editor only reaches files inside the project. It never touches `.pskit/`, `.git/`, `.venv/`, `node_modules/` or `__pycache__`, and refuses binary files or files over 1 MiB. - Deploy commands run as `python -m py_serverless_kit ...` with explicit arguments, never through a shell.",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0531",
+  "category": "k_nav",
+  "card_ids": [
+   "page-token-screen"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-token-screen.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#security"
+  ],
+  "excerpt": "[docs/studio.md#security]\n- It binds to `127.0.0.1` by default. - Every API call needs the session token from the printed URL. Anyone who has that URL has full access, so don't share it. A new token is generated each time studio starts. - Requests with a foreign `Host` header (DNS rebinding) or a cross-site `Origin` are refused, and bodies are capped at 2 MiB. - The file editor only reaches files inside the project. It never touches `.pskit/`, `.git/`, `.venv/`, `node_modules/` or `__pycache__`, and refuses binary files or files over 1 MiB. - Deploy commands run as `python -m py_serverless_kit ...` with explicit arguments, never through a shell.",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0532",
+  "category": "k_nav",
+  "card_ids": [
+   "page-token-screen"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-token-screen.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#security"
+  ],
+  "excerpt": "[docs/studio.md#security]\n- It binds to `127.0.0.1` by default. - Every API call needs the session token from the printed URL. Anyone who has that URL has full access, so don't share it. A new token is generated each time studio starts. - Requests with a foreign `Host` header (DNS rebinding) or a cross-site `Origin` are refused, and bodies are capped at 2 MiB. - The file editor only reaches files inside the project. It never touches `.pskit/`, `.git/`, `.venv/`, `node_modules/` or `__pycache__`, and refuses binary files or files over 1 MiB. - Deploy commands run as `python -m py_serverless_kit ...` with explicit arguments, never through a shell.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0533",
+  "category": "k_nav",
+  "card_ids": [
+   "page-token-screen"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-token-screen.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#security"
+  ],
+  "excerpt": "[docs/studio.md#security]\n- It binds to `127.0.0.1` by default. - Every API call needs the session token from the printed URL. Anyone who has that URL has full access, so don't share it. A new token is generated each time studio starts. - Requests with a foreign `Host` header (DNS rebinding) or a cross-site `Origin` are refused, and bodies are capped at 2 MiB. - The file editor only reaches files inside the project. It never touches `.pskit/`, `.git/`, `.venv/`, `node_modules/` or `__pycache__`, and refuses binary files or files over 1 MiB. - Deploy commands run as `python -m py_serverless_kit ...` with explicit arguments, never through a shell.",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0534",
+  "category": "k_nav",
+  "card_ids": [
+   "page-token-screen"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-token-screen.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/App.tsx",
+   "docs/studio.md#security"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0535",
+  "category": "k_nav",
+  "card_ids": [
+   "page-token-screen"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-token-screen.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#security"
+  ],
+  "excerpt": "[docs/studio.md#security]\n- It binds to `127.0.0.1` by default. - Every API call needs the session token from the printed URL. Anyone who has that URL has full access, so don't share it. A new token is generated each time studio starts. - Requests with a foreign `Host` header (DNS rebinding) or a cross-site `Origin` are refused, and bodies are capped at 2 MiB. - The file editor only reaches files inside the project. It never touches `.pskit/`, `.git/`, `.venv/`, `node_modules/` or `__pycache__`, and refuses binary files or files over 1 MiB. - Deploy commands run as `python -m py_serverless_kit ...` with explicit arguments, never through a shell.",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0536",
+  "category": "k_nav",
+  "card_ids": [
+   "page-token-screen"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-token-screen.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#security"
+  ],
+  "excerpt": "[docs/studio.md#security]\n- It binds to `127.0.0.1` by default. - Every API call needs the session token from the printed URL. Anyone who has that URL has full access, so don't share it. A new token is generated each time studio starts. - Requests with a foreign `Host` header (DNS rebinding) or a cross-site `Origin` are refused, and bodies are capped at 2 MiB. - The file editor only reaches files inside the project. It never touches `.pskit/`, `.git/`, `.venv/`, `node_modules/` or `__pycache__`, and refuses binary files or files over 1 MiB. - Deploy commands run as `python -m py_serverless_kit ...` with explicit arguments, never through a shell.",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0537",
+  "category": "k_nav",
+  "card_ids": [
+   "page-token-screen"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-token-screen.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#security"
+  ],
+  "excerpt": "[docs/studio.md#security]\n- It binds to `127.0.0.1` by default. - Every API call needs the session token from the printed URL. Anyone who has that URL has full access, so don't share it. A new token is generated each time studio starts. - Requests with a foreign `Host` header (DNS rebinding) or a cross-site `Origin` are refused, and bodies are capped at 2 MiB. - The file editor only reaches files inside the project. It never touches `.pskit/`, `.git/`, `.venv/`, `node_modules/` or `__pycache__`, and refuses binary files or files over 1 MiB. - Deploy commands run as `python -m py_serverless_kit ...` with explicit arguments, never through a shell.",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0538",
+  "category": "k_nav",
+  "card_ids": [
+   "page-top-bar"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-top-bar.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0539",
+  "category": "k_nav",
+  "card_ids": [
+   "page-top-bar"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-top-bar.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0540",
+  "category": "k_nav",
+  "card_ids": [
+   "page-top-bar"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-top-bar.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/App.tsx",
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ }
+]

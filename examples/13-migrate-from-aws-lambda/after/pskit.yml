@@ -1,0 +1,58 @@
+# AFTER: replaces before/template.yaml AND before/state_machine.asl.json.
+service: orders
+
+provider:
+  name: aws              # step 1 of the migration: redeploy to AWS unchanged
+  region: us-east-1
+  runtime: python3.12
+
+functions:
+  create-order:
+    handler: app.orders.create_order
+    events:
+      - http: POST /orders
+  get-order:
+    handler: app.orders.get_order
+    events:
+      - http: GET /orders/{id}
+  email-worker:
+    handler: app.orders.email_worker
+    events:
+      - queue: {name: orders-email, batch_size: 10}
+  validate:
+    handler: app.orders.validate
+  charge:
+    handler: app.orders.charge
+
+workflows:
+  order-processing:            # was state_machine.asl.json
+    start_at: Validate
+    states:
+      Validate:
+        type: task
+        function: validate     # logical name, not an ARN
+        catch: [{errors: [ValueError], next: Rejected, result_path: $.error}]
+        next: IsLarge
+      IsLarge:
+        type: choice
+        choices: [{variable: $.total, gt: 500, next: Review}]
+        default: Charge
+      Review: {type: wait, seconds: 60, next: Charge}
+      Charge:
+        type: task
+        function: charge
+        retry: [{errors: ["*"], interval_seconds: 2, max_attempts: 3, backoff_rate: 2}]
+        end: true
+      Rejected: {type: fail, error: OrderRejected}
+
+# step 2: switch clouds by adding a block and running `pskit deploy --provider gcp`
+providers:
+  gcp:
+    region: us-central1
+    options: {project: "${env:GOOGLE_CLOUD_PROJECT, my-gcp-project}"}
+  azure:
+    region: eastus
+    options: {subscription_id: "${env:ARM_SUBSCRIPTION_ID, 00000000-0000-0000-0000-000000000000}"}
+  onprem:
+    region: local
+    options: {host: 127.0.0.1, port: 8093}

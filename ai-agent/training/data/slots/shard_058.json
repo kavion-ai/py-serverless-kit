@@ -1,0 +1,778 @@
+[
+ {
+  "id": "k_res_0621",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-database.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/database.md#tencent-cloud-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0622",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-database.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/database.md#tencent-cloud-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0623",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-database.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/database.md#tencent-cloud-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0624",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-database.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/database.md#tencent-cloud-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0625",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/tencent/queue.md#tencent-cloud-tdmq-for-cmq-queue-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/tencent/queue.md#tencent-cloud-tdmq-for-cmq-queue-type-queue]\n> **No queue trigger on Tencent Cloud.** pskit's Tencent provider has no `queue` event: `pskit validate` rejects > `- queue: ...` there. Declare the queue as an external resource and send to it with the Tencent Cloud SDK. To react to > messages, consume them with the TDMQ CMQ client from a `schedule` function, or put work into a COS bucket and use a > [storage trigger](storage.md).",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0626",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/tencent/queue.md#tencent-cloud-tdmq-for-cmq-queue-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/tencent/queue.md#tencent-cloud-tdmq-for-cmq-queue-type-queue]\n> **No queue trigger on Tencent Cloud.** pskit's Tencent provider has no `queue` event: `pskit validate` rejects > `- queue: ...` there. Declare the queue as an external resource and send to it with the Tencent Cloud SDK. To react to > messages, consume them with the TDMQ CMQ client from a `schedule` function, or put work into a COS bucket and use a > [storage trigger](storage.md).",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0627",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/tencent/queue.md#tencent-cloud-tdmq-for-cmq-queue-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/tencent/queue.md#tencent-cloud-tdmq-for-cmq-queue-type-queue]\n> **No queue trigger on Tencent Cloud.** pskit's Tencent provider has no `queue` event: `pskit validate` rejects > `- queue: ...` there. Declare the queue as an external resource and send to it with the Tencent Cloud SDK. To react to > messages, consume them with the TDMQ CMQ client from a `schedule` function, or put work into a COS bucket and use a > [storage trigger](storage.md).",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0628",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/tencent/queue.md#tencent-cloud-tdmq-for-cmq-queue-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/tencent/queue.md#tencent-cloud-tdmq-for-cmq-queue-type-queue]\n> **No queue trigger on Tencent Cloud.** pskit's Tencent provider has no `queue` event: `pskit validate` rejects > `- queue: ...` there. Declare the queue as an external resource and send to it with the Tencent Cloud SDK. To react to > messages, consume them with the TDMQ CMQ client from a `schedule` function, or put work into a COS bucket and use a > [storage trigger](storage.md).",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0629",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/queue.md#tencent-cloud-tdmq-for-cmq-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0630",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/tencent/queue.md#tencent-cloud-tdmq-for-cmq-queue-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/tencent/queue.md#tencent-cloud-tdmq-for-cmq-queue-type-queue]\n> **No queue trigger on Tencent Cloud.** pskit's Tencent provider has no `queue` event: `pskit validate` rejects > `- queue: ...` there. Declare the queue as an external resource and send to it with the Tencent Cloud SDK. To react to > messages, consume them with the TDMQ CMQ client from a `schedule` function, or put work into a COS bucket and use a > [storage trigger](storage.md).",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0631",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/tencent/queue.md#tencent-cloud-tdmq-for-cmq-queue-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/tencent/queue.md#tencent-cloud-tdmq-for-cmq-queue-type-queue]\n> **No queue trigger on Tencent Cloud.** pskit's Tencent provider has no `queue` event: `pskit validate` rejects > `- queue: ...` there. Declare the queue as an external resource and send to it with the Tencent Cloud SDK. To react to > messages, consume them with the TDMQ CMQ client from a `schedule` function, or put work into a COS bucket and use a > [storage trigger](storage.md).",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0632",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/tencent/queue.md#tencent-cloud-tdmq-for-cmq-queue-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/tencent/queue.md#tencent-cloud-tdmq-for-cmq-queue-type-queue]\n> **No queue trigger on Tencent Cloud.** pskit's Tencent provider has no `queue` event: `pskit validate` rejects > `- queue: ...` there. Declare the queue as an external resource and send to it with the Tencent Cloud SDK. To react to > messages, consume them with the TDMQ CMQ client from a `schedule` function, or put work into a COS bucket and use a > [storage trigger](storage.md).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0633",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/storage.md#tencent-cloud-cos-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0634",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/storage.md#tencent-cloud-cos-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0635",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/storage.md#tencent-cloud-cos-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0636",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/storage.md#tencent-cloud-cos-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0637",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/storage.md#tencent-cloud-cos-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0638",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/storage.md#tencent-cloud-cos-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0639",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/storage.md#tencent-cloud-cos-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0640",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/storage.md#tencent-cloud-cos-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0641",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/tencent/topic.md#tencent-cloud-tdmq-for-cmq-topic-type-topic"
+  ],
+  "excerpt": "[docs/resource-guides/tencent/topic.md#tencent-cloud-tdmq-for-cmq-topic-type-topic]\n> **No topic trigger on Tencent Cloud.** pskit's Tencent provider has no `topic` event: `pskit validate` rejects > `- topic: ...` there. Declare the topic as an external resource and publish with the Tencent Cloud SDK. Subscribers > (queues, HTTP endpoints) are configured on the topic in the console.",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0642",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/tencent/topic.md#tencent-cloud-tdmq-for-cmq-topic-type-topic"
+  ],
+  "excerpt": "[docs/resource-guides/tencent/topic.md#tencent-cloud-tdmq-for-cmq-topic-type-topic]\n> **No topic trigger on Tencent Cloud.** pskit's Tencent provider has no `topic` event: `pskit validate` rejects > `- topic: ...` there. Declare the topic as an external resource and publish with the Tencent Cloud SDK. Subscribers > (queues, HTTP endpoints) are configured on the topic in the console.",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0643",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/topic.md#tencent-cloud-tdmq-for-cmq-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0644",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/tencent/topic.md#tencent-cloud-tdmq-for-cmq-topic-type-topic"
+  ],
+  "excerpt": "[docs/resource-guides/tencent/topic.md#tencent-cloud-tdmq-for-cmq-topic-type-topic]\n> **No topic trigger on Tencent Cloud.** pskit's Tencent provider has no `topic` event: `pskit validate` rejects > `- topic: ...` there. Declare the topic as an external resource and publish with the Tencent Cloud SDK. Subscribers > (queues, HTTP endpoints) are configured on the topic in the console.",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0645",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/tencent/topic.md#tencent-cloud-tdmq-for-cmq-topic-type-topic"
+  ],
+  "excerpt": "[docs/resource-guides/tencent/topic.md#tencent-cloud-tdmq-for-cmq-topic-type-topic]\n> **No topic trigger on Tencent Cloud.** pskit's Tencent provider has no `topic` event: `pskit validate` rejects > `- topic: ...` there. Declare the topic as an external resource and publish with the Tencent Cloud SDK. Subscribers > (queues, HTTP endpoints) are configured on the topic in the console.",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0646",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-topic.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/tencent/topic.md#tencent-cloud-tdmq-for-cmq-topic-type-topic"
+  ],
+  "excerpt": "[docs/resource-guides/tencent/topic.md#tencent-cloud-tdmq-for-cmq-topic-type-topic]\n> **No topic trigger on Tencent Cloud.** pskit's Tencent provider has no `topic` event: `pskit validate` rejects > `- topic: ...` there. Declare the topic as an external resource and publish with the Tencent Cloud SDK. Subscribers > (queues, HTTP endpoints) are configured on the topic in the console.",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0647",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-topic.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/tencent/topic.md#tencent-cloud-tdmq-for-cmq-topic-type-topic"
+  ],
+  "excerpt": "[docs/resource-guides/tencent/topic.md#tencent-cloud-tdmq-for-cmq-topic-type-topic]\n> **No topic trigger on Tencent Cloud.** pskit's Tencent provider has no `topic` event: `pskit validate` rejects > `- topic: ...` there. Declare the topic as an external resource and publish with the Tencent Cloud SDK. Subscribers > (queues, HTTP endpoints) are configured on the topic in the console.",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0648",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-topic.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/tencent/topic.md#tencent-cloud-tdmq-for-cmq-topic-type-topic"
+  ],
+  "excerpt": "[docs/resource-guides/tencent/topic.md#tencent-cloud-tdmq-for-cmq-topic-type-topic]\n> **No topic trigger on Tencent Cloud.** pskit's Tencent provider has no `topic` event: `pskit validate` rejects > `- topic: ...` there. Declare the topic as an external resource and publish with the Tencent Cloud SDK. Subscribers > (queues, HTTP endpoints) are configured on the topic in the console.",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0649",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-cache.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resources.md#fields",
+   "docs/resources.md#provider-support"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0650",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-cache.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0651",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-cache.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0652",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-cache.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0653",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-cache.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0654",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-cache.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0655",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-cache.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0656",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-cache.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resources.md#fields",
+   "docs/resources.md#provider-support"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0657",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-usage.md#the-five-steps-for-any-resource"
+  ],
+  "excerpt": "[docs/resource-usage.md#the-five-steps-for-any-resource]\n1. **Install** the client library: add it to `requirements.txt` (Python) or `package.json` (Node.js), then `pip install -r requirements.txt` / `npm install` locally so `pskit invoke` and `pskit dev` can import it. 2. **Declare** the resource under `resources:` and, for queues, buckets and topics, add a trigger (`events: [{queue: {resource: jobs}}]`). Secrets go in variables, never in `pskit.yml`. 3. **Read** it in the handler with `resource(\"<key>\")`: `native_name` / `nativeName`, `url`, `arn`, `id` and your `connection` values. A `<name>_env` value is the *name* of a variable: `ctx.env[r[\"password_env\"]]`. 4. **Test locally** with fake events (`pskit invoke -f worker -t queue -d '[...]'`) or `pskit dev`. 5. **Deploy and test** with `pskit resources send` (queues, buckets, topics), `pskit resources check` (reachability, from the on-prem host when deployed there) and `pskit logs -f`.",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0658",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-usage.md#the-five-steps-for-any-resource"
+  ],
+  "excerpt": "[docs/resource-usage.md#the-five-steps-for-any-resource]\n1. **Install** the client library: add it to `requirements.txt` (Python) or `package.json` (Node.js), then `pip install -r requirements.txt` / `npm install` locally so `pskit invoke` and `pskit dev` can import it. 2. **Declare** the resource under `resources:` and, for queues, buckets and topics, add a trigger (`events: [{queue: {resource: jobs}}]`). Secrets go in variables, never in `pskit.yml`. 3. **Read** it in the handler with `resource(\"<key>\")`: `native_name` / `nativeName`, `url`, `arn`, `id` and your `connection` values. A `<name>_env` value is the *name* of a variable: `ctx.env[r[\"password_env\"]]`. 4. **Test locally** with fake events (`pskit invoke -f worker -t queue -d '[...]'`) or `pskit dev`. 5. **Deploy and test** with `pskit resources send` (queues, buckets, topics), `pskit resources check` (reachability, from the on-prem host when deployed there) and `pskit logs -f`.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0659",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-usage.md#the-five-steps-for-any-resource"
+  ],
+  "excerpt": "[docs/resource-usage.md#the-five-steps-for-any-resource]\n1. **Install** the client library: add it to `requirements.txt` (Python) or `package.json` (Node.js), then `pip install -r requirements.txt` / `npm install` locally so `pskit invoke` and `pskit dev` can import it. 2. **Declare** the resource under `resources:` and, for queues, buckets and topics, add a trigger (`events: [{queue: {resource: jobs}}]`). Secrets go in variables, never in `pskit.yml`. 3. **Read** it in the handler with `resource(\"<key>\")`: `native_name` / `nativeName`, `url`, `arn`, `id` and your `connection` values. A `<name>_env` value is the *name* of a variable: `ctx.env[r[\"password_env\"]]`. 4. **Test locally** with fake events (`pskit invoke -f worker -t queue -d '[...]'`) or `pskit dev`. 5. **Deploy and test** with `pskit resources send` (queues, buckets, topics), `pskit resources check` (reachability, from the on-prem host when deployed there) and `pskit logs -f`.",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0660",
+  "category": "k_res",
+  "card_ids": [
+   "res-type-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-type-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-usage.md#the-five-steps-for-any-resource"
+  ],
+  "excerpt": "[docs/resource-usage.md#the-five-steps-for-any-resource]\n1. **Install** the client library: add it to `requirements.txt` (Python) or `package.json` (Node.js), then `pip install -r requirements.txt` / `npm install` locally so `pskit invoke` and `pskit dev` can import it. 2. **Declare** the resource under `resources:` and, for queues, buckets and topics, add a trigger (`events: [{queue: {resource: jobs}}]`). Secrets go in variables, never in `pskit.yml`. 3. **Read** it in the handler with `resource(\"<key>\")`: `native_name` / `nativeName`, `url`, `arn`, `id` and your `connection` values. A `<name>_env` value is the *name* of a variable: `ctx.env[r[\"password_env\"]]`. 4. **Test locally** with fake events (`pskit invoke -f worker -t queue -d '[...]'`) or `pskit dev`. 5. **Deploy and test** with `pskit resources send` (queues, buckets, topics), `pskit resources check` (reachability, from the on-prem host when deployed there) and `pskit logs -f`.",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ }
+]

@@ -1,0 +1,2116 @@
+{
+  "modules": [
+    {
+      "path": "src/py_serverless_kit/__init__.py",
+      "summary": "py_serverless_kit - write a Python function once, deploy it to any cloud."
+    },
+    {
+      "path": "src/py_serverless_kit/__main__.py",
+      "summary": ""
+    },
+    {
+      "path": "src/py_serverless_kit/_version.py",
+      "summary": ""
+    },
+    {
+      "path": "src/py_serverless_kit/cli/__init__.py",
+      "summary": ""
+    },
+    {
+      "path": "src/py_serverless_kit/cli/main.py",
+      "summary": "`pskit` command line interface."
+    },
+    {
+      "path": "src/py_serverless_kit/cli/templates.py",
+      "summary": "Project scaffolds for `pskit init`."
+    },
+    {
+      "path": "src/py_serverless_kit/client.py",
+      "summary": "Use an on-premises pskit host from any Python program (standard library only)."
+    },
+    {
+      "path": "src/py_serverless_kit/config/__init__.py",
+      "summary": ""
+    },
+    {
+      "path": "src/py_serverless_kit/config/loader.py",
+      "summary": "Load, merge and interpolate `pskit.yml`."
+    },
+    {
+      "path": "src/py_serverless_kit/config/schema.py",
+      "summary": "Typed model of `pskit.yml`."
+    },
+    {
+      "path": "src/py_serverless_kit/core/__init__.py",
+      "summary": ""
+    },
+    {
+      "path": "src/py_serverless_kit/core/client_examples.py",
+      "summary": "Complete programs that use one on-prem resource through the pskit host (pskit client)."
+    },
+    {
+      "path": "src/py_serverless_kit/core/client_guide.py",
+      "summary": "How to call a deployed on-prem host from any program: the pskit client (Python, Node.js) and HTTP."
+    },
+    {
+      "path": "src/py_serverless_kit/core/cloud_logs.py",
+      "summary": "Read, list and delete the logs of a deployment, whatever cloud it runs on."
+    },
+    {
+      "path": "src/py_serverless_kit/core/deployer.py",
+      "summary": "High level package / deploy / remove orchestration used by the CLI."
+    },
+    {
+      "path": "src/py_serverless_kit/core/describe.py",
+      "summary": "Builds the deployment record that powers `pskit info` and the dashboard."
+    },
+    {
+      "path": "src/py_serverless_kit/core/executions.py",
+      "summary": "List, inspect, start and cancel workflow executions of a deployment."
+    },
+    {
+      "path": "src/py_serverless_kit/core/function_split.py",
+      "summary": "Move a function that shares a code file with others into its own sub-project folder."
+    },
+    {
+      "path": "src/py_serverless_kit/core/onprem_apps.py",
+      "summary": "More one-click on-prem services: AWS emulators, secret managers, monitoring, identity, search, automation, tools."
+    },
+    {
+      "path": "src/py_serverless_kit/core/onprem_balancers.py",
+      "summary": "Named load balancers: one saved server running OpenResty that many projects and clusters share by path."
+    },
+    {
+      "path": "src/py_serverless_kit/core/onprem_browser.py",
+      "summary": "pskit's own web UI for on-prem services whose native UI is missing or limited."
+    },
+    {
+      "path": "src/py_serverless_kit/core/onprem_clients.py",
+      "summary": "Use an on-prem resource from *any* program: a script, a web app, a cron job, another service."
+    },
+    {
+      "path": "src/py_serverless_kit/core/onprem_cluster.py",
+      "summary": "Scaling clusters for on-prem functions: Docker Swarm, Kubernetes (k3s) or HashiCorp Nomad on saved SSH servers."
+    },
+    {
+      "path": "src/py_serverless_kit/core/onprem_cluster_scripts.py",
+      "summary": "Shell scripts and workload manifests for on-prem scaling clusters (Docker Swarm, Kubernetes via k3s, Nomad)."
+    },
+    {
+      "path": "src/py_serverless_kit/core/onprem_console.py",
+      "summary": "A console for one-click services, in the studio and the CLI: type a command, see its output."
+    },
+    {
+      "path": "src/py_serverless_kit/core/onprem_control.py",
+      "summary": "Talk to a deployed on-premises host's control API (`/__pskit/...`)."
+    },
+    {
+      "path": "src/py_serverless_kit/core/onprem_follow.py",
+      "summary": "On-prem services follow the functions when they move (`pskit deploy` to another server or cluster, or after the server they ran on was removed)."
+    },
+    {
+      "path": "src/py_serverless_kit/core/onprem_lb.py",
+      "summary": "Load balancing algorithms and the OpenResty (nginx + Lua) config pskit writes for them."
+    },
+    {
+      "path": "src/py_serverless_kit/core/onprem_monitor.py",
+      "summary": "Live monitoring, alerts and data import for on-prem databases (and the CPU / memory of any service container)."
+    },
+    {
+      "path": "src/py_serverless_kit/core/onprem_network.py",
+      "summary": "The firewall rules on-prem servers need, with their real names and addresses (docs/onprem-network.md)."
+    },
+    {
+      "path": "src/py_serverless_kit/core/onprem_placement.py",
+      "summary": "Function placement on premises: groups of functions on different servers (or clusters), one project."
+    },
+    {
+      "path": "src/py_serverless_kit/core/onprem_replication.py",
+      "summary": "Replicated databases: one primary that takes the writes, read replicas on other servers, and an optional load balancer that gives the functions a single address and splits reads from writes."
+    },
+    {
+      "path": "src/py_serverless_kit/core/onprem_runtimes.py",
+      "summary": "Software pskit installs on an SSH server: language runtimes, web servers and tools."
+    },
+    {
+      "path": "src/py_serverless_kit/core/onprem_s3.py",
+      "summary": "The `s3` / `s3-node` on-prem services: pskit's Amazon S3 compatible server."
+    },
+    {
+      "path": "src/py_serverless_kit/core/onprem_secretsmanager.py",
+      "summary": "The `secretsmanager` / `secretsmanager-node` on-prem services: pskit's AWS Secrets Manager compatible server."
+    },
+    {
+      "path": "src/py_serverless_kit/core/onprem_servers.py",
+      "summary": "Saved SSH servers: name a machine once, then create services, install software, open consoles and deploy to it."
+    },
+    {
+      "path": "src/py_serverless_kit/core/onprem_services.py",
+      "summary": "Create, inspect, back up and remove the services on-premises functions use."
+    },
+    {
+      "path": "src/py_serverless_kit/core/onprem_smtp.py",
+      "summary": "The `smtp` on-prem service: a Node.js SMTP server that turns received mail into `smtp` events."
+    },
+    {
+      "path": "src/py_serverless_kit/core/onprem_terminal.py",
+      "summary": "A full terminal in the browser (ttyd in Docker on this machine): SSH to a server, or a shell / client inside a service's container."
+    },
+    {
+      "path": "src/py_serverless_kit/core/onprem_usage.py",
+      "summary": "Where each saved on-prem server is used, how the machines connect, and which functions really use a resource."
+    },
+    {
+      "path": "src/py_serverless_kit/core/project.py",
+      "summary": "A loaded project: config + provider + working directory, ready to build/deploy."
+    },
+    {
+      "path": "src/py_serverless_kit/core/resource_code.py",
+      "summary": "Ready-to-paste Python and Node.js handler code for each resource."
+    },
+    {
+      "path": "src/py_serverless_kit/core/resource_usage.py",
+      "summary": "End-to-end \"how to use this resource\" guide, for one resource of the current project."
+    },
+    {
+      "path": "src/py_serverless_kit/core/retain.py",
+      "summary": "`pskit remove --keep-resources`: destroy functions and triggers, keep the data."
+    },
+    {
+      "path": "src/py_serverless_kit/core/settings_bundle.py",
+      "summary": "Move a project's local settings to another machine: one passphrase-encrypted file."
+    },
+    {
+      "path": "src/py_serverless_kit/core/setup_check.py",
+      "summary": "Check what a provider needs on this machine, and explain how to fix what's missing."
+    },
+    {
+      "path": "src/py_serverless_kit/core/testing.py",
+      "summary": "Test functions with real events: what to send, how, and sending it."
+    },
+    {
+      "path": "src/py_serverless_kit/dashboard/__init__.py",
+      "summary": ""
+    },
+    {
+      "path": "src/py_serverless_kit/dashboard/generator.py",
+      "summary": "Generate the deployment dashboard: one self-contained `index.html`."
+    },
+    {
+      "path": "src/py_serverless_kit/dashboard/server.py",
+      "summary": "`pskit dashboard --serve`: the dashboard page plus a small JSON API."
+    },
+    {
+      "path": "src/py_serverless_kit/local/__init__.py",
+      "summary": ""
+    },
+    {
+      "path": "src/py_serverless_kit/local/runner.py",
+      "summary": "Run handlers and workflows on your machine, exactly as the cloud adapters would."
+    },
+    {
+      "path": "src/py_serverless_kit/local/server.py",
+      "summary": "`pskit dev` - a local HTTP server that routes requests to your handlers."
+    },
+    {
+      "path": "src/py_serverless_kit/packaging/__init__.py",
+      "summary": ""
+    },
+    {
+      "path": "src/py_serverless_kit/packaging/builder.py",
+      "summary": "Build the deployment artifact (a deterministic zip)."
+    },
+    {
+      "path": "src/py_serverless_kit/packaging/node.py",
+      "summary": "Node.js / TypeScript build steps shared by packaging and local runs."
+    },
+    {
+      "path": "src/py_serverless_kit/packaging/subprojects.py",
+      "summary": "Function sub-projects: a function whose handler lives in its own folder with its own dependencies."
+    },
+    {
+      "path": "src/py_serverless_kit/providers/__init__.py",
+      "summary": ""
+    },
+    {
+      "path": "src/py_serverless_kit/providers/alibaba.py",
+      "summary": "Alibaba Cloud: Function Compute 3.0 + HTTP / timer / OSS / MNS-topic triggers."
+    },
+    {
+      "path": "src/py_serverless_kit/providers/aws.py",
+      "summary": "AWS: Lambda + API Gateway HTTP API + EventBridge Scheduler + SQS + S3 + SNS + Step Functions."
+    },
+    {
+      "path": "src/py_serverless_kit/providers/azure.py",
+      "summary": "Azure: Linux Function App (Consumption plan, Python v2 / Node.js v4 programming model)."
+    },
+    {
+      "path": "src/py_serverless_kit/providers/base.py",
+      "summary": "Provider plug-in contract."
+    },
+    {
+      "path": "src/py_serverless_kit/providers/cloudflare.py",
+      "summary": "Cloudflare Workers, one Worker script per function, in Python (Pyodide) or JavaScript."
+    },
+    {
+      "path": "src/py_serverless_kit/providers/digitalocean.py",
+      "summary": "DigitalOcean Functions."
+    },
+    {
+      "path": "src/py_serverless_kit/providers/gcp.py",
+      "summary": "GCP: Cloud Functions (2nd gen) + Cloud Scheduler + Pub/Sub + Cloud Storage + Cloud Workflows."
+    },
+    {
+      "path": "src/py_serverless_kit/providers/huawei.py",
+      "summary": "Huawei Cloud: FunctionGraph + dedicated API Gateway + timer / OBS / SMN triggers."
+    },
+    {
+      "path": "src/py_serverless_kit/providers/ibm.py",
+      "summary": "IBM Cloud: Code Engine functions (HTTP endpoints)."
+    },
+    {
+      "path": "src/py_serverless_kit/providers/onprem.py",
+      "summary": "On-premises provider."
+    },
+    {
+      "path": "src/py_serverless_kit/providers/onprem_catalog.py",
+      "summary": "Data catalog of the on-premises resource drivers, used by `pskit studio` forms."
+    },
+    {
+      "path": "src/py_serverless_kit/providers/onprem_remote.py",
+      "summary": "Laptop-side apply/destroy for an on-premises host."
+    },
+    {
+      "path": "src/py_serverless_kit/providers/onprem_spec.py",
+      "summary": "Parse and validate `provider.options.deploy` for the on-premises provider."
+    },
+    {
+      "path": "src/py_serverless_kit/providers/oracle.py",
+      "summary": "Oracle Cloud Infrastructure: OCI Functions (container images) + API Gateway + Events."
+    },
+    {
+      "path": "src/py_serverless_kit/providers/regions.py",
+      "summary": "Public regions per built-in provider, for pickers (studio) and help text."
+    },
+    {
+      "path": "src/py_serverless_kit/providers/registry.py",
+      "summary": "Provider registry."
+    },
+    {
+      "path": "src/py_serverless_kit/providers/schedule.py",
+      "summary": "Convert the portable schedule syntax into each provider's dialect."
+    },
+    {
+      "path": "src/py_serverless_kit/providers/tencent.py",
+      "summary": "Tencent Cloud: SCF + API Gateway + timer / COS triggers."
+    },
+    {
+      "path": "src/py_serverless_kit/providers/terraform_doc.py",
+      "summary": "Builder for Terraform JSON configuration (`main.tf.json`)."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/__init__.py",
+      "summary": "Portable function runtime."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/adapters/__init__.py",
+      "summary": "Per-provider translation between native payloads and the portable model."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/adapters/_httpfn.py",
+      "summary": "Shared logic for providers where *every* invocation arrives as an HTTP-ish request (IBM Code Engine, DigitalOcean web functions, Cloudflare Workers, OCI behind API Gateway)."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/adapters/alibaba.py",
+      "summary": "Alibaba Cloud Function Compute 3.0 adapter."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/adapters/aws.py",
+      "summary": "AWS Lambda adapter."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/adapters/azure.py",
+      "summary": "Azure Functions (Python v2 programming model) adapter."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/adapters/base.py",
+      "summary": "Helpers shared by all adapters."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/adapters/cloudflare.py",
+      "summary": "Cloudflare Python Workers adapter (Pyodide)."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/adapters/digitalocean.py",
+      "summary": "DigitalOcean Functions adapter (`main(event, context)`)."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/adapters/gcp.py",
+      "summary": "Google Cloud Functions (2nd gen) adapter."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/adapters/huawei.py",
+      "summary": "Huawei Cloud FunctionGraph adapter."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/adapters/ibm.py",
+      "summary": "IBM Cloud Code Engine functions adapter."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/adapters/onprem.py",
+      "summary": "On-premises adapter."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/adapters/oracle.py",
+      "summary": "Oracle Cloud (OCI) Functions adapter, built on the Fn Project Python FDK."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/adapters/tencent.py",
+      "summary": "Tencent Cloud SCF adapter."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/batch.py",
+      "summary": "Partial batch failure reporting for queue / topic / storage events."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/context.py",
+      "summary": "Provider-neutral invocation context."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/cron.py",
+      "summary": "5-field cron and rate schedules for the on-premises host."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/dispatch.py",
+      "summary": "Calls the user's handler with a normalized event and normalizes the result."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/drivers/__init__.py",
+      "summary": "External backends the on-premises host can use for queues and storage."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/drivers/_aws.py",
+      "summary": "AWS Signature Version 4 and credential lookup, shared by the `s3` and `sqs` drivers."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/drivers/_http.py",
+      "summary": "Small HTTP helper shared by the REST-based drivers (standard library only)."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/drivers/azure.py",
+      "summary": "Azure Storage Queue and Blob drivers (REST, standard library only)."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/drivers/cloudflare.py",
+      "summary": "Cloudflare Queues driver through the HTTP pull consumer API (standard library only)."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/drivers/gcp.py",
+      "summary": "Google Cloud Pub/Sub (pull) and Cloud Storage drivers (REST, standard library only)."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/drivers/mns.py",
+      "summary": "Alibaba Cloud MNS (Message Service) queue driver (REST + XML, standard library only)."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/drivers/probe.py",
+      "summary": "Check that a database / cache / custom service answers (standard library only)."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/drivers/pskit_host.py",
+      "summary": "A built-in queue of another pskit on-premises host (standard library only)."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/drivers/redis.py",
+      "summary": "Redis-backed queue for the on-premises host (standard library only)."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/drivers/redis_stream.py",
+      "summary": "A Redis / Valkey stream with a consumer group as an on-prem queue (standard library only)."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/drivers/s3.py",
+      "summary": "S3-compatible object storage for the on-premises host (standard library only)."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/drivers/sqs.py",
+      "summary": "AWS SQS queue driver (JSON protocol, SigV4, standard library only)."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/errors.py",
+      "summary": "Exceptions a handler can raise to produce a well-formed HTTP error response."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/event.py",
+      "summary": "Provider-neutral event model."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/executions.py",
+      "summary": "Tracked workflow executions for the embedded engine."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/hostlog.py",
+      "summary": "Log capture for the on-premises host."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/invoke.py",
+      "summary": "Portable function-to-function invocation."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/log.py",
+      "summary": "Structured JSON logging that every provider's log pipeline can ingest."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/manifest.py",
+      "summary": "Reads `pskit_manifest.json` - the per-bundle description of every function."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/node_worker.py",
+      "summary": "Drive Node.js functions from Python through `pskit_runtime/worker.js`."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/onprem_host.py",
+      "summary": "On-premises host: one process for HTTP, schedules, queues, storage and topics."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/peers.py",
+      "summary": "Function groups on other servers (on-prem `provider.options.placement`): reach them over HTTP."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/resources.py",
+      "summary": "Read the `resources:` bindings of the current function."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/response.py",
+      "summary": "Provider-neutral HTTP response model."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/routing.py",
+      "summary": "Tiny route matcher used where the provider has no API gateway in front of the function (GCP, IBM, DigitalOcean, Cloudflare, ...) and by the local dev server."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/secrets.py",
+      "summary": "Read (and write) secrets from handlers with one call on every provider."
+    },
+    {
+      "path": "src/py_serverless_kit/runtime/workflow.py",
+      "summary": "Embedded workflow (state machine) engine."
+    },
+    {
+      "path": "src/py_serverless_kit/studio/__init__.py",
+      "summary": "`pskit studio`: a local web app that builds pskit projects without hand-written YAML."
+    },
+    {
+      "path": "src/py_serverless_kit/studio/devenv.py",
+      "summary": "The project's local environment: a `.venv` with `requirements.txt` (Python) or `npm install` (Node.js)."
+    },
+    {
+      "path": "src/py_serverless_kit/studio/discover.py",
+      "summary": "`GET /api/discover`: list existing queues, buckets, topics and workflows to pick from."
+    },
+    {
+      "path": "src/py_serverless_kit/studio/files.py",
+      "summary": "Project file access for the studio's code editor, confined to the project root."
+    },
+    {
+      "path": "src/py_serverless_kit/studio/guides.py",
+      "summary": "The step-by-step resource guides (`docs/resource-guides`) for the studio."
+    },
+    {
+      "path": "src/py_serverless_kit/studio/jobs.py",
+      "summary": "Run pskit commands (validate, deploy, ...) for the studio and stream their output."
+    },
+    {
+      "path": "src/py_serverless_kit/studio/meta.py",
+      "summary": "`GET /api/meta`: the catalog that drives every studio form."
+    },
+    {
+      "path": "src/py_serverless_kit/studio/node_stubs.py",
+      "summary": "Handler stubs for Node.js services (TypeScript, ESM or CommonJS JavaScript)."
+    },
+    {
+      "path": "src/py_serverless_kit/studio/project.py",
+      "summary": "Read, validate and save `pskit.yml` for the studio."
+    },
+    {
+      "path": "src/py_serverless_kit/studio/server.py",
+      "summary": "`pskit studio`: build a project in the browser instead of writing YAML by hand."
+    },
+    {
+      "path": "src/py_serverless_kit/studio/system.py",
+      "summary": "Studio helpers that reach outside the project: a file picker, setup checks and deployed logs."
+    },
+    {
+      "path": "src/py_serverless_kit/studio/vscode.py",
+      "summary": "Full VS Code in the browser: code-server in Docker, pulled on first use."
+    },
+    {
+      "path": "src/py_serverless_kit/terraform/__init__.py",
+      "summary": ""
+    },
+    {
+      "path": "src/py_serverless_kit/terraform/runner.py",
+      "summary": "Thin, testable wrapper around the `terraform` / `tofu` binary."
+    },
+    {
+      "path": "src/py_serverless_kit/workflows/__init__.py",
+      "summary": "Workflow (state machine) compilers."
+    },
+    {
+      "path": "src/py_serverless_kit/workflows/asl.py",
+      "summary": "Compile a portable workflow definition to Amazon States Language."
+    },
+    {
+      "path": "src/py_serverless_kit/workflows/azure_logic.py",
+      "summary": "Compile a portable workflow definition to an Azure Logic Apps (Consumption) definition."
+    },
+    {
+      "path": "src/py_serverless_kit/workflows/gcp.py",
+      "summary": "Compile a portable workflow definition to Google Cloud Workflows (JSON syntax)."
+    }
+  ],
+  "guides": [
+    {
+      "path": "docs/resource-guides/alibaba/cache.md",
+      "title": "Alibaba Cloud Tair / Redis (`type: cache`)"
+    },
+    {
+      "path": "docs/resource-guides/alibaba/custom.md",
+      "title": "Other Alibaba Cloud services (`type: custom`)"
+    },
+    {
+      "path": "docs/resource-guides/alibaba/database.md",
+      "title": "Alibaba Cloud databases (`type: database`)"
+    },
+    {
+      "path": "docs/resource-guides/alibaba/queue.md",
+      "title": "Alibaba Cloud SMQ / MNS queue (`type: queue`)"
+    },
+    {
+      "path": "docs/resource-guides/alibaba/README.md",
+      "title": "Alibaba Cloud resources"
+    },
+    {
+      "path": "docs/resource-guides/alibaba/storage.md",
+      "title": "Alibaba Cloud OSS bucket (`type: storage`)"
+    },
+    {
+      "path": "docs/resource-guides/alibaba/topic.md",
+      "title": "Alibaba Cloud SMQ / MNS topic (`type: topic`)"
+    },
+    {
+      "path": "docs/resource-guides/aws/cache.md",
+      "title": "Amazon ElastiCache / MemoryDB (`type: cache`)"
+    },
+    {
+      "path": "docs/resource-guides/aws/custom.md",
+      "title": "Other AWS services (`type: custom`)"
+    },
+    {
+      "path": "docs/resource-guides/aws/database.md",
+      "title": "Amazon RDS / Aurora (`type: database`)"
+    },
+    {
+      "path": "docs/resource-guides/aws/queue.md",
+      "title": "Amazon SQS queue (`type: queue`)"
+    },
+    {
+      "path": "docs/resource-guides/aws/README.md",
+      "title": "AWS resources"
+    },
+    {
+      "path": "docs/resource-guides/aws/storage.md",
+      "title": "Amazon S3 bucket (`type: storage`)"
+    },
+    {
+      "path": "docs/resource-guides/aws/topic.md",
+      "title": "Amazon SNS topic (`type: topic`)"
+    },
+    {
+      "path": "docs/resource-guides/azure/cache.md",
+      "title": "Azure Redis (`type: cache`)"
+    },
+    {
+      "path": "docs/resource-guides/azure/custom.md",
+      "title": "Other Azure services (`type: custom`)"
+    },
+    {
+      "path": "docs/resource-guides/azure/database.md",
+      "title": "Azure databases (`type: database`)"
+    },
+    {
+      "path": "docs/resource-guides/azure/queue.md",
+      "title": "Azure Storage queue (`type: queue`)"
+    },
+    {
+      "path": "docs/resource-guides/azure/README.md",
+      "title": "Azure resources"
+    },
+    {
+      "path": "docs/resource-guides/azure/storage.md",
+      "title": "Azure Blob container (`type: storage`)"
+    },
+    {
+      "path": "docs/resource-guides/azure/topic.md",
+      "title": "Azure Service Bus topic (`type: topic`)"
+    },
+    {
+      "path": "docs/resource-guides/cloudflare/cache.md",
+      "title": "Workers KV (`type: cache`)"
+    },
+    {
+      "path": "docs/resource-guides/cloudflare/custom.md",
+      "title": "Other Cloudflare services and APIs (`type: custom`)"
+    },
+    {
+      "path": "docs/resource-guides/cloudflare/database.md",
+      "title": "Cloudflare databases (`type: database`)"
+    },
+    {
+      "path": "docs/resource-guides/cloudflare/queue.md",
+      "title": "Cloudflare Queues (`type: queue`)"
+    },
+    {
+      "path": "docs/resource-guides/cloudflare/README.md",
+      "title": "Cloudflare resources"
+    },
+    {
+      "path": "docs/resource-guides/cloudflare/storage.md",
+      "title": "Cloudflare R2 bucket (`type: storage`)"
+    },
+    {
+      "path": "docs/resource-guides/cloudflare/topic.md",
+      "title": "Topics on Cloudflare (`type: topic`)"
+    },
+    {
+      "path": "docs/resource-guides/compatibility.md",
+      "title": "Existing cloud code with pskit"
+    },
+    {
+      "path": "docs/resource-guides/digitalocean/cache.md",
+      "title": "DigitalOcean Managed Valkey (`type: cache`)"
+    },
+    {
+      "path": "docs/resource-guides/digitalocean/custom.md",
+      "title": "Other DigitalOcean services (`type: custom`)"
+    },
+    {
+      "path": "docs/resource-guides/digitalocean/database.md",
+      "title": "DigitalOcean Managed databases (`type: database`)"
+    },
+    {
+      "path": "docs/resource-guides/digitalocean/queue.md",
+      "title": "Queues on DigitalOcean (`type: queue`)"
+    },
+    {
+      "path": "docs/resource-guides/digitalocean/README.md",
+      "title": "DigitalOcean resources"
+    },
+    {
+      "path": "docs/resource-guides/digitalocean/storage.md",
+      "title": "DigitalOcean Spaces bucket (`type: storage`)"
+    },
+    {
+      "path": "docs/resource-guides/digitalocean/topic.md",
+      "title": "DigitalOcean Managed Kafka topic (`type: topic`)"
+    },
+    {
+      "path": "docs/resource-guides/gcp/cache.md",
+      "title": "Memorystore for Redis / Valkey (`type: cache`)"
+    },
+    {
+      "path": "docs/resource-guides/gcp/custom.md",
+      "title": "Other Google Cloud services (`type: custom`)"
+    },
+    {
+      "path": "docs/resource-guides/gcp/database.md",
+      "title": "Cloud SQL (`type: database`)"
+    },
+    {
+      "path": "docs/resource-guides/gcp/queue.md",
+      "title": "Pub/Sub as a queue (`type: queue`)"
+    },
+    {
+      "path": "docs/resource-guides/gcp/README.md",
+      "title": "Google Cloud resources"
+    },
+    {
+      "path": "docs/resource-guides/gcp/storage.md",
+      "title": "Cloud Storage bucket (`type: storage`)"
+    },
+    {
+      "path": "docs/resource-guides/gcp/topic.md",
+      "title": "Pub/Sub topic (`type: topic`)"
+    },
+    {
+      "path": "docs/resource-guides/huawei/cache.md",
+      "title": "Huawei DCS for Redis (`type: cache`)"
+    },
+    {
+      "path": "docs/resource-guides/huawei/custom.md",
+      "title": "Other Huawei Cloud services (`type: custom`)"
+    },
+    {
+      "path": "docs/resource-guides/huawei/database.md",
+      "title": "Huawei RDS (`type: database`)"
+    },
+    {
+      "path": "docs/resource-guides/huawei/queue.md",
+      "title": "Huawei DMS queue (`type: queue`)"
+    },
+    {
+      "path": "docs/resource-guides/huawei/README.md",
+      "title": "Huawei Cloud resources"
+    },
+    {
+      "path": "docs/resource-guides/huawei/storage.md",
+      "title": "Huawei OBS bucket (`type: storage`)"
+    },
+    {
+      "path": "docs/resource-guides/huawei/topic.md",
+      "title": "Huawei SMN topic (`type: topic`)"
+    },
+    {
+      "path": "docs/resource-guides/ibm/cache.md",
+      "title": "IBM Databases for Redis (`type: cache`)"
+    },
+    {
+      "path": "docs/resource-guides/ibm/custom.md",
+      "title": "Other IBM Cloud services (`type: custom`)"
+    },
+    {
+      "path": "docs/resource-guides/ibm/database.md",
+      "title": "IBM Cloud databases (`type: database`)"
+    },
+    {
+      "path": "docs/resource-guides/ibm/queue.md",
+      "title": "IBM MQ queue (`type: queue`)"
+    },
+    {
+      "path": "docs/resource-guides/ibm/README.md",
+      "title": "IBM Cloud resources"
+    },
+    {
+      "path": "docs/resource-guides/ibm/storage.md",
+      "title": "IBM Cloud Object Storage bucket (`type: storage`)"
+    },
+    {
+      "path": "docs/resource-guides/ibm/topic.md",
+      "title": "IBM Event Streams topic (`type: topic`)"
+    },
+    {
+      "path": "docs/resource-guides/onprem/cache.md",
+      "title": "On-premises caches (`type: cache`)"
+    },
+    {
+      "path": "docs/resource-guides/onprem/custom.md",
+      "title": "Other on-premises services (`type: custom`)"
+    },
+    {
+      "path": "docs/resource-guides/onprem/database.md",
+      "title": "On-premises databases (`type: database`)"
+    },
+    {
+      "path": "docs/resource-guides/onprem/queue.md",
+      "title": "On-premises queues (`type: queue`)"
+    },
+    {
+      "path": "docs/resource-guides/onprem/README.md",
+      "title": "On-premises resources"
+    },
+    {
+      "path": "docs/resource-guides/onprem/secrets.md",
+      "title": "Secret managers on premises"
+    },
+    {
+      "path": "docs/resource-guides/onprem/services.md",
+      "title": "One-click services for on-premises functions"
+    },
+    {
+      "path": "docs/resource-guides/onprem/storage.md",
+      "title": "On-premises storage (`type: storage`)"
+    },
+    {
+      "path": "docs/resource-guides/onprem/topic.md",
+      "title": "On-premises topics (`type: topic`)"
+    },
+    {
+      "path": "docs/resource-guides/oracle/cache.md",
+      "title": "OCI Cache (`type: cache`)"
+    },
+    {
+      "path": "docs/resource-guides/oracle/custom.md",
+      "title": "Other OCI services (`type: custom`)"
+    },
+    {
+      "path": "docs/resource-guides/oracle/database.md",
+      "title": "OCI databases (`type: database`)"
+    },
+    {
+      "path": "docs/resource-guides/oracle/queue.md",
+      "title": "OCI Queue (`type: queue`)"
+    },
+    {
+      "path": "docs/resource-guides/oracle/README.md",
+      "title": "Oracle Cloud (OCI) resources"
+    },
+    {
+      "path": "docs/resource-guides/oracle/storage.md",
+      "title": "OCI Object Storage bucket (`type: storage`)"
+    },
+    {
+      "path": "docs/resource-guides/oracle/topic.md",
+      "title": "OCI Notifications topic (`type: topic`)"
+    },
+    {
+      "path": "docs/resource-guides/README.md",
+      "title": "Adding resources: step-by-step guides"
+    },
+    {
+      "path": "docs/resource-guides/tencent/cache.md",
+      "title": "Tencent Cloud Redis (`type: cache`)"
+    },
+    {
+      "path": "docs/resource-guides/tencent/custom.md",
+      "title": "Other Tencent Cloud services (`type: custom`)"
+    },
+    {
+      "path": "docs/resource-guides/tencent/database.md",
+      "title": "Tencent Cloud databases (`type: database`)"
+    },
+    {
+      "path": "docs/resource-guides/tencent/queue.md",
+      "title": "Tencent Cloud TDMQ for CMQ queue (`type: queue`)"
+    },
+    {
+      "path": "docs/resource-guides/tencent/README.md",
+      "title": "Tencent Cloud resources"
+    },
+    {
+      "path": "docs/resource-guides/tencent/storage.md",
+      "title": "Tencent Cloud COS bucket (`type: storage`)"
+    },
+    {
+      "path": "docs/resource-guides/tencent/topic.md",
+      "title": "Tencent Cloud TDMQ for CMQ topic (`type: topic`)"
+    }
+  ],
+  "studio_strings": {
+    "dashboard-ui/src/studio/App.tsx": [
+      "Toggle light/dark theme",
+      "Toggle theme",
+      "Loading project…",
+      "This studio session needs its link",
+      "pskit studio --open",
+      "The token lives only in this browser tab and is never written to disk.",
+      "Menu",
+      "validate &amp; deploy as",
+      "Target provider",
+      "stage",
+      "Stage",
+      "Undo (Ctrl+Z)",
+      "Undo",
+      "Redo (Ctrl+Shift+Z)",
+      "Redo",
+      "Problems",
+      "Validate now",
+      "Validate",
+      "Save pskit.yml (Ctrl+S)",
+      "unsaved changes",
+      "Import / export the project",
+      "Import / export settings and config",
+      "Sections",
+      "Close problems",
+      "pskit.yml changed on disk",
+      "Cancel",
+      "Reload (discard my changes)",
+      "Overwrite",
+      "Someone (or another editor) saved",
+      "pskit.yml"
+    ],
+    "dashboard-ui/src/studio/components/AlgorithmPicker.tsx": [
+      "Load balancing algorithm",
+      "default",
+      "Pros",
+      "Cons",
+      "Best for:",
+      "Weights",
+      "Weights (optional)",
+      "LB"
+    ],
+    "dashboard-ui/src/studio/components/CloudResources.tsx": [
+      "The resources and everything in them (objects, messages) are deleted permanently.",
+      "buckets, queues and topics pskit created",
+      "Read from the Terraform state of this stage.",
+      "Kept",
+      "Press Load (it runs terraform init and reads the state).",
+      "Delete"
+    ],
+    "dashboard-ui/src/studio/components/CodeEditor.tsx": [],
+    "dashboard-ui/src/studio/components/Console.tsx": [
+      "follow",
+      "Cancel"
+    ],
+    "dashboard-ui/src/studio/components/DeploySteps.tsx": [
+      "running",
+      "MAX_SHOWN && (",
+      "Output",
+      "End of the host&apos;s log:",
+      "REQUIRED",
+      "it does not work without;",
+      "NEEDED",
+      "optional",
+      "pskit falls back to an SSH tunnel.",
+      "Level",
+      "Direction",
+      "Port",
+      "From / to",
+      "Why",
+      "With",
+      "ufw",
+      "copy",
+      "Stopped here",
+      "default",
+      "Terraform resource",
+      "Cancel"
+    ],
+    "dashboard-ui/src/studio/components/EnableControl.tsx": [],
+    "dashboard-ui/src/studio/components/Feedback.tsx": [
+      "Dismiss",
+      "Promise",
+      "new Promise",
+      "Cancel",
+      "Type",
+      "to confirm"
+    ],
+    "dashboard-ui/src/studio/components/FilePicker.tsx": [
+      "Home",
+      "Use this folder",
+      "Key files only",
+      "/home/me/.ssh",
+      "Go",
+      "Listing…",
+      "Nothing here",
+      "Files",
+      "Showing the first 1000 entries. Type a path to go elsewhere."
+    ],
+    "dashboard-ui/src/studio/components/FirewallPanel.tsx": [
+      "The ports each server must allow, between the servers pskit set up.",
+      "REQUIRED",
+      "NEEDED",
+      "for that feature;",
+      "optional",
+      "docs/onprem-network.md",
+      "Reading the firewall rules…",
+      "Nothing on premises yet",
+      "No ports to open on this server.",
+      "Level",
+      "Direction",
+      "Port",
+      "From / to",
+      "Why",
+      "With",
+      "ufw",
+      "copy"
+    ],
+    "dashboard-ui/src/studio/components/Forms.tsx": [
+      "required",
+      "Custom…",
+      "Custom value",
+      "Browse…",
+      "Clear",
+      "Value source",
+      "ENV_VARIABLE_NAME",
+      "env",
+      "Remove",
+      "Add entry"
+    ],
+    "dashboard-ui/src/studio/components/Markdown.tsx": [
+      "Copy"
+    ],
+    "dashboard-ui/src/studio/components/Misc.tsx": [
+      "No changes.",
+      "Changes",
+      "Listing isn",
+      "Showing the first 200.",
+      "No problems found."
+    ],
+    "dashboard-ui/src/studio/components/Monitoring.tsx": [
+      "Promise",
+      "CPU",
+      "RAM",
+      "Disk",
+      "Live monitoring",
+      "Measuring…",
+      "Container",
+      "State",
+      "Memory",
+      "Disk (data)",
+      "Alert me (optional): CPU, memory, disk, replica lag, a container down",
+      "Run a function",
+      "Webhook",
+      "https://hooks.slack.com/services/…",
+      "CPU %",
+      "90",
+      "Memory %",
+      "Disk %",
+      "85",
+      "Replica lag (s)",
+      "60",
+      "Cooldown (min)",
+      "30",
+      "Also when a container is down",
+      "The studio checks every minute while it runs; from a server or cron use",
+      "on",
+      "off",
+      "Turn off",
+      "Send a test alert",
+      "Check now"
+    ],
+    "dashboard-ui/src/studio/components/OnPremMachines.tsx": [
+      "Services already created there keep running; pskit only forgets the connection.",
+      "Could not read where it is used.",
+      "Not used anywhere in this project: safe to forget.",
+      "Servers",
+      "pskit deploy --server NAME",
+      "or",
+      "Deploy → Machine",
+      "Probe every server",
+      "No saved servers yet.",
+      "Reachable",
+      "Name",
+      "Connection",
+      "Login",
+      "Used in",
+      "Live CPU, RAM and disk use (every 4 s while on)",
+      "Run commands on the server",
+      "Shell",
+      "A full SSH terminal in the browser (Docker)",
+      "Terminal",
+      "Create a service or install Node.js, nginx, ...",
+      "Install / create",
+      "Edit",
+      "Forget",
+      "Host",
+      "13.72.87.80 or server.example.com",
+      "User",
+      "ubuntu / azureuser / root",
+      "SSH port",
+      "Log in with",
+      "Private key (.pem)",
+      "~/.ssh/server.pem",
+      "SSH password",
+      "Use sudo (the user is not root and not in the docker group)",
+      "On this server (optional)",
+      "Home path",
+      "/opt/pskit",
+      "Bind address",
+      "0.0.0.0 / 10.0.0.5",
+      "Data directory",
+      "/data/pskit",
+      "Description",
+      "optional note",
+      "Promise",
+      "Mode",
+      "Interactive session in the browser (Docker)",
+      "Full terminal",
+      "Each line runs once and prints its output. ↑ / ↓ for history, \"clear\" to clear.",
+      "running…",
+      "Run",
+      "Open in a new tab",
+      "Stop terminal",
+      "The terminal needs Docker on this machine (it runs ttyd in a container).",
+      "Starting ttyd in Docker (the first time builds a small image, about a minute)…",
+      "removes it."
+    ],
+    "dashboard-ui/src/studio/components/OnPremServices.tsx": [
+      "On-prem services",
+      "Guide",
+      "Nothing created yet.",
+      "Key",
+      "Service",
+      "Used as",
+      "Where",
+      "Endpoint",
+      "Details",
+      "pskit",
+      "Run commands: redis-cli, psql, mongosh, rpk, bao, ... or sh in the container",
+      "Console",
+      "Interactive client in a browser terminal (Docker)",
+      "Terminal",
+      "Add the resource (and its triggers) to pskit.yml",
+      "Add to pskit.yml",
+      "c.id === svc.service)?.backup && (",
+      "Backup",
+      "Remove",
+      "roleType(r) === resourceType)) && (",
+      "Pick another",
+      "Resource key",
+      "Domains",
+      "inbound.example.com",
+      "Use as",
+      "Scaling",
+      "Cluster",
+      "Server in the cluster",
+      "Server",
+      "Version",
+      "other version",
+      "Host",
+      "10.0.0.5",
+      "User",
+      "ubuntu",
+      "SSH port",
+      "Log in with",
+      "Private key (.pem)",
+      "~/.ssh/server.pem",
+      "No file: OpenSSH uses your SSH agent,",
+      "and",
+      "in a terminal.",
+      "SSH password",
+      "Use sudo (the SSH user is not root and not in the docker group)",
+      "Port",
+      "Security",
+      "Password",
+      "generated",
+      "Generate",
+      "Show",
+      "Listen on",
+      "Import data",
+      "none: start empty",
+      "Pick a dump to import",
+      "Alerts",
+      "Web UI",
+      "Web UI login",
+      "Web UI password",
+      "Trigger functions",
+      "No functions yet.",
+      "Advanced",
+      "Address functions use",
+      "Docker image",
+      "pskit host URL",
+      "http://10.0.0.5:8080",
+      "Largest mail (MB)",
+      "25",
+      "Back up now",
+      "when you create one.",
+      "Save to folder",
+      ".pskit/backups",
+      "Folder for the backup",
+      "Copy guide",
+      "Show passwords and URLs",
+      "Terminal:",
+      "Loading…",
+      "Checking…",
+      "Resources → How to use",
+      "on the resource, section 7).",
+      "Check web UI",
+      "Login",
+      "Add web UI",
+      "Remove web UI",
+      "Show values",
+      "Resource in pskit.yml",
+      "Backups",
+      "Container logs"
+    ],
+    "dashboard-ui/src/studio/components/Placement.tsx": [
+      "Where functions run",
+      "provider.options.placement",
+      "functions/&lt;name&gt;/",
+      "provider.options.placement.gateway",
+      "Two groups on one server each need their own port.",
+      "Group name",
+      "Functions not ticked in another group, and every workflow, run here",
+      "default group",
+      "Functions not ticked in another group, and every workflow, will run here",
+      "Make default",
+      "Its functions move to the default group",
+      "Remove group",
+      "Runs on",
+      "This machine (local)",
+      "Saved servers",
+      "Scaling clusters",
+      "Port",
+      "Advertise URL",
+      "http://10.0.0.9:8080",
+      "No functions yet.",
+      "All here",
+      "None",
+      "Add another group to move functions out of the default group.",
+      "Move functions to another group",
+      "Move",
+      "to",
+      "Group to move to",
+      "Cancel",
+      "Where the project deploys (the deploy target)",
+      "New placement group",
+      "Other functions",
+      "gpu",
+      "Where the group runs",
+      "Saved server",
+      "Cluster",
+      "Pick a cluster…",
+      "The machine running pskit (and this studio).",
+      "Group",
+      "Where",
+      "Endpoint",
+      "Functions",
+      "Load balancer",
+      "URL"
+    ],
+    "dashboard-ui/src/studio/components/ProviderCard.tsx": [
+      "Provider"
+    ],
+    "dashboard-ui/src/studio/components/Replication.tsx": [
+      "Members run on",
+      "Primary (writes)",
+      "Read replicas",
+      "Save at least two servers below (one for the primary, one per replica).",
+      "Primary → replicas",
+      "Load balancer",
+      "Load balancer port",
+      "Member",
+      "Address",
+      "State",
+      "Replication",
+      "Remove"
+    ],
+    "dashboard-ui/src/studio/components/ReplicationDiagram.tsx": [
+      "writes → primary",
+      "reads → replicas"
+    ],
+    "dashboard-ui/src/studio/components/ResourceData.tsx": [
+      "prefix, e.g. in/",
+      "Key",
+      "Size",
+      "Preview",
+      "Delete",
+      "Message",
+      "Body",
+      "Info",
+      "Built-in queues only",
+      "Close"
+    ],
+    "dashboard-ui/src/studio/components/ResourceGuides.tsx": [
+      "Resource guides",
+      "The guides are not installed with this copy of pskit.",
+      "Cloud"
+    ],
+    "dashboard-ui/src/studio/components/ResourceTester.tsx": [
+      "Copy",
+      "Use it in a handler",
+      "Language",
+      "Test connection",
+      "Deploy the on-prem host first, or use Send below.",
+      "Test a resource",
+      "Loading…",
+      "Test",
+      "page.",
+      "Resource",
+      "Used by",
+      "no functions",
+      "Reset to sample",
+      "How to test",
+      "Press",
+      "Watch the bound functions on the",
+      "Logs",
+      "With pskit",
+      "All resources",
+      "Environment variables",
+      "Python handler",
+      "Node.js handler",
+      "Then call that function from the",
+      "page (Direct invoke) to check the connection."
+    ],
+    "dashboard-ui/src/studio/components/ServerPicker.tsx": [
+      "Not deployed from this folder yet.",
+      "Deployed on"
+    ],
+    "dashboard-ui/src/studio/components/ServerUsage.tsx": [
+      "Nothing in this project names this server",
+      "not used anywhere",
+      "Where",
+      "As",
+      "Functions",
+      "none",
+      "Network map",
+      "Functions relying on it:"
+    ],
+    "dashboard-ui/src/studio/components/ServiceBrowser.tsx": [
+      "What",
+      "api.onpremBrowse",
+      "Promise",
+      "k.endsWith(\"/\")) ?",
+      "Folders are deleted with everything in them.",
+      "call",
+      "Every object (and every old version) in it is deleted too.",
+      "Bucket",
+      "no buckets yet",
+      "new-bucket-name",
+      "Bucket settings",
+      "Delete bucket",
+      "filter: name starts with…",
+      "Upload files",
+      "new folder",
+      "Refresh",
+      "working…",
+      "Select all",
+      "Name",
+      "Size",
+      "Modified",
+      "folder",
+      "Delete",
+      "Download",
+      "Info",
+      "Rename / move",
+      "Copy",
+      "o.key !== prefix).length && (",
+      "Next →",
+      "Valid for",
+      "From 1 second to 7 days. After that the link is refused.",
+      "Create link",
+      "Cancel",
+      "Hide",
+      "Version",
+      "Close",
+      "Set",
+      "Access",
+      "Make private",
+      "Make public (read)",
+      "Bucket policy (JSON, the S3 format)",
+      "no policy: private",
+      "Save policy",
+      "Every version is deleted.",
+      "secret",
+      "No secrets here yet.",
+      "Show values",
+      "Edit",
+      "In handlers:",
+      "key",
+      "value",
+      "Remove key",
+      "Save"
+    ],
+    "dashboard-ui/src/studio/main.tsx": [],
+    "dashboard-ui/src/studio/store.tsx": [
+      "Promise"
+    ],
+    "dashboard-ui/src/studio/views/Cluster.tsx": [
+      "Scaling cluster",
+      "Run this project&apos;s functions on several servers with",
+      "Docker Swarm",
+      "Kubernetes (k3s)",
+      "or",
+      "HashiCorp Nomad",
+      "Where → Scaling cluster",
+      "Clusters run on-prem functions. The project&apos;s provider is",
+      "onprem",
+      "Overview",
+      "to deploy to a cluster.",
+      "No cluster yet",
+      "Save your servers once (",
+      "Resources → On-prem services → Servers",
+      "Add a server",
+      "below).",
+      "Use for this project",
+      "The master",
+      "master",
+      "Check now and send the alert if every server is full",
+      "Check &amp; alert",
+      "Forget",
+      "Send requests to the master",
+      "too",
+      "Servers",
+      "A server is",
+      "full",
+      "Server",
+      "State",
+      "CPU",
+      "Memory",
+      "Disk",
+      "offline",
+      "Remove",
+      "Uninstall the orchestrator from the master and every joined server, then forget the cluster",
+      "Load balancer",
+      "outside",
+      "Rewrite its config from the servers and deployments now",
+      "Sync now",
+      "Change",
+      "Deployment",
+      "Public URL",
+      "above.",
+      "One line per request;",
+      "upstream=",
+      "Shared load balancers",
+      "http://LB/&lt;service&gt;/",
+      "Load balancers",
+      "None attached.",
+      "Detach",
+      "Attach",
+      "pskit installs Docker on the server over SSH and runs nginx there (container",
+      "pskit-lb",
+      "Port",
+      "Address in the URL (optional)",
+      "10.0.0.9",
+      "How it spreads requests",
+      "Deploy this project&apos;s functions to",
+      "provider.options.cluster",
+      "Web replicas",
+      "CPU per replica",
+      "Memory per replica (MB)",
+      "Port on the load balancer",
+      "Save, then",
+      "Deploy",
+      "Live requests",
+      "Live",
+      "Clear",
+      "Every request to",
+      "Answers",
+      "HTTP",
+      "Share",
+      "URL",
+      "shares",
+      "Answers only while every other server is down",
+      "backup",
+      "Time",
+      "Replica",
+      "Request",
+      "Status",
+      "ms",
+      "Function",
+      "Live logs",
+      "Deployment logs",
+      "Logs of every replica of",
+      "pskit logs -f",
+      "Resources on this cluster",
+      "None yet. Create one under",
+      "Resources → On-prem services",
+      "with",
+      "Resource",
+      "Service",
+      "Address",
+      "Deployed functions",
+      "Endpoint",
+      "Running",
+      "Public URL on the load balancer",
+      "The master: logs, tests and the admin API",
+      "Until the next deploy; keep it in Web replicas above",
+      "Scale",
+      "When every server is full",
+      "Optional. pskit calls your function with",
+      "event.data",
+      "CPU full at %",
+      "Memory full at %",
+      "Disk full at %",
+      "Alert function",
+      "Stage",
+      "any",
+      "Webhook (optional)",
+      "https://hooks.slack.com/services/…",
+      "Cooldown (minutes)",
+      "Watch while the studio runs",
+      "every (seconds)",
+      "Around the clock:",
+      "on an always-on machine (cron / systemd).",
+      "Save",
+      "Send test alert",
+      "Recent alerts",
+      "test",
+      "On:",
+      "Off:",
+      "New scaling cluster",
+      "Cluster name",
+      "How you refer to it:",
+      "prod",
+      "Orchestrator",
+      "Master server",
+      "Cluster address (optional)",
+      "10.0.0.5",
+      "Master serves requests",
+      "Send requests to the master too, not only to the joined servers",
+      "Join",
+      "10.0.0.6"
+    ],
+    "dashboard-ui/src/studio/views/Code.tsx": [
+      "Code",
+      "Edit handler code here, or open the whole project in VS Code (code-server in Docker).",
+      "Editor",
+      "unsaved",
+      "Find file…",
+      "New file",
+      "Refresh",
+      "app/new_module.py",
+      "Create",
+      "Loading files…",
+      "No file open",
+      "Pick a file on the left, or open a function's handler from the Functions page.",
+      "Save (Ctrl+S)",
+      "Checking Docker…",
+      "Docker is needed for full VS Code",
+      "Studio runs",
+      "Install Docker Desktop (Windows/macOS) or Docker Engine (Linux) and make sure",
+      "docker version",
+      "works in a terminal.",
+      "Running studio itself in a container? Mount the Docker socket (",
+      "PSKIT_STUDIO_HOST_ROOT",
+      "to the project's path",
+      "on the host",
+      "The built-in editor works without Docker.",
+      "Check again",
+      "image not pulled yet",
+      "image",
+      "CPython installed in the editor container (uv python install)",
+      "Python",
+      "image default",
+      "Official Node.js build installed in the editor container",
+      "Node.js",
+      "none",
+      "Open in new tab ↗",
+      "Recreate the editor container with the runtimes picked here (your files are kept)",
+      "Restart with these runtimes",
+      "Stop",
+      "VS Code"
+    ],
+    "dashboard-ui/src/studio/views/Deploy.tsx": [
+      "overrides, so the other clouds keep them.",
+      "This stage is deployed on",
+      "now. Deploying it on",
+      "Deploy",
+      "Runs pskit in the project folder as",
+      "Run on",
+      "Each group runs where its",
+      "Runs on",
+      "says in",
+      "Where functions run",
+      "pskit logs",
+      "use.",
+      "Cluster",
+      "No cluster yet",
+      "c.name === chosenCluster) &&",
+      "With placement this picks where the default group",
+      "runs; the other groups always run where their group says.",
+      "provider.options.cluster.replicas",
+      "Scaling cluster",
+      "page.",
+      "Machine",
+      "This stage is on a cluster now: pick the machine to move it to.",
+      "The stage remembers the machine of its last deploy: Test, Logs and",
+      "pskit trigger",
+      "use it, and the next deploy goes there unless you pick another (",
+      "Resources → On-prem services → Servers",
+      "pskit deploy --server NAME",
+      "provider.options.deploy.server",
+      "provider.options.placement",
+      "Applies to the Remove action. External resources are never deleted.",
+      "Firewall",
+      "the ports each server must allow",
+      "Recent jobs",
+      "h.status !== \"running\") ? (",
+      "Forget every finished job (running jobs are kept)",
+      "Clear finished",
+      "No jobs yet.",
+      "Remove from the list",
+      "unsupported",
+      "Other providers keep them. Save, then deploy.",
+      "Invoke a function locally",
+      "pskit invoke",
+      "Function",
+      "Event",
+      "Event type",
+      "Path",
+      "Payload (JSON)",
+      "Invoke",
+      "Run a workflow locally",
+      "pskit workflow run --history",
+      "Workflow",
+      "Input (JSON)",
+      "Run"
+    ],
+    "dashboard-ui/src/studio/views/Functions.tsx": [
+      "i.level === \"error\") &&",
+      "error",
+      "shared file",
+      "direct invoke",
+      "own !== undefined && own !== null && own !== \"\" ? (",
+      "inherited from provider",
+      "Send a test event",
+      "Test",
+      "Open handler code",
+      "Code",
+      "Duplicate",
+      "Delete",
+      "Functions",
+      "Each function is a handler plus the triggers that call it.",
+      "Search name, handler, trigger…",
+      "Create your first function",
+      "Function not found",
+      "Cancel",
+      "Open code",
+      "has errors",
+      "Basics",
+      "Function name",
+      "Deploy",
+      "Description",
+      "What does it do?",
+      "Handler",
+      "Dependencies",
+      "Runs on",
+      "Runtime",
+      "Memory (MB)",
+      "Timeout (s)",
+      "Architecture",
+      "Add a trigger",
+      "No triggers. The function can still be called with invoke() or from a workflow.",
+      "fix",
+      "Remove",
+      "Use",
+      "to keep it for the other providers.",
+      "Logging",
+      "log level and live logs",
+      "Log level",
+      "Live logs",
+      "not deployed yet",
+      "All functions:",
+      "Logs",
+      "page.",
+      "Environment variables",
+      "merged over the provider-wide ones",
+      "Concurrency & tags",
+      "Reserved concurrency / max instances",
+      "Tags",
+      "Add tag",
+      "Provider-specific options",
+      "functions.<name>.options",
+      "Changes to pskit.yml",
+      "Create the handler stub in the code now (otherwise when you save)",
+      "Some steps have errors. Fix them before creating the function.",
+      "Permissions (IAM)",
+      "advanced",
+      "Existing role",
+      "arn:aws:iam::123456789012:role/my-role",
+      "Effect",
+      "Actions",
+      "Resources"
+    ],
+    "dashboard-ui/src/studio/views/LoadBalancers.tsx": [
+      "Load balancers",
+      "One URL in front of many projects and clusters, by path:",
+      "http://lb/orders/",
+      "http://lb/billing/",
+      "provider.options.balancer: edge",
+      "static",
+      "rule or a",
+      "dynamic",
+      "pskit lb",
+      "Load balancers serve on-prem functions. The project&apos;s provider is",
+      "onprem",
+      "Overview",
+      "to put its deployments on one. Clusters can use one either way.",
+      "Loading…",
+      "No load balancer yet",
+      "Save one more server for it (",
+      "Resources → On-prem services → Servers",
+      "Add a server",
+      "Attach a",
+      "scaling cluster",
+      "balancer: NAME",
+      "provider.options",
+      "of a project, and deploy.",
+      "Name",
+      "URL",
+      "Server",
+      "Algorithm",
+      "Clusters",
+      "To stop using it only here, choose",
+      "Forget",
+      "instead: it keeps running for the others.",
+      "offline",
+      "Update",
+      "Rewrite its settings and every route now",
+      "Sync",
+      "Remove",
+      "Only this project stops managing it",
+      "writes this project&apos;s settings back,",
+      "CPU",
+      "Memory",
+      "Disk",
+      "Every deployment on an attached cluster gets",
+      "No cluster attached.",
+      "Detach",
+      "Routes",
+      "No route yet. Attach a cluster above, or add",
+      "under",
+      "Owner",
+      "Source",
+      "Backends",
+      "A deployment of another project or machine",
+      "another project",
+      "No algorithm of its own: the load balancer",
+      "Logs",
+      "The last 200 requests;",
+      "upstream=",
+      "Put this project on",
+      "provider.options.balancer",
+      "Path",
+      "Algorithm for this route",
+      "Save, then",
+      "Deploy",
+      "New load balancer",
+      "How projects refer to it:",
+      "edge",
+      "Port",
+      "Address in the URL (optional)",
+      "10.0.0.9",
+      "How it spreads requests",
+      "Attach clusters now (optional)",
+      "Apply",
+      "Address in the URL",
+      "Attach",
+      "Scaling cluster",
+      "Each deployment on the cluster gets",
+      "Cluster"
+    ],
+    "dashboard-ui/src/studio/views/Logs.tsx": [
+      "Logs",
+      "Logs of the functions deployed to",
+      "Setup &amp; credentials",
+      "if they can't be read.",
+      "Source",
+      "Every replica of cluster",
+      "Server",
+      "group",
+      "and",
+      "node",
+      "fields of a line say where it ran.",
+      "field says which one wrote it.",
+      "pskit logs -f",
+      "pskit logs --server NAME",
+      "Stored logs",
+      "list, select and delete"
+    ],
+    "dashboard-ui/src/studio/views/Network.tsx": [
+      "Network map",
+      "Refresh",
+      "Loading…",
+      "inbound to the selected machine",
+      "outbound from it",
+      "No servers and no connections yet. Save a server under",
+      "Resources → Servers",
+      "Connections between the project",
+      "Machines",
+      "Pick one on the map or here.",
+      "All machines",
+      "Inbound — accept",
+      "Outbound — open",
+      "Used in",
+      "None."
+    ],
+    "dashboard-ui/src/studio/views/NewProject.tsx": [
+      "Create a pskit project",
+      "Service name",
+      "Provider",
+      "Language",
+      "Template"
+    ],
+    "dashboard-ui/src/studio/views/Overview.tsx": [
+      "The current provider options move to",
+      "Overview & provider",
+      "Service-wide settings. Every function inherits these unless it overrides them.",
+      "Service",
+      "Service name",
+      "Use the values shown here",
+      "Provider",
+      "Defaults for every function",
+      "Region",
+      "Stage",
+      "dev",
+      "Runtime",
+      "Memory (MB)",
+      "Timeout (s)",
+      "Architecture",
+      "Log retention (days)",
+      "Environment variables",
+      "available to every function",
+      "Tags",
+      "Add tag",
+      "provider.options",
+      "Packaging",
+      "package",
+      "On-premises deployment",
+      "provider.options.deploy",
+      "Saved server",
+      "None: use the method below",
+      "s.name === chosen) &&",
+      "Where the host runs",
+      "Deploy method",
+      "Missing ssh, scp or Docker on this machine?",
+      "Setup &amp; credentials",
+      "Built-in services",
+      "provider.options.services",
+      "/var/pskit/queues",
+      "Host tuning",
+      "logs, executions, concurrency",
+      "Test SSH connection",
+      "connected",
+      "failed: see the log"
+    ],
+    "dashboard-ui/src/studio/views/Resources.tsx": [
+      "external",
+      "managed",
+      "builtin",
+      "i.level === \"error\") ?",
+      "error",
+      "Libraries, pskit.yml, Python / Node.js code and tests",
+      "How to use",
+      "s.key === r.name) && (",
+      "DNS records to add at your domain provider (A, MX), the port, and the mail fields handlers get",
+      "DNS guide",
+      "See the messages / objects it holds",
+      "Data",
+      "Send a test message / object",
+      "Test",
+      "Delete",
+      "Resources",
+      "Buckets, queues, topics, databases and any other service your functions use, once for every cloud.",
+      "Guides",
+      "An SMTP server (Node.js) that receives mail for your domain and runs functions with it",
+      "Start Redis, Kafka, PostgreSQL, MinIO, OpenBao, ... with Docker and add it here",
+      "On-prem services not in the resource list yet:",
+      "Declare a bucket, queue, topic, database or custom service, managed by pskit or one that already exists.",
+      "Key",
+      "Type",
+      "Mode",
+      "Native name",
+      "Browse account…",
+      "Connection",
+      "Add connection value",
+      "Bound functions",
+      "No functions yet.",
+      "On-premises driver",
+      "Used when you deploy with",
+      "f.key === \"class\") && (",
+      "Class",
+      "app.backends:RabbitQueue",
+      "class must look like package.module:ClassName",
+      "Constructor arguments",
+      "Add argument",
+      "Provider-specific options",
+      "On-prem options are set with the driver above.",
+      "Add option",
+      "external (pskit doesn",
+      "Copy the whole guide as Markdown",
+      "Copy guide",
+      "Test it",
+      "Loading…",
+      "Driver"
+    ],
+    "dashboard-ui/src/studio/views/Setup.tsx": [
+      "Setup & credentials",
+      "What this machine needs to deploy: tools, credentials and provider settings. Everything runs where pskit studio runs.",
+      "Provider",
+      "Operating system",
+      "Checking this machine…",
+      "the output of the last login / test",
+      "Checks",
+      "Move settings to another machine",
+      "export / import .pskit, encrypted",
+      "pskit settings export",
+      "import",
+      "secrets",
+      "pskit.yml",
+      "Export",
+      "Passphrase",
+      "Again",
+      "Include pskit.yml (functions, resources, providers)",
+      "Import",
+      "Settings file",
+      "Replace: remove saved servers, clusters and services that are not in the file (default: merge, the file",
+      "Settings",
+      "Added",
+      "Replaced",
+      "In the file:",
+      "Copy",
+      "AWS credentials (aws configure)",
+      "~/.aws/credentials",
+      "Writes the same files as",
+      "aws configure",
+      "AWS_PROFILE",
+      "below, or name it",
+      "default",
+      "Profile",
+      "Access key ID",
+      "AKIA…",
+      "Secret access key",
+      "Default region",
+      "Session token",
+      "Environment variables",
+      "read by Terraform and the provider",
+      "Set for this session",
+      "export NAME=value",
+      "setx NAME value",
+      "on Windows) before starting",
+      "pskit studio",
+      "Clear",
+      "On-premises connection",
+      "provider.options.deploy",
+      "Where the host runs",
+      "Deploy method",
+      "The host runs on this machine: no SSH or Docker needed.",
+      "More deploy settings (remote path, install mode, image…) are on",
+      "Overview &amp; provider",
+      "Project environment",
+      "Looking at the project…",
+      "Virtual environment",
+      "not created",
+      "Requirements",
+      "Python",
+      "Recreate",
+      "Node.js",
+      "Dependencies",
+      "npm install"
+    ],
+    "dashboard-ui/src/studio/views/Test.tsx": [
+      "This sends a",
+      "real",
+      "Test",
+      "Loading functions…",
+      "Test functions",
+      "Send an event to a function:",
+      "locally",
+      "pskit invoke",
+      "pskit trigger",
+      "Refresh",
+      "Deploy",
+      "to send real events.",
+      "No functions yet.",
+      "Create one",
+      "Functions",
+      "1. Choose the event",
+      "2. Edit the event",
+      "Request",
+      "Payload (JSON)",
+      "Saved events",
+      "sample",
+      "name, e.g. big order",
+      "Save event",
+      "3. Run it",
+      "Server",
+      "Runs the handler on this machine with a synthetic event",
+      "Show the function",
+      "Copy",
+      "How to test this",
+      "studio, terminal or cloud console",
+      "How",
+      "Run locally",
+      "Show the function's logs",
+      "to watch it run.",
+      "Locally",
+      "Deployed, with pskit",
+      "Watch the logs"
+    ],
+    "dashboard-ui/src/studio/views/TriggerForms.tsx": [
+      "SMTP server",
+      "The handler gets",
+      "event.data",
+      "Records[0].ses",
+      "content",
+      "Route",
+      "/users/{id}",
+      "Auth",
+      "Authorizer",
+      "CORS",
+      "Allowed origins",
+      "https://app.example.com",
+      "Add origin",
+      "Run",
+      "Schedule type",
+      "Interval",
+      "every",
+      "Repeat",
+      "Days",
+      "On",
+      "At",
+      "Cron",
+      "0 9 * * 1-5",
+      "Timezone",
+      "Input",
+      "Enabled",
+      "Source",
+      "Bucket",
+      "Create &amp; select",
+      "Fire on",
+      "Also add to Resources (external)",
+      "Type the name instead"
+    ],
+    "dashboard-ui/src/studio/views/Workflows.tsx": [
+      "Workflows",
+      "No workflows yet",
+      "Delete",
+      "New workflow",
+      "Cancel",
+      "Create",
+      "Name",
+      "Workflow not found",
+      "Settings",
+      "Description",
+      "Engine",
+      "Timeout (s)",
+      "Nested definition",
+      "Add state",
+      "Starts at",
+      "Select a state",
+      "Empty workflow",
+      "Add a state from the palette.",
+      "Workflow diagram",
+      "State name",
+      "Rename",
+      "Comment",
+      "Function",
+      "Result",
+      "Error",
+      "Order.Rejected",
+      "Cause",
+      "Items path",
+      "Max concurrency",
+      "Steps per item",
+      "Branches",
+      "Then",
+      "Transition",
+      "Data paths",
+      "Input path",
+      "Result path",
+      "Wait",
+      "Wait mode",
+      "Seconds",
+      "Seconds path",
+      "$.status",
+      "Rules",
+      "Rule kind",
+      "Move up",
+      "Remove rule",
+      "Remove condition",
+      "then go to",
+      "pick a state",
+      "Otherwise",
+      "* (all errors), or e.g. TimeoutError, Payment.Declined",
+      "retry rule",
+      "on errors",
+      "Remove retry",
+      "attempts",
+      "interval s",
+      "backoff ×",
+      "max delay s",
+      "catch rule",
+      "Remove catch",
+      "go to",
+      "error at"
+    ],
+    "dashboard-ui/src/studio/views/Yaml.tsx": [
+      "pskit.yml",
+      "What Save writes. Comments in the original file are not preserved; a backup is kept in .pskit/studio/backups/.",
+      "YAML mode",
+      "Rendering…",
+      "Edit the YAML directly, then apply it to the draft. Forms update to match.",
+      "Discard"
+    ]
+  }
+}

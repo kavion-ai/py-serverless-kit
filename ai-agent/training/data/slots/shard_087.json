@@ -1,0 +1,762 @@
+[
+ {
+  "id": "k_scale_0381",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0382",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0383",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0384",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0385",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0386",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0387",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0388",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0389",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0390",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0391",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0392",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0393",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0394",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0395",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0396",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0397",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0398",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0399",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0400",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0401",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-tunnels"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-tunnels.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/client.md#when-connections-time-out"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0402",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-tunnels"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-tunnels.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/client.md#when-connections-time-out"
+  ],
+  "excerpt": "[docs/client.md#when-connections-time-out]\n`TimeoutError` / `ConnectTimeoutError` / `ECONNREFUSED` from a script almost always mean a firewall: the program can't open a TCP connection to that port. The service is usually fine (`pskit resources onprem status <key>`). Generated direct-client examples use short connect timeouts (about 5 s), so a closed port fails quickly with this explanation in mind instead of hanging. The studio flags it too: *On-prem services → Details* shows when this machine cannot reach a service, and *Call from code* checks the host.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0403",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-tunnels"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-tunnels.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/client.md#when-connections-time-out"
+  ],
+  "excerpt": "[docs/client.md#when-connections-time-out]\n`TimeoutError` / `ConnectTimeoutError` / `ECONNREFUSED` from a script almost always mean a firewall: the program can't open a TCP connection to that port. The service is usually fine (`pskit resources onprem status <key>`). Generated direct-client examples use short connect timeouts (about 5 s), so a closed port fails quickly with this explanation in mind instead of hanging. The studio flags it too: *On-prem services → Details* shows when this machine cannot reach a service, and *Call from code* checks the host.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0404",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-tunnels"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-tunnels.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/client.md#when-connections-time-out"
+  ],
+  "excerpt": "[docs/client.md#when-connections-time-out]\n`TimeoutError` / `ConnectTimeoutError` / `ECONNREFUSED` from a script almost always mean a firewall: the program can't open a TCP connection to that port. The service is usually fine (`pskit resources onprem status <key>`). Generated direct-client examples use short connect timeouts (about 5 s), so a closed port fails quickly with this explanation in mind instead of hanging. The studio flags it too: *On-prem services → Details* shows when this machine cannot reach a service, and *Call from code* checks the host.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0405",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-tunnels"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-tunnels.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/client.md#when-connections-time-out"
+  ],
+  "excerpt": "[docs/client.md#when-connections-time-out]\n`TimeoutError` / `ConnectTimeoutError` / `ECONNREFUSED` from a script almost always mean a firewall: the program can't open a TCP connection to that port. The service is usually fine (`pskit resources onprem status <key>`). Generated direct-client examples use short connect timeouts (about 5 s), so a closed port fails quickly with this explanation in mind instead of hanging. The studio flags it too: *On-prem services → Details* shows when this machine cannot reach a service, and *Call from code* checks the host.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0406",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-tunnels"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-tunnels.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/client.md#when-connections-time-out"
+  ],
+  "excerpt": "[docs/client.md#when-connections-time-out]\n`TimeoutError` / `ConnectTimeoutError` / `ECONNREFUSED` from a script almost always mean a firewall: the program can't open a TCP connection to that port. The service is usually fine (`pskit resources onprem status <key>`). Generated direct-client examples use short connect timeouts (about 5 s), so a closed port fails quickly with this explanation in mind instead of hanging. The studio flags it too: *On-prem services → Details* shows when this machine cannot reach a service, and *Call from code* checks the host.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0407",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-tunnels"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-tunnels.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/client.md#when-connections-time-out"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0408",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-tunnels"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-tunnels.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/client.md#when-connections-time-out"
+  ],
+  "excerpt": "[docs/client.md#when-connections-time-out]\n`TimeoutError` / `ConnectTimeoutError` / `ECONNREFUSED` from a script almost always mean a firewall: the program can't open a TCP connection to that port. The service is usually fine (`pskit resources onprem status <key>`). Generated direct-client examples use short connect timeouts (about 5 s), so a closed port fails quickly with this explanation in mind instead of hanging. The studio flags it too: *On-prem services → Details* shows when this machine cannot reach a service, and *Call from code* checks the host.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0409",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-tunnels"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-tunnels.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/client.md#when-connections-time-out"
+  ],
+  "excerpt": "[docs/client.md#when-connections-time-out]\n`TimeoutError` / `ConnectTimeoutError` / `ECONNREFUSED` from a script almost always mean a firewall: the program can't open a TCP connection to that port. The service is usually fine (`pskit resources onprem status <key>`). Generated direct-client examples use short connect timeouts (about 5 s), so a closed port fails quickly with this explanation in mind instead of hanging. The studio flags it too: *On-prem services → Details* shows when this machine cannot reach a service, and *Call from code* checks the host.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0410",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-tunnels"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-tunnels.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/client.md#when-connections-time-out"
+  ],
+  "excerpt": "[docs/client.md#when-connections-time-out]\n`TimeoutError` / `ConnectTimeoutError` / `ECONNREFUSED` from a script almost always mean a firewall: the program can't open a TCP connection to that port. The service is usually fine (`pskit resources onprem status <key>`). Generated direct-client examples use short connect timeouts (about 5 s), so a closed port fails quickly with this explanation in mind instead of hanging. The studio flags it too: *On-prem services → Details* shows when this machine cannot reach a service, and *Call from code* checks the host.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0411",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-tunnels"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-tunnels.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/client.md#when-connections-time-out"
+  ],
+  "excerpt": "[docs/client.md#when-connections-time-out]\n`TimeoutError` / `ConnectTimeoutError` / `ECONNREFUSED` from a script almost always mean a firewall: the program can't open a TCP connection to that port. The service is usually fine (`pskit resources onprem status <key>`). Generated direct-client examples use short connect timeouts (about 5 s), so a closed port fails quickly with this explanation in mind instead of hanging. The studio flags it too: *On-prem services → Details* shows when this machine cannot reach a service, and *Call from code* checks the host.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0412",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-tunnels"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-tunnels.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/client.md#when-connections-time-out"
+  ],
+  "excerpt": "[docs/client.md#when-connections-time-out]\n`TimeoutError` / `ConnectTimeoutError` / `ECONNREFUSED` from a script almost always mean a firewall: the program can't open a TCP connection to that port. The service is usually fine (`pskit resources onprem status <key>`). Generated direct-client examples use short connect timeouts (about 5 s), so a closed port fails quickly with this explanation in mind instead of hanging. The studio flags it too: *On-prem services → Details* shows when this machine cannot reach a service, and *Call from code* checks the host.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0413",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-tunnels"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-tunnels.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/client.md#when-connections-time-out"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0414",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-tunnels"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-tunnels.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/client.md#when-connections-time-out"
+  ],
+  "excerpt": "[docs/client.md#when-connections-time-out]\n`TimeoutError` / `ConnectTimeoutError` / `ECONNREFUSED` from a script almost always mean a firewall: the program can't open a TCP connection to that port. The service is usually fine (`pskit resources onprem status <key>`). Generated direct-client examples use short connect timeouts (about 5 s), so a closed port fails quickly with this explanation in mind instead of hanging. The studio flags it too: *On-prem services → Details* shows when this machine cannot reach a service, and *Call from code* checks the host.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0415",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-tunnels"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-tunnels.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/client.md#when-connections-time-out"
+  ],
+  "excerpt": "[docs/client.md#when-connections-time-out]\n`TimeoutError` / `ConnectTimeoutError` / `ECONNREFUSED` from a script almost always mean a firewall: the program can't open a TCP connection to that port. The service is usually fine (`pskit resources onprem status <key>`). Generated direct-client examples use short connect timeouts (about 5 s), so a closed port fails quickly with this explanation in mind instead of hanging. The studio flags it too: *On-prem services → Details* shows when this machine cannot reach a service, and *Call from code* checks the host.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0416",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-tunnels"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-tunnels.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/client.md#when-connections-time-out"
+  ],
+  "excerpt": "[docs/client.md#when-connections-time-out]\n`TimeoutError` / `ConnectTimeoutError` / `ECONNREFUSED` from a script almost always mean a firewall: the program can't open a TCP connection to that port. The service is usually fine (`pskit resources onprem status <key>`). Generated direct-client examples use short connect timeouts (about 5 s), so a closed port fails quickly with this explanation in mind instead of hanging. The studio flags it too: *On-prem services → Details* shows when this machine cannot reach a service, and *Call from code* checks the host.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0417",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-tunnels"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-tunnels.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/client.md#when-connections-time-out"
+  ],
+  "excerpt": "[docs/client.md#when-connections-time-out]\n`TimeoutError` / `ConnectTimeoutError` / `ECONNREFUSED` from a script almost always mean a firewall: the program can't open a TCP connection to that port. The service is usually fine (`pskit resources onprem status <key>`). Generated direct-client examples use short connect timeouts (about 5 s), so a closed port fails quickly with this explanation in mind instead of hanging. The studio flags it too: *On-prem services → Details* shows when this machine cannot reach a service, and *Call from code* checks the host.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0418",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-tunnels"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-tunnels.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/client.md#when-connections-time-out"
+  ],
+  "excerpt": "[docs/client.md#when-connections-time-out]\n`TimeoutError` / `ConnectTimeoutError` / `ECONNREFUSED` from a script almost always mean a firewall: the program can't open a TCP connection to that port. The service is usually fine (`pskit resources onprem status <key>`). Generated direct-client examples use short connect timeouts (about 5 s), so a closed port fails quickly with this explanation in mind instead of hanging. The studio flags it too: *On-prem services → Details* shows when this machine cannot reach a service, and *Call from code* checks the host.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0419",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-tunnels"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-tunnels.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/client.md#when-connections-time-out"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0420",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-tunnels"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-tunnels.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/client.md#when-connections-time-out"
+  ],
+  "excerpt": "[docs/client.md#when-connections-time-out]\n`TimeoutError` / `ConnectTimeoutError` / `ECONNREFUSED` from a script almost always mean a firewall: the program can't open a TCP connection to that port. The service is usually fine (`pskit resources onprem status <key>`). Generated direct-client examples use short connect timeouts (about 5 s), so a closed port fails quickly with this explanation in mind instead of hanging. The studio flags it too: *On-prem services → Details* shows when this machine cannot reach a service, and *Call from code* checks the host.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ }
+]

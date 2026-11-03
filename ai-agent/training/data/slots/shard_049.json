@@ -1,0 +1,792 @@
+[
+ {
+  "id": "k_res_0261",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/gcp/database.md#cloud-sql-type-database"
+  ],
+  "excerpt": "[docs/resource-guides/gcp/database.md#cloud-sql-type-database]\npskit's Cloud Functions don't run in a VPC, so the simplest path is a **public IP** instance reached through the **Cloud SQL Python Connector**: it authenticates with the function's service account and encrypts the connection, with no authorized networks to open. A private-IP-only instance needs a Serverless VPC Access connector, added as shown in [cache.md](cache.md#3-declare-it-in-pskityml).",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0262",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/gcp/database.md#cloud-sql-type-database"
+  ],
+  "excerpt": "[docs/resource-guides/gcp/database.md#cloud-sql-type-database]\npskit's Cloud Functions don't run in a VPC, so the simplest path is a **public IP** instance reached through the **Cloud SQL Python Connector**: it authenticates with the function's service account and encrypts the connection, with no authorized networks to open. A private-IP-only instance needs a Serverless VPC Access connector, added as shown in [cache.md](cache.md#3-declare-it-in-pskityml).",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0263",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/gcp/database.md#cloud-sql-type-database"
+  ],
+  "excerpt": "[docs/resource-guides/gcp/database.md#cloud-sql-type-database]\npskit's Cloud Functions don't run in a VPC, so the simplest path is a **public IP** instance reached through the **Cloud SQL Python Connector**: it authenticates with the function's service account and encrypts the connection, with no authorized networks to open. A private-IP-only instance needs a Serverless VPC Access connector, added as shown in [cache.md](cache.md#3-declare-it-in-pskityml).",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0264",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/gcp/database.md#cloud-sql-type-database"
+  ],
+  "excerpt": "[docs/resource-guides/gcp/database.md#cloud-sql-type-database]\npskit's Cloud Functions don't run in a VPC, so the simplest path is a **public IP** instance reached through the **Cloud SQL Python Connector**: it authenticates with the function's service account and encrypts the connection, with no authorized networks to open. A private-IP-only instance needs a Serverless VPC Access connector, added as shown in [cache.md](cache.md#3-declare-it-in-pskityml).",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0265",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/queue.md#pubsub-as-a-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0266",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/queue.md#pubsub-as-a-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0267",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/queue.md#pubsub-as-a-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0268",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/queue.md#pubsub-as-a-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0269",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/queue.md#pubsub-as-a-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0270",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/queue.md#pubsub-as-a-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0271",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/queue.md#pubsub-as-a-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0272",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/queue.md#pubsub-as-a-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0273",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-storage.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/gcp/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/gcp/storage.md#3-declare-it-in-pskityml]\nWhat pskit does with it: deploys `on-invoice` with an Eventarc trigger filtered on the bucket (`google.cloud.storage.object.v1.finalized`; `deleted` events get a second Cloud Function), grants the project's Cloud Storage service agent `roles/pubsub.publisher` (required by Cloud Storage triggers), and grants pskit's invoker service account `roles/eventarc.eventReceiver`. `prefix` and `suffix` are applied by the pskit runtime, so the function is still invoked (and returns immediately) for other objects.",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0274",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-storage.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/storage.md#cloud-storage-bucket-type-storage",
+   "docs/resource-guides/gcp/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0275",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-storage.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/gcp/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/gcp/storage.md#3-declare-it-in-pskityml]\nWhat pskit does with it: deploys `on-invoice` with an Eventarc trigger filtered on the bucket (`google.cloud.storage.object.v1.finalized`; `deleted` events get a second Cloud Function), grants the project's Cloud Storage service agent `roles/pubsub.publisher` (required by Cloud Storage triggers), and grants pskit's invoker service account `roles/eventarc.eventReceiver`. `prefix` and `suffix` are applied by the pskit runtime, so the function is still invoked (and returns immediately) for other objects.",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0276",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/gcp/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/gcp/storage.md#3-declare-it-in-pskityml]\nWhat pskit does with it: deploys `on-invoice` with an Eventarc trigger filtered on the bucket (`google.cloud.storage.object.v1.finalized`; `deleted` events get a second Cloud Function), grants the project's Cloud Storage service agent `roles/pubsub.publisher` (required by Cloud Storage triggers), and grants pskit's invoker service account `roles/eventarc.eventReceiver`. `prefix` and `suffix` are applied by the pskit runtime, so the function is still invoked (and returns immediately) for other objects.",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0277",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/gcp/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/gcp/storage.md#3-declare-it-in-pskityml]\nWhat pskit does with it: deploys `on-invoice` with an Eventarc trigger filtered on the bucket (`google.cloud.storage.object.v1.finalized`; `deleted` events get a second Cloud Function), grants the project's Cloud Storage service agent `roles/pubsub.publisher` (required by Cloud Storage triggers), and grants pskit's invoker service account `roles/eventarc.eventReceiver`. `prefix` and `suffix` are applied by the pskit runtime, so the function is still invoked (and returns immediately) for other objects.",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0278",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/gcp/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/gcp/storage.md#3-declare-it-in-pskityml]\nWhat pskit does with it: deploys `on-invoice` with an Eventarc trigger filtered on the bucket (`google.cloud.storage.object.v1.finalized`; `deleted` events get a second Cloud Function), grants the project's Cloud Storage service agent `roles/pubsub.publisher` (required by Cloud Storage triggers), and grants pskit's invoker service account `roles/eventarc.eventReceiver`. `prefix` and `suffix` are applied by the pskit runtime, so the function is still invoked (and returns immediately) for other objects.",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0279",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/gcp/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/gcp/storage.md#3-declare-it-in-pskityml]\nWhat pskit does with it: deploys `on-invoice` with an Eventarc trigger filtered on the bucket (`google.cloud.storage.object.v1.finalized`; `deleted` events get a second Cloud Function), grants the project's Cloud Storage service agent `roles/pubsub.publisher` (required by Cloud Storage triggers), and grants pskit's invoker service account `roles/eventarc.eventReceiver`. `prefix` and `suffix` are applied by the pskit runtime, so the function is still invoked (and returns immediately) for other objects.",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0280",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/storage.md#cloud-storage-bucket-type-storage",
+   "docs/resource-guides/gcp/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0281",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-topic.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/topic.md#pubsub-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0282",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-topic.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/topic.md#pubsub-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0283",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-topic.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/topic.md#pubsub-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0284",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-topic.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/topic.md#pubsub-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0285",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-topic.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/topic.md#pubsub-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0286",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-topic.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/topic.md#pubsub-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0287",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-topic.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/topic.md#pubsub-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0288",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-topic.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/topic.md#pubsub-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0289",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-alibaba-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-alibaba-readme.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/README.md#alibaba-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0290",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-alibaba-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-alibaba-readme.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/README.md#alibaba-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0291",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-alibaba-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-alibaba-readme.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/README.md#alibaba-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0292",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-alibaba-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-alibaba-readme.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/README.md#alibaba-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0293",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-alibaba-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-alibaba-readme.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/README.md#alibaba-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0294",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-alibaba-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-alibaba-readme.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/README.md#alibaba-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0295",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-alibaba-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-alibaba-readme.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/README.md#alibaba-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0296",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-alibaba-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-alibaba-readme.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/README.md#alibaba-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0297",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-aws-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-aws-readme.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/aws/README.md#aws-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0298",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-aws-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-aws-readme.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/aws/README.md#aws-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0299",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-aws-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-aws-readme.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/aws/README.md#aws-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0300",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-aws-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-aws-readme.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/aws/README.md#aws-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ }
+]

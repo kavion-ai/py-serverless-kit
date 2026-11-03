@@ -1,0 +1,802 @@
+[
+ {
+  "id": "k_arch_0411",
+  "category": "k_arch",
+  "card_ids": [
+   "example-14-testing"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-14-testing.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "examples/14-testing/README.md",
+   "examples/14-testing/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0412",
+  "category": "k_arch",
+  "card_ids": [
+   "example-14-testing"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-14-testing.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "examples/14-testing/README.md",
+   "examples/14-testing/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0413",
+  "category": "k_arch",
+  "card_ids": [
+   "example-14-testing"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-14-testing.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "examples/14-testing/README.md",
+   "examples/14-testing/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0414",
+  "category": "k_arch",
+  "card_ids": [
+   "example-14-testing"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-14-testing.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "examples/14-testing/README.md",
+   "examples/14-testing/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0415",
+  "category": "k_arch",
+  "card_ids": [
+   "example-14-testing"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-14-testing.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "examples/14-testing/README.md",
+   "examples/14-testing/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0416",
+  "category": "k_arch",
+  "card_ids": [
+   "example-15-ci-cd-deploy"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-15-ci-cd-deploy.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "examples/15-ci-cd-deploy/README.md",
+   "examples/15-ci-cd-deploy/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0417",
+  "category": "k_arch",
+  "card_ids": [
+   "example-15-ci-cd-deploy"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-15-ci-cd-deploy.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "examples/15-ci-cd-deploy/README.md",
+   "examples/15-ci-cd-deploy/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0418",
+  "category": "k_arch",
+  "card_ids": [
+   "example-15-ci-cd-deploy"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-15-ci-cd-deploy.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "examples/15-ci-cd-deploy/README.md",
+   "examples/15-ci-cd-deploy/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0419",
+  "category": "k_arch",
+  "card_ids": [
+   "example-15-ci-cd-deploy"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-15-ci-cd-deploy.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "examples/15-ci-cd-deploy/README.md",
+   "examples/15-ci-cd-deploy/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0420",
+  "category": "k_arch",
+  "card_ids": [
+   "example-15-ci-cd-deploy"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-15-ci-cd-deploy.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "examples/15-ci-cd-deploy/README.md",
+   "examples/15-ci-cd-deploy/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0421",
+  "category": "k_arch",
+  "card_ids": [
+   "example-16-on-premises"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-16-on-premises.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "examples/16-on-premises/README.md",
+   "examples/16-on-premises/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0422",
+  "category": "k_arch",
+  "card_ids": [
+   "example-16-on-premises"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-16-on-premises.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "examples/16-on-premises/README.md",
+   "examples/16-on-premises/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0423",
+  "category": "k_arch",
+  "card_ids": [
+   "example-16-on-premises"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-16-on-premises.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "examples/16-on-premises/README.md",
+   "examples/16-on-premises/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0424",
+  "category": "k_arch",
+  "card_ids": [
+   "example-16-on-premises"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-16-on-premises.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "examples/16-on-premises/README.md",
+   "examples/16-on-premises/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0425",
+  "category": "k_arch",
+  "card_ids": [
+   "example-16-on-premises"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-16-on-premises.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "examples/16-on-premises/README.md",
+   "examples/16-on-premises/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0426",
+  "category": "k_arch",
+  "card_ids": [
+   "example-17-on-premises-remote"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-17-on-premises-remote.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "examples/17-on-premises-remote/README.md",
+   "examples/17-on-premises-remote/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0427",
+  "category": "k_arch",
+  "card_ids": [
+   "example-17-on-premises-remote"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-17-on-premises-remote.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "examples/17-on-premises-remote/README.md",
+   "examples/17-on-premises-remote/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0428",
+  "category": "k_arch",
+  "card_ids": [
+   "example-17-on-premises-remote"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-17-on-premises-remote.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "examples/17-on-premises-remote/README.md",
+   "examples/17-on-premises-remote/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0429",
+  "category": "k_arch",
+  "card_ids": [
+   "example-17-on-premises-remote"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-17-on-premises-remote.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "examples/17-on-premises-remote/README.md",
+   "examples/17-on-premises-remote/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0430",
+  "category": "k_arch",
+  "card_ids": [
+   "example-17-on-premises-remote"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-17-on-premises-remote.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "examples/17-on-premises-remote/README.md",
+   "examples/17-on-premises-remote/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0431",
+  "category": "k_arch",
+  "card_ids": [
+   "example-18-resources"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-18-resources.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "examples/18-resources/README.md",
+   "examples/18-resources/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0432",
+  "category": "k_arch",
+  "card_ids": [
+   "example-18-resources"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-18-resources.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "examples/18-resources/README.md",
+   "examples/18-resources/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0433",
+  "category": "k_arch",
+  "card_ids": [
+   "example-18-resources"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-18-resources.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "examples/18-resources/README.md",
+   "examples/18-resources/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0434",
+  "category": "k_arch",
+  "card_ids": [
+   "example-18-resources"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-18-resources.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "examples/18-resources/README.md",
+   "examples/18-resources/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0435",
+  "category": "k_arch",
+  "card_ids": [
+   "example-18-resources"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-18-resources.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "examples/18-resources/README.md",
+   "examples/18-resources/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0436",
+  "category": "k_arch",
+  "card_ids": [
+   "example-19-custom-drivers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-19-custom-drivers.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/19-custom-drivers/README.md",
+   "examples/19-custom-drivers/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0437",
+  "category": "k_arch",
+  "card_ids": [
+   "example-19-custom-drivers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-19-custom-drivers.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/19-custom-drivers/README.md",
+   "examples/19-custom-drivers/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0438",
+  "category": "k_arch",
+  "card_ids": [
+   "example-19-custom-drivers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-19-custom-drivers.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/19-custom-drivers/README.md",
+   "examples/19-custom-drivers/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0439",
+  "category": "k_arch",
+  "card_ids": [
+   "example-19-custom-drivers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-19-custom-drivers.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/19-custom-drivers/README.md",
+   "examples/19-custom-drivers/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0440",
+  "category": "k_arch",
+  "card_ids": [
+   "example-19-custom-drivers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-19-custom-drivers.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/19-custom-drivers/README.md",
+   "examples/19-custom-drivers/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0441",
+  "category": "k_arch",
+  "card_ids": [
+   "example-20-onprem-external-clouds"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-20-onprem-external-clouds.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/20-onprem-external-clouds/README.md",
+   "examples/20-onprem-external-clouds/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0442",
+  "category": "k_arch",
+  "card_ids": [
+   "example-20-onprem-external-clouds"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-20-onprem-external-clouds.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/20-onprem-external-clouds/README.md",
+   "examples/20-onprem-external-clouds/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0443",
+  "category": "k_arch",
+  "card_ids": [
+   "example-20-onprem-external-clouds"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-20-onprem-external-clouds.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/20-onprem-external-clouds/README.md",
+   "examples/20-onprem-external-clouds/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0444",
+  "category": "k_arch",
+  "card_ids": [
+   "example-20-onprem-external-clouds"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-20-onprem-external-clouds.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/20-onprem-external-clouds/README.md",
+   "examples/20-onprem-external-clouds/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0445",
+  "category": "k_arch",
+  "card_ids": [
+   "example-20-onprem-external-clouds"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-20-onprem-external-clouds.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/20-onprem-external-clouds/README.md",
+   "examples/20-onprem-external-clouds/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0446",
+  "category": "k_arch",
+  "card_ids": [
+   "example-21-nodejs-typescript"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-21-nodejs-typescript.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/21-nodejs-typescript/README.md",
+   "examples/21-nodejs-typescript/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0447",
+  "category": "k_arch",
+  "card_ids": [
+   "example-21-nodejs-typescript"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-21-nodejs-typescript.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/21-nodejs-typescript/README.md",
+   "examples/21-nodejs-typescript/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0448",
+  "category": "k_arch",
+  "card_ids": [
+   "example-21-nodejs-typescript"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-21-nodejs-typescript.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/21-nodejs-typescript/README.md",
+   "examples/21-nodejs-typescript/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0449",
+  "category": "k_arch",
+  "card_ids": [
+   "example-21-nodejs-typescript"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-21-nodejs-typescript.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/21-nodejs-typescript/README.md",
+   "examples/21-nodejs-typescript/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0450",
+  "category": "k_arch",
+  "card_ids": [
+   "example-21-nodejs-typescript"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-21-nodejs-typescript.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/21-nodejs-typescript/README.md",
+   "examples/21-nodejs-typescript/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ }
+]

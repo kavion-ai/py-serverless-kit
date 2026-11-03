@@ -1,0 +1,762 @@
+[
+ {
+  "id": "k_scale_0221",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0222",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0223",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0224",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0225",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0226",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0227",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0228",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0229",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0230",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0231",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0232",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0233",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0234",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0235",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0236",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0237",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0238",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0239",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0240",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0241",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0242",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0243",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0244",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0245",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0246",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0247",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0248",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0249",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0250",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0251",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0252",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0253",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0254",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0255",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0256",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0257",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0258",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0259",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0260",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ }
+]

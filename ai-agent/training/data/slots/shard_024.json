@@ -1,0 +1,765 @@
+[
+ {
+  "id": "k_cmd_0961",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-settings"
+  ],
+  "excerpt": "[docs/cli.md#pskit-settings]\n`.pskit` is kept out of git, so a fresh clone on another machine has no saved servers, clusters or SSH logins. `settings` moves them in one passphrase-encrypted file, with `pskit.yml` too when asked. In the studio: the **⇅ Settings** button in the header (also *Setup & credentials → Move settings to another machine*).",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0962",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-settings"
+  ],
+  "excerpt": "[docs/cli.md#pskit-settings]\n`.pskit` is kept out of git, so a fresh clone on another machine has no saved servers, clusters or SSH logins. `settings` moves them in one passphrase-encrypted file, with `pskit.yml` too when asked. In the studio: the **⇅ Settings** button in the header (also *Setup & credentials → Move settings to another machine*).",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0963",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-settings"
+  ],
+  "excerpt": "[docs/cli.md#pskit-settings]\n`.pskit` is kept out of git, so a fresh clone on another machine has no saved servers, clusters or SSH logins. `settings` moves them in one passphrase-encrypted file, with `pskit.yml` too when asked. In the studio: the **⇅ Settings** button in the header (also *Setup & credentials → Move settings to another machine*).",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0964",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-settings"
+  ],
+  "excerpt": "[docs/cli.md#pskit-settings]\n`.pskit` is kept out of git, so a fresh clone on another machine has no saved servers, clusters or SSH logins. `settings` moves them in one passphrase-encrypted file, with `pskit.yml` too when asked. In the studio: the **⇅ Settings** button in the header (also *Setup & credentials → Move settings to another machine*).",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0965",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-settings"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0966",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-settings"
+  ],
+  "excerpt": "[docs/cli.md#pskit-settings]\n`.pskit` is kept out of git, so a fresh clone on another machine has no saved servers, clusters or SSH logins. `settings` moves them in one passphrase-encrypted file, with `pskit.yml` too when asked. In the studio: the **⇅ Settings** button in the header (also *Setup & credentials → Move settings to another machine*).",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0967",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-settings"
+  ],
+  "excerpt": "[docs/cli.md#pskit-settings]\n`.pskit` is kept out of git, so a fresh clone on another machine has no saved servers, clusters or SSH logins. `settings` moves them in one passphrase-encrypted file, with `pskit.yml` too when asked. In the studio: the **⇅ Settings** button in the header (also *Setup & credentials → Move settings to another machine*).",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0968",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-settings"
+  ],
+  "excerpt": "[docs/cli.md#pskit-settings]\n`.pskit` is kept out of git, so a fresh clone on another machine has no saved servers, clusters or SSH logins. `settings` moves them in one passphrase-encrypted file, with `pskit.yml` too when asked. In the studio: the **⇅ Settings** button in the header (also *Setup & credentials → Move settings to another machine*).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0969",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-settings"
+  ],
+  "excerpt": "[docs/cli.md#pskit-settings]\n`.pskit` is kept out of git, so a fresh clone on another machine has no saved servers, clusters or SSH logins. `settings` moves them in one passphrase-encrypted file, with `pskit.yml` too when asked. In the studio: the **⇅ Settings** button in the header (also *Setup & credentials → Move settings to another machine*).",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0970",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-settings"
+  ],
+  "excerpt": "[docs/cli.md#pskit-settings]\n`.pskit` is kept out of git, so a fresh clone on another machine has no saved servers, clusters or SSH logins. `settings` moves them in one passphrase-encrypted file, with `pskit.yml` too when asked. In the studio: the **⇅ Settings** button in the header (also *Setup & credentials → Move settings to another machine*).",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0971",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings-export"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings-export.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0972",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings-export"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings-export.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0973",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings-export"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings-export.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0974",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings-export"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings-export.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0975",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings-export"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings-export.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0976",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings-export"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings-export.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0977",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings-export"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings-export.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0978",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings-export"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings-export.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0979",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings-export"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings-export.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0980",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings-export"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings-export.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0981",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings-import"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings-import.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0982",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings-import"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings-import.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0983",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings-import"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings-import.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0984",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings-import"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings-import.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0985",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings-import"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings-import.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0986",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings-import"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings-import.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0987",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings-import"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings-import.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0988",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings-import"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings-import.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0989",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings-import"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings-import.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0990",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-settings-import"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-settings-import.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0991",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-studio"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-studio.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-studio"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0992",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-studio"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-studio.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-studio"
+  ],
+  "excerpt": "[docs/cli.md#pskit-studio]\nOpen the local web UI for editing the project in forms instead of YAML (functions, triggers, workflows, resources, on-prem drivers, provider options, code) and running validate / deploy / invoke. It doesn't take the common project options. It prints `http://127.0.0.1:8770/#token=...`. The token is required on every API call, so open that exact URL. See [studio.md](studio.md).",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0993",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-studio"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-studio.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-studio"
+  ],
+  "excerpt": "[docs/cli.md#pskit-studio]\nOpen the local web UI for editing the project in forms instead of YAML (functions, triggers, workflows, resources, on-prem drivers, provider options, code) and running validate / deploy / invoke. It doesn't take the common project options. It prints `http://127.0.0.1:8770/#token=...`. The token is required on every API call, so open that exact URL. See [studio.md](studio.md).",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0994",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-studio"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-studio.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-studio"
+  ],
+  "excerpt": "[docs/cli.md#pskit-studio]\nOpen the local web UI for editing the project in forms instead of YAML (functions, triggers, workflows, resources, on-prem drivers, provider options, code) and running validate / deploy / invoke. It doesn't take the common project options. It prints `http://127.0.0.1:8770/#token=...`. The token is required on every API call, so open that exact URL. See [studio.md](studio.md).",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0995",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-studio"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-studio.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-studio"
+  ],
+  "excerpt": "[docs/cli.md#pskit-studio]\nOpen the local web UI for editing the project in forms instead of YAML (functions, triggers, workflows, resources, on-prem drivers, provider options, code) and running validate / deploy / invoke. It doesn't take the common project options. It prints `http://127.0.0.1:8770/#token=...`. The token is required on every API call, so open that exact URL. See [studio.md](studio.md).",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0996",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-studio"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-studio.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-studio"
+  ],
+  "excerpt": "[docs/cli.md#pskit-studio]\nOpen the local web UI for editing the project in forms instead of YAML (functions, triggers, workflows, resources, on-prem drivers, provider options, code) and running validate / deploy / invoke. It doesn't take the common project options. It prints `http://127.0.0.1:8770/#token=...`. The token is required on every API call, so open that exact URL. See [studio.md](studio.md).",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0997",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-studio"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-studio.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-studio"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0998",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-studio"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-studio.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-studio"
+  ],
+  "excerpt": "[docs/cli.md#pskit-studio]\nOpen the local web UI for editing the project in forms instead of YAML (functions, triggers, workflows, resources, on-prem drivers, provider options, code) and running validate / deploy / invoke. It doesn't take the common project options. It prints `http://127.0.0.1:8770/#token=...`. The token is required on every API call, so open that exact URL. See [studio.md](studio.md).",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0999",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-studio"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-studio.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-studio"
+  ],
+  "excerpt": "[docs/cli.md#pskit-studio]\nOpen the local web UI for editing the project in forms instead of YAML (functions, triggers, workflows, resources, on-prem drivers, provider options, code) and running validate / deploy / invoke. It doesn't take the common project options. It prints `http://127.0.0.1:8770/#token=...`. The token is required on every API call, so open that exact URL. See [studio.md](studio.md).",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1000",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-studio"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-studio.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-studio"
+  ],
+  "excerpt": "[docs/cli.md#pskit-studio]\nOpen the local web UI for editing the project in forms instead of YAML (functions, triggers, workflows, resources, on-prem drivers, provider options, code) and running validate / deploy / invoke. It doesn't take the common project options. It prints `http://127.0.0.1:8770/#token=...`. The token is required on every API call, so open that exact URL. See [studio.md](studio.md).",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ }
+]

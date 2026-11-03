@@ -1,0 +1,766 @@
+[
+ {
+  "id": "k_arch_0251",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-provider"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-provider.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#default-runtime"
+  ],
+  "excerpt": "[docs/configuration.md#default-runtime]\nIf you don't pin `provider.runtime`, pskit uses **python3.12** when the target cloud supports it. Otherwise it uses the newest supported version below 3.12: python3.11 on DigitalOcean, IBM and Oracle, python3.10 on Tencent. This is what makes \"change only the provider\" work. If you *do* pin a runtime the cloud lacks, `pskit validate` reports an error.",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0252",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-provider"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-provider.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#default-runtime"
+  ],
+  "excerpt": "[docs/configuration.md#default-runtime]\nIf you don't pin `provider.runtime`, pskit uses **python3.12** when the target cloud supports it. Otherwise it uses the newest supported version below 3.12: python3.11 on DigitalOcean, IBM and Oracle, python3.10 on Tencent. This is what makes \"change only the provider\" work. If you *do* pin a runtime the cloud lacks, `pskit validate` reports an error.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0253",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-pskit-envelope"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-pskit-envelope.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#runtime-flow"
+  ],
+  "excerpt": "[docs/architecture.md#runtime-flow]\n**The `__pskit` envelope.** Payloads that pskit itself produces are wrapped as `{\"__pskit\": \"<schedule|workflow|invoke>\", \"data\": ...}`. These are schedule inputs, workflow task inputs and `invoke()` calls. Because the adapter can recognise the envelope, the handler sees the right `event.type` even on clouds where everything arrives as HTTP (GCP, IBM, DigitalOcean, Cloudflare, Oracle). On those clouds, failures come back as `500 {\"errorType\", \"cause\"}` so native workflows can match errors by exception name.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0254",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-pskit-envelope"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-pskit-envelope.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/architecture.md#runtime-flow",
+   "docs/events.md#schedule-invoke-envelope"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0255",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-pskit-envelope"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-pskit-envelope.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#runtime-flow"
+  ],
+  "excerpt": "[docs/architecture.md#runtime-flow]\n**The `__pskit` envelope.** Payloads that pskit itself produces are wrapped as `{\"__pskit\": \"<schedule|workflow|invoke>\", \"data\": ...}`. These are schedule inputs, workflow task inputs and `invoke()` calls. Because the adapter can recognise the envelope, the handler sees the right `event.type` even on clouds where everything arrives as HTTP (GCP, IBM, DigitalOcean, Cloudflare, Oracle). On those clouds, failures come back as `500 {\"errorType\", \"cause\"}` so native workflows can match errors by exception name.",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0256",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-pskit-envelope"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-pskit-envelope.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#runtime-flow"
+  ],
+  "excerpt": "[docs/architecture.md#runtime-flow]\n**The `__pskit` envelope.** Payloads that pskit itself produces are wrapped as `{\"__pskit\": \"<schedule|workflow|invoke>\", \"data\": ...}`. These are schedule inputs, workflow task inputs and `invoke()` calls. Because the adapter can recognise the envelope, the handler sees the right `event.type` even on clouds where everything arrives as HTTP (GCP, IBM, DigitalOcean, Cloudflare, Oracle). On those clouds, failures come back as `500 {\"errorType\", \"cause\"}` so native workflows can match errors by exception name.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0257",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-pskit-envelope"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-pskit-envelope.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#runtime-flow"
+  ],
+  "excerpt": "[docs/architecture.md#runtime-flow]\n**The `__pskit` envelope.** Payloads that pskit itself produces are wrapped as `{\"__pskit\": \"<schedule|workflow|invoke>\", \"data\": ...}`. These are schedule inputs, workflow task inputs and `invoke()` calls. Because the adapter can recognise the envelope, the handler sees the right `event.type` even on clouds where everything arrives as HTTP (GCP, IBM, DigitalOcean, Cloudflare, Oracle). On those clouds, failures come back as `500 {\"errorType\", \"cause\"}` so native workflows can match errors by exception name.",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0258",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-pskit-envelope"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-pskit-envelope.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#runtime-flow"
+  ],
+  "excerpt": "[docs/architecture.md#runtime-flow]\n**The `__pskit` envelope.** Payloads that pskit itself produces are wrapped as `{\"__pskit\": \"<schedule|workflow|invoke>\", \"data\": ...}`. These are schedule inputs, workflow task inputs and `invoke()` calls. Because the adapter can recognise the envelope, the handler sees the right `event.type` even on clouds where everything arrives as HTTP (GCP, IBM, DigitalOcean, Cloudflare, Oracle). On those clouds, failures come back as `500 {\"errorType\", \"cause\"}` so native workflows can match errors by exception name.",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0259",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-resources"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-resources.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#resources"
+  ],
+  "excerpt": "[docs/configuration.md#resources]\nServices the functions use, created by pskit (managed) or already existing (`external: true`). Every bound function gets `PSKIT_RESOURCE_<KEY>_*` variables, and handlers read them with `resource(\"key\")`. `queue`, `storage` and `topic` events can name a resource instead of a queue/bucket: `- queue: {resource: jobs}`. The event then uses the resource's native name and `existing: <external>`. Full reference: [resources.md](resources.md).",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0260",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-resources"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-resources.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#resources"
+  ],
+  "excerpt": "[docs/configuration.md#resources]\nServices the functions use, created by pskit (managed) or already existing (`external: true`). Every bound function gets `PSKIT_RESOURCE_<KEY>_*` variables, and handlers read them with `resource(\"key\")`. `queue`, `storage` and `topic` events can name a resource instead of a queue/bucket: `- queue: {resource: jobs}`. The event then uses the resource's native name and `existing: <external>`. Full reference: [resources.md](resources.md).",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0261",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-resources"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-resources.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#resources",
+   "src/py_serverless_kit/config/schema.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0262",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-resources"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-resources.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#resources"
+  ],
+  "excerpt": "[docs/configuration.md#resources]\nServices the functions use, created by pskit (managed) or already existing (`external: true`). Every bound function gets `PSKIT_RESOURCE_<KEY>_*` variables, and handlers read them with `resource(\"key\")`. `queue`, `storage` and `topic` events can name a resource instead of a queue/bucket: `- queue: {resource: jobs}`. The event then uses the resource's native name and `existing: <external>`. Full reference: [resources.md](resources.md).",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0263",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-resources"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-resources.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#resources"
+  ],
+  "excerpt": "[docs/configuration.md#resources]\nServices the functions use, created by pskit (managed) or already existing (`external: true`). Every bound function gets `PSKIT_RESOURCE_<KEY>_*` variables, and handlers read them with `resource(\"key\")`. `queue`, `storage` and `topic` events can name a resource instead of a queue/bucket: `- queue: {resource: jobs}`. The event then uses the resource's native name and `existing: <external>`. Full reference: [resources.md](resources.md).",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0264",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-resources"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-resources.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#resources"
+  ],
+  "excerpt": "[docs/configuration.md#resources]\nServices the functions use, created by pskit (managed) or already existing (`external: true`). Every bound function gets `PSKIT_RESOURCE_<KEY>_*` variables, and handlers read them with `resource(\"key\")`. `queue`, `storage` and `topic` events can name a resource instead of a queue/bucket: `- queue: {resource: jobs}`. The event then uses the resource's native name and `existing: <external>`. Full reference: [resources.md](resources.md).",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0265",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-responses"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-responses.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/handlers.md#returning-a-response"
+  ],
+  "excerpt": "[docs/handlers.md#returning-a-response]\nWhatever an HTTP handler returns is converted: JSON serialisation handles `datetime`/`date` (ISO 8601), `Decimal`, `UUID`, `set` and anything with `model_dump()` or `to_dict()`. For non-HTTP events, the return value goes back to the caller as is: the workflow's next state, the result of `invoke()`, and so on.",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0266",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-responses"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-responses.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/handlers.md#returning-a-response"
+  ],
+  "excerpt": "[docs/handlers.md#returning-a-response]\nWhatever an HTTP handler returns is converted: JSON serialisation handles `datetime`/`date` (ISO 8601), `Decimal`, `UUID`, `set` and anything with `model_dump()` or `to_dict()`. For non-HTTP events, the return value goes back to the caller as is: the workflow's next state, the result of `invoke()`, and so on.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0267",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-responses"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-responses.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/handlers.md#returning-a-response",
+   "docs/handlers.md#errors"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0268",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-responses"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-responses.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/handlers.md#returning-a-response"
+  ],
+  "excerpt": "[docs/handlers.md#returning-a-response]\nWhatever an HTTP handler returns is converted: JSON serialisation handles `datetime`/`date` (ISO 8601), `Decimal`, `UUID`, `set` and anything with `model_dump()` or `to_dict()`. For non-HTTP events, the return value goes back to the caller as is: the workflow's next state, the result of `invoke()`, and so on.",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0269",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-responses"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-responses.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/handlers.md#returning-a-response"
+  ],
+  "excerpt": "[docs/handlers.md#returning-a-response]\nWhatever an HTTP handler returns is converted: JSON serialisation handles `datetime`/`date` (ISO 8601), `Decimal`, `UUID`, `set` and anything with `model_dump()` or `to_dict()`. For non-HTTP events, the return value goes back to the caller as is: the workflow's next state, the result of `invoke()`, and so on.",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0270",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-responses"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-responses.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/handlers.md#returning-a-response"
+  ],
+  "excerpt": "[docs/handlers.md#returning-a-response]\nWhatever an HTTP handler returns is converted: JSON serialisation handles `datetime`/`date` (ISO 8601), `Decimal`, `UUID`, `set` and anything with `model_dump()` or `to_dict()`. For non-HTTP events, the return value goes back to the caller as is: the workflow's next state, the result of `invoke()`, and so on.",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0271",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-runtime"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-runtime.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#runtime-flow"
+  ],
+  "excerpt": "[docs/architecture.md#runtime-flow]\n**The `__pskit` envelope.** Payloads that pskit itself produces are wrapped as `{\"__pskit\": \"<schedule|workflow|invoke>\", \"data\": ...}`. These are schedule inputs, workflow task inputs and `invoke()` calls. Because the adapter can recognise the envelope, the handler sees the right `event.type` even on clouds where everything arrives as HTTP (GCP, IBM, DigitalOcean, Cloudflare, Oracle). On those clouds, failures come back as `500 {\"errorType\", \"cause\"}` so native workflows can match errors by exception name.",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0272",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-runtime"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-runtime.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#runtime-flow"
+  ],
+  "excerpt": "[docs/architecture.md#runtime-flow]\n**The `__pskit` envelope.** Payloads that pskit itself produces are wrapped as `{\"__pskit\": \"<schedule|workflow|invoke>\", \"data\": ...}`. These are schedule inputs, workflow task inputs and `invoke()` calls. Because the adapter can recognise the envelope, the handler sees the right `event.type` even on clouds where everything arrives as HTTP (GCP, IBM, DigitalOcean, Cloudflare, Oracle). On those clouds, failures come back as `500 {\"errorType\", \"cause\"}` so native workflows can match errors by exception name.",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0273",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-runtime"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-runtime.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/architecture.md#runtime-flow",
+   "docs/architecture.md#bundle-layout"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0274",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-runtime"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-runtime.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#runtime-flow"
+  ],
+  "excerpt": "[docs/architecture.md#runtime-flow]\n**The `__pskit` envelope.** Payloads that pskit itself produces are wrapped as `{\"__pskit\": \"<schedule|workflow|invoke>\", \"data\": ...}`. These are schedule inputs, workflow task inputs and `invoke()` calls. Because the adapter can recognise the envelope, the handler sees the right `event.type` even on clouds where everything arrives as HTTP (GCP, IBM, DigitalOcean, Cloudflare, Oracle). On those clouds, failures come back as `500 {\"errorType\", \"cause\"}` so native workflows can match errors by exception name.",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0275",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-runtime"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-runtime.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#runtime-flow"
+  ],
+  "excerpt": "[docs/architecture.md#runtime-flow]\n**The `__pskit` envelope.** Payloads that pskit itself produces are wrapped as `{\"__pskit\": \"<schedule|workflow|invoke>\", \"data\": ...}`. These are schedule inputs, workflow task inputs and `invoke()` calls. Because the adapter can recognise the envelope, the handler sees the right `event.type` even on clouds where everything arrives as HTTP (GCP, IBM, DigitalOcean, Cloudflare, Oracle). On those clouds, failures come back as `500 {\"errorType\", \"cause\"}` so native workflows can match errors by exception name.",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0276",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-runtime"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-runtime.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#runtime-flow"
+  ],
+  "excerpt": "[docs/architecture.md#runtime-flow]\n**The `__pskit` envelope.** Payloads that pskit itself produces are wrapped as `{\"__pskit\": \"<schedule|workflow|invoke>\", \"data\": ...}`. These are schedule inputs, workflow task inputs and `invoke()` calls. Because the adapter can recognise the envelope, the handler sees the right `event.type` even on clouds where everything arrives as HTTP (GCP, IBM, DigitalOcean, Cloudflare, Oracle). On those clouds, failures come back as `500 {\"errorType\", \"cause\"}` so native workflows can match errors by exception name.",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0277",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-scenarios"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-scenarios.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/scenarios.md#scenarios-step-by-step"
+  ],
+  "excerpt": "[docs/scenarios.md#scenarios-step-by-step]\nPick what you're building. Each guide has the `pskit.yml` you need, the commands, and how to check the result. They assume `pip install py-serverless-kit`, Terraform or OpenTofu on `PATH`, and cloud credentials for the target ([getting started](getting-started.md)). Every guide ends with `pskit dashboard` (static) or `pskit dashboard --serve` (live). See [dashboard.md](dashboard.md).",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0278",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-scenarios"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-scenarios.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/scenarios.md#scenarios-step-by-step"
+  ],
+  "excerpt": "[docs/scenarios.md#scenarios-step-by-step]\nPick what you're building. Each guide has the `pskit.yml` you need, the commands, and how to check the result. They assume `pip install py-serverless-kit`, Terraform or OpenTofu on `PATH`, and cloud credentials for the target ([getting started](getting-started.md)). Every guide ends with `pskit dashboard` (static) or `pskit dashboard --serve` (live). See [dashboard.md](dashboard.md).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0279",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-scenarios"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-scenarios.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/scenarios.md#scenarios-step-by-step"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0280",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-scenarios"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-scenarios.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/scenarios.md#scenarios-step-by-step"
+  ],
+  "excerpt": "[docs/scenarios.md#scenarios-step-by-step]\nPick what you're building. Each guide has the `pskit.yml` you need, the commands, and how to check the result. They assume `pip install py-serverless-kit`, Terraform or OpenTofu on `PATH`, and cloud credentials for the target ([getting started](getting-started.md)). Every guide ends with `pskit dashboard` (static) or `pskit dashboard --serve` (live). See [dashboard.md](dashboard.md).",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0281",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-scenarios"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-scenarios.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/scenarios.md#scenarios-step-by-step"
+  ],
+  "excerpt": "[docs/scenarios.md#scenarios-step-by-step]\nPick what you're building. Each guide has the `pskit.yml` you need, the commands, and how to check the result. They assume `pip install py-serverless-kit`, Terraform or OpenTofu on `PATH`, and cloud credentials for the target ([getting started](getting-started.md)). Every guide ends with `pskit dashboard` (static) or `pskit dashboard --serve` (live). See [dashboard.md](dashboard.md).",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0282",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-scenarios"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-scenarios.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/scenarios.md#scenarios-step-by-step"
+  ],
+  "excerpt": "[docs/scenarios.md#scenarios-step-by-step]\nPick what you're building. Each guide has the `pskit.yml` you need, the commands, and how to check the result. They assume `pip install py-serverless-kit`, Terraform or OpenTofu on `PATH`, and cloud credentials for the target ([getting started](getting-started.md)). Every guide ends with `pskit dashboard` (static) or `pskit dashboard --serve` (live). See [dashboard.md](dashboard.md).",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0283",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-terraform-json"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-terraform-json.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0284",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-terraform-json"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-terraform-json.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0285",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-terraform-json"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-terraform-json.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0286",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-terraform-json"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-terraform-json.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0287",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-terraform-json"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-terraform-json.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0288",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-terraform-json"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-terraform-json.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0289",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-terraform-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-terraform-state.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0290",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-terraform-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-terraform-state.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ }
+]

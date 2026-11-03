@@ -1,0 +1,791 @@
+[
+ {
+  "id": "k_nav_0301",
+  "category": "k_nav",
+  "card_ids": [
+   "page-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-network.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Network.tsx",
+   "docs/onprem-network.md"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0302",
+  "category": "k_nav",
+  "card_ids": [
+   "page-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-network.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Network.tsx",
+   "docs/onprem-network.md"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0303",
+  "category": "k_nav",
+  "card_ids": [
+   "page-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-network.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Network.tsx",
+   "docs/onprem-network.md"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0304",
+  "category": "k_nav",
+  "card_ids": [
+   "page-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-network.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Network.tsx",
+   "docs/onprem-network.md"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0305",
+  "category": "k_nav",
+  "card_ids": [
+   "page-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-network.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Network.tsx",
+   "docs/onprem-network.md"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0306",
+  "category": "k_nav",
+  "card_ids": [
+   "page-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-network.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Network.tsx",
+   "docs/onprem-network.md"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0307",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-load-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-load-balancer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0308",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-load-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-load-balancer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0309",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-load-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-load-balancer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0310",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-load-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-load-balancer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0311",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-load-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-load-balancer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0312",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-load-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-load-balancer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0313",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-load-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-load-balancer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0314",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-load-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-load-balancer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0315",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-load-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-load-balancer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0316",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-load-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-load-balancer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0317",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-load-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-load-balancer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0318",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-load-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-load-balancer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0319",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-load-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-load-balancer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0320",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-load-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-load-balancer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0321",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-load-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-load-balancer.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0322",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-load-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-load-balancer.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0323",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-load-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-load-balancer.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0324",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-load-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-load-balancer.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0325",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-load-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-load-balancer.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0326",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-load-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-load-balancer.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0327",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-load-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-load-balancer.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0328",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-project"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-project.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0329",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-project"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-project.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0330",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-project"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-project.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0331",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-project"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-project.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/NewProject.tsx",
+   "dashboard-ui/src/studio/App.tsx"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0332",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-project"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-project.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0333",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-project"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-project.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0334",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-project"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-project.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0335",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-project"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-project.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0336",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-project"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-project.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0337",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-project"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-project.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/NewProject.tsx",
+   "dashboard-ui/src/studio/App.tsx"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0338",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-project"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-project.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0339",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-project"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-project.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0340",
+  "category": "k_nav",
+  "card_ids": [
+   "page-new-project"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-new-project.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ }
+]

@@ -1,0 +1,768 @@
+[
+ {
+  "id": "k_onprem_0601",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-rustfs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-rustfs.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0602",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-s3"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-s3.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0603",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-s3"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-s3.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0604",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-s3"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-s3.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0605",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-s3"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-s3.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#from-the-command-line",
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0606",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-s3"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-s3.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0607",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-s3"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-s3.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0608",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-s3"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-s3.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0609",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-s3"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-s3.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0610",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-s3"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-s3.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0611",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-s3-node"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-s3-node.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#from-the-command-line",
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0612",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-s3-node"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-s3-node.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0613",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-s3-node"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-s3-node.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0614",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-s3-node"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-s3-node.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0615",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-s3-node"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-s3-node.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0616",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-s3-node"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-s3-node.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0617",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-s3-node"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-s3-node.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#from-the-command-line",
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0618",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-s3-node"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-s3-node.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0619",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-s3-node"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-s3-node.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0620",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-secretsmanager"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-secretsmanager.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0621",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-secretsmanager"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-secretsmanager.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0622",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-secretsmanager"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-secretsmanager.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0623",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-secretsmanager"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-secretsmanager.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#from-the-command-line",
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0624",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-secretsmanager"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-secretsmanager.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0625",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-secretsmanager"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-secretsmanager.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0626",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-secretsmanager"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-secretsmanager.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0627",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-secretsmanager"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-secretsmanager.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0628",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-secretsmanager"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-secretsmanager.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0629",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-secretsmanager-node"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-secretsmanager-node.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0630",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-secretsmanager-node"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-secretsmanager-node.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#from-the-command-line",
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0631",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-secretsmanager-node"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-secretsmanager-node.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0632",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-secretsmanager-node"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-secretsmanager-node.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0633",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-secretsmanager-node"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-secretsmanager-node.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0634",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-secretsmanager-node"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-secretsmanager-node.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0635",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-secretsmanager-node"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-secretsmanager-node.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0636",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-secretsmanager-node"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-secretsmanager-node.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#from-the-command-line",
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0637",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-secretsmanager-node"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-secretsmanager-node.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0638",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-smtp"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-smtp.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0639",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-smtp"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-smtp.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0640",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-smtp"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-smtp.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ }
+]

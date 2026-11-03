@@ -1,0 +1,762 @@
+[
+ {
+  "id": "k_trouble_0011",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-configuration"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-configuration.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#configuration"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0012",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-configuration"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-configuration.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#configuration"
+  ],
+  "excerpt": "[docs/troubleshooting.md#configuration]\n**`unresolved variables: env:FOO`** : Set the variable, or give a default: `${env:FOO, fallback}`. **`each event must be a single-key mapping`** : Write `- http: {path: /x}` and `- queue: jobs` as separate list items, not two keys in one item. **`route GET /x is used by both 'a' and 'b'`** : Each `METHOD /path` may belong to one function only (`/x` and `/x/` count as the same path).",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0013",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-configuration"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-configuration.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#configuration"
+  ],
+  "excerpt": "[docs/troubleshooting.md#configuration]\n**`unresolved variables: env:FOO`** : Set the variable, or give a default: `${env:FOO, fallback}`. **`each event must be a single-key mapping`** : Write `- http: {path: /x}` and `- queue: jobs` as separate list items, not two keys in one item. **`route GET /x is used by both 'a' and 'b'`** : Each `METHOD /path` may belong to one function only (`/x` and `/x/` count as the same path).",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0014",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-configuration"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-configuration.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#configuration"
+  ],
+  "excerpt": "[docs/troubleshooting.md#configuration]\n**`unresolved variables: env:FOO`** : Set the variable, or give a default: `${env:FOO, fallback}`. **`each event must be a single-key mapping`** : Write `- http: {path: /x}` and `- queue: jobs` as separate list items, not two keys in one item. **`route GET /x is used by both 'a' and 'b'`** : Each `METHOD /path` may belong to one function only (`/x` and `/x/` count as the same path).",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0015",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-configuration"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-configuration.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#configuration"
+  ],
+  "excerpt": "[docs/troubleshooting.md#configuration]\n**`unresolved variables: env:FOO`** : Set the variable, or give a default: `${env:FOO, fallback}`. **`each event must be a single-key mapping`** : Write `- http: {path: /x}` and `- queue: jobs` as separate list items, not two keys in one item. **`route GET /x is used by both 'a' and 'b'`** : Each `METHOD /path` may belong to one function only (`/x` and `/x/` count as the same path).",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0016",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-configuration"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-configuration.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#configuration"
+  ],
+  "excerpt": "[docs/troubleshooting.md#configuration]\n**`unresolved variables: env:FOO`** : Set the variable, or give a default: `${env:FOO, fallback}`. **`each event must be a single-key mapping`** : Write `- http: {path: /x}` and `- queue: jobs` as separate list items, not two keys in one item. **`route GET /x is used by both 'a' and 'b'`** : Each `METHOD /path` may belong to one function only (`/x` and `/x/` count as the same path).",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0017",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-configuration"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-configuration.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#configuration"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0018",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-configuration"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-configuration.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#configuration"
+  ],
+  "excerpt": "[docs/troubleshooting.md#configuration]\n**`unresolved variables: env:FOO`** : Set the variable, or give a default: `${env:FOO, fallback}`. **`each event must be a single-key mapping`** : Write `- http: {path: /x}` and `- queue: jobs` as separate list items, not two keys in one item. **`route GET /x is used by both 'a' and 'b'`** : Each `METHOD /path` may belong to one function only (`/x` and `/x/` count as the same path).",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0019",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-configuration"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-configuration.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#configuration"
+  ],
+  "excerpt": "[docs/troubleshooting.md#configuration]\n**`unresolved variables: env:FOO`** : Set the variable, or give a default: `${env:FOO, fallback}`. **`each event must be a single-key mapping`** : Write `- http: {path: /x}` and `- queue: jobs` as separate list items, not two keys in one item. **`route GET /x is used by both 'a' and 'b'`** : Each `METHOD /path` may belong to one function only (`/x` and `/x/` count as the same path).",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0020",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-configuration"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-configuration.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#configuration"
+  ],
+  "excerpt": "[docs/troubleshooting.md#configuration]\n**`unresolved variables: env:FOO`** : Set the variable, or give a default: `${env:FOO, fallback}`. **`each event must be a single-key mapping`** : Write `- http: {path: /x}` and `- queue: jobs` as separate list items, not two keys in one item. **`route GET /x is used by both 'a' and 'b'`** : Each `METHOD /path` may belong to one function only (`/x` and `/x/` count as the same path).",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0021",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-configuration"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-configuration.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#configuration"
+  ],
+  "excerpt": "[docs/troubleshooting.md#configuration]\n**`unresolved variables: env:FOO`** : Set the variable, or give a default: `${env:FOO, fallback}`. **`each event must be a single-key mapping`** : Write `- http: {path: /x}` and `- queue: jobs` as separate list items, not two keys in one item. **`route GET /x is used by both 'a' and 'b'`** : Each `METHOD /path` may belong to one function only (`/x` and `/x/` count as the same path).",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0022",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-configuration"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-configuration.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#configuration"
+  ],
+  "excerpt": "[docs/troubleshooting.md#configuration]\n**`unresolved variables: env:FOO`** : Set the variable, or give a default: `${env:FOO, fallback}`. **`each event must be a single-key mapping`** : Write `- http: {path: /x}` and `- queue: jobs` as separate list items, not two keys in one item. **`route GET /x is used by both 'a' and 'b'`** : Each `METHOD /path` may belong to one function only (`/x` and `/x/` count as the same path).",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0023",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-deploy-and-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-deploy-and-state.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#deploy-and-state"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0024",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-deploy-and-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-deploy-and-state.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#deploy-and-state"
+  ],
+  "excerpt": "[docs/troubleshooting.md#deploy-and-state]\n**State conflicts / \"resource already exists\" after deploying from another machine** : The default state lives in `.pskit/` on one machine. Configure `provider.state` with a remote backend (S3 + DynamoDB lock, GCS, `azurerm`, …), then `terraform init -migrate-state` via `pskit tf -- init -migrate-state`.",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0025",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-deploy-and-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-deploy-and-state.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#deploy-and-state"
+  ],
+  "excerpt": "[docs/troubleshooting.md#deploy-and-state]\n**State conflicts / \"resource already exists\" after deploying from another machine** : The default state lives in `.pskit/` on one machine. Configure `provider.state` with a remote backend (S3 + DynamoDB lock, GCS, `azurerm`, …), then `terraform init -migrate-state` via `pskit tf -- init -migrate-state`.",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0026",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-deploy-and-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-deploy-and-state.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#deploy-and-state"
+  ],
+  "excerpt": "[docs/troubleshooting.md#deploy-and-state]\n**State conflicts / \"resource already exists\" after deploying from another machine** : The default state lives in `.pskit/` on one machine. Configure `provider.state` with a remote backend (S3 + DynamoDB lock, GCS, `azurerm`, …), then `terraform init -migrate-state` via `pskit tf -- init -migrate-state`.",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0027",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-deploy-and-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-deploy-and-state.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#deploy-and-state"
+  ],
+  "excerpt": "[docs/troubleshooting.md#deploy-and-state]\n**State conflicts / \"resource already exists\" after deploying from another machine** : The default state lives in `.pskit/` on one machine. Configure `provider.state` with a remote backend (S3 + DynamoDB lock, GCS, `azurerm`, …), then `terraform init -migrate-state` via `pskit tf -- init -migrate-state`.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0028",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-deploy-and-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-deploy-and-state.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#deploy-and-state"
+  ],
+  "excerpt": "[docs/troubleshooting.md#deploy-and-state]\n**State conflicts / \"resource already exists\" after deploying from another machine** : The default state lives in `.pskit/` on one machine. Configure `provider.state` with a remote backend (S3 + DynamoDB lock, GCS, `azurerm`, …), then `terraform init -migrate-state` via `pskit tf -- init -migrate-state`.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0029",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-deploy-and-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-deploy-and-state.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#deploy-and-state"
+  ],
+  "excerpt": "[docs/troubleshooting.md#deploy-and-state]\n**State conflicts / \"resource already exists\" after deploying from another machine** : The default state lives in `.pskit/` on one machine. Configure `provider.state` with a remote backend (S3 + DynamoDB lock, GCS, `azurerm`, …), then `terraform init -migrate-state` via `pskit tf -- init -migrate-state`.",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0030",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-deploy-and-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-deploy-and-state.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#deploy-and-state"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0031",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-deploy-and-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-deploy-and-state.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#deploy-and-state"
+  ],
+  "excerpt": "[docs/troubleshooting.md#deploy-and-state]\n**State conflicts / \"resource already exists\" after deploying from another machine** : The default state lives in `.pskit/` on one machine. Configure `provider.state` with a remote backend (S3 + DynamoDB lock, GCS, `azurerm`, …), then `terraform init -migrate-state` via `pskit tf -- init -migrate-state`.",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0032",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-deploy-and-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-deploy-and-state.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#deploy-and-state"
+  ],
+  "excerpt": "[docs/troubleshooting.md#deploy-and-state]\n**State conflicts / \"resource already exists\" after deploying from another machine** : The default state lives in `.pskit/` on one machine. Configure `provider.state` with a remote backend (S3 + DynamoDB lock, GCS, `azurerm`, …), then `terraform init -migrate-state` via `pskit tf -- init -migrate-state`.",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0033",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-deploy-and-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-deploy-and-state.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#deploy-and-state"
+  ],
+  "excerpt": "[docs/troubleshooting.md#deploy-and-state]\n**State conflicts / \"resource already exists\" after deploying from another machine** : The default state lives in `.pskit/` on one machine. Configure `provider.state` with a remote backend (S3 + DynamoDB lock, GCS, `azurerm`, …), then `terraform init -migrate-state` via `pskit tf -- init -migrate-state`.",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0034",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-deploy-and-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-deploy-and-state.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#deploy-and-state"
+  ],
+  "excerpt": "[docs/troubleshooting.md#deploy-and-state]\n**State conflicts / \"resource already exists\" after deploying from another machine** : The default state lives in `.pskit/` on one machine. Configure `provider.state` with a remote backend (S3 + DynamoDB lock, GCS, `azurerm`, …), then `terraform init -migrate-state` via `pskit tf -- init -migrate-state`.",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0035",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-deploy-and-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-deploy-and-state.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#deploy-and-state"
+  ],
+  "excerpt": "[docs/troubleshooting.md#deploy-and-state]\n**State conflicts / \"resource already exists\" after deploying from another machine** : The default state lives in `.pskit/` on one machine. Configure `provider.state` with a remote backend (S3 + DynamoDB lock, GCS, `azurerm`, …), then `terraform init -migrate-state` via `pskit tf -- init -migrate-state`.",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0036",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-deploy-and-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-deploy-and-state.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#deploy-and-state"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0037",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-deploy-and-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-deploy-and-state.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#deploy-and-state"
+  ],
+  "excerpt": "[docs/troubleshooting.md#deploy-and-state]\n**State conflicts / \"resource already exists\" after deploying from another machine** : The default state lives in `.pskit/` on one machine. Configure `provider.state` with a remote backend (S3 + DynamoDB lock, GCS, `azurerm`, …), then `terraform init -migrate-state` via `pskit tf -- init -migrate-state`.",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0038",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-deploy-and-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-deploy-and-state.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#deploy-and-state"
+  ],
+  "excerpt": "[docs/troubleshooting.md#deploy-and-state]\n**State conflicts / \"resource already exists\" after deploying from another machine** : The default state lives in `.pskit/` on one machine. Configure `provider.state` with a remote backend (S3 + DynamoDB lock, GCS, `azurerm`, …), then `terraform init -migrate-state` via `pskit tf -- init -migrate-state`.",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0039",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-deploy-and-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-deploy-and-state.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#deploy-and-state"
+  ],
+  "excerpt": "[docs/troubleshooting.md#deploy-and-state]\n**State conflicts / \"resource already exists\" after deploying from another machine** : The default state lives in `.pskit/` on one machine. Configure `provider.state` with a remote backend (S3 + DynamoDB lock, GCS, `azurerm`, …), then `terraform init -migrate-state` via `pskit tf -- init -migrate-state`.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0040",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-deploy-and-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-deploy-and-state.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#deploy-and-state"
+  ],
+  "excerpt": "[docs/troubleshooting.md#deploy-and-state]\n**State conflicts / \"resource already exists\" after deploying from another machine** : The default state lives in `.pskit/` on one machine. Configure `provider.state` with a remote backend (S3 + DynamoDB lock, GCS, `azurerm`, …), then `terraform init -migrate-state` via `pskit tf -- init -migrate-state`.",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0041",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-deploy-and-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-deploy-and-state.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#deploy-and-state"
+  ],
+  "excerpt": "[docs/troubleshooting.md#deploy-and-state]\n**State conflicts / \"resource already exists\" after deploying from another machine** : The default state lives in `.pskit/` on one machine. Configure `provider.state` with a remote backend (S3 + DynamoDB lock, GCS, `azurerm`, …), then `terraform init -migrate-state` via `pskit tf -- init -migrate-state`.",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0042",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-deploy-and-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-deploy-and-state.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#deploy-and-state"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0043",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-deploy-and-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-deploy-and-state.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#deploy-and-state"
+  ],
+  "excerpt": "[docs/troubleshooting.md#deploy-and-state]\n**State conflicts / \"resource already exists\" after deploying from another machine** : The default state lives in `.pskit/` on one machine. Configure `provider.state` with a remote backend (S3 + DynamoDB lock, GCS, `azurerm`, …), then `terraform init -migrate-state` via `pskit tf -- init -migrate-state`.",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0044",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-deploy-and-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-deploy-and-state.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#deploy-and-state"
+  ],
+  "excerpt": "[docs/troubleshooting.md#deploy-and-state]\n**State conflicts / \"resource already exists\" after deploying from another machine** : The default state lives in `.pskit/` on one machine. Configure `provider.state` with a remote backend (S3 + DynamoDB lock, GCS, `azurerm`, …), then `terraform init -migrate-state` via `pskit tf -- init -migrate-state`.",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0045",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-faq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-faq.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#faq"
+  ],
+  "excerpt": "[docs/troubleshooting.md#faq]\n**Do I add `py-serverless-kit` to my function's `requirements.txt`?** : No. The runtime is vendored into every bundle automatically, and such lines are stripped. **Can I keep using cloud SDKs (boto3, google-cloud-*)?** : Yes, but that code becomes cloud-specific. Isolate it behind your own functions.",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0046",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-faq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-faq.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#faq"
+  ],
+  "excerpt": "[docs/troubleshooting.md#faq]\n**Do I add `py-serverless-kit` to my function's `requirements.txt`?** : No. The runtime is vendored into every bundle automatically, and such lines are stripped. **Can I keep using cloud SDKs (boto3, google-cloud-*)?** : Yes, but that code becomes cloud-specific. Isolate it behind your own functions.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0047",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-faq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-faq.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#faq"
+  ],
+  "excerpt": "[docs/troubleshooting.md#faq]\n**Do I add `py-serverless-kit` to my function's `requirements.txt`?** : No. The runtime is vendored into every bundle automatically, and such lines are stripped. **Can I keep using cloud SDKs (boto3, google-cloud-*)?** : Yes, but that code becomes cloud-specific. Isolate it behind your own functions.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0048",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-faq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-faq.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#faq"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0049",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-faq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-faq.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#faq"
+  ],
+  "excerpt": "[docs/troubleshooting.md#faq]\n**Do I add `py-serverless-kit` to my function's `requirements.txt`?** : No. The runtime is vendored into every bundle automatically, and such lines are stripped. **Can I keep using cloud SDKs (boto3, google-cloud-*)?** : Yes, but that code becomes cloud-specific. Isolate it behind your own functions.",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0050",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-faq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-faq.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#faq"
+  ],
+  "excerpt": "[docs/troubleshooting.md#faq]\n**Do I add `py-serverless-kit` to my function's `requirements.txt`?** : No. The runtime is vendored into every bundle automatically, and such lines are stripped. **Can I keep using cloud SDKs (boto3, google-cloud-*)?** : Yes, but that code becomes cloud-specific. Isolate it behind your own functions.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ }
+]

@@ -1,0 +1,762 @@
+[
+ {
+  "id": "k_scale_0181",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0182",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0183",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0184",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0185",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0186",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0187",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0188",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0189",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0190",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0191",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0192",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0193",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0194",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0195",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0196",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0197",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0198",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0199",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0200",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0201",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0202",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0203",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0204",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0205",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0206",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0207",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0208",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0209",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0210",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0211",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0212",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0213",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0214",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0215",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0216",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0217",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0218",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0219",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "[docs/load-balancers.md#the-six-algorithms]\n**Static** algorithms follow a fixed rule; **dynamic** ones measure live load per request. Open-source nginx has no sticky cookie or least time (both are NGINX Plus), so pskit builds them: sticky hashes a cookie that holds the first request's id (`hash ... consistent`), and least time runs `balancer_by_lua` with a moving average of each server's response header time. A server that fails is retried on the next one and rests for 10 s.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0220",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-algorithms"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-algorithms.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/load-balancers.md#the-six-algorithms"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ }
+]

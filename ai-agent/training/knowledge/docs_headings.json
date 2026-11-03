@@ -1,0 +1,5533 @@
+{
+  "root": "docs",
+  "file_count": 107,
+  "markdown_count": 106,
+  "heading_count": 814,
+  "files": [
+    {
+      "path": "docs/architecture.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Architecture",
+          "anchor": "architecture",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Deploy pipeline",
+          "anchor": "deploy-pipeline",
+          "line": 8
+        },
+        {
+          "level": 2,
+          "title": "Bundle layout",
+          "anchor": "bundle-layout",
+          "line": 38
+        },
+        {
+          "level": 2,
+          "title": "Runtime flow",
+          "anchor": "runtime-flow",
+          "line": 57
+        },
+        {
+          "level": 2,
+          "title": "State handling",
+          "anchor": "state-handling",
+          "line": 87
+        },
+        {
+          "level": 2,
+          "title": "Third-party providers",
+          "anchor": "third-party-providers",
+          "line": 91
+        }
+      ]
+    },
+    {
+      "path": "docs/cli.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "CLI reference",
+          "anchor": "cli-reference",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Common project options",
+          "anchor": "common-project-options",
+          "line": 20
+        },
+        {
+          "level": 2,
+          "title": "`pskit init [DIRECTORY]`",
+          "anchor": "pskit-init-directory",
+          "line": 34
+        },
+        {
+          "level": 2,
+          "title": "`pskit validate`",
+          "anchor": "pskit-validate",
+          "line": 49
+        },
+        {
+          "level": 2,
+          "title": "`pskit package`",
+          "anchor": "pskit-package",
+          "line": 57
+        },
+        {
+          "level": 2,
+          "title": "`pskit plan`",
+          "anchor": "pskit-plan",
+          "line": 65
+        },
+        {
+          "level": 2,
+          "title": "`pskit deploy`",
+          "anchor": "pskit-deploy",
+          "line": 74
+        },
+        {
+          "level": 2,
+          "title": "`pskit remove`",
+          "anchor": "pskit-remove",
+          "line": 87
+        },
+        {
+          "level": 2,
+          "title": "`pskit trigger`",
+          "anchor": "pskit-trigger",
+          "line": 105
+        },
+        {
+          "level": 2,
+          "title": "`pskit resources`",
+          "anchor": "pskit-resources",
+          "line": 158
+        },
+        {
+          "level": 2,
+          "title": "`pskit cluster`",
+          "anchor": "pskit-cluster",
+          "line": 191
+        },
+        {
+          "level": 2,
+          "title": "`pskit settings`",
+          "anchor": "pskit-settings",
+          "line": 216
+        },
+        {
+          "level": 2,
+          "title": "`pskit client`",
+          "anchor": "pskit-client",
+          "line": 253
+        },
+        {
+          "level": 3,
+          "title": "`pskit resources onprem`",
+          "anchor": "pskit-resources-onprem",
+          "line": 263
+        },
+        {
+          "level": 2,
+          "title": "`pskit info`",
+          "anchor": "pskit-info",
+          "line": 315
+        },
+        {
+          "level": 2,
+          "title": "`pskit dashboard`",
+          "anchor": "pskit-dashboard",
+          "line": 326
+        },
+        {
+          "level": 2,
+          "title": "`pskit studio`",
+          "anchor": "pskit-studio",
+          "line": 341
+        },
+        {
+          "level": 2,
+          "title": "`pskit doctor`",
+          "anchor": "pskit-doctor",
+          "line": 357
+        },
+        {
+          "level": 2,
+          "title": "`pskit dev`",
+          "anchor": "pskit-dev",
+          "line": 394
+        },
+        {
+          "level": 2,
+          "title": "`pskit invoke`",
+          "anchor": "pskit-invoke",
+          "line": 406
+        },
+        {
+          "level": 2,
+          "title": "`pskit workflow`",
+          "anchor": "pskit-workflow",
+          "line": 430
+        },
+        {
+          "level": 2,
+          "title": "`pskit logs`",
+          "anchor": "pskit-logs",
+          "line": 458
+        },
+        {
+          "level": 2,
+          "title": "`pskit providers`",
+          "anchor": "pskit-providers",
+          "line": 488
+        },
+        {
+          "level": 2,
+          "title": "`pskit tf -- ARGS…`",
+          "anchor": "pskit-tf----args",
+          "line": 492
+        },
+        {
+          "level": 2,
+          "title": "Environment variables",
+          "anchor": "environment-variables",
+          "line": 502
+        }
+      ]
+    },
+    {
+      "path": "docs/client.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Call an on-prem host from any program: pskit client and HTTP API",
+          "anchor": "call-an-on-prem-host-from-any-program-pskit-client-and-http-api",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Python",
+          "anchor": "python",
+          "line": 20
+        },
+        {
+          "level": 2,
+          "title": "Node.js (18+)",
+          "anchor": "nodejs-18",
+          "line": 62
+        },
+        {
+          "level": 2,
+          "title": "Consuming outside pskit",
+          "anchor": "consuming-outside-pskit",
+          "line": 100
+        },
+        {
+          "level": 2,
+          "title": "HTTP API",
+          "anchor": "http-api",
+          "line": 107
+        },
+        {
+          "level": 2,
+          "title": "AWS-compatible APIs",
+          "anchor": "aws-compatible-apis",
+          "line": 142
+        },
+        {
+          "level": 2,
+          "title": "When connections time out",
+          "anchor": "when-connections-time-out",
+          "line": 153
+        }
+      ]
+    },
+    {
+      "path": "docs/cluster.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Scaling cluster (on premises)",
+          "anchor": "scaling-cluster-on-premises",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "How the functions run in a cluster",
+          "anchor": "how-the-functions-run-in-a-cluster",
+          "line": 26
+        },
+        {
+          "level": 3,
+          "title": "Nomad does not need a load balancer",
+          "anchor": "nomad-does-not-need-a-load-balancer",
+          "line": 55
+        },
+        {
+          "level": 2,
+          "title": "Set up",
+          "anchor": "set-up",
+          "line": 70
+        },
+        {
+          "level": 3,
+          "title": "One server or the cluster, per deploy",
+          "anchor": "one-server-or-the-cluster-per-deploy",
+          "line": 133
+        },
+        {
+          "level": 2,
+          "title": "Per-server settings: home path, bind address, data directory",
+          "anchor": "per-server-settings-home-path-bind-address-data-directory",
+          "line": 149
+        },
+        {
+          "level": 2,
+          "title": "Resources on a cluster",
+          "anchor": "resources-on-a-cluster",
+          "line": 163
+        },
+        {
+          "level": 3,
+          "title": "Ports to open",
+          "anchor": "ports-to-open",
+          "line": 185
+        },
+        {
+          "level": 2,
+          "title": "Load balancer: one URL for the whole cluster (optional)",
+          "anchor": "load-balancer-one-url-for-the-whole-cluster-optional",
+          "line": 197
+        },
+        {
+          "level": 3,
+          "title": "The master and requests",
+          "anchor": "the-master-and-requests",
+          "line": 232
+        },
+        {
+          "level": 2,
+          "title": "Live requests: which server handled what",
+          "anchor": "live-requests-which-server-handled-what",
+          "line": 293
+        },
+        {
+          "level": 2,
+          "title": "Live logs",
+          "anchor": "live-logs",
+          "line": 324
+        },
+        {
+          "level": 2,
+          "title": "Monitor, scale and add servers when it is full",
+          "anchor": "monitor-scale-and-add-servers-when-it-is-full",
+          "line": 334
+        },
+        {
+          "level": 3,
+          "title": "Alert DevOps (optional)",
+          "anchor": "alert-devops-optional",
+          "line": 371
+        },
+        {
+          "level": 2,
+          "title": "Where things are kept",
+          "anchor": "where-things-are-kept",
+          "line": 431
+        },
+        {
+          "level": 2,
+          "title": "Commands",
+          "anchor": "commands",
+          "line": 442
+        },
+        {
+          "level": 2,
+          "title": "Limits and notes",
+          "anchor": "limits-and-notes",
+          "line": 463
+        }
+      ]
+    },
+    {
+      "path": "docs/configuration.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Configuration reference (`pskit.yml`)",
+          "anchor": "configuration-reference-pskityml",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Top level",
+          "anchor": "top-level",
+          "line": 20
+        },
+        {
+          "level": 2,
+          "title": "`provider`",
+          "anchor": "provider",
+          "line": 33
+        },
+        {
+          "level": 3,
+          "title": "Default runtime",
+          "anchor": "default-runtime",
+          "line": 53
+        },
+        {
+          "level": 3,
+          "title": "State: remote Terraform backend",
+          "anchor": "state-remote-terraform-backend",
+          "line": 57
+        },
+        {
+          "level": 3,
+          "title": "`terraform`",
+          "anchor": "terraform",
+          "line": 72
+        },
+        {
+          "level": 2,
+          "title": "`functions`",
+          "anchor": "functions",
+          "line": 81
+        },
+        {
+          "level": 2,
+          "title": "`resources`",
+          "anchor": "resources",
+          "line": 119
+        },
+        {
+          "level": 2,
+          "title": "`package`",
+          "anchor": "package",
+          "line": 148
+        },
+        {
+          "level": 2,
+          "title": "`hooks`",
+          "anchor": "hooks",
+          "line": 163
+        },
+        {
+          "level": 2,
+          "title": "Overrides and layering",
+          "anchor": "overrides-and-layering",
+          "line": 173
+        },
+        {
+          "level": 3,
+          "title": "`providers:`: per-cloud overrides",
+          "anchor": "providers-per-cloud-overrides",
+          "line": 175
+        },
+        {
+          "level": 4,
+          "title": "Switch something off on one cloud",
+          "anchor": "switch-something-off-on-one-cloud",
+          "line": 193
+        },
+        {
+          "level": 3,
+          "title": "`stages:`: per-stage overrides",
+          "anchor": "stages-per-stage-overrides",
+          "line": 209
+        },
+        {
+          "level": 3,
+          "title": "`extends:`: inherit files",
+          "anchor": "extends-inherit-files",
+          "line": 219
+        },
+        {
+          "level": 3,
+          "title": "Precedence (later wins)",
+          "anchor": "precedence-later-wins",
+          "line": 231
+        },
+        {
+          "level": 2,
+          "title": "Variables",
+          "anchor": "variables",
+          "line": 244
+        },
+        {
+          "level": 2,
+          "title": "Escape hatches",
+          "anchor": "escape-hatches",
+          "line": 263
+        }
+      ]
+    },
+    {
+      "path": "docs/dashboard.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Dashboard",
+          "anchor": "dashboard",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "What it shows",
+          "anchor": "what-it-shows",
+          "line": 30
+        },
+        {
+          "level": 2,
+          "title": "Live mode",
+          "anchor": "live-mode",
+          "line": 49
+        },
+        {
+          "level": 3,
+          "title": "Log sources",
+          "anchor": "log-sources",
+          "line": 69
+        },
+        {
+          "level": 3,
+          "title": "Security",
+          "anchor": "security",
+          "line": 81
+        },
+        {
+          "level": 2,
+          "title": "Where the data comes from",
+          "anchor": "where-the-data-comes-from",
+          "line": 88
+        },
+        {
+          "level": 2,
+          "title": "Changing the UI",
+          "anchor": "changing-the-ui",
+          "line": 101
+        }
+      ]
+    },
+    {
+      "path": "docs/events.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Events (triggers)",
+          "anchor": "events-triggers",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "`http`",
+          "anchor": "http",
+          "line": 41
+        },
+        {
+          "level": 2,
+          "title": "`schedule`",
+          "anchor": "schedule",
+          "line": 91
+        },
+        {
+          "level": 2,
+          "title": "`queue`",
+          "anchor": "queue",
+          "line": 125
+        },
+        {
+          "level": 2,
+          "title": "`storage`",
+          "anchor": "storage",
+          "line": 155
+        },
+        {
+          "level": 2,
+          "title": "`topic`",
+          "anchor": "topic",
+          "line": 184
+        },
+        {
+          "level": 2,
+          "title": "Events backed by a resource",
+          "anchor": "events-backed-by-a-resource",
+          "line": 207
+        },
+        {
+          "level": 2,
+          "title": "Provider-specific behaviour worth knowing",
+          "anchor": "provider-specific-behaviour-worth-knowing",
+          "line": 225
+        },
+        {
+          "level": 3,
+          "title": "GCP: multi-trigger functions are split automatically",
+          "anchor": "gcp-multi-trigger-functions-are-split-automatically",
+          "line": 227
+        },
+        {
+          "level": 3,
+          "title": "Azure: one Function App per service",
+          "anchor": "azure-one-function-app-per-service",
+          "line": 236
+        },
+        {
+          "level": 3,
+          "title": "Schedule + invoke envelope",
+          "anchor": "schedule-invoke-envelope",
+          "line": 240
+        }
+      ]
+    },
+    {
+      "path": "docs/getting-started.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Getting started",
+          "anchor": "getting-started",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Install",
+          "anchor": "1-install",
+          "line": 3
+        },
+        {
+          "level": 2,
+          "title": "2. Scaffold a project",
+          "anchor": "2-scaffold-a-project",
+          "line": 21
+        },
+        {
+          "level": 2,
+          "title": "3. Write a handler",
+          "anchor": "3-write-a-handler",
+          "line": 38
+        },
+        {
+          "level": 2,
+          "title": "4. Run locally",
+          "anchor": "4-run-locally",
+          "line": 80
+        },
+        {
+          "level": 2,
+          "title": "5. Validate",
+          "anchor": "5-validate",
+          "line": 92
+        },
+        {
+          "level": 2,
+          "title": "6. Configure cloud credentials",
+          "anchor": "6-configure-cloud-credentials",
+          "line": 99
+        },
+        {
+          "level": 2,
+          "title": "7. Deploy",
+          "anchor": "7-deploy",
+          "line": 119
+        },
+        {
+          "level": 2,
+          "title": "8. Switch cloud",
+          "anchor": "8-switch-cloud",
+          "line": 137
+        },
+        {
+          "level": 2,
+          "title": "9. Remove",
+          "anchor": "9-remove",
+          "line": 169
+        },
+        {
+          "level": 2,
+          "title": "Next",
+          "anchor": "next",
+          "line": 176
+        }
+      ]
+    },
+    {
+      "path": "docs/handlers.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Handler API",
+          "anchor": "handler-api",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Handler signatures",
+          "anchor": "handler-signatures",
+          "line": 13
+        },
+        {
+          "level": 2,
+          "title": "`Event`",
+          "anchor": "event",
+          "line": 23
+        },
+        {
+          "level": 2,
+          "title": "`HttpRequest`",
+          "anchor": "httprequest",
+          "line": 44
+        },
+        {
+          "level": 2,
+          "title": "`Record`",
+          "anchor": "record",
+          "line": 63
+        },
+        {
+          "level": 2,
+          "title": "`Context`",
+          "anchor": "context",
+          "line": 75
+        },
+        {
+          "level": 2,
+          "title": "Returning a response",
+          "anchor": "returning-a-response",
+          "line": 87
+        },
+        {
+          "level": 2,
+          "title": "Errors",
+          "anchor": "errors",
+          "line": 114
+        },
+        {
+          "level": 2,
+          "title": "`BatchResult`",
+          "anchor": "batchresult",
+          "line": 139
+        },
+        {
+          "level": 2,
+          "title": "`invoke()`: calling another function",
+          "anchor": "invoke-calling-another-function",
+          "line": 165
+        },
+        {
+          "level": 2,
+          "title": "`get_secret()`: secrets on every provider",
+          "anchor": "get_secret-secrets-on-every-provider",
+          "line": 184
+        },
+        {
+          "level": 2,
+          "title": "Environment variables",
+          "anchor": "environment-variables",
+          "line": 201
+        },
+        {
+          "level": 2,
+          "title": "Logging",
+          "anchor": "logging",
+          "line": 223
+        }
+      ]
+    },
+    {
+      "path": "docs/load-balancers.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Load balancers (on premises)",
+          "anchor": "load-balancers-on-premises",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "The six algorithms",
+          "anchor": "the-six-algorithms",
+          "line": 15
+        },
+        {
+          "level": 2,
+          "title": "Create one and put projects on it",
+          "anchor": "create-one-and-put-projects-on-it",
+          "line": 36
+        },
+        {
+          "level": 2,
+          "title": "Shared between projects and machines",
+          "anchor": "shared-between-projects-and-machines",
+          "line": 70
+        },
+        {
+          "level": 2,
+          "title": "Commands",
+          "anchor": "commands",
+          "line": 82
+        },
+        {
+          "level": 2,
+          "title": "Notes",
+          "anchor": "notes",
+          "line": 101
+        }
+      ]
+    },
+    {
+      "path": "docs/local-development.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Local development",
+          "anchor": "local-development",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "`pskit dev`: local server",
+          "anchor": "pskit-dev-local-server",
+          "line": 5
+        },
+        {
+          "level": 2,
+          "title": "`pskit invoke` and `pskit workflow run`",
+          "anchor": "pskit-invoke-and-pskit-workflow-run",
+          "line": 37
+        },
+        {
+          "level": 2,
+          "title": "Environment",
+          "anchor": "environment",
+          "line": 47
+        },
+        {
+          "level": 2,
+          "title": "Testing with pytest",
+          "anchor": "testing-with-pytest",
+          "line": 59
+        },
+        {
+          "level": 2,
+          "title": "On-premises is a deploy, not `pskit dev`",
+          "anchor": "on-premises-is-a-deploy-not-pskit-dev",
+          "line": 96
+        }
+      ]
+    },
+    {
+      "path": "docs/migrating-from-aws.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Migrating from AWS Lambda and Step Functions",
+          "anchor": "migrating-from-aws-lambda-and-step-functions",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Step 1: separate business logic from AWS event parsing",
+          "anchor": "step-1-separate-business-logic-from-aws-event-parsing",
+          "line": 7
+        },
+        {
+          "level": 2,
+          "title": "Step 2: translate the SAM / Serverless / CDK definition",
+          "anchor": "step-2-translate-the-sam-serverless-cdk-definition",
+          "line": 47
+        },
+        {
+          "level": 2,
+          "title": "Step 3: translate Step Functions",
+          "anchor": "step-3-translate-step-functions",
+          "line": 63
+        },
+        {
+          "level": 2,
+          "title": "Step 4: deploy to AWS side by side",
+          "anchor": "step-4-deploy-to-aws-side-by-side",
+          "line": 74
+        },
+        {
+          "level": 2,
+          "title": "Step 5: move to another cloud",
+          "anchor": "step-5-move-to-another-cloud",
+          "line": 83
+        }
+      ]
+    },
+    {
+      "path": "docs/nodejs.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Node.js and TypeScript",
+          "anchor": "nodejs-and-typescript",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Choosing the runtime",
+          "anchor": "choosing-the-runtime",
+          "line": 12
+        },
+        {
+          "level": 2,
+          "title": "Handlers",
+          "anchor": "handlers",
+          "line": 40
+        },
+        {
+          "level": 3,
+          "title": "Secrets",
+          "anchor": "secrets",
+          "line": 76
+        },
+        {
+          "level": 2,
+          "title": "TypeScript",
+          "anchor": "typescript",
+          "line": 82
+        },
+        {
+          "level": 2,
+          "title": "Calling an on-prem host from other Node.js programs",
+          "anchor": "calling-an-on-prem-host-from-other-nodejs-programs",
+          "line": 102
+        },
+        {
+          "level": 2,
+          "title": "Dependencies and packaging",
+          "anchor": "dependencies-and-packaging",
+          "line": 107
+        },
+        {
+          "level": 2,
+          "title": "Local development",
+          "anchor": "local-development",
+          "line": 129
+        },
+        {
+          "level": 2,
+          "title": "Limitations",
+          "anchor": "limitations",
+          "line": 144
+        }
+      ]
+    },
+    {
+      "path": "docs/onprem-network.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Network and firewall rules (on premises)",
+          "anchor": "network-and-firewall-rules-on-premises",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "The machines",
+          "anchor": "the-machines",
+          "line": 27
+        },
+        {
+          "level": 2,
+          "title": "1. Always: the admin machine reaches every server over SSH",
+          "anchor": "1-always-the-admin-machine-reaches-every-server-over-ssh",
+          "line": 42
+        },
+        {
+          "level": 2,
+          "title": "2. Saving a server (`pskit resources onprem servers add`, studio \"Add server\")",
+          "anchor": "2-saving-a-server-pskit-resources-onprem-servers-add-studio-add-server",
+          "line": 53
+        },
+        {
+          "level": 2,
+          "title": "3. Deploy to one server (`method: ssh`, `docker`, or `--server NAME`)",
+          "anchor": "3-deploy-to-one-server-method-ssh-docker-or---server-name",
+          "line": 61
+        },
+        {
+          "level": 2,
+          "title": "4. Functions on several servers (`provider.options.placement`)",
+          "anchor": "4-functions-on-several-servers-provideroptionsplacement",
+          "line": 80
+        },
+        {
+          "level": 2,
+          "title": "5. Scaling cluster: create (`pskit cluster create prod --master edge1`)",
+          "anchor": "5-scaling-cluster-create-pskit-cluster-create-prod---master-edge1",
+          "line": 94
+        },
+        {
+          "level": 2,
+          "title": "6. Scaling cluster: join a server (`pskit cluster join prod edge2`) and run",
+          "anchor": "6-scaling-cluster-join-a-server-pskit-cluster-join-prod-edge2-and-run",
+          "line": 101
+        },
+        {
+          "level": 2,
+          "title": "7. Load balancer (`pskit lb create`, `pskit lb attach`, `pskit cluster balancer set`)",
+          "anchor": "7-load-balancer-pskit-lb-create-pskit-lb-attach-pskit-cluster-balancer-set",
+          "line": 121
+        },
+        {
+          "level": 2,
+          "title": "8. Resources and triggers (\"attaching events\")",
+          "anchor": "8-resources-and-triggers-attaching-events",
+          "line": 134
+        },
+        {
+          "level": 2,
+          "title": "9. The studio and browser terminals",
+          "anchor": "9-the-studio-and-browser-terminals",
+          "line": 193
+        },
+        {
+          "level": 2,
+          "title": "Example: one load balancer, two placement groups",
+          "anchor": "example-one-load-balancer-two-placement-groups",
+          "line": 200
+        },
+        {
+          "level": 2,
+          "title": "Example: Docker Swarm cluster (edge1 master, edge2, edge3) behind lb1",
+          "anchor": "example-docker-swarm-cluster-edge1-master-edge2-edge3-behind-lb1",
+          "line": 218
+        }
+      ]
+    },
+    {
+      "path": "docs/placement.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Functions on several servers (on premises)",
+          "anchor": "functions-on-several-servers-on-premises",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Each function is its own sub-project",
+          "anchor": "each-function-is-its-own-sub-project",
+          "line": 27
+        },
+        {
+          "level": 3,
+          "title": "Requirements: global plus per function",
+          "anchor": "requirements-global-plus-per-function",
+          "line": 51
+        },
+        {
+          "level": 3,
+          "title": "Functions that share a code file",
+          "anchor": "functions-that-share-a-code-file",
+          "line": 59
+        },
+        {
+          "level": 2,
+          "title": "How the groups work together",
+          "anchor": "how-the-groups-work-together",
+          "line": 89
+        },
+        {
+          "level": 2,
+          "title": "Deploy, URLs and load balancers",
+          "anchor": "deploy-urls-and-load-balancers",
+          "line": 115
+        }
+      ]
+    },
+    {
+      "path": "docs/providers.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Providers",
+          "anchor": "providers",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "aws (AWS Lambda)",
+          "anchor": "aws-aws-lambda",
+          "line": 35
+        },
+        {
+          "level": 2,
+          "title": "gcp (Google Cloud Functions, 2nd gen)",
+          "anchor": "gcp-google-cloud-functions-2nd-gen",
+          "line": 82
+        },
+        {
+          "level": 2,
+          "title": "azure (Azure Functions)",
+          "anchor": "azure-azure-functions",
+          "line": 114
+        },
+        {
+          "level": 2,
+          "title": "alibaba (Function Compute 3.0)",
+          "anchor": "alibaba-function-compute-30",
+          "line": 154
+        },
+        {
+          "level": 2,
+          "title": "tencent (Serverless Cloud Function, SCF)",
+          "anchor": "tencent-serverless-cloud-function-scf",
+          "line": 185
+        },
+        {
+          "level": 2,
+          "title": "huawei (FunctionGraph)",
+          "anchor": "huawei-functiongraph",
+          "line": 218
+        },
+        {
+          "level": 2,
+          "title": "ibm (Code Engine functions)",
+          "anchor": "ibm-code-engine-functions",
+          "line": 250
+        },
+        {
+          "level": 2,
+          "title": "digitalocean (Functions)",
+          "anchor": "digitalocean-functions",
+          "line": 277
+        },
+        {
+          "level": 2,
+          "title": "oracle (OCI Functions)",
+          "anchor": "oracle-oci-functions",
+          "line": 301
+        },
+        {
+          "level": 2,
+          "title": "cloudflare (Workers)",
+          "anchor": "cloudflare-workers",
+          "line": 334
+        },
+        {
+          "level": 2,
+          "title": "onprem (On-premises)",
+          "anchor": "onprem-on-premises",
+          "line": 370
+        },
+        {
+          "level": 3,
+          "title": "Logs and stats",
+          "anchor": "logs-and-stats",
+          "line": 438
+        },
+        {
+          "level": 2,
+          "title": "Writing your own provider",
+          "anchor": "writing-your-own-provider",
+          "line": 575
+        }
+      ]
+    },
+    {
+      "path": "docs/README.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "py-serverless-kit documentation",
+          "anchor": "py-serverless-kit-documentation",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/alibaba/cache.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Alibaba Cloud Tair / Redis (`type: cache`)",
+          "anchor": "alibaba-cloud-tair-redis-type-cache",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the instance (console)",
+          "anchor": "1-create-the-instance-console",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 16
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 29
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 56
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 78
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 88
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/alibaba/custom.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Other Alibaba Cloud services (`type: custom`)",
+          "anchor": "other-alibaba-cloud-services-type-custom",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Tablestore",
+          "anchor": "tablestore",
+          "line": 9
+        },
+        {
+          "level": 2,
+          "title": "KMS secrets (Secrets Manager)",
+          "anchor": "kms-secrets-secrets-manager",
+          "line": 53
+        },
+        {
+          "level": 2,
+          "title": "A third-party API",
+          "anchor": "a-third-party-api",
+          "line": 92
+        },
+        {
+          "level": 2,
+          "title": "Test",
+          "anchor": "test",
+          "line": 104
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/alibaba/database.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Alibaba Cloud databases (`type: database`)",
+          "anchor": "alibaba-cloud-databases-type-database",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the instance (console)",
+          "anchor": "1-create-the-instance-console",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 22
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 36
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 71
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 90
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 99
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/alibaba/queue.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Alibaba Cloud SMQ / MNS queue (`type: queue`)",
+          "anchor": "alibaba-cloud-smq-mns-queue-type-queue",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the queue (console)",
+          "anchor": "1-create-the-queue-console",
+          "line": 10
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 16
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 29
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 60
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 97
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 107
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/alibaba/README.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Alibaba Cloud resources",
+          "anchor": "alibaba-cloud-resources",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Values you need for every Alibaba Cloud resource",
+          "anchor": "values-you-need-for-every-alibaba-cloud-resource",
+          "line": 15
+        },
+        {
+          "level": 2,
+          "title": "How pskit runs on Alibaba Cloud (why some steps matter)",
+          "anchor": "how-pskit-runs-on-alibaba-cloud-why-some-steps-matter",
+          "line": 28
+        },
+        {
+          "level": 2,
+          "title": "Secrets",
+          "anchor": "secrets",
+          "line": 41
+        },
+        {
+          "level": 2,
+          "title": "Credentials for deploying",
+          "anchor": "credentials-for-deploying",
+          "line": 47
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/alibaba/storage.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Alibaba Cloud OSS bucket (`type: storage`)",
+          "anchor": "alibaba-cloud-oss-bucket-type-storage",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the bucket (console)",
+          "anchor": "1-create-the-bucket-console",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 13
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 27
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 63
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 83
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 96
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/alibaba/topic.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Alibaba Cloud SMQ / MNS topic (`type: topic`)",
+          "anchor": "alibaba-cloud-smq-mns-topic-type-topic",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the topic (console)",
+          "anchor": "1-create-the-topic-console",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 12
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 25
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 62
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 89
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 101
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/aws/cache.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Amazon ElastiCache / MemoryDB (`type: cache`)",
+          "anchor": "amazon-elasticache-memorydb-type-cache",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the cache (console)",
+          "anchor": "1-create-the-cache-console",
+          "line": 9
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 17
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 27
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 63
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 87
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 95
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/aws/custom.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Other AWS services (`type: custom`)",
+          "anchor": "other-aws-services-type-custom",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "DynamoDB",
+          "anchor": "dynamodb",
+          "line": 9
+        },
+        {
+          "level": 2,
+          "title": "Secrets Manager",
+          "anchor": "secrets-manager",
+          "line": 47
+        },
+        {
+          "level": 2,
+          "title": "Anything else",
+          "anchor": "anything-else",
+          "line": 90
+        },
+        {
+          "level": 2,
+          "title": "Test",
+          "anchor": "test",
+          "line": 95
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/aws/database.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Amazon RDS / Aurora (`type: database`)",
+          "anchor": "amazon-rds-aurora-type-database",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Networking first",
+          "anchor": "networking-first",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "1. Create the database (console)",
+          "anchor": "1-create-the-database-console",
+          "line": 19
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 27
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 42
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 86
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 108
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 117
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/aws/queue.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Amazon SQS queue (`type: queue`)",
+          "anchor": "amazon-sqs-queue-type-queue",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the queue (console)",
+          "anchor": "1-create-the-queue-console",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 18
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 30
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 72
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 108
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 121
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/aws/README.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "AWS resources",
+          "anchor": "aws-resources",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Values you need for every AWS resource",
+          "anchor": "values-you-need-for-every-aws-resource",
+          "line": 15
+        },
+        {
+          "level": 2,
+          "title": "How pskit runs on AWS (why some steps matter)",
+          "anchor": "how-pskit-runs-on-aws-why-some-steps-matter",
+          "line": 23
+        },
+        {
+          "level": 2,
+          "title": "Credentials for deploying",
+          "anchor": "credentials-for-deploying",
+          "line": 42
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/aws/storage.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Amazon S3 bucket (`type: storage`)",
+          "anchor": "amazon-s3-bucket-type-storage",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the bucket (console)",
+          "anchor": "1-create-the-bucket-console",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 13
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 23
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 57
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 74
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 85
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/aws/topic.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Amazon SNS topic (`type: topic`)",
+          "anchor": "amazon-sns-topic-type-topic",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the topic (console)",
+          "anchor": "1-create-the-topic-console",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 12
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 20
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 50
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 78
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 90
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/azure/cache.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Azure Redis (`type: cache`)",
+          "anchor": "azure-redis-type-cache",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the cache (portal)",
+          "anchor": "1-create-the-cache-portal",
+          "line": 5
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 12
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 25
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 44
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 66
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 76
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/azure/custom.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Other Azure services (`type: custom`)",
+          "anchor": "other-azure-services-type-custom",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Cosmos DB (NoSQL)",
+          "anchor": "cosmos-db-nosql",
+          "line": 10
+        },
+        {
+          "level": 2,
+          "title": "Key Vault",
+          "anchor": "key-vault",
+          "line": 52
+        },
+        {
+          "level": 2,
+          "title": "Event Hubs",
+          "anchor": "event-hubs",
+          "line": 90
+        },
+        {
+          "level": 2,
+          "title": "Test",
+          "anchor": "test",
+          "line": 108
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/azure/database.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Azure databases (`type: database`)",
+          "anchor": "azure-databases-type-database",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the server (portal)",
+          "anchor": "1-create-the-server-portal",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 21
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 37
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 59
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 78
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 87
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/azure/queue.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Azure Storage queue (`type: queue`)",
+          "anchor": "azure-storage-queue-type-queue",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the queue (portal)",
+          "anchor": "1-create-the-queue-portal",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 15
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 37
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 84
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 131
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 147
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/azure/README.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Azure resources",
+          "anchor": "azure-resources",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Values you need for every Azure resource",
+          "anchor": "values-you-need-for-every-azure-resource",
+          "line": 15
+        },
+        {
+          "level": 2,
+          "title": "How pskit runs on Azure (why some steps matter)",
+          "anchor": "how-pskit-runs-on-azure-why-some-steps-matter",
+          "line": 26
+        },
+        {
+          "level": 2,
+          "title": "Credentials for deploying",
+          "anchor": "credentials-for-deploying",
+          "line": 39
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/azure/storage.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Azure Blob container (`type: storage`)",
+          "anchor": "azure-blob-container-type-storage",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the container (portal)",
+          "anchor": "1-create-the-container-portal",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 13
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 29
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 62
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 80
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 92
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/azure/topic.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Azure Service Bus topic (`type: topic`)",
+          "anchor": "azure-service-bus-topic-type-topic",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the namespace and topic (portal)",
+          "anchor": "1-create-the-namespace-and-topic-portal",
+          "line": 8
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 14
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 30
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 66
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 89
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 102
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/cloudflare/cache.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Workers KV (`type: cache`)",
+          "anchor": "workers-kv-type-cache",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the namespace (dashboard)",
+          "anchor": "1-create-the-namespace-dashboard",
+          "line": 10
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 16
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 22
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 45
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 70
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 80
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/cloudflare/custom.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Other Cloudflare services and APIs (`type: custom`)",
+          "anchor": "other-cloudflare-services-and-apis-type-custom",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Binding types",
+          "anchor": "binding-types",
+          "line": 9
+        },
+        {
+          "level": 2,
+          "title": "Example: an external HTTP API with a secret",
+          "anchor": "example-an-external-http-api-with-a-secret",
+          "line": 25
+        },
+        {
+          "level": 2,
+          "title": "Example: Workers AI",
+          "anchor": "example-workers-ai",
+          "line": 62
+        },
+        {
+          "level": 2,
+          "title": "Test",
+          "anchor": "test",
+          "line": 92
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/cloudflare/database.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Cloudflare databases (`type: database`)",
+          "anchor": "cloudflare-databases-type-database",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "D1",
+          "anchor": "d1",
+          "line": 9
+        },
+        {
+          "level": 3,
+          "title": "1. Create the database (dashboard)",
+          "anchor": "1-create-the-database-dashboard",
+          "line": 11
+        },
+        {
+          "level": 3,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 18
+        },
+        {
+          "level": 3,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 25
+        },
+        {
+          "level": 3,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 47
+        },
+        {
+          "level": 3,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 63
+        },
+        {
+          "level": 2,
+          "title": "PostgreSQL with Hyperdrive (Node.js)",
+          "anchor": "postgresql-with-hyperdrive-nodejs",
+          "line": 71
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 115
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/cloudflare/queue.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Cloudflare Queues (`type: queue`)",
+          "anchor": "cloudflare-queues-type-queue",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the queue (dashboard)",
+          "anchor": "1-create-the-queue-dashboard",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 13
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 26
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 60
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 109
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 120
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/cloudflare/README.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Cloudflare resources",
+          "anchor": "cloudflare-resources",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "What pskit supports on Cloudflare",
+          "anchor": "what-pskit-supports-on-cloudflare",
+          "line": 15
+        },
+        {
+          "level": 2,
+          "title": "Values you need for every Cloudflare resource",
+          "anchor": "values-you-need-for-every-cloudflare-resource",
+          "line": 60
+        },
+        {
+          "level": 2,
+          "title": "Secrets",
+          "anchor": "secrets",
+          "line": 81
+        },
+        {
+          "level": 2,
+          "title": "Testing",
+          "anchor": "testing",
+          "line": 96
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/cloudflare/storage.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Cloudflare R2 bucket (`type: storage`)",
+          "anchor": "cloudflare-r2-bucket-type-storage",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the bucket (dashboard)",
+          "anchor": "1-create-the-bucket-dashboard",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 11
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 24
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 51
+        },
+        {
+          "level": 2,
+          "title": "Reacting to uploads",
+          "anchor": "reacting-to-uploads",
+          "line": 68
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 75
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 85
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/cloudflare/topic.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Topics on Cloudflare (`type: topic`)",
+          "anchor": "topics-on-cloudflare-type-topic",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "What to use instead",
+          "anchor": "what-to-use-instead",
+          "line": 7
+        },
+        {
+          "level": 2,
+          "title": "Example: an external topic in another cloud",
+          "anchor": "example-an-external-topic-in-another-cloud",
+          "line": 16
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/compatibility.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Existing cloud code with pskit",
+          "anchor": "existing-cloud-code-with-pskit",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Calling functions",
+          "anchor": "calling-functions",
+          "line": 19
+        },
+        {
+          "level": 3,
+          "title": "The pskit way (every provider)",
+          "anchor": "the-pskit-way-every-provider",
+          "line": 21
+        },
+        {
+          "level": 3,
+          "title": "Existing boto3 / AWS SDK Lambda code, on premises",
+          "anchor": "existing-boto3-aws-sdk-lambda-code-on-premises",
+          "line": 40
+        },
+        {
+          "level": 2,
+          "title": "Queues",
+          "anchor": "queues",
+          "line": 90
+        },
+        {
+          "level": 3,
+          "title": "Existing SQS code, on premises",
+          "anchor": "existing-sqs-code-on-premises",
+          "line": 92
+        },
+        {
+          "level": 3,
+          "title": "Other clouds' queue SDKs",
+          "anchor": "other-clouds-queue-sdks",
+          "line": 117
+        },
+        {
+          "level": 2,
+          "title": "Buckets",
+          "anchor": "buckets",
+          "line": 129
+        },
+        {
+          "level": 2,
+          "title": "Names, ARNs and URLs in handlers",
+          "anchor": "names-arns-and-urls-in-handlers",
+          "line": 140
+        },
+        {
+          "level": 2,
+          "title": "Not compatible (and what to use)",
+          "anchor": "not-compatible-and-what-to-use",
+          "line": 155
+        },
+        {
+          "level": 2,
+          "title": "Test it",
+          "anchor": "test-it",
+          "line": 165
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/digitalocean/cache.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "DigitalOcean Managed Valkey (`type: cache`)",
+          "anchor": "digitalocean-managed-valkey-type-cache",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the cluster (control panel)",
+          "anchor": "1-create-the-cluster-control-panel",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 11
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 25
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 55
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 77
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 85
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/digitalocean/custom.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Other DigitalOcean services (`type: custom`)",
+          "anchor": "other-digitalocean-services-type-custom",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Managed MongoDB",
+          "anchor": "managed-mongodb",
+          "line": 10
+        },
+        {
+          "level": 2,
+          "title": "Managed OpenSearch",
+          "anchor": "managed-opensearch",
+          "line": 61
+        },
+        {
+          "level": 2,
+          "title": "DigitalOcean API",
+          "anchor": "digitalocean-api",
+          "line": 81
+        },
+        {
+          "level": 2,
+          "title": "Test",
+          "anchor": "test",
+          "line": 95
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/digitalocean/database.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "DigitalOcean Managed databases (`type: database`)",
+          "anchor": "digitalocean-managed-databases-type-database",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the cluster (control panel)",
+          "anchor": "1-create-the-cluster-control-panel",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 13
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 26
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 57
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 79
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 88
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/digitalocean/queue.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Queues on DigitalOcean (`type: queue`)",
+          "anchor": "queues-on-digitalocean-type-queue",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the Valkey cluster (control panel)",
+          "anchor": "1-create-the-valkey-cluster-control-panel",
+          "line": 13
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 19
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 33
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 64
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 97
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 106
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/digitalocean/README.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "DigitalOcean resources",
+          "anchor": "digitalocean-resources",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "What pskit supports on DigitalOcean",
+          "anchor": "what-pskit-supports-on-digitalocean",
+          "line": 15
+        },
+        {
+          "level": 2,
+          "title": "Values you need for most DigitalOcean services",
+          "anchor": "values-you-need-for-most-digitalocean-services",
+          "line": 27
+        },
+        {
+          "level": 2,
+          "title": "Secrets on DigitalOcean",
+          "anchor": "secrets-on-digitalocean",
+          "line": 40
+        },
+        {
+          "level": 2,
+          "title": "Credentials for deploying",
+          "anchor": "credentials-for-deploying",
+          "line": 46
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/digitalocean/storage.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "DigitalOcean Spaces bucket (`type: storage`)",
+          "anchor": "digitalocean-spaces-bucket-type-storage",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the bucket (control panel)",
+          "anchor": "1-create-the-bucket-control-panel",
+          "line": 8
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 14
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 28
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 59
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 81
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 92
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/digitalocean/topic.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "DigitalOcean Managed Kafka topic (`type: topic`)",
+          "anchor": "digitalocean-managed-kafka-topic-type-topic",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the cluster and topic (control panel)",
+          "anchor": "1-create-the-cluster-and-topic-control-panel",
+          "line": 9
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 17
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 35
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 67
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 98
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 106
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/gcp/cache.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Memorystore for Redis / Valkey (`type: cache`)",
+          "anchor": "memorystore-for-redis-valkey-type-cache",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the cache and the connector (console)",
+          "anchor": "1-create-the-cache-and-the-connector-console",
+          "line": 7
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 15
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 25
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 68
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 91
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 100
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/gcp/custom.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Other Google Cloud services (`type: custom`)",
+          "anchor": "other-google-cloud-services-type-custom",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Firestore",
+          "anchor": "firestore",
+          "line": 9
+        },
+        {
+          "level": 2,
+          "title": "Secret Manager",
+          "anchor": "secret-manager",
+          "line": 40
+        },
+        {
+          "level": 2,
+          "title": "Anything else",
+          "anchor": "anything-else",
+          "line": 77
+        },
+        {
+          "level": 2,
+          "title": "Test",
+          "anchor": "test",
+          "line": 82
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/gcp/database.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Cloud SQL (`type: database`)",
+          "anchor": "cloud-sql-type-database",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the instance (console)",
+          "anchor": "1-create-the-instance-console",
+          "line": 11
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 19
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 36
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 68
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 95
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 104
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/gcp/queue.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Pub/Sub as a queue (`type: queue`)",
+          "anchor": "pubsub-as-a-queue-type-queue",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the topic (console)",
+          "anchor": "1-create-the-topic-console",
+          "line": 7
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 14
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 25
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 64
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 98
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 110
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/gcp/README.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Google Cloud resources",
+          "anchor": "google-cloud-resources",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Values you need for every Google Cloud resource",
+          "anchor": "values-you-need-for-every-google-cloud-resource",
+          "line": 15
+        },
+        {
+          "level": 2,
+          "title": "How pskit runs on Google Cloud (why some steps matter)",
+          "anchor": "how-pskit-runs-on-google-cloud-why-some-steps-matter",
+          "line": 23
+        },
+        {
+          "level": 2,
+          "title": "Credentials for deploying",
+          "anchor": "credentials-for-deploying",
+          "line": 39
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/gcp/storage.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Cloud Storage bucket (`type: storage`)",
+          "anchor": "cloud-storage-bucket-type-storage",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the bucket (console)",
+          "anchor": "1-create-the-bucket-console",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 15
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 23
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 55
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 74
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 85
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/gcp/topic.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Pub/Sub topic (`type: topic`)",
+          "anchor": "pubsub-topic-type-topic",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the topic (console)",
+          "anchor": "1-create-the-topic-console",
+          "line": 7
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 12
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 19
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 58
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 92
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 104
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/huawei/cache.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Huawei DCS for Redis (`type: cache`)",
+          "anchor": "huawei-dcs-for-redis-type-cache",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the instance (console)",
+          "anchor": "1-create-the-instance-console",
+          "line": 5
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 11
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 24
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 57
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 76
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 86
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/huawei/custom.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Other Huawei Cloud services (`type: custom`)",
+          "anchor": "other-huawei-cloud-services-type-custom",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "CSMS secrets (Data Encryption Workshop)",
+          "anchor": "csms-secrets-data-encryption-workshop",
+          "line": 10
+        },
+        {
+          "level": 2,
+          "title": "Document Database Service (DDS, MongoDB-compatible)",
+          "anchor": "document-database-service-dds-mongodb-compatible",
+          "line": 53
+        },
+        {
+          "level": 2,
+          "title": "Test",
+          "anchor": "test",
+          "line": 91
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/huawei/database.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Huawei RDS (`type: database`)",
+          "anchor": "huawei-rds-type-database",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the instance (console)",
+          "anchor": "1-create-the-instance-console",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 15
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 30
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 65
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 83
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 91
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/huawei/queue.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Huawei DMS queue (`type: queue`)",
+          "anchor": "huawei-dms-queue-type-queue",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the instance (console)",
+          "anchor": "1-create-the-instance-console",
+          "line": 8
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 20
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 34
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 69
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 97
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 107
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/huawei/README.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Huawei Cloud resources",
+          "anchor": "huawei-cloud-resources",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Values you need for every Huawei Cloud resource",
+          "anchor": "values-you-need-for-every-huawei-cloud-resource",
+          "line": 15
+        },
+        {
+          "level": 2,
+          "title": "How pskit runs on Huawei Cloud (why some steps matter)",
+          "anchor": "how-pskit-runs-on-huawei-cloud-why-some-steps-matter",
+          "line": 24
+        },
+        {
+          "level": 2,
+          "title": "Credentials for deploying",
+          "anchor": "credentials-for-deploying",
+          "line": 44
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/huawei/storage.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Huawei OBS bucket (`type: storage`)",
+          "anchor": "huawei-obs-bucket-type-storage",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the bucket (console)",
+          "anchor": "1-create-the-bucket-console",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 13
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 22
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 51
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 73
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 86
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/huawei/topic.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Huawei SMN topic (`type: topic`)",
+          "anchor": "huawei-smn-topic-type-topic",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the topic (console)",
+          "anchor": "1-create-the-topic-console",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 11
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 20
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 51
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 79
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 90
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/ibm/cache.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "IBM Databases for Redis (`type: cache`)",
+          "anchor": "ibm-databases-for-redis-type-cache",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the instance (console)",
+          "anchor": "1-create-the-instance-console",
+          "line": 5
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 12
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 27
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 56
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 83
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 91
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/ibm/custom.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Other IBM Cloud services (`type: custom`)",
+          "anchor": "other-ibm-cloud-services-type-custom",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Secrets Manager",
+          "anchor": "secrets-manager",
+          "line": 9
+        },
+        {
+          "level": 2,
+          "title": "Cloudant",
+          "anchor": "cloudant",
+          "line": 64
+        },
+        {
+          "level": 2,
+          "title": "Test",
+          "anchor": "test",
+          "line": 98
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/ibm/database.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "IBM Cloud databases (`type: database`)",
+          "anchor": "ibm-cloud-databases-type-database",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the instance (console)",
+          "anchor": "1-create-the-instance-console",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 13
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 30
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 60
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 87
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 96
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/ibm/queue.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "IBM MQ queue (`type: queue`)",
+          "anchor": "ibm-mq-queue-type-queue",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the queue manager and queue (console)",
+          "anchor": "1-create-the-queue-manager-and-queue-console",
+          "line": 13
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 23
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 37
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 65
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 95
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 105
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/ibm/README.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "IBM Cloud resources",
+          "anchor": "ibm-cloud-resources",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "What pskit supports on IBM Cloud",
+          "anchor": "what-pskit-supports-on-ibm-cloud",
+          "line": 15
+        },
+        {
+          "level": 2,
+          "title": "Values you need for most IBM Cloud services",
+          "anchor": "values-you-need-for-most-ibm-cloud-services",
+          "line": 28
+        },
+        {
+          "level": 2,
+          "title": "Secrets on Code Engine",
+          "anchor": "secrets-on-code-engine",
+          "line": 37
+        },
+        {
+          "level": 2,
+          "title": "Credentials for deploying",
+          "anchor": "credentials-for-deploying",
+          "line": 43
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/ibm/storage.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "IBM Cloud Object Storage bucket (`type: storage`)",
+          "anchor": "ibm-cloud-object-storage-bucket-type-storage",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the bucket (console)",
+          "anchor": "1-create-the-bucket-console",
+          "line": 9
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 16
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 33
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 62
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 84
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 96
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/ibm/topic.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "IBM Event Streams topic (`type: topic`)",
+          "anchor": "ibm-event-streams-topic-type-topic",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the instance and topic (console)",
+          "anchor": "1-create-the-instance-and-topic-console",
+          "line": 10
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 18
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 33
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 60
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 89
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 99
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/onprem/cache.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "On-premises caches (`type: cache`)",
+          "anchor": "on-premises-caches-type-cache",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Set up Redis",
+          "anchor": "1-set-up-redis",
+          "line": 9
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 17
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 27
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 42
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 64
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 72
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/onprem/custom.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Other on-premises services (`type: custom`)",
+          "anchor": "other-on-premises-services-type-custom",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "The recipe",
+          "anchor": "the-recipe",
+          "line": 9
+        },
+        {
+          "level": 2,
+          "title": "Example: SMTP server",
+          "anchor": "example-smtp-server",
+          "line": 15
+        },
+        {
+          "level": 2,
+          "title": "Example: an internal REST API",
+          "anchor": "example-an-internal-rest-api",
+          "line": 52
+        },
+        {
+          "level": 2,
+          "title": "Test",
+          "anchor": "test",
+          "line": 80
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/onprem/database.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "On-premises databases (`type: database`)",
+          "anchor": "on-premises-databases-type-database",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Set up PostgreSQL",
+          "anchor": "1-set-up-postgresql",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 32
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 46
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 64
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 86
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 95
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/onprem/queue.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "On-premises queues (`type: queue`)",
+          "anchor": "on-premises-queues-type-queue",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Create one in one click",
+          "anchor": "create-one-in-one-click",
+          "line": 7
+        },
+        {
+          "level": 2,
+          "title": "Built-in queue",
+          "anchor": "built-in-queue",
+          "line": 21
+        },
+        {
+          "level": 2,
+          "title": "Redis / Valkey",
+          "anchor": "redis-valkey",
+          "line": 50
+        },
+        {
+          "level": 3,
+          "title": "1. Set up Redis",
+          "anchor": "1-set-up-redis",
+          "line": 52
+        },
+        {
+          "level": 3,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 61
+        },
+        {
+          "level": 3,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 74
+        },
+        {
+          "level": 2,
+          "title": "Redis / Valkey stream (`redis_stream`)",
+          "anchor": "redis-valkey-stream-redis_stream",
+          "line": 96
+        },
+        {
+          "level": 2,
+          "title": "Kafka and NATS JetStream",
+          "anchor": "kafka-and-nats-jetstream",
+          "line": 119
+        },
+        {
+          "level": 2,
+          "title": "A queue on another on-prem host (`pskit_host`)",
+          "anchor": "a-queue-on-another-on-prem-host-pskit_host",
+          "line": 151
+        },
+        {
+          "level": 2,
+          "title": "RabbitMQ (or other brokers) via a custom driver",
+          "anchor": "rabbitmq-or-other-brokers-via-a-custom-driver",
+          "line": 178
+        },
+        {
+          "level": 3,
+          "title": "1. Create the queue (RabbitMQ management UI)",
+          "anchor": "1-create-the-queue-rabbitmq-management-ui",
+          "line": 182
+        },
+        {
+          "level": 3,
+          "title": "2. Declare it",
+          "anchor": "2-declare-it",
+          "line": 190
+        },
+        {
+          "level": 2,
+          "title": "A queue in a cloud",
+          "anchor": "a-queue-in-a-cloud",
+          "line": 217
+        },
+        {
+          "level": 2,
+          "title": "Use it in a handler",
+          "anchor": "use-it-in-a-handler",
+          "line": 251
+        },
+        {
+          "level": 2,
+          "title": "Test",
+          "anchor": "test",
+          "line": 275
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 286
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/onprem/README.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "On-premises resources",
+          "anchor": "on-premises-resources",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "How the host uses resources",
+          "anchor": "how-the-host-uses-resources",
+          "line": 21
+        },
+        {
+          "level": 2,
+          "title": "Secrets: `<name>_env`",
+          "anchor": "secrets-name_env",
+          "line": 42
+        },
+        {
+          "level": 2,
+          "title": "Publishing from a handler",
+          "anchor": "publishing-from-a-handler",
+          "line": 83
+        },
+        {
+          "level": 2,
+          "title": "Testing",
+          "anchor": "testing",
+          "line": 116
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/onprem/secrets.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Secret managers on premises",
+          "anchor": "secret-managers-on-premises",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "One click: OpenBao, pskit's Secrets Manager or LocalStack",
+          "anchor": "one-click-openbao-pskits-secrets-manager-or-localstack",
+          "line": 29
+        },
+        {
+          "level": 2,
+          "title": "pskit's AWS Secrets Manager compatible server",
+          "anchor": "pskits-aws-secrets-manager-compatible-server",
+          "line": 63
+        },
+        {
+          "level": 2,
+          "title": "Infisical (secrets manager with a web UI)",
+          "anchor": "infisical-secrets-manager-with-a-web-ui",
+          "line": 94
+        },
+        {
+          "level": 2,
+          "title": "Browse secrets in the studio",
+          "anchor": "browse-secrets-in-the-studio",
+          "line": 118
+        },
+        {
+          "level": 2,
+          "title": "Add and read secrets",
+          "anchor": "add-and-read-secrets",
+          "line": 125
+        },
+        {
+          "level": 2,
+          "title": "An existing Vault, OpenBao or AWS Secrets Manager",
+          "anchor": "an-existing-vault-openbao-or-aws-secrets-manager",
+          "line": 138
+        },
+        {
+          "level": 2,
+          "title": "On the clouds",
+          "anchor": "on-the-clouds",
+          "line": 148
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 169
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/onprem/services.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "One-click services for on-premises functions",
+          "anchor": "one-click-services-for-on-premises-functions",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "pskit's own browsers (when the native UI is missing)",
+          "anchor": "pskits-own-browsers-when-the-native-ui-is-missing",
+          "line": 55
+        },
+        {
+          "level": 2,
+          "title": "In the studio",
+          "anchor": "in-the-studio",
+          "line": 78
+        },
+        {
+          "level": 2,
+          "title": "Credentials and network",
+          "anchor": "credentials-and-network",
+          "line": 96
+        },
+        {
+          "level": 2,
+          "title": "Web UIs",
+          "anchor": "web-uis",
+          "line": 118
+        },
+        {
+          "level": 3,
+          "title": "With or without a password",
+          "anchor": "with-or-without-a-password",
+          "line": 145
+        },
+        {
+          "level": 3,
+          "title": "The UI does not open",
+          "anchor": "the-ui-does-not-open",
+          "line": 170
+        },
+        {
+          "level": 3,
+          "title": "Try the web UIs in local Docker first",
+          "anchor": "try-the-web-uis-in-local-docker-first",
+          "line": 222
+        },
+        {
+          "level": 2,
+          "title": "Databases: one server, or a primary with read replicas",
+          "anchor": "databases-one-server-or-a-primary-with-read-replicas",
+          "line": 251
+        },
+        {
+          "level": 2,
+          "title": "Servers: several machines",
+          "anchor": "servers-several-machines",
+          "line": 325
+        },
+        {
+          "level": 3,
+          "title": "Where a server is used, and how the servers connect",
+          "anchor": "where-a-server-is-used-and-how-the-servers-connect",
+          "line": 347
+        },
+        {
+          "level": 3,
+          "title": "Deploy the functions to a chosen machine",
+          "anchor": "deploy-the-functions-to-a-chosen-machine",
+          "line": 362
+        },
+        {
+          "level": 2,
+          "title": "Install software on a server",
+          "anchor": "install-software-on-a-server",
+          "line": 388
+        },
+        {
+          "level": 2,
+          "title": "Console and terminal",
+          "anchor": "console-and-terminal",
+          "line": 414
+        },
+        {
+          "level": 2,
+          "title": "Secret managers",
+          "anchor": "secret-managers",
+          "line": 452
+        },
+        {
+          "level": 2,
+          "title": "SSH login: key, agent or password",
+          "anchor": "ssh-login-key-agent-or-password",
+          "line": 457
+        },
+        {
+          "level": 2,
+          "title": "Use it from any program",
+          "anchor": "use-it-from-any-program",
+          "line": 495
+        },
+        {
+          "level": 2,
+          "title": "From the command line",
+          "anchor": "from-the-command-line",
+          "line": 524
+        },
+        {
+          "level": 2,
+          "title": "What gets written",
+          "anchor": "what-gets-written",
+          "line": 544
+        },
+        {
+          "level": 2,
+          "title": "Existing cloud code",
+          "anchor": "existing-cloud-code",
+          "line": 575
+        },
+        {
+          "level": 2,
+          "title": "Same server or a different one",
+          "anchor": "same-server-or-a-different-one",
+          "line": 582
+        },
+        {
+          "level": 3,
+          "title": "When the functions move",
+          "anchor": "when-the-functions-move",
+          "line": 594
+        },
+        {
+          "level": 2,
+          "title": "See what is inside",
+          "anchor": "see-what-is-inside",
+          "line": 629
+        },
+        {
+          "level": 2,
+          "title": "Use it from code and test it",
+          "anchor": "use-it-from-code-and-test-it",
+          "line": 650
+        },
+        {
+          "level": 2,
+          "title": "Removing",
+          "anchor": "removing",
+          "line": 661
+        },
+        {
+          "level": 2,
+          "title": "Monitoring and alerts",
+          "anchor": "monitoring-and-alerts",
+          "line": 668
+        },
+        {
+          "level": 2,
+          "title": "Start a database with data",
+          "anchor": "start-a-database-with-data",
+          "line": 696
+        },
+        {
+          "level": 2,
+          "title": "Backups",
+          "anchor": "backups",
+          "line": 707
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 723
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/onprem/storage.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "On-premises storage (`type: storage`)",
+          "anchor": "on-premises-storage-type-storage",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Built-in bucket",
+          "anchor": "built-in-bucket",
+          "line": 9
+        },
+        {
+          "level": 2,
+          "title": "pskit's Amazon S3 compatible server (one click)",
+          "anchor": "pskits-amazon-s3-compatible-server-one-click",
+          "line": 33
+        },
+        {
+          "level": 2,
+          "title": "MinIO (or Ceph, Garage, SeaweedFS, any S3-compatible store)",
+          "anchor": "minio-or-ceph-garage-seaweedfs-any-s3-compatible-store",
+          "line": 75
+        },
+        {
+          "level": 3,
+          "title": "1. Create the bucket and keys (MinIO console)",
+          "anchor": "1-create-the-bucket-and-keys-minio-console",
+          "line": 77
+        },
+        {
+          "level": 3,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 86
+        },
+        {
+          "level": 3,
+          "title": "3. Declare it",
+          "anchor": "3-declare-it",
+          "line": 98
+        },
+        {
+          "level": 2,
+          "title": "A bucket in a cloud",
+          "anchor": "a-bucket-in-a-cloud",
+          "line": 125
+        },
+        {
+          "level": 2,
+          "title": "Use it in a handler",
+          "anchor": "use-it-in-a-handler",
+          "line": 149
+        },
+        {
+          "level": 2,
+          "title": "Test",
+          "anchor": "test",
+          "line": 167
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 177
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/onprem/topic.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "On-premises topics (`type: topic`)",
+          "anchor": "on-premises-topics-type-topic",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Built-in topic",
+          "anchor": "built-in-topic",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "Use it in a handler",
+          "anchor": "use-it-in-a-handler",
+          "line": 36
+        },
+        {
+          "level": 2,
+          "title": "Kafka, RabbitMQ exchanges, NATS, MQTT, cloud topics",
+          "anchor": "kafka-rabbitmq-exchanges-nats-mqtt-cloud-topics",
+          "line": 54
+        },
+        {
+          "level": 2,
+          "title": "Test",
+          "anchor": "test",
+          "line": 64
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 74
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/oracle/cache.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "OCI Cache (`type: cache`)",
+          "anchor": "oci-cache-type-cache",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the cluster (console)",
+          "anchor": "1-create-the-cluster-console",
+          "line": 5
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 12
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 23
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 51
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 72
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 80
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/oracle/custom.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Other OCI services (`type: custom`)",
+          "anchor": "other-oci-services-type-custom",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Vault secrets",
+          "anchor": "vault-secrets",
+          "line": 10
+        },
+        {
+          "level": 2,
+          "title": "Streaming",
+          "anchor": "streaming",
+          "line": 49
+        },
+        {
+          "level": 2,
+          "title": "Test",
+          "anchor": "test",
+          "line": 90
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/oracle/database.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "OCI databases (`type: database`)",
+          "anchor": "oci-databases-type-database",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the database (console)",
+          "anchor": "1-create-the-database-console",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 22
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 37
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 69
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 88
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 96
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/oracle/queue.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "OCI Queue (`type: queue`)",
+          "anchor": "oci-queue-type-queue",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the queue (console)",
+          "anchor": "1-create-the-queue-console",
+          "line": 7
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 13
+        },
+        {
+          "level": 2,
+          "title": "3. Policies",
+          "anchor": "3-policies",
+          "line": 21
+        },
+        {
+          "level": 2,
+          "title": "4. Declare it in `pskit.yml`",
+          "anchor": "4-declare-it-in-pskityml",
+          "line": 27
+        },
+        {
+          "level": 2,
+          "title": "5. Use it in a handler",
+          "anchor": "5-use-it-in-a-handler",
+          "line": 55
+        },
+        {
+          "level": 2,
+          "title": "6. Test",
+          "anchor": "6-test",
+          "line": 79
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 89
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/oracle/README.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Oracle Cloud (OCI) resources",
+          "anchor": "oracle-cloud-oci-resources",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Values you need for every OCI resource",
+          "anchor": "values-you-need-for-every-oci-resource",
+          "line": 15
+        },
+        {
+          "level": 2,
+          "title": "How pskit runs on OCI (why some steps matter)",
+          "anchor": "how-pskit-runs-on-oci-why-some-steps-matter",
+          "line": 25
+        },
+        {
+          "level": 2,
+          "title": "Credentials for deploying",
+          "anchor": "credentials-for-deploying",
+          "line": 46
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/oracle/storage.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "OCI Object Storage bucket (`type: storage`)",
+          "anchor": "oci-object-storage-bucket-type-storage",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the bucket (console)",
+          "anchor": "1-create-the-bucket-console",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 14
+        },
+        {
+          "level": 2,
+          "title": "3. Policies",
+          "anchor": "3-policies",
+          "line": 23
+        },
+        {
+          "level": 2,
+          "title": "4. Declare it in `pskit.yml`",
+          "anchor": "4-declare-it-in-pskityml",
+          "line": 33
+        },
+        {
+          "level": 2,
+          "title": "5. Use it in a handler",
+          "anchor": "5-use-it-in-a-handler",
+          "line": 64
+        },
+        {
+          "level": 2,
+          "title": "6. Test",
+          "anchor": "6-test",
+          "line": 83
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 96
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/oracle/topic.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "OCI Notifications topic (`type: topic`)",
+          "anchor": "oci-notifications-topic-type-topic",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the topic (console)",
+          "anchor": "1-create-the-topic-console",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 12
+        },
+        {
+          "level": 2,
+          "title": "3. Policies",
+          "anchor": "3-policies",
+          "line": 19
+        },
+        {
+          "level": 2,
+          "title": "4. Declare it in `pskit.yml`",
+          "anchor": "4-declare-it-in-pskityml",
+          "line": 25
+        },
+        {
+          "level": 2,
+          "title": "5. Use it in a handler",
+          "anchor": "5-use-it-in-a-handler",
+          "line": 52
+        },
+        {
+          "level": 2,
+          "title": "6. Test",
+          "anchor": "6-test",
+          "line": 70
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 79
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/README.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Adding resources: step-by-step guides",
+          "anchor": "adding-resources-step-by-step-guides",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "The pattern every guide follows",
+          "anchor": "the-pattern-every-guide-follows",
+          "line": 26
+        },
+        {
+          "level": 2,
+          "title": "Secrets",
+          "anchor": "secrets",
+          "line": 46
+        },
+        {
+          "level": 2,
+          "title": "Adding a guide for another cloud or type",
+          "anchor": "adding-a-guide-for-another-cloud-or-type",
+          "line": 59
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/tencent/cache.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Tencent Cloud Redis (`type: cache`)",
+          "anchor": "tencent-cloud-redis-type-cache",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the instance (console)",
+          "anchor": "1-create-the-instance-console",
+          "line": 5
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 14
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 26
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 55
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 74
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 84
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/tencent/custom.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Other Tencent Cloud services (`type: custom`)",
+          "anchor": "other-tencent-cloud-services-type-custom",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Secrets Manager (SSM)",
+          "anchor": "secrets-manager-ssm",
+          "line": 9
+        },
+        {
+          "level": 2,
+          "title": "A third-party API",
+          "anchor": "a-third-party-api",
+          "line": 56
+        },
+        {
+          "level": 2,
+          "title": "Test",
+          "anchor": "test",
+          "line": 68
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/tencent/database.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Tencent Cloud databases (`type: database`)",
+          "anchor": "tencent-cloud-databases-type-database",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the instance (console)",
+          "anchor": "1-create-the-instance-console",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 20
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 33
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 65
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 83
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 93
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/tencent/queue.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Tencent Cloud TDMQ for CMQ queue (`type: queue`)",
+          "anchor": "tencent-cloud-tdmq-for-cmq-queue-type-queue",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the queue (console)",
+          "anchor": "1-create-the-queue-console",
+          "line": 11
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 17
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 31
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 59
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 86
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 97
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/tencent/README.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Tencent Cloud resources",
+          "anchor": "tencent-cloud-resources",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Values you need for every Tencent Cloud resource",
+          "anchor": "values-you-need-for-every-tencent-cloud-resource",
+          "line": 15
+        },
+        {
+          "level": 2,
+          "title": "How pskit runs on Tencent Cloud (why some steps matter)",
+          "anchor": "how-pskit-runs-on-tencent-cloud-why-some-steps-matter",
+          "line": 27
+        },
+        {
+          "level": 2,
+          "title": "Secrets",
+          "anchor": "secrets",
+          "line": 43
+        },
+        {
+          "level": 2,
+          "title": "Credentials for deploying",
+          "anchor": "credentials-for-deploying",
+          "line": 49
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/tencent/storage.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Tencent Cloud COS bucket (`type: storage`)",
+          "anchor": "tencent-cloud-cos-bucket-type-storage",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the bucket (console)",
+          "anchor": "1-create-the-bucket-console",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 14
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 28
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 62
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 84
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 97
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-guides/tencent/topic.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Tencent Cloud TDMQ for CMQ topic (`type: topic`)",
+          "anchor": "tencent-cloud-tdmq-for-cmq-topic-type-topic",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "1. Create the topic (console)",
+          "anchor": "1-create-the-topic-console",
+          "line": 9
+        },
+        {
+          "level": 2,
+          "title": "2. Collect the values",
+          "anchor": "2-collect-the-values",
+          "line": 17
+        },
+        {
+          "level": 2,
+          "title": "3. Declare it in `pskit.yml`",
+          "anchor": "3-declare-it-in-pskityml",
+          "line": 30
+        },
+        {
+          "level": 2,
+          "title": "4. Use it in a handler",
+          "anchor": "4-use-it-in-a-handler",
+          "line": 61
+        },
+        {
+          "level": 2,
+          "title": "5. Test",
+          "anchor": "5-test",
+          "line": 91
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 102
+        }
+      ]
+    },
+    {
+      "path": "docs/resource-usage.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Using resources from code: libraries, code and tests",
+          "anchor": "using-resources-from-code-libraries-code-and-tests",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "The five steps for any resource",
+          "anchor": "the-five-steps-for-any-resource",
+          "line": 13
+        },
+        {
+          "level": 2,
+          "title": "How dependencies reach the function",
+          "anchor": "how-dependencies-reach-the-function",
+          "line": 25
+        },
+        {
+          "level": 2,
+          "title": "Which library for which resource",
+          "anchor": "which-library-for-which-resource",
+          "line": 38
+        },
+        {
+          "level": 3,
+          "title": "Queues, buckets and topics",
+          "anchor": "queues-buckets-and-topics",
+          "line": 40
+        },
+        {
+          "level": 3,
+          "title": "Databases, caches and other services",
+          "anchor": "databases-caches-and-other-services",
+          "line": 80
+        },
+        {
+          "level": 2,
+          "title": "On premises: from any other program",
+          "anchor": "on-premises-from-any-other-program",
+          "line": 120
+        },
+        {
+          "level": 2,
+          "title": "Secrets",
+          "anchor": "secrets",
+          "line": 138
+        },
+        {
+          "level": 2,
+          "title": "Testing checklist",
+          "anchor": "testing-checklist",
+          "line": 146
+        }
+      ]
+    },
+    {
+      "path": "docs/resources.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Resources (storage, queues, topics, databases, any service)",
+          "anchor": "resources-storage-queues-topics-databases-any-service",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Fields",
+          "anchor": "fields",
+          "line": 53
+        },
+        {
+          "level": 2,
+          "title": "Using a resource from an event",
+          "anchor": "using-a-resource-from-an-event",
+          "line": 68
+        },
+        {
+          "level": 2,
+          "title": "What handlers receive",
+          "anchor": "what-handlers-receive",
+          "line": 81
+        },
+        {
+          "level": 3,
+          "title": "Runtime API",
+          "anchor": "runtime-api",
+          "line": 104
+        },
+        {
+          "level": 2,
+          "title": "Provider support",
+          "anchor": "provider-support",
+          "line": 124
+        },
+        {
+          "level": 3,
+          "title": "AWS IAM",
+          "anchor": "aws-iam",
+          "line": 138
+        },
+        {
+          "level": 2,
+          "title": "On-premises drivers",
+          "anchor": "on-premises-drivers",
+          "line": 150
+        },
+        {
+          "level": 3,
+          "title": "Provider matrix",
+          "anchor": "provider-matrix",
+          "line": 171
+        },
+        {
+          "level": 3,
+          "title": "Queue drivers",
+          "anchor": "queue-drivers",
+          "line": 190
+        },
+        {
+          "level": 3,
+          "title": "Storage drivers",
+          "anchor": "storage-drivers",
+          "line": 218
+        },
+        {
+          "level": 3,
+          "title": "Examples",
+          "anchor": "examples",
+          "line": 266
+        },
+        {
+          "level": 3,
+          "title": "Custom drivers",
+          "anchor": "custom-drivers",
+          "line": 299
+        },
+        {
+          "level": 2,
+          "title": "Secrets",
+          "anchor": "secrets",
+          "line": 400
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 409
+        }
+      ]
+    },
+    {
+      "path": "docs/scenarios.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Scenarios: step by step",
+          "anchor": "scenarios-step-by-step",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "A. HTTP API on AWS",
+          "anchor": "a-http-api-on-aws",
+          "line": 23
+        },
+        {
+          "level": 2,
+          "title": "B. Queue worker with a managed queue",
+          "anchor": "b-queue-worker-with-a-managed-queue",
+          "line": 65
+        },
+        {
+          "level": 2,
+          "title": "C. Attach an existing queue or bucket",
+          "anchor": "c-attach-an-existing-queue-or-bucket",
+          "line": 113
+        },
+        {
+          "level": 2,
+          "title": "D. On premises with Redis and MinIO",
+          "anchor": "d-on-premises-with-redis-and-minio",
+          "line": 145
+        },
+        {
+          "level": 2,
+          "title": "E. Attach a database or custom service",
+          "anchor": "e-attach-a-database-or-custom-service",
+          "line": 198
+        },
+        {
+          "level": 2,
+          "title": "F. Workflows: start, get the execution id, watch it",
+          "anchor": "f-workflows-start-get-the-execution-id-watch-it",
+          "line": 243
+        },
+        {
+          "level": 2,
+          "title": "G. Scheduled jobs",
+          "anchor": "g-scheduled-jobs",
+          "line": 288
+        },
+        {
+          "level": 2,
+          "title": "H. Stages and several clouds",
+          "anchor": "h-stages-and-several-clouds",
+          "line": 309
+        },
+        {
+          "level": 2,
+          "title": "I. On-premises logs",
+          "anchor": "i-on-premises-logs",
+          "line": 337
+        },
+        {
+          "level": 2,
+          "title": "J. Local development and tests",
+          "anchor": "j-local-development-and-tests",
+          "line": 352
+        },
+        {
+          "level": 2,
+          "title": "K. On premises, watching queues and buckets in other clouds",
+          "anchor": "k-on-premises-watching-queues-and-buckets-in-other-clouds",
+          "line": 376
+        }
+      ]
+    },
+    {
+      "path": "docs/smtp/README.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "E-mail triggers (SMTP) on premises",
+          "anchor": "e-mail-triggers-smtp-on-premises",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "How it works",
+          "anchor": "how-it-works",
+          "line": 17
+        },
+        {
+          "level": 2,
+          "title": "Create it",
+          "anchor": "create-it",
+          "line": 43
+        },
+        {
+          "level": 2,
+          "title": "DNS records at your domain provider",
+          "anchor": "dns-records-at-your-domain-provider",
+          "line": 83
+        },
+        {
+          "level": 2,
+          "title": "Port 25",
+          "anchor": "port-25",
+          "line": 100
+        },
+        {
+          "level": 2,
+          "title": "What the handler receives",
+          "anchor": "what-the-handler-receives",
+          "line": 109
+        },
+        {
+          "level": 2,
+          "title": "Test it",
+          "anchor": "test-it",
+          "line": 160
+        },
+        {
+          "level": 2,
+          "title": "Change it",
+          "anchor": "change-it",
+          "line": 183
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting",
+          "anchor": "troubleshooting",
+          "line": 189
+        }
+      ]
+    },
+    {
+      "path": "docs/smtp/smtp_flow.jpg",
+      "kind": "other",
+      "headings": []
+    },
+    {
+      "path": "docs/studio.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Studio: build a project without writing YAML",
+          "anchor": "studio-build-a-project-without-writing-yaml",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "What you can do",
+          "anchor": "what-you-can-do",
+          "line": 26
+        },
+        {
+          "level": 2,
+          "title": "Setup, logs and provider differences",
+          "anchor": "setup-logs-and-provider-differences",
+          "line": 45
+        },
+        {
+          "level": 2,
+          "title": "Test functions",
+          "anchor": "test-functions",
+          "line": 57
+        },
+        {
+          "level": 2,
+          "title": "Project environment, trigger resources and remove",
+          "anchor": "project-environment-trigger-resources-and-remove",
+          "line": 74
+        },
+        {
+          "level": 2,
+          "title": "Saving: what changes in pskit.yml",
+          "anchor": "saving-what-changes-in-pskityml",
+          "line": 146
+        },
+        {
+          "level": 2,
+          "title": "Browse account",
+          "anchor": "browse-account",
+          "line": 155
+        },
+        {
+          "level": 2,
+          "title": "Full VS Code (code-server in Docker)",
+          "anchor": "full-vs-code-code-server-in-docker",
+          "line": 170
+        },
+        {
+          "level": 2,
+          "title": "Security",
+          "anchor": "security",
+          "line": 202
+        },
+        {
+          "level": 2,
+          "title": "Developing the studio UI",
+          "anchor": "developing-the-studio-ui",
+          "line": 214
+        }
+      ]
+    },
+    {
+      "path": "docs/troubleshooting.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Troubleshooting & FAQ",
+          "anchor": "troubleshooting-faq",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Installation and tooling",
+          "anchor": "installation-and-tooling",
+          "line": 5
+        },
+        {
+          "level": 2,
+          "title": "Configuration",
+          "anchor": "configuration",
+          "line": 30
+        },
+        {
+          "level": 2,
+          "title": "Deploy and state",
+          "anchor": "deploy-and-state",
+          "line": 47
+        },
+        {
+          "level": 2,
+          "title": "HTTP",
+          "anchor": "http",
+          "line": 58
+        },
+        {
+          "level": 2,
+          "title": "Provider gotchas",
+          "anchor": "provider-gotchas",
+          "line": 75
+        },
+        {
+          "level": 2,
+          "title": "FAQ",
+          "anchor": "faq",
+          "line": 91
+        },
+        {
+          "level": 2,
+          "title": "Security notes",
+          "anchor": "security-notes",
+          "line": 105
+        }
+      ]
+    },
+    {
+      "path": "docs/workflow-executions.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Workflow executions",
+          "anchor": "workflow-executions",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Starting a run",
+          "anchor": "starting-a-run",
+          "line": 12
+        },
+        {
+          "level": 3,
+          "title": "On premises over HTTP",
+          "anchor": "on-premises-over-http",
+          "line": 25
+        },
+        {
+          "level": 3,
+          "title": "Embedded orchestrator on a cloud",
+          "anchor": "embedded-orchestrator-on-a-cloud",
+          "line": 51
+        },
+        {
+          "level": 2,
+          "title": "The execution record",
+          "anchor": "the-execution-record",
+          "line": 61
+        },
+        {
+          "level": 2,
+          "title": "Following a run",
+          "anchor": "following-a-run",
+          "line": 99
+        },
+        {
+          "level": 2,
+          "title": "Cancel, timeouts and restarts (embedded engine)",
+          "anchor": "cancel-timeouts-and-restarts-embedded-engine",
+          "line": 119
+        },
+        {
+          "level": 2,
+          "title": "AWS Step Functions and Google Cloud Workflows",
+          "anchor": "aws-step-functions-and-google-cloud-workflows",
+          "line": 126
+        },
+        {
+          "level": 2,
+          "title": "HTTP API (on-premises host)",
+          "anchor": "http-api-on-premises-host",
+          "line": 145
+        }
+      ]
+    },
+    {
+      "path": "docs/workflows.md",
+      "kind": "markdown",
+      "headings": [
+        {
+          "level": 1,
+          "title": "Workflows (state machines)",
+          "anchor": "workflows-state-machines",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "title": "Workflow keys",
+          "anchor": "workflow-keys",
+          "line": 49
+        },
+        {
+          "level": 2,
+          "title": "State types",
+          "anchor": "state-types",
+          "line": 65
+        },
+        {
+          "level": 3,
+          "title": "Data flow",
+          "anchor": "data-flow",
+          "line": 80
+        },
+        {
+          "level": 3,
+          "title": "Choice rules",
+          "anchor": "choice-rules",
+          "line": 90
+        },
+        {
+          "level": 3,
+          "title": "Retry and catch",
+          "anchor": "retry-and-catch",
+          "line": 117
+        },
+        {
+          "level": 2,
+          "title": "Engines",
+          "anchor": "engines",
+          "line": 134
+        },
+        {
+          "level": 3,
+          "title": "Embedded orchestrator",
+          "anchor": "embedded-orchestrator",
+          "line": 143
+        },
+        {
+          "level": 3,
+          "title": "Compiler notes and limits",
+          "anchor": "compiler-notes-and-limits",
+          "line": 152
+        },
+        {
+          "level": 2,
+          "title": "Commands",
+          "anchor": "commands",
+          "line": 158
+        },
+        {
+          "level": 2,
+          "title": "Migrating Step Functions ASL",
+          "anchor": "migrating-step-functions-asl",
+          "line": 180
+        }
+      ]
+    }
+  ]
+}

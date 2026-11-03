@@ -1,0 +1,762 @@
+[
+ {
+  "id": "k_scale_0341",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-network-map"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-network-map.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/onprem-network.md#network-and-firewall-rules-on-premises"
+  ],
+  "excerpt": "[docs/onprem-network.md#network-and-firewall-rules-on-premises]\nWhich machine must accept **inbound** connections, and which must be allowed **outbound**, at each step: saving servers, deploying, running, clusters, joining servers, load balancers, function groups on several servers, and resources / triggers. Ports in *italics* are defaults you can change. **You do not have to work these out by hand.** Every step prints the rules it just made necessary, with your servers' names and addresses and `ufw` commands: `pskit cluster create`, `pskit cluster join`, `pskit deploy` (one server, function groups or a cluster), `pskit lb create`, `pskit lb attach`, `pskit cluster balancer set`, a project's `balancer` route, and `pskit resources onprem create`.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0342",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-network-map"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-network-map.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/onprem-network.md#network-and-firewall-rules-on-premises"
+  ],
+  "excerpt": "[docs/onprem-network.md#network-and-firewall-rules-on-premises]\nWhich machine must accept **inbound** connections, and which must be allowed **outbound**, at each step: saving servers, deploying, running, clusters, joining servers, load balancers, function groups on several servers, and resources / triggers. Ports in *italics* are defaults you can change. **You do not have to work these out by hand.** Every step prints the rules it just made necessary, with your servers' names and addresses and `ufw` commands: `pskit cluster create`, `pskit cluster join`, `pskit deploy` (one server, function groups or a cluster), `pskit lb create`, `pskit lb attach`, `pskit cluster balancer set`, a project's `balancer` route, and `pskit resources onprem create`.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0343",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-network-map"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-network-map.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/onprem-network.md#network-and-firewall-rules-on-premises"
+  ],
+  "excerpt": "[docs/onprem-network.md#network-and-firewall-rules-on-premises]\nWhich machine must accept **inbound** connections, and which must be allowed **outbound**, at each step: saving servers, deploying, running, clusters, joining servers, load balancers, function groups on several servers, and resources / triggers. Ports in *italics* are defaults you can change. **You do not have to work these out by hand.** Every step prints the rules it just made necessary, with your servers' names and addresses and `ufw` commands: `pskit cluster create`, `pskit cluster join`, `pskit deploy` (one server, function groups or a cluster), `pskit lb create`, `pskit lb attach`, `pskit cluster balancer set`, a project's `balancer` route, and `pskit resources onprem create`.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0344",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-network-map"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-network-map.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#network-and-firewall-rules-on-premises"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0345",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-network-map"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-network-map.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/onprem-network.md#network-and-firewall-rules-on-premises"
+  ],
+  "excerpt": "[docs/onprem-network.md#network-and-firewall-rules-on-premises]\nWhich machine must accept **inbound** connections, and which must be allowed **outbound**, at each step: saving servers, deploying, running, clusters, joining servers, load balancers, function groups on several servers, and resources / triggers. Ports in *italics* are defaults you can change. **You do not have to work these out by hand.** Every step prints the rules it just made necessary, with your servers' names and addresses and `ufw` commands: `pskit cluster create`, `pskit cluster join`, `pskit deploy` (one server, function groups or a cluster), `pskit lb create`, `pskit lb attach`, `pskit cluster balancer set`, a project's `balancer` route, and `pskit resources onprem create`.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0346",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-network-map"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-network-map.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/onprem-network.md#network-and-firewall-rules-on-premises"
+  ],
+  "excerpt": "[docs/onprem-network.md#network-and-firewall-rules-on-premises]\nWhich machine must accept **inbound** connections, and which must be allowed **outbound**, at each step: saving servers, deploying, running, clusters, joining servers, load balancers, function groups on several servers, and resources / triggers. Ports in *italics* are defaults you can change. **You do not have to work these out by hand.** Every step prints the rules it just made necessary, with your servers' names and addresses and `ufw` commands: `pskit cluster create`, `pskit cluster join`, `pskit deploy` (one server, function groups or a cluster), `pskit lb create`, `pskit lb attach`, `pskit cluster balancer set`, a project's `balancer` route, and `pskit resources onprem create`.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0347",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-network-map"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-network-map.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/onprem-network.md#network-and-firewall-rules-on-premises"
+  ],
+  "excerpt": "[docs/onprem-network.md#network-and-firewall-rules-on-premises]\nWhich machine must accept **inbound** connections, and which must be allowed **outbound**, at each step: saving servers, deploying, running, clusters, joining servers, load balancers, function groups on several servers, and resources / triggers. Ports in *italics* are defaults you can change. **You do not have to work these out by hand.** Every step prints the rules it just made necessary, with your servers' names and addresses and `ufw` commands: `pskit cluster create`, `pskit cluster join`, `pskit deploy` (one server, function groups or a cluster), `pskit lb create`, `pskit lb attach`, `pskit cluster balancer set`, a project's `balancer` route, and `pskit resources onprem create`.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0348",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-network-map"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-network-map.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/onprem-network.md#network-and-firewall-rules-on-premises"
+  ],
+  "excerpt": "[docs/onprem-network.md#network-and-firewall-rules-on-premises]\nWhich machine must accept **inbound** connections, and which must be allowed **outbound**, at each step: saving servers, deploying, running, clusters, joining servers, load balancers, function groups on several servers, and resources / triggers. Ports in *italics* are defaults you can change. **You do not have to work these out by hand.** Every step prints the rules it just made necessary, with your servers' names and addresses and `ufw` commands: `pskit cluster create`, `pskit cluster join`, `pskit deploy` (one server, function groups or a cluster), `pskit lb create`, `pskit lb attach`, `pskit cluster balancer set`, a project's `balancer` route, and `pskit resources onprem create`.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0349",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-network-map"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-network-map.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/onprem-network.md#network-and-firewall-rules-on-premises"
+  ],
+  "excerpt": "[docs/onprem-network.md#network-and-firewall-rules-on-premises]\nWhich machine must accept **inbound** connections, and which must be allowed **outbound**, at each step: saving servers, deploying, running, clusters, joining servers, load balancers, function groups on several servers, and resources / triggers. Ports in *italics* are defaults you can change. **You do not have to work these out by hand.** Every step prints the rules it just made necessary, with your servers' names and addresses and `ufw` commands: `pskit cluster create`, `pskit cluster join`, `pskit deploy` (one server, function groups or a cluster), `pskit lb create`, `pskit lb attach`, `pskit cluster balancer set`, a project's `balancer` route, and `pskit resources onprem create`.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0350",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-network-map"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-network-map.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/onprem-network.md#network-and-firewall-rules-on-premises"
+  ],
+  "excerpt": "[docs/onprem-network.md#network-and-firewall-rules-on-premises]\nWhich machine must accept **inbound** connections, and which must be allowed **outbound**, at each step: saving servers, deploying, running, clusters, joining servers, load balancers, function groups on several servers, and resources / triggers. Ports in *italics* are defaults you can change. **You do not have to work these out by hand.** Every step prints the rules it just made necessary, with your servers' names and addresses and `ufw` commands: `pskit cluster create`, `pskit cluster join`, `pskit deploy` (one server, function groups or a cluster), `pskit lb create`, `pskit lb attach`, `pskit cluster balancer set`, a project's `balancer` route, and `pskit resources onprem create`.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0351",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0352",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0353",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0354",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0355",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0356",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0357",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0358",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0359",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0360",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0361",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0362",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0363",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0364",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0365",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0366",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0367",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0368",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0369",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0370",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0371",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0372",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0373",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0374",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0375",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0376",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0377",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0378",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0379",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0380",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-placement"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-placement.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/placement.md#functions-on-several-servers-on-premises"
+  ],
+  "excerpt": "[docs/placement.md#functions-on-several-servers-on-premises]\nPer group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ }
+]

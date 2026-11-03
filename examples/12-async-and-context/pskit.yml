@@ -1,0 +1,33 @@
+service: async-context
+
+provider:
+  name: aws
+  region: us-east-1
+  environment:
+    LOG_LEVEL: DEBUG          # pskit honours LOG_LEVEL / PSKIT_LOG_LEVEL
+
+functions:
+  aggregate:
+    handler: app.handlers.aggregate
+    events:
+      - http: GET /aggregate
+  inspect:
+    handler: app.handlers.inspect
+    events:
+      - http: POST /inspect
+  batch-job:
+    handler: app.handlers.batch_job
+    timeout: 60
+    events:
+      - schedule: 15 minutes
+
+providers:
+  gcp:
+    region: us-central1
+    options: {project: "${env:GOOGLE_CLOUD_PROJECT, my-gcp-project}"}
+  azure:
+    region: eastus
+    options: {subscription_id: "${env:ARM_SUBSCRIPTION_ID, 00000000-0000-0000-0000-000000000000}"}
+  onprem:
+    region: local
+    options: {host: 127.0.0.1, port: 8092}

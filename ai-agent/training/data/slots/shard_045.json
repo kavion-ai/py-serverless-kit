@@ -1,0 +1,789 @@
+[
+ {
+  "id": "k_res_0101",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-cache.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/cache.md#azure-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0102",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-cache.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/cache.md#azure-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0103",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-cache.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/cache.md#azure-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0104",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-cache.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/cache.md#azure-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0105",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-custom.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/custom.md#other-azure-services-type-custom",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0106",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-custom.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/azure/custom.md#other-azure-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/azure/custom.md#other-azure-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Cosmos DB, Key Vault, Event Hubs, Azure AI services, a third-party API. pskit only passes its connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and a **key or connection string** in the portal, keep the secret in an app setting, and put the rest in `connection`.",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0107",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-custom.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/azure/custom.md#other-azure-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/azure/custom.md#other-azure-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Cosmos DB, Key Vault, Event Hubs, Azure AI services, a third-party API. pskit only passes its connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and a **key or connection string** in the portal, keep the secret in an app setting, and put the rest in `connection`.",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0108",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-custom.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/azure/custom.md#other-azure-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/azure/custom.md#other-azure-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Cosmos DB, Key Vault, Event Hubs, Azure AI services, a third-party API. pskit only passes its connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and a **key or connection string** in the portal, keep the secret in an app setting, and put the rest in `connection`.",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0109",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-custom.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/azure/custom.md#other-azure-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/azure/custom.md#other-azure-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Cosmos DB, Key Vault, Event Hubs, Azure AI services, a third-party API. pskit only passes its connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and a **key or connection string** in the portal, keep the secret in an app setting, and put the rest in `connection`.",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0110",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-custom.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/azure/custom.md#other-azure-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/azure/custom.md#other-azure-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Cosmos DB, Key Vault, Event Hubs, Azure AI services, a third-party API. pskit only passes its connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and a **key or connection string** in the portal, keep the secret in an app setting, and put the rest in `connection`.",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0111",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-custom.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/custom.md#other-azure-services-type-custom",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0112",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-custom.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/azure/custom.md#other-azure-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/azure/custom.md#other-azure-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Cosmos DB, Key Vault, Event Hubs, Azure AI services, a third-party API. pskit only passes its connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and a **key or connection string** in the portal, keep the secret in an app setting, and put the rest in `connection`.",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0113",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/database.md#azure-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0114",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/database.md#azure-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0115",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/database.md#azure-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0116",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/database.md#azure-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0117",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/database.md#azure-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0118",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/database.md#azure-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0119",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/database.md#azure-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0120",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/database.md#azure-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0121",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/queue.md#azure-storage-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0122",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/queue.md#azure-storage-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0123",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/queue.md#azure-storage-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0124",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/queue.md#azure-storage-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0125",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/queue.md#azure-storage-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0126",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/queue.md#azure-storage-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0127",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/queue.md#azure-storage-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0128",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/queue.md#azure-storage-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0129",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/azure/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/azure/storage.md#3-declare-it-in-pskityml]\n- Azure blob triggers fire on **created / updated** blobs only; `events: [deleted]` is a validation error. - `storage_connection` is shared by every external queue and container of the service: keep them in the same storage account, or use the SDK with `connection_string_env` for the others (no trigger).",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0130",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/azure/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/azure/storage.md#3-declare-it-in-pskityml]\n- Azure blob triggers fire on **created / updated** blobs only; `events: [deleted]` is a validation error. - `storage_connection` is shared by every external queue and container of the service: keep them in the same storage account, or use the SDK with `connection_string_env` for the others (no trigger).",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0131",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/azure/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/azure/storage.md#3-declare-it-in-pskityml]\n- Azure blob triggers fire on **created / updated** blobs only; `events: [deleted]` is a validation error. - `storage_connection` is shared by every external queue and container of the service: keep them in the same storage account, or use the SDK with `connection_string_env` for the others (no trigger).",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0132",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/azure/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/azure/storage.md#3-declare-it-in-pskityml]\n- Azure blob triggers fire on **created / updated** blobs only; `events: [deleted]` is a validation error. - `storage_connection` is shared by every external queue and container of the service: keep them in the same storage account, or use the SDK with `connection_string_env` for the others (no trigger).",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0133",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/storage.md#azure-blob-container-type-storage",
+   "docs/resource-guides/azure/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0134",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/azure/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/azure/storage.md#3-declare-it-in-pskityml]\n- Azure blob triggers fire on **created / updated** blobs only; `events: [deleted]` is a validation error. - `storage_connection` is shared by every external queue and container of the service: keep them in the same storage account, or use the SDK with `connection_string_env` for the others (no trigger).",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0135",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/azure/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/azure/storage.md#3-declare-it-in-pskityml]\n- Azure blob triggers fire on **created / updated** blobs only; `events: [deleted]` is a validation error. - `storage_connection` is shared by every external queue and container of the service: keep them in the same storage account, or use the SDK with `connection_string_env` for the others (no trigger).",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0136",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/azure/storage.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "[docs/resource-guides/azure/storage.md#3-declare-it-in-pskityml]\n- Azure blob triggers fire on **created / updated** blobs only; `events: [deleted]` is a validation error. - `storage_connection` is shared by every external queue and container of the service: keep them in the same storage account, or use the SDK with `connection_string_env` for the others (no trigger).",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0137",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/topic.md#azure-service-bus-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0138",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/topic.md#azure-service-bus-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0139",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/topic.md#azure-service-bus-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0140",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/topic.md#azure-service-bus-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ }
+]

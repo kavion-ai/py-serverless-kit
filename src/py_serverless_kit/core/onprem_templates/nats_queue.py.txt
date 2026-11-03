@@ -1,0 +1,145 @@
+"""A NATS JetStream stream as an on-prem queue, through ``nats-py`` (add it to requirements.txt).
+
+Added by ``pskit resources onprem create <key> --service nats``. Delivery is at-least-once:
+a message is acked only after the handler succeeded, a failure is nak-ed (redelivered at
+once), and after ``max_receive`` deliveries it goes to the dead-letter target and is acked.
+A message that is never settled (the host crashed) is redelivered by the server after
+``ack_wait`` seconds.
+
+Use it with::
+
+    resources:
+      jobs:
+        type: queue
+        external: true
+        options:
+          driver: custom
+          class: pskit_drivers.nats_queue:NatsQueue
+          url_env: PSKIT_JOBS_URL          # nats://user:pass@host:4222
+          stream: jobs
+          subject: jobs.jobs
+          durable: pskit
+
+The stream and the durable pull consumer are created when missing. Hosts that share
+``durable`` share the work. ``nats-py`` is asyncio-based, so the class runs its own
+event loop on a background thread and exposes the host's synchronous interface.
+"""
+
+from __future__ import annotations
+
+import asyncio
+import threading
+import time
+from typing import Any, Dict, List, Optional, Set
+
+
+class NatsQueue:
+    def __init__(
+        self,
+        url: str,
+        stream: str,
+        subject: str = "",
+        durable: str = "pskit",
+        ack_wait: float = 60,
+        max_deliver: int = -1,
+        timeout: float = 15,
+    ) -> None:
+        import nats  # imported here so pskit can package the app without nats-py installed
+        from nats.js.api import ConsumerConfig
+
+        self._nats = nats
+        self.url = url
+        self.stream = stream
+        self.subject = subject or f"{stream}.jobs"
+        self.durable = durable
+        self.timeout = timeout
+        self._config = ConsumerConfig(durable_name=durable, ack_wait=float(ack_wait), max_deliver=int(max_deliver))
+        self._inflight: Dict[str, Any] = {}
+        self._loop = asyncio.new_event_loop()
+        self._thread = threading.Thread(target=self._loop.run_forever, name="pskit-nats", daemon=True)
+        self._thread.start()
+        self._run(self._connect())
+
+    def _run(self, coro: Any) -> Any:
+        return asyncio.run_coroutine_threadsafe(coro, self._loop).result(self.timeout)
+
+    async def _connect(self) -> None:
+        self.nc = await self._nats.connect(self.url, max_reconnect_attempts=-1)
+        self.js = self.nc.jetstream()
+        try:
+            await self.js.stream_info(self.stream)
+        except Exception:  # noqa: BLE001 - not found: create it
+            await self.js.add_stream(name=self.stream, subjects=[self.subject])
+        self.sub = await self.js.pull_subscribe(self.subject, durable=self.durable, config=self._config)
+
+    def submit(self, body: str, attributes: Dict[str, Any]) -> str:
+        async def publish() -> str:
+            headers = {str(k): str(v) for k, v in (attributes or {}).items()} or None
+            ack = await self.js.publish(self.subject, body.encode("utf-8"), headers=headers)
+            return f"{ack.stream}:{ack.seq}"
+
+        return str(self._run(publish()))
+
+    def claim(self, batch: int, visibility: float, now: float) -> List[Dict[str, Any]]:
+        async def fetch() -> List[Any]:
+            try:
+                return await self.sub.fetch(max(1, int(batch)), timeout=0.5)
+            except (self._nats.errors.TimeoutError, asyncio.TimeoutError):
+                return []
+
+        out: List[Dict[str, Any]] = []
+        for msg in self._run(fetch()):
+            meta = msg.metadata
+            ident = f"{meta.stream}:{meta.sequence.stream}"
+            self._inflight[ident] = msg
+            stamp = meta.timestamp.timestamp() if getattr(meta, "timestamp", None) else now
+            out.append(
+                {
+                    "id": ident,
+                    "body": msg.data.decode("utf-8", "replace"),
+                    "attributes": dict(msg.headers or {}),
+                    "receives": int(meta.num_delivered or 1),
+                    "enqueued_at": stamp,
+                }
+            )
+        return out
+
+    def settle(
+        self,
+        claimed: List[Dict[str, Any]],
+        failed_ids: Set[str],
+        max_receive: int,
+        dead_letter: Optional[Any],
+        now: float,
+    ) -> None:
+        async def settle_all() -> None:
+            for item in claimed:
+                msg = self._inflight.pop(item["id"], None)
+                if msg is None:
+                    continue
+                if item["id"] not in failed_ids:
+                    await msg.ack()
+                elif dead_letter is not None and int(item["receives"]) >= max_receive:
+                    dead_letter.submit(item["body"], dict(item["attributes"], pskit_source_queue=self.stream))
+                    await msg.ack()
+                else:
+                    await msg.nak()
+
+        self._run(settle_all())
+
+    def depth(self) -> int:
+        async def pending() -> int:
+            info = await self.js.consumer_info(self.stream, self.durable)
+            return int(info.num_pending or 0) + int(info.num_ack_pending or 0)
+
+        return int(self._run(pending()))
+
+    def recover(self, now: float, visibility: float) -> None:
+        return None  # the server redelivers after ack_wait
+
+    def close(self) -> None:
+        try:
+            self._run(self.nc.drain())
+        finally:
+            self._loop.call_soon_threadsafe(self._loop.stop)
+            time.sleep(0)

@@ -1,0 +1,782 @@
+[
+ {
+  "id": "k_res_0141",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/topic.md#azure-service-bus-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0142",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/topic.md#azure-service-bus-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0143",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/topic.md#azure-service-bus-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0144",
+  "category": "k_res",
+  "card_ids": [
+   "res-azure-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-azure-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/azure/topic.md#azure-service-bus-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0145",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-cache.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/cloudflare/cache.md#workers-kv-type-cache"
+  ],
+  "excerpt": "[docs/resource-guides/cloudflare/cache.md#workers-kv-type-cache]\nWorkers KV is Cloudflare's global key-value store: fast reads, eventually consistent writes (changes can take up to a minute to show everywhere). Use it for caches, feature flags and configuration. pskit never creates it: declare it with `external: true` and bind it. Redis clients don't work in Python Workers (no TCP sockets, no third-party packages). For Redis use an HTTP-based Redis service and call it with `from js import fetch`, or deploy that function elsewhere.",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0146",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-cache.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/cloudflare/cache.md#workers-kv-type-cache"
+  ],
+  "excerpt": "[docs/resource-guides/cloudflare/cache.md#workers-kv-type-cache]\nWorkers KV is Cloudflare's global key-value store: fast reads, eventually consistent writes (changes can take up to a minute to show everywhere). Use it for caches, feature flags and configuration. pskit never creates it: declare it with `external: true` and bind it. Redis clients don't work in Python Workers (no TCP sockets, no third-party packages). For Redis use an HTTP-based Redis service and call it with `from js import fetch`, or deploy that function elsewhere.",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0147",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-cache.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/cloudflare/cache.md#workers-kv-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0148",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-cache.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/cloudflare/cache.md#workers-kv-type-cache"
+  ],
+  "excerpt": "[docs/resource-guides/cloudflare/cache.md#workers-kv-type-cache]\nWorkers KV is Cloudflare's global key-value store: fast reads, eventually consistent writes (changes can take up to a minute to show everywhere). Use it for caches, feature flags and configuration. pskit never creates it: declare it with `external: true` and bind it. Redis clients don't work in Python Workers (no TCP sockets, no third-party packages). For Redis use an HTTP-based Redis service and call it with `from js import fetch`, or deploy that function elsewhere.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0149",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-cache.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/cloudflare/cache.md#workers-kv-type-cache"
+  ],
+  "excerpt": "[docs/resource-guides/cloudflare/cache.md#workers-kv-type-cache]\nWorkers KV is Cloudflare's global key-value store: fast reads, eventually consistent writes (changes can take up to a minute to show everywhere). Use it for caches, feature flags and configuration. pskit never creates it: declare it with `external: true` and bind it. Redis clients don't work in Python Workers (no TCP sockets, no third-party packages). For Redis use an HTTP-based Redis service and call it with `from js import fetch`, or deploy that function elsewhere.",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0150",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-cache.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/cloudflare/cache.md#workers-kv-type-cache"
+  ],
+  "excerpt": "[docs/resource-guides/cloudflare/cache.md#workers-kv-type-cache]\nWorkers KV is Cloudflare's global key-value store: fast reads, eventually consistent writes (changes can take up to a minute to show everywhere). Use it for caches, feature flags and configuration. pskit never creates it: declare it with `external: true` and bind it. Redis clients don't work in Python Workers (no TCP sockets, no third-party packages). For Redis use an HTTP-based Redis service and call it with `from js import fetch`, or deploy that function elsewhere.",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0151",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-cache.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/cloudflare/cache.md#workers-kv-type-cache"
+  ],
+  "excerpt": "[docs/resource-guides/cloudflare/cache.md#workers-kv-type-cache]\nWorkers KV is Cloudflare's global key-value store: fast reads, eventually consistent writes (changes can take up to a minute to show everywhere). Use it for caches, feature flags and configuration. pskit never creates it: declare it with `external: true` and bind it. Redis clients don't work in Python Workers (no TCP sockets, no third-party packages). For Redis use an HTTP-based Redis service and call it with `from js import fetch`, or deploy that function elsewhere.",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0152",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-cache.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/cloudflare/cache.md#workers-kv-type-cache"
+  ],
+  "excerpt": "[docs/resource-guides/cloudflare/cache.md#workers-kv-type-cache]\nWorkers KV is Cloudflare's global key-value store: fast reads, eventually consistent writes (changes can take up to a minute to show everywhere). Use it for caches, feature flags and configuration. pskit never creates it: declare it with `external: true` and bind it. Redis clients don't work in Python Workers (no TCP sockets, no third-party packages). For Redis use an HTTP-based Redis service and call it with `from js import fetch`, or deploy that function elsewhere.",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0153",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/cloudflare/custom.md#other-cloudflare-services-and-apis-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/cloudflare/custom.md#other-cloudflare-services-and-apis-type-custom]\n`custom` covers anything else a Worker talks to: a secret, Workers AI, Vectorize, another Worker, or any HTTP API. pskit only passes `connection` values to handlers (`external: true` is required). Either bind the service through `functions.<fn>.options.bindings` or call its HTTP API. Python Workers can't install packages, so use bindings or `from js import fetch` rather than SDKs.",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0154",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-custom.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/cloudflare/custom.md#other-cloudflare-services-and-apis-type-custom",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0155",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/cloudflare/custom.md#other-cloudflare-services-and-apis-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/cloudflare/custom.md#other-cloudflare-services-and-apis-type-custom]\n`custom` covers anything else a Worker talks to: a secret, Workers AI, Vectorize, another Worker, or any HTTP API. pskit only passes `connection` values to handlers (`external: true` is required). Either bind the service through `functions.<fn>.options.bindings` or call its HTTP API. Python Workers can't install packages, so use bindings or `from js import fetch` rather than SDKs.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0156",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/cloudflare/custom.md#other-cloudflare-services-and-apis-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/cloudflare/custom.md#other-cloudflare-services-and-apis-type-custom]\n`custom` covers anything else a Worker talks to: a secret, Workers AI, Vectorize, another Worker, or any HTTP API. pskit only passes `connection` values to handlers (`external: true` is required). Either bind the service through `functions.<fn>.options.bindings` or call its HTTP API. Python Workers can't install packages, so use bindings or `from js import fetch` rather than SDKs.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0157",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/cloudflare/custom.md#other-cloudflare-services-and-apis-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/cloudflare/custom.md#other-cloudflare-services-and-apis-type-custom]\n`custom` covers anything else a Worker talks to: a secret, Workers AI, Vectorize, another Worker, or any HTTP API. pskit only passes `connection` values to handlers (`external: true` is required). Either bind the service through `functions.<fn>.options.bindings` or call its HTTP API. Python Workers can't install packages, so use bindings or `from js import fetch` rather than SDKs.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0158",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/cloudflare/custom.md#other-cloudflare-services-and-apis-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/cloudflare/custom.md#other-cloudflare-services-and-apis-type-custom]\n`custom` covers anything else a Worker talks to: a secret, Workers AI, Vectorize, another Worker, or any HTTP API. pskit only passes `connection` values to handlers (`external: true` is required). Either bind the service through `functions.<fn>.options.bindings` or call its HTTP API. Python Workers can't install packages, so use bindings or `from js import fetch` rather than SDKs.",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0159",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/cloudflare/custom.md#other-cloudflare-services-and-apis-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/cloudflare/custom.md#other-cloudflare-services-and-apis-type-custom]\n`custom` covers anything else a Worker talks to: a secret, Workers AI, Vectorize, another Worker, or any HTTP API. pskit only passes `connection` values to handlers (`external: true` is required). Either bind the service through `functions.<fn>.options.bindings` or call its HTTP API. Python Workers can't install packages, so use bindings or `from js import fetch` rather than SDKs.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0160",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-custom.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/cloudflare/custom.md#other-cloudflare-services-and-apis-type-custom",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0161",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/cloudflare/database.md#cloudflare-databases-type-database"
+  ],
+  "excerpt": "[docs/resource-guides/cloudflare/database.md#cloudflare-databases-type-database]\nFrom a Python Worker, use **D1** (Cloudflare's SQLite database) through a binding. PostgreSQL / MySQL drivers need TCP sockets and native code that Pyodide doesn't provide, so a Python Worker can't connect to them directly; see [PostgreSQL with Hyperdrive](#postgresql-with-hyperdrive-nodejs). `database` resources are always `external: true`: pskit only passes their details along.",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0162",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/cloudflare/database.md#cloudflare-databases-type-database"
+  ],
+  "excerpt": "[docs/resource-guides/cloudflare/database.md#cloudflare-databases-type-database]\nFrom a Python Worker, use **D1** (Cloudflare's SQLite database) through a binding. PostgreSQL / MySQL drivers need TCP sockets and native code that Pyodide doesn't provide, so a Python Worker can't connect to them directly; see [PostgreSQL with Hyperdrive](#postgresql-with-hyperdrive-nodejs). `database` resources are always `external: true`: pskit only passes their details along.",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0163",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/cloudflare/database.md#cloudflare-databases-type-database"
+  ],
+  "excerpt": "[docs/resource-guides/cloudflare/database.md#cloudflare-databases-type-database]\nFrom a Python Worker, use **D1** (Cloudflare's SQLite database) through a binding. PostgreSQL / MySQL drivers need TCP sockets and native code that Pyodide doesn't provide, so a Python Worker can't connect to them directly; see [PostgreSQL with Hyperdrive](#postgresql-with-hyperdrive-nodejs). `database` resources are always `external: true`: pskit only passes their details along.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0164",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/cloudflare/database.md#cloudflare-databases-type-database"
+  ],
+  "excerpt": "[docs/resource-guides/cloudflare/database.md#cloudflare-databases-type-database]\nFrom a Python Worker, use **D1** (Cloudflare's SQLite database) through a binding. PostgreSQL / MySQL drivers need TCP sockets and native code that Pyodide doesn't provide, so a Python Worker can't connect to them directly; see [PostgreSQL with Hyperdrive](#postgresql-with-hyperdrive-nodejs). `database` resources are always `external: true`: pskit only passes their details along.",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0165",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/cloudflare/database.md#cloudflare-databases-type-database"
+  ],
+  "excerpt": "[docs/resource-guides/cloudflare/database.md#cloudflare-databases-type-database]\nFrom a Python Worker, use **D1** (Cloudflare's SQLite database) through a binding. PostgreSQL / MySQL drivers need TCP sockets and native code that Pyodide doesn't provide, so a Python Worker can't connect to them directly; see [PostgreSQL with Hyperdrive](#postgresql-with-hyperdrive-nodejs). `database` resources are always `external: true`: pskit only passes their details along.",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0166",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-database.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/cloudflare/database.md#cloudflare-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0167",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/cloudflare/database.md#cloudflare-databases-type-database"
+  ],
+  "excerpt": "[docs/resource-guides/cloudflare/database.md#cloudflare-databases-type-database]\nFrom a Python Worker, use **D1** (Cloudflare's SQLite database) through a binding. PostgreSQL / MySQL drivers need TCP sockets and native code that Pyodide doesn't provide, so a Python Worker can't connect to them directly; see [PostgreSQL with Hyperdrive](#postgresql-with-hyperdrive-nodejs). `database` resources are always `external: true`: pskit only passes their details along.",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0168",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-database.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/cloudflare/database.md#cloudflare-databases-type-database"
+  ],
+  "excerpt": "[docs/resource-guides/cloudflare/database.md#cloudflare-databases-type-database]\nFrom a Python Worker, use **D1** (Cloudflare's SQLite database) through a binding. PostgreSQL / MySQL drivers need TCP sockets and native code that Pyodide doesn't provide, so a Python Worker can't connect to them directly; see [PostgreSQL with Hyperdrive](#postgresql-with-hyperdrive-nodejs). `database` resources are always `external: true`: pskit only passes their details along.",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0169",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/cloudflare/queue.md#cloudflare-queues-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0170",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/cloudflare/queue.md#cloudflare-queues-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0171",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/cloudflare/queue.md#cloudflare-queues-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0172",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/cloudflare/queue.md#cloudflare-queues-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0173",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/cloudflare/queue.md#cloudflare-queues-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0174",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/cloudflare/queue.md#cloudflare-queues-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0175",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-queue.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/cloudflare/queue.md#cloudflare-queues-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0176",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-queue.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/cloudflare/queue.md#cloudflare-queues-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0177",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/cloudflare/storage.md#cloudflare-r2-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0178",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/cloudflare/storage.md#cloudflare-r2-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0179",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/cloudflare/storage.md#cloudflare-r2-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0180",
+  "category": "k_res",
+  "card_ids": [
+   "res-cloudflare-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-cloudflare-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/cloudflare/storage.md#cloudflare-r2-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ }
+]

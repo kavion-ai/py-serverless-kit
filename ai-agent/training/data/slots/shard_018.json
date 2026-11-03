@@ -1,0 +1,762 @@
+[
+ {
+  "id": "k_cmd_0721",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-list"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-list.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0722",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-list"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-list.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0723",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-list"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-list.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0724",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-list"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-list.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0725",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-list"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-list.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0726",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-list"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-list.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0727",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-logs.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0728",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-logs.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0729",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-logs.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0730",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-logs.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0731",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-logs.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0732",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-logs.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0733",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-logs.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0734",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-logs.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0735",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-logs.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0736",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-logs.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0737",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-logs.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0738",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-monitor"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-monitor.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0739",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-monitor"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-monitor.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0740",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-monitor"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-monitor.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0741",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-monitor"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-monitor.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0742",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-monitor"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-monitor.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0743",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-monitor"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-monitor.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0744",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-monitor"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-monitor.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0745",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-monitor"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-monitor.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0746",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-monitor"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-monitor.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0747",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-monitor"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-monitor.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0748",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-monitor"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-monitor.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0749",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-remove.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0750",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-remove.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0751",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-remove.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0752",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-remove.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0753",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-remove.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0754",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-remove.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0755",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-remove.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0756",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-remove.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0757",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-remove.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0758",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-remove.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0759",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-remove.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0760",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-replicas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-replicas.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ }
+]

@@ -1,0 +1,446 @@
+hits 360 cards 157
+Counter({'wrap': 213, 'blank-split': 102, 'cutoff-next': 41, 'cutoff-eof': 4})
+
+===== blank-split =====
+--- cmd-providers
+pskit providers --json || cli.json lists 1 options and 0 arguments for `pskit providers`.
+
+--- concept-config-file
+# Concept: the pskit.yml file || pskit looks for `pskit.yml`, `pskit.yaml`, `serverless_kit.yml`, or `serverless_kit.yaml` in the current directory. Pass `-c FILE` to use another file. Unknown keys are rejected, so a typo fails fast.
+
+--- concept-contributing
+# Contributing to py-serverless-kit Thanks for helping! This guide explains how || the project is organised, how to set up a dev environment, the rules every change has to follow, and step-by-step recipes for the most common contributions: a new event option, a new cloud provider, docs and examples.
+
+--- concept-contributing
+## Workflow 1. Open an issue first for anything non-trivial (new provider, config || changes) so we can agree on the design. 2. Fork and branch from `main`: `feat/<short-name>`, `fix/<short-name>`, `docs/<short-name>`. 3. Keep PRs focused. One provider or one feature per PR. 4. Use Conventional Commits messages: `feat(gcp): support Cloud Tasks queues`, `fix(runtime): keep multi-value headers`. 5. Add an entry under **Unreleased** in `CHANGELOG.md`. 6. Make sure CI is green: tests on Python 3.9 to 3.13, ruff, mypy, and `terraform validate` for every provider. 7. A maintainer reviews the PR. Expect questions about portability and failure modes.
+
+--- concept-getting-started
+## 6. Configure cloud credentials pskit runs Terraform, so credentials come from || each Terraform provider's standard sources. Set them up for the cloud you deploy to: | Provider | Quickest setup | |---|---| | `aws` | `aws configure` or `aws sso login`, or `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY` / `AWS_PROFILE`. Optional `options.profile` / `options.assume_role_arn` | | `gcp` | `gcloud auth application-default login`, or `GOOGLE_APPLICATION_CREDENTIALS=key.json`. `options.project` is required | | `azure` | `az login` and `ARM_SUBSCRIPTION_ID` (or `options.subscription_id`). Service principals: `ARM_CLIENT_ID` / `ARM_CLIENT_SECRET` / `ARM_TENANT_ID` | | `alibaba` | `ALICLOUD_ACCESS_KEY` / `ALICLOUD_SECRET_KEY`, or an `aliyun` CLI profile via `options.profile` | | `oracle` | `~/.oci/config` (`oci setup config`). Optional `options.config_file_profile`. Docker is needed if you use `options.image_repository` | | `ibm` | `IC_API_KEY` | | `digitalocean` | `doctl auth init` (doctl must be on `PATH`). `options.namespace` is required | | `tencent` | `TENCENTCLOUD_SECRET_ID` / `TENCENTCLOUD_SECRET_KEY`, or `options.profile` | | `huawei` | `HW_ACCESS_KEY` / `HW_SECRET_KEY` (+ `HW_REGION_NAME`), or `options.profile` | | `cloudflare` | `CLOUDFLARE_API_TOKEN`. `options.account_id` is required | | `onprem` | local: nothing to configure (the Python that runs `pskit` starts the host). Remote: OpenSSH and `options.deploy.method: ssh` (or `scp`) with an optional `.pem`, or Docker with `method: docker`, `host`, and a `.pem`. `pskit deploy` asks for the `.pem` on a terminal. The image is built locally, Docker is installed on the server when it is missing, and deploy waits until `/__pskit/health` answers. Servers without Python: `python: bundle` or Docker | Provider-specific required options are listed in providers.md.
+
+--- concept-install-terraform
+# Concept: installing Terraform || deploy_docs/HOW_TO_INSTALL_TERRAFORM.md lists three ways to install Terraform on Windows. One is winget. One is Chocolatey, which needs an administrator shell. One is a manual zip download from the HashiCorp install page, unzipped into a folder that is then added to the user PATH. After a PATH change, open a new shell and run terraform -version.
+
+--- concept-migrate-aws
+## Step 1: separate business logic from AWS event parsing Typical Lambda code || pskit version: | Lambda | pskit | |---|---| | `event["body"]` + `json.loads` / `isBase64Encoded` | `event.http.json()`, `event.http.body`, `event.http.text()` | | `event["pathParameters"]` | `event.http.path_params` | | `event["queryStringParameters"]` | `event.http.query` / `multi_query` | | `event["headers"]` (case varies) | `event.http.headers` (case-insensitive) | | `event["requestContext"]["http"]["method"]` | `event.http.method` | | `{"statusCode", "headers", "body"}` | return a dict/str, or `Response.json(...)`; raise `NotFound`, `BadRequest`, … | | `for r in event["Records"]` (SQS/SNS/S3) | `for r in event.records` → `r.body`, `r.json()`, `r.bucket`, `r.key`, `r.action` | | `{"batchItemFailures": [...]}` | return `BatchResult` | | `context.aws_request_id` / `get_remaining_time_in_millis()` | `ctx.request_id` / `ctx.remaining_time_ms()` | | `boto3.client("lambda").invoke(...)` | `invoke("other-fn", payload)` | | `print` / `logging` | `ctx.logger.info(..., extra={...})` (structured JSON) | Calls to other AWS services (DynamoDB, S3 SDK, …) stay as they are, but they tie that function to AWS. Put them behind a small interface of your own if you plan to move clouds.
+
+--- concept-migrate-aws
+## Step 3: translate Step Functions Convert the ASL with the mapping table in || workflows.md, then check it: Error names in `Retry`/`Catch` become your **Python exception class names**. `Parameters`/`ResultSelector`/intrinsic functions aren't supported: move that shaping into a small task function.
+
+--- concept-scenarios
+## A. HTTP API on AWS **Verify:** `pskit info` lists both routes with URLs. A || missing id returns `404 {"error": ...}`.
+
+--- concept-scenarios
+## D. On premises with Redis and MinIO Run on your own machine or server and keep || queue messages in Redis and objects in MinIO (any S3-compatible store). `dead_letter: jobs-dlq` is a builtin directory queue on the host unless you declare a Redis resource named `jobs-dlq`.
+
+--- concept-typescript
+# Concept: TypeScript and Node packaging || pskit compiles `.ts` files with `tsc` when it packages or runs the service. It uses `node_modules/.bin/tsc`, then `tsc` on `PATH`, then `npx --yes -p typescript@5 tsc`. TypeScript is detected from a `tsconfig.json` or a `.ts` handler. `package.node.typescript` true or false forces it. With a tsconfig, pskit extends it and only overrides `outDir`, `rootDir`, and `noEmit: false`. Without one it compiles to CommonJS / ES2022. Type errors fail the build. Node.js API types need `npm install --save-dev @types/node`.
+
+--- concept-variables
+# Concept: config variables || pskit resolves four variable forms in the config. `${env:NAME}` is an environment variable and is an error if unset. `${env:NAME, default}` uses `default` when it is unset. `${opt:stage}`, `${opt:provider}`, and `${opt:region}` are the effective CLI values. `${opt:x, default}` is allowed. `${self:dotted.path}` reads the merged config, for example `${self:service}` or `${self:custom.table}`. `${file(path.json)}` reads a file relative to the config. `.json` and `.yml` are parsed. Other files are stripped text.
+
+--- concept-workflow-executions
+### Embedded orchestrator on a cloud On the other clouds the run happens inside the || orchestrator function, so the response always carries the result: A failure answers `500` with `status` set to `FAILED` (or `TIMED_OUT`), plus `error`, `cause` and `execution_id`. No history is kept. `pskit workflow start` posts to the orchestrator's HTTP URL and prints this result. `pskit workflow executions` explains why there's nothing to list.
+
+--- example-07-workflow-orders
+# Example: 07-workflow-orders This directory is one of the examples that || tests/test_examples.py packages and runs locally because it contains pskit.yml. Files here include README.md, pskit.yml, requirements.txt. Comments in pskit.yml:
+
+--- example-07-workflow-orders
+### Native vs embedded The embedded engine runs the whole workflow **inside one || function invocation**. Its tasks are called in-process, because they live in the same bundle.
+
+--- example-08-multi-cloud
+# Example: 08-multi-cloud This directory is one of the examples that || tests/test_examples.py packages and runs locally because it contains pskit.yml. Files here include README.md, pskit.aws.yml, pskit.azure.yml, pskit.gcp.yml, pskit.yml, requirements.txt. Comments in pskit.yml: One file for every provider, including an on-premises host. Pick the target with: pskit deploy -> provider.name below (aws) pskit deploy --provider gcp -> applies providers.gcp on top Everything under `providers.<cloud>` is merged over the base config only when that cloud is selected. Top-level ProviderConfig keys (region, runtime, timeout, options, ...) may be written directly under the cloud name.
+
+--- example-08-multi-cloud
+# 08 · Multi-cloud: same code, every provider `app/handlers.py` deploys unchanged || to all eleven providers, including an on-premises host. Only the configuration differs, and you can organise it in either of two ways.
+
+--- example-08-multi-cloud
+## Option A: one file with `providers:` overrides `pskit.yml` holds the shared || definition plus a `providers.<cloud>` block per cloud:
+
+--- example-08-multi-cloud
+## Option B: one small file per cloud with `extends:` Each child file names the || cloud in `provider.name` and sets its own values under `providers.<cloud>`, so they take precedence over the parent's block for that cloud. Every combination gets its own Terraform workspace (`.pskit/<provider>-<stage>/`), so the same service can be live on several clouds at once. `pskit dashboard` then shows all of them on one page.
+
+--- example-11-custom-terraform
+# 11 · Custom Terraform, remote state and hooks || pskit generates Terraform for functions and triggers. Everything else your service needs
+
+--- example-13-migrate-from-aws-lambda
+# Example: 13-migrate-from-aws-lambda This directory is one of the examples that || tests/test_examples.py packages and runs locally because it contains pskit.yml. Files here include README.md. Comments in pskit.yml: AFTER: replaces before/template.yaml AND before/state_machine.asl.json. step 2: switch clouds by adding a block and running `pskit deploy --provider gcp`
+
+--- example-17-on-premises-remote
+# Example: 17-on-premises-remote This directory is one of the examples that || tests/test_examples.py packages and runs locally because it contains pskit.yml. Files here include README.md, pskit.yml, requirements.txt. Comments in pskit.yml: Remote on-premises deploy. This file ships the function bundle to a Linux server that may not have Python. `python: bundle` downloads a portable CPython at apply time and copies it with the app. `install: systemd` keeps the host up across reboots. Required on the laptop: OpenSSH (`ssh`, `scp`). Required on the server: SSH access. Python on the server is optional. set PSKIT_ONPREM_HOST=192.0.2.10 pskit deploy Switch to Docker (image built on this machine, run on the server) by replacing deploy.method with docker and setting pem to the server .pem. pskit deploy asks for a .pem on a terminal when identity_file is empty (Enter keeps the SSH agent for method ssh). method: scp is the same archive copy as ssh. Docker on a server installs the engine when `docker` is missing, then waits until /__pskit/health answers. See the README.
+
+--- example-17-on-premises-remote
+# 17 · On-premises, remote server Example 16 runs the host on the laptop that || runs `pskit deploy`. This example copies the same kind of host onto a machine you SSH into — a factory box, a VM, or a rack server. The handler code does not change. Three ways to get code from this laptop onto that server: | `options.deploy.method` | What the server needs | What the laptop needs | When to use it | | --- | --- | --- | --- | | `local` | this machine (example 16) | Python + pskit | laptop / the server *is* the deploy machine | | `ssh` or `scp` | SSH. Python only if `python: system` | OpenSSH (`ssh`, `scp`) and a `.pem` or the SSH agent | most on-prem Linux boxes | | `docker` | SSH. Docker is installed at deploy when it is missing | Docker CLI, OpenSSH, and a `.pem` for the server | the server should run a container, with or without Docker already installed | When the server has **no Python**, pick one of: - `method: ssh` (or `method: scp`) and `python: bundle` — pskit downloads a portable CPython (python-build-standalone) at apply time, packs it into one `release.tar.gz`, copies that file, and restarts systemd (this file) - `method: docker` — the image is `FROM python:3.12-slim` and is built on this machine. The server does not need Python.
+
+--- example-19-custom-drivers
+# Example: 19-custom-drivers This directory is one of the examples that || tests/test_examples.py packages and runs locally because it contains pskit.yml. Files here include README.md, pskit.yml, requirements.txt. Comments in pskit.yml: Custom on-premises drivers: your own class feeds a queue or storage trigger. `driver: custom` + `class: "<module>:<Class>"` loads a class from this app. Every other option is passed to its constructor (`<name>_env: VAR` reads VAR from the host's environment first, so secrets stay out of generated files). Template drivers wrapping client libraries (add the library to requirements.txt): events: type: queue external: true options: {driver: custom, class: app.rabbitmq_queue:RabbitQueue, url_env: RABBITMQ_URL, queue: events} orders: type: queue external: true options: {driver: custom, class: app.kafka_queue:KafkaQueue, bootstrap_servers: "kafka:9092", topic: orders, group_id: workers} On a cloud the same resources are plain external queues / buckets (the custom classes are on-premises only); these blocks just make `--provider` switch cleanly.
+
+--- example-19-custom-drivers
+# 19 · Custom on-premises drivers When the queue or storage you already run has || no built-in driver, write a small class and point a resource at it. The on-prem host still does the rest: polling, batching, `BatchResult` retries, dead-lettering, logs, stats and the dashboard. | Resource | Class | Backed by | | --- | --- | --- | | `jobs` | `app.backends:SqliteQueue` | one SQLite file, table `jobs` | | `jobs-dlq` | `app.backends:SqliteQueue` | the same file, table `jobs_dlq` | | `inbox` | `app.backends:FolderStorage` | a folder (works for NFS / SMB shares) | `app/rabbitmq_queue.py` (pika) and `app/kafka_queue.py` (kafka-python) are templates for brokers that need a client library. Both deliver at least once.
+
+--- example-20-onprem-external-clouds
+# Example: 20-onprem-external-clouds This directory is one of the examples that || tests/test_examples.py packages and runs locally because it contains pskit.yml. Files here include README.md, pskit.yml, requirements.txt. Comments in pskit.yml: One on-premises host watching queues and buckets that live in other clouds. Every secret is given as `<name>_env: VARIABLE`: the host reads it from its own environment when it starts, so no key is written to pskit_host.json or Terraform state. A variable that is missing stops the host with an error naming it. Delete the resources (and their functions) you don't use; each one needs its credentials on the host before `pskit deploy`. ------------------------------------------------------------------ queues ------------------------------------------------------------------ storage Same shape for the other S3-compatible stores (swap the driver and its required keys): {driver: oss, region: cn-hangzhou} Alibaba OSS {driver: cos, region: ap-guangzhou} Tencent COS (bucket name ends in -<APPID>) {driver: obs, region: cn-north-4} Huawei OBS {driver: oci, region: eu-frankfurt-1, namespace: mytenancy} Oracle Object Storage {driver: ibm_cos, region: us-south} IBM Cloud Object Storage (HMAC keys) {driver: spaces, region: nyc3} DigitalOcean Spaces Queues without a built-in driver (RabbitMQ, Kafka, IBM MQ, OCI Queue, TDMQ, DMS): `driver: custom` - see examples/19-custom-drivers.
+
+--- example-20-onprem-external-clouds
+# 20 · On premises, watching other clouds A single on-prem host consumes queues || and watches buckets that live in AWS, Azure, Google Cloud, Alibaba Cloud, Cloudflare and a self-hosted MinIO. The handlers are ordinary pskit handlers. Retries (`BatchResult`), dead-lettering, logs, stats and the dashboard work the same as with the built-in queues. | Resource | Driver | Service | | --- | --- | --- | | `aws-jobs` | `sqs` | Amazon SQS | | `azure-jobs` | `azure_queue` | Azure Storage Queue | | `gcp-jobs` | `pubsub` | Google Pub/Sub (pull subscription) | | `alibaba-jobs` | `mns` | Alibaba Cloud MNS | | `cf-jobs` | `cloudflare_queue` | Cloudflare Queues | | `aws-media` | `aws` | Amazon S3 | | `azure-media` | `azure_blob` | Azure Blob Storage | | `gcp-media` | `gcs` | Google Cloud Storage | | `r2-media` | `r2` | Cloudflare R2 | | `minio-media` | `minio` | MinIO / Ceph | `pskit.yml` also lists the presets for Alibaba OSS, Tencent COS, Huawei OBS, Oracle Object Storage, IBM COS and DigitalOcean Spaces. For brokers without a built-in driver (RabbitMQ, Kafka, IBM MQ, OCI Queue, TDMQ, DMS), see `19-custom-drivers`.
+
+--- example-20-onprem-external-clouds
+## Credentials Secrets are referenced as `<name>_env: VARIABLE`, so the host reads || them from its own environment at start. Nothing secret is written to `pskit_host.json` or to Terraform state.
+
+--- example-21-nodejs-typescript
+## The YAML || pskit compiles the `.ts` files with `tsc` when it packages or runs the service. Types for
+
+--- onprem-cluster-balancer
+## Load balancer: one URL for the whole cluster (optional) Add one more saved || server **outside** the cluster as its load balancer. pskit runs OpenResty (nginx) there in Docker (container `pskit-lb`, host network) and spreads each deployment's HTTP over the cluster's servers with the algorithm you pick (`--algorithm`: round robin, sticky round robin, weighted round robin, IP hash, least connections (the default) or least time; `--weight edge1=3` per server; see load balancers). It works the same way for all three orchestrators. To share one load balancer between clusters and projects by path instead (`http://lb/<service>/`), attach a named one: `pskit lb attach edge --cluster prod` (load balancers). | Orchestrator | Behind the load balancer | |---|---| | Swarm, k3s | every server (each server's port already reaches every web replica; the load balancer adds one URL and skips a server that is down) | | Nomad | the servers with a web replica, plus the master's main replica when the master serves requests | When the master does **not** serve requests, it is listed on every load balancer as a **backup** only (see below).
+
+--- onprem-database-replicas
+## Databases: one server, or a primary with read replicas - **Single server**: one || container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow. You only pick the servers: which one writes (the primary), which ones read (the replicas) and which one runs the load balancer. Save them first (**Servers**, below). pskit installs Docker where it is missing and sets up replication for each engine: | Engine | Replication | *Synchronous* means | Load balancer (one address) | |---|---|---|---| | PostgreSQL | streaming replication (WAL), each replica starts from `pg_basebackup` | `synchronous_standby_names = 'ANY 1 (*)'`: a commit waits until one replica has it on disk | pgpool-II, port 6432 | | MySQL | GTID replication; a replica copies the databases, then follows | semi-synchronous: a commit waits for one replica (async again after 10 s without one) | ProxySQL, port 6033 | | MariaDB | GTID replication, as MySQL | built-in semi-synchronous, as MySQL | ProxySQL, port 6033 | | MongoDB | replica set (`rs_<key>`), members share a generated key file | write concern `w: majority` | none: the driver routes from one replica set URL | **Asynchronous** (default) is the fastest: the primary commits at once and replicas follow a few milliseconds behind, so a crash of the primary can lose the last writes. **Synchronous** loses no committed write, at the cost of a round trip to a replica per commit. PostgreSQL waits while no replica is connected, so keep at least two replicas with *sync*. The load balancer sends writes, transactions and `SELECT ... FOR UPDATE` to the primary and plain reads to the replicas, and falls back to the primary only when no replica is up. Without a load balancer, the functions' `URL` is the primary and the replicas are listed in `READ_URLS`. The form draws the result as you pick (functions → load balancer → primary → replicas, solid lines for sync, moving dashes for async). **Details** shows the same picture with each member's state, every replica's lag, what the primary reports (`pg_stat_replication`, `SHOW REPLICAS`, `rs.status()`), and **+ Add read replica** / **Remove**.
+
+--- onprem-network-map
+# Network and firewall rules (on premises) Which machine must accept **inbound || connections, and which must be allowed **outbound**, at each step: saving servers, deploying, running, clusters, joining servers, load balancers, function groups on several servers, and resources / triggers. Ports in *italics* are defaults you can change. **You do not have to work these out by hand.** Every step prints the rules it just made necessary, with your servers' names and addresses and `ufw` commands: `pskit cluster create`, `pskit cluster join`, `pskit deploy` (one server, function groups or a cluster), `pskit lb create`, `pskit lb attach`, `pskit cluster balancer set`, a project's `balancer` route, and `pskit resources onprem create`. `pskit firewall` lists everything the project needs now, per server (`--server edge2`, `--json`); the studio shows the same in a **Firewall** panel (Deploy, cluster and load balancer pages) and in each job's output: **Legend:** 🟥 **required** (it does not work without it) · 🟨 **needed for that feature** · 🟩 optional (convenience; pskit falls back to an SSH tunnel)
+
+--- onprem-network-map
+## The machines | Role | What it is | |---|---| | **Admin machine** | where you || run `pskit` / the studio (your laptop, a CI runner) | | **Function server** | runs a function host (one machine, or one placement group) | | **Cluster master / worker** | servers of a scaling cluster (Swarm, k3s, Nomad) | | **Load balancer server** | runs OpenResty for `pskit lb` or `pskit cluster balancer` | | **Resource server** | runs an on-prem service (Redis, Postgres, MinIO, SMTP, ...) | | **Users** | browsers, apps, other systems calling your functions | `FN_PORT` below is `provider.options.port` (*8080*), or a placement group's own `port`. ---
+
+--- onprem-one-click-services
+# One-click services for on-premises functions pskit can **create** the queue, || stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server. | Service | Use as | Driver in `pskit.yml` | Default port | Backup | Web UI | |---|---|---|---|---|---| | Redis | queue, stream, cache | `redis` (list), `redis_stream` (consumer group) | 6379 | RDB snapshot | Redis Commander (companion) | | Valkey | queue, stream, cache | `redis`, `redis_stream` | 6379 | RDB snapshot | Redis Commander (companion) | | KeyDB | queue, stream, cache | `redis`, `redis_stream` | 6379 | RDB snapshot | Redis Commander (companion) | | Dragonfly | queue, stream, cache (password only) | `redis`, `redis_stream` | 6379 | snapshot (`.tar.gz`) | Redis Commander (companion) | | Apache Kafka (KRaft) | queue | `custom`: `pskit_drivers.kafka_queue:KafkaQueue` | 9092 | data directory | Kafka UI (companion) | | LavinMQ | queue | `custom`: `pskit_drivers.rabbitmq_queue:RabbitQueue` (AMQP) | 5672 | definitions | Management UI (15672) | | Azurite | queue, storage | `azure_queue` (10001), `azure_blob` (10000), own account and key | 10000 | data directory | Azure Storage Explorer (desktop) | | LocalStack | queue, storage | `sqs`, `s3` (one port) | 4566 | data directory | status page | | fake-gcs-server | storage | `gcs` (emulator) | 4443 | | | | RustFS | storage | `s3` with endpoint and keys | 9000 | data directory | Console (9001) | | Kafka (Redpanda, one node) | queue | `custom`: `pskit_drivers.kafka_queue:KafkaQueue` (adds `kafka-python`) | 9092 | data directory (`.tar.gz`) | Kafka UI (companion) | | NATS JetStream | queue | `custom`: `pskit_drivers.nats_queue:NatsQueue` (adds `nats-py`) | 4222 (monitor 8222) | data directory | monitoring (8222) | | RabbitMQ | queue | `custom`: `pskit_drivers.rabbitmq_queue:RabbitQueue` (adds `pika`) | 5672 (UI 15672) | definitions (queues, users) | Management UI (15672) | | ElasticMQ (SQS API) | queue | `sqs` with `endpoint` | 9324 (UI 9325) | none (in memory) | queue browser (9325) | | MinIO | storage | `minio` | 9000 (console 9001) | data directory | Console (9001) | | PostgreSQL | database | connection values | 5432 | `pg_dumpall` (`.sql`) | Adminer (companion) | | MySQL / MariaDB | database | connection values | 3306 | `mysqldump` / `mariadb-dump` (`.sql`)
+
+--- onprem-placement
+# Functions on several servers (on premises) By default every function of a || project runs in one host: on one machine, or on every server of a cluster. **Placement** splits them: each group of functions runs on its own server (or cluster), with only its own code and dependencies, and the groups work together as one project. Per group: one of `server`, `cluster` or `local: true` (the default group may leave it out and use `options.deploy` / `--server` as before), `functions`, and optionally `port` (needed when two groups share a server) and `advertise` (the URL the other groups call, when the server's own address is not reachable). The studio's **Deploy** page has the same editor ("Where functions run"), and each function shows where it runs.
+
+--- onprem-placement
+## Each function is its own sub-project Create functions in their own folder with || their own dependencies: The studio does this for new functions ("Own folder with its own requirements.txt"). A function's sub-project is the nearest folder above its handler with a `requirements.txt` (Python) or `package.json` (Node.js). * Every cloud: the sub-projects' requirements are added to the bundle, so the code runs unchanged anywhere. * On premises with placement: **each server installs only the requirements of its functions**, and the folders of functions placed elsewhere are left out of its bundle. Two functions on one server that pin conflicting versions fail the deploy with a clear message: place them on different servers. * Node.js sub-projects get their own `node_modules` in their folder, so each function resolves its own versions.
+
+--- onprem-placement
+### Functions that share a code file Each server's copy of a shared code file holds || only the handlers of its own functions: pskit removes the others (and the imports only they used) from that group's bundle; your source is not changed. Module-level helpers stay. `pskit_host.json` on the server lists what was removed (`stripped`). Moving them to their own folders is still cleaner, and gives each its own requirements: Functions whose handlers sit side by side in one file (`app/handlers.py` with `hello`, `get_item`, `create_item`, as `pskit init` makes them) are shared code. Validation warns when they are in different groups. Split them: The function, the module-level helpers and imports it uses (relative imports made absolute) move to `functions/<name>/handler.py`. Its `requirements.txt` gets the lines of the project's `requirements.txt` that its imports name, and its handler in `pskit.yml` is updated.
+
+--- onprem-s3-server
+# On-premises storage (`type: storage`) Run functions when files appear in a || bucket, and read or write objects: the host's built-in buckets, a shared folder, MinIO or another S3-compatible store, or a bucket in a cloud (S3, R2, Azure Blob, GCS, ...). The host lists each watched bucket every `poll_seconds` and compares ETags: a new or changed object emits `created`, a missing one `deleted`. Objects already there at the first start are recorded, not emitted.
+
+--- onprem-secrets-managers
+# Secret managers on premises Keep API keys, database passwords and certificates || in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.
+
+--- onprem-secrets-managers
+## One click: OpenBao, pskit's Secrets Manager or LocalStack *Resources → On-prem || services → + Create service → Secret managers* (or the CLI): | Service | API it speaks | Use it from | Keeps data | |---|---|---|---| | **OpenBao** (`openbao`) | HashiCorp Vault (KV v2 at `secret/`) | `get_secret`, `hvac`, `node-vault`, `vault` / `bao` CLI, Terraform's vault provider | yes: file storage in a volume, unsealed automatically on start | | **AWS Secrets Manager compatible** (`secretsmanager` in Python, `secretsmanager-node` in Node.js) | AWS Secrets Manager, every request checked with SigV4 | `get_secret`, boto3, `@aws-sdk/client-secrets-manager`, the AWS CLI; its own web console at `/ui/` | yes: one JSON file in a volume (backups: `.tar.gz`) | | **LocalStack** (`localstack`, *Use as: Secret manager*) | AWS Secrets Manager + SSM Parameter Store | `get_secret`, boto3, `@aws-sdk/client-secrets-manager`, the AWS CLI | yes (`PERSISTENCE=1`), for development and tests | Name it **`secrets`** and handlers need no `store=`: it is the default store. Another key works too: `get_secret("db-password", store="aws-secrets")` / `getSecret("db-password", { store: "aws-secrets" })`. Creating it writes the connection to the env file (`.env.onprem`), which the host loads: OpenBao's password (from the create form, or generated) becomes a root token. Its first start initialises it with one unseal key, kept in the data volume so every restart unseals by itself. That is convenient on one server; the volume and backups then hold the key, so protect them like the secrets. For a hardened cluster (several unseal keys, auto-unseal with a KMS, policies per app), run OpenBao or Vault yourself and point pskit at it (below).
+
+--- proc-alerts
+## Monitoring and alerts The **Servers** list shows a check mark per server: ✓ || when its SSH port answers (all probed at once when the list opens, **Re-check** to probe again), ✗ with the reason otherwise; *Test* replaces it with the result of a full login check. **Live** on a server shows its CPU, RAM and disk use, refreshed every few seconds, until you switch it off.
+
+--- proc-backup
+## Backups `Backup` streams a dump out of the container into `.pskit/backups/` on || this machine, or a folder you choose (**Backup → Save to folder → Browse…**, remembered; CLI `--dir` / `-o`), also from an SSH server: | Service | File | Restore | |---|---|---| | Redis / Valkey | `.rdb` | stop the container, copy it to `/data/dump.rdb` in the volume, start it | | PostgreSQL | `.sql` |
+
+--- proc-capacity
+## In code || alerts records who is told when a server is full. check measures the cluster. The defaults for CPU, memory, and disk are in the command help.
+
+--- proc-capacity
+### Alert DevOps (optional) When the cluster is full, pskit can call **one of your || functions** and / or POST to a **webhook** (Slack, Teams, Google Chat or any URL), at most once per cooldown (default 30 minutes): The function gets `event.data`: A mail to DevOps from that function (any SMTP relay you have): The function runs on the deployed host of the stage set with `--stage` (or any deployed
+
+--- proc-cluster
+## How the functions run in a cluster Each deployment (`pskit-<service>-<stage>`) || runs the function host image as two workloads: * **web** replicas serve your HTTP routes and `invoke()` calls. Adding replicas or servers adds HTTP capacity. * The **main** replica runs on the master with the data volume.
+
+--- proc-create-project
+## In code || service is required and is 2 to 32 characters, starting with a letter. provider.name is required. A function needs a handler.
+
+--- proc-create-project
+## Top level | Key | Type | Default | Rules | |---|---|---|---| | `service` | || string | — | 2–32 chars, lowercase letters, digits, `-`, starts with a letter | | `provider` | mapping or string | — | `provider: aws` is shorthand for `provider: {name: aws}` | | `package` | mapping | see package | | | `functions` | map name → function | `{}` | names: start
+
+--- proc-database
+## In code || type database requires external true. Put the password in a variable named by password_env. Read it with resource("orders-db") and ctx.env.
+
+--- proc-deploy
+## Deploy pipeline Key properties: - **Terraform JSON, not HCL.** The generator || builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy.
+
+--- proc-drain
+## In code || leave drains the server so replicas move to the others. Removing the cluster itself is pskit cluster remove, which asks for confirmation.
+
+--- proc-drain
+## Commands | Command | | |---|---| | `pskit cluster create NAME -o || swarm\|kubernetes\|nomad --master SERVER [--advertise IP] [--[no-]master-serves]` | install on the master and save | | `pskit cluster join NAME SERVER [--advertise IP]` | add a server (installs, joins, copies images) | | `pskit cluster set NAME --master-serves\|--no-master-serves` | send requests to the master too, or keep it as a backup only | | `pskit cluster leave NAME
+
+--- proc-install-runtime
+## Install software on a server The catalog's *Install on a server* groups install || with the server's package manager (apt, dnf, yum or apk), over SSH: | Software | Versions | Notes | |---|---|---| | **Python 3** | `system` (default), 3.13, 3.12, 3.11, 3.10, 3.9, 3.14 | `system`: the distribution's python3 with venv and pip.
+
+--- proc-join
+## Commands | Command | | |---|---| | `pskit cluster create NAME -o || swarm\|kubernetes\|nomad --master SERVER [--advertise IP] [--[no-]master-serves]` | install on the master and save | | `pskit cluster join NAME SERVER [--advertise IP]` | add a server (installs, joins, copies images) | | `pskit cluster set NAME --master-serves\|--no-master-serves` | send requests to the master too, or keep it as a backup only | | `pskit cluster leave NAME
+
+--- proc-logs
+## In code || pskit logs reads the deployment logs. -f follows. --function limits the stream. --streams lists streams.
+
+--- proc-logs
+## HTTP **CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) || to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method.
+
+--- proc-migrate
+## Step 5: move to another cloud Typical changes, all in YAML: - add provider || options (`gcp: options.project`, `azure: options.subscription_id`, …), see providers.md; - replace `auth: jwt` (AWS only) with `auth: iam` / `key`, or validate tokens in the handler; - drop `existing: true` for resources that should be created on the new cloud; - remove AWS-only `functions.<fn>.options` and `terraform.extra` (or add the equivalent for the new cloud).
+
+--- proc-network
+# Network and firewall rules (on premises) Which machine must accept **inbound || connections, and which must be allowed **outbound**, at each step: saving servers, deploying, running, clusters, joining servers, load balancers, function groups on several servers, and resources / triggers. Ports in *italics* are defaults you can change.
+
+--- proc-openbao
+# Secret managers on premises Keep API keys, database passwords and certificates || in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.
+
+--- proc-overrides
+## In code || providers.NAME and stages.NAME merge over the base file. extends inherits another file. Child values beat a parent providers block.
+
+--- proc-queue-dlq
+## `BatchResult` Return a `BatchResult` from queue/topic/storage handlers to || report the records that failed: | Provider | Behaviour | |---|---| | aws (SQS) | becomes `batchItemFailures`, so only the failed messages are retried | | onprem | the host retries only the failed message ids, and moves a message to `dead_letter` after `max_receive` | | local | printed as `batchItemFailures` | | everyone else | any failure raises `BatchFailure`, so
+
+--- proc-remove
+## In code || pskit remove asks for confirmation unless -y is set. --keep-resources destroys functions and triggers and leaves buckets, queues, and topics.
+
+--- proc-replica-change
+## In code || replicas add starts one more read replica on a saved server. replicas remove takes it off. Both are separate from deleting the primary.
+
+--- proc-scale
+## In code || scale sets the web replica count now. The command help says the value lasts until the next deploy, and options.cluster.replicas keeps it.
+
+--- proc-scale
+## Monitor, scale and add servers when it is full The studio's **Scaling cluster || page shows every server's CPU (over one second), memory and disk with the limits, the orchestrator's view (ready, drained, offline), each deployment's running / desired replicas, and replicas that cannot be placed. It refreshes every 30 seconds.
+
+--- proc-secrets-env
+## Variables | Syntax | Resolves to | |---|---| | `${env:NAME}` | environment || variable; error if unset | | `${env:NAME, default}` | environment variable or `default` | | `${opt:stage}` / `${opt:provider}` / `${opt:region}` | effective CLI values (`${opt:x, default}` allowed) | | `${self:dotted.path}` | any value of the merged config, e.g.
+
+--- proc-smtp
+## DNS records at your domain provider After creating it, open **DNS guide** on || the service (also under *How to use*). It lists the records with your values: | Type | Name (host) | Value | Why | |---|---|---|---| | A | `mail.inbound.example.com` | the server's **public** IP | the mail server's address | | MX | `inbound.example.com` | `10 mail.inbound.example.com` | mail for `*@inbound.example.com` goes there | - Most
+
+--- proc-studio-docker
+## Full VS Code (code-server in Docker) **Code → Full VS Code** runs code-server || on your project and embeds it: 1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1`
+
+--- proc-test-local
+## In code || pskit invoke runs one function with a synthetic event. pskit dev serves HTTP routes on this machine. Neither contacts the cloud.
+
+--- proc-test-local
+## `pskit dev`: local server On startup it prints every route: | Endpoint | What || it does | |---|---| | your `http` routes | `{id}` and `{path+}` templates; static routes win over parameterised ones; unknown paths
+
+--- proc-test-server
+## In code || test logs in and reports OS, CPU, memory, disk, Docker, sudo, and runtimes. check only probes the SSH port.
+
+--- proc-topic
+## `topic` | Provider | Service | `filter` | |---|---|---| | aws | SNS || subscription | ✓ filter policy | | gcp | Pub/Sub | not applied (warning) – filter in the handler | | azure | Service Bus topic + subscription | not applied (warning); `existing` needs `options.servicebus_namespace_id` and `options.servicebus_connection` | | alibaba | MNS topic | `filter.tag` (string) only | | huawei | SMN topic | – |
+
+--- proc-trigger
+# Procedure: Send a real test event || pskit trigger sends a real test event to a deployed function: an HTTP request, a queue message, an object upload, a topic message, or a direct invocation. pskit trigger --list also works before a deploy. Test without deploying with pskit invoke.
+
+--- proc-trigger
+## In code || pskit trigger sends a real event to a deployed function. pskit invoke is the local equivalent.
+
+--- proc-vscode
+## Full VS Code (code-server in Docker) **Code → Full VS Code** runs code-server || on your project and embeds it: 1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1`
+
+--- proc-web-ui
+## In code || gui opens the service web UI. console runs the service client such as psql or redis-cli. The catalog says which UI each image has.
+
+--- res-azure-queue
+# Azure Storage queue (`type: queue`) Use a queue you created in an Azure storage || account: trigger a function with its messages, send messages to it from a handler, or both.
+
+--- res-azure-queue
+## 1. Create the queue (portal) Skip this if the queue already exists. 1. Portal → || search **Storage accounts** → open your account (or **+ Create**: pick a resource group, a globally unique name of 3-24 lowercase letters and digits, the region, *Standard* performance; keep the other defaults). 2. Left menu → **Data storage → Queues** → **+ Queue**. 3. Name it: 3-63 characters, **lowercase** letters, digits and single dashes (for example `orders-jobs`) → **OK**.
+
+--- res-azure-queue
+## 3. Declare it in `pskit.yml` What each part does: - `external: true` + `name` || tells pskit the queue exists. It creates no `azurerm_storage_queue`. - `queue: {resource: jobs}` adds a queue trigger on `orders-jobs`. - `storage_connection` is required when the queue is in **another storage account** than the one pskit creates (it always is, when you made it in the portal). Without it, the trigger looks for `orders-jobs` in pskit's own account and never fires. `storage_connection` applies to every external queue and blob container of the service, so keep them in one storage account. - `environment` puts the connection string into the Function App's app settings. Only sending, no trigger? Drop the `worker` function and `storage_connection`; keep the resource, the `environment` entry and `connection_string_env`.
+
+--- res-cloudflare-storage
+## Reacting to uploads || pskit can't attach a function to R2 event notifications. Options:
+
+--- res-guide-cloudflare-readme
+# Cloudflare resources How to attach services you created in the Cloudflare || dashboard (R2, Queues, D1, Workers KV, Hyperdrive, ...) to Workers deployed with pskit. | `type` | Cloudflare service | Guide | |---|---|---| | `storage` | R2 bucket | storage.md | | `queue` | Queues | queue.md | | `topic` | none (no pub/sub service) | topic.md | | `database` | D1 (Hyperdrive for PostgreSQL) | database.md | | `cache` | Workers KV | cache.md | | `custom` | secrets, Workers AI, Vectorize, any HTTP API | custom.md |
+
+--- res-guide-cloudflare-readme
+## What pskit supports on Cloudflare Read this first: Cloudflare is the most || limited target. | | Supported | |---|---| | Triggers | `http` and `schedule` only. A `queue`, `storage` or `topic` event is a validation error: `Cloudflare Workers does not support `queue` events in pskit (supported: http, schedule)` | | Managed resources | no. `type: storage` / `queue` / `topic` without `external: true` fails with `managed storage resources that no event uses are not supported on Cloudflare Workers yet; create it outside pskit and set `external: true`` | | External resources | yes: `external: true` + `name` + `connection`. Handlers get the usual `PSKIT_RESOURCE_*` variables | | Python dependencies | **none**: Python Workers run on Pyodide, so only the standard library and Pyodide's built-in packages exist. `requirements.txt` is not bundled (cloud SDKs like `boto3` won't work) | | Node.js / TypeScript | npm dependencies are bundled with esbuild | So on Cloudflare you always create the resource in the dashboard, then reach it from a handler in one of two ways: 1. **A Workers binding** (recommended for R2, Queues, D1, KV, Hyperdrive). Add it with `functions.<fn>.options.bindings`. pskit merges a function's `options` into its `cloudflare_workers_script` resource (the documented escape hatch, see configuration.md). In a Python handler the Workers `env` object is `ctx.raw`, so a binding named `UPLOADS` is `ctx.raw.UPLOADS`. 2. **The service's HTTP API** with an API token, called through `from js import fetch` (Python) or `fetch` (JavaScript). Bindings are per function: list them on every function that uses them. **Node.js / TypeScript services:** pskit already sets `bindings` on the script: one `plain_text` binding per environment variable, including the `PSKIT_RESOURCE_*` ones. `options.bindings` **replaces** that list, so on such a function `resource()` and `environment` values are gone unless you list them again as `{type: plain_text, name: ..., text: ...}`. Read the binding itself from `context.raw` (the Workers `env`). Python services don't have this problem: their environment is embedded in the script. `ctx.raw` is `None` under `pskit invoke` / `pskit dev`, so code that uses bindings only runs on Cloudflare.
+
+--- res-guide-huawei-readme
+# Huawei Cloud resources How to attach Huawei Cloud services you created in the || console to a FunctionGraph deployment made with pskit. | `type` | Huawei Cloud service | Trigger in pskit | Guide | |---|---|---|---| | `storage` | OBS bucket | ✓ OBS trigger | storage.md | | `queue` | DMS for RabbitMQ / Kafka | – (SDK only) | queue.md | | `topic` | SMN topic | ✓ SMN trigger | topic.md | | `database` | RDS for MySQL / PostgreSQL | – | database.md | | `cache` | DCS for Redis | – | cache.md | | `custom` | CSMS secrets, DDS, any other service | – | custom.md |
+
+--- res-guide-huawei-readme
+## How pskit runs on Huawei Cloud (why some steps matter) - Each pskit function is || a **FunctionGraph** function in the app `provider.options.app` (default `default`). - Environment variables (your `environment:` plus the `PSKIT_RESOURCE_*` bindings) are passed as the function's `user_data`. They are visible in the FunctionGraph console under **Configuration → Environment Variables** and stored in Terraform state. - Managed resources that no event uses are a validation error on Huawei: create them in the console and declare them with `external: true`. - pskit has **no queue trigger** on Huawei. Queues can still be bound and used from handlers through the SDK. - `iam.statements` are ignored. Give functions cloud permissions with an **IAM agency** (`iam.role: <agency name>`): **Identity and Access Management → Agencies → Create Agency** → *Cloud service* → **FunctionGraph** → attach the policies the function needs (for example *OBS OperateAccess*, *SMN Administrator*, *VPC Administrator* for VPC access). With an agency, FunctionGraph hands the function temporary credentials through its native context: `ctx.raw.getSecurityAccessKey()`, `ctx.raw.getSecuritySecretKey()`, `ctx.raw.getSecurityToken()`. - RDS, DCS and DMS instances live **inside a VPC**. A function only reaches their private address when it is attached to that VPC: set `vpc_id` and `network_id` (subnet ID) under `functions.<name>.options` (passed straight to `huaweicloud_fgs_function`) and use an agency with VPC permissions.
+
+--- res-guide-ibm-readme
+## Secrets on Code Engine || pskit writes every function variable as a literal `run_env_variables` entry, so `environment:` values (including
+
+--- res-guide-oracle-readme
+# Oracle Cloud (OCI) resources How to attach OCI services you created in the OCI || console to an OCI Functions deployment made with pskit. | `type` | OCI service | Trigger in pskit | Guide | |---|---|---|---| | `storage` | Object Storage bucket | ✓ Events rule | storage.md | | `queue` | OCI Queue | – (SDK only) | queue.md | | `topic` | Notifications topic | – (SDK only) | topic.md | | `database` | Autonomous Database, MySQL HeatWave | – | database.md | | `cache` | OCI Cache (Redis / Valkey) | – | cache.md | | `custom` | Vault secrets, Streaming, any other service | – | custom.md |
+
+--- res-guide-oracle-readme
+## Values you need for every OCI resource | Value | Where | |---|---| | OCID | || resource details page → *OCID* → **Copy** | | Compartment OCID | **Identity & Security → Compartments** → the compartment → *OCID* | | Region identifier | **Governance & Administration → Tenancy details**, or the region menu (for example `us-ashburn-1`) | | Object Storage namespace | **Tenancy details** → *Object storage namespace* (also on every bucket's details page) | | VCN / subnet OCIDs | **Networking → Virtual cloud networks** → the VCN → **Subnets** |
+
+--- res-guide-readme
+# Adding resources: step-by-step guides These guides show how to plug a service || you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page resources.md, which lists every field and provider rule. Guides are grouped by cloud, then by resource `type`: | Cloud | storage | queue | topic | database | cache | custom | |---|---|---|---|---|---|---| | AWS | S3 bucket | SQS queue | SNS topic | RDS / Aurora | ElastiCache / MemoryDB | DynamoDB, Secrets Manager, ... | | Google Cloud | Cloud Storage bucket | Pub/Sub topic as a queue | Pub/Sub topic | Cloud SQL | Memorystore | Firestore, Secret Manager, ... | | Azure | Blob container | Storage queue | Service Bus topic | PostgreSQL / MySQL / SQL | Redis | Cosmos DB, Key Vault, ... | | Alibaba Cloud | OSS bucket | SMQ / MNS queue | SMQ / MNS topic | ApsaraDB RDS / PolarDB | Tair (Redis) | Tablestore, KMS, ... | | Tencent Cloud | COS bucket | TDMQ for CMQ queue | TDMQ for CMQ topic | TencentDB MySQL / PostgreSQL | TencentDB for Redis | Secrets Manager, ... | | Huawei Cloud | OBS bucket | DMS RabbitMQ / Kafka | SMN topic | RDS | DCS Redis | CSMS, DDS, ... | | Oracle Cloud | Object Storage bucket | OCI Queue | Notifications topic | Autonomous DB, MySQL HeatWave | OCI Cache | Vault, Streaming, ... | | IBM Cloud | Cloud Object Storage bucket | IBM MQ queue | Event Streams topic | Databases for PostgreSQL / MySQL | Databases for Redis | Secrets Manager, Cloudant, ... | | DigitalOcean | Spaces bucket | Valkey list as a queue | Managed Kafka topic | Managed PostgreSQL / MySQL | Managed Valkey | MongoDB, OpenSearch, DO API | | Cloudflare | R2 bucket | Queues | No topics: alternatives | D1 / Hyperdrive | Workers KV | Secrets, Workers AI, HTTP APIs | | On premises (one-click services) | Built-in, MinIO, S3, R2, Blob, GCS | Built-in, Redis, Kafka, NATS, RabbitMQ, another host, SQS, ... | Built-in / directory | PostgreSQL / MySQL | Redis / Valkey | SMTP, LDAP, internal APIs | Not every cloud can trigger a function from every type.
+
+--- res-ibm-cache
+# IBM Databases for Redis (`type: cache`) || pskit never creates caches: declare them with `external: true`.
+
+--- res-ibm-queue
+## 4. Use it in a handler The MQ messaging REST API needs no native client || library, which keeps the bundle small (`pymqi` needs the IBM MQ C client installed, which Code Engine functions don't have). `requirements.txt`: `requests` A `DELETE` on the same URL reads (destructively gets) one message.
+
+--- res-ibm-queue
+## 5. Test MQ Console → **Queues** → `ORDERS.JOBS` shows the queue depth and lets || you browse messages.
+
+--- res-onprem-queue
+# On-premises queues (`type: queue`) Trigger functions on the host from a queue || the host's built-in queue, Redis / Valkey, RabbitMQ or Kafka through a custom driver, or a queue in a cloud. Every option gives the same at-least-once handling: `batch_size`, `visibility_timeout`, `max_receive`, `dead_letter` and `BatchResult` work the same way.
+
+--- res-onprem-queue
+## Create one in one click The studio (*Resources → On-prem services → + Create || service*) or the CLI starts the broker with Docker, here or on any SSH server, writes the resource and adds the trigger: Details, backups and removal: services.md. The sections below show the same setups by hand.
+
+--- res-onprem-queue
+### 1. Set up Redis - **Docker:** `docker run -d --name redis -p 6379:6379 redis:7 || redis-server --requirepass <password>` (Valkey: `valkey/valkey:8`). - **Linux package:** `sudo apt install redis-server`; in `/etc/redis/redis.conf` set `requirepass <password>` and `bind` to an address the host can reach; `sudo systemctl restart redis-server`. - **Managed Redis** (Azure Cache, ElastiCache, Upstash, DigitalOcean): copy the host, port and password from its console; TLS endpoints use `rediss://`.
+
+--- res-onprem-queue
+### 3. Declare it in `pskit.yml` Other producers can `LPUSH jobs '<text>'`; plain || strings are delivered as the record body. How messages are leased: resources.md → Redis layout.
+
+--- res-onprem-queue
+## Redis / Valkey stream (`redis_stream`) A stream with a consumer group instead || of a list: native leases and delivery counts, several hosts can share one group, and other services can read the same stream with groups of their own. Needs Redis 6.2+ or Valkey. Messages are `XADD jobs * body <text> attributes <json>`; another producer may `XADD` any fields (the `body` field, else the first field's value, becomes the record body). An entry is acknowledged and deleted once the handler succeeded. A failed entry is claimable again at once; after `max_receive` deliveries it goes to `dead_letter`. An entry a crashed host never settled is taken over (`XAUTOCLAIM`) once it has been idle for `visibility_timeout`.
+
+--- res-onprem-queue
+## Kafka and NATS JetStream Both use a driver class that one-click creation copies || into `pskit_drivers/` (with `kafka-python` or `nats-py` in `requirements.txt`). By hand: Templates: `examples/19-custom-drivers/app/kafka_queue.py` and `pskit_drivers/nats_queue.py` after a one-click NATS creation.
+
+--- res-onprem-secrets
+# Secret managers on premises Keep API keys, database passwords and certificates || in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.
+
+--- res-onprem-secrets
+## One click: OpenBao, pskit's Secrets Manager or LocalStack *Resources → On-prem || services → + Create service → Secret managers* (or the CLI): | Service | API it speaks | Use it from | Keeps data | |---|---|---|---| | **OpenBao** (`openbao`) | HashiCorp Vault (KV v2 at `secret/`) | `get_secret`, `hvac`, `node-vault`, `vault` / `bao` CLI, Terraform's vault provider | yes: file storage in a volume, unsealed automatically on start | | **AWS Secrets Manager compatible** (`secretsmanager` in Python, `secretsmanager-node` in Node.js) | AWS Secrets Manager, every request checked with SigV4 | `get_secret`, boto3, `@aws-sdk/client-secrets-manager`, the AWS CLI; its own web console at `/ui/` | yes: one JSON file in a volume (backups: `.tar.gz`) | | **LocalStack** (`localstack`, *Use as: Secret manager*) | AWS Secrets Manager + SSM Parameter Store | `get_secret`, boto3, `@aws-sdk/client-secrets-manager`, the AWS CLI | yes (`PERSISTENCE=1`), for development and tests | Name it **`secrets`** and handlers need no `store=`: it is the default store. Another key works too: `get_secret("db-password", store="aws-secrets")` / `getSecret("db-password", { store: "aws-secrets" })`. Creating it writes the connection to the env file (`.env.onprem`), which the host loads: OpenBao's password (from the create form, or generated) becomes a root token. Its first start initialises it with one unseal key, kept in the data volume so every restart unseals by itself. That is convenient on one server; the volume and backups then hold the key, so protect them like the secrets. For a hardened cluster (several unseal keys, auto-unseal with a KMS, policies per app), run OpenBao or Vault yourself and point pskit at it (below).
+
+--- res-onprem-services
+# One-click services for on-premises functions pskit can **create** the queue, || stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server. | Service | Use as | Driver in `pskit.yml` | Default port | Backup | Web UI | |---|---|---|---|---|---| | Redis | queue, stream, cache | `redis` (list), `redis_stream` (consumer group) | 6379 | RDB snapshot | Redis Commander (companion) | | Valkey | queue, stream, cache | `redis`, `redis_stream` | 6379 | RDB snapshot | Redis Commander (companion) | | KeyDB | queue, stream, cache | `redis`, `redis_stream` | 6379 | RDB snapshot | Redis Commander (companion) | | Dragonfly | queue, stream, cache (password only) | `redis`, `redis_stream` | 6379 | snapshot (`.tar.gz`) | Redis Commander (companion) | | Apache Kafka (KRaft) | queue | `custom`: `pskit_drivers.kafka_queue:KafkaQueue` | 9092 | data directory | Kafka UI (companion) | | LavinMQ | queue | `custom`: `pskit_drivers.rabbitmq_queue:RabbitQueue` (AMQP) | 5672 | definitions | Management UI (15672) | | Azurite | queue, storage | `azure_queue` (10001), `azure_blob` (10000), own account and key | 10000 | data directory | Azure Storage Explorer (desktop) | | LocalStack | queue, storage | `sqs`, `s3` (one port) | 4566 | data directory | status page | | fake-gcs-server | storage | `gcs` (emulator) | 4443 | | | | RustFS | storage | `s3` with endpoint and keys | 9000 | data directory | Console (9001) | | Kafka (Redpanda, one node) | queue | `custom`: `pskit_drivers.kafka_queue:KafkaQueue` (adds `kafka-python`) | 9092 | data directory (`.tar.gz`) | Kafka UI (companion) | | NATS JetStream | queue | `custom`: `pskit_drivers.nats_queue:NatsQueue` (adds `nats-py`) | 4222 (monitor 8222) | data directory | monitoring (8222) | | RabbitMQ | queue | `custom`: `pskit_drivers.rabbitmq_queue:RabbitQueue` (adds `pika`) | 5672 (UI 15672) | definitions (queues, users) | Management UI (15672) | | ElasticMQ (SQS API) | queue | `sqs` with `endpoint` | 9324 (UI 9325) | none (in memory) | queue browser (9325) | | MinIO | storage | `minio` | 9000 (console 9001) | data directory | Console (9001) | | PostgreSQL | database | connection values | 5432 | `pg_dumpall` (`.sql`) | Adminer (companion) | | MySQL / MariaDB | database | connection values | 3306 | `mysqldump` / `mariadb-dump` (`.sql`)
+
+--- res-onprem-storage
+# On-premises storage (`type: storage`) Run functions when files appear in a || bucket, and read or write objects: the host's built-in buckets, a shared folder, MinIO or another S3-compatible store, or a bucket in a cloud (S3, R2, Azure Blob, GCS, ...). The host lists each watched bucket every `poll_seconds` and compares ETags: a new or changed object emits `created`, a missing one `deleted`. Objects already there at the first start are recorded, not emitted.
+
+--- res-oracle-queue
+# OCI Queue (`type: queue`) || pskit has **no queue trigger on OCI**: a `queue` event is a validation error. Bind the queue to functions and send or
+
+--- res-oracle-topic
+# OCI Notifications topic (`type: topic`) || pskit has **no topic trigger on OCI**: a `topic` event is a validation error. Bind the topic to functions and publish
+
+===== cutoff-eof =====
+--- code-onprem-services
+`src/py_serverless_kit/core/onprem_apps.py`: More one-click on-prem services: AWS emulator
+
+--- concept-node-runtime-design
+CommonJS, Node.js >= 18, **no dependencies**, mirrors the Python runtime (camelCase): | Mo
+
+--- proc-queue-dlq
+report the records that failed: | Provider | Behaviour | |---|---| | aws (SQS) | becomes `
+
+--- proc-smtp
+the service (also under *How to use*). It lists the records with your values: | Type | Nam
+
+===== cutoff-next =====
+--- concept-scenarios
+. Each guide has the `pskit.yml` you need, the commands, and how to check the result. They
+
+--- concept-workflow-executions
+. You get it back when you start a run, then use it to follow the run's status, current st
+
+--- example-13-migrate-from-aws-lambda
+Gateway route, SQS, S3, SNS, schedule, Step Functions task, direct invoke) and the AWS API
+
+--- example-14-testing
+Handlers are plain Python functions, and the kit ships helpers that run them through the
+
+--- example-18-resources
+Comments in pskit.yml: Services the functions use. Managed ones are created by pskit; `ext
+
+--- onprem-cluster-balancer
+### The master and requests | Master serves requests | What happens | |---|---| |
+
+--- onprem-monitor-alerts
+percent of a container, replica lag in seconds, or a container that is down. They go to
+
+--- onprem-network-map
+run `pskit` / the studio (your laptop, a CI runner) | | **Function server** | runs a funct
+
+--- onprem-network-map
+## 1. Always: the admin machine reaches every server over SSH | | From | To | Port
+
+--- page-create-cluster
+What you can do: Create starts the job. The button says Installing… while it runs. When th
+
+--- proc-firewall
+## 1. Always: the admin machine reaches every server over SSH | | From | To | Port
+
+--- proc-save-server
+## 2. Saving a server (`pskit resources onprem servers add`, studio "Add server")
+
+--- proc-smtp
+. | Field | | |---|---| | Resource key | e.g. `inbound-mail`; the trigger refers to it | |
+
+--- res-alibaba-queue
+2. Name (for example `orders-jobs`), keep the defaults for message retention, visibility t
+
+--- res-alibaba-topic
+1. Console → **Simple Message Queue (formerly MNS)** → pick the **same region** as `provid
+
+--- res-azure-custom
+so use a service principal: **Microsoft Entra ID → App registrations → + New registration*
+
+--- res-azure-queue
+## 4. Use it in a handler `requirements.txt`: `app/handlers.py`: Messages must be
+
+--- res-cloudflare-cache
+1. Dashboard → **Storage & databases → Workers KV** (or **Workers & Pages → KV**) → **Crea
+
+--- res-digitalocean-cache
+Control panel → **Databases** → **Create Database Cluster** → engine **Valkey** → datacent
+
+--- res-digitalocean-database
+2. In the cluster → **Users & Databases** → **Add new database** (for example `orders`) an
+
+--- res-gcp-database
+pskit's Cloud Functions don't run in a VPC, so the simplest path is a **public IP** instan
+
+--- res-gcp-topic
+Grant the runtime service account **Pub/Sub Publisher** on the topic for `publisher` (the 
+
+--- res-guide-alibaba-readme
+Alibaba Cloud console to a Function Compute 3.0 deployment made with pskit. | `type` | Ali
+
+--- res-guide-cloudflare-readme
+dashboard (R2, Queues, D1, Workers KV, Hyperdrive, ...) to Workers deployed with pskit. | 
+
+--- res-guide-compatibility
+ARN, sends to SQS with boto3, writes to S3, Azure Blob or Cloud Storage, or calls a functi
+
+--- res-guide-compatibility
+### Existing boto3 / AWS SDK Lambda code, on premises The on-prem host serves the
+
+--- res-guide-huawei-readme
+console to a FunctionGraph deployment made with pskit. | `type` | Huawei Cloud service | T
+
+--- res-guide-huawei-readme
+Region | console header, top left (for example *CN North-Beijing4* = `cn-north-4`). Resour
+
+--- res-guide-onprem-readme
+(`provider.name: onprem`) the queues, buckets, topics, databases and caches they use: the 
+
+--- res-guide-oracle-readme
+console to an OCI Functions deployment made with pskit. | `type` | OCI service | Trigger i
+
+--- res-guide-oracle-readme
+resource details page → *OCID* → **Copy** | | Compartment OCID | **Identity & Security → C
+
+--- res-guide-tencent-readme
+Tencent Cloud console to a Serverless Cloud Function (SCF) deployment made with pskit. | `
+
+--- res-huawei-database
+2. Region (same as the functions), DB engine and version, instance class, storage; **VPC**
+
+--- res-huawei-storage
+letters, digits, `-` and `.`, globally unique (for example `acme-invoices`). Storage class
+
+--- res-ibm-cache
+1. Console → **Catalog** → **Databases for Redis** → region, plan, resources → *Endpoints*
+
+--- res-ibm-database
+1. Console → **Catalog** → **Databases for PostgreSQL** (or **Databases for MySQL**) → reg
+
+--- res-ibm-queue
+## 2. Collect the values | Value | Where in the console | Example | |---|---|---|
+
+--- res-ibm-topic
+2. In the instance → **Topics** → **Create topic** → name (for example `order-events`), pa
+
+--- res-oracle-topic
+1. Console → **Developer Services → Application Integration → Notifications** → pick the c
+
+--- res-tencent-cache
+1. Console → **TencentDB for Redis** → **Instance List** → **Create**: region, version, ar
+
+--- res-tencent-database
+1. Console → **TencentDB for MySQL** → **Instance List** → **Create**: region, version, ar

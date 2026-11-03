@@ -1,0 +1,762 @@
+[
+ {
+  "id": "k_proc_0281",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-studio-docker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-studio-docker.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0282",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-studio-docker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-studio-docker.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0283",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-studio-docker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-studio-docker.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0284",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-studio-docker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-studio-docker.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0285",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-studio-docker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-studio-docker.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0286",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-studio-docker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-studio-docker.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0287",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-studio-docker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-studio-docker.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0288",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-studio-docker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-studio-docker.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0289",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-test-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-test-local.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#local-development"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0290",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-test-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-test-local.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#local-development"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0291",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-test-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-test-local.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#local-development"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0292",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-test-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-test-local.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#local-development"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0293",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-test-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-test-local.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#local-development"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0294",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-test-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-test-local.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#local-development"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0295",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-test-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-test-local.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#local-development"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0296",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-test-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-test-local.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#local-development"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0297",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-test-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-test-local.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#local-development"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0298",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-test-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-test-server.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#servers-several-machines"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#servers-several-machines]\nSave each machine once under **On-prem services → Servers → + Add server** (name, host, user, port, *Log in with*, sudo), or with the CLI. Every place that asks *where* then offers it: the create form's **Server** list, **Deploy → Machine**, the shell and the terminal. They live in `.pskit/onprem-servers.json` (connection details only; a typed password goes to `.pskit/ssh/`, owner-only). Services created on a server keep a copy of its connection, so editing the server later does not move them.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0299",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-test-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-test-server.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#servers-several-machines"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#servers-several-machines]\nSave each machine once under **On-prem services → Servers → + Add server** (name, host, user, port, *Log in with*, sudo), or with the CLI. Every place that asks *where* then offers it: the create form's **Server** list, **Deploy → Machine**, the shell and the terminal. They live in `.pskit/onprem-servers.json` (connection details only; a typed password goes to `.pskit/ssh/`, owner-only). Services created on a server keep a copy of its connection, so editing the server later does not move them.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0300",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-test-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-test-server.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#servers-several-machines"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#servers-several-machines]\nSave each machine once under **On-prem services → Servers → + Add server** (name, host, user, port, *Log in with*, sudo), or with the CLI. Every place that asks *where* then offers it: the create form's **Server** list, **Deploy → Machine**, the shell and the terminal. They live in `.pskit/onprem-servers.json` (connection details only; a typed password goes to `.pskit/ssh/`, owner-only). Services created on a server keep a copy of its connection, so editing the server later does not move them.",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0301",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-test-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-test-server.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#servers-several-machines"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#servers-several-machines]\nSave each machine once under **On-prem services → Servers → + Add server** (name, host, user, port, *Log in with*, sudo), or with the CLI. Every place that asks *where* then offers it: the create form's **Server** list, **Deploy → Machine**, the shell and the terminal. They live in `.pskit/onprem-servers.json` (connection details only; a typed password goes to `.pskit/ssh/`, owner-only). Services created on a server keep a copy of its connection, so editing the server later does not move them.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0302",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-test-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-test-server.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#servers-several-machines"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#servers-several-machines]\nSave each machine once under **On-prem services → Servers → + Add server** (name, host, user, port, *Log in with*, sudo), or with the CLI. Every place that asks *where* then offers it: the create form's **Server** list, **Deploy → Machine**, the shell and the terminal. They live in `.pskit/onprem-servers.json` (connection details only; a typed password goes to `.pskit/ssh/`, owner-only). Services created on a server keep a copy of its connection, so editing the server later does not move them.",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0303",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-test-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-test-server.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#servers-several-machines"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#servers-several-machines]\nSave each machine once under **On-prem services → Servers → + Add server** (name, host, user, port, *Log in with*, sudo), or with the CLI. Every place that asks *where* then offers it: the create form's **Server** list, **Deploy → Machine**, the shell and the terminal. They live in `.pskit/onprem-servers.json` (connection details only; a typed password goes to `.pskit/ssh/`, owner-only). Services created on a server keep a copy of its connection, so editing the server later does not move them.",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0304",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-test-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-test-server.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#servers-several-machines"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0305",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-test-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-test-server.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#servers-several-machines"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#servers-several-machines]\nSave each machine once under **On-prem services → Servers → + Add server** (name, host, user, port, *Log in with*, sudo), or with the CLI. Every place that asks *where* then offers it: the create form's **Server** list, **Deploy → Machine**, the shell and the terminal. They live in `.pskit/onprem-servers.json` (connection details only; a typed password goes to `.pskit/ssh/`, owner-only). Services created on a server keep a copy of its connection, so editing the server later does not move them.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0306",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-test-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-test-server.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#servers-several-machines"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#servers-several-machines]\nSave each machine once under **On-prem services → Servers → + Add server** (name, host, user, port, *Log in with*, sudo), or with the CLI. Every place that asks *where* then offers it: the create form's **Server** list, **Deploy → Machine**, the shell and the terminal. They live in `.pskit/onprem-servers.json` (connection details only; a typed password goes to `.pskit/ssh/`, owner-only). Services created on a server keep a copy of its connection, so editing the server later does not move them.",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0307",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-topic.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#topic"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0308",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-topic.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#topic"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0309",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-topic.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#topic"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0310",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-topic.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#topic"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0311",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-topic.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#topic"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0312",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-topic.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#topic"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0313",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-topic.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#topic"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0314",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-topic.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#topic"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0315",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-topic.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#topic"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0316",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-trigger"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-trigger.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#pskit-invoke-and-pskit-workflow-run"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0317",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-trigger"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-trigger.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#pskit-invoke-and-pskit-workflow-run"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0318",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-trigger"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-trigger.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#pskit-invoke-and-pskit-workflow-run"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0319",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-trigger"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-trigger.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#pskit-invoke-and-pskit-workflow-run"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0320",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-trigger"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-trigger.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#pskit-invoke-and-pskit-workflow-run"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": true
+ }
+]

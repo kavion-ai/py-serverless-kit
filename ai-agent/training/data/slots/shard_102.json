@@ -1,0 +1,762 @@
+[
+ {
+  "id": "k_proc_0081",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-drain"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-drain.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0082",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-firewall.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0083",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-firewall.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0084",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-firewall.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0085",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-firewall.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0086",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-firewall.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0087",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-firewall.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0088",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-firewall.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0089",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-firewall.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0090",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-firewall.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0091",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-http-api"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-http-api.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#http"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0092",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-http-api"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-http-api.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#http"
+  ],
+  "excerpt": "[docs/events.md#http]\n**Path templates** pskit's runtime also matches routes itself, so path params and `405 Method Not Allowed` work the same on clouds with no API gateway (GCP, IBM, DigitalOcean, Cloudflare), including when the platform adds or strips a path prefix. Two functions may not declare the same `METHOD /path`.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0093",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-http-api"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-http-api.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#http"
+  ],
+  "excerpt": "[docs/events.md#http]\n**Path templates** pskit's runtime also matches routes itself, so path params and `405 Method Not Allowed` work the same on clouds with no API gateway (GCP, IBM, DigitalOcean, Cloudflare), including when the platform adds or strips a path prefix. Two functions may not declare the same `METHOD /path`.",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0094",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-http-api"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-http-api.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#http"
+  ],
+  "excerpt": "[docs/events.md#http]\n**Path templates** pskit's runtime also matches routes itself, so path params and `405 Method Not Allowed` work the same on clouds with no API gateway (GCP, IBM, DigitalOcean, Cloudflare), including when the platform adds or strips a path prefix. Two functions may not declare the same `METHOD /path`.",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0095",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-http-api"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-http-api.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#http"
+  ],
+  "excerpt": "[docs/events.md#http]\n**Path templates** pskit's runtime also matches routes itself, so path params and `405 Method Not Allowed` work the same on clouds with no API gateway (GCP, IBM, DigitalOcean, Cloudflare), including when the platform adds or strips a path prefix. Two functions may not declare the same `METHOD /path`.",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0096",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-http-api"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-http-api.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#http"
+  ],
+  "excerpt": "[docs/events.md#http]\n**Path templates** pskit's runtime also matches routes itself, so path params and `405 Method Not Allowed` work the same on clouds with no API gateway (GCP, IBM, DigitalOcean, Cloudflare), including when the platform adds or strips a path prefix. Two functions may not declare the same `METHOD /path`.",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0097",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-http-api"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-http-api.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#http"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0098",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-http-api"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-http-api.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#http"
+  ],
+  "excerpt": "[docs/events.md#http]\n**Path templates** pskit's runtime also matches routes itself, so path params and `405 Method Not Allowed` work the same on clouds with no API gateway (GCP, IBM, DigitalOcean, Cloudflare), including when the platform adds or strips a path prefix. Two functions may not declare the same `METHOD /path`.",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0099",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-http-api"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-http-api.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#http"
+  ],
+  "excerpt": "[docs/events.md#http]\n**Path templates** pskit's runtime also matches routes itself, so path params and `405 Method Not Allowed` work the same on clouds with no API gateway (GCP, IBM, DigitalOcean, Cloudflare), including when the platform adds or strips a path prefix. Two functions may not declare the same `METHOD /path`.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0100",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-install-runtime"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-install-runtime.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#install-software-on-a-server"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#install-software-on-a-server]\nThe catalog's *Install on a server* groups install with the server's package manager (apt, dnf, yum or apk), over SSH: Studio: *Servers → Install / create* opens the catalog with that server chosen. Each install is listed with the services; *Details* runs its version check. pskit never uninstalls software (*Remove* only forgets it).",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0101",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-install-runtime"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-install-runtime.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#install-software-on-a-server"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#install-software-on-a-server]\nThe catalog's *Install on a server* groups install with the server's package manager (apt, dnf, yum or apk), over SSH: Studio: *Servers → Install / create* opens the catalog with that server chosen. Each install is listed with the services; *Details* runs its version check. pskit never uninstalls software (*Remove* only forgets it).",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0102",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-install-runtime"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-install-runtime.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#install-software-on-a-server"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#install-software-on-a-server]\nThe catalog's *Install on a server* groups install with the server's package manager (apt, dnf, yum or apk), over SSH: Studio: *Servers → Install / create* opens the catalog with that server chosen. Each install is listed with the services; *Details* runs its version check. pskit never uninstalls software (*Remove* only forgets it).",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0103",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-install-runtime"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-install-runtime.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#install-software-on-a-server"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0104",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-install-runtime"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-install-runtime.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#install-software-on-a-server"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#install-software-on-a-server]\nThe catalog's *Install on a server* groups install with the server's package manager (apt, dnf, yum or apk), over SSH: Studio: *Servers → Install / create* opens the catalog with that server chosen. Each install is listed with the services; *Details* runs its version check. pskit never uninstalls software (*Remove* only forgets it).",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0105",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-install-runtime"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-install-runtime.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#install-software-on-a-server"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#install-software-on-a-server]\nThe catalog's *Install on a server* groups install with the server's package manager (apt, dnf, yum or apk), over SSH: Studio: *Servers → Install / create* opens the catalog with that server chosen. Each install is listed with the services; *Details* runs its version check. pskit never uninstalls software (*Remove* only forgets it).",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0106",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-install-runtime"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-install-runtime.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#install-software-on-a-server"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#install-software-on-a-server]\nThe catalog's *Install on a server* groups install with the server's package manager (apt, dnf, yum or apk), over SSH: Studio: *Servers → Install / create* opens the catalog with that server chosen. Each install is listed with the services; *Details* runs its version check. pskit never uninstalls software (*Remove* only forgets it).",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0107",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-install-runtime"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-install-runtime.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#install-software-on-a-server"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#install-software-on-a-server]\nThe catalog's *Install on a server* groups install with the server's package manager (apt, dnf, yum or apk), over SSH: Studio: *Servers → Install / create* opens the catalog with that server chosen. Each install is listed with the services; *Details* runs its version check. pskit never uninstalls software (*Remove* only forgets it).",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0108",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-install-runtime"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-install-runtime.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#install-software-on-a-server"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#install-software-on-a-server]\nThe catalog's *Install on a server* groups install with the server's package manager (apt, dnf, yum or apk), over SSH: Studio: *Servers → Install / create* opens the catalog with that server chosen. Each install is listed with the services; *Details* runs its version check. pskit never uninstalls software (*Remove* only forgets it).",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0109",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-join"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-join.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0110",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-join"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-join.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0111",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-join"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-join.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0112",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-join"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-join.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0113",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-join"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-join.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0114",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-join"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-join.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0115",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-join"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-join.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0116",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-join"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-join.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0117",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-join"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-join.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0118",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-lb"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-lb.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0119",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-lb"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-lb.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0120",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-lb"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-lb.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": true
+ }
+]

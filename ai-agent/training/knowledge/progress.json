@@ -1,0 +1,65 @@
+{
+  "stage": "complete",
+  "version": "2.10.0",
+  "updated": "2026-10-31",
+  "completed": [
+    "dump_cli.py",
+    "cli.json",
+    "extract_docs.py",
+    "docs_headings.json",
+    "onprem_catalog.json",
+    "facts.json",
+    "inventory.md",
+    "conflicts.md",
+    "check_knowledge.py",
+    "check_quality.py",
+    "command cards 103/103",
+    "page cards 28/28",
+    "concept, resource, on-prem, code, example, procedure, and troubleshooting cards",
+    "conversations 4600",
+    "data/final knowledge_train.jsonl 4370",
+    "data/final knowledge_val.jsonl 230",
+    "data/final cards_train.jsonl 426",
+    "knowledge/index_source.jsonl"
+  ],
+  "next": "Stage-1 data is ready: train on data/final/knowledge_train.jsonl + cards_train.jsonl (see 12 section 12.5). Fix the literal password in cards/onprem/onprem-one-click-services.md before training.",
+  "checker": {
+    "cards": 426,
+    "conversations": 4600,
+    "errors": 0,
+    "warnings": 793
+  },
+  "counts": {
+    "cards": 426,
+    "conversations": 4600,
+    "train": 4370,
+    "val": 230,
+    "card_explanations": 426,
+    "shuffle_seed": 2100
+  },
+  "not_run": [
+    "deploy",
+    "remove",
+    "plan",
+    "tf",
+    "cluster mutations",
+    "lb mutations",
+    "resources delete/clear",
+    "onprem create/remove/backup/replicas/servers mutations",
+    "firewall changes",
+    "client tunnel",
+    "client install-node",
+    "settings import",
+    "studio",
+    "dashboard",
+    "dev"
+  ],
+  "notes": [
+    "pskit deploy calls .deploy( and does not call click.confirm. --confirm means show the plan and apply it instead of -auto-approve.",
+    "pskit remove calls click.confirm unless -y/--yes.",
+    "Non-doc IPs in help text were rewritten to 192.0.2.10 and azureuser/ubuntu/root logins to deploy when a card says so.",
+    "Content gates C1-C4 and Q1-Q8 pass after cards were reflowed and conversations were rewritten by write_conversations.py.",
+    "A 10-conversation sample was read against the cited cards. Deploy, remove, and live cloud calls were not executed."
+  ],
+  "conversations_source": "hand-written in data/authored/shard_000..114.jsonl, assembled into data/raw/k_*.jsonl"
+}

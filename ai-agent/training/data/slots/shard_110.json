@@ -1,0 +1,762 @@
+[
+ {
+  "id": "k_trouble_0051",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-faq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-faq.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#faq"
+  ],
+  "excerpt": "[docs/troubleshooting.md#faq]\n**Do I add `py-serverless-kit` to my function's `requirements.txt`?** : No. The runtime is vendored into every bundle automatically, and such lines are stripped. **Can I keep using cloud SDKs (boto3, google-cloud-*)?** : Yes, but that code becomes cloud-specific. Isolate it behind your own functions.",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0052",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-faq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-faq.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#faq"
+  ],
+  "excerpt": "[docs/troubleshooting.md#faq]\n**Do I add `py-serverless-kit` to my function's `requirements.txt`?** : No. The runtime is vendored into every bundle automatically, and such lines are stripped. **Can I keep using cloud SDKs (boto3, google-cloud-*)?** : Yes, but that code becomes cloud-specific. Isolate it behind your own functions.",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0053",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-faq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-faq.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#faq"
+  ],
+  "excerpt": "[docs/troubleshooting.md#faq]\n**Do I add `py-serverless-kit` to my function's `requirements.txt`?** : No. The runtime is vendored into every bundle automatically, and such lines are stripped. **Can I keep using cloud SDKs (boto3, google-cloud-*)?** : Yes, but that code becomes cloud-specific. Isolate it behind your own functions.",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0054",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-faq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-faq.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#faq"
+  ],
+  "excerpt": "[docs/troubleshooting.md#faq]\n**Do I add `py-serverless-kit` to my function's `requirements.txt`?** : No. The runtime is vendored into every bundle automatically, and such lines are stripped. **Can I keep using cloud SDKs (boto3, google-cloud-*)?** : Yes, but that code becomes cloud-specific. Isolate it behind your own functions.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0055",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-faq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-faq.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#faq"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0056",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-faq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-faq.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#faq"
+  ],
+  "excerpt": "[docs/troubleshooting.md#faq]\n**Do I add `py-serverless-kit` to my function's `requirements.txt`?** : No. The runtime is vendored into every bundle automatically, and such lines are stripped. **Can I keep using cloud SDKs (boto3, google-cloud-*)?** : Yes, but that code becomes cloud-specific. Isolate it behind your own functions.",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0057",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-faq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-faq.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#faq"
+  ],
+  "excerpt": "[docs/troubleshooting.md#faq]\n**Do I add `py-serverless-kit` to my function's `requirements.txt`?** : No. The runtime is vendored into every bundle automatically, and such lines are stripped. **Can I keep using cloud SDKs (boto3, google-cloud-*)?** : Yes, but that code becomes cloud-specific. Isolate it behind your own functions.",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0058",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-faq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-faq.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#faq"
+  ],
+  "excerpt": "[docs/troubleshooting.md#faq]\n**Do I add `py-serverless-kit` to my function's `requirements.txt`?** : No. The runtime is vendored into every bundle automatically, and such lines are stripped. **Can I keep using cloud SDKs (boto3, google-cloud-*)?** : Yes, but that code becomes cloud-specific. Isolate it behind your own functions.",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0059",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-faq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-faq.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#faq"
+  ],
+  "excerpt": "[docs/troubleshooting.md#faq]\n**Do I add `py-serverless-kit` to my function's `requirements.txt`?** : No. The runtime is vendored into every bundle automatically, and such lines are stripped. **Can I keep using cloud SDKs (boto3, google-cloud-*)?** : Yes, but that code becomes cloud-specific. Isolate it behind your own functions.",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0060",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-faq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-faq.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#faq"
+  ],
+  "excerpt": "[docs/troubleshooting.md#faq]\n**Do I add `py-serverless-kit` to my function's `requirements.txt`?** : No. The runtime is vendored into every bundle automatically, and such lines are stripped. **Can I keep using cloud SDKs (boto3, google-cloud-*)?** : Yes, but that code becomes cloud-specific. Isolate it behind your own functions.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0061",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-faq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-faq.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#faq"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0062",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-faq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-faq.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#faq"
+  ],
+  "excerpt": "[docs/troubleshooting.md#faq]\n**Do I add `py-serverless-kit` to my function's `requirements.txt`?** : No. The runtime is vendored into every bundle automatically, and such lines are stripped. **Can I keep using cloud SDKs (boto3, google-cloud-*)?** : Yes, but that code becomes cloud-specific. Isolate it behind your own functions.",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0063",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-faq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-faq.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#faq"
+  ],
+  "excerpt": "[docs/troubleshooting.md#faq]\n**Do I add `py-serverless-kit` to my function's `requirements.txt`?** : No. The runtime is vendored into every bundle automatically, and such lines are stripped. **Can I keep using cloud SDKs (boto3, google-cloud-*)?** : Yes, but that code becomes cloud-specific. Isolate it behind your own functions.",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0064",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-faq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-faq.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#faq"
+  ],
+  "excerpt": "[docs/troubleshooting.md#faq]\n**Do I add `py-serverless-kit` to my function's `requirements.txt`?** : No. The runtime is vendored into every bundle automatically, and such lines are stripped. **Can I keep using cloud SDKs (boto3, google-cloud-*)?** : Yes, but that code becomes cloud-specific. Isolate it behind your own functions.",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0065",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-faq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-faq.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#faq"
+  ],
+  "excerpt": "[docs/troubleshooting.md#faq]\n**Do I add `py-serverless-kit` to my function's `requirements.txt`?** : No. The runtime is vendored into every bundle automatically, and such lines are stripped. **Can I keep using cloud SDKs (boto3, google-cloud-*)?** : Yes, but that code becomes cloud-specific. Isolate it behind your own functions.",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0066",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-faq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-faq.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#faq"
+  ],
+  "excerpt": "[docs/troubleshooting.md#faq]\n**Do I add `py-serverless-kit` to my function's `requirements.txt`?** : No. The runtime is vendored into every bundle automatically, and such lines are stripped. **Can I keep using cloud SDKs (boto3, google-cloud-*)?** : Yes, but that code becomes cloud-specific. Isolate it behind your own functions.",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0067",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-http.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0068",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-http.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0069",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-http.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0070",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-http.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0071",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-http.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0072",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-http.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0073",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-http.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0074",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-http.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0075",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-http.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0076",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-http.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0077",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-http.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0078",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-http.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0079",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-http.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0080",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-http.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0081",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-http.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0082",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-http.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0083",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-http.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0084",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-http.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0085",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-http.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0086",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-http.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0087",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-http.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0088",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-installation-and-tooling"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-installation-and-tooling.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "[docs/troubleshooting.md#installation-and-tooling]\n**`pip install failed while vendoring dependencies`** : For vendoring providers (aws, alibaba, ibm, digitalocean, tencent, huawei), pskit downloads **Linux** wheels (`manylinux2014_<arch>`, `--only-binary=:all:`) for the target Python version. A package with no such wheel fails. Fixes: - pin a version that publishes manylinux wheels; - add flags with `package.pip_args`; - for pure-Python packages, check that they ship a wheel at all.",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0089",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-installation-and-tooling"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-installation-and-tooling.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "[docs/troubleshooting.md#installation-and-tooling]\n**`pip install failed while vendoring dependencies`** : For vendoring providers (aws, alibaba, ibm, digitalocean, tencent, huawei), pskit downloads **Linux** wheels (`manylinux2014_<arch>`, `--only-binary=:all:`) for the target Python version. A package with no such wheel fails. Fixes: - pin a version that publishes manylinux wheels; - add flags with `package.pip_args`; - for pure-Python packages, check that they ship a wheel at all.",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0090",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-installation-and-tooling"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-installation-and-tooling.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "[docs/troubleshooting.md#installation-and-tooling]\n**`pip install failed while vendoring dependencies`** : For vendoring providers (aws, alibaba, ibm, digitalocean, tencent, huawei), pskit downloads **Linux** wheels (`manylinux2014_<arch>`, `--only-binary=:all:`) for the target Python version. A package with no such wheel fails. Fixes: - pin a version that publishes manylinux wheels; - add flags with `package.pip_args`; - for pure-Python packages, check that they ship a wheel at all.",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ }
+]

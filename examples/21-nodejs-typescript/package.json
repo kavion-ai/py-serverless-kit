@@ -1,0 +1,10 @@
+{
+  "name": "ts-orders",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "pskit dev",
+    "typecheck": "npx --yes -p typescript@5 tsc --noEmit"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,765 @@
+[
+ {
+  "id": "k_arch_0211",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-local-dev"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-local-dev.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#local-development"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0212",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-local-dev"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-local-dev.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#local-development"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0213",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-local-dev"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-local-dev.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#local-development"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0214",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-local-dev"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-local-dev.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#local-development"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0215",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-local-dev"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-local-dev.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#local-development"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0216",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-local-dev"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-local-dev.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#local-development"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0217",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-migrate-aws"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-migrate-aws.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/migrating-from-aws.md#migrating-from-aws-lambda-and-step-functions"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0218",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-migrate-aws"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-migrate-aws.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/migrating-from-aws.md#migrating-from-aws-lambda-and-step-functions"
+  ],
+  "excerpt": "[docs/migrating-from-aws.md#migrating-from-aws-lambda-and-step-functions]\nThe goal is to move existing Lambda functions (API Gateway, SQS, S3, SNS, EventBridge triggers) and Step Functions state machines to pskit once. After that, moving to another cloud means changing `provider.name`. The worked example with real before/after code is [`examples/13-migrate-from-aws-lambda`](../examples/13-migrate-from-aws-lambda): `before/` holds a raw Lambda, a SAM template and an ASL file, and `after/` holds the pskit version.",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0219",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-migrate-aws"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-migrate-aws.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/migrating-from-aws.md#migrating-from-aws-lambda-and-step-functions"
+  ],
+  "excerpt": "[docs/migrating-from-aws.md#migrating-from-aws-lambda-and-step-functions]\nThe goal is to move existing Lambda functions (API Gateway, SQS, S3, SNS, EventBridge triggers) and Step Functions state machines to pskit once. After that, moving to another cloud means changing `provider.name`. The worked example with real before/after code is [`examples/13-migrate-from-aws-lambda`](../examples/13-migrate-from-aws-lambda): `before/` holds a raw Lambda, a SAM template and an ASL file, and `after/` holds the pskit version.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0220",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-migrate-aws"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-migrate-aws.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/migrating-from-aws.md#migrating-from-aws-lambda-and-step-functions"
+  ],
+  "excerpt": "[docs/migrating-from-aws.md#migrating-from-aws-lambda-and-step-functions]\nThe goal is to move existing Lambda functions (API Gateway, SQS, S3, SNS, EventBridge triggers) and Step Functions state machines to pskit once. After that, moving to another cloud means changing `provider.name`. The worked example with real before/after code is [`examples/13-migrate-from-aws-lambda`](../examples/13-migrate-from-aws-lambda): `before/` holds a raw Lambda, a SAM template and an ASL file, and `after/` holds the pskit version.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0221",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-migrate-aws"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-migrate-aws.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/migrating-from-aws.md#migrating-from-aws-lambda-and-step-functions"
+  ],
+  "excerpt": "[docs/migrating-from-aws.md#migrating-from-aws-lambda-and-step-functions]\nThe goal is to move existing Lambda functions (API Gateway, SQS, S3, SNS, EventBridge triggers) and Step Functions state machines to pskit once. After that, moving to another cloud means changing `provider.name`. The worked example with real before/after code is [`examples/13-migrate-from-aws-lambda`](../examples/13-migrate-from-aws-lambda): `before/` holds a raw Lambda, a SAM template and an ASL file, and `after/` holds the pskit version.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0222",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-migrate-aws"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-migrate-aws.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/migrating-from-aws.md#migrating-from-aws-lambda-and-step-functions"
+  ],
+  "excerpt": "[docs/migrating-from-aws.md#migrating-from-aws-lambda-and-step-functions]\nThe goal is to move existing Lambda functions (API Gateway, SQS, S3, SNS, EventBridge triggers) and Step Functions state machines to pskit once. After that, moving to another cloud means changing `provider.name`. The worked example with real before/after code is [`examples/13-migrate-from-aws-lambda`](../examples/13-migrate-from-aws-lambda): `before/` holds a raw Lambda, a SAM template and an ASL file, and `after/` holds the pskit version.",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0223",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-node-runtime-design"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-node-runtime-design.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "deploy_docs/NODE_RUNTIME.md"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0224",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-node-runtime-design"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-node-runtime-design.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "deploy_docs/NODE_RUNTIME.md"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0225",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-node-runtime-design"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-node-runtime-design.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "deploy_docs/NODE_RUNTIME.md"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0226",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-node-runtime-design"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-node-runtime-design.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "deploy_docs/NODE_RUNTIME.md"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0227",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-node-runtime-design"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-node-runtime-design.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "deploy_docs/NODE_RUNTIME.md"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0228",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-node-runtime-design"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-node-runtime-design.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "deploy_docs/NODE_RUNTIME.md"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0229",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-nodejs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-nodejs.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/nodejs.md#nodejs-and-typescript",
+   "docs/nodejs.md#choosing-the-runtime"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0230",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-nodejs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-nodejs.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/nodejs.md#handlers"
+  ],
+  "excerpt": "[docs/nodejs.md#handlers]\nThe API mirrors the [Python handler API](handlers.md) in camelCase: `event.http.pathParams`, `event.http.json()`, `record.text()`, `ctx.requestId`, `ctx.remainingTimeMs()`, `invoke(\"other-fn\", data)`, `resource(\"orders\")`. Workflow `retry` / `catch` rules match the error's class name (`class ValidationError extends Error {}` → `ValidationError`).",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0231",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-nodejs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-nodejs.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/nodejs.md#handlers"
+  ],
+  "excerpt": "[docs/nodejs.md#handlers]\nThe API mirrors the [Python handler API](handlers.md) in camelCase: `event.http.pathParams`, `event.http.json()`, `record.text()`, `ctx.requestId`, `ctx.remainingTimeMs()`, `invoke(\"other-fn\", data)`, `resource(\"orders\")`. Workflow `retry` / `catch` rules match the error's class name (`class ValidationError extends Error {}` → `ValidationError`).",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0232",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-nodejs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-nodejs.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/nodejs.md#handlers"
+  ],
+  "excerpt": "[docs/nodejs.md#handlers]\nThe API mirrors the [Python handler API](handlers.md) in camelCase: `event.http.pathParams`, `event.http.json()`, `record.text()`, `ctx.requestId`, `ctx.remainingTimeMs()`, `invoke(\"other-fn\", data)`, `resource(\"orders\")`. Workflow `retry` / `catch` rules match the error's class name (`class ValidationError extends Error {}` → `ValidationError`).",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0233",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-nodejs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-nodejs.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/nodejs.md#handlers"
+  ],
+  "excerpt": "[docs/nodejs.md#handlers]\nThe API mirrors the [Python handler API](handlers.md) in camelCase: `event.http.pathParams`, `event.http.json()`, `record.text()`, `ctx.requestId`, `ctx.remainingTimeMs()`, `invoke(\"other-fn\", data)`, `resource(\"orders\")`. Workflow `retry` / `catch` rules match the error's class name (`class ValidationError extends Error {}` → `ValidationError`).",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0234",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-nodejs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-nodejs.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/nodejs.md#handlers"
+  ],
+  "excerpt": "[docs/nodejs.md#handlers]\nThe API mirrors the [Python handler API](handlers.md) in camelCase: `event.http.pathParams`, `event.http.json()`, `record.text()`, `ctx.requestId`, `ctx.remainingTimeMs()`, `invoke(\"other-fn\", data)`, `resource(\"orders\")`. Workflow `retry` / `catch` rules match the error's class name (`class ValidationError extends Error {}` → `ValidationError`).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0235",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-overrides"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-overrides.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#providers-per-cloud-overrides"
+  ],
+  "excerpt": "[docs/configuration.md#providers-per-cloud-overrides]\nThe block for the active provider (`provider.name` or `--provider`) is deep-merged into the config. Inside a block, `ProviderConfig` keys (`region`, `stage`, `runtime`, `memory`, `timeout`, `architecture`, `environment`, `tags`, `iam`, `log_retention_days`, `options`, `state`, `terraform`) may be written directly as shorthand for `provider: {...}`.",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0236",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-overrides"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-overrides.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#providers-per-cloud-overrides",
+   "docs/configuration.md#stages-per-stage-overrides"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0237",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-overrides"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-overrides.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#providers-per-cloud-overrides"
+  ],
+  "excerpt": "[docs/configuration.md#providers-per-cloud-overrides]\nThe block for the active provider (`provider.name` or `--provider`) is deep-merged into the config. Inside a block, `ProviderConfig` keys (`region`, `stage`, `runtime`, `memory`, `timeout`, `architecture`, `environment`, `tags`, `iam`, `log_retention_days`, `options`, `state`, `terraform`) may be written directly as shorthand for `provider: {...}`.",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0238",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-overrides"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-overrides.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#providers-per-cloud-overrides"
+  ],
+  "excerpt": "[docs/configuration.md#providers-per-cloud-overrides]\nThe block for the active provider (`provider.name` or `--provider`) is deep-merged into the config. Inside a block, `ProviderConfig` keys (`region`, `stage`, `runtime`, `memory`, `timeout`, `architecture`, `environment`, `tags`, `iam`, `log_retention_days`, `options`, `state`, `terraform`) may be written directly as shorthand for `provider: {...}`.",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0239",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-overrides"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-overrides.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#providers-per-cloud-overrides"
+  ],
+  "excerpt": "[docs/configuration.md#providers-per-cloud-overrides]\nThe block for the active provider (`provider.name` or `--provider`) is deep-merged into the config. Inside a block, `ProviderConfig` keys (`region`, `stage`, `runtime`, `memory`, `timeout`, `architecture`, `environment`, `tags`, `iam`, `log_retention_days`, `options`, `state`, `terraform`) may be written directly as shorthand for `provider: {...}`.",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0240",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-overrides"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-overrides.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#providers-per-cloud-overrides"
+  ],
+  "excerpt": "[docs/configuration.md#providers-per-cloud-overrides]\nThe block for the active provider (`provider.name` or `--provider`) is deep-merged into the config. Inside a block, `ProviderConfig` keys (`region`, `stage`, `runtime`, `memory`, `timeout`, `architecture`, `environment`, `tags`, `iam`, `log_retention_days`, `options`, `state`, `terraform`) may be written directly as shorthand for `provider: {...}`.",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0241",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-package"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-package.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#package"
+  ],
+  "excerpt": "[docs/configuration.md#package]\nAlways excluded: `.git/**`, `.hg/**`, `.pskit/**`, `.terraform/**`, `.venv/**`, `venv/**`, `env/**`, `**/__pycache__/**`, `**/*.pyc`, `**/*.pyo`, `.pytest_cache/**`, `.mypy_cache/**`, `.ruff_cache/**`, `.idea/**`, `.vscode/**`, `node_modules/**`, `tests/**`, `dist/**`, `build/**`, `*.egg-info/**`, `**/.DS_Store`, `.env`, `.env.*`, `**/*.tfstate`, `**/*.tfstate.*`, `pskit*.yml`, `pskit*.yaml`, `serverless_kit*.yml`.",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0242",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-package"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-package.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#package"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0243",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-package"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-package.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#package"
+  ],
+  "excerpt": "[docs/configuration.md#package]\nAlways excluded: `.git/**`, `.hg/**`, `.pskit/**`, `.terraform/**`, `.venv/**`, `venv/**`, `env/**`, `**/__pycache__/**`, `**/*.pyc`, `**/*.pyo`, `.pytest_cache/**`, `.mypy_cache/**`, `.ruff_cache/**`, `.idea/**`, `.vscode/**`, `node_modules/**`, `tests/**`, `dist/**`, `build/**`, `*.egg-info/**`, `**/.DS_Store`, `.env`, `.env.*`, `**/*.tfstate`, `**/*.tfstate.*`, `pskit*.yml`, `pskit*.yaml`, `serverless_kit*.yml`.",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0244",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-package"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-package.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#package"
+  ],
+  "excerpt": "[docs/configuration.md#package]\nAlways excluded: `.git/**`, `.hg/**`, `.pskit/**`, `.terraform/**`, `.venv/**`, `venv/**`, `env/**`, `**/__pycache__/**`, `**/*.pyc`, `**/*.pyo`, `.pytest_cache/**`, `.mypy_cache/**`, `.ruff_cache/**`, `.idea/**`, `.vscode/**`, `node_modules/**`, `tests/**`, `dist/**`, `build/**`, `*.egg-info/**`, `**/.DS_Store`, `.env`, `.env.*`, `**/*.tfstate`, `**/*.tfstate.*`, `pskit*.yml`, `pskit*.yaml`, `serverless_kit*.yml`.",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0245",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-package"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-package.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#package"
+  ],
+  "excerpt": "[docs/configuration.md#package]\nAlways excluded: `.git/**`, `.hg/**`, `.pskit/**`, `.terraform/**`, `.venv/**`, `venv/**`, `env/**`, `**/__pycache__/**`, `**/*.pyc`, `**/*.pyo`, `.pytest_cache/**`, `.mypy_cache/**`, `.ruff_cache/**`, `.idea/**`, `.vscode/**`, `node_modules/**`, `tests/**`, `dist/**`, `build/**`, `*.egg-info/**`, `**/.DS_Store`, `.env`, `.env.*`, `**/*.tfstate`, `**/*.tfstate.*`, `pskit*.yml`, `pskit*.yaml`, `serverless_kit*.yml`.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0246",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-package"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-package.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#package"
+  ],
+  "excerpt": "[docs/configuration.md#package]\nAlways excluded: `.git/**`, `.hg/**`, `.pskit/**`, `.terraform/**`, `.venv/**`, `venv/**`, `env/**`, `**/__pycache__/**`, `**/*.pyc`, `**/*.pyo`, `.pytest_cache/**`, `.mypy_cache/**`, `.ruff_cache/**`, `.idea/**`, `.vscode/**`, `node_modules/**`, `tests/**`, `dist/**`, `build/**`, `*.egg-info/**`, `**/.DS_Store`, `.env`, `.env.*`, `**/*.tfstate`, `**/*.tfstate.*`, `pskit*.yml`, `pskit*.yaml`, `serverless_kit*.yml`.",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0247",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-provider"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-provider.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#default-runtime"
+  ],
+  "excerpt": "[docs/configuration.md#default-runtime]\nIf you don't pin `provider.runtime`, pskit uses **python3.12** when the target cloud supports it. Otherwise it uses the newest supported version below 3.12: python3.11 on DigitalOcean, IBM and Oracle, python3.10 on Tencent. This is what makes \"change only the provider\" work. If you *do* pin a runtime the cloud lacks, `pskit validate` reports an error.",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0248",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-provider"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-provider.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#provider",
+   "docs/configuration.md#default-runtime"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0249",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-provider"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-provider.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#default-runtime"
+  ],
+  "excerpt": "[docs/configuration.md#default-runtime]\nIf you don't pin `provider.runtime`, pskit uses **python3.12** when the target cloud supports it. Otherwise it uses the newest supported version below 3.12: python3.11 on DigitalOcean, IBM and Oracle, python3.10 on Tencent. This is what makes \"change only the provider\" work. If you *do* pin a runtime the cloud lacks, `pskit validate` reports an error.",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0250",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-provider"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-provider.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#default-runtime"
+  ],
+  "excerpt": "[docs/configuration.md#default-runtime]\nIf you don't pin `provider.runtime`, pskit uses **python3.12** when the target cloud supports it. Otherwise it uses the newest supported version below 3.12: python3.11 on DigitalOcean, IBM and Oracle, python3.10 on Tencent. This is what makes \"change only the provider\" work. If you *do* pin a runtime the cloud lacks, `pskit validate` reports an error.",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ }
+]

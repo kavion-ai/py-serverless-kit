@@ -1,0 +1,772 @@
+[
+ {
+  "id": "k_arch_0131",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-docker-uses"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-docker-uses.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0132",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-docker-uses"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-docker-uses.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0133",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-http.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#http"
+  ],
+  "excerpt": "[docs/events.md#http]\n**Path templates** pskit's runtime also matches routes itself, so path params and `405 Method Not Allowed` work the same on clouds with no API gateway (GCP, IBM, DigitalOcean, Cloudflare), including when the platform adds or strips a path prefix. Two functions may not declare the same `METHOD /path`.",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0134",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-http.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#http"
+  ],
+  "excerpt": "[docs/events.md#http]\n**Path templates** pskit's runtime also matches routes itself, so path params and `405 Method Not Allowed` work the same on clouds with no API gateway (GCP, IBM, DigitalOcean, Cloudflare), including when the platform adds or strips a path prefix. Two functions may not declare the same `METHOD /path`.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0135",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-http.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#http"
+  ],
+  "excerpt": "[docs/events.md#http]\n**Path templates** pskit's runtime also matches routes itself, so path params and `405 Method Not Allowed` work the same on clouds with no API gateway (GCP, IBM, DigitalOcean, Cloudflare), including when the platform adds or strips a path prefix. Two functions may not declare the same `METHOD /path`.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0136",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-http.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#http"
+  ],
+  "excerpt": "[docs/events.md#http]\n**Path templates** pskit's runtime also matches routes itself, so path params and `405 Method Not Allowed` work the same on clouds with no API gateway (GCP, IBM, DigitalOcean, Cloudflare), including when the platform adds or strips a path prefix. Two functions may not declare the same `METHOD /path`.",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0137",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-http.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#http",
+   "src/py_serverless_kit/config/schema.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0138",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-http.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#http"
+  ],
+  "excerpt": "[docs/events.md#http]\n**Path templates** pskit's runtime also matches routes itself, so path params and `405 Method Not Allowed` work the same on clouds with no API gateway (GCP, IBM, DigitalOcean, Cloudflare), including when the platform adds or strips a path prefix. Two functions may not declare the same `METHOD /path`.",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0139",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-object"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-object.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/handlers.md#event",
+   "docs/handlers.md#httprequest"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0140",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-object"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-object.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/handlers.md#event",
+   "docs/handlers.md#httprequest"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0141",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-object"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-object.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/handlers.md#event",
+   "docs/handlers.md#httprequest"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0142",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-object"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-object.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/handlers.md#event",
+   "docs/handlers.md#httprequest"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0143",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-object"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-object.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/handlers.md#event",
+   "docs/handlers.md#httprequest"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0144",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-object"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-object.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/handlers.md#event",
+   "docs/handlers.md#httprequest"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0145",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-queue.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0146",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-queue.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0147",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-queue.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0148",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-queue.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0149",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-queue.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0150",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-queue.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#queue",
+   "docs/events.md#events-backed-by-a-resource"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0151",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-schedule"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-schedule.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#schedule"
+  ],
+  "excerpt": "[docs/events.md#schedule]\nThe handler gets `event.type == \"schedule\"` and `event.data == input`. pskit converts the portable syntax to each cloud's dialect: A rate that can't be expressed as cron on cron-only clouds (e.g. `7 minutes`) fails validation; use a divisor of 60 minutes or 24 hours. `timezone` is honoured by AWS, GCP and Alibaba (cron form); Azure ignores it with a warning.",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0152",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-schedule"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-schedule.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#schedule"
+  ],
+  "excerpt": "[docs/events.md#schedule]\nThe handler gets `event.type == \"schedule\"` and `event.data == input`. pskit converts the portable syntax to each cloud's dialect: A rate that can't be expressed as cron on cron-only clouds (e.g. `7 minutes`) fails validation; use a divisor of 60 minutes or 24 hours. `timezone` is honoured by AWS, GCP and Alibaba (cron form); Azure ignores it with a warning.",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0153",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-schedule"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-schedule.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#schedule"
+  ],
+  "excerpt": "[docs/events.md#schedule]\nThe handler gets `event.type == \"schedule\"` and `event.data == input`. pskit converts the portable syntax to each cloud's dialect: A rate that can't be expressed as cron on cron-only clouds (e.g. `7 minutes`) fails validation; use a divisor of 60 minutes or 24 hours. `timezone` is honoured by AWS, GCP and Alibaba (cron form); Azure ignores it with a warning.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0154",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-schedule"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-schedule.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#schedule"
+  ],
+  "excerpt": "[docs/events.md#schedule]\nThe handler gets `event.type == \"schedule\"` and `event.data == input`. pskit converts the portable syntax to each cloud's dialect: A rate that can't be expressed as cron on cron-only clouds (e.g. `7 minutes`) fails validation; use a divisor of 60 minutes or 24 hours. `timezone` is honoured by AWS, GCP and Alibaba (cron form); Azure ignores it with a warning.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0155",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-schedule"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-schedule.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#schedule"
+  ],
+  "excerpt": "[docs/events.md#schedule]\nThe handler gets `event.type == \"schedule\"` and `event.data == input`. pskit converts the portable syntax to each cloud's dialect: A rate that can't be expressed as cron on cron-only clouds (e.g. `7 minutes`) fails validation; use a divisor of 60 minutes or 24 hours. `timezone` is honoured by AWS, GCP and Alibaba (cron form); Azure ignores it with a warning.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0156",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-schedule"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-schedule.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#schedule"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0157",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-storage.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#events-backed-by-a-resource"
+  ],
+  "excerpt": "[docs/events.md#events-backed-by-a-resource]\nThe event uses the resource's native name and `existing: <external>`. The functions also get the resource's connection details. On premises, a resource can move the queue to Redis or the bucket to an S3-compatible store, and a storage event may set both `resource` and `bucket`: that bucket on the resource's storage service ([details](resources.md#storage-drivers)).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0158",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-storage.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#events-backed-by-a-resource"
+  ],
+  "excerpt": "[docs/events.md#events-backed-by-a-resource]\nThe event uses the resource's native name and `existing: <external>`. The functions also get the resource's connection details. On premises, a resource can move the queue to Redis or the bucket to an S3-compatible store, and a storage event may set both `resource` and `bucket`: that bucket on the resource's storage service ([details](resources.md#storage-drivers)).",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0159",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-storage.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#events-backed-by-a-resource"
+  ],
+  "excerpt": "[docs/events.md#events-backed-by-a-resource]\nThe event uses the resource's native name and `existing: <external>`. The functions also get the resource's connection details. On premises, a resource can move the queue to Redis or the bucket to an S3-compatible store, and a storage event may set both `resource` and `bucket`: that bucket on the resource's storage service ([details](resources.md#storage-drivers)).",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0160",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-storage.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#events-backed-by-a-resource"
+  ],
+  "excerpt": "[docs/events.md#events-backed-by-a-resource]\nThe event uses the resource's native name and `existing: <external>`. The functions also get the resource's connection details. On premises, a resource can move the queue to Redis or the bucket to an S3-compatible store, and a storage event may set both `resource` and `bucket`: that bucket on the resource's storage service ([details](resources.md#storage-drivers)).",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0161",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-storage.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#events-backed-by-a-resource"
+  ],
+  "excerpt": "[docs/events.md#events-backed-by-a-resource]\nThe event uses the resource's native name and `existing: <external>`. The functions also get the resource's connection details. On premises, a resource can move the queue to Redis or the bucket to an S3-compatible store, and a storage event may set both `resource` and `bucket`: that bucket on the resource's storage service ([details](resources.md#storage-drivers)).",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0162",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-storage.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#storage",
+   "docs/events.md#events-backed-by-a-resource"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0163",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-topic.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#events-triggers"
+  ],
+  "excerpt": "[docs/events.md#events-triggers]\n`smtp` (on premises) runs a function when mail arrives for your domain: `- smtp: {resource: inbound-mail}` on the SMTP server created under *On-prem services* (an `smtp` resource). The handler gets from, to, cc, subject, text, html, headers and attachments, plus the same mail as an Amazon SES event (`Records[0].ses`). Setup and DNS records: [smtp/README.md](smtp/README.md).",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0164",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-topic.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#events-triggers"
+  ],
+  "excerpt": "[docs/events.md#events-triggers]\n`smtp` (on premises) runs a function when mail arrives for your domain: `- smtp: {resource: inbound-mail}` on the SMTP server created under *On-prem services* (an `smtp` resource). The handler gets from, to, cc, subject, text, html, headers and attachments, plus the same mail as an Amazon SES event (`Records[0].ses`). Setup and DNS records: [smtp/README.md](smtp/README.md).",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0165",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-topic.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#events-triggers"
+  ],
+  "excerpt": "[docs/events.md#events-triggers]\n`smtp` (on premises) runs a function when mail arrives for your domain: `- smtp: {resource: inbound-mail}` on the SMTP server created under *On-prem services* (an `smtp` resource). The handler gets from, to, cc, subject, text, html, headers and attachments, plus the same mail as an Amazon SES event (`Records[0].ses`). Setup and DNS records: [smtp/README.md](smtp/README.md).",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0166",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-topic.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#events-triggers"
+  ],
+  "excerpt": "[docs/events.md#events-triggers]\n`smtp` (on premises) runs a function when mail arrives for your domain: `- smtp: {resource: inbound-mail}` on the SMTP server created under *On-prem services* (an `smtp` resource). The handler gets from, to, cc, subject, text, html, headers and attachments, plus the same mail as an Amazon SES event (`Records[0].ses`). Setup and DNS records: [smtp/README.md](smtp/README.md).",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0167",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-topic.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#events-triggers"
+  ],
+  "excerpt": "[docs/events.md#events-triggers]\n`smtp` (on premises) runs a function when mail arrives for your domain: `- smtp: {resource: inbound-mail}` on the SMTP server created under *On-prem services* (an `smtp` resource). The handler gets from, to, cc, subject, text, html, headers and attachments, plus the same mail as an Amazon SES event (`Records[0].ses`). Setup and DNS records: [smtp/README.md](smtp/README.md).",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0168",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-event-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-event-topic.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#topic",
+   "docs/events.md#events-triggers"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0169",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-events"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-events.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#events-triggers"
+  ],
+  "excerpt": "[docs/events.md#events-triggers]\n`smtp` (on premises) runs a function when mail arrives for your domain: `- smtp: {resource: inbound-mail}` on the SMTP server created under *On-prem services* (an `smtp` resource). The handler gets from, to, cc, subject, text, html, headers and attachments, plus the same mail as an Amazon SES event (`Records[0].ses`). Setup and DNS records: [smtp/README.md](smtp/README.md).",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0170",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-events"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-events.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#events-triggers"
+  ],
+  "excerpt": "[docs/events.md#events-triggers]\n`smtp` (on premises) runs a function when mail arrives for your domain: `- smtp: {resource: inbound-mail}` on the SMTP server created under *On-prem services* (an `smtp` resource). The handler gets from, to, cc, subject, text, html, headers and attachments, plus the same mail as an Amazon SES event (`Records[0].ses`). Setup and DNS records: [smtp/README.md](smtp/README.md).",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ }
+]

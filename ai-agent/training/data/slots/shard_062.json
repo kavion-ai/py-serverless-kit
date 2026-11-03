@@ -1,0 +1,762 @@
+[
+ {
+  "id": "k_onprem_0081",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-monitor-alerts"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-monitor-alerts.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#monitoring-and-alerts"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#monitoring-and-alerts]\nThe **Servers** list shows a check mark per server: ✓ when its SSH port answers (all probed at once when the list opens, **Re-check** to probe again), ✗ with the reason otherwise; *Test* replaces it with the result of a full login check. **Live** on a server shows its CPU, RAM and disk use, refreshed every few seconds, until you switch it off.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0082",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-monitor-alerts"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-monitor-alerts.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#monitoring-and-alerts"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#monitoring-and-alerts]\nThe **Servers** list shows a check mark per server: ✓ when its SSH port answers (all probed at once when the list opens, **Re-check** to probe again), ✗ with the reason otherwise; *Test* replaces it with the result of a full login check. **Live** on a server shows its CPU, RAM and disk use, refreshed every few seconds, until you switch it off.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0083",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-monitor-alerts"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-monitor-alerts.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#monitoring-and-alerts"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#monitoring-and-alerts]\nThe **Servers** list shows a check mark per server: ✓ when its SSH port answers (all probed at once when the list opens, **Re-check** to probe again), ✗ with the reason otherwise; *Test* replaces it with the result of a full login check. **Live** on a server shows its CPU, RAM and disk use, refreshed every few seconds, until you switch it off.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0084",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-monitor-alerts"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-monitor-alerts.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#monitoring-and-alerts"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#monitoring-and-alerts]\nThe **Servers** list shows a check mark per server: ✓ when its SSH port answers (all probed at once when the list opens, **Re-check** to probe again), ✗ with the reason otherwise; *Test* replaces it with the result of a full login check. **Live** on a server shows its CPU, RAM and disk use, refreshed every few seconds, until you switch it off.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0085",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-monitor-alerts"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-monitor-alerts.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#monitoring-and-alerts"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#monitoring-and-alerts]\nThe **Servers** list shows a check mark per server: ✓ when its SSH port answers (all probed at once when the list opens, **Re-check** to probe again), ✗ with the reason otherwise; *Test* replaces it with the result of a full login check. **Live** on a server shows its CPU, RAM and disk use, refreshed every few seconds, until you switch it off.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0086",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-monitor-alerts"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-monitor-alerts.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#monitoring-and-alerts"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#monitoring-and-alerts]\nThe **Servers** list shows a check mark per server: ✓ when its SSH port answers (all probed at once when the list opens, **Re-check** to probe again), ✗ with the reason otherwise; *Test* replaces it with the result of a full login check. **Live** on a server shows its CPU, RAM and disk use, refreshed every few seconds, until you switch it off.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0087",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-monitor-alerts"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-monitor-alerts.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#monitoring-and-alerts"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0088",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-monitor-alerts"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-monitor-alerts.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#monitoring-and-alerts"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#monitoring-and-alerts]\nThe **Servers** list shows a check mark per server: ✓ when its SSH port answers (all probed at once when the list opens, **Re-check** to probe again), ✗ with the reason otherwise; *Test* replaces it with the result of a full login check. **Live** on a server shows its CPU, RAM and disk use, refreshed every few seconds, until you switch it off.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0089",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-monitor-alerts"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-monitor-alerts.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#monitoring-and-alerts"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#monitoring-and-alerts]\nThe **Servers** list shows a check mark per server: ✓ when its SSH port answers (all probed at once when the list opens, **Re-check** to probe again), ✗ with the reason otherwise; *Test* replaces it with the result of a full login check. **Live** on a server shows its CPU, RAM and disk use, refreshed every few seconds, until you switch it off.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0090",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-monitor-alerts"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-monitor-alerts.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#monitoring-and-alerts"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#monitoring-and-alerts]\nThe **Servers** list shows a check mark per server: ✓ when its SSH port answers (all probed at once when the list opens, **Re-check** to probe again), ✗ with the reason otherwise; *Test* replaces it with the result of a full login check. **Live** on a server shows its CPU, RAM and disk use, refreshed every few seconds, until you switch it off.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0091",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-one-click-services"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-one-click-services.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0092",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-one-click-services"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-one-click-services.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0093",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-one-click-services"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-one-click-services.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0094",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-one-click-services"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-one-click-services.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0095",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-one-click-services"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-one-click-services.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0096",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-one-click-services"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-one-click-services.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0097",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-one-click-services"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-one-click-services.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0098",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-one-click-services"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-one-click-services.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0099",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-one-click-services"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-one-click-services.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0100",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-one-click-services"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-one-click-services.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0101",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-python-bundle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-python-bundle.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0102",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-python-bundle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-python-bundle.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0103",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-python-bundle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-python-bundle.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0104",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-python-bundle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-python-bundle.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0105",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-python-bundle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-python-bundle.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0106",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-python-bundle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-python-bundle.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0107",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-python-bundle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-python-bundle.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0108",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-python-bundle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-python-bundle.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0109",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-python-bundle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-python-bundle.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0110",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-python-bundle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-python-bundle.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0111",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-runtimes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-runtimes.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#install-software-on-a-server"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#install-software-on-a-server]\nThe catalog's *Install on a server* groups install with the server's package manager (apt, dnf, yum or apk), over SSH: Studio: *Servers → Install / create* opens the catalog with that server chosen. Each install is listed with the services; *Details* runs its version check. pskit never uninstalls software (*Remove* only forgets it).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0112",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-runtimes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-runtimes.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#install-software-on-a-server"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0113",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-runtimes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-runtimes.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#install-software-on-a-server"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#install-software-on-a-server]\nThe catalog's *Install on a server* groups install with the server's package manager (apt, dnf, yum or apk), over SSH: Studio: *Servers → Install / create* opens the catalog with that server chosen. Each install is listed with the services; *Details* runs its version check. pskit never uninstalls software (*Remove* only forgets it).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0114",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-runtimes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-runtimes.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#install-software-on-a-server"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#install-software-on-a-server]\nThe catalog's *Install on a server* groups install with the server's package manager (apt, dnf, yum or apk), over SSH: Studio: *Servers → Install / create* opens the catalog with that server chosen. Each install is listed with the services; *Details* runs its version check. pskit never uninstalls software (*Remove* only forgets it).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0115",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-runtimes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-runtimes.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#install-software-on-a-server"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#install-software-on-a-server]\nThe catalog's *Install on a server* groups install with the server's package manager (apt, dnf, yum or apk), over SSH: Studio: *Servers → Install / create* opens the catalog with that server chosen. Each install is listed with the services; *Details* runs its version check. pskit never uninstalls software (*Remove* only forgets it).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0116",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-runtimes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-runtimes.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#install-software-on-a-server"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#install-software-on-a-server]\nThe catalog's *Install on a server* groups install with the server's package manager (apt, dnf, yum or apk), over SSH: Studio: *Servers → Install / create* opens the catalog with that server chosen. Each install is listed with the services; *Details* runs its version check. pskit never uninstalls software (*Remove* only forgets it).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0117",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-runtimes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-runtimes.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#install-software-on-a-server"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#install-software-on-a-server]\nThe catalog's *Install on a server* groups install with the server's package manager (apt, dnf, yum or apk), over SSH: Studio: *Servers → Install / create* opens the catalog with that server chosen. Each install is listed with the services; *Details* runs its version check. pskit never uninstalls software (*Remove* only forgets it).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0118",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-runtimes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-runtimes.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#install-software-on-a-server"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0119",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-runtimes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-runtimes.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#install-software-on-a-server"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#install-software-on-a-server]\nThe catalog's *Install on a server* groups install with the server's package manager (apt, dnf, yum or apk), over SSH: Studio: *Servers → Install / create* opens the catalog with that server chosen. Each install is listed with the services; *Details* runs its version check. pskit never uninstalls software (*Remove* only forgets it).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0120",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-runtimes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-runtimes.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#install-software-on-a-server"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#install-software-on-a-server]\nThe catalog's *Install on a server* groups install with the server's package manager (apt, dnf, yum or apk), over SSH: Studio: *Servers → Install / create* opens the catalog with that server chosen. Each install is listed with the services; *Details* runs its version check. pskit never uninstalls software (*Remove* only forgets it).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ }
+]

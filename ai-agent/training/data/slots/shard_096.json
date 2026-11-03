@@ -1,0 +1,777 @@
+[
+ {
+  "id": "k_arch_0291",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-terraform-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-terraform-state.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0292",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-terraform-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-terraform-state.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/architecture.md#state-handling",
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0293",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-terraform-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-terraform-state.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0294",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-terraform-state"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-terraform-state.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0295",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-third-party-providers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-third-party-providers.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/architecture.md#third-party-providers",
+   "CLAUDE.md"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0296",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-third-party-providers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-third-party-providers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/architecture.md#third-party-providers",
+   "CLAUDE.md"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0297",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-third-party-providers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-third-party-providers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/architecture.md#third-party-providers",
+   "CLAUDE.md"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0298",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-third-party-providers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-third-party-providers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/architecture.md#third-party-providers",
+   "CLAUDE.md"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0299",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-third-party-providers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-third-party-providers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/architecture.md#third-party-providers",
+   "CLAUDE.md"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0300",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-third-party-providers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-third-party-providers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/architecture.md#third-party-providers",
+   "CLAUDE.md"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0301",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-typescript"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-typescript.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/nodejs.md#typescript"
+  ],
+  "excerpt": "[docs/nodejs.md#typescript]\n* pskit compiles `.ts` files with `tsc` when it packages or runs the service. It uses the project's `node_modules/.bin/tsc`, then `tsc` on `PATH`, then `npx --yes -p typescript@5 tsc`. * TypeScript is detected from a `tsconfig.json` or a `.ts` handler; force it with `package.node.typescript: true | false`. * With a `tsconfig.json`, pskit extends it and only overrides the output settings (`outDir`, `rootDir`, `noEmit: false`), so your `strict`, `target` and `paths` apply. Without one it compiles to CommonJS / ES2022. * Type errors fail the build, with the compiler output in the error. * Using Node.js APIs (`process`, `Buffer`, `fs`) from TypeScript needs their types: `npm install --save-dev @types/node`. * **Types for `pskit`** need no npm package: `pskit init`, `pskit package` and `pskit dev` write `.pskit/types/pskit/index.d.ts`, and the generated `tsconfig.json` maps the module to it: Leave out `baseUrl` and `moduleResolution: \"node\"`: TypeScript 7 removed them.",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0302",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-typescript"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-typescript.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/nodejs.md#typescript"
+  ],
+  "excerpt": "[docs/nodejs.md#typescript]\n* pskit compiles `.ts` files with `tsc` when it packages or runs the service. It uses the project's `node_modules/.bin/tsc`, then `tsc` on `PATH`, then `npx --yes -p typescript@5 tsc`. * TypeScript is detected from a `tsconfig.json` or a `.ts` handler; force it with `package.node.typescript: true | false`. * With a `tsconfig.json`, pskit extends it and only overrides the output settings (`outDir`, `rootDir`, `noEmit: false`), so your `strict`, `target` and `paths` apply. Without one it compiles to CommonJS / ES2022. * Type errors fail the build, with the compiler output in the error. * Using Node.js APIs (`process`, `Buffer`, `fs`) from TypeScript needs their types: `npm install --save-dev @types/node`. * **Types for `pskit`** need no npm package: `pskit init`, `pskit package` and `pskit dev` write `.pskit/types/pskit/index.d.ts`, and the generated `tsconfig.json` maps the module to it: Leave out `baseUrl` and `moduleResolution: \"node\"`: TypeScript 7 removed them.",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0303",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-typescript"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-typescript.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/nodejs.md#typescript"
+  ],
+  "excerpt": "[docs/nodejs.md#typescript]\n* pskit compiles `.ts` files with `tsc` when it packages or runs the service. It uses the project's `node_modules/.bin/tsc`, then `tsc` on `PATH`, then `npx --yes -p typescript@5 tsc`. * TypeScript is detected from a `tsconfig.json` or a `.ts` handler; force it with `package.node.typescript: true | false`. * With a `tsconfig.json`, pskit extends it and only overrides the output settings (`outDir`, `rootDir`, `noEmit: false`), so your `strict`, `target` and `paths` apply. Without one it compiles to CommonJS / ES2022. * Type errors fail the build, with the compiler output in the error. * Using Node.js APIs (`process`, `Buffer`, `fs`) from TypeScript needs their types: `npm install --save-dev @types/node`. * **Types for `pskit`** need no npm package: `pskit init`, `pskit package` and `pskit dev` write `.pskit/types/pskit/index.d.ts`, and the generated `tsconfig.json` maps the module to it: Leave out `baseUrl` and `moduleResolution: \"node\"`: TypeScript 7 removed them.",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0304",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-typescript"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-typescript.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/nodejs.md#typescript",
+   "docs/nodejs.md#dependencies-and-packaging"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0305",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-typescript"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-typescript.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/nodejs.md#typescript"
+  ],
+  "excerpt": "[docs/nodejs.md#typescript]\n* pskit compiles `.ts` files with `tsc` when it packages or runs the service. It uses the project's `node_modules/.bin/tsc`, then `tsc` on `PATH`, then `npx --yes -p typescript@5 tsc`. * TypeScript is detected from a `tsconfig.json` or a `.ts` handler; force it with `package.node.typescript: true | false`. * With a `tsconfig.json`, pskit extends it and only overrides the output settings (`outDir`, `rootDir`, `noEmit: false`), so your `strict`, `target` and `paths` apply. Without one it compiles to CommonJS / ES2022. * Type errors fail the build, with the compiler output in the error. * Using Node.js APIs (`process`, `Buffer`, `fs`) from TypeScript needs their types: `npm install --save-dev @types/node`. * **Types for `pskit`** need no npm package: `pskit init`, `pskit package` and `pskit dev` write `.pskit/types/pskit/index.d.ts`, and the generated `tsconfig.json` maps the module to it: Leave out `baseUrl` and `moduleResolution: \"node\"`: TypeScript 7 removed them.",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0306",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-typescript"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-typescript.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/nodejs.md#typescript"
+  ],
+  "excerpt": "[docs/nodejs.md#typescript]\n* pskit compiles `.ts` files with `tsc` when it packages or runs the service. It uses the project's `node_modules/.bin/tsc`, then `tsc` on `PATH`, then `npx --yes -p typescript@5 tsc`. * TypeScript is detected from a `tsconfig.json` or a `.ts` handler; force it with `package.node.typescript: true | false`. * With a `tsconfig.json`, pskit extends it and only overrides the output settings (`outDir`, `rootDir`, `noEmit: false`), so your `strict`, `target` and `paths` apply. Without one it compiles to CommonJS / ES2022. * Type errors fail the build, with the compiler output in the error. * Using Node.js APIs (`process`, `Buffer`, `fs`) from TypeScript needs their types: `npm install --save-dev @types/node`. * **Types for `pskit`** need no npm package: `pskit init`, `pskit package` and `pskit dev` write `.pskit/types/pskit/index.d.ts`, and the generated `tsconfig.json` maps the module to it: Leave out `baseUrl` and `moduleResolution: \"node\"`: TypeScript 7 removed them.",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0307",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-variables"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-variables.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#variables"
+  ],
+  "excerpt": "[docs/configuration.md#variables]\n- `${tf:<terraform expression>}` becomes a live Terraform reference, e.g. `${tf:aws_dynamodb_table.orders.arn}` in an IAM statement or environment value. Every other `${` in user values is escaped, so Terraform never interprets it. - Any other `${...}`, such as IAM policy variables like `${aws:username}`, stays literal.",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0308",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-variables"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-variables.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#variables"
+  ],
+  "excerpt": "[docs/configuration.md#variables]\n- `${tf:<terraform expression>}` becomes a live Terraform reference, e.g. `${tf:aws_dynamodb_table.orders.arn}` in an IAM statement or environment value. Every other `${` in user values is escaped, so Terraform never interprets it. - Any other `${...}`, such as IAM policy variables like `${aws:username}`, stays literal.",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0309",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-variables"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-variables.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#variables"
+  ],
+  "excerpt": "[docs/configuration.md#variables]\n- `${tf:<terraform expression>}` becomes a live Terraform reference, e.g. `${tf:aws_dynamodb_table.orders.arn}` in an IAM statement or environment value. Every other `${` in user values is escaped, so Terraform never interprets it. - Any other `${...}`, such as IAM policy variables like `${aws:username}`, stays literal.",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0310",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-variables"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-variables.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#variables"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0311",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-variables"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-variables.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#variables"
+  ],
+  "excerpt": "[docs/configuration.md#variables]\n- `${tf:<terraform expression>}` becomes a live Terraform reference, e.g. `${tf:aws_dynamodb_table.orders.arn}` in an IAM statement or environment value. Every other `${` in user values is escaped, so Terraform never interprets it. - Any other `${...}`, such as IAM policy variables like `${aws:username}`, stays literal.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0312",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-variables"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-variables.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#variables"
+  ],
+  "excerpt": "[docs/configuration.md#variables]\n- `${tf:<terraform expression>}` becomes a live Terraform reference, e.g. `${tf:aws_dynamodb_table.orders.arn}` in an IAM statement or environment value. Every other `${` in user values is escaped, so Terraform never interprets it. - Any other `${...}`, such as IAM policy variables like `${aws:username}`, stays literal.",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0313",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflow-engines"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflow-engines.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/workflows.md#engines",
+   "docs/workflows.md#embedded-orchestrator"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0314",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflow-engines"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflow-engines.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/workflows.md#engines",
+   "docs/workflows.md#embedded-orchestrator"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0315",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflow-engines"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflow-engines.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/workflows.md#engines",
+   "docs/workflows.md#embedded-orchestrator"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0316",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflow-engines"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflow-engines.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/workflows.md#engines",
+   "docs/workflows.md#embedded-orchestrator"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0317",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflow-engines"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflow-engines.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/workflows.md#engines",
+   "docs/workflows.md#embedded-orchestrator"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0318",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflow-engines"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflow-engines.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/workflows.md#engines",
+   "docs/workflows.md#embedded-orchestrator"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0319",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflow-executions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflow-executions.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/workflow-executions.md#workflow-executions"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0320",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflow-executions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflow-executions.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/workflow-executions.md#workflow-executions"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0321",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflow-executions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflow-executions.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/workflow-executions.md#workflow-executions"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0322",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflow-executions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflow-executions.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/workflow-executions.md#workflow-executions"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0323",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflow-executions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflow-executions.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/workflow-executions.md#workflow-executions"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0324",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflow-executions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflow-executions.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/workflow-executions.md#workflow-executions"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0325",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflow-states"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflow-states.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/workflows.md#data-flow"
+  ],
+  "excerpt": "[docs/workflows.md#data-flow]\n- `input_path` selects the part of the state input that is passed to the task (default `$`, the whole input). - `result_path` says where the result goes in the state's data: - `$` (default) replaces the data with the result; - `$.payment` stores the result under that key and keeps the rest; - `null` discards the result and passes the input through.",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0326",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflow-states"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflow-states.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/workflows.md#data-flow"
+  ],
+  "excerpt": "[docs/workflows.md#data-flow]\n- `input_path` selects the part of the state input that is passed to the task (default `$`, the whole input). - `result_path` says where the result goes in the state's data: - `$` (default) replaces the data with the result; - `$.payment` stores the result under that key and keeps the rest; - `null` discards the result and passes the input through.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0327",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflow-states"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflow-states.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/workflows.md#data-flow"
+  ],
+  "excerpt": "[docs/workflows.md#data-flow]\n- `input_path` selects the part of the state input that is passed to the task (default `$`, the whole input). - `result_path` says where the result goes in the state's data: - `$` (default) replaces the data with the result; - `$.payment` stores the result under that key and keeps the rest; - `null` discards the result and passes the input through.",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0328",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflow-states"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflow-states.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/workflows.md#data-flow"
+  ],
+  "excerpt": "[docs/workflows.md#data-flow]\n- `input_path` selects the part of the state input that is passed to the task (default `$`, the whole input). - `result_path` says where the result goes in the state's data: - `$` (default) replaces the data with the result; - `$.payment` stores the result under that key and keeps the rest; - `null` discards the result and passes the input through.",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0329",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflow-states"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflow-states.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/workflows.md#state-types",
+   "docs/workflows.md#data-flow"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0330",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflow-states"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflow-states.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/workflows.md#data-flow"
+  ],
+  "excerpt": "[docs/workflows.md#data-flow]\n- `input_path` selects the part of the state input that is passed to the task (default `$`, the whole input). - `result_path` says where the result goes in the state's data: - `$` (default) replaces the data with the result; - `$.payment` stores the result under that key and keeps the rest; - `null` discards the result and passes the input through.",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ }
+]

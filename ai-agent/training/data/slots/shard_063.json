@@ -1,0 +1,762 @@
+[
+ {
+  "id": "k_onprem_0121",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-s3-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-s3-server.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage]\nRun functions when files appear in a bucket, and read or write objects: the host's built-in buckets, a shared folder, MinIO or another S3-compatible store, or a bucket in a cloud (S3, R2, Azure Blob, GCS, ...). The host lists each watched bucket every `poll_seconds` and compares ETags: a new or changed object emits `created`, a missing one `deleted`. Objects already there at the first start are recorded, not emitted.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0122",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-s3-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-s3-server.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage]\nRun functions when files appear in a bucket, and read or write objects: the host's built-in buckets, a shared folder, MinIO or another S3-compatible store, or a bucket in a cloud (S3, R2, Azure Blob, GCS, ...). The host lists each watched bucket every `poll_seconds` and compares ETags: a new or changed object emits `created`, a missing one `deleted`. Objects already there at the first start are recorded, not emitted.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0123",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-s3-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-s3-server.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage]\nRun functions when files appear in a bucket, and read or write objects: the host's built-in buckets, a shared folder, MinIO or another S3-compatible store, or a bucket in a cloud (S3, R2, Azure Blob, GCS, ...). The host lists each watched bucket every `poll_seconds` and compares ETags: a new or changed object emits `created`, a missing one `deleted`. Objects already there at the first start are recorded, not emitted.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0124",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-s3-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-s3-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0125",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-s3-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-s3-server.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage]\nRun functions when files appear in a bucket, and read or write objects: the host's built-in buckets, a shared folder, MinIO or another S3-compatible store, or a bucket in a cloud (S3, R2, Azure Blob, GCS, ...). The host lists each watched bucket every `poll_seconds` and compares ETags: a new or changed object emits `created`, a missing one `deleted`. Objects already there at the first start are recorded, not emitted.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0126",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-s3-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-s3-server.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage]\nRun functions when files appear in a bucket, and read or write objects: the host's built-in buckets, a shared folder, MinIO or another S3-compatible store, or a bucket in a cloud (S3, R2, Azure Blob, GCS, ...). The host lists each watched bucket every `poll_seconds` and compares ETags: a new or changed object emits `created`, a missing one `deleted`. Objects already there at the first start are recorded, not emitted.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0127",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-s3-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-s3-server.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage]\nRun functions when files appear in a bucket, and read or write objects: the host's built-in buckets, a shared folder, MinIO or another S3-compatible store, or a bucket in a cloud (S3, R2, Azure Blob, GCS, ...). The host lists each watched bucket every `poll_seconds` and compares ETags: a new or changed object emits `created`, a missing one `deleted`. Objects already there at the first start are recorded, not emitted.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0128",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-s3-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-s3-server.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage]\nRun functions when files appear in a bucket, and read or write objects: the host's built-in buckets, a shared folder, MinIO or another S3-compatible store, or a bucket in a cloud (S3, R2, Azure Blob, GCS, ...). The host lists each watched bucket every `poll_seconds` and compares ETags: a new or changed object emits `created`, a missing one `deleted`. Objects already there at the first start are recorded, not emitted.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0129",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-s3-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-s3-server.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage]\nRun functions when files appear in a bucket, and read or write objects: the host's built-in buckets, a shared folder, MinIO or another S3-compatible store, or a bucket in a cloud (S3, R2, Azure Blob, GCS, ...). The host lists each watched bucket every `poll_seconds` and compares ETags: a new or changed object emits `created`, a missing one `deleted`. Objects already there at the first start are recorded, not emitted.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0130",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-s3-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-s3-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0131",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-saved-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-saved-servers.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#servers-several-machines"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#servers-several-machines]\nSave each machine once under **On-prem services → Servers → + Add server** (name, host, user, port, *Log in with*, sudo), or with the CLI. Every place that asks *where* then offers it: the create form's **Server** list, **Deploy → Machine**, the shell and the terminal. They live in `.pskit/onprem-servers.json` (connection details only; a typed password goes to `.pskit/ssh/`, owner-only). Services created on a server keep a copy of its connection, so editing the server later does not move them.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0132",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-saved-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-saved-servers.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#servers-several-machines"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#servers-several-machines]\nSave each machine once under **On-prem services → Servers → + Add server** (name, host, user, port, *Log in with*, sudo), or with the CLI. Every place that asks *where* then offers it: the create form's **Server** list, **Deploy → Machine**, the shell and the terminal. They live in `.pskit/onprem-servers.json` (connection details only; a typed password goes to `.pskit/ssh/`, owner-only). Services created on a server keep a copy of its connection, so editing the server later does not move them.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0133",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-saved-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-saved-servers.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#servers-several-machines"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#servers-several-machines]\nSave each machine once under **On-prem services → Servers → + Add server** (name, host, user, port, *Log in with*, sudo), or with the CLI. Every place that asks *where* then offers it: the create form's **Server** list, **Deploy → Machine**, the shell and the terminal. They live in `.pskit/onprem-servers.json` (connection details only; a typed password goes to `.pskit/ssh/`, owner-only). Services created on a server keep a copy of its connection, so editing the server later does not move them.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0134",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-saved-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-saved-servers.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#servers-several-machines"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#servers-several-machines]\nSave each machine once under **On-prem services → Servers → + Add server** (name, host, user, port, *Log in with*, sudo), or with the CLI. Every place that asks *where* then offers it: the create form's **Server** list, **Deploy → Machine**, the shell and the terminal. They live in `.pskit/onprem-servers.json` (connection details only; a typed password goes to `.pskit/ssh/`, owner-only). Services created on a server keep a copy of its connection, so editing the server later does not move them.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0135",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-saved-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-saved-servers.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#servers-several-machines"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#servers-several-machines]\nSave each machine once under **On-prem services → Servers → + Add server** (name, host, user, port, *Log in with*, sudo), or with the CLI. Every place that asks *where* then offers it: the create form's **Server** list, **Deploy → Machine**, the shell and the terminal. They live in `.pskit/onprem-servers.json` (connection details only; a typed password goes to `.pskit/ssh/`, owner-only). Services created on a server keep a copy of its connection, so editing the server later does not move them.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0136",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-saved-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-saved-servers.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#servers-several-machines"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#servers-several-machines]\nSave each machine once under **On-prem services → Servers → + Add server** (name, host, user, port, *Log in with*, sudo), or with the CLI. Every place that asks *where* then offers it: the create form's **Server** list, **Deploy → Machine**, the shell and the terminal. They live in `.pskit/onprem-servers.json` (connection details only; a typed password goes to `.pskit/ssh/`, owner-only). Services created on a server keep a copy of its connection, so editing the server later does not move them.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0137",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-saved-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-saved-servers.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#servers-several-machines"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0138",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-saved-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-saved-servers.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#servers-several-machines"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#servers-several-machines]\nSave each machine once under **On-prem services → Servers → + Add server** (name, host, user, port, *Log in with*, sudo), or with the CLI. Every place that asks *where* then offers it: the create form's **Server** list, **Deploy → Machine**, the shell and the terminal. They live in `.pskit/onprem-servers.json` (connection details only; a typed password goes to `.pskit/ssh/`, owner-only). Services created on a server keep a copy of its connection, so editing the server later does not move them.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0139",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-saved-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-saved-servers.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#servers-several-machines"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#servers-several-machines]\nSave each machine once under **On-prem services → Servers → + Add server** (name, host, user, port, *Log in with*, sudo), or with the CLI. Every place that asks *where* then offers it: the create form's **Server** list, **Deploy → Machine**, the shell and the terminal. They live in `.pskit/onprem-servers.json` (connection details only; a typed password goes to `.pskit/ssh/`, owner-only). Services created on a server keep a copy of its connection, so editing the server later does not move them.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0140",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-saved-servers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-saved-servers.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#servers-several-machines"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#servers-several-machines]\nSave each machine once under **On-prem services → Servers → + Add server** (name, host, user, port, *Log in with*, sudo), or with the CLI. Every place that asks *where* then offers it: the create form's **Server** list, **Deploy → Machine**, the shell and the terminal. They live in `.pskit/onprem-servers.json` (connection details only; a typed password goes to `.pskit/ssh/`, owner-only). Services created on a server keep a copy of its connection, so editing the server later does not move them.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0141",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-secrets-managers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-secrets-managers.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/secrets.md#secret-managers-on-premises]\nKeep API keys, database passwords and certificates in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0142",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-secrets-managers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-secrets-managers.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/secrets.md#secret-managers-on-premises]\nKeep API keys, database passwords and certificates in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0143",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-secrets-managers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-secrets-managers.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0144",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-secrets-managers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-secrets-managers.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/secrets.md#secret-managers-on-premises]\nKeep API keys, database passwords and certificates in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0145",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-secrets-managers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-secrets-managers.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/secrets.md#secret-managers-on-premises]\nKeep API keys, database passwords and certificates in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0146",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-secrets-managers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-secrets-managers.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/secrets.md#secret-managers-on-premises]\nKeep API keys, database passwords and certificates in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0147",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-secrets-managers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-secrets-managers.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/secrets.md#secret-managers-on-premises]\nKeep API keys, database passwords and certificates in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0148",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-secrets-managers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-secrets-managers.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/secrets.md#secret-managers-on-premises]\nKeep API keys, database passwords and certificates in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0149",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-secrets-managers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-secrets-managers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0150",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-secrets-managers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-secrets-managers.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/secrets.md#secret-managers-on-premises]\nKeep API keys, database passwords and certificates in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0151",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-shell"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-shell.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#console-and-terminal"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#console-and-terminal]\n*Shell in the container* runs any line with `sh -c` inside the service's container. Each line runs on its own (no state between lines), on this machine or over SSH; credentials are hidden in the output. When the image has no client (Dragonfly, NATS, ElasticMQ, RustFS, Memcached), a small helper container joins the service's private network for that command. Servers have the same **Shell** under *Servers*.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0152",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-shell"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-shell.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#console-and-terminal"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#console-and-terminal]\n*Shell in the container* runs any line with `sh -c` inside the service's container. Each line runs on its own (no state between lines), on this machine or over SSH; credentials are hidden in the output. When the image has no client (Dragonfly, NATS, ElasticMQ, RustFS, Memcached), a small helper container joins the service's private network for that command. Servers have the same **Shell** under *Servers*.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0153",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-shell"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-shell.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#console-and-terminal"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#console-and-terminal]\n*Shell in the container* runs any line with `sh -c` inside the service's container. Each line runs on its own (no state between lines), on this machine or over SSH; credentials are hidden in the output. When the image has no client (Dragonfly, NATS, ElasticMQ, RustFS, Memcached), a small helper container joins the service's private network for that command. Servers have the same **Shell** under *Servers*.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0154",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-shell"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-shell.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#console-and-terminal"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#console-and-terminal]\n*Shell in the container* runs any line with `sh -c` inside the service's container. Each line runs on its own (no state between lines), on this machine or over SSH; credentials are hidden in the output. When the image has no client (Dragonfly, NATS, ElasticMQ, RustFS, Memcached), a small helper container joins the service's private network for that command. Servers have the same **Shell** under *Servers*.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0155",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-shell"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-shell.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#console-and-terminal"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0156",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-shell"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-shell.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#console-and-terminal"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#console-and-terminal]\n*Shell in the container* runs any line with `sh -c` inside the service's container. Each line runs on its own (no state between lines), on this machine or over SSH; credentials are hidden in the output. When the image has no client (Dragonfly, NATS, ElasticMQ, RustFS, Memcached), a small helper container joins the service's private network for that command. Servers have the same **Shell** under *Servers*.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0157",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-shell"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-shell.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#console-and-terminal"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#console-and-terminal]\n*Shell in the container* runs any line with `sh -c` inside the service's container. Each line runs on its own (no state between lines), on this machine or over SSH; credentials are hidden in the output. When the image has no client (Dragonfly, NATS, ElasticMQ, RustFS, Memcached), a small helper container joins the service's private network for that command. Servers have the same **Shell** under *Servers*.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0158",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-shell"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-shell.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#console-and-terminal"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#console-and-terminal]\n*Shell in the container* runs any line with `sh -c` inside the service's container. Each line runs on its own (no state between lines), on this machine or over SSH; credentials are hidden in the output. When the image has no client (Dragonfly, NATS, ElasticMQ, RustFS, Memcached), a small helper container joins the service's private network for that command. Servers have the same **Shell** under *Servers*.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0159",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-shell"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-shell.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#console-and-terminal"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#console-and-terminal]\n*Shell in the container* runs any line with `sh -c` inside the service's container. Each line runs on its own (no state between lines), on this machine or over SSH; credentials are hidden in the output. When the image has no client (Dragonfly, NATS, ElasticMQ, RustFS, Memcached), a small helper container joins the service's private network for that command. Servers have the same **Shell** under *Servers*.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0160",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-shell"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-shell.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#console-and-terminal"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#console-and-terminal]\n*Shell in the container* runs any line with `sh -c` inside the service's container. Each line runs on its own (no state between lines), on this machine or over SSH; credentials are hidden in the output. When the image has no client (Dragonfly, NATS, ElasticMQ, RustFS, Memcached), a small helper container joins the service's private network for that command. Servers have the same **Shell** under *Servers*.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ }
+]

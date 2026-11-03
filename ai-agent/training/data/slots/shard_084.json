@@ -1,0 +1,762 @@
+[
+ {
+  "id": "k_scale_0261",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0262",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0263",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0264",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0265",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0266",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0267",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0268",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0269",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0270",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0271",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0272",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0273",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0274",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0275",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0276",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0277",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0278",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0279",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0280",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0281",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0282",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0283",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0284",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0285",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0286",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0287",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0288",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0289",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0290",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0291",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0292",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0293",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0294",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0295",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0296",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0297",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0298",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0299",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0300",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-lb-routes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ }
+]

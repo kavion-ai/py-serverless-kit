@@ -1,0 +1,770 @@
+[
+ {
+  "id": "k_proc_0321",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-trigger"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-trigger.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#pskit-invoke-and-pskit-workflow-run"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0322",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-trigger"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-trigger.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#pskit-invoke-and-pskit-workflow-run"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0323",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-trigger"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-trigger.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#pskit-invoke-and-pskit-workflow-run"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0324",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-trigger"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-trigger.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/local-development.md#pskit-invoke-and-pskit-workflow-run"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0325",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-vscode.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0326",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-vscode.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0327",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-vscode.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0328",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-vscode.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0329",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-vscode.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0330",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-vscode.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0331",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-vscode.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0332",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-vscode.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0333",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-vscode.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0334",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-web-ui"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-web-ui.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#web-uis"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0335",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-web-ui"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-web-ui.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#web-uis"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#web-uis]\nServices with a built-in UI (RabbitMQ, LavinMQ, MinIO, RustFS, ElasticMQ, NATS monitoring, Mailpit, pskit's S3 and Secrets Manager servers) show its URL and login in *How to use* and *Details*. For the others pskit starts a **companion** UI next to the service, on a private Docker network with it, listening on the same interface as the service: A second UI of the same kind on one server takes the next free port (8083, 8084, ...); *Details* shows the real one.",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0336",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-web-ui"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-web-ui.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#web-uis"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#web-uis]\nServices with a built-in UI (RabbitMQ, LavinMQ, MinIO, RustFS, ElasticMQ, NATS monitoring, Mailpit, pskit's S3 and Secrets Manager servers) show its URL and login in *How to use* and *Details*. For the others pskit starts a **companion** UI next to the service, on a private Docker network with it, listening on the same interface as the service: A second UI of the same kind on one server takes the next free port (8083, 8084, ...); *Details* shows the real one.",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0337",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-web-ui"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-web-ui.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#web-uis"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#web-uis]\nServices with a built-in UI (RabbitMQ, LavinMQ, MinIO, RustFS, ElasticMQ, NATS monitoring, Mailpit, pskit's S3 and Secrets Manager servers) show its URL and login in *How to use* and *Details*. For the others pskit starts a **companion** UI next to the service, on a private Docker network with it, listening on the same interface as the service: A second UI of the same kind on one server takes the next free port (8083, 8084, ...); *Details* shows the real one.",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0338",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-web-ui"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-web-ui.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#web-uis"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#web-uis]\nServices with a built-in UI (RabbitMQ, LavinMQ, MinIO, RustFS, ElasticMQ, NATS monitoring, Mailpit, pskit's S3 and Secrets Manager servers) show its URL and login in *How to use* and *Details*. For the others pskit starts a **companion** UI next to the service, on a private Docker network with it, listening on the same interface as the service: A second UI of the same kind on one server takes the next free port (8083, 8084, ...); *Details* shows the real one.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0339",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-web-ui"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-web-ui.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#web-uis"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#web-uis]\nServices with a built-in UI (RabbitMQ, LavinMQ, MinIO, RustFS, ElasticMQ, NATS monitoring, Mailpit, pskit's S3 and Secrets Manager servers) show its URL and login in *How to use* and *Details*. For the others pskit starts a **companion** UI next to the service, on a private Docker network with it, listening on the same interface as the service: A second UI of the same kind on one server takes the next free port (8083, 8084, ...); *Details* shows the real one.",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0340",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-web-ui"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-web-ui.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#web-uis"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0341",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-web-ui"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-web-ui.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#web-uis"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#web-uis]\nServices with a built-in UI (RabbitMQ, LavinMQ, MinIO, RustFS, ElasticMQ, NATS monitoring, Mailpit, pskit's S3 and Secrets Manager servers) show its URL and login in *How to use* and *Details*. For the others pskit starts a **companion** UI next to the service, on a private Docker network with it, listening on the same interface as the service: A second UI of the same kind on one server takes the next free port (8083, 8084, ...); *Details* shows the real one.",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0342",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-web-ui"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-web-ui.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#web-uis"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#web-uis]\nServices with a built-in UI (RabbitMQ, LavinMQ, MinIO, RustFS, ElasticMQ, NATS monitoring, Mailpit, pskit's S3 and Secrets Manager servers) show its URL and login in *How to use* and *Details*. For the others pskit starts a **companion** UI next to the service, on a private Docker network with it, listening on the same interface as the service: A second UI of the same kind on one server takes the next free port (8083, 8084, ...); *Details* shows the real one.",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0343",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-workflow"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-workflow.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/workflows.md#retry-and-catch",
+   "docs/workflows.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0344",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-workflow"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-workflow.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/workflows.md#retry-and-catch",
+   "docs/workflows.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0345",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-workflow"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-workflow.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/workflows.md#retry-and-catch",
+   "docs/workflows.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0346",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-workflow"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-workflow.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/workflows.md#retry-and-catch",
+   "docs/workflows.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0347",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-workflow"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-workflow.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/workflows.md#retry-and-catch",
+   "docs/workflows.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0348",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-workflow"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-workflow.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/workflows.md#retry-and-catch",
+   "docs/workflows.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0349",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-workflow"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-workflow.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/workflows.md#retry-and-catch",
+   "docs/workflows.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0350",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-workflow"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-workflow.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/workflows.md#retry-and-catch",
+   "docs/workflows.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": true
+ },
+ {
+  "id": "k_trouble_0001",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-configuration"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-configuration.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#configuration"
+  ],
+  "excerpt": "[docs/troubleshooting.md#configuration]\n**`unresolved variables: env:FOO`** : Set the variable, or give a default: `${env:FOO, fallback}`. **`each event must be a single-key mapping`** : Write `- http: {path: /x}` and `- queue: jobs` as separate list items, not two keys in one item. **`route GET /x is used by both 'a' and 'b'`** : Each `METHOD /path` may belong to one function only (`/x` and `/x/` count as the same path).",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0002",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-configuration"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-configuration.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#configuration"
+  ],
+  "excerpt": "[docs/troubleshooting.md#configuration]\n**`unresolved variables: env:FOO`** : Set the variable, or give a default: `${env:FOO, fallback}`. **`each event must be a single-key mapping`** : Write `- http: {path: /x}` and `- queue: jobs` as separate list items, not two keys in one item. **`route GET /x is used by both 'a' and 'b'`** : Each `METHOD /path` may belong to one function only (`/x` and `/x/` count as the same path).",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0003",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-configuration"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-configuration.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#configuration"
+  ],
+  "excerpt": "[docs/troubleshooting.md#configuration]\n**`unresolved variables: env:FOO`** : Set the variable, or give a default: `${env:FOO, fallback}`. **`each event must be a single-key mapping`** : Write `- http: {path: /x}` and `- queue: jobs` as separate list items, not two keys in one item. **`route GET /x is used by both 'a' and 'b'`** : Each `METHOD /path` may belong to one function only (`/x` and `/x/` count as the same path).",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0004",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-configuration"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-configuration.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#configuration"
+  ],
+  "excerpt": "[docs/troubleshooting.md#configuration]\n**`unresolved variables: env:FOO`** : Set the variable, or give a default: `${env:FOO, fallback}`. **`each event must be a single-key mapping`** : Write `- http: {path: /x}` and `- queue: jobs` as separate list items, not two keys in one item. **`route GET /x is used by both 'a' and 'b'`** : Each `METHOD /path` may belong to one function only (`/x` and `/x/` count as the same path).",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0005",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-configuration"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-configuration.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#configuration"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0006",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-configuration"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-configuration.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#configuration"
+  ],
+  "excerpt": "[docs/troubleshooting.md#configuration]\n**`unresolved variables: env:FOO`** : Set the variable, or give a default: `${env:FOO, fallback}`. **`each event must be a single-key mapping`** : Write `- http: {path: /x}` and `- queue: jobs` as separate list items, not two keys in one item. **`route GET /x is used by both 'a' and 'b'`** : Each `METHOD /path` may belong to one function only (`/x` and `/x/` count as the same path).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0007",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-configuration"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-configuration.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#configuration"
+  ],
+  "excerpt": "[docs/troubleshooting.md#configuration]\n**`unresolved variables: env:FOO`** : Set the variable, or give a default: `${env:FOO, fallback}`. **`each event must be a single-key mapping`** : Write `- http: {path: /x}` and `- queue: jobs` as separate list items, not two keys in one item. **`route GET /x is used by both 'a' and 'b'`** : Each `METHOD /path` may belong to one function only (`/x` and `/x/` count as the same path).",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0008",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-configuration"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-configuration.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#configuration"
+  ],
+  "excerpt": "[docs/troubleshooting.md#configuration]\n**`unresolved variables: env:FOO`** : Set the variable, or give a default: `${env:FOO, fallback}`. **`each event must be a single-key mapping`** : Write `- http: {path: /x}` and `- queue: jobs` as separate list items, not two keys in one item. **`route GET /x is used by both 'a' and 'b'`** : Each `METHOD /path` may belong to one function only (`/x` and `/x/` count as the same path).",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0009",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-configuration"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-configuration.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#configuration"
+  ],
+  "excerpt": "[docs/troubleshooting.md#configuration]\n**`unresolved variables: env:FOO`** : Set the variable, or give a default: `${env:FOO, fallback}`. **`each event must be a single-key mapping`** : Write `- http: {path: /x}` and `- queue: jobs` as separate list items, not two keys in one item. **`route GET /x is used by both 'a' and 'b'`** : Each `METHOD /path` may belong to one function only (`/x` and `/x/` count as the same path).",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0010",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-configuration"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-configuration.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#configuration"
+  ],
+  "excerpt": "[docs/troubleshooting.md#configuration]\n**`unresolved variables: env:FOO`** : Set the variable, or give a default: `${env:FOO, fallback}`. **`each event must be a single-key mapping`** : Write `- http: {path: /x}` and `- queue: jobs` as separate list items, not two keys in one item. **`route GET /x is used by both 'a' and 'b'`** : Each `METHOD /path` may belong to one function only (`/x` and `/x/` count as the same path).",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ }
+]

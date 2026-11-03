@@ -1,0 +1,762 @@
+[
+ {
+  "id": "k_cmd_0441",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-remove.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0442",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-remove.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0443",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-remove.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0444",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-remove.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0445",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-remove.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0446",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-remove.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0447",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-remove.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0448",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-remove.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0449",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-remove.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0450",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-remove.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0451",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-remove.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0452",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-routes.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0453",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-routes.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0454",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-routes.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0455",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-routes.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0456",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-routes.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0457",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-routes.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0458",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-routes.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0459",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-routes.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0460",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-routes.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0461",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-routes.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0462",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-routes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-routes.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0463",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-routes-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-routes-remove.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0464",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-routes-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-routes-remove.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0465",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-routes-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-routes-remove.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0466",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-routes-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-routes-remove.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0467",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-routes-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-routes-remove.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0468",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-routes-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-routes-remove.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0469",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-routes-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-routes-remove.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0470",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-routes-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-routes-remove.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0471",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-routes-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-routes-remove.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0472",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-routes-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-routes-remove.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0473",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-routes-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-routes-remove.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0474",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-status"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-status.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0475",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-status"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-status.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0476",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-status"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-status.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0477",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-status"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-status.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0478",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-status"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-status.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0479",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-status"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-status.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0480",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-status"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-status.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ }
+]

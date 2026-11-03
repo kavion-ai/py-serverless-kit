@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+CLAUDE.md
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.pypirc
+# py-serverless-kit working dirs (local terraform state, artifacts)
+.pskit/
+.terraform/
+*.tfstate
+*.tfstate.*
+node_modules/
+# Dashboard + studio UI (source in dashboard-ui/, build output is dashboard/template.html and studio/studio.html)
+dashboard-ui/node_modules/
+dashboard-ui/dist/
+dashboard-ui/dist-studio/
+
+# Secrets
+.env
+.pypirc
+
+# Editors / OS
+.idea/
+.vscode/
+.DS_Store

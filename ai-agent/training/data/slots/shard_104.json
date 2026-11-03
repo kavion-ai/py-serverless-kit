@@ -1,0 +1,763 @@
+[
+ {
+  "id": "k_proc_0161",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-one-click"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-one-click.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#from-the-command-line"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0162",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-one-click"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-one-click.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#from-the-command-line"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0163",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-openbao"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-openbao.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/secrets.md#secret-managers-on-premises]\nKeep API keys, database passwords and certificates in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0164",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-openbao"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-openbao.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/secrets.md#secret-managers-on-premises]\nKeep API keys, database passwords and certificates in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0165",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-openbao"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-openbao.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0166",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-openbao"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-openbao.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/secrets.md#secret-managers-on-premises]\nKeep API keys, database passwords and certificates in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0167",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-openbao"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-openbao.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/secrets.md#secret-managers-on-premises]\nKeep API keys, database passwords and certificates in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0168",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-openbao"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-openbao.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/secrets.md#secret-managers-on-premises]\nKeep API keys, database passwords and certificates in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0169",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-openbao"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-openbao.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/secrets.md#secret-managers-on-premises]\nKeep API keys, database passwords and certificates in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0170",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-openbao"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-openbao.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/secrets.md#secret-managers-on-premises]\nKeep API keys, database passwords and certificates in a secret manager instead of files, and read them from handlers with **one call that works on every provider**: No extra library: the calls are part of the pskit runtime (Python standard library, Node.js built-ins). Values are cached for 60 seconds per function instance.",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0171",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-openbao"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-openbao.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/secrets.md#secret-managers-on-premises"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0172",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-overrides"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-overrides.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#precedence-later-wins"
+  ],
+  "excerpt": "[docs/configuration.md#precedence-later-wins]\nSo a child file's explicit values beat its parent's per-provider overrides. 2. `stages.<active stage>` (merged across all files; the child wins). 3. `stages.<active stage>.providers.<active provider>`, when that stage must differ for one target (for example a cloud state backend on `prod` and local state for `onprem`). 4. CLI flags: `--provider`, `--stage`, `--region`.",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0173",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-overrides"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-overrides.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#precedence-later-wins"
+  ],
+  "excerpt": "[docs/configuration.md#precedence-later-wins]\nSo a child file's explicit values beat its parent's per-provider overrides. 2. `stages.<active stage>` (merged across all files; the child wins). 3. `stages.<active stage>.providers.<active provider>`, when that stage must differ for one target (for example a cloud state backend on `prod` and local state for `onprem`). 4. CLI flags: `--provider`, `--stage`, `--region`.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0174",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-overrides"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-overrides.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#precedence-later-wins"
+  ],
+  "excerpt": "[docs/configuration.md#precedence-later-wins]\nSo a child file's explicit values beat its parent's per-provider overrides. 2. `stages.<active stage>` (merged across all files; the child wins). 3. `stages.<active stage>.providers.<active provider>`, when that stage must differ for one target (for example a cloud state backend on `prod` and local state for `onprem`). 4. CLI flags: `--provider`, `--stage`, `--region`.",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0175",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-overrides"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-overrides.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#precedence-later-wins"
+  ],
+  "excerpt": "[docs/configuration.md#precedence-later-wins]\nSo a child file's explicit values beat its parent's per-provider overrides. 2. `stages.<active stage>` (merged across all files; the child wins). 3. `stages.<active stage>.providers.<active provider>`, when that stage must differ for one target (for example a cloud state backend on `prod` and local state for `onprem`). 4. CLI flags: `--provider`, `--stage`, `--region`.",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0176",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-overrides"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-overrides.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#precedence-later-wins"
+  ],
+  "excerpt": "[docs/configuration.md#precedence-later-wins]\nSo a child file's explicit values beat its parent's per-provider overrides. 2. `stages.<active stage>` (merged across all files; the child wins). 3. `stages.<active stage>.providers.<active provider>`, when that stage must differ for one target (for example a cloud state backend on `prod` and local state for `onprem`). 4. CLI flags: `--provider`, `--stage`, `--region`.",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0177",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-overrides"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-overrides.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#precedence-later-wins"
+  ],
+  "excerpt": "[docs/configuration.md#precedence-later-wins]\nSo a child file's explicit values beat its parent's per-provider overrides. 2. `stages.<active stage>` (merged across all files; the child wins). 3. `stages.<active stage>.providers.<active provider>`, when that stage must differ for one target (for example a cloud state backend on `prod` and local state for `onprem`). 4. CLI flags: `--provider`, `--stage`, `--region`.",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0178",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-overrides"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-overrides.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#precedence-later-wins"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0179",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-overrides"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-overrides.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#precedence-later-wins"
+  ],
+  "excerpt": "[docs/configuration.md#precedence-later-wins]\nSo a child file's explicit values beat its parent's per-provider overrides. 2. `stages.<active stage>` (merged across all files; the child wins). 3. `stages.<active stage>.providers.<active provider>`, when that stage must differ for one target (for example a cloud state backend on `prod` and local state for `onprem`). 4. CLI flags: `--provider`, `--stage`, `--region`.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0180",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-overrides"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-overrides.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#precedence-later-wins"
+  ],
+  "excerpt": "[docs/configuration.md#precedence-later-wins]\nSo a child file's explicit values beat its parent's per-provider overrides. 2. `stages.<active stage>` (merged across all files; the child wins). 3. `stages.<active stage>.providers.<active provider>`, when that stage must differ for one target (for example a cloud state backend on `prod` and local state for `onprem`). 4. CLI flags: `--provider`, `--stage`, `--region`.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0181",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-queue-dlq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-queue-dlq.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0182",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-queue-dlq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-queue-dlq.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0183",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-queue-dlq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-queue-dlq.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0184",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-queue-dlq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-queue-dlq.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#queue",
+   "docs/handlers.md#batchresult"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0185",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-queue-dlq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-queue-dlq.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0186",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-queue-dlq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-queue-dlq.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0187",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-queue-dlq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-queue-dlq.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0188",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-queue-dlq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-queue-dlq.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0189",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-queue-dlq"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-queue-dlq.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#queue"
+  ],
+  "excerpt": "[docs/events.md#queue]\nOn premises the same options are implemented by a file broker (`batch_size`, `batch_window`, visibility, dead-letter, `max_receive`, `fifo`). `BatchResult` retries only the failed message ids, as on AWS. Set `provider.options.services.queue` to `builtin` (created at start) or `{use: directory, path: ...}`. `existing: true` waits for that directory. Example: [`examples/04-queue-worker`](../examples/04-queue-worker) and [`examples/16-on-premises`](../examples/16-on-premises).",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0190",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-remove.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0191",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-remove.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0192",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-remove.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0193",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-remove.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0194",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-remove.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0195",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-remove.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0196",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-remove.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0197",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-remove.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0198",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-remove"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-remove.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/studio.md#project-environment-trigger-resources-and-remove"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0199",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-replica-change"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-replica-change.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0200",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-replica-change"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-replica-change.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": true
+ }
+]

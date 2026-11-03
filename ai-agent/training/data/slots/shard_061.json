@@ -1,0 +1,762 @@
+[
+ {
+  "id": "k_onprem_0041",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-database-single"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-database-single.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0042",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-database-single"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-database-single.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0043",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-database-single"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-database-single.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0044",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-database-single"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-database-single.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0045",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-database-single"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-database-single.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0046",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-database-single"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-database-single.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0047",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-database-single"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-database-single.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0048",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-database-single"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-database-single.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0049",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-database-single"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-database-single.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0050",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-database-single"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-database-single.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0051",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-docker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-docker.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0052",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-docker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-docker.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0053",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-docker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-docker.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0054",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-docker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-docker.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0055",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-docker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-docker.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0056",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-docker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-docker.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0057",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-docker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-docker.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0058",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-docker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-docker.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0059",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-docker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-docker.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0060",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-docker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-docker.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0061",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-local.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0062",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-local.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0063",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-local.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0064",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-local.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0065",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-local.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0066",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-local.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0067",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-local.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0068",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-local.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0069",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-local.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0070",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-local.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0071",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-ssh"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-ssh.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0072",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-ssh"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-ssh.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0073",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-ssh"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-ssh.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0074",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-ssh"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-ssh.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0075",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-ssh"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-ssh.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0076",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-ssh"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-ssh.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0077",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-ssh"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-ssh.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0078",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-ssh"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-ssh.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0079",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-ssh"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-ssh.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "[docs/providers.md#onprem-on-premises]\nA queue, bucket or topic can live in a service you already run: declare it under [`resources:`](resources.md) with `options.driver`. Queues take `directory` or `redis`, storage takes `directory` or `s3` (MinIO and other S3-compatible stores), and topics take `directory`. `pskit dashboard --serve` shows the host's health, stats, logs and workflow executions.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0080",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-deploy-ssh"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-deploy-ssh.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/providers.md#onprem-on-premises"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ }
+]

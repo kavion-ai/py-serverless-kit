@@ -1,0 +1,786 @@
+[
+ {
+  "id": "k_res_0021",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-database.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/database.md#alibaba-cloud-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0022",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-database.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/database.md#alibaba-cloud-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0023",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-database.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/database.md#alibaba-cloud-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0024",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-database.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/database.md#alibaba-cloud-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0025",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/queue.md#alibaba-cloud-smq-mns-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0026",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/alibaba/queue.md#alibaba-cloud-smq-mns-queue-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/alibaba/queue.md#alibaba-cloud-smq-mns-queue-type-queue]\n> **No queue trigger on Alibaba Cloud.** pskit's Alibaba provider has no `queue` event: `pskit validate` rejects > `- queue: ...` there. Declare the queue as an external resource and send / receive with the MNS SDK, for example > from a `schedule` function that drains it. Need push delivery? Publish to an MNS **topic** instead and use a > [topic trigger](topic.md).",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0027",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/alibaba/queue.md#alibaba-cloud-smq-mns-queue-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/alibaba/queue.md#alibaba-cloud-smq-mns-queue-type-queue]\n> **No queue trigger on Alibaba Cloud.** pskit's Alibaba provider has no `queue` event: `pskit validate` rejects > `- queue: ...` there. Declare the queue as an external resource and send / receive with the MNS SDK, for example > from a `schedule` function that drains it. Need push delivery? Publish to an MNS **topic** instead and use a > [topic trigger](topic.md).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0028",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/alibaba/queue.md#alibaba-cloud-smq-mns-queue-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/alibaba/queue.md#alibaba-cloud-smq-mns-queue-type-queue]\n> **No queue trigger on Alibaba Cloud.** pskit's Alibaba provider has no `queue` event: `pskit validate` rejects > `- queue: ...` there. Declare the queue as an external resource and send / receive with the MNS SDK, for example > from a `schedule` function that drains it. Need push delivery? Publish to an MNS **topic** instead and use a > [topic trigger](topic.md).",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0029",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/alibaba/queue.md#alibaba-cloud-smq-mns-queue-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/alibaba/queue.md#alibaba-cloud-smq-mns-queue-type-queue]\n> **No queue trigger on Alibaba Cloud.** pskit's Alibaba provider has no `queue` event: `pskit validate` rejects > `- queue: ...` there. Declare the queue as an external resource and send / receive with the MNS SDK, for example > from a `schedule` function that drains it. Need push delivery? Publish to an MNS **topic** instead and use a > [topic trigger](topic.md).",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0030",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/alibaba/queue.md#alibaba-cloud-smq-mns-queue-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/alibaba/queue.md#alibaba-cloud-smq-mns-queue-type-queue]\n> **No queue trigger on Alibaba Cloud.** pskit's Alibaba provider has no `queue` event: `pskit validate` rejects > `- queue: ...` there. Declare the queue as an external resource and send / receive with the MNS SDK, for example > from a `schedule` function that drains it. Need push delivery? Publish to an MNS **topic** instead and use a > [topic trigger](topic.md).",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0031",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/queue.md#alibaba-cloud-smq-mns-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0032",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/alibaba/queue.md#alibaba-cloud-smq-mns-queue-type-queue"
+  ],
+  "excerpt": "[docs/resource-guides/alibaba/queue.md#alibaba-cloud-smq-mns-queue-type-queue]\n> **No queue trigger on Alibaba Cloud.** pskit's Alibaba provider has no `queue` event: `pskit validate` rejects > `- queue: ...` there. Declare the queue as an external resource and send / receive with the MNS SDK, for example > from a `schedule` function that drains it. Need push delivery? Publish to an MNS **topic** instead and use a > [topic trigger](topic.md).",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0033",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/storage.md#alibaba-cloud-oss-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0034",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/storage.md#alibaba-cloud-oss-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0035",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/storage.md#alibaba-cloud-oss-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0036",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/storage.md#alibaba-cloud-oss-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0037",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/storage.md#alibaba-cloud-oss-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0038",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/storage.md#alibaba-cloud-oss-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0039",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/storage.md#alibaba-cloud-oss-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0040",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/storage.md#alibaba-cloud-oss-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0041",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/topic.md#alibaba-cloud-smq-mns-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0042",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/topic.md#alibaba-cloud-smq-mns-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0043",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/topic.md#alibaba-cloud-smq-mns-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0044",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/topic.md#alibaba-cloud-smq-mns-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0045",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/topic.md#alibaba-cloud-smq-mns-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0046",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-topic.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/topic.md#alibaba-cloud-smq-mns-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0047",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-topic.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/topic.md#alibaba-cloud-smq-mns-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0048",
+  "category": "k_res",
+  "card_ids": [
+   "res-alibaba-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-alibaba-topic.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/alibaba/topic.md#alibaba-cloud-smq-mns-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0049",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-cache.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/cache.md#amazon-elasticache-memorydb-type-cache"
+  ],
+  "excerpt": "[docs/resource-guides/aws/cache.md#amazon-elasticache-memorydb-type-cache]\nRedis OSS or Valkey on ElastiCache (serverless or node-based) or MemoryDB. pskit never creates caches: declare them with `external: true`. ElastiCache and MemoryDB are **only reachable from inside their VPC**. pskit deploys Lambda functions outside any VPC unless you set `functions.<fn>.options.vpc_config`, so a function that uses the cache needs it (see step 3).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0050",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-cache.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/cache.md#amazon-elasticache-memorydb-type-cache"
+  ],
+  "excerpt": "[docs/resource-guides/aws/cache.md#amazon-elasticache-memorydb-type-cache]\nRedis OSS or Valkey on ElastiCache (serverless or node-based) or MemoryDB. pskit never creates caches: declare them with `external: true`. ElastiCache and MemoryDB are **only reachable from inside their VPC**. pskit deploys Lambda functions outside any VPC unless you set `functions.<fn>.options.vpc_config`, so a function that uses the cache needs it (see step 3).",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0051",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-cache.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/cache.md#amazon-elasticache-memorydb-type-cache"
+  ],
+  "excerpt": "[docs/resource-guides/aws/cache.md#amazon-elasticache-memorydb-type-cache]\nRedis OSS or Valkey on ElastiCache (serverless or node-based) or MemoryDB. pskit never creates caches: declare them with `external: true`. ElastiCache and MemoryDB are **only reachable from inside their VPC**. pskit deploys Lambda functions outside any VPC unless you set `functions.<fn>.options.vpc_config`, so a function that uses the cache needs it (see step 3).",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0052",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-cache.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/cache.md#amazon-elasticache-memorydb-type-cache"
+  ],
+  "excerpt": "[docs/resource-guides/aws/cache.md#amazon-elasticache-memorydb-type-cache]\nRedis OSS or Valkey on ElastiCache (serverless or node-based) or MemoryDB. pskit never creates caches: declare them with `external: true`. ElastiCache and MemoryDB are **only reachable from inside their VPC**. pskit deploys Lambda functions outside any VPC unless you set `functions.<fn>.options.vpc_config`, so a function that uses the cache needs it (see step 3).",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0053",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-cache.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/aws/cache.md#amazon-elasticache-memorydb-type-cache",
+   "docs/resource-guides/aws/cache.md#3-declare-it-in-pskityml"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0054",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-cache.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/cache.md#amazon-elasticache-memorydb-type-cache"
+  ],
+  "excerpt": "[docs/resource-guides/aws/cache.md#amazon-elasticache-memorydb-type-cache]\nRedis OSS or Valkey on ElastiCache (serverless or node-based) or MemoryDB. pskit never creates caches: declare them with `external: true`. ElastiCache and MemoryDB are **only reachable from inside their VPC**. pskit deploys Lambda functions outside any VPC unless you set `functions.<fn>.options.vpc_config`, so a function that uses the cache needs it (see step 3).",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0055",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-cache.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/cache.md#amazon-elasticache-memorydb-type-cache"
+  ],
+  "excerpt": "[docs/resource-guides/aws/cache.md#amazon-elasticache-memorydb-type-cache]\nRedis OSS or Valkey on ElastiCache (serverless or node-based) or MemoryDB. pskit never creates caches: declare them with `external: true`. ElastiCache and MemoryDB are **only reachable from inside their VPC**. pskit deploys Lambda functions outside any VPC unless you set `functions.<fn>.options.vpc_config`, so a function that uses the cache needs it (see step 3).",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0056",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-cache.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/cache.md#amazon-elasticache-memorydb-type-cache"
+  ],
+  "excerpt": "[docs/resource-guides/aws/cache.md#amazon-elasticache-memorydb-type-cache]\nRedis OSS or Valkey on ElastiCache (serverless or node-based) or MemoryDB. pskit never creates caches: declare them with `external: true`. ElastiCache and MemoryDB are **only reachable from inside their VPC**. pskit deploys Lambda functions outside any VPC unless you set `functions.<fn>.options.vpc_config`, so a function that uses the cache needs it (see step 3).",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0057",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/custom.md#other-aws-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/aws/custom.md#other-aws-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: DynamoDB, Secrets Manager, Kinesis, EventBridge, Bedrock, a third-party API. pskit only passes its details to your functions (`external: true` is required). pskit grants **no IAM permissions** for `custom` resources: add them under `provider.iam.statements`. Use `${tf:...}` only for resources you also define in `provider.terraform.extra`; for console-created ones, paste the ARN.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0058",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/custom.md#other-aws-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/aws/custom.md#other-aws-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: DynamoDB, Secrets Manager, Kinesis, EventBridge, Bedrock, a third-party API. pskit only passes its details to your functions (`external: true` is required). pskit grants **no IAM permissions** for `custom` resources: add them under `provider.iam.statements`. Use `${tf:...}` only for resources you also define in `provider.terraform.extra`; for console-created ones, paste the ARN.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0059",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-custom.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/aws/custom.md#other-aws-services-type-custom",
+   "docs/resource-guides/aws/custom.md#dynamodb"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0060",
+  "category": "k_res",
+  "card_ids": [
+   "res-aws-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-aws-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/aws/custom.md#other-aws-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/aws/custom.md#other-aws-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: DynamoDB, Secrets Manager, Kinesis, EventBridge, Bedrock, a third-party API. pskit only passes its details to your functions (`external: true` is required). pskit grants **no IAM permissions** for `custom` resources: add them under `provider.iam.statements`. Use `${tf:...}` only for resources you also define in `provider.terraform.extra`; for console-created ones, paste the ARN.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ }
+]

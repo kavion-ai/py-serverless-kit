@@ -1,0 +1,764 @@
+[
+ {
+  "id": "k_proc_0241",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-schedule"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-schedule.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#schedule"
+  ],
+  "excerpt": "[docs/events.md#schedule]\nThe handler gets `event.type == \"schedule\"` and `event.data == input`. pskit converts the portable syntax to each cloud's dialect: A rate that can't be expressed as cron on cron-only clouds (e.g. `7 minutes`) fails validation; use a divisor of 60 minutes or 24 hours. `timezone` is honoured by AWS, GCP and Alibaba (cron form); Azure ignores it with a warning.",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0242",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-schedule"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-schedule.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#schedule"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0243",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-schedule"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-schedule.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#schedule"
+  ],
+  "excerpt": "[docs/events.md#schedule]\nThe handler gets `event.type == \"schedule\"` and `event.data == input`. pskit converts the portable syntax to each cloud's dialect: A rate that can't be expressed as cron on cron-only clouds (e.g. `7 minutes`) fails validation; use a divisor of 60 minutes or 24 hours. `timezone` is honoured by AWS, GCP and Alibaba (cron form); Azure ignores it with a warning.",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0244",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-secrets-env"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-secrets-env.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#variables"
+  ],
+  "excerpt": "[docs/configuration.md#variables]\n- `${tf:<terraform expression>}` becomes a live Terraform reference, e.g. `${tf:aws_dynamodb_table.orders.arn}` in an IAM statement or environment value. Every other `${` in user values is escaped, so Terraform never interprets it. - Any other `${...}`, such as IAM policy variables like `${aws:username}`, stays literal.",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0245",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-secrets-env"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-secrets-env.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#variables"
+  ],
+  "excerpt": "[docs/configuration.md#variables]\n- `${tf:<terraform expression>}` becomes a live Terraform reference, e.g. `${tf:aws_dynamodb_table.orders.arn}` in an IAM statement or environment value. Every other `${` in user values is escaped, so Terraform never interprets it. - Any other `${...}`, such as IAM policy variables like `${aws:username}`, stays literal.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0246",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-secrets-env"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-secrets-env.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#variables"
+  ],
+  "excerpt": "[docs/configuration.md#variables]\n- `${tf:<terraform expression>}` becomes a live Terraform reference, e.g. `${tf:aws_dynamodb_table.orders.arn}` in an IAM statement or environment value. Every other `${` in user values is escaped, so Terraform never interprets it. - Any other `${...}`, such as IAM policy variables like `${aws:username}`, stays literal.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0247",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-secrets-env"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-secrets-env.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#variables"
+  ],
+  "excerpt": "[docs/configuration.md#variables]\n- `${tf:<terraform expression>}` becomes a live Terraform reference, e.g. `${tf:aws_dynamodb_table.orders.arn}` in an IAM statement or environment value. Every other `${` in user values is escaped, so Terraform never interprets it. - Any other `${...}`, such as IAM policy variables like `${aws:username}`, stays literal.",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0248",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-secrets-env"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-secrets-env.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#variables",
+   "docs/resources.md#secrets"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0249",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-secrets-env"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-secrets-env.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#variables"
+  ],
+  "excerpt": "[docs/configuration.md#variables]\n- `${tf:<terraform expression>}` becomes a live Terraform reference, e.g. `${tf:aws_dynamodb_table.orders.arn}` in an IAM statement or environment value. Every other `${` in user values is escaped, so Terraform never interprets it. - Any other `${...}`, such as IAM policy variables like `${aws:username}`, stays literal.",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0250",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-secrets-env"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-secrets-env.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#variables"
+  ],
+  "excerpt": "[docs/configuration.md#variables]\n- `${tf:<terraform expression>}` becomes a live Terraform reference, e.g. `${tf:aws_dynamodb_table.orders.arn}` in an IAM statement or environment value. Every other `${` in user values is escaped, so Terraform never interprets it. - Any other `${...}`, such as IAM policy variables like `${aws:username}`, stays literal.",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0251",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-secrets-env"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-secrets-env.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#variables"
+  ],
+  "excerpt": "[docs/configuration.md#variables]\n- `${tf:<terraform expression>}` becomes a live Terraform reference, e.g. `${tf:aws_dynamodb_table.orders.arn}` in an IAM statement or environment value. Every other `${` in user values is escaped, so Terraform never interprets it. - Any other `${...}`, such as IAM policy variables like `${aws:username}`, stays literal.",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0252",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-secrets-env"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-secrets-env.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/configuration.md#variables"
+  ],
+  "excerpt": "[docs/configuration.md#variables]\n- `${tf:<terraform expression>}` becomes a live Terraform reference, e.g. `${tf:aws_dynamodb_table.orders.arn}` in an IAM statement or environment value. Every other `${` in user values is escaped, so Terraform never interprets it. - Any other `${...}`, such as IAM policy variables like `${aws:username}`, stays literal.",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0253",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-settings"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-settings.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#saving-what-changes-in-pskityml"
+  ],
+  "excerpt": "[docs/studio.md#saving-what-changes-in-pskityml]\n- Values keep their written form: `${env:API_KEY}`, `${self:custom.x}` and `${opt:...}` are saved as written, never resolved. - Comments are **not** kept, and key order follows the studio's layout. Before every save the previous file is copied to `.pskit/studio/backups/pskit.<timestamp>.yml` (the last 20 are kept). - If `pskit.yml` changed on disk since you loaded it (an editor, `git pull`), Save offers to reload, overwrite or cancel. - A file that uses `extends:` is shown with a notice: only the main file is edited. - A config that fails validation can still be saved, so you can stop half-way. The problems stay listed.",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0254",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-settings"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-settings.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#saving-what-changes-in-pskityml"
+  ],
+  "excerpt": "[docs/studio.md#saving-what-changes-in-pskityml]\n- Values keep their written form: `${env:API_KEY}`, `${self:custom.x}` and `${opt:...}` are saved as written, never resolved. - Comments are **not** kept, and key order follows the studio's layout. Before every save the previous file is copied to `.pskit/studio/backups/pskit.<timestamp>.yml` (the last 20 are kept). - If `pskit.yml` changed on disk since you loaded it (an editor, `git pull`), Save offers to reload, overwrite or cancel. - A file that uses `extends:` is shown with a notice: only the main file is edited. - A config that fails validation can still be saved, so you can stop half-way. The problems stay listed.",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0255",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-settings"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-settings.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/studio.md#saving-what-changes-in-pskityml"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0256",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-settings"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-settings.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#saving-what-changes-in-pskityml"
+  ],
+  "excerpt": "[docs/studio.md#saving-what-changes-in-pskityml]\n- Values keep their written form: `${env:API_KEY}`, `${self:custom.x}` and `${opt:...}` are saved as written, never resolved. - Comments are **not** kept, and key order follows the studio's layout. Before every save the previous file is copied to `.pskit/studio/backups/pskit.<timestamp>.yml` (the last 20 are kept). - If `pskit.yml` changed on disk since you loaded it (an editor, `git pull`), Save offers to reload, overwrite or cancel. - A file that uses `extends:` is shown with a notice: only the main file is edited. - A config that fails validation can still be saved, so you can stop half-way. The problems stay listed.",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0257",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-settings"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-settings.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#saving-what-changes-in-pskityml"
+  ],
+  "excerpt": "[docs/studio.md#saving-what-changes-in-pskityml]\n- Values keep their written form: `${env:API_KEY}`, `${self:custom.x}` and `${opt:...}` are saved as written, never resolved. - Comments are **not** kept, and key order follows the studio's layout. Before every save the previous file is copied to `.pskit/studio/backups/pskit.<timestamp>.yml` (the last 20 are kept). - If `pskit.yml` changed on disk since you loaded it (an editor, `git pull`), Save offers to reload, overwrite or cancel. - A file that uses `extends:` is shown with a notice: only the main file is edited. - A config that fails validation can still be saved, so you can stop half-way. The problems stay listed.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0258",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-settings"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-settings.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#saving-what-changes-in-pskityml"
+  ],
+  "excerpt": "[docs/studio.md#saving-what-changes-in-pskityml]\n- Values keep their written form: `${env:API_KEY}`, `${self:custom.x}` and `${opt:...}` are saved as written, never resolved. - Comments are **not** kept, and key order follows the studio's layout. Before every save the previous file is copied to `.pskit/studio/backups/pskit.<timestamp>.yml` (the last 20 are kept). - If `pskit.yml` changed on disk since you loaded it (an editor, `git pull`), Save offers to reload, overwrite or cancel. - A file that uses `extends:` is shown with a notice: only the main file is edited. - A config that fails validation can still be saved, so you can stop half-way. The problems stay listed.",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0259",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-settings"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-settings.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#saving-what-changes-in-pskityml"
+  ],
+  "excerpt": "[docs/studio.md#saving-what-changes-in-pskityml]\n- Values keep their written form: `${env:API_KEY}`, `${self:custom.x}` and `${opt:...}` are saved as written, never resolved. - Comments are **not** kept, and key order follows the studio's layout. Before every save the previous file is copied to `.pskit/studio/backups/pskit.<timestamp>.yml` (the last 20 are kept). - If `pskit.yml` changed on disk since you loaded it (an editor, `git pull`), Save offers to reload, overwrite or cancel. - A file that uses `extends:` is shown with a notice: only the main file is edited. - A config that fails validation can still be saved, so you can stop half-way. The problems stay listed.",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0260",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-settings"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-settings.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#saving-what-changes-in-pskityml"
+  ],
+  "excerpt": "[docs/studio.md#saving-what-changes-in-pskityml]\n- Values keep their written form: `${env:API_KEY}`, `${self:custom.x}` and `${opt:...}` are saved as written, never resolved. - Comments are **not** kept, and key order follows the studio's layout. Before every save the previous file is copied to `.pskit/studio/backups/pskit.<timestamp>.yml` (the last 20 are kept). - If `pskit.yml` changed on disk since you loaded it (an editor, `git pull`), Save offers to reload, overwrite or cancel. - A file that uses `extends:` is shown with a notice: only the main file is edited. - A config that fails validation can still be saved, so you can stop half-way. The problems stay listed.",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0261",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-settings"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-settings.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/studio.md#saving-what-changes-in-pskityml"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0262",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-smtp"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-smtp.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#create-it"
+  ],
+  "excerpt": "[docs/smtp/README.md#create-it]\nIn the studio: **Resources → + SMTP server**. Already receive mail on your root domain (Microsoft 365, Google Workspace)? Use a **subdomain** such as `inbound.example.com`. Changing the root domain's MX would stop every mailbox of the company from receiving mail. From the command line it is the same service: It adds this to `pskit.yml`: Deploy (`pskit deploy`) so the host knows the trigger.",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0263",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-smtp"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-smtp.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#create-it"
+  ],
+  "excerpt": "[docs/smtp/README.md#create-it]\nIn the studio: **Resources → + SMTP server**. Already receive mail on your root domain (Microsoft 365, Google Workspace)? Use a **subdomain** such as `inbound.example.com`. Changing the root domain's MX would stop every mailbox of the company from receiving mail. From the command line it is the same service: It adds this to `pskit.yml`: Deploy (`pskit deploy`) so the host knows the trigger.",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0264",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-smtp"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-smtp.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#create-it"
+  ],
+  "excerpt": "[docs/smtp/README.md#create-it]\nIn the studio: **Resources → + SMTP server**. Already receive mail on your root domain (Microsoft 365, Google Workspace)? Use a **subdomain** such as `inbound.example.com`. Changing the root domain's MX would stop every mailbox of the company from receiving mail. From the command line it is the same service: It adds this to `pskit.yml`: Deploy (`pskit deploy`) so the host knows the trigger.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0265",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-smtp"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-smtp.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#create-it"
+  ],
+  "excerpt": "[docs/smtp/README.md#create-it]\nIn the studio: **Resources → + SMTP server**. Already receive mail on your root domain (Microsoft 365, Google Workspace)? Use a **subdomain** such as `inbound.example.com`. Changing the root domain's MX would stop every mailbox of the company from receiving mail. From the command line it is the same service: It adds this to `pskit.yml`: Deploy (`pskit deploy`) so the host knows the trigger.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0266",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-smtp"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-smtp.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#create-it"
+  ],
+  "excerpt": "[docs/smtp/README.md#create-it]\nIn the studio: **Resources → + SMTP server**. Already receive mail on your root domain (Microsoft 365, Google Workspace)? Use a **subdomain** such as `inbound.example.com`. Changing the root domain's MX would stop every mailbox of the company from receiving mail. From the command line it is the same service: It adds this to `pskit.yml`: Deploy (`pskit deploy`) so the host knows the trigger.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0267",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-smtp"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-smtp.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/smtp/README.md#create-it",
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0268",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-smtp"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-smtp.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#create-it"
+  ],
+  "excerpt": "[docs/smtp/README.md#create-it]\nIn the studio: **Resources → + SMTP server**. Already receive mail on your root domain (Microsoft 365, Google Workspace)? Use a **subdomain** such as `inbound.example.com`. Changing the root domain's MX would stop every mailbox of the company from receiving mail. From the command line it is the same service: It adds this to `pskit.yml`: Deploy (`pskit deploy`) so the host knows the trigger.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0269",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-smtp"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-smtp.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#create-it"
+  ],
+  "excerpt": "[docs/smtp/README.md#create-it]\nIn the studio: **Resources → + SMTP server**. Already receive mail on your root domain (Microsoft 365, Google Workspace)? Use a **subdomain** such as `inbound.example.com`. Changing the root domain's MX would stop every mailbox of the company from receiving mail. From the command line it is the same service: It adds this to `pskit.yml`: Deploy (`pskit deploy`) so the host knows the trigger.",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0270",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-smtp"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-smtp.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#create-it"
+  ],
+  "excerpt": "[docs/smtp/README.md#create-it]\nIn the studio: **Resources → + SMTP server**. Already receive mail on your root domain (Microsoft 365, Google Workspace)? Use a **subdomain** such as `inbound.example.com`. Changing the root domain's MX would stop every mailbox of the company from receiving mail. From the command line it is the same service: It adds this to `pskit.yml`: Deploy (`pskit deploy`) so the host knows the trigger.",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0271",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-storage.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#storage"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0272",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-storage.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#storage"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0273",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-storage.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#storage"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0274",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-storage.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#storage"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0275",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-storage.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#storage"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0276",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#storage"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0277",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#storage"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0278",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#storage"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0279",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#storage"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0280",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-studio-docker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-studio-docker.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": true
+ }
+]

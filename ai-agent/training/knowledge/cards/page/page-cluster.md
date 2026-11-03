@@ -1,0 +1,13 @@
+# Studio: Scaling cluster
+
+How to open: Left navigation label Scaling cluster.
+
+What it is for: The page subtitle says functions can run on several servers with Docker Swarm, Kubernetes (k3s) or HashiCorp Nomad. You pick a master, join more servers, and watch CPU, memory and disk. Without a cluster, functions run on one server as before. docs/studio.md says the switch "Deploy this project's functions to …" writes `provider.options.cluster`.
+
+What you see: The action + New cluster. If the top-bar provider is not onprem, a warning says clusters run on-prem functions and points at Overview to switch the provider to onprem. An empty state titled "No cluster yet" has three steps: save servers (Resources, On-prem services, Servers, or Add a server), + New cluster to choose the orchestrator and the master (pskit installs it over SSH), then Use for this project, set replicas, and deploy. When a cluster exists, the toolbar has Refresh (Checking… while loading), Check & alert, and Forget. Check & alert's title is "Check now and send the alert if every server is full". The servers area has + Join server. Workload rows have Scale. The scale control's title says "Until the next deploy; keep it in Web replicas above".
+
+What you can do: + New cluster opens a drawer titled "New scaling cluster" and the studio calls `create_cluster` (the same function as `pskit cluster create`). + Join server starts the join action (`pskit cluster join`). Scale starts the scale action (`pskit cluster scale`). Check & alert posts to the cluster check endpoint, which calls `check` with the default `alert=True`. That is the same default as `pskit cluster check`. Forget asks "Forget cluster <name>?" with confirm label Forget, and the body says pskit stops managing it and leaves the servers as they are. That job calls `remove_cluster` without uninstall, which is `pskit cluster remove` without `--uninstall`. The dialog says uninstall is Remove on the master's row. That path passes uninstall, which is `pskit cluster remove --uninstall`. The page text says a server is full at the cluster capacity percentages for CPU, memory and disk.
+
+Tips and limits: This page does not deploy the functions by itself. The empty-state steps say to deploy after Use for this project. Join is allowed while functions run, which the subtitle states. The further guide is docs/cluster.md, linked from docs/studio.md.
+
+Sources: `dashboard-ui/src/studio/views/Cluster.tsx`, `src/py_serverless_kit/studio/server.py`, `src/py_serverless_kit/cli/main.py`, `src/py_serverless_kit/core/onprem_cluster.py`, `docs/studio.md#what-you-can-do`, `docs/cluster.md`

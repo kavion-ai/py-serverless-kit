@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "paths": {
+      "pskit": ["./.pskit/types/pskit/index.d.ts"]
+    }
+  },
+  "include": ["src/**/*.ts"]
+}

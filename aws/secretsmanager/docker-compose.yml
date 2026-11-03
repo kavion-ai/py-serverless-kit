@@ -1,0 +1,27 @@
+# Run one of the two servers (they are interchangeable and read the same data file):
+#   SM_SECRET_ACCESS_KEY=change-me-please docker compose up -d secretsmanager-python
+#   SM_SECRET_ACCESS_KEY=change-me-please docker compose up -d secretsmanager-nodejs
+# Console: http://127.0.0.1:4584/ui/  (access key ID pskit, the secret key as password)
+x-common: &common
+  restart: unless-stopped
+  environment:
+    SM_ACCESS_KEY_ID: ${SM_ACCESS_KEY_ID:-pskit}
+    SM_SECRET_ACCESS_KEY: ${SM_SECRET_ACCESS_KEY:?set SM_SECRET_ACCESS_KEY}
+    SM_REGION: ${SM_REGION:-us-east-1}
+  ports:
+    - "127.0.0.1:4584:4584"
+  volumes:
+    - secretsmanager-data:/data
+
+services:
+  secretsmanager-python:
+    <<: *common
+    build: {context: ., dockerfile: python/Dockerfile}
+    image: pskit/secretsmanager:python
+  secretsmanager-nodejs:
+    <<: *common
+    build: {context: ., dockerfile: nodejs/Dockerfile}
+    image: pskit/secretsmanager:nodejs
+
+volumes:
+  secretsmanager-data:

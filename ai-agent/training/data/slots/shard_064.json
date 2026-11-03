@@ -1,0 +1,765 @@
+[
+ {
+  "id": "k_onprem_0161",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0162",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0163",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0164",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0165",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0166",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0167",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0168",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0169",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0170",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-smtp-dns.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0171",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-ssh-key"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-ssh-key.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#ssh-login-key-agent-or-password"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#ssh-login-key-agent-or-password]\nPassword logins go through **sshpass**, so the password never appears on a command line or in the state. Install it on the machine that runs pskit: `sudo apt install sshpass`, `sudo dnf install sshpass`, or `brew install hudochenkov/sshpass/sshpass`. The server must allow `PasswordAuthentication` (many cloud images allow keys only).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0172",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-ssh-key"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-ssh-key.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#ssh-login-key-agent-or-password"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#ssh-login-key-agent-or-password]\nPassword logins go through **sshpass**, so the password never appears on a command line or in the state. Install it on the machine that runs pskit: `sudo apt install sshpass`, `sudo dnf install sshpass`, or `brew install hudochenkov/sshpass/sshpass`. The server must allow `PasswordAuthentication` (many cloud images allow keys only).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0173",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-ssh-key"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-ssh-key.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#ssh-login-key-agent-or-password"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#ssh-login-key-agent-or-password]\nPassword logins go through **sshpass**, so the password never appears on a command line or in the state. Install it on the machine that runs pskit: `sudo apt install sshpass`, `sudo dnf install sshpass`, or `brew install hudochenkov/sshpass/sshpass`. The server must allow `PasswordAuthentication` (many cloud images allow keys only).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0174",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-ssh-key"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-ssh-key.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#ssh-login-key-agent-or-password"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0175",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-ssh-key"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-ssh-key.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#ssh-login-key-agent-or-password"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#ssh-login-key-agent-or-password]\nPassword logins go through **sshpass**, so the password never appears on a command line or in the state. Install it on the machine that runs pskit: `sudo apt install sshpass`, `sudo dnf install sshpass`, or `brew install hudochenkov/sshpass/sshpass`. The server must allow `PasswordAuthentication` (many cloud images allow keys only).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0176",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-ssh-key"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-ssh-key.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#ssh-login-key-agent-or-password"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#ssh-login-key-agent-or-password]\nPassword logins go through **sshpass**, so the password never appears on a command line or in the state. Install it on the machine that runs pskit: `sudo apt install sshpass`, `sudo dnf install sshpass`, or `brew install hudochenkov/sshpass/sshpass`. The server must allow `PasswordAuthentication` (many cloud images allow keys only).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0177",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-ssh-key"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-ssh-key.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#ssh-login-key-agent-or-password"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#ssh-login-key-agent-or-password]\nPassword logins go through **sshpass**, so the password never appears on a command line or in the state. Install it on the machine that runs pskit: `sudo apt install sshpass`, `sudo dnf install sshpass`, or `brew install hudochenkov/sshpass/sshpass`. The server must allow `PasswordAuthentication` (many cloud images allow keys only).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0178",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-ssh-key"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-ssh-key.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#ssh-login-key-agent-or-password"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#ssh-login-key-agent-or-password]\nPassword logins go through **sshpass**, so the password never appears on a command line or in the state. Install it on the machine that runs pskit: `sudo apt install sshpass`, `sudo dnf install sshpass`, or `brew install hudochenkov/sshpass/sshpass`. The server must allow `PasswordAuthentication` (many cloud images allow keys only).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0179",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-ssh-key"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-ssh-key.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#ssh-login-key-agent-or-password"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#ssh-login-key-agent-or-password]\nPassword logins go through **sshpass**, so the password never appears on a command line or in the state. Install it on the machine that runs pskit: `sudo apt install sshpass`, `sudo dnf install sshpass`, or `brew install hudochenkov/sshpass/sshpass`. The server must allow `PasswordAuthentication` (many cloud images allow keys only).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0180",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-ssh-key"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-ssh-key.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#ssh-login-key-agent-or-password"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0181",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-apache-kafka"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-apache-kafka.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0182",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-apache-kafka"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-apache-kafka.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0183",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-apache-kafka"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-apache-kafka.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0184",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-apache-kafka"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-apache-kafka.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0185",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-apache-kafka"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-apache-kafka.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0186",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-apache-kafka"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-apache-kafka.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#from-the-command-line",
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0187",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-apache-kafka"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-apache-kafka.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0188",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-apache-kafka"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-apache-kafka.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0189",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-apache-kafka"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-apache-kafka.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0190",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-apache-kafka"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-apache-kafka.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0191",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-azurite"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-azurite.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0192",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-azurite"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-azurite.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0193",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-azurite"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-azurite.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#from-the-command-line",
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0194",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-azurite"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-azurite.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0195",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-azurite"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-azurite.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0196",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-azurite"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-azurite.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0197",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-azurite"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-azurite.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0198",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-azurite"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-azurite.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0199",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-azurite"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-azurite.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#from-the-command-line",
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0200",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-azurite"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-azurite.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ }
+]

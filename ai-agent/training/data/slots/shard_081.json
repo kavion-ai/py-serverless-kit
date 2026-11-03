@@ -1,0 +1,762 @@
+[
+ {
+  "id": "k_scale_0141",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-types"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-types.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#how-the-functions-run-in-a-cluster"
+  ],
+  "excerpt": "[docs/cluster.md#how-the-functions-run-in-a-cluster]\n* **web** replicas serve your HTTP routes and `invoke()` calls. Adding replicas or servers adds HTTP capacity. * The **main** replica runs on the master with the data volume. It owns everything stateful: schedules run once, not once per replica; built-in queues, topics and buckets live in one place; workflow executions are recorded there; queue, storage and topic triggers run there. * A web replica hands those to main. `submit_queue()`, `put_object()`, workflow starts and `/__pskit/*` admin calls are forwarded to it. Its log lines and invocation counts are sent to main every second, tagged with `replica`, so `pskit logs`, the studio's **Logs** view and `/__pskit/stats` show the whole cluster. * Resources with a driver (Redis, SQS, S3, MinIO, ...) are used directly by every replica, as on one server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0142",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-types"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-types.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#how-the-functions-run-in-a-cluster"
+  ],
+  "excerpt": "[docs/cluster.md#how-the-functions-run-in-a-cluster]\n* **web** replicas serve your HTTP routes and `invoke()` calls. Adding replicas or servers adds HTTP capacity. * The **main** replica runs on the master with the data volume. It owns everything stateful: schedules run once, not once per replica; built-in queues, topics and buckets live in one place; workflow executions are recorded there; queue, storage and topic triggers run there. * A web replica hands those to main. `submit_queue()`, `put_object()`, workflow starts and `/__pskit/*` admin calls are forwarded to it. Its log lines and invocation counts are sent to main every second, tagged with `replica`, so `pskit logs`, the studio's **Logs** view and `/__pskit/stats` show the whole cluster. * Resources with a driver (Redis, SQS, S3, MinIO, ...) are used directly by every replica, as on one server.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0143",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-types"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-types.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#how-the-functions-run-in-a-cluster"
+  ],
+  "excerpt": "[docs/cluster.md#how-the-functions-run-in-a-cluster]\n* **web** replicas serve your HTTP routes and `invoke()` calls. Adding replicas or servers adds HTTP capacity. * The **main** replica runs on the master with the data volume. It owns everything stateful: schedules run once, not once per replica; built-in queues, topics and buckets live in one place; workflow executions are recorded there; queue, storage and topic triggers run there. * A web replica hands those to main. `submit_queue()`, `put_object()`, workflow starts and `/__pskit/*` admin calls are forwarded to it. Its log lines and invocation counts are sent to main every second, tagged with `replica`, so `pskit logs`, the studio's **Logs** view and `/__pskit/stats` show the whole cluster. * Resources with a driver (Redis, SQS, S3, MinIO, ...) are used directly by every replica, as on one server.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0144",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-types"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-types.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#how-the-functions-run-in-a-cluster"
+  ],
+  "excerpt": "[docs/cluster.md#how-the-functions-run-in-a-cluster]\n* **web** replicas serve your HTTP routes and `invoke()` calls. Adding replicas or servers adds HTTP capacity. * The **main** replica runs on the master with the data volume. It owns everything stateful: schedules run once, not once per replica; built-in queues, topics and buckets live in one place; workflow executions are recorded there; queue, storage and topic triggers run there. * A web replica hands those to main. `submit_queue()`, `put_object()`, workflow starts and `/__pskit/*` admin calls are forwarded to it. Its log lines and invocation counts are sent to main every second, tagged with `replica`, so `pskit logs`, the studio's **Logs** view and `/__pskit/stats` show the whole cluster. * Resources with a driver (Redis, SQS, S3, MinIO, ...) are used directly by every replica, as on one server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0145",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-types"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-types.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#how-the-functions-run-in-a-cluster"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0146",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-types"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-types.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#how-the-functions-run-in-a-cluster"
+  ],
+  "excerpt": "[docs/cluster.md#how-the-functions-run-in-a-cluster]\n* **web** replicas serve your HTTP routes and `invoke()` calls. Adding replicas or servers adds HTTP capacity. * The **main** replica runs on the master with the data volume. It owns everything stateful: schedules run once, not once per replica; built-in queues, topics and buckets live in one place; workflow executions are recorded there; queue, storage and topic triggers run there. * A web replica hands those to main. `submit_queue()`, `put_object()`, workflow starts and `/__pskit/*` admin calls are forwarded to it. Its log lines and invocation counts are sent to main every second, tagged with `replica`, so `pskit logs`, the studio's **Logs** view and `/__pskit/stats` show the whole cluster. * Resources with a driver (Redis, SQS, S3, MinIO, ...) are used directly by every replica, as on one server.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0147",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-types"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-types.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#how-the-functions-run-in-a-cluster"
+  ],
+  "excerpt": "[docs/cluster.md#how-the-functions-run-in-a-cluster]\n* **web** replicas serve your HTTP routes and `invoke()` calls. Adding replicas or servers adds HTTP capacity. * The **main** replica runs on the master with the data volume. It owns everything stateful: schedules run once, not once per replica; built-in queues, topics and buckets live in one place; workflow executions are recorded there; queue, storage and topic triggers run there. * A web replica hands those to main. `submit_queue()`, `put_object()`, workflow starts and `/__pskit/*` admin calls are forwarded to it. Its log lines and invocation counts are sent to main every second, tagged with `replica`, so `pskit logs`, the studio's **Logs** view and `/__pskit/stats` show the whole cluster. * Resources with a driver (Redis, SQS, S3, MinIO, ...) are used directly by every replica, as on one server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0148",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-types"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-types.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#how-the-functions-run-in-a-cluster"
+  ],
+  "excerpt": "[docs/cluster.md#how-the-functions-run-in-a-cluster]\n* **web** replicas serve your HTTP routes and `invoke()` calls. Adding replicas or servers adds HTTP capacity. * The **main** replica runs on the master with the data volume. It owns everything stateful: schedules run once, not once per replica; built-in queues, topics and buckets live in one place; workflow executions are recorded there; queue, storage and topic triggers run there. * A web replica hands those to main. `submit_queue()`, `put_object()`, workflow starts and `/__pskit/*` admin calls are forwarded to it. Its log lines and invocation counts are sent to main every second, tagged with `replica`, so `pskit logs`, the studio's **Logs** view and `/__pskit/stats` show the whole cluster. * Resources with a driver (Redis, SQS, S3, MinIO, ...) are used directly by every replica, as on one server.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0149",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-types"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-types.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#how-the-functions-run-in-a-cluster"
+  ],
+  "excerpt": "[docs/cluster.md#how-the-functions-run-in-a-cluster]\n* **web** replicas serve your HTTP routes and `invoke()` calls. Adding replicas or servers adds HTTP capacity. * The **main** replica runs on the master with the data volume. It owns everything stateful: schedules run once, not once per replica; built-in queues, topics and buckets live in one place; workflow executions are recorded there; queue, storage and topic triggers run there. * A web replica hands those to main. `submit_queue()`, `put_object()`, workflow starts and `/__pskit/*` admin calls are forwarded to it. Its log lines and invocation counts are sent to main every second, tagged with `replica`, so `pskit logs`, the studio's **Logs** view and `/__pskit/stats` show the whole cluster. * Resources with a driver (Redis, SQS, S3, MinIO, ...) are used directly by every replica, as on one server.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0150",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-types"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-types.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#how-the-functions-run-in-a-cluster"
+  ],
+  "excerpt": "[docs/cluster.md#how-the-functions-run-in-a-cluster]\n* **web** replicas serve your HTTP routes and `invoke()` calls. Adding replicas or servers adds HTTP capacity. * The **main** replica runs on the master with the data volume. It owns everything stateful: schedules run once, not once per replica; built-in queues, topics and buckets live in one place; workflow executions are recorded there; queue, storage and topic triggers run there. * A web replica hands those to main. `submit_queue()`, `put_object()`, workflow starts and `/__pskit/*` admin calls are forwarded to it. Its log lines and invocation counts are sent to main every second, tagged with `replica`, so `pskit logs`, the studio's **Logs** view and `/__pskit/stats` show the whole cluster. * Resources with a driver (Redis, SQS, S3, MinIO, ...) are used directly by every replica, as on one server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0151",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0152",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0153",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0154",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0155",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0156",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0157",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0158",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0159",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0160",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0161",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0162",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0163",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0164",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0165",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0166",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0167",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0168",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0169",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0170",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0171",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0172",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0173",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0174",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0175",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0176",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0177",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0178",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0179",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0180",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-firewall"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-firewall.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#1-always-the-admin-machine-reaches-every-server-over-ssh"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ }
+]

@@ -1,0 +1,802 @@
+[
+ {
+  "id": "k_nav_0261",
+  "category": "k_nav",
+  "card_ids": [
+   "page-load-balancers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-load-balancers.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0262",
+  "category": "k_nav",
+  "card_ids": [
+   "page-load-balancers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-load-balancers.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0263",
+  "category": "k_nav",
+  "card_ids": [
+   "page-load-balancers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-load-balancers.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0264",
+  "category": "k_nav",
+  "card_ids": [
+   "page-load-balancers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-load-balancers.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0265",
+  "category": "k_nav",
+  "card_ids": [
+   "page-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-logs.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Logs.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0266",
+  "category": "k_nav",
+  "card_ids": [
+   "page-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-logs.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Logs.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0267",
+  "category": "k_nav",
+  "card_ids": [
+   "page-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-logs.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Logs.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0268",
+  "category": "k_nav",
+  "card_ids": [
+   "page-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-logs.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Logs.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0269",
+  "category": "k_nav",
+  "card_ids": [
+   "page-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-logs.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Logs.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0270",
+  "category": "k_nav",
+  "card_ids": [
+   "page-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-logs.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Logs.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0271",
+  "category": "k_nav",
+  "card_ids": [
+   "page-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-logs.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Logs.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0272",
+  "category": "k_nav",
+  "card_ids": [
+   "page-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-logs.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Logs.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0273",
+  "category": "k_nav",
+  "card_ids": [
+   "page-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-logs.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Logs.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0274",
+  "category": "k_nav",
+  "card_ids": [
+   "page-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-logs.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Logs.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0275",
+  "category": "k_nav",
+  "card_ids": [
+   "page-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-logs.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Logs.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0276",
+  "category": "k_nav",
+  "card_ids": [
+   "page-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-logs.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Logs.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0277",
+  "category": "k_nav",
+  "card_ids": [
+   "page-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-logs.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Logs.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0278",
+  "category": "k_nav",
+  "card_ids": [
+   "page-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-logs.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Logs.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0279",
+  "category": "k_nav",
+  "card_ids": [
+   "page-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-logs.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Logs.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0280",
+  "category": "k_nav",
+  "card_ids": [
+   "page-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-logs.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Logs.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0281",
+  "category": "k_nav",
+  "card_ids": [
+   "page-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-logs.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Logs.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0282",
+  "category": "k_nav",
+  "card_ids": [
+   "page-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-logs.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Logs.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0283",
+  "category": "k_nav",
+  "card_ids": [
+   "page-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-logs.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Logs.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0284",
+  "category": "k_nav",
+  "card_ids": [
+   "page-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-logs.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Logs.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0285",
+  "category": "k_nav",
+  "card_ids": [
+   "page-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-logs.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Logs.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0286",
+  "category": "k_nav",
+  "card_ids": [
+   "page-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-network.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Network.tsx",
+   "docs/onprem-network.md"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0287",
+  "category": "k_nav",
+  "card_ids": [
+   "page-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-network.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Network.tsx",
+   "docs/onprem-network.md"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0288",
+  "category": "k_nav",
+  "card_ids": [
+   "page-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-network.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Network.tsx",
+   "docs/onprem-network.md"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0289",
+  "category": "k_nav",
+  "card_ids": [
+   "page-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-network.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Network.tsx",
+   "docs/onprem-network.md"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0290",
+  "category": "k_nav",
+  "card_ids": [
+   "page-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-network.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Network.tsx",
+   "docs/onprem-network.md"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0291",
+  "category": "k_nav",
+  "card_ids": [
+   "page-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-network.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Network.tsx",
+   "docs/onprem-network.md"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0292",
+  "category": "k_nav",
+  "card_ids": [
+   "page-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-network.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Network.tsx",
+   "docs/onprem-network.md"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0293",
+  "category": "k_nav",
+  "card_ids": [
+   "page-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-network.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Network.tsx",
+   "docs/onprem-network.md"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0294",
+  "category": "k_nav",
+  "card_ids": [
+   "page-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-network.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Network.tsx",
+   "docs/onprem-network.md"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0295",
+  "category": "k_nav",
+  "card_ids": [
+   "page-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-network.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Network.tsx",
+   "docs/onprem-network.md"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0296",
+  "category": "k_nav",
+  "card_ids": [
+   "page-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-network.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Network.tsx",
+   "docs/onprem-network.md"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0297",
+  "category": "k_nav",
+  "card_ids": [
+   "page-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-network.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Network.tsx",
+   "docs/onprem-network.md"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0298",
+  "category": "k_nav",
+  "card_ids": [
+   "page-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-network.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Network.tsx",
+   "docs/onprem-network.md"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0299",
+  "category": "k_nav",
+  "card_ids": [
+   "page-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-network.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Network.tsx",
+   "docs/onprem-network.md"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0300",
+  "category": "k_nav",
+  "card_ids": [
+   "page-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-network.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Network.tsx",
+   "docs/onprem-network.md"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ }
+]

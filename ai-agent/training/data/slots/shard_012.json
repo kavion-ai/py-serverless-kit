@@ -1,0 +1,767 @@
+[
+ {
+  "id": "k_cmd_0481",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-status"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-status.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0482",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-status"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-status.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0483",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-status"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-status.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0484",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-status"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-status.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0485",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-sync"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-sync.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0486",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-sync"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-sync.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0487",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-sync"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-sync.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0488",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-sync"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-sync.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0489",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-sync"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-sync.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0490",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-sync"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-sync.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0491",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-sync"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-sync.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0492",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-sync"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-sync.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0493",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-sync"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-sync.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0494",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-sync"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-sync.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0495",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-sync"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-sync.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0496",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-update"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-update.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0497",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-update"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-update.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0498",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-update"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-update.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0499",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-update"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-update.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0500",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-update"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-update.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0501",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-update"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-update.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0502",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-update"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-update.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0503",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-update"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-update.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0504",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-update"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-update.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0505",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-update"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-update.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0506",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-lb-update"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-lb-update.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0507",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-logs.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-logs"
+  ],
+  "excerpt": "[docs/cli.md#pskit-logs]\nShow, list or delete the logs of a deployment. On premises: the host's buffer (handler logging, `print` output, one entry per invocation, host notes). AWS: CloudWatch Logs. GCP: Cloud Logging (read only). Azure: Log Analytics when the deployment has a `log_analytics_workspace_id` output (read only). Elsewhere, use the console link from `pskit info`. Requirements per provider: [dashboard.md](dashboard.md#log-sources).",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0508",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-logs.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-logs"
+  ],
+  "excerpt": "[docs/cli.md#pskit-logs]\nShow, list or delete the logs of a deployment. On premises: the host's buffer (handler logging, `print` output, one entry per invocation, host notes). AWS: CloudWatch Logs. GCP: Cloud Logging (read only). Azure: Log Analytics when the deployment has a `log_analytics_workspace_id` output (read only). Elsewhere, use the console link from `pskit info`. Requirements per provider: [dashboard.md](dashboard.md#log-sources).",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0509",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-logs.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-logs"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0510",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-logs.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-logs"
+  ],
+  "excerpt": "[docs/cli.md#pskit-logs]\nShow, list or delete the logs of a deployment. On premises: the host's buffer (handler logging, `print` output, one entry per invocation, host notes). AWS: CloudWatch Logs. GCP: Cloud Logging (read only). Azure: Log Analytics when the deployment has a `log_analytics_workspace_id` output (read only). Elsewhere, use the console link from `pskit info`. Requirements per provider: [dashboard.md](dashboard.md#log-sources).",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0511",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-logs.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-logs"
+  ],
+  "excerpt": "[docs/cli.md#pskit-logs]\nShow, list or delete the logs of a deployment. On premises: the host's buffer (handler logging, `print` output, one entry per invocation, host notes). AWS: CloudWatch Logs. GCP: Cloud Logging (read only). Azure: Log Analytics when the deployment has a `log_analytics_workspace_id` output (read only). Elsewhere, use the console link from `pskit info`. Requirements per provider: [dashboard.md](dashboard.md#log-sources).",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0512",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-logs.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-logs"
+  ],
+  "excerpt": "[docs/cli.md#pskit-logs]\nShow, list or delete the logs of a deployment. On premises: the host's buffer (handler logging, `print` output, one entry per invocation, host notes). AWS: CloudWatch Logs. GCP: Cloud Logging (read only). Azure: Log Analytics when the deployment has a `log_analytics_workspace_id` output (read only). Elsewhere, use the console link from `pskit info`. Requirements per provider: [dashboard.md](dashboard.md#log-sources).",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0513",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-logs.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-logs"
+  ],
+  "excerpt": "[docs/cli.md#pskit-logs]\nShow, list or delete the logs of a deployment. On premises: the host's buffer (handler logging, `print` output, one entry per invocation, host notes). AWS: CloudWatch Logs. GCP: Cloud Logging (read only). Azure: Log Analytics when the deployment has a `log_analytics_workspace_id` output (read only). Elsewhere, use the console link from `pskit info`. Requirements per provider: [dashboard.md](dashboard.md#log-sources).",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0514",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-logs.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-logs"
+  ],
+  "excerpt": "[docs/cli.md#pskit-logs]\nShow, list or delete the logs of a deployment. On premises: the host's buffer (handler logging, `print` output, one entry per invocation, host notes). AWS: CloudWatch Logs. GCP: Cloud Logging (read only). Azure: Log Analytics when the deployment has a `log_analytics_workspace_id` output (read only). Elsewhere, use the console link from `pskit info`. Requirements per provider: [dashboard.md](dashboard.md#log-sources).",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0515",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-logs.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-logs"
+  ],
+  "excerpt": "[docs/cli.md#pskit-logs]\nShow, list or delete the logs of a deployment. On premises: the host's buffer (handler logging, `print` output, one entry per invocation, host notes). AWS: CloudWatch Logs. GCP: Cloud Logging (read only). Azure: Log Analytics when the deployment has a `log_analytics_workspace_id` output (read only). Elsewhere, use the console link from `pskit info`. Requirements per provider: [dashboard.md](dashboard.md#log-sources).",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0516",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-logs.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-logs"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0517",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-logs.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-logs"
+  ],
+  "excerpt": "[docs/cli.md#pskit-logs]\nShow, list or delete the logs of a deployment. On premises: the host's buffer (handler logging, `print` output, one entry per invocation, host notes). AWS: CloudWatch Logs. GCP: Cloud Logging (read only). Azure: Log Analytics when the deployment has a `log_analytics_workspace_id` output (read only). Elsewhere, use the console link from `pskit info`. Requirements per provider: [dashboard.md](dashboard.md#log-sources).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0518",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-package"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-package.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-package"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0519",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-package"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-package.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-package"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0520",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-package"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-package.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-package"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ }
+]

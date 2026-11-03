@@ -1,0 +1,762 @@
+[
+ {
+  "id": "k_proc_0201",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-replica-change"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-replica-change.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0202",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-replica-change"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-replica-change.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0203",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-replica-change"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-replica-change.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0204",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-replica-change"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-replica-change.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0205",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-replica-change"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-replica-change.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0206",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-replica-change"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-replica-change.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0207",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-replica-change"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-replica-change.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0208",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-replicas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-replicas.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0209",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-replicas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-replicas.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0210",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-replicas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-replicas.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0211",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-replicas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-replicas.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0212",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-replicas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-replicas.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0213",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-replicas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-replicas.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0214",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-replicas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-replicas.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0215",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-replicas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-replicas.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0216",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-replicas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-replicas.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0217",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-save-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-save-server.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#2-saving-a-server-pskit-resources-onprem-servers-add-studio-add-server"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0218",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-save-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-save-server.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#2-saving-a-server-pskit-resources-onprem-servers-add-studio-add-server"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0219",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-save-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-save-server.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#2-saving-a-server-pskit-resources-onprem-servers-add-studio-add-server"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0220",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-save-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-save-server.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#2-saving-a-server-pskit-resources-onprem-servers-add-studio-add-server"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0221",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-save-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-save-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#2-saving-a-server-pskit-resources-onprem-servers-add-studio-add-server"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0222",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-save-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-save-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#2-saving-a-server-pskit-resources-onprem-servers-add-studio-add-server"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0223",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-save-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-save-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#2-saving-a-server-pskit-resources-onprem-servers-add-studio-add-server"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0224",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-save-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-save-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#2-saving-a-server-pskit-resources-onprem-servers-add-studio-add-server"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0225",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-save-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-save-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#2-saving-a-server-pskit-resources-onprem-servers-add-studio-add-server"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0226",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-scale"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-scale.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#monitor-scale-and-add-servers-when-it-is-full"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0227",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-scale"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-scale.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#monitor-scale-and-add-servers-when-it-is-full"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0228",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-scale"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-scale.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#monitor-scale-and-add-servers-when-it-is-full"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0229",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-scale"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-scale.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#monitor-scale-and-add-servers-when-it-is-full"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0230",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-scale"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-scale.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#monitor-scale-and-add-servers-when-it-is-full"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0231",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-scale"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-scale.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#monitor-scale-and-add-servers-when-it-is-full"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0232",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-scale"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-scale.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#monitor-scale-and-add-servers-when-it-is-full"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0233",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-scale"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-scale.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#monitor-scale-and-add-servers-when-it-is-full"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0234",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-scale"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-scale.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#monitor-scale-and-add-servers-when-it-is-full"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0235",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-schedule"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-schedule.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#schedule"
+  ],
+  "excerpt": "[docs/events.md#schedule]\nThe handler gets `event.type == \"schedule\"` and `event.data == input`. pskit converts the portable syntax to each cloud's dialect: A rate that can't be expressed as cron on cron-only clouds (e.g. `7 minutes`) fails validation; use a divisor of 60 minutes or 24 hours. `timezone` is honoured by AWS, GCP and Alibaba (cron form); Azure ignores it with a warning.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0236",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-schedule"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-schedule.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#schedule"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0237",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-schedule"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-schedule.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#schedule"
+  ],
+  "excerpt": "[docs/events.md#schedule]\nThe handler gets `event.type == \"schedule\"` and `event.data == input`. pskit converts the portable syntax to each cloud's dialect: A rate that can't be expressed as cron on cron-only clouds (e.g. `7 minutes`) fails validation; use a divisor of 60 minutes or 24 hours. `timezone` is honoured by AWS, GCP and Alibaba (cron form); Azure ignores it with a warning.",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0238",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-schedule"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-schedule.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#schedule"
+  ],
+  "excerpt": "[docs/events.md#schedule]\nThe handler gets `event.type == \"schedule\"` and `event.data == input`. pskit converts the portable syntax to each cloud's dialect: A rate that can't be expressed as cron on cron-only clouds (e.g. `7 minutes`) fails validation; use a divisor of 60 minutes or 24 hours. `timezone` is honoured by AWS, GCP and Alibaba (cron form); Azure ignores it with a warning.",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0239",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-schedule"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-schedule.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#schedule"
+  ],
+  "excerpt": "[docs/events.md#schedule]\nThe handler gets `event.type == \"schedule\"` and `event.data == input`. pskit converts the portable syntax to each cloud's dialect: A rate that can't be expressed as cron on cron-only clouds (e.g. `7 minutes`) fails validation; use a divisor of 60 minutes or 24 hours. `timezone` is honoured by AWS, GCP and Alibaba (cron form); Azure ignores it with a warning.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0240",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-schedule"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-schedule.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#schedule"
+  ],
+  "excerpt": "[docs/events.md#schedule]\nThe handler gets `event.type == \"schedule\"` and `event.data == input`. pskit converts the portable syntax to each cloud's dialect: A rate that can't be expressed as cron on cron-only clouds (e.g. `7 minutes`) fails validation; use a divisor of 60 minutes or 24 hours. `timezone` is honoured by AWS, GCP and Alibaba (cron form); Azure ignores it with a warning.",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": true
+ }
+]

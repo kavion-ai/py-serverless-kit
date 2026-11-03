@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Secrets Manager console</title>
+<style>
+:root {
+  --bg: #f6f7f9; --panel: #ffffff; --text: #16191f; --muted: #5f6b7a; --line: #d9dee5; --accent: #0b6bcb;
+  --accent-text: #ffffff; --danger: #c4251c; --warn-bg: #fff4e5; --warn: #8a4b00; --ok: #1d7a3a; --chip: #eef2f7;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1216; --panel: #171b21; --text: #e6e9ee; --muted: #9aa4b2; --line: #2b323c; --accent: #4c9ffe;
+    --accent-text: #0b1220; --danger: #ff6b61; --warn-bg: #3a2a12; --warn: #ffc56b; --ok: #5bd17f; --chip: #222a34;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+button, input, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; border: 1px solid var(--line); background: var(--panel); border-radius: 6px; padding: 6px 12px; }
+button:hover { border-color: var(--accent); }
+button.primary { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+button.danger { color: var(--danger); }
+button.link { border: 0; background: none; padding: 2px 4px; color: var(--accent); }
+button:disabled { opacity: .5; cursor: default; }
+input, textarea, select { width: 100%; padding: 7px 9px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); }
+textarea { font-family: var(--mono); min-height: 140px; resize: vertical; }
+label { display: block; margin: 12px 0 4px; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+header { display: flex; align-items: center; gap: 12px; padding: 12px 20px; background: var(--panel); border-bottom: 1px solid var(--line); }
+header h1 { font-size: 16px; margin: 0; flex: 1; }
+header .who { color: var(--muted); }
+main { display: grid; grid-template-columns: minmax(260px, 360px) 1fr; gap: 16px; padding: 16px 20px; max-width: 1400px; margin: 0 auto; }
+@media (max-width: 800px) { main { grid-template-columns: 1fr; padding: 12px 16px; } }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; min-width: 0; }
+.list { list-style: none; margin: 12px 0 0; padding: 0; }
+.list li { padding: 9px 10px; border-radius: 6px; cursor: pointer; border: 1px solid transparent; }
+.list li:hover { background: var(--chip); }
+.list li.active { border-color: var(--accent); background: var(--chip); }
+.list .name { font-weight: 600; word-break: break-all; }
+.list .sub { color: var(--muted); font-size: 12px; }
+.row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.grow { flex: 1; }
+.muted { color: var(--muted); }
+.mono { font-family: var(--mono); word-break: break-all; }
+.chip { display: inline-block; padding: 1px 8px; border-radius: 10px; background: var(--chip); font-size: 12px; margin-right: 4px; }
+.chip.current { background: var(--accent); color: var(--accent-text); }
+.warn { background: var(--warn-bg); color: var(--warn); padding: 10px 12px; border-radius: 6px; margin: 12px 0; }
+.error { color: var(--danger); margin: 8px 0; white-space: pre-wrap; }
+table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-weight: 500; font-size: 12px; }
+td.v { font-family: var(--mono); word-break: break-all; }
+h2 { font-size: 18px; margin: 0 0 4px; word-break: break-all; }
+h3 { font-size: 14px; margin: 20px 0 6px; }
+dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 16px; margin: 12px 0; }
+dt { color: var(--muted); }
+dd { margin: 0; min-width: 0; }
+.login { max-width: 380px; margin: 10vh auto; }
+.kv { display: grid; grid-template-columns: 1fr 1.6fr auto; gap: 6px; margin-bottom: 6px; }
+.toast { position: fixed; bottom: 16px; right: 16px; background: var(--text); color: var(--bg); padding: 8px 14px; border-radius: 6px; opacity: 0; transition: opacity .2s; pointer-events: none; }
+.toast.show { opacity: .92; }
+dialog { border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--text); max-width: 460px; width: calc(100% - 32px); }
+dialog::backdrop { background: rgba(0, 0, 0, .4); }
+.tabs button { border-radius: 6px 6px 0 0; }
+.tabs button.on { border-color: var(--accent); color: var(--accent); }
+.empty { color: var(--muted); padding: 24px 0; text-align: center; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="toast" class="toast" role="status"></div>
+<script>
+"use strict";
+// The console calls /ui/api/<Operation> with the same JSON as the Secrets Manager API. The session is an HttpOnly
+// cookie; the X-SM-CSRF header proves the request comes from this page.
+const state = { csrf: "", user: "", auth: true, passwordLogin: false, secrets: [], next: null, selected: null,
+                filter: "", deleted: false, detail: null, value: null, version: null, versions: [], reveal: false };
+const app = document.getElementById("app");
+
+function h(tag, attrs, ...children) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v === undefined || v === null || v === false) continue;
+    if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
+    else if (k === "class") el.className = v;
+    else if (k === "value") el.value = v;
+    else el.setAttribute(k, v === true ? "" : v);
+  }
+  for (const c of children.flat()) if (c !== null && c !== undefined && c !== false) el.append(c.nodeType ? c : String(c));
+  return el;
+}
+
+function toast(text) {
+  const t = document.getElementById("toast");
+  t.textContent = text;
+  t.classList.add("show");
+  clearTimeout(toast.timer);
+  toast.timer = setTimeout(() => t.classList.remove("show"), 1800);
+}
+
+const when = (s) => (s ? new Date(s * 1000).toLocaleString() : "");
+
+async function api(op, body) {
+  const res = await fetch(`/ui/api/${op}`, {
+    method: "POST", credentials: "same-origin",
+    headers: { "Content-Type": "application/json", "X-SM-CSRF": state.csrf }, body: JSON.stringify(body || {}),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (res.status === 401) { state.csrf = ""; renderLogin("Your session ended; sign in again."); throw new Error("signed out"); }
+  if (!res.ok) throw new Error(`${data.__type || res.status}: ${data.message || "request failed"}`);
+  return data;
+}
+
+async function copy(text) {
+  try { await navigator.clipboard.writeText(text); toast("Copied"); } catch { toast("Copy failed: select and copy by hand"); }
+}
+
+function parseValue(text) {
+  try { const v = JSON.parse(text); if (v && typeof v === "object" && !Array.isArray(v)) return v; } catch {}
+  return null;
+}
+
+// ----------------------------------------------------------------------------- sign in
+
+async function start() {
+  const res = await fetch("/ui/session", { credentials: "same-origin" });
+  const s = await res.json();
+  state.auth = s.auth; state.passwordLogin = Boolean(s.password_login);
+  if (s.authenticated) { state.csrf = s.csrf; state.user = s.user; renderMain(); loadList(); }
+  else renderLogin();
+}
+
+function renderLogin(message) {
+  const err = h("div", { class: "error" }, message || "");
+  const user = h("input", { name: "user", autocomplete: "username", required: !state.passwordLogin });
+  const pass = h("input", { name: "password", type: "password", autocomplete: "current-password", required: true });
+  const form = h("form", { class: "panel login", onsubmit: async (e) => {
+    e.preventDefault();
+    err.textContent = "";
+    const res = await fetch("/ui/login", { method: "POST", credentials: "same-origin", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user: user.value.trim(), password: pass.value }) });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) { err.textContent = data.message || "Sign-in failed"; pass.value = ""; pass.focus(); return; }
+    state.csrf = data.csrf; state.user = data.user || user.value.trim();
+    renderMain(); loadList();
+  } },
+    h("h2", {}, "Secrets Manager"),
+    h("p", { class: "muted" }, state.passwordLogin ? "Sign in with the console password." : "Sign in with an access key ID and its secret access key."),
+    h("label", {}, state.passwordLogin ? "Name (optional)" : "Access key ID"), user,
+    h("label", {}, state.passwordLogin ? "Console password" : "Secret access key (password)"), pass,
+    err,
+    h("div", { class: "row", style: "margin-top:16px" }, h("button", { class: "primary grow", type: "submit" }, "Sign in")));
+  app.replaceChildren(form);
+  (state.passwordLogin ? pass : user).focus();
+}
+
+async function signOut() {
+  await fetch("/ui/logout", { method: "POST", credentials: "same-origin" });
+  state.csrf = ""; renderLogin("Signed out.");
+}
+
+// ----------------------------------------------------------------------------- layout
+
+let listPanel, detailPanel;
+
+function renderMain() {
+  listPanel = h("section", { class: "panel" });
+  detailPanel = h("section", { class: "panel" });
+  app.replaceChildren(
+    h("header", {}, h("h1", {}, "Secrets Manager"),
+      state.auth ? h("span", { class: "who" }, state.user ? `signed in as ${state.user}` : "signed in") : h("span", { class: "who" }, "no authentication"),
+      state.auth ? h("button", { onclick: signOut }, "Sign out") : null),
+    h("main", {}, listPanel, detailPanel));
+  renderList();
+  renderEmpty();
+}
+
+function renderList() {
+  const search = h("input", { placeholder: "Filter by name, description or tag", value: state.filter, oninput: (e) => {
+    state.filter = e.target.value; clearTimeout(renderList.t); renderList.t = setTimeout(loadList, 250);
+  } });
+  const items = state.secrets.map((s) => h("li", { class: state.selected === s.Name ? "active" : "", onclick: () => select(s.Name) },
+    h("div", { class: "name" }, s.Name),
+    h("div", { class: "sub" }, s.DeletedDate ? "scheduled for deletion" : `changed ${when(s.LastChangedDate)}`,
+      s.Description ? ` · ${s.Description}` : "")));
+  listPanel.replaceChildren(
+    h("div", { class: "row" }, h("button", { class: "primary", onclick: renderCreate }, "+ New secret"),
+      h("span", { class: "grow" }), h("button", { onclick: loadList, title: "Reload" }, "Reload")),
+    h("div", { style: "margin-top:12px" }, search),
+    h("label", { style: "text-transform:none;letter-spacing:0;font-size:13px" },
+      h("input", { type: "checkbox", style: "width:auto;margin-right:6px", checked: state.deleted, onchange: (e) => { state.deleted = e.target.checked; loadList(); } }),
+      "Show secrets scheduled for deletion"),
+    items.length ? h("ul", { class: "list" }, items) : h("div", { class: "empty" }, state.filter ? "No secret matches." : "No secrets yet."),
+    state.next ? h("button", { class: "link", onclick: () => loadList(true) }, "Load more") : null);
+}
+
+async function loadList(more) {
+  const body = { MaxResults: 100, IncludePlannedDeletion: state.deleted };
+  if (state.filter.trim()) body.Filters = [{ Key: "all", Values: [state.filter.trim()] }];
+  if (more === true && state.next) body.NextToken = state.next;
+  try {
+    const out = await api("ListSecrets", body);
+    state.secrets = more === true ? [...state.secrets, ...out.SecretList] : out.SecretList;
+    state.next = out.NextToken || null;
+    renderList();
+  } catch (e) { if (e.message !== "signed out") toast(e.message); }
+}
+
+function renderEmpty() {
+  detailPanel.replaceChildren(h("div", { class: "empty" }, "Pick a secret, or create one with + New secret."));
+}
+
+// ----------------------------------------------------------------------------- one secret
+
+async function select(name, versionId) {
+  state.selected = name; state.reveal = false; renderList();
+  try {
+    const detail = await api("DescribeSecret", { SecretId: name });
+    const versions = await api("ListSecretVersionIds", { SecretId: name, IncludeDeprecated: true });
+    let value = null;
+    if (!detail.DeletedDate && Object.keys(detail.VersionIdsToStages || {}).length) {
+      value = await api("GetSecretValue", versionId ? { SecretId: name, VersionId: versionId } : { SecretId: name }).catch(() => null);
+    }
+    Object.assign(state, { detail, value, versions: versions.Versions || [], version: value ? value.VersionId : null });
+    renderDetail();
+  } catch (e) { if (e.message !== "signed out") detailPanel.replaceChildren(h("div", { class: "error" }, e.message)); }
+}
+
+function valueView(v) {
+  if (!v) return h("p", { class: "muted" }, "No value yet.");
+  if (v.SecretBinary !== undefined) {
+    return h("div", {}, h("p", { class: "muted" }, "Binary value (base64):"), h("div", { class: "mono" }, state.reveal ? v.SecretBinary : "••••••••"),
+      h("button", { class: "link", onclick: () => copy(v.SecretBinary) }, "Copy"));
+  }
+  const obj = parseValue(v.SecretString);
+  if (obj) {
+    return h("table", {}, h("tr", {}, h("th", {}, "Key"), h("th", {}, "Value"), h("th", {})),
+      Object.entries(obj).map(([k, val]) => {
+        const text = typeof val === "string" ? val : JSON.stringify(val);
+        return h("tr", {}, h("td", { class: "mono" }, k), h("td", { class: "v" }, state.reveal ? text : "••••••••"),
+          h("td", {}, h("button", { class: "link", onclick: () => copy(text) }, "Copy")));
+      }));
+  }
+  return h("div", {}, h("div", { class: "mono", style: "white-space:pre-wrap" }, state.reveal ? v.SecretString : "••••••••"),
+    h("button", { class: "link", onclick: () => copy(v.SecretString) }, "Copy"));
+}
+
+function renderDetail() {
+  const d = state.detail;
+  const v = state.value;
+  const deleted = Boolean(d.DeletedDate);
+  const tags = (d.Tags || []).map((t) => h("span", { class: "chip" }, `${t.Key}=${t.Value}`));
+  const versionRows = state.versions.map((ver) => h("tr", {},
+    h("td", { class: "mono" }, ver.VersionId),
+    h("td", {}, ver.VersionStages.length ? ver.VersionStages.map((s) => h("span", { class: "chip" + (s === "AWSCURRENT" ? " current" : "") }, s)) : h("span", { class: "muted" }, "deprecated")),
+    h("td", {}, when(ver.CreatedDate)),
+    h("td", {}, deleted ? null : h("button", { class: "link", onclick: () => select(d.Name, ver.VersionId) }, state.version === ver.VersionId ? "shown" : "Show"),
+      deleted || ver.VersionStages.includes("AWSCURRENT") ? null : h("button", { class: "link", onclick: () => makeCurrent(ver.VersionId) }, "Make current"))));
+  detailPanel.replaceChildren(
+    h("div", { class: "row" }, h("h2", { class: "grow" }, d.Name),
+      deleted ? h("button", { class: "primary", onclick: restore }, "Restore") : [
+        h("button", { onclick: () => renderEditValue() }, "Edit value"),
+        h("button", { onclick: renderEditInfo }, "Description & tags"),
+        h("button", { class: "danger", onclick: askDelete }, "Delete")]),
+    deleted ? h("div", { class: "warn" }, `Scheduled for deletion (requested ${when(d.DeletedDate)}). Restore it to read or change it.`) : null,
+    h("dl", {},
+      h("dt", {}, "ARN"), h("dd", {}, h("span", { class: "mono" }, d.ARN), " ", h("button", { class: "link", onclick: () => copy(d.ARN) }, "Copy")),
+      h("dt", {}, "Description"), h("dd", {}, d.Description || h("span", { class: "muted" }, "none")),
+      h("dt", {}, "Created"), h("dd", {}, when(d.CreatedDate)),
+      h("dt", {}, "Last changed"), h("dd", {}, when(d.LastChangedDate)),
+      h("dt", {}, "Last read"), h("dd", {}, d.LastAccessedDate ? new Date(d.LastAccessedDate * 1000).toLocaleDateString() : h("span", { class: "muted" }, "never")),
+      h("dt", {}, "Tags"), h("dd", {}, tags.length ? tags : h("span", { class: "muted" }, "none"))),
+    deleted ? null : h("div", {},
+      h("div", { class: "row" }, h("h3", { class: "grow" }, "Value", v && v.VersionId ? h("span", { class: "muted", style: "font-weight:400" }, ` · version ${v.VersionId.slice(0, 8)}… ${v.VersionStages.join(", ")}`) : ""),
+        v ? h("button", { onclick: () => { state.reveal = !state.reveal; renderDetail(); } }, state.reveal ? "Hide values" : "Show values") : null),
+      valueView(v)),
+    h("h3", {}, "Versions"),
+    versionRows.length ? h("table", {}, h("tr", {}, h("th", {}, "Version"), h("th", {}, "Stages"), h("th", {}, "Created"), h("th", {})), versionRows) : h("p", { class: "muted" }, "No versions."),
+    h("h3", {}, "Read it from code"),
+    h("pre", { class: "mono", style: "white-space:pre-wrap;background:var(--bg);padding:10px;border-radius:6px" },
+      `import boto3\n\nsm = boto3.client("secretsmanager", endpoint_url="${location.origin}", region_name="us-east-1",\n                  aws_access_key_id="…", aws_secret_access_key="…")\nprint(sm.get_secret_value(SecretId=${JSON.stringify(d.Name)})["SecretString"])`));
+}
+
+async function makeCurrent(versionId) {
+  const current = state.versions.find((x) => x.VersionStages.includes("AWSCURRENT"));
+  try {
+    await api("UpdateSecretVersionStage", { SecretId: state.detail.Name, VersionStage: "AWSCURRENT", MoveToVersionId: versionId,
+      RemoveFromVersionId: current ? current.VersionId : undefined });
+    toast("Version is now AWSCURRENT"); select(state.detail.Name);
+  } catch (e) { toast(e.message); }
+}
+
+async function restore() {
+  try { await api("RestoreSecret", { SecretId: state.detail.Name }); toast("Restored"); await loadList(); select(state.detail.Name); }
+  catch (e) { toast(e.message); }
+}
+
+function askDelete() {
+  const name = state.detail.Name;
+  const days = h("input", { type: "number", min: 7, max: 30, value: 30 });
+  const force = h("input", { type: "checkbox", style: "width:auto;margin-right:6px" });
+  const confirm = h("input", { placeholder: name });
+  const err = h("div", { class: "error" });
+  const dlg = h("dialog", {},
+    h("h3", { style: "margin-top:0" }, `Delete ${name}?`),
+    h("p", { class: "muted" }, "During the recovery window the secret can be restored; clients cannot read it."),
+    h("label", {}, "Recovery window (days, 7-30)"), days,
+    h("label", { style: "text-transform:none;letter-spacing:0;font-size:13px" }, force, "Delete now, without recovery"),
+    h("label", {}, "Type the name to confirm"), confirm, err,
+    h("div", { class: "row", style: "margin-top:16px;justify-content:flex-end" },
+      h("button", { onclick: () => dlg.close() }, "Cancel"),
+      h("button", { class: "primary", onclick: async () => {
+        if (confirm.value !== name) { err.textContent = "The name does not match."; return; }
+        const body = force.checked ? { SecretId: name, ForceDeleteWithoutRecovery: true } : { SecretId: name, RecoveryWindowInDays: Number(days.value) };
+        try { await api("DeleteSecret", body); dlg.close(); toast("Deleted"); state.selected = force.checked ? null : name; await loadList();
+          if (force.checked) renderEmpty(); else select(name); }
+        catch (e) { err.textContent = e.message; }
+      } }, "Delete")));
+  document.body.append(dlg);
+  dlg.addEventListener("close", () => dlg.remove());
+  dlg.showModal();
+}
+
+// ----------------------------------------------------------------------------- editors
+
+function valueEditor(initial) {
+  // Key/value rows when the value is a JSON object (or empty), plaintext otherwise.
+  const obj = initial === "" ? {} : parseValue(initial);
+  let mode = obj ? "kv" : "text";
+  const box = h("div");
+  const rows = h("div");
+  const text = h("textarea", { spellcheck: "false" });
+  text.value = initial;
+  const addRow = (k = "", v = "") => {
+    const row = h("div", { class: "kv" }, h("input", { placeholder: "key", value: k }), h("input", { placeholder: "value", value: v, type: "password", autocomplete: "off",
+      onfocus: (e) => { e.target.type = "text"; }, onblur: (e) => { e.target.type = "password"; } }),
+      h("button", { class: "link", type: "button", onclick: () => row.remove() }, "Remove"));
+    rows.append(row);
+  };
+  Object.entries(obj || {}).forEach(([k, v]) => addRow(k, typeof v === "string" ? v : JSON.stringify(v)));
+  if (obj && !Object.keys(obj).length) addRow();
+  const kvValue = () => {
+    const out = {};
+    for (const row of rows.children) {
+      const [k, v] = row.querySelectorAll("input");
+      if (k.value.trim()) out[k.value.trim()] = v.value;
+    }
+    return JSON.stringify(out);
+  };
+  const tabs = h("div", { class: "row tabs" });
+  const draw = () => {
+    tabs.replaceChildren(
+      h("button", { type: "button", class: mode === "kv" ? "on" : "", onclick: () => { if (mode === "text") { const o = parseValue(text.value); rows.replaceChildren(); Object.entries(o || {}).forEach(([k, v]) => addRow(k, typeof v === "string" ? v : JSON.stringify(v))); if (!rows.children.length) addRow(); } mode = "kv"; draw(); } }, "Key/value"),
+      h("button", { type: "button", class: mode === "text" ? "on" : "", onclick: () => { if (mode === "kv") text.value = kvValue(); mode = "text"; draw(); } }, "Plaintext"),
+      h("span", { class: "grow" }),
+      h("button", { type: "button", class: "link", onclick: async () => {
+        try { const p = (await api("GetRandomPassword", { PasswordLength: 32, ExcludeCharacters: "\"'\\`" })).RandomPassword;
+          if (mode === "kv") addRow("password", p); else text.value = p; toast("Random password added"); } catch (e) { toast(e.message); }
+      } }, "Generate password"));
+    box.replaceChildren(tabs, mode === "kv" ? h("div", { style: "margin-top:8px" }, rows, h("button", { type: "button", class: "link", onclick: () => addRow() }, "+ Add row")) : text);
+  };
+  draw();
+  return { el: box, value: () => (mode === "kv" ? kvValue() : text.value) };
+}
+
+function tagEditor(tags) {
+  const area = h("textarea", { spellcheck: "false", style: "min-height:70px", placeholder: "team=payments\nenv=prod" });
+  area.value = (tags || []).map((t) => `${t.Key}=${t.Value}`).join("\n");
+  return { el: area, value: () => area.value.split("\n").map((l) => l.trim()).filter(Boolean).map((l) => {
+    const at = l.indexOf("="); return at < 0 ? { Key: l, Value: "" } : { Key: l.slice(0, at).trim(), Value: l.slice(at + 1).trim() };
+  }) };
+}
+
+function renderCreate() {
+  state.selected = null; renderList();
+  const name = h("input", { placeholder: "prod/payments/db", autocomplete: "off" });
+  const desc = h("input", { placeholder: "optional" });
+  const value = valueEditor("");
+  const tags = tagEditor([]);
+  const err = h("div", { class: "error" });
+  detailPanel.replaceChildren(h("form", { onsubmit: async (e) => {
+    e.preventDefault(); err.textContent = "";
+    const body = { Name: name.value.trim(), SecretString: value.value(), Tags: tags.value() };
+    if (desc.value.trim()) body.Description = desc.value.trim();
+    try { await api("CreateSecret", body); toast("Secret created"); await loadList(); select(body.Name); } catch (e2) { err.textContent = e2.message; }
+  } },
+    h("h2", {}, "New secret"),
+    h("label", {}, "Name"), name,
+    h("p", { class: "muted", style: "margin:4px 0 0;font-size:12px" }, "Letters, digits and /_+=.@- ; use / for folders, e.g. prod/app/db."),
+    h("label", {}, "Description"), desc,
+    h("label", {}, "Value"), value.el,
+    h("label", {}, "Tags (one key=value per line)"), tags.el, err,
+    h("div", { class: "row", style: "margin-top:16px" }, h("button", { class: "primary", type: "submit" }, "Create"), h("button", { type: "button", onclick: renderEmpty }, "Cancel"))));
+  name.focus();
+}
+
+function renderEditValue() {
+  const d = state.detail;
+  const current = state.value && state.value.SecretString !== undefined ? state.value.SecretString : "";
+  const value = valueEditor(current);
+  const err = h("div", { class: "error" });
+  detailPanel.replaceChildren(h("form", { onsubmit: async (e) => {
+    e.preventDefault(); err.textContent = "";
+    try { await api("PutSecretValue", { SecretId: d.Name, SecretString: value.value() }); toast("Saved as a new version"); select(d.Name); }
+    catch (e2) { err.textContent = e2.message; }
+  } },
+    h("h2", {}, d.Name),
+    h("p", { class: "muted" }, "Saving creates a new version marked AWSCURRENT; the old one becomes AWSPREVIOUS."),
+    value.el, err,
+    h("div", { class: "row", style: "margin-top:16px" }, h("button", { class: "primary", type: "submit" }, "Save new version"), h("button", { type: "button", onclick: () => select(d.Name) }, "Cancel"))));
+}
+
+function renderEditInfo() {
+  const d = state.detail;
+  const desc = h("input", { value: d.Description || "" });
+  const tags = tagEditor(d.Tags);
+  const err = h("div", { class: "error" });
+  detailPanel.replaceChildren(h("form", { onsubmit: async (e) => {
+    e.preventDefault(); err.textContent = "";
+    try {
+      await api("UpdateSecret", { SecretId: d.Name, Description: desc.value });
+      const wanted = tags.value();
+      const gone = (d.Tags || []).map((t) => t.Key).filter((k) => !wanted.some((t) => t.Key === k));
+      if (gone.length) await api("UntagResource", { SecretId: d.Name, TagKeys: gone });
+      if (wanted.length) await api("TagResource", { SecretId: d.Name, Tags: wanted });
+      toast("Saved"); await loadList(); select(d.Name);
+    } catch (e2) { err.textContent = e2.message; }
+  } },
+    h("h2", {}, d.Name),
+    h("label", {}, "Description"), desc,
+    h("label", {}, "Tags (one key=value per line)"), tags.el, err,
+    h("div", { class: "row", style: "margin-top:16px" }, h("button", { class: "primary", type: "submit" }, "Save"), h("button", { type: "button", onclick: () => select(d.Name) }, "Cancel"))));
+}
+
+start().catch((e) => app.replaceChildren(h("div", { class: "panel login error" }, `The server did not answer: ${e.message}`)));
+</script>
+</body>
+</html>

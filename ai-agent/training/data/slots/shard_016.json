@@ -1,0 +1,764 @@
+[
+ {
+  "id": "k_cmd_0641",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-resources-onprem"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0642",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-resources-onprem"
+  ],
+  "excerpt": "[docs/cli.md#pskit-resources-onprem]\nDeleting a deployed resource runs `terraform destroy -target=...`. If it is still in `pskit.yml`, the next deploy creates it again, so remove it from `resources:` (or the trigger) first. Kept resources are deleted from their own small workspace in `.pskit/<provider>-<stage>/kept/`, which is removed when the last one is gone. Credentials are the same as for `pskit deploy`.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0643",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-resources-onprem"
+  ],
+  "excerpt": "[docs/cli.md#pskit-resources-onprem]\nDeleting a deployed resource runs `terraform destroy -target=...`. If it is still in `pskit.yml`, the next deploy creates it again, so remove it from `resources:` (or the trigger) first. Kept resources are deleted from their own small workspace in `.pskit/<provider>-<stage>/kept/`, which is removed when the last one is gone. Credentials are the same as for `pskit deploy`.",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0644",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-resources-onprem"
+  ],
+  "excerpt": "[docs/cli.md#pskit-resources-onprem]\nDeleting a deployed resource runs `terraform destroy -target=...`. If it is still in `pskit.yml`, the next deploy creates it again, so remove it from `resources:` (or the trigger) first. Kept resources are deleted from their own small workspace in `.pskit/<provider>-<stage>/kept/`, which is removed when the last one is gone. Credentials are the same as for `pskit deploy`.",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0645",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-resources-onprem"
+  ],
+  "excerpt": "[docs/cli.md#pskit-resources-onprem]\nDeleting a deployed resource runs `terraform destroy -target=...`. If it is still in `pskit.yml`, the next deploy creates it again, so remove it from `resources:` (or the trigger) first. Kept resources are deleted from their own small workspace in `.pskit/<provider>-<stage>/kept/`, which is removed when the last one is gone. Credentials are the same as for `pskit deploy`.",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0646",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-resources-onprem"
+  ],
+  "excerpt": "[docs/cli.md#pskit-resources-onprem]\nDeleting a deployed resource runs `terraform destroy -target=...`. If it is still in `pskit.yml`, the next deploy creates it again, so remove it from `resources:` (or the trigger) first. Kept resources are deleted from their own small workspace in `.pskit/<provider>-<stage>/kept/`, which is removed when the last one is gone. Credentials are the same as for `pskit deploy`.",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0647",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-resources-onprem"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0648",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-resources-onprem"
+  ],
+  "excerpt": "[docs/cli.md#pskit-resources-onprem]\nDeleting a deployed resource runs `terraform destroy -target=...`. If it is still in `pskit.yml`, the next deploy creates it again, so remove it from `resources:` (or the trigger) first. Kept resources are deleted from their own small workspace in `.pskit/<provider>-<stage>/kept/`, which is removed when the last one is gone. Credentials are the same as for `pskit deploy`.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0649",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-resources-onprem"
+  ],
+  "excerpt": "[docs/cli.md#pskit-resources-onprem]\nDeleting a deployed resource runs `terraform destroy -target=...`. If it is still in `pskit.yml`, the next deploy creates it again, so remove it from `resources:` (or the trigger) first. Kept resources are deleted from their own small workspace in `.pskit/<provider>-<stage>/kept/`, which is removed when the last one is gone. Credentials are the same as for `pskit deploy`.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0650",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-alerts"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-alerts.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0651",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-alerts"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-alerts.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0652",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-alerts"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-alerts.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0653",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-alerts"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-alerts.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0654",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-alerts"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-alerts.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0655",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-alerts"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-alerts.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0656",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-alerts"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-alerts.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0657",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-alerts"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-alerts.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0658",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-alerts"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-alerts.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0659",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-alerts"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-alerts.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0660",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-alerts"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-alerts.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0661",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-backup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-backup.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0662",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-backup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-backup.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0663",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-backup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-backup.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0664",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-backup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-backup.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0665",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-backup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-backup.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0666",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-backup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-backup.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0667",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-backup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-backup.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0668",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-backup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-backup.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0669",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-backup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-backup.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0670",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-backup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-backup.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0671",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-backup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-backup.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0672",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-catalog"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-catalog.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0673",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-catalog"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-catalog.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0674",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-catalog"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-catalog.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0675",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-catalog"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-catalog.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0676",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-catalog"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-catalog.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0677",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-catalog"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-catalog.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0678",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-catalog"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-catalog.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0679",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-catalog"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-catalog.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0680",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-resources-onprem-catalog"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-resources-onprem-catalog.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ }
+]

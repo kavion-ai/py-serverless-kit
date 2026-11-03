@@ -1,0 +1,36 @@
+# BEFORE: AWS SAM template (AWS-only). Shown for comparison with after/pskit.yml.
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  CreateOrder:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: lambda_function.create_order_handler
+      Runtime: python3.12
+      Events:
+        Api: {Type: Api, Properties: {Path: /orders, Method: post}}
+  GetOrder:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: lambda_function.get_order_handler
+      Runtime: python3.12
+      Events:
+        Api: {Type: Api, Properties: {Path: "/orders/{id}", Method: get}}
+  EmailWorker:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: lambda_function.email_worker_handler
+      Runtime: python3.12
+      Events:
+        Queue:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt EmailQueue.Arn
+            BatchSize: 10
+            FunctionResponseTypes: [ReportBatchItemFailures]
+  EmailQueue:
+    Type: AWS::SQS::Queue
+  OrderStateMachine:
+    Type: AWS::Serverless::StateMachine
+    Properties:
+      DefinitionUri: state_machine.asl.json

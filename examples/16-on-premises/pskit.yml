@@ -1,0 +1,69 @@
+# On-premises deploy: one Python process on this machine.
+# Missing queues, buckets and topics are created as directories at start.
+# Point a service at a directory you already have with `use: directory`.
+service: on-prem-demo
+
+provider:
+  name: onprem
+  region: local
+  runtime: python3.12
+  options:
+    host: 127.0.0.1
+    port: 8080
+    data_dir: .pskit/onprem-data
+    services:
+      schedule: builtin
+      queue: builtin
+      topic: builtin
+      workflow: embedded
+      storage: {use: directory, path: .onprem/buckets}
+
+functions:
+  hello:
+    handler: app.handlers.hello
+    events:
+      - http: GET /hello
+  tick:
+    handler: app.handlers.tick
+    events:
+      - schedule: {rate: 1 hour, input: {source: on-prem}}
+  worker:
+    handler: app.handlers.worker
+    events:
+      - queue: {name: jobs, batch_size: 5, dead_letter: jobs-dlq, max_receive: 3}
+  audit-dlq:
+    handler: app.handlers.audit_dlq
+    events:
+      - queue: {name: jobs-dlq, batch_size: 5}
+  on-upload:
+    handler: app.handlers.on_upload
+    events:
+      - storage: {bucket: uploads, prefix: in/, suffix: .csv, events: [created, deleted]}
+  on-order:
+    handler: app.handlers.on_order
+    events:
+      - topic: {name: orders, filter: {event_type: ["order.shipped"]}}
+  mark:
+    handler: app.handlers.mark
+
+workflows:
+  ping:
+    engine: embedded
+    start_at: Mark
+    states:
+      Mark: {type: task, function: mark, end: true}
+
+providers:
+  aws:
+    region: us-east-1
+  gcp:
+    region: us-central1
+    options: {project: "${env:GOOGLE_CLOUD_PROJECT, my-gcp-project}"}
+  azure:
+    region: eastus
+    options: {subscription_id: "${env:ARM_SUBSCRIPTION_ID, 00000000-0000-0000-0000-000000000000}"}
+    functions:
+      # Blob triggers fire on created blobs only.
+      on-upload:
+        events:
+          - storage: {bucket: uploads, prefix: in/, suffix: .csv, events: [created]}

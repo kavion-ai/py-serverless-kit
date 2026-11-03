@@ -1,0 +1,63 @@
+# Remote on-premises deploy.
+#
+# This file ships the function bundle to a Linux server that may not have Python.
+# `python: bundle` downloads a portable CPython at apply time and copies it with
+# the app. `install: systemd` keeps the host up across reboots.
+#
+# Required on the laptop: OpenSSH (`ssh`, `scp`). Required on the server: SSH
+# access. Python on the server is optional.
+#
+#   set PSKIT_ONPREM_HOST=10.0.1.12
+#   pskit deploy
+#
+# Switch to Docker (image built on this machine, run on the server) by replacing
+# deploy.method with docker and setting pem to the server .pem. pskit deploy
+# asks for a .pem on a terminal when identity_file is empty (Enter keeps the
+# SSH agent for method ssh). method: scp is the same archive copy as ssh.
+# Docker on a server installs the engine when `docker` is missing, then waits
+# until /__pskit/health answers. See the README.
+service: factory-api
+
+provider:
+  name: onprem
+  region: local
+  runtime: python3.12
+  architecture: x86_64
+  options:
+    host: 0.0.0.0
+    port: 8090
+    advertise: "${env:PSKIT_ONPREM_URL, http://127.0.0.1:8090}"
+    data_dir: /opt/pskit/factory-api/data
+    deploy:
+      method: ssh
+      host: "${env:PSKIT_ONPREM_HOST, 127.0.0.1}"
+      user: "${env:PSKIT_ONPREM_USER, pskit}"
+      port: 22
+      identity_file: "${env:PSKIT_SSH_KEY, }"
+      known_hosts: accept-new
+      path: /opt/pskit/factory-api
+      python: bundle
+      target_os: linux
+      target_arch: x86_64
+      install: systemd
+      sudo: true
+
+functions:
+  hello:
+    handler: app.handlers.hello
+    events:
+      - http: GET /hello
+  tick:
+    handler: app.handlers.tick
+    events:
+      - schedule: {rate: 1 hour, input: {source: factory}}
+
+providers:
+  aws:
+    region: us-east-1
+  gcp:
+    region: us-central1
+    options: {project: "${env:GOOGLE_CLOUD_PROJECT, my-gcp-project}"}
+  azure:
+    region: eastus
+    options: {subscription_id: "${env:ARM_SUBSCRIPTION_ID, 00000000-0000-0000-0000-000000000000}"}

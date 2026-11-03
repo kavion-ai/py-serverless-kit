@@ -1,0 +1,777 @@
+[
+ {
+  "id": "k_arch_0171",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-events"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-events.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#events-triggers"
+  ],
+  "excerpt": "[docs/events.md#events-triggers]\n`smtp` (on premises) runs a function when mail arrives for your domain: `- smtp: {resource: inbound-mail}` on the SMTP server created under *On-prem services* (an `smtp` resource). The handler gets from, to, cc, subject, text, html, headers and attachments, plus the same mail as an Amazon SES event (`Records[0].ses`). Setup and DNS records: [smtp/README.md](smtp/README.md).",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0172",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-events"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-events.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#events-triggers"
+  ],
+  "excerpt": "[docs/events.md#events-triggers]\n`smtp` (on premises) runs a function when mail arrives for your domain: `- smtp: {resource: inbound-mail}` on the SMTP server created under *On-prem services* (an `smtp` resource). The handler gets from, to, cc, subject, text, html, headers and attachments, plus the same mail as an Amazon SES event (`Records[0].ses`). Setup and DNS records: [smtp/README.md](smtp/README.md).",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0173",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-events"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-events.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/events.md#events-triggers"
+  ],
+  "excerpt": "[docs/events.md#events-triggers]\n`smtp` (on premises) runs a function when mail arrives for your domain: `- smtp: {resource: inbound-mail}` on the SMTP server created under *On-prem services* (an `smtp` resource). The handler gets from, to, cc, subject, text, html, headers and attachments, plus the same mail as an Amazon SES event (`Records[0].ses`). Setup and DNS records: [smtp/README.md](smtp/README.md).",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0174",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-events"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-events.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/events.md#events-triggers",
+   "src/py_serverless_kit/config/schema.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0175",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-functions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-functions.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#functions",
+   "src/py_serverless_kit/config/schema.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0176",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-functions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-functions.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#functions",
+   "src/py_serverless_kit/config/schema.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0177",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-functions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-functions.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#functions",
+   "src/py_serverless_kit/config/schema.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0178",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-functions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-functions.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#functions",
+   "src/py_serverless_kit/config/schema.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0179",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-functions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-functions.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#functions",
+   "src/py_serverless_kit/config/schema.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0180",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-functions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-functions.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#functions",
+   "src/py_serverless_kit/config/schema.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0181",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-getting-started"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-getting-started.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/getting-started.md#getting-started"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0182",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-getting-started"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-getting-started.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/getting-started.md#getting-started"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0183",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-getting-started"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-getting-started.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/getting-started.md#getting-started"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0184",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-getting-started"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-getting-started.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/getting-started.md#getting-started"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0185",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-getting-started"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-getting-started.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/getting-started.md#getting-started"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0186",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-getting-started"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-getting-started.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/getting-started.md#getting-started"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0187",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-handlers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-handlers.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/handlers.md#get_secret-secrets-on-every-provider"
+  ],
+  "excerpt": "[docs/handlers.md#get_secret-secrets-on-every-provider]\nThe store comes from environment variables, so the code does not change: `PSKIT_SECRETS_DRIVER` = `vault` (HashiCorp Vault / OpenBao, with `PSKIT_SECRETS_URL` and `_TOKEN`), `aws` (AWS Secrets Manager; Lambda's credentials) or `env` (default: `PSKIT_SECRET_<NAME>`, then `<NAME>`). `store=\"other\"` reads `PSKIT_OTHER_*`. Values are cached for 60 s. On premises a one-click OpenBao, Secrets Manager compatible server or LocalStack writes these variables for you: [resource-guides/onprem/secrets.md](resource-guides/onprem/secrets.md).",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0188",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-handlers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-handlers.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/handlers.md#get_secret-secrets-on-every-provider"
+  ],
+  "excerpt": "[docs/handlers.md#get_secret-secrets-on-every-provider]\nThe store comes from environment variables, so the code does not change: `PSKIT_SECRETS_DRIVER` = `vault` (HashiCorp Vault / OpenBao, with `PSKIT_SECRETS_URL` and `_TOKEN`), `aws` (AWS Secrets Manager; Lambda's credentials) or `env` (default: `PSKIT_SECRET_<NAME>`, then `<NAME>`). `store=\"other\"` reads `PSKIT_OTHER_*`. Values are cached for 60 s. On premises a one-click OpenBao, Secrets Manager compatible server or LocalStack writes these variables for you: [resource-guides/onprem/secrets.md](resource-guides/onprem/secrets.md).",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0189",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-handlers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-handlers.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/handlers.md#get_secret-secrets-on-every-provider"
+  ],
+  "excerpt": "[docs/handlers.md#get_secret-secrets-on-every-provider]\nThe store comes from environment variables, so the code does not change: `PSKIT_SECRETS_DRIVER` = `vault` (HashiCorp Vault / OpenBao, with `PSKIT_SECRETS_URL` and `_TOKEN`), `aws` (AWS Secrets Manager; Lambda's credentials) or `env` (default: `PSKIT_SECRET_<NAME>`, then `<NAME>`). `store=\"other\"` reads `PSKIT_OTHER_*`. Values are cached for 60 s. On premises a one-click OpenBao, Secrets Manager compatible server or LocalStack writes these variables for you: [resource-guides/onprem/secrets.md](resource-guides/onprem/secrets.md).",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0190",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-handlers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-handlers.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/handlers.md#get_secret-secrets-on-every-provider"
+  ],
+  "excerpt": "[docs/handlers.md#get_secret-secrets-on-every-provider]\nThe store comes from environment variables, so the code does not change: `PSKIT_SECRETS_DRIVER` = `vault` (HashiCorp Vault / OpenBao, with `PSKIT_SECRETS_URL` and `_TOKEN`), `aws` (AWS Secrets Manager; Lambda's credentials) or `env` (default: `PSKIT_SECRET_<NAME>`, then `<NAME>`). `store=\"other\"` reads `PSKIT_OTHER_*`. Values are cached for 60 s. On premises a one-click OpenBao, Secrets Manager compatible server or LocalStack writes these variables for you: [resource-guides/onprem/secrets.md](resource-guides/onprem/secrets.md).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0191",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-handlers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-handlers.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/handlers.md#get_secret-secrets-on-every-provider"
+  ],
+  "excerpt": "[docs/handlers.md#get_secret-secrets-on-every-provider]\nThe store comes from environment variables, so the code does not change: `PSKIT_SECRETS_DRIVER` = `vault` (HashiCorp Vault / OpenBao, with `PSKIT_SECRETS_URL` and `_TOKEN`), `aws` (AWS Secrets Manager; Lambda's credentials) or `env` (default: `PSKIT_SECRET_<NAME>`, then `<NAME>`). `store=\"other\"` reads `PSKIT_OTHER_*`. Values are cached for 60 s. On premises a one-click OpenBao, Secrets Manager compatible server or LocalStack writes these variables for you: [resource-guides/onprem/secrets.md](resource-guides/onprem/secrets.md).",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0192",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-handlers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-handlers.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/handlers.md#get_secret-secrets-on-every-provider"
+  ],
+  "excerpt": "[docs/handlers.md#get_secret-secrets-on-every-provider]\nThe store comes from environment variables, so the code does not change: `PSKIT_SECRETS_DRIVER` = `vault` (HashiCorp Vault / OpenBao, with `PSKIT_SECRETS_URL` and `_TOKEN`), `aws` (AWS Secrets Manager; Lambda's credentials) or `env` (default: `PSKIT_SECRET_<NAME>`, then `<NAME>`). `store=\"other\"` reads `PSKIT_OTHER_*`. Values are cached for 60 s. On premises a one-click OpenBao, Secrets Manager compatible server or LocalStack writes these variables for you: [resource-guides/onprem/secrets.md](resource-guides/onprem/secrets.md).",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0193",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-hooks"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-hooks.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#hooks",
+   "src/py_serverless_kit/core/deployer.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0194",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-hooks"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-hooks.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#hooks",
+   "src/py_serverless_kit/core/deployer.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0195",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-hooks"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-hooks.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#hooks",
+   "src/py_serverless_kit/core/deployer.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0196",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-hooks"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-hooks.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#hooks",
+   "src/py_serverless_kit/core/deployer.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0197",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-hooks"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-hooks.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#hooks",
+   "src/py_serverless_kit/core/deployer.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0198",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-hooks"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-hooks.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#hooks",
+   "src/py_serverless_kit/core/deployer.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0199",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-iam"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-iam.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/configuration.md#provider",
+   "docs/configuration.md#functions"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0200",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-iam"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-iam.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/handlers.md#invoke-calling-another-function"
+  ],
+  "excerpt": "[docs/handlers.md#invoke-calling-another-function]\n1. If `PSKIT_ENDPOINT_<NAME>` is set (`billing` → `PSKIT_ENDPOINT_BILLING`, non-alphanumerics become `_`), pskit POSTs to that http(s) URL. This works on any provider. 2. `local` (CLI, tests) and `onprem`: call the handler in-process. `asynchronous=True` still finishes before `invoke()` returns. 3. `aws`: `lambda:InvokeFunction` via boto3 (`pip install py-serverless-kit[aws]`, and add `boto3` to requirements). Grant `lambda:InvokeFunction` in `iam.statements`. 4. `gcp`: authenticated HTTPS call to `https://<region>-<project>.cloudfunctions.net/<service>-<stage>-<name>` with an ID token from the metadata server. 5. Other providers raise `InvokeError` unless `PSKIT_ENDPOINT_<NAME>` is set. Point it at the target's HTTP URL from `pskit info`. On Azure, invoke-only functions expose `POST /_pskit/invoke/<name>` (function key required).",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0201",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-iam"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-iam.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/handlers.md#invoke-calling-another-function"
+  ],
+  "excerpt": "[docs/handlers.md#invoke-calling-another-function]\n1. If `PSKIT_ENDPOINT_<NAME>` is set (`billing` → `PSKIT_ENDPOINT_BILLING`, non-alphanumerics become `_`), pskit POSTs to that http(s) URL. This works on any provider. 2. `local` (CLI, tests) and `onprem`: call the handler in-process. `asynchronous=True` still finishes before `invoke()` returns. 3. `aws`: `lambda:InvokeFunction` via boto3 (`pip install py-serverless-kit[aws]`, and add `boto3` to requirements). Grant `lambda:InvokeFunction` in `iam.statements`. 4. `gcp`: authenticated HTTPS call to `https://<region>-<project>.cloudfunctions.net/<service>-<stage>-<name>` with an ID token from the metadata server. 5. Other providers raise `InvokeError` unless `PSKIT_ENDPOINT_<NAME>` is set. Point it at the target's HTTP URL from `pskit info`. On Azure, invoke-only functions expose `POST /_pskit/invoke/<name>` (function key required).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0202",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-iam"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-iam.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/handlers.md#invoke-calling-another-function"
+  ],
+  "excerpt": "[docs/handlers.md#invoke-calling-another-function]\n1. If `PSKIT_ENDPOINT_<NAME>` is set (`billing` → `PSKIT_ENDPOINT_BILLING`, non-alphanumerics become `_`), pskit POSTs to that http(s) URL. This works on any provider. 2. `local` (CLI, tests) and `onprem`: call the handler in-process. `asynchronous=True` still finishes before `invoke()` returns. 3. `aws`: `lambda:InvokeFunction` via boto3 (`pip install py-serverless-kit[aws]`, and add `boto3` to requirements). Grant `lambda:InvokeFunction` in `iam.statements`. 4. `gcp`: authenticated HTTPS call to `https://<region>-<project>.cloudfunctions.net/<service>-<stage>-<name>` with an ID token from the metadata server. 5. Other providers raise `InvokeError` unless `PSKIT_ENDPOINT_<NAME>` is set. Point it at the target's HTTP URL from `pskit info`. On Azure, invoke-only functions expose `POST /_pskit/invoke/<name>` (function key required).",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0203",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-iam"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-iam.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/handlers.md#invoke-calling-another-function"
+  ],
+  "excerpt": "[docs/handlers.md#invoke-calling-another-function]\n1. If `PSKIT_ENDPOINT_<NAME>` is set (`billing` → `PSKIT_ENDPOINT_BILLING`, non-alphanumerics become `_`), pskit POSTs to that http(s) URL. This works on any provider. 2. `local` (CLI, tests) and `onprem`: call the handler in-process. `asynchronous=True` still finishes before `invoke()` returns. 3. `aws`: `lambda:InvokeFunction` via boto3 (`pip install py-serverless-kit[aws]`, and add `boto3` to requirements). Grant `lambda:InvokeFunction` in `iam.statements`. 4. `gcp`: authenticated HTTPS call to `https://<region>-<project>.cloudfunctions.net/<service>-<stage>-<name>` with an ID token from the metadata server. 5. Other providers raise `InvokeError` unless `PSKIT_ENDPOINT_<NAME>` is set. Point it at the target's HTTP URL from `pskit info`. On Azure, invoke-only functions expose `POST /_pskit/invoke/<name>` (function key required).",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0204",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-iam"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-iam.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/handlers.md#invoke-calling-another-function"
+  ],
+  "excerpt": "[docs/handlers.md#invoke-calling-another-function]\n1. If `PSKIT_ENDPOINT_<NAME>` is set (`billing` → `PSKIT_ENDPOINT_BILLING`, non-alphanumerics become `_`), pskit POSTs to that http(s) URL. This works on any provider. 2. `local` (CLI, tests) and `onprem`: call the handler in-process. `asynchronous=True` still finishes before `invoke()` returns. 3. `aws`: `lambda:InvokeFunction` via boto3 (`pip install py-serverless-kit[aws]`, and add `boto3` to requirements). Grant `lambda:InvokeFunction` in `iam.statements`. 4. `gcp`: authenticated HTTPS call to `https://<region>-<project>.cloudfunctions.net/<service>-<stage>-<name>` with an ID token from the metadata server. 5. Other providers raise `InvokeError` unless `PSKIT_ENDPOINT_<NAME>` is set. Point it at the target's HTTP URL from `pskit info`. On Azure, invoke-only functions expose `POST /_pskit/invoke/<name>` (function key required).",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0205",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-install-terraform"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-install-terraform.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "deploy_docs/HOW_TO_INSTALL_TERRAFORM.md",
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0206",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-install-terraform"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-install-terraform.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "[docs/troubleshooting.md#installation-and-tooling]\n**`pip install failed while vendoring dependencies`** : For vendoring providers (aws, alibaba, ibm, digitalocean, tencent, huawei), pskit downloads **Linux** wheels (`manylinux2014_<arch>`, `--only-binary=:all:`) for the target Python version. A package with no such wheel fails. Fixes: - pin a version that publishes manylinux wheels; - add flags with `package.pip_args`; - for pure-Python packages, check that they ship a wheel at all.",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0207",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-install-terraform"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-install-terraform.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "[docs/troubleshooting.md#installation-and-tooling]\n**`pip install failed while vendoring dependencies`** : For vendoring providers (aws, alibaba, ibm, digitalocean, tencent, huawei), pskit downloads **Linux** wheels (`manylinux2014_<arch>`, `--only-binary=:all:`) for the target Python version. A package with no such wheel fails. Fixes: - pin a version that publishes manylinux wheels; - add flags with `package.pip_args`; - for pure-Python packages, check that they ship a wheel at all.",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0208",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-install-terraform"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-install-terraform.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "[docs/troubleshooting.md#installation-and-tooling]\n**`pip install failed while vendoring dependencies`** : For vendoring providers (aws, alibaba, ibm, digitalocean, tencent, huawei), pskit downloads **Linux** wheels (`manylinux2014_<arch>`, `--only-binary=:all:`) for the target Python version. A package with no such wheel fails. Fixes: - pin a version that publishes manylinux wheels; - add flags with `package.pip_args`; - for pure-Python packages, check that they ship a wheel at all.",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0209",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-install-terraform"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-install-terraform.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "[docs/troubleshooting.md#installation-and-tooling]\n**`pip install failed while vendoring dependencies`** : For vendoring providers (aws, alibaba, ibm, digitalocean, tencent, huawei), pskit downloads **Linux** wheels (`manylinux2014_<arch>`, `--only-binary=:all:`) for the target Python version. A package with no such wheel fails. Fixes: - pin a version that publishes manylinux wheels; - add flags with `package.pip_args`; - for pure-Python packages, check that they ship a wheel at all.",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0210",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-install-terraform"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-install-terraform.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "[docs/troubleshooting.md#installation-and-tooling]\n**`pip install failed while vendoring dependencies`** : For vendoring providers (aws, alibaba, ibm, digitalocean, tencent, huawei), pskit downloads **Linux** wheels (`manylinux2014_<arch>`, `--only-binary=:all:`) for the target Python version. A package with no such wheel fails. Fixes: - pin a version that publishes manylinux wheels; - add flags with `package.pip_args`; - for pure-Python packages, check that they ship a wheel at all.",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ }
+]

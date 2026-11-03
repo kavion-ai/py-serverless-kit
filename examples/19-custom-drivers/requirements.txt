@@ -1,0 +1,2 @@
+# Nothing to vendor: the example drivers use only the standard library.
+# Add `pika` (rabbitmq_queue.py) or `kafka-python` (kafka_queue.py) when you use those templates.

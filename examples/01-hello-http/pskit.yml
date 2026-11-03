@@ -1,0 +1,27 @@
+# Minimal service: one function, one HTTP route.
+service: hello-http
+
+provider:
+  name: aws            # change to gcp / azure / ... - nothing else has to change
+  region: us-east-1
+  runtime: python3.12
+
+# Per-cloud overrides. A block is applied only when that provider is selected
+# (e.g. `pskit deploy --provider gcp`); the handler code never changes.
+providers:
+  gcp:
+    region: us-central1
+    options: {project: "${env:GOOGLE_CLOUD_PROJECT, my-gcp-project}"}
+  azure:
+    region: eastus
+    options: {subscription_id: "${env:ARM_SUBSCRIPTION_ID, 00000000-0000-0000-0000-000000000000}"}
+  onprem:
+    region: local
+    options: {host: 127.0.0.1, port: 8081}
+
+functions:
+  hello:
+    handler: app.handlers.hello      # <module path>.<function>
+    description: Says hello
+    events:
+      - http: GET /hello             # shorthand for {method: GET, path: /hello}

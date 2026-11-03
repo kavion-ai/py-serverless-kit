@@ -1,0 +1,762 @@
+[
+ {
+  "id": "k_proc_0121",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-lb"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-lb.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0122",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-lb"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-lb.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0123",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-lb"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-lb.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0124",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-lb"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-lb.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0125",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-lb"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-lb.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0126",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-lb"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-lb.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/load-balancers.md#create-one-and-put-projects-on-it"
+  ],
+  "excerpt": "[docs/load-balancers.md#create-one-and-put-projects-on-it]\nA project names it in `pskit.yml`; every `pskit deploy` updates its route and `pskit remove` drops it: The path prefix is removed before the request reaches your functions (`/shop/orders` arrives as `/orders`) and sent in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`. A **cluster** can be attached instead; every deployment on it gets `/<service>/` (or `/<service>-<stage>/` when two stages of a service share the cluster), kept up to date on deploy, remove, join and leave: A project's own `balancer` setting wins over the cluster's route for that deployment. A project whose [placement groups](placement.md) run on several attached clusters gets one route, `/<service>/`, to the servers of all of them; each server passes another group's routes on to it.",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0127",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-logs.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0128",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-logs.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0129",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-logs.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0130",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-logs.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0131",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-logs.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0132",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-logs.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0133",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-logs.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0134",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-logs.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0135",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-logs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-logs.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#http"
+  ],
+  "excerpt": "[docs/troubleshooting.md#http]\n**CORS errors in the browser** : Add `cors: true` (or a `cors:` mapping) to the route. With `allow_credentials: true` the runtime echoes the request's `Origin` instead of `*`, so list explicit `origins` to restrict who may call. Preflights are answered by the runtime (and by API Gateway on AWS). **405 Method Not Allowed** : The path matched a route but not the method. The `allow` header lists the valid methods. Use `method: ANY` to accept everything.",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0136",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-migrate"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-migrate.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/migrating-from-aws.md#step-5-move-to-another-cloud"
+  ],
+  "excerpt": "[docs/migrating-from-aws.md#step-5-move-to-another-cloud]\n- add provider options (`gcp: options.project`, `azure: options.subscription_id`, …), see [providers.md](providers.md); - replace `auth: jwt` (AWS only) with `auth: iam` / `key`, or validate tokens in the handler; - drop `existing: true` for resources that should be created on the new cloud; - remove AWS-only `functions.<fn>.options` and `terraform.extra` (or add the equivalent for the new cloud).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0137",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-migrate"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-migrate.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/migrating-from-aws.md#step-5-move-to-another-cloud"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0138",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-migrate"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-migrate.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/migrating-from-aws.md#step-5-move-to-another-cloud"
+  ],
+  "excerpt": "[docs/migrating-from-aws.md#step-5-move-to-another-cloud]\n- add provider options (`gcp: options.project`, `azure: options.subscription_id`, …), see [providers.md](providers.md); - replace `auth: jwt` (AWS only) with `auth: iam` / `key`, or validate tokens in the handler; - drop `existing: true` for resources that should be created on the new cloud; - remove AWS-only `functions.<fn>.options` and `terraform.extra` (or add the equivalent for the new cloud).",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0139",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-migrate"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-migrate.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/migrating-from-aws.md#step-5-move-to-another-cloud"
+  ],
+  "excerpt": "[docs/migrating-from-aws.md#step-5-move-to-another-cloud]\n- add provider options (`gcp: options.project`, `azure: options.subscription_id`, …), see [providers.md](providers.md); - replace `auth: jwt` (AWS only) with `auth: iam` / `key`, or validate tokens in the handler; - drop `existing: true` for resources that should be created on the new cloud; - remove AWS-only `functions.<fn>.options` and `terraform.extra` (or add the equivalent for the new cloud).",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0140",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-migrate"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-migrate.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/migrating-from-aws.md#step-5-move-to-another-cloud"
+  ],
+  "excerpt": "[docs/migrating-from-aws.md#step-5-move-to-another-cloud]\n- add provider options (`gcp: options.project`, `azure: options.subscription_id`, …), see [providers.md](providers.md); - replace `auth: jwt` (AWS only) with `auth: iam` / `key`, or validate tokens in the handler; - drop `existing: true` for resources that should be created on the new cloud; - remove AWS-only `functions.<fn>.options` and `terraform.extra` (or add the equivalent for the new cloud).",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0141",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-migrate"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-migrate.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/migrating-from-aws.md#step-5-move-to-another-cloud"
+  ],
+  "excerpt": "[docs/migrating-from-aws.md#step-5-move-to-another-cloud]\n- add provider options (`gcp: options.project`, `azure: options.subscription_id`, …), see [providers.md](providers.md); - replace `auth: jwt` (AWS only) with `auth: iam` / `key`, or validate tokens in the handler; - drop `existing: true` for resources that should be created on the new cloud; - remove AWS-only `functions.<fn>.options` and `terraform.extra` (or add the equivalent for the new cloud).",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0142",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-migrate"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-migrate.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/migrating-from-aws.md#step-5-move-to-another-cloud"
+  ],
+  "excerpt": "[docs/migrating-from-aws.md#step-5-move-to-another-cloud]\n- add provider options (`gcp: options.project`, `azure: options.subscription_id`, …), see [providers.md](providers.md); - replace `auth: jwt` (AWS only) with `auth: iam` / `key`, or validate tokens in the handler; - drop `existing: true` for resources that should be created on the new cloud; - remove AWS-only `functions.<fn>.options` and `terraform.extra` (or add the equivalent for the new cloud).",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0143",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-migrate"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-migrate.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/migrating-from-aws.md#step-5-move-to-another-cloud"
+  ],
+  "excerpt": "[docs/migrating-from-aws.md#step-5-move-to-another-cloud]\n- add provider options (`gcp: options.project`, `azure: options.subscription_id`, …), see [providers.md](providers.md); - replace `auth: jwt` (AWS only) with `auth: iam` / `key`, or validate tokens in the handler; - drop `existing: true` for resources that should be created on the new cloud; - remove AWS-only `functions.<fn>.options` and `terraform.extra` (or add the equivalent for the new cloud).",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0144",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-migrate"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-migrate.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/migrating-from-aws.md#step-5-move-to-another-cloud"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0145",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-network.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/onprem-network.md#network-and-firewall-rules-on-premises"
+  ],
+  "excerpt": "[docs/onprem-network.md#network-and-firewall-rules-on-premises]\nWhich machine must accept **inbound** connections, and which must be allowed **outbound**, at each step: saving servers, deploying, running, clusters, joining servers, load balancers, function groups on several servers, and resources / triggers. Ports in *italics* are defaults you can change. **You do not have to work these out by hand.** Every step prints the rules it just made necessary, with your servers' names and addresses and `ufw` commands: `pskit cluster create`, `pskit cluster join`, `pskit deploy` (one server, function groups or a cluster), `pskit lb create`, `pskit lb attach`, `pskit cluster balancer set`, a project's `balancer` route, and `pskit resources onprem create`.",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0146",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-network.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/onprem-network.md#network-and-firewall-rules-on-premises"
+  ],
+  "excerpt": "[docs/onprem-network.md#network-and-firewall-rules-on-premises]\nWhich machine must accept **inbound** connections, and which must be allowed **outbound**, at each step: saving servers, deploying, running, clusters, joining servers, load balancers, function groups on several servers, and resources / triggers. Ports in *italics* are defaults you can change. **You do not have to work these out by hand.** Every step prints the rules it just made necessary, with your servers' names and addresses and `ufw` commands: `pskit cluster create`, `pskit cluster join`, `pskit deploy` (one server, function groups or a cluster), `pskit lb create`, `pskit lb attach`, `pskit cluster balancer set`, a project's `balancer` route, and `pskit resources onprem create`.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0147",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-network.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/onprem-network.md#network-and-firewall-rules-on-premises"
+  ],
+  "excerpt": "[docs/onprem-network.md#network-and-firewall-rules-on-premises]\nWhich machine must accept **inbound** connections, and which must be allowed **outbound**, at each step: saving servers, deploying, running, clusters, joining servers, load balancers, function groups on several servers, and resources / triggers. Ports in *italics* are defaults you can change. **You do not have to work these out by hand.** Every step prints the rules it just made necessary, with your servers' names and addresses and `ufw` commands: `pskit cluster create`, `pskit cluster join`, `pskit deploy` (one server, function groups or a cluster), `pskit lb create`, `pskit lb attach`, `pskit cluster balancer set`, a project's `balancer` route, and `pskit resources onprem create`.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0148",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-network.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/onprem-network.md#network-and-firewall-rules-on-premises"
+  ],
+  "excerpt": "[docs/onprem-network.md#network-and-firewall-rules-on-premises]\nWhich machine must accept **inbound** connections, and which must be allowed **outbound**, at each step: saving servers, deploying, running, clusters, joining servers, load balancers, function groups on several servers, and resources / triggers. Ports in *italics* are defaults you can change. **You do not have to work these out by hand.** Every step prints the rules it just made necessary, with your servers' names and addresses and `ufw` commands: `pskit cluster create`, `pskit cluster join`, `pskit deploy` (one server, function groups or a cluster), `pskit lb create`, `pskit lb attach`, `pskit cluster balancer set`, a project's `balancer` route, and `pskit resources onprem create`.",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0149",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-network.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/onprem-network.md#network-and-firewall-rules-on-premises"
+  ],
+  "excerpt": "[docs/onprem-network.md#network-and-firewall-rules-on-premises]\nWhich machine must accept **inbound** connections, and which must be allowed **outbound**, at each step: saving servers, deploying, running, clusters, joining servers, load balancers, function groups on several servers, and resources / triggers. Ports in *italics* are defaults you can change. **You do not have to work these out by hand.** Every step prints the rules it just made necessary, with your servers' names and addresses and `ufw` commands: `pskit cluster create`, `pskit cluster join`, `pskit deploy` (one server, function groups or a cluster), `pskit lb create`, `pskit lb attach`, `pskit cluster balancer set`, a project's `balancer` route, and `pskit resources onprem create`.",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0150",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-network.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#network-and-firewall-rules-on-premises"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0151",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-network.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/onprem-network.md#network-and-firewall-rules-on-premises"
+  ],
+  "excerpt": "[docs/onprem-network.md#network-and-firewall-rules-on-premises]\nWhich machine must accept **inbound** connections, and which must be allowed **outbound**, at each step: saving servers, deploying, running, clusters, joining servers, load balancers, function groups on several servers, and resources / triggers. Ports in *italics* are defaults you can change. **You do not have to work these out by hand.** Every step prints the rules it just made necessary, with your servers' names and addresses and `ufw` commands: `pskit cluster create`, `pskit cluster join`, `pskit deploy` (one server, function groups or a cluster), `pskit lb create`, `pskit lb attach`, `pskit cluster balancer set`, a project's `balancer` route, and `pskit resources onprem create`.",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0152",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-network.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/onprem-network.md#network-and-firewall-rules-on-premises"
+  ],
+  "excerpt": "[docs/onprem-network.md#network-and-firewall-rules-on-premises]\nWhich machine must accept **inbound** connections, and which must be allowed **outbound**, at each step: saving servers, deploying, running, clusters, joining servers, load balancers, function groups on several servers, and resources / triggers. Ports in *italics* are defaults you can change. **You do not have to work these out by hand.** Every step prints the rules it just made necessary, with your servers' names and addresses and `ufw` commands: `pskit cluster create`, `pskit cluster join`, `pskit deploy` (one server, function groups or a cluster), `pskit lb create`, `pskit lb attach`, `pskit cluster balancer set`, a project's `balancer` route, and `pskit resources onprem create`.",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0153",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-network"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-network.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/onprem-network.md#network-and-firewall-rules-on-premises"
+  ],
+  "excerpt": "[docs/onprem-network.md#network-and-firewall-rules-on-premises]\nWhich machine must accept **inbound** connections, and which must be allowed **outbound**, at each step: saving servers, deploying, running, clusters, joining servers, load balancers, function groups on several servers, and resources / triggers. Ports in *italics* are defaults you can change. **You do not have to work these out by hand.** Every step prints the rules it just made necessary, with your servers' names and addresses and `ufw` commands: `pskit cluster create`, `pskit cluster join`, `pskit deploy` (one server, function groups or a cluster), `pskit lb create`, `pskit lb attach`, `pskit cluster balancer set`, a project's `balancer` route, and `pskit resources onprem create`.",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0154",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-one-click"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-one-click.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#from-the-command-line"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0155",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-one-click"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-one-click.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#from-the-command-line"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0156",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-one-click"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-one-click.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#from-the-command-line"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0157",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-one-click"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-one-click.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#from-the-command-line"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0158",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-one-click"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-one-click.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#from-the-command-line"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0159",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-one-click"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-one-click.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#from-the-command-line"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": true
+ },
+ {
+  "id": "k_proc_0160",
+  "category": "k_proc",
+  "card_ids": [
+   "proc-one-click"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/procedure/proc-one-click.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#from-the-command-line"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": true
+ }
+]

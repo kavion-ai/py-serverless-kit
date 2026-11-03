@@ -1,0 +1,769 @@
+[
+ {
+  "id": "k_arch_0011",
+  "category": "k_arch",
+  "card_ids": [
+   "code-cli"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-cli.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0012",
+  "category": "k_arch",
+  "card_ids": [
+   "code-cli"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-cli.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0013",
+  "category": "k_arch",
+  "card_ids": [
+   "code-config"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-config.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline",
+   "docs/architecture.md#runtime-flow"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0014",
+  "category": "k_arch",
+  "card_ids": [
+   "code-config"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-config.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0015",
+  "category": "k_arch",
+  "card_ids": [
+   "code-config"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-config.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0016",
+  "category": "k_arch",
+  "card_ids": [
+   "code-config"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-config.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0017",
+  "category": "k_arch",
+  "card_ids": [
+   "code-config"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-config.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0018",
+  "category": "k_arch",
+  "card_ids": [
+   "code-config"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-config.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0019",
+  "category": "k_arch",
+  "card_ids": [
+   "code-core"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-core.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline",
+   "docs/architecture.md#runtime-flow"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0020",
+  "category": "k_arch",
+  "card_ids": [
+   "code-core"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-core.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0021",
+  "category": "k_arch",
+  "card_ids": [
+   "code-core"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-core.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0022",
+  "category": "k_arch",
+  "card_ids": [
+   "code-core"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-core.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0023",
+  "category": "k_arch",
+  "card_ids": [
+   "code-core"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-core.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0024",
+  "category": "k_arch",
+  "card_ids": [
+   "code-core"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-core.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0025",
+  "category": "k_arch",
+  "card_ids": [
+   "code-dashboard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-dashboard.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline",
+   "docs/architecture.md#runtime-flow"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0026",
+  "category": "k_arch",
+  "card_ids": [
+   "code-dashboard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-dashboard.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0027",
+  "category": "k_arch",
+  "card_ids": [
+   "code-dashboard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-dashboard.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0028",
+  "category": "k_arch",
+  "card_ids": [
+   "code-dashboard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-dashboard.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0029",
+  "category": "k_arch",
+  "card_ids": [
+   "code-dashboard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-dashboard.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0030",
+  "category": "k_arch",
+  "card_ids": [
+   "code-dashboard"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-dashboard.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0031",
+  "category": "k_arch",
+  "card_ids": [
+   "code-drivers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-drivers.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0032",
+  "category": "k_arch",
+  "card_ids": [
+   "code-drivers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-drivers.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline",
+   "docs/architecture.md#runtime-flow"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0033",
+  "category": "k_arch",
+  "card_ids": [
+   "code-drivers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-drivers.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0034",
+  "category": "k_arch",
+  "card_ids": [
+   "code-drivers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-drivers.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0035",
+  "category": "k_arch",
+  "card_ids": [
+   "code-drivers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-drivers.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0036",
+  "category": "k_arch",
+  "card_ids": [
+   "code-drivers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-drivers.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0037",
+  "category": "k_arch",
+  "card_ids": [
+   "code-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-local.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0038",
+  "category": "k_arch",
+  "card_ids": [
+   "code-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-local.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline",
+   "docs/architecture.md#runtime-flow"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0039",
+  "category": "k_arch",
+  "card_ids": [
+   "code-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-local.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0040",
+  "category": "k_arch",
+  "card_ids": [
+   "code-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-local.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0041",
+  "category": "k_arch",
+  "card_ids": [
+   "code-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-local.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0042",
+  "category": "k_arch",
+  "card_ids": [
+   "code-local"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-local.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0043",
+  "category": "k_arch",
+  "card_ids": [
+   "code-onprem-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-onprem-cluster.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0044",
+  "category": "k_arch",
+  "card_ids": [
+   "code-onprem-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-onprem-cluster.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline",
+   "docs/architecture.md#runtime-flow"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0045",
+  "category": "k_arch",
+  "card_ids": [
+   "code-onprem-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-onprem-cluster.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0046",
+  "category": "k_arch",
+  "card_ids": [
+   "code-onprem-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-onprem-cluster.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0047",
+  "category": "k_arch",
+  "card_ids": [
+   "code-onprem-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-onprem-cluster.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0048",
+  "category": "k_arch",
+  "card_ids": [
+   "code-onprem-cluster"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-onprem-cluster.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0049",
+  "category": "k_arch",
+  "card_ids": [
+   "code-onprem-services"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-onprem-services.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline"
+  ],
+  "excerpt": "[docs/architecture.md#deploy-pipeline]\n- **Terraform JSON, not HCL.** The generator builds Python dicts, so there's no quoting or templating to get wrong. User strings are escaped (`${` → `$${`) unless written as `${tf:...}`. - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy. - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere. - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0050",
+  "category": "k_arch",
+  "card_ids": [
+   "code-onprem-services"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/code/code-onprem-services.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/architecture.md#deploy-pipeline",
+   "docs/architecture.md#runtime-flow"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ }
+]

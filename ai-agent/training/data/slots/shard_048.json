@@ -1,0 +1,779 @@
+[
+ {
+  "id": "k_res_0221",
+  "category": "k_res",
+  "card_ids": [
+   "res-digitalocean-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-digitalocean-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/digitalocean/queue.md#queues-on-digitalocean-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0222",
+  "category": "k_res",
+  "card_ids": [
+   "res-digitalocean-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-digitalocean-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/digitalocean/queue.md#queues-on-digitalocean-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0223",
+  "category": "k_res",
+  "card_ids": [
+   "res-digitalocean-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-digitalocean-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/digitalocean/queue.md#queues-on-digitalocean-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0224",
+  "category": "k_res",
+  "card_ids": [
+   "res-digitalocean-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-digitalocean-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/digitalocean/queue.md#queues-on-digitalocean-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0225",
+  "category": "k_res",
+  "card_ids": [
+   "res-digitalocean-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-digitalocean-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/digitalocean/storage.md#digitalocean-spaces-bucket-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/digitalocean/storage.md#digitalocean-spaces-bucket-type-storage]\nRead and write objects in a Spaces bucket (S3-compatible) from a handler. **Not supported on DigitalOcean:** `storage` triggers. To run code when objects arrive, list the bucket from a `schedule` function, or watch it from the [on-premises host](../../resources.md#storage-drivers) with `driver: spaces`.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0226",
+  "category": "k_res",
+  "card_ids": [
+   "res-digitalocean-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-digitalocean-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/digitalocean/storage.md#digitalocean-spaces-bucket-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/digitalocean/storage.md#digitalocean-spaces-bucket-type-storage]\nRead and write objects in a Spaces bucket (S3-compatible) from a handler. **Not supported on DigitalOcean:** `storage` triggers. To run code when objects arrive, list the bucket from a `schedule` function, or watch it from the [on-premises host](../../resources.md#storage-drivers) with `driver: spaces`.",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0227",
+  "category": "k_res",
+  "card_ids": [
+   "res-digitalocean-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-digitalocean-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/digitalocean/storage.md#digitalocean-spaces-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0228",
+  "category": "k_res",
+  "card_ids": [
+   "res-digitalocean-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-digitalocean-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/digitalocean/storage.md#digitalocean-spaces-bucket-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/digitalocean/storage.md#digitalocean-spaces-bucket-type-storage]\nRead and write objects in a Spaces bucket (S3-compatible) from a handler. **Not supported on DigitalOcean:** `storage` triggers. To run code when objects arrive, list the bucket from a `schedule` function, or watch it from the [on-premises host](../../resources.md#storage-drivers) with `driver: spaces`.",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0229",
+  "category": "k_res",
+  "card_ids": [
+   "res-digitalocean-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-digitalocean-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/digitalocean/storage.md#digitalocean-spaces-bucket-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/digitalocean/storage.md#digitalocean-spaces-bucket-type-storage]\nRead and write objects in a Spaces bucket (S3-compatible) from a handler. **Not supported on DigitalOcean:** `storage` triggers. To run code when objects arrive, list the bucket from a `schedule` function, or watch it from the [on-premises host](../../resources.md#storage-drivers) with `driver: spaces`.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0230",
+  "category": "k_res",
+  "card_ids": [
+   "res-digitalocean-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-digitalocean-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/digitalocean/storage.md#digitalocean-spaces-bucket-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/digitalocean/storage.md#digitalocean-spaces-bucket-type-storage]\nRead and write objects in a Spaces bucket (S3-compatible) from a handler. **Not supported on DigitalOcean:** `storage` triggers. To run code when objects arrive, list the bucket from a `schedule` function, or watch it from the [on-premises host](../../resources.md#storage-drivers) with `driver: spaces`.",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0231",
+  "category": "k_res",
+  "card_ids": [
+   "res-digitalocean-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-digitalocean-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/digitalocean/storage.md#digitalocean-spaces-bucket-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/digitalocean/storage.md#digitalocean-spaces-bucket-type-storage]\nRead and write objects in a Spaces bucket (S3-compatible) from a handler. **Not supported on DigitalOcean:** `storage` triggers. To run code when objects arrive, list the bucket from a `schedule` function, or watch it from the [on-premises host](../../resources.md#storage-drivers) with `driver: spaces`.",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0232",
+  "category": "k_res",
+  "card_ids": [
+   "res-digitalocean-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-digitalocean-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/digitalocean/storage.md#digitalocean-spaces-bucket-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/digitalocean/storage.md#digitalocean-spaces-bucket-type-storage]\nRead and write objects in a Spaces bucket (S3-compatible) from a handler. **Not supported on DigitalOcean:** `storage` triggers. To run code when objects arrive, list the bucket from a `schedule` function, or watch it from the [on-premises host](../../resources.md#storage-drivers) with `driver: spaces`.",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0233",
+  "category": "k_res",
+  "card_ids": [
+   "res-digitalocean-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-digitalocean-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/digitalocean/topic.md#digitalocean-managed-kafka-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0234",
+  "category": "k_res",
+  "card_ids": [
+   "res-digitalocean-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-digitalocean-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/digitalocean/topic.md#digitalocean-managed-kafka-topic-type-topic"
+  ],
+  "excerpt": "[docs/resource-guides/digitalocean/topic.md#digitalocean-managed-kafka-topic-type-topic]\nPublish to (or read from) a topic in a Managed Kafka cluster from a handler. **Not supported on DigitalOcean:** `topic` triggers. Consume from a `schedule` function, or from the [on-premises host](../../resources.md#custom-drivers) with a `custom` Kafka driver class ([`examples/19-custom-drivers`](../../../examples/19-custom-drivers) has a Kafka template).",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0235",
+  "category": "k_res",
+  "card_ids": [
+   "res-digitalocean-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-digitalocean-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/digitalocean/topic.md#digitalocean-managed-kafka-topic-type-topic"
+  ],
+  "excerpt": "[docs/resource-guides/digitalocean/topic.md#digitalocean-managed-kafka-topic-type-topic]\nPublish to (or read from) a topic in a Managed Kafka cluster from a handler. **Not supported on DigitalOcean:** `topic` triggers. Consume from a `schedule` function, or from the [on-premises host](../../resources.md#custom-drivers) with a `custom` Kafka driver class ([`examples/19-custom-drivers`](../../../examples/19-custom-drivers) has a Kafka template).",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0236",
+  "category": "k_res",
+  "card_ids": [
+   "res-digitalocean-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-digitalocean-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/digitalocean/topic.md#digitalocean-managed-kafka-topic-type-topic"
+  ],
+  "excerpt": "[docs/resource-guides/digitalocean/topic.md#digitalocean-managed-kafka-topic-type-topic]\nPublish to (or read from) a topic in a Managed Kafka cluster from a handler. **Not supported on DigitalOcean:** `topic` triggers. Consume from a `schedule` function, or from the [on-premises host](../../resources.md#custom-drivers) with a `custom` Kafka driver class ([`examples/19-custom-drivers`](../../../examples/19-custom-drivers) has a Kafka template).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0237",
+  "category": "k_res",
+  "card_ids": [
+   "res-digitalocean-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-digitalocean-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/digitalocean/topic.md#digitalocean-managed-kafka-topic-type-topic"
+  ],
+  "excerpt": "[docs/resource-guides/digitalocean/topic.md#digitalocean-managed-kafka-topic-type-topic]\nPublish to (or read from) a topic in a Managed Kafka cluster from a handler. **Not supported on DigitalOcean:** `topic` triggers. Consume from a `schedule` function, or from the [on-premises host](../../resources.md#custom-drivers) with a `custom` Kafka driver class ([`examples/19-custom-drivers`](../../../examples/19-custom-drivers) has a Kafka template).",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0238",
+  "category": "k_res",
+  "card_ids": [
+   "res-digitalocean-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-digitalocean-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/digitalocean/topic.md#digitalocean-managed-kafka-topic-type-topic"
+  ],
+  "excerpt": "[docs/resource-guides/digitalocean/topic.md#digitalocean-managed-kafka-topic-type-topic]\nPublish to (or read from) a topic in a Managed Kafka cluster from a handler. **Not supported on DigitalOcean:** `topic` triggers. Consume from a `schedule` function, or from the [on-premises host](../../resources.md#custom-drivers) with a `custom` Kafka driver class ([`examples/19-custom-drivers`](../../../examples/19-custom-drivers) has a Kafka template).",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0239",
+  "category": "k_res",
+  "card_ids": [
+   "res-digitalocean-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-digitalocean-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/digitalocean/topic.md#digitalocean-managed-kafka-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0240",
+  "category": "k_res",
+  "card_ids": [
+   "res-digitalocean-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-digitalocean-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/digitalocean/topic.md#digitalocean-managed-kafka-topic-type-topic"
+  ],
+  "excerpt": "[docs/resource-guides/digitalocean/topic.md#digitalocean-managed-kafka-topic-type-topic]\nPublish to (or read from) a topic in a Managed Kafka cluster from a handler. **Not supported on DigitalOcean:** `topic` triggers. Consume from a `schedule` function, or from the [on-premises host](../../resources.md#custom-drivers) with a `custom` Kafka driver class ([`examples/19-custom-drivers`](../../../examples/19-custom-drivers) has a Kafka template).",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0241",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-cache.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/cache.md#memorystore-for-redis-valkey-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0242",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-cache.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/cache.md#memorystore-for-redis-valkey-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0243",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-cache.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/cache.md#memorystore-for-redis-valkey-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0244",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-cache.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/cache.md#memorystore-for-redis-valkey-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0245",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-cache.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/cache.md#memorystore-for-redis-valkey-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0246",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-cache.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/cache.md#memorystore-for-redis-valkey-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0247",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-cache.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/cache.md#memorystore-for-redis-valkey-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0248",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-cache.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/cache.md#memorystore-for-redis-valkey-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0249",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/gcp/custom.md#other-google-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/gcp/custom.md#other-google-cloud-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Firestore, Secret Manager, BigQuery, Vertex AI, a third-party API. pskit only passes its details to your functions (`external: true` is required). Google Cloud client libraries authenticate as the function's service account, so most services need **no keys**: grant the runtime service account a role, and put names and IDs in `connection`.",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0250",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/gcp/custom.md#other-google-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/gcp/custom.md#other-google-cloud-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Firestore, Secret Manager, BigQuery, Vertex AI, a third-party API. pskit only passes its details to your functions (`external: true` is required). Google Cloud client libraries authenticate as the function's service account, so most services need **no keys**: grant the runtime service account a role, and put names and IDs in `connection`.",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0251",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/gcp/custom.md#other-google-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/gcp/custom.md#other-google-cloud-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Firestore, Secret Manager, BigQuery, Vertex AI, a third-party API. pskit only passes its details to your functions (`external: true` is required). Google Cloud client libraries authenticate as the function's service account, so most services need **no keys**: grant the runtime service account a role, and put names and IDs in `connection`.",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0252",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/gcp/custom.md#other-google-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/gcp/custom.md#other-google-cloud-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Firestore, Secret Manager, BigQuery, Vertex AI, a third-party API. pskit only passes its details to your functions (`external: true` is required). Google Cloud client libraries authenticate as the function's service account, so most services need **no keys**: grant the runtime service account a role, and put names and IDs in `connection`.",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0253",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-custom.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/custom.md#other-google-cloud-services-type-custom",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0254",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/gcp/custom.md#other-google-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/gcp/custom.md#other-google-cloud-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Firestore, Secret Manager, BigQuery, Vertex AI, a third-party API. pskit only passes its details to your functions (`external: true` is required). Google Cloud client libraries authenticate as the function's service account, so most services need **no keys**: grant the runtime service account a role, and put names and IDs in `connection`.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0255",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/gcp/custom.md#other-google-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/gcp/custom.md#other-google-cloud-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Firestore, Secret Manager, BigQuery, Vertex AI, a third-party API. pskit only passes its details to your functions (`external: true` is required). Google Cloud client libraries authenticate as the function's service account, so most services need **no keys**: grant the runtime service account a role, and put names and IDs in `connection`.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0256",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/gcp/custom.md#other-google-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/gcp/custom.md#other-google-cloud-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Firestore, Secret Manager, BigQuery, Vertex AI, a third-party API. pskit only passes its details to your functions (`external: true` is required). Google Cloud client libraries authenticate as the function's service account, so most services need **no keys**: grant the runtime service account a role, and put names and IDs in `connection`.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0257",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-database.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/gcp/database.md#cloud-sql-type-database"
+  ],
+  "excerpt": "[docs/resource-guides/gcp/database.md#cloud-sql-type-database]\npskit's Cloud Functions don't run in a VPC, so the simplest path is a **public IP** instance reached through the **Cloud SQL Python Connector**: it authenticates with the function's service account and encrypts the connection, with no authorized networks to open. A private-IP-only instance needs a Serverless VPC Access connector, added as shown in [cache.md](cache.md#3-declare-it-in-pskityml).",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0258",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-database.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/gcp/database.md#cloud-sql-type-database"
+  ],
+  "excerpt": "[docs/resource-guides/gcp/database.md#cloud-sql-type-database]\npskit's Cloud Functions don't run in a VPC, so the simplest path is a **public IP** instance reached through the **Cloud SQL Python Connector**: it authenticates with the function's service account and encrypts the connection, with no authorized networks to open. A private-IP-only instance needs a Serverless VPC Access connector, added as shown in [cache.md](cache.md#3-declare-it-in-pskityml).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0259",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-database.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/gcp/database.md#cloud-sql-type-database"
+  ],
+  "excerpt": "[docs/resource-guides/gcp/database.md#cloud-sql-type-database]\npskit's Cloud Functions don't run in a VPC, so the simplest path is a **public IP** instance reached through the **Cloud SQL Python Connector**: it authenticates with the function's service account and encrypts the connection, with no authorized networks to open. A private-IP-only instance needs a Serverless VPC Access connector, added as shown in [cache.md](cache.md#3-declare-it-in-pskityml).",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0260",
+  "category": "k_res",
+  "card_ids": [
+   "res-gcp-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-gcp-database.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/database.md#cloud-sql-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ }
+]

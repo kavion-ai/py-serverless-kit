@@ -1,0 +1,802 @@
+[
+ {
+  "id": "k_nav_0221",
+  "category": "k_nav",
+  "card_ids": [
+   "page-join-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-join-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0222",
+  "category": "k_nav",
+  "card_ids": [
+   "page-join-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-join-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0223",
+  "category": "k_nav",
+  "card_ids": [
+   "page-join-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-join-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0224",
+  "category": "k_nav",
+  "card_ids": [
+   "page-join-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-join-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0225",
+  "category": "k_nav",
+  "card_ids": [
+   "page-join-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-join-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0226",
+  "category": "k_nav",
+  "card_ids": [
+   "page-join-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-join-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0227",
+  "category": "k_nav",
+  "card_ids": [
+   "page-join-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-join-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0228",
+  "category": "k_nav",
+  "card_ids": [
+   "page-join-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-join-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0229",
+  "category": "k_nav",
+  "card_ids": [
+   "page-join-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-join-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0230",
+  "category": "k_nav",
+  "card_ids": [
+   "page-join-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-join-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0231",
+  "category": "k_nav",
+  "card_ids": [
+   "page-join-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-join-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0232",
+  "category": "k_nav",
+  "card_ids": [
+   "page-join-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-join-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0233",
+  "category": "k_nav",
+  "card_ids": [
+   "page-join-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-join-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0234",
+  "category": "k_nav",
+  "card_ids": [
+   "page-join-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-join-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0235",
+  "category": "k_nav",
+  "card_ids": [
+   "page-join-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-join-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0236",
+  "category": "k_nav",
+  "card_ids": [
+   "page-join-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-join-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0237",
+  "category": "k_nav",
+  "card_ids": [
+   "page-join-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-join-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0238",
+  "category": "k_nav",
+  "card_ids": [
+   "page-join-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-join-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0239",
+  "category": "k_nav",
+  "card_ids": [
+   "page-join-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-join-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0240",
+  "category": "k_nav",
+  "card_ids": [
+   "page-join-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-join-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0241",
+  "category": "k_nav",
+  "card_ids": [
+   "page-join-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-join-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0242",
+  "category": "k_nav",
+  "card_ids": [
+   "page-join-server"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-join-server.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Cluster.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0243",
+  "category": "k_nav",
+  "card_ids": [
+   "page-load-balancers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-load-balancers.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0244",
+  "category": "k_nav",
+  "card_ids": [
+   "page-load-balancers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-load-balancers.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0245",
+  "category": "k_nav",
+  "card_ids": [
+   "page-load-balancers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-load-balancers.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0246",
+  "category": "k_nav",
+  "card_ids": [
+   "page-load-balancers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-load-balancers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0247",
+  "category": "k_nav",
+  "card_ids": [
+   "page-load-balancers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-load-balancers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0248",
+  "category": "k_nav",
+  "card_ids": [
+   "page-load-balancers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-load-balancers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0249",
+  "category": "k_nav",
+  "card_ids": [
+   "page-load-balancers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-load-balancers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0250",
+  "category": "k_nav",
+  "card_ids": [
+   "page-load-balancers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-load-balancers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0251",
+  "category": "k_nav",
+  "card_ids": [
+   "page-load-balancers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-load-balancers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0252",
+  "category": "k_nav",
+  "card_ids": [
+   "page-load-balancers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-load-balancers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0253",
+  "category": "k_nav",
+  "card_ids": [
+   "page-load-balancers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-load-balancers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0254",
+  "category": "k_nav",
+  "card_ids": [
+   "page-load-balancers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-load-balancers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0255",
+  "category": "k_nav",
+  "card_ids": [
+   "page-load-balancers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-load-balancers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0256",
+  "category": "k_nav",
+  "card_ids": [
+   "page-load-balancers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-load-balancers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0257",
+  "category": "k_nav",
+  "card_ids": [
+   "page-load-balancers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-load-balancers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0258",
+  "category": "k_nav",
+  "card_ids": [
+   "page-load-balancers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-load-balancers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0259",
+  "category": "k_nav",
+  "card_ids": [
+   "page-load-balancers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-load-balancers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0260",
+  "category": "k_nav",
+  "card_ids": [
+   "page-load-balancers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-load-balancers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/LoadBalancers.tsx",
+   "src/py_serverless_kit/studio/server.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ }
+]

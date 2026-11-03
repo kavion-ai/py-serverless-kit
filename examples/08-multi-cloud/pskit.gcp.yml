@@ -1,0 +1,11 @@
+#   pskit deploy -c pskit.gcp.yml
+extends: pskit.yml
+
+provider:
+  name: gcp
+
+providers:
+  gcp:
+    region: europe-west1
+    options:
+      project: "${env:GOOGLE_CLOUD_PROJECT, my-gcp-project}"

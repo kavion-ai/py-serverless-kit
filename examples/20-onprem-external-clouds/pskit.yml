@@ -1,0 +1,134 @@
+# One on-premises host watching queues and buckets that live in other clouds.
+#
+# Every secret is given as `<name>_env: VARIABLE`: the host reads it from its own
+# environment when it starts, so no key is written to pskit_host.json or
+# Terraform state. A variable that is missing stops the host with an error naming it.
+#
+# Delete the resources (and their functions) you don't use; each one needs its
+# credentials on the host before `pskit deploy`.
+service: hybrid-watch
+
+provider:
+  name: onprem
+  region: local
+  runtime: python3.12
+  options:
+    host: 127.0.0.1
+    port: 8092
+    poll_seconds: 2          # every poll lists each bucket and asks each queue for messages
+
+resources:
+  # ------------------------------------------------------------------ queues
+  aws-jobs:                                   # Amazon SQS
+    type: queue
+    external: true
+    options:
+      driver: sqs
+      queue_url: https://sqs.eu-west-1.amazonaws.com/123456789012/jobs
+      access_key_env: AWS_ACCESS_KEY_ID
+      secret_key_env: AWS_SECRET_ACCESS_KEY
+  azure-jobs:                                 # Azure Storage Queue
+    type: queue
+    external: true
+    options:
+      driver: azure_queue
+      queue: jobs
+      connection_string_env: AZURE_STORAGE_CONNECTION_STRING
+  gcp-jobs:                                   # Google Pub/Sub pull subscription
+    type: queue
+    external: true
+    options:
+      driver: pubsub
+      subscription: projects/my-project/subscriptions/jobs-sub
+      topic: projects/my-project/topics/jobs  # only needed to publish from the host
+      token_command: [gcloud, auth, print-access-token]
+  alibaba-jobs:                               # Alibaba Cloud MNS
+    type: queue
+    external: true
+    options:
+      driver: mns
+      account_id: "1234567890123456"
+      region: cn-hangzhou
+      queue: jobs
+      access_key_env: ALIBABA_ACCESS_KEY_ID
+      secret_key_env: ALIBABA_ACCESS_KEY_SECRET
+  cf-jobs:                                    # Cloudflare Queues (HTTP pull consumer)
+    type: queue
+    external: true
+    options:
+      driver: cloudflare_queue
+      account_id: 0123456789abcdef0123456789abcdef
+      queue_id: fedcba9876543210fedcba9876543210
+      api_token_env: CLOUDFLARE_API_TOKEN
+
+  # ------------------------------------------------------------------ storage
+  aws-media:                                  # Amazon S3
+    type: storage
+    external: true
+    name: company-media
+    options: {driver: aws, region: eu-west-1, prefix: incoming/,
+              access_key_env: AWS_ACCESS_KEY_ID, secret_key_env: AWS_SECRET_ACCESS_KEY}
+  azure-media:                                # Azure Blob Storage
+    type: storage
+    external: true
+    options: {driver: azure_blob, container: media, prefix: incoming/,
+              connection_string_env: AZURE_STORAGE_CONNECTION_STRING}
+  gcp-media:                                  # Google Cloud Storage
+    type: storage
+    external: true
+    name: company-media-gcs
+    options: {driver: gcs, prefix: incoming/, token_command: [gcloud, auth, print-access-token]}
+  r2-media:                                   # Cloudflare R2
+    type: storage
+    external: true
+    name: media
+    options: {driver: r2, account_id: 0123456789abcdef0123456789abcdef,
+              access_key_env: R2_ACCESS_KEY_ID, secret_key_env: R2_SECRET_ACCESS_KEY}
+  minio-media:                                # self-hosted MinIO / Ceph
+    type: storage
+    external: true
+    name: media
+    options: {driver: minio, endpoint: "http://minio.internal:9000",
+              access_key_env: MINIO_ACCESS_KEY, secret_key_env: MINIO_SECRET_KEY}
+  # Same shape for the other S3-compatible stores (swap the driver and its required keys):
+  #   {driver: oss, region: cn-hangzhou}            Alibaba OSS
+  #   {driver: cos, region: ap-guangzhou}           Tencent COS (bucket name ends in -<APPID>)
+  #   {driver: obs, region: cn-north-4}             Huawei OBS
+  #   {driver: oci, region: eu-frankfurt-1, namespace: mytenancy}   Oracle Object Storage
+  #   {driver: ibm_cos, region: us-south}           IBM Cloud Object Storage (HMAC keys)
+  #   {driver: spaces, region: nyc3}                DigitalOcean Spaces
+  # Queues without a built-in driver (RabbitMQ, Kafka, IBM MQ, OCI Queue, TDMQ, DMS):
+  # `driver: custom` - see examples/19-custom-drivers.
+
+functions:
+  jobs:
+    handler: app.handlers.process
+    description: The same handler consumes every queue; record.source says which one.
+    events:
+      - queue: {resource: aws-jobs, batch_size: 10, max_receive: 5}
+      - queue: {resource: azure-jobs, batch_size: 16}
+      - queue: {resource: gcp-jobs, batch_size: 10}
+      - queue: {resource: alibaba-jobs, batch_size: 16}
+      - queue: {resource: cf-jobs, batch_size: 10}
+  media:
+    handler: app.handlers.on_object
+    events:
+      - storage: {resource: aws-media}
+      - storage: {resource: azure-media}
+      - storage: {resource: gcp-media}
+      - storage: {resource: r2-media}
+      - storage: {resource: minio-media}
+  status:
+    handler: app.handlers.status
+    events:
+      - http: GET /status
+
+providers:
+  aws:
+    region: eu-west-1
+  gcp:
+    region: us-central1
+    options: {project: "${env:GOOGLE_CLOUD_PROJECT, my-gcp-project}"}
+  azure:
+    region: eastus
+    options: {subscription_id: "${env:ARM_SUBSCRIPTION_ID, 00000000-0000-0000-0000-000000000000}"}

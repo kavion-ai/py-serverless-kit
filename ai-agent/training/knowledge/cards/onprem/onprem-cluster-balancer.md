@@ -1,0 +1,14 @@
+## Load balancer: one URL for the whole cluster (optional)
+
+Add one more saved server **outside** the cluster as its load balancer. pskit runs OpenResty (nginx) there in Docker (container `pskit-lb`, host network) and spreads each deployment's HTTP over the cluster's servers with the algorithm you pick (`--algorithm`: round robin, sticky round robin, weighted round robin, IP hash, least connections (the default) or least time; `--weight edge1=3` per server; see load balancers). It works the same way for all three orchestrators. To share one load balancer between clusters and projects by path instead (`http://lb/<service>/`), attach a named one: `pskit lb attach edge --cluster prod` (load balancers). | Orchestrator | Behind the load balancer | |---|---| | Swarm, k3s | every server (each server's port already reaches every web replica; the load balancer adds one URL and skips a server that is down) | | Nomad | the servers with a web replica, plus the master's main replica when the master serves requests | When the master does **not** serve requests, it is listed on every load balancer as a **backup** only (see below).
+### The master and requests | Master serves requests | What happens | |---|---| |
+
+**on** (Swarm / k3s default) | Load balancers spread requests over every server, the master included. Nomad: the master's main replica answers them next to the web replicas. Swarm / k3s: web replicas may also run on the master. Uses the master's spare CPU, but heavy traffic competes with the control plane, schedules, queues and data that live there | | **off** (Nomad default) | The master is idle for requests while a joined server is up: load balancers list it as a `backup` and send it traffic only while every other server is down. Swarm / k3s also keep web replicas off the master (a placement constraint / node affinity) while another server can run them. With no joined server yet, the master still serves everything | Set it when creating the cluster (`--master-serves` / `--no-master-serves`, or the studio switch) and change it any time with `pskit cluster set NAME --master-serves|--no-master-serves` or the switch on the cluster page. The load balancers (the cluster's own and attached named ones) are updated at once. On Swarm and k3s, web replicas move on or off the master at the next `pskit deploy`; so after the first server joins a cluster whose master does not serve, deploy again to move them off the master. Clusters created before this setting keep their old behaviour (off on Nomad, on on Swarm and k3s).
+
+```
+                users ──► http://<lb1>/  (nginx on lb1, port 80)
+                              │  fewest open connections first
+            ┌─────────────────┼─────────────────┐
+            ▼                 ▼                 ▼
+     edge1 (master)       edge2 (join)      edge3 (join)      :8080 on each
+```

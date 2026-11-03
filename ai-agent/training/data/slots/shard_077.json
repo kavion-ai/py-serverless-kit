@@ -1,0 +1,762 @@
+[
+ {
+  "id": "k_onprem_0681",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-valkey"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-valkey.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0682",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-svc-valkey"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-svc-valkey.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#one-click-services-for-on-premises-functions]\npskit can **create** the queue, stream, bucket, database or cache your on-premises functions use, then add it to `pskit.yml` as a resource and, for queues, streams and buckets, as a trigger. It starts the service as a Docker container on this machine or on any server you can reach with SSH. That can be the server your functions run on or a different one. It can also install Python or Docker on an SSH server.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0683",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-terminal"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-terminal.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#9-the-studio-and-browser-terminals"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0684",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-terminal"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-terminal.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#9-the-studio-and-browser-terminals"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0685",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-terminal"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-terminal.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#9-the-studio-and-browser-terminals"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0686",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-terminal"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-terminal.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#9-the-studio-and-browser-terminals"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0687",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-terminal"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-terminal.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#9-the-studio-and-browser-terminals"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0688",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-terminal"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-terminal.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#9-the-studio-and-browser-terminals"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0689",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-terminal"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-terminal.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#9-the-studio-and-browser-terminals"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0690",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-terminal"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-terminal.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#9-the-studio-and-browser-terminals"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0691",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-terminal"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-terminal.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/onprem-network.md#9-the-studio-and-browser-terminals"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0692",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-web-ui"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-web-ui.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#web-uis"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#web-uis]\nServices with a built-in UI (RabbitMQ, LavinMQ, MinIO, RustFS, ElasticMQ, NATS monitoring, Mailpit, pskit's S3 and Secrets Manager servers) show its URL and login in *How to use* and *Details*. For the others pskit starts a **companion** UI next to the service, on a private Docker network with it, listening on the same interface as the service: A second UI of the same kind on one server takes the next free port (8083, 8084, ...); *Details* shows the real one.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0693",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-web-ui"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-web-ui.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#web-uis"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#web-uis]\nServices with a built-in UI (RabbitMQ, LavinMQ, MinIO, RustFS, ElasticMQ, NATS monitoring, Mailpit, pskit's S3 and Secrets Manager servers) show its URL and login in *How to use* and *Details*. For the others pskit starts a **companion** UI next to the service, on a private Docker network with it, listening on the same interface as the service: A second UI of the same kind on one server takes the next free port (8083, 8084, ...); *Details* shows the real one.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0694",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-web-ui"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-web-ui.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#web-uis"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#web-uis]\nServices with a built-in UI (RabbitMQ, LavinMQ, MinIO, RustFS, ElasticMQ, NATS monitoring, Mailpit, pskit's S3 and Secrets Manager servers) show its URL and login in *How to use* and *Details*. For the others pskit starts a **companion** UI next to the service, on a private Docker network with it, listening on the same interface as the service: A second UI of the same kind on one server takes the next free port (8083, 8084, ...); *Details* shows the real one.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0695",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-web-ui"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-web-ui.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#web-uis"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0696",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-web-ui"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-web-ui.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#web-uis"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#web-uis]\nServices with a built-in UI (RabbitMQ, LavinMQ, MinIO, RustFS, ElasticMQ, NATS monitoring, Mailpit, pskit's S3 and Secrets Manager servers) show its URL and login in *How to use* and *Details*. For the others pskit starts a **companion** UI next to the service, on a private Docker network with it, listening on the same interface as the service: A second UI of the same kind on one server takes the next free port (8083, 8084, ...); *Details* shows the real one.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0697",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-web-ui"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-web-ui.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#web-uis"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#web-uis]\nServices with a built-in UI (RabbitMQ, LavinMQ, MinIO, RustFS, ElasticMQ, NATS monitoring, Mailpit, pskit's S3 and Secrets Manager servers) show its URL and login in *How to use* and *Details*. For the others pskit starts a **companion** UI next to the service, on a private Docker network with it, listening on the same interface as the service: A second UI of the same kind on one server takes the next free port (8083, 8084, ...); *Details* shows the real one.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0698",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-web-ui"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-web-ui.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#web-uis"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#web-uis]\nServices with a built-in UI (RabbitMQ, LavinMQ, MinIO, RustFS, ElasticMQ, NATS monitoring, Mailpit, pskit's S3 and Secrets Manager servers) show its URL and login in *How to use* and *Details*. For the others pskit starts a **companion** UI next to the service, on a private Docker network with it, listening on the same interface as the service: A second UI of the same kind on one server takes the next free port (8083, 8084, ...); *Details* shows the real one.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0699",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-web-ui"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-web-ui.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#web-uis"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#web-uis]\nServices with a built-in UI (RabbitMQ, LavinMQ, MinIO, RustFS, ElasticMQ, NATS monitoring, Mailpit, pskit's S3 and Secrets Manager servers) show its URL and login in *How to use* and *Details*. For the others pskit starts a **companion** UI next to the service, on a private Docker network with it, listening on the same interface as the service: A second UI of the same kind on one server takes the next free port (8083, 8084, ...); *Details* shows the real one.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0700",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-web-ui"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-web-ui.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#web-uis"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#web-uis]\nServices with a built-in UI (RabbitMQ, LavinMQ, MinIO, RustFS, ElasticMQ, NATS monitoring, Mailpit, pskit's S3 and Secrets Manager servers) show its URL and login in *How to use* and *Details*. For the others pskit starts a **companion** UI next to the service, on a private Docker network with it, listening on the same interface as the service: A second UI of the same kind on one server takes the next free port (8083, 8084, ...); *Details* shows the real one.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0001",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-balancer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0002",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-balancer.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional"
+  ],
+  "excerpt": "[docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional]\nAdd one more saved server **outside** the cluster as its load balancer. pskit runs OpenResty (nginx) there in Docker (container `pskit-lb`, host network) and spreads each deployment's HTTP over the cluster's servers with the algorithm you pick (`--algorithm`: round robin, sticky round robin, weighted round robin, IP hash, least connections (the default) or least time; `--weight edge1=3` per server; see [load balancers](load-balancers.md#the-six-algorithms)). It works the same way for all three orchestrators. To share one load balancer between clusters and projects by path instead (`http://lb/<service>/`), attach a named one: `pskit lb attach edge --cluster prod` ([load balancers](load-balancers.md)).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0003",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-balancer.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional"
+  ],
+  "excerpt": "[docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional]\nAdd one more saved server **outside** the cluster as its load balancer. pskit runs OpenResty (nginx) there in Docker (container `pskit-lb`, host network) and spreads each deployment's HTTP over the cluster's servers with the algorithm you pick (`--algorithm`: round robin, sticky round robin, weighted round robin, IP hash, least connections (the default) or least time; `--weight edge1=3` per server; see [load balancers](load-balancers.md#the-six-algorithms)). It works the same way for all three orchestrators. To share one load balancer between clusters and projects by path instead (`http://lb/<service>/`), attach a named one: `pskit lb attach edge --cluster prod` ([load balancers](load-balancers.md)).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0004",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-balancer.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional"
+  ],
+  "excerpt": "[docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional]\nAdd one more saved server **outside** the cluster as its load balancer. pskit runs OpenResty (nginx) there in Docker (container `pskit-lb`, host network) and spreads each deployment's HTTP over the cluster's servers with the algorithm you pick (`--algorithm`: round robin, sticky round robin, weighted round robin, IP hash, least connections (the default) or least time; `--weight edge1=3` per server; see [load balancers](load-balancers.md#the-six-algorithms)). It works the same way for all three orchestrators. To share one load balancer between clusters and projects by path instead (`http://lb/<service>/`), attach a named one: `pskit lb attach edge --cluster prod` ([load balancers](load-balancers.md)).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0005",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-balancer.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional"
+  ],
+  "excerpt": "[docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional]\nAdd one more saved server **outside** the cluster as its load balancer. pskit runs OpenResty (nginx) there in Docker (container `pskit-lb`, host network) and spreads each deployment's HTTP over the cluster's servers with the algorithm you pick (`--algorithm`: round robin, sticky round robin, weighted round robin, IP hash, least connections (the default) or least time; `--weight edge1=3` per server; see [load balancers](load-balancers.md#the-six-algorithms)). It works the same way for all three orchestrators. To share one load balancer between clusters and projects by path instead (`http://lb/<service>/`), attach a named one: `pskit lb attach edge --cluster prod` ([load balancers](load-balancers.md)).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0006",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-balancer.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional"
+  ],
+  "excerpt": "[docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional]\nAdd one more saved server **outside** the cluster as its load balancer. pskit runs OpenResty (nginx) there in Docker (container `pskit-lb`, host network) and spreads each deployment's HTTP over the cluster's servers with the algorithm you pick (`--algorithm`: round robin, sticky round robin, weighted round robin, IP hash, least connections (the default) or least time; `--weight edge1=3` per server; see [load balancers](load-balancers.md#the-six-algorithms)). It works the same way for all three orchestrators. To share one load balancer between clusters and projects by path instead (`http://lb/<service>/`), attach a named one: `pskit lb attach edge --cluster prod` ([load balancers](load-balancers.md)).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0007",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-balancer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0008",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-balancer.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional"
+  ],
+  "excerpt": "[docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional]\nAdd one more saved server **outside** the cluster as its load balancer. pskit runs OpenResty (nginx) there in Docker (container `pskit-lb`, host network) and spreads each deployment's HTTP over the cluster's servers with the algorithm you pick (`--algorithm`: round robin, sticky round robin, weighted round robin, IP hash, least connections (the default) or least time; `--weight edge1=3` per server; see [load balancers](load-balancers.md#the-six-algorithms)). It works the same way for all three orchestrators. To share one load balancer between clusters and projects by path instead (`http://lb/<service>/`), attach a named one: `pskit lb attach edge --cluster prod` ([load balancers](load-balancers.md)).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0009",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-balancer.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional"
+  ],
+  "excerpt": "[docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional]\nAdd one more saved server **outside** the cluster as its load balancer. pskit runs OpenResty (nginx) there in Docker (container `pskit-lb`, host network) and spreads each deployment's HTTP over the cluster's servers with the algorithm you pick (`--algorithm`: round robin, sticky round robin, weighted round robin, IP hash, least connections (the default) or least time; `--weight edge1=3` per server; see [load balancers](load-balancers.md#the-six-algorithms)). It works the same way for all three orchestrators. To share one load balancer between clusters and projects by path instead (`http://lb/<service>/`), attach a named one: `pskit lb attach edge --cluster prod` ([load balancers](load-balancers.md)).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0010",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-balancer.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional"
+  ],
+  "excerpt": "[docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional]\nAdd one more saved server **outside** the cluster as its load balancer. pskit runs OpenResty (nginx) there in Docker (container `pskit-lb`, host network) and spreads each deployment's HTTP over the cluster's servers with the algorithm you pick (`--algorithm`: round robin, sticky round robin, weighted round robin, IP hash, least connections (the default) or least time; `--weight edge1=3` per server; see [load balancers](load-balancers.md#the-six-algorithms)). It works the same way for all three orchestrators. To share one load balancer between clusters and projects by path instead (`http://lb/<service>/`), attach a named one: `pskit lb attach edge --cluster prod` ([load balancers](load-balancers.md)).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0011",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-balancer.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional"
+  ],
+  "excerpt": "[docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional]\nAdd one more saved server **outside** the cluster as its load balancer. pskit runs OpenResty (nginx) there in Docker (container `pskit-lb`, host network) and spreads each deployment's HTTP over the cluster's servers with the algorithm you pick (`--algorithm`: round robin, sticky round robin, weighted round robin, IP hash, least connections (the default) or least time; `--weight edge1=3` per server; see [load balancers](load-balancers.md#the-six-algorithms)). It works the same way for all three orchestrators. To share one load balancer between clusters and projects by path instead (`http://lb/<service>/`), attach a named one: `pskit lb attach edge --cluster prod` ([load balancers](load-balancers.md)).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0012",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-balancer.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional"
+  ],
+  "excerpt": "[docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional]\nAdd one more saved server **outside** the cluster as its load balancer. pskit runs OpenResty (nginx) there in Docker (container `pskit-lb`, host network) and spreads each deployment's HTTP over the cluster's servers with the algorithm you pick (`--algorithm`: round robin, sticky round robin, weighted round robin, IP hash, least connections (the default) or least time; `--weight edge1=3` per server; see [load balancers](load-balancers.md#the-six-algorithms)). It works the same way for all three orchestrators. To share one load balancer between clusters and projects by path instead (`http://lb/<service>/`), attach a named one: `pskit lb attach edge --cluster prod` ([load balancers](load-balancers.md)).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0013",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-balancer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0014",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-balancer.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional"
+  ],
+  "excerpt": "[docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional]\nAdd one more saved server **outside** the cluster as its load balancer. pskit runs OpenResty (nginx) there in Docker (container `pskit-lb`, host network) and spreads each deployment's HTTP over the cluster's servers with the algorithm you pick (`--algorithm`: round robin, sticky round robin, weighted round robin, IP hash, least connections (the default) or least time; `--weight edge1=3` per server; see [load balancers](load-balancers.md#the-six-algorithms)). It works the same way for all three orchestrators. To share one load balancer between clusters and projects by path instead (`http://lb/<service>/`), attach a named one: `pskit lb attach edge --cluster prod` ([load balancers](load-balancers.md)).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0015",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-balancer.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional"
+  ],
+  "excerpt": "[docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional]\nAdd one more saved server **outside** the cluster as its load balancer. pskit runs OpenResty (nginx) there in Docker (container `pskit-lb`, host network) and spreads each deployment's HTTP over the cluster's servers with the algorithm you pick (`--algorithm`: round robin, sticky round robin, weighted round robin, IP hash, least connections (the default) or least time; `--weight edge1=3` per server; see [load balancers](load-balancers.md#the-six-algorithms)). It works the same way for all three orchestrators. To share one load balancer between clusters and projects by path instead (`http://lb/<service>/`), attach a named one: `pskit lb attach edge --cluster prod` ([load balancers](load-balancers.md)).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0016",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-balancer.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional"
+  ],
+  "excerpt": "[docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional]\nAdd one more saved server **outside** the cluster as its load balancer. pskit runs OpenResty (nginx) there in Docker (container `pskit-lb`, host network) and spreads each deployment's HTTP over the cluster's servers with the algorithm you pick (`--algorithm`: round robin, sticky round robin, weighted round robin, IP hash, least connections (the default) or least time; `--weight edge1=3` per server; see [load balancers](load-balancers.md#the-six-algorithms)). It works the same way for all three orchestrators. To share one load balancer between clusters and projects by path instead (`http://lb/<service>/`), attach a named one: `pskit lb attach edge --cluster prod` ([load balancers](load-balancers.md)).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0017",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-balancer.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional"
+  ],
+  "excerpt": "[docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional]\nAdd one more saved server **outside** the cluster as its load balancer. pskit runs OpenResty (nginx) there in Docker (container `pskit-lb`, host network) and spreads each deployment's HTTP over the cluster's servers with the algorithm you pick (`--algorithm`: round robin, sticky round robin, weighted round robin, IP hash, least connections (the default) or least time; `--weight edge1=3` per server; see [load balancers](load-balancers.md#the-six-algorithms)). It works the same way for all three orchestrators. To share one load balancer between clusters and projects by path instead (`http://lb/<service>/`), attach a named one: `pskit lb attach edge --cluster prod` ([load balancers](load-balancers.md)).",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0018",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-balancer.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional"
+  ],
+  "excerpt": "[docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional]\nAdd one more saved server **outside** the cluster as its load balancer. pskit runs OpenResty (nginx) there in Docker (container `pskit-lb`, host network) and spreads each deployment's HTTP over the cluster's servers with the algorithm you pick (`--algorithm`: round robin, sticky round robin, weighted round robin, IP hash, least connections (the default) or least time; `--weight edge1=3` per server; see [load balancers](load-balancers.md#the-six-algorithms)). It works the same way for all three orchestrators. To share one load balancer between clusters and projects by path instead (`http://lb/<service>/`), attach a named one: `pskit lb attach edge --cluster prod` ([load balancers](load-balancers.md)).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0019",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-balancer.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional"
+  ],
+  "excerpt": "[docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional]\nAdd one more saved server **outside** the cluster as its load balancer. pskit runs OpenResty (nginx) there in Docker (container `pskit-lb`, host network) and spreads each deployment's HTTP over the cluster's servers with the algorithm you pick (`--algorithm`: round robin, sticky round robin, weighted round robin, IP hash, least connections (the default) or least time; `--weight edge1=3` per server; see [load balancers](load-balancers.md#the-six-algorithms)). It works the same way for all three orchestrators. To share one load balancer between clusters and projects by path instead (`http://lb/<service>/`), attach a named one: `pskit lb attach edge --cluster prod` ([load balancers](load-balancers.md)).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0020",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-balancer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-balancer.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#load-balancer-one-url-for-the-whole-cluster-optional"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ }
+]

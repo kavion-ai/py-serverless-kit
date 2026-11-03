@@ -1,0 +1,71 @@
+service: ts-orders
+
+provider:
+  name: aws
+  region: us-east-1
+  runtime: nodejs20              # Node.js service: handlers are TypeScript in src/
+  timeout: 30
+  environment:
+    LOG_LEVEL: INFO
+
+providers:
+  gcp:
+    region: us-central1
+    options: {project: "${env:GOOGLE_CLOUD_PROJECT, my-gcp-project}"}
+  azure:
+    region: eastus
+    options: {subscription_id: "${env:ARM_SUBSCRIPTION_ID, 00000000-0000-0000-0000-000000000000}"}
+  onprem:
+    region: local
+    options: {host: 127.0.0.1, port: 8082}
+
+functions:
+  hello:
+    handler: src.http.hello                 # src/http.ts, export function hello
+    events:
+      - http: GET /hello
+
+  create-order:
+    handler: src.http.createOrder
+    events:
+      - http: {method: POST, path: /orders, cors: true}
+
+  get-order:
+    handler: src.http.getOrder
+    events:
+      - http: GET /orders/{id}
+
+  process-orders:
+    handler: src.jobs.processOrders
+    events:
+      - queue: {name: ts-orders-queue, batch_size: 10}
+
+  nightly-report:
+    handler: src.jobs.nightlyReport
+    events:
+      - schedule: {cron: "0 2 * * *", input: {report: daily}}
+
+  validate-order:
+    handler: src.workflow.validateOrder
+
+  charge-order:
+    handler: src.workflow.chargeOrder
+
+workflows:
+  order-pipeline:
+    description: Validate then charge an order (TypeScript tasks)
+    start_at: Validate
+    states:
+      Validate:
+        type: task
+        function: validate-order
+        catch: [{errors: [ValidationError], next: Rejected}]
+        next: Charge
+      Charge:
+        type: task
+        function: charge-order
+        retry: [{errors: ["*"], max_attempts: 2}]
+        end: true
+      Rejected:
+        type: fail
+        error: OrderRejected

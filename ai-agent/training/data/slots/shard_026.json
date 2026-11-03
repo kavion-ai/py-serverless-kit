@@ -1,0 +1,762 @@
+[
+ {
+  "id": "k_cmd_1041",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-cancel"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-cancel.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1042",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-cancel"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-cancel.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1043",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-cancel"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-cancel.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1044",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-cancel"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-cancel.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1045",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-cancel"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-cancel.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1046",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-cancel"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-cancel.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1047",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-cancel"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-cancel.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1048",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-cancel"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-cancel.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1049",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-cancel"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-cancel.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1050",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-cancel"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-cancel.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1051",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-executions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-executions.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1052",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-executions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-executions.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1053",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-executions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-executions.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1054",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-executions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-executions.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1055",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-executions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-executions.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1056",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-executions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-executions.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1057",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-executions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-executions.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1058",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-executions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-executions.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1059",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-executions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-executions.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1060",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-executions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-executions.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1061",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-run"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-run.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1062",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-run"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-run.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1063",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-run"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-run.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1064",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-run"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-run.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1065",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-run"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-run.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1066",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-run"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-run.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1067",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-run"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-run.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1068",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-run"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-run.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1069",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-run"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-run.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1070",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-run"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-run.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1071",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-show"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-show.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1072",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-show"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-show.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1073",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-show"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-show.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1074",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-show"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-show.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1075",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-show"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-show.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1076",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-show"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-show.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1077",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-show"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-show.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1078",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-show"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-show.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1079",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-show"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-show.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_1080",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-workflow-show"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-workflow-show.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ }
+]

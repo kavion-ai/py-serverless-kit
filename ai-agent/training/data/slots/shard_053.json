@@ -1,0 +1,796 @@
+[
+ {
+  "id": "k_res_0421",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/queue.md#huawei-dms-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0422",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/queue.md#huawei-dms-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0423",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/queue.md#huawei-dms-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0424",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-queue.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/queue.md#huawei-dms-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0425",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/storage.md#huawei-obs-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0426",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/storage.md#huawei-obs-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0427",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/storage.md#huawei-obs-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0428",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/storage.md#huawei-obs-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0429",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/storage.md#huawei-obs-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0430",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/storage.md#huawei-obs-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0431",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/storage.md#huawei-obs-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0432",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/storage.md#huawei-obs-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0433",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/topic.md#huawei-smn-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0434",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/topic.md#huawei-smn-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0435",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/topic.md#huawei-smn-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0436",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/topic.md#huawei-smn-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0437",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/topic.md#huawei-smn-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0438",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/topic.md#huawei-smn-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0439",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/topic.md#huawei-smn-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0440",
+  "category": "k_res",
+  "card_ids": [
+   "res-huawei-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-huawei-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/topic.md#huawei-smn-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0441",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-cache.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/cache.md#ibm-databases-for-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0442",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-cache.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/cache.md#ibm-databases-for-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0443",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-cache.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/cache.md#ibm-databases-for-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0444",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-cache.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/cache.md#ibm-databases-for-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0445",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-cache.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/cache.md#ibm-databases-for-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0446",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-cache.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/cache.md#ibm-databases-for-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0447",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-cache.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/cache.md#ibm-databases-for-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0448",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-cache.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/cache.md#ibm-databases-for-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0449",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-custom.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/custom.md#other-ibm-cloud-services-type-custom",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0450",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/custom.md#other-ibm-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/custom.md#other-ibm-cloud-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Secrets Manager, Cloudant, watsonx, a third-party API. pskit only passes its connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and an **API key** in the console, keep the key in an environment variable, and put the rest in `connection`.",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0451",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/custom.md#other-ibm-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/custom.md#other-ibm-cloud-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Secrets Manager, Cloudant, watsonx, a third-party API. pskit only passes its connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and an **API key** in the console, keep the key in an environment variable, and put the rest in `connection`.",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0452",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/custom.md#other-ibm-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/custom.md#other-ibm-cloud-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Secrets Manager, Cloudant, watsonx, a third-party API. pskit only passes its connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and an **API key** in the console, keep the key in an environment variable, and put the rest in `connection`.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0453",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/custom.md#other-ibm-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/custom.md#other-ibm-cloud-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Secrets Manager, Cloudant, watsonx, a third-party API. pskit only passes its connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and an **API key** in the console, keep the key in an environment variable, and put the rest in `connection`.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0454",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/custom.md#other-ibm-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/custom.md#other-ibm-cloud-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Secrets Manager, Cloudant, watsonx, a third-party API. pskit only passes its connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and an **API key** in the console, keep the key in an environment variable, and put the rest in `connection`.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0455",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-custom.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/custom.md#other-ibm-cloud-services-type-custom",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0456",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-custom.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/ibm/custom.md#other-ibm-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/ibm/custom.md#other-ibm-cloud-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Secrets Manager, Cloudant, watsonx, a third-party API. pskit only passes its connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and an **API key** in the console, keep the key in an environment variable, and put the rest in `connection`.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0457",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-database.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/database.md#ibm-cloud-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0458",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-database.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/database.md#ibm-cloud-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0459",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-database.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/database.md#ibm-cloud-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0460",
+  "category": "k_res",
+  "card_ids": [
+   "res-ibm-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-ibm-database.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/database.md#ibm-cloud-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ }
+]

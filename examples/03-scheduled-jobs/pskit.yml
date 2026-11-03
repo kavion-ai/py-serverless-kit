@@ -1,0 +1,52 @@
+service: scheduled-jobs
+
+provider:
+  name: aws
+  region: eu-central-1
+  timeout: 120
+
+functions:
+  heartbeat:
+    handler: app.jobs.heartbeat
+    events:
+      - schedule: 5 minutes              # shorthand for {rate: "5 minutes"}
+
+  daily-report:
+    handler: app.jobs.daily_report
+    timeout: 300
+    events:
+      - schedule:
+          cron: "0 9 * * 1-5"            # standard 5-field cron: 09:00 Mon-Fri
+          timezone: Europe/Berlin        # honoured by AWS EventBridge Scheduler and GCP Cloud Scheduler
+          input:                         # becomes event.data
+            report: sales
+            days: 1
+            recipients: [finance@example.com]
+      - schedule:
+          name: weekly
+          cron: "0 7 * * 1"
+          input: {report: sales-weekly, days: 7}
+
+  cleanup:
+    handler: app.jobs.cleanup
+    timeout: 900
+    events:
+      - schedule:
+          rate: 1 day
+          enabled: "${env:CLEANUP_ENABLED, true}"   # switch a schedule off without deleting it
+          input: {retention_days: 90}
+
+providers:
+  gcp:
+    region: europe-west3
+    options: {project: "${env:GOOGLE_CLOUD_PROJECT, my-gcp-project}"}
+    functions:
+      cleanup: {timeout: 540}
+  azure:
+    region: germanywestcentral
+    options: {subscription_id: "${env:ARM_SUBSCRIPTION_ID, 00000000-0000-0000-0000-000000000000}"}
+    functions:
+      cleanup: {timeout: 600}            # Azure consumption plan maximum
+  onprem:
+    region: local
+    options: {host: 127.0.0.1, port: 8083}

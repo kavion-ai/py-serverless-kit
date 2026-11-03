@@ -1,0 +1,797 @@
+[
+ {
+  "id": "k_arch_0331",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflows"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflows.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/workflows.md#workflows-state-machines"
+  ],
+  "excerpt": "[docs/workflows.md#workflows-state-machines]\n- **natively**, as AWS Step Functions (ASL), Google Cloud Workflows or (opt-in, `engine: native`) Azure Logic Apps; - on the **embedded engine** on every other target, inside an auto-generated orchestrator function (on premises that function runs inside the long-lived host, so the workflow is not cut off by a function timeout); - **locally** with `pskit workflow run`, using the same engine.",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0332",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflows"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflows.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/workflows.md#workflows-state-machines"
+  ],
+  "excerpt": "[docs/workflows.md#workflows-state-machines]\n- **natively**, as AWS Step Functions (ASL), Google Cloud Workflows or (opt-in, `engine: native`) Azure Logic Apps; - on the **embedded engine** on every other target, inside an auto-generated orchestrator function (on premises that function runs inside the long-lived host, so the workflow is not cut off by a function timeout); - **locally** with `pskit workflow run`, using the same engine.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0333",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflows"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflows.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/workflows.md#workflows-state-machines"
+  ],
+  "excerpt": "[docs/workflows.md#workflows-state-machines]\n- **natively**, as AWS Step Functions (ASL), Google Cloud Workflows or (opt-in, `engine: native`) Azure Logic Apps; - on the **embedded engine** on every other target, inside an auto-generated orchestrator function (on premises that function runs inside the long-lived host, so the workflow is not cut off by a function timeout); - **locally** with `pskit workflow run`, using the same engine.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0334",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflows"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflows.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/workflows.md#workflows-state-machines"
+  ],
+  "excerpt": "[docs/workflows.md#workflows-state-machines]\n- **natively**, as AWS Step Functions (ASL), Google Cloud Workflows or (opt-in, `engine: native`) Azure Logic Apps; - on the **embedded engine** on every other target, inside an auto-generated orchestrator function (on premises that function runs inside the long-lived host, so the workflow is not cut off by a function timeout); - **locally** with `pskit workflow run`, using the same engine.",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0335",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflows"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflows.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/workflows.md#workflows-state-machines",
+   "docs/workflows.md#workflow-keys"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0336",
+  "category": "k_arch",
+  "card_ids": [
+   "concept-workflows"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/concept-workflows.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/workflows.md#workflows-state-machines"
+  ],
+  "excerpt": "[docs/workflows.md#workflows-state-machines]\n- **natively**, as AWS Step Functions (ASL), Google Cloud Workflows or (opt-in, `engine: native`) Azure Logic Apps; - on the **embedded engine** on every other target, inside an auto-generated orchestrator function (on premises that function runs inside the long-lived host, so the workflow is not cut off by a function timeout); - **locally** with `pskit workflow run`, using the same engine.",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0337",
+  "category": "k_arch",
+  "card_ids": [
+   "example-01-hello-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-01-hello-http.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/01-hello-http/README.md",
+   "examples/01-hello-http/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0338",
+  "category": "k_arch",
+  "card_ids": [
+   "example-01-hello-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-01-hello-http.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/01-hello-http/README.md",
+   "examples/01-hello-http/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0339",
+  "category": "k_arch",
+  "card_ids": [
+   "example-01-hello-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-01-hello-http.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/01-hello-http/README.md",
+   "examples/01-hello-http/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0340",
+  "category": "k_arch",
+  "card_ids": [
+   "example-01-hello-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-01-hello-http.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/01-hello-http/README.md",
+   "examples/01-hello-http/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0341",
+  "category": "k_arch",
+  "card_ids": [
+   "example-01-hello-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-01-hello-http.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/01-hello-http/README.md",
+   "examples/01-hello-http/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0342",
+  "category": "k_arch",
+  "card_ids": [
+   "example-01-hello-http"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-01-hello-http.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/01-hello-http/README.md",
+   "examples/01-hello-http/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0343",
+  "category": "k_arch",
+  "card_ids": [
+   "example-02-rest-api"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-02-rest-api.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/02-rest-api/README.md",
+   "examples/02-rest-api/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0344",
+  "category": "k_arch",
+  "card_ids": [
+   "example-02-rest-api"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-02-rest-api.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/02-rest-api/README.md",
+   "examples/02-rest-api/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0345",
+  "category": "k_arch",
+  "card_ids": [
+   "example-02-rest-api"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-02-rest-api.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/02-rest-api/README.md",
+   "examples/02-rest-api/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0346",
+  "category": "k_arch",
+  "card_ids": [
+   "example-02-rest-api"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-02-rest-api.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/02-rest-api/README.md",
+   "examples/02-rest-api/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0347",
+  "category": "k_arch",
+  "card_ids": [
+   "example-02-rest-api"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-02-rest-api.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/02-rest-api/README.md",
+   "examples/02-rest-api/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0348",
+  "category": "k_arch",
+  "card_ids": [
+   "example-02-rest-api"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-02-rest-api.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/02-rest-api/README.md",
+   "examples/02-rest-api/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0349",
+  "category": "k_arch",
+  "card_ids": [
+   "example-03-scheduled-jobs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-03-scheduled-jobs.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/03-scheduled-jobs/README.md",
+   "examples/03-scheduled-jobs/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0350",
+  "category": "k_arch",
+  "card_ids": [
+   "example-03-scheduled-jobs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-03-scheduled-jobs.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "examples/03-scheduled-jobs/README.md",
+   "examples/03-scheduled-jobs/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0351",
+  "category": "k_arch",
+  "card_ids": [
+   "example-03-scheduled-jobs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-03-scheduled-jobs.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "examples/03-scheduled-jobs/README.md",
+   "examples/03-scheduled-jobs/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0352",
+  "category": "k_arch",
+  "card_ids": [
+   "example-03-scheduled-jobs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-03-scheduled-jobs.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "examples/03-scheduled-jobs/README.md",
+   "examples/03-scheduled-jobs/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0353",
+  "category": "k_arch",
+  "card_ids": [
+   "example-03-scheduled-jobs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-03-scheduled-jobs.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "examples/03-scheduled-jobs/README.md",
+   "examples/03-scheduled-jobs/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0354",
+  "category": "k_arch",
+  "card_ids": [
+   "example-03-scheduled-jobs"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-03-scheduled-jobs.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "examples/03-scheduled-jobs/README.md",
+   "examples/03-scheduled-jobs/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0355",
+  "category": "k_arch",
+  "card_ids": [
+   "example-04-queue-worker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-04-queue-worker.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "examples/04-queue-worker/README.md",
+   "examples/04-queue-worker/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0356",
+  "category": "k_arch",
+  "card_ids": [
+   "example-04-queue-worker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-04-queue-worker.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "examples/04-queue-worker/README.md",
+   "examples/04-queue-worker/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0357",
+  "category": "k_arch",
+  "card_ids": [
+   "example-04-queue-worker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-04-queue-worker.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "examples/04-queue-worker/README.md",
+   "examples/04-queue-worker/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0358",
+  "category": "k_arch",
+  "card_ids": [
+   "example-04-queue-worker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-04-queue-worker.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "examples/04-queue-worker/README.md",
+   "examples/04-queue-worker/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0359",
+  "category": "k_arch",
+  "card_ids": [
+   "example-04-queue-worker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-04-queue-worker.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "examples/04-queue-worker/README.md",
+   "examples/04-queue-worker/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0360",
+  "category": "k_arch",
+  "card_ids": [
+   "example-04-queue-worker"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-04-queue-worker.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "examples/04-queue-worker/README.md",
+   "examples/04-queue-worker/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0361",
+  "category": "k_arch",
+  "card_ids": [
+   "example-05-storage-events"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-05-storage-events.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "examples/05-storage-events/README.md",
+   "examples/05-storage-events/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0362",
+  "category": "k_arch",
+  "card_ids": [
+   "example-05-storage-events"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-05-storage-events.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "examples/05-storage-events/README.md",
+   "examples/05-storage-events/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0363",
+  "category": "k_arch",
+  "card_ids": [
+   "example-05-storage-events"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-05-storage-events.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "examples/05-storage-events/README.md",
+   "examples/05-storage-events/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0364",
+  "category": "k_arch",
+  "card_ids": [
+   "example-05-storage-events"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-05-storage-events.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "examples/05-storage-events/README.md",
+   "examples/05-storage-events/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0365",
+  "category": "k_arch",
+  "card_ids": [
+   "example-05-storage-events"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-05-storage-events.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "examples/05-storage-events/README.md",
+   "examples/05-storage-events/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0366",
+  "category": "k_arch",
+  "card_ids": [
+   "example-05-storage-events"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-05-storage-events.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "examples/05-storage-events/README.md",
+   "examples/05-storage-events/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0367",
+  "category": "k_arch",
+  "card_ids": [
+   "example-06-pubsub-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-06-pubsub-topic.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "examples/06-pubsub-topic/README.md",
+   "examples/06-pubsub-topic/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0368",
+  "category": "k_arch",
+  "card_ids": [
+   "example-06-pubsub-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-06-pubsub-topic.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "examples/06-pubsub-topic/README.md",
+   "examples/06-pubsub-topic/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0369",
+  "category": "k_arch",
+  "card_ids": [
+   "example-06-pubsub-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-06-pubsub-topic.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "examples/06-pubsub-topic/README.md",
+   "examples/06-pubsub-topic/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_arch_0370",
+  "category": "k_arch",
+  "card_ids": [
+   "example-06-pubsub-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/concept/example-06-pubsub-topic.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "examples/06-pubsub-topic/README.md",
+   "examples/06-pubsub-topic/pskit.yml"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ }
+]

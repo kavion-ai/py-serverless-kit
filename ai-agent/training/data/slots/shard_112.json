@@ -1,0 +1,682 @@
+[
+ {
+  "id": "k_trouble_0131",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-security-notes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-security-notes.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#security-notes"
+  ],
+  "excerpt": "[docs/troubleshooting.md#security-notes]\n- 500 responses never include exception details unless `PSKIT_DEBUG` is set. - `.env`, Terraform state and `pskit*.yml` are excluded from bundles. `.pskit/` is git-ignored. - `auth: none` routes are public. Embedded workflow orchestrators get a public `POST /workflows/<name>` route unless you set `options.http: false`. - `resources:` connection values are function environment variables: they land in Terraform state and, on premises, in `pskit_host.json`. Pass the *name* of a secret variable instead of the secret ([resources.md](resources.md#secrets)). - On premises, set `admin_token` when the host binds beyond loopback: it guards `/__pskit/*` (queues, invoke, workflows, executions, logs, stats). `pskit dashboard --serve` binds loopback and never sends that token to the browser. - Created AWS buckets block public access. Prefer a least-privilege `iam.statements` over `\"*\"` resources. - Keep secrets out of YAML: use `${env:...}` in CI or a secret manager via `${tf:...}`. - Report vulnerabilities privately (see `SECURITY.md` in the repository root).",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0132",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-security-notes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-security-notes.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#security-notes"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0133",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-security-notes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-security-notes.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#security-notes"
+  ],
+  "excerpt": "[docs/troubleshooting.md#security-notes]\n- 500 responses never include exception details unless `PSKIT_DEBUG` is set. - `.env`, Terraform state and `pskit*.yml` are excluded from bundles. `.pskit/` is git-ignored. - `auth: none` routes are public. Embedded workflow orchestrators get a public `POST /workflows/<name>` route unless you set `options.http: false`. - `resources:` connection values are function environment variables: they land in Terraform state and, on premises, in `pskit_host.json`. Pass the *name* of a secret variable instead of the secret ([resources.md](resources.md#secrets)). - On premises, set `admin_token` when the host binds beyond loopback: it guards `/__pskit/*` (queues, invoke, workflows, executions, logs, stats). `pskit dashboard --serve` binds loopback and never sends that token to the browser. - Created AWS buckets block public access. Prefer a least-privilege `iam.statements` over `\"*\"` resources. - Keep secrets out of YAML: use `${env:...}` in CI or a secret manager via `${tf:...}`. - Report vulnerabilities privately (see `SECURITY.md` in the repository root).",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0134",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-security-notes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-security-notes.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#security-notes"
+  ],
+  "excerpt": "[docs/troubleshooting.md#security-notes]\n- 500 responses never include exception details unless `PSKIT_DEBUG` is set. - `.env`, Terraform state and `pskit*.yml` are excluded from bundles. `.pskit/` is git-ignored. - `auth: none` routes are public. Embedded workflow orchestrators get a public `POST /workflows/<name>` route unless you set `options.http: false`. - `resources:` connection values are function environment variables: they land in Terraform state and, on premises, in `pskit_host.json`. Pass the *name* of a secret variable instead of the secret ([resources.md](resources.md#secrets)). - On premises, set `admin_token` when the host binds beyond loopback: it guards `/__pskit/*` (queues, invoke, workflows, executions, logs, stats). `pskit dashboard --serve` binds loopback and never sends that token to the browser. - Created AWS buckets block public access. Prefer a least-privilege `iam.statements` over `\"*\"` resources. - Keep secrets out of YAML: use `${env:...}` in CI or a secret manager via `${tf:...}`. - Report vulnerabilities privately (see `SECURITY.md` in the repository root).",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0135",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-security-notes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-security-notes.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#security-notes"
+  ],
+  "excerpt": "[docs/troubleshooting.md#security-notes]\n- 500 responses never include exception details unless `PSKIT_DEBUG` is set. - `.env`, Terraform state and `pskit*.yml` are excluded from bundles. `.pskit/` is git-ignored. - `auth: none` routes are public. Embedded workflow orchestrators get a public `POST /workflows/<name>` route unless you set `options.http: false`. - `resources:` connection values are function environment variables: they land in Terraform state and, on premises, in `pskit_host.json`. Pass the *name* of a secret variable instead of the secret ([resources.md](resources.md#secrets)). - On premises, set `admin_token` when the host binds beyond loopback: it guards `/__pskit/*` (queues, invoke, workflows, executions, logs, stats). `pskit dashboard --serve` binds loopback and never sends that token to the browser. - Created AWS buckets block public access. Prefer a least-privilege `iam.statements` over `\"*\"` resources. - Keep secrets out of YAML: use `${env:...}` in CI or a secret manager via `${tf:...}`. - Report vulnerabilities privately (see `SECURITY.md` in the repository root).",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0136",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-security-notes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-security-notes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#security-notes"
+  ],
+  "excerpt": "[docs/troubleshooting.md#security-notes]\n- 500 responses never include exception details unless `PSKIT_DEBUG` is set. - `.env`, Terraform state and `pskit*.yml` are excluded from bundles. `.pskit/` is git-ignored. - `auth: none` routes are public. Embedded workflow orchestrators get a public `POST /workflows/<name>` route unless you set `options.http: false`. - `resources:` connection values are function environment variables: they land in Terraform state and, on premises, in `pskit_host.json`. Pass the *name* of a secret variable instead of the secret ([resources.md](resources.md#secrets)). - On premises, set `admin_token` when the host binds beyond loopback: it guards `/__pskit/*` (queues, invoke, workflows, executions, logs, stats). `pskit dashboard --serve` binds loopback and never sends that token to the browser. - Created AWS buckets block public access. Prefer a least-privilege `iam.statements` over `\"*\"` resources. - Keep secrets out of YAML: use `${env:...}` in CI or a secret manager via `${tf:...}`. - Report vulnerabilities privately (see `SECURITY.md` in the repository root).",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0137",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-security-notes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-security-notes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#security-notes"
+  ],
+  "excerpt": "[docs/troubleshooting.md#security-notes]\n- 500 responses never include exception details unless `PSKIT_DEBUG` is set. - `.env`, Terraform state and `pskit*.yml` are excluded from bundles. `.pskit/` is git-ignored. - `auth: none` routes are public. Embedded workflow orchestrators get a public `POST /workflows/<name>` route unless you set `options.http: false`. - `resources:` connection values are function environment variables: they land in Terraform state and, on premises, in `pskit_host.json`. Pass the *name* of a secret variable instead of the secret ([resources.md](resources.md#secrets)). - On premises, set `admin_token` when the host binds beyond loopback: it guards `/__pskit/*` (queues, invoke, workflows, executions, logs, stats). `pskit dashboard --serve` binds loopback and never sends that token to the browser. - Created AWS buckets block public access. Prefer a least-privilege `iam.statements` over `\"*\"` resources. - Keep secrets out of YAML: use `${env:...}` in CI or a secret manager via `${tf:...}`. - Report vulnerabilities privately (see `SECURITY.md` in the repository root).",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0138",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-security-notes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-security-notes.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#security-notes"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0139",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-security-notes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-security-notes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#security-notes"
+  ],
+  "excerpt": "[docs/troubleshooting.md#security-notes]\n- 500 responses never include exception details unless `PSKIT_DEBUG` is set. - `.env`, Terraform state and `pskit*.yml` are excluded from bundles. `.pskit/` is git-ignored. - `auth: none` routes are public. Embedded workflow orchestrators get a public `POST /workflows/<name>` route unless you set `options.http: false`. - `resources:` connection values are function environment variables: they land in Terraform state and, on premises, in `pskit_host.json`. Pass the *name* of a secret variable instead of the secret ([resources.md](resources.md#secrets)). - On premises, set `admin_token` when the host binds beyond loopback: it guards `/__pskit/*` (queues, invoke, workflows, executions, logs, stats). `pskit dashboard --serve` binds loopback and never sends that token to the browser. - Created AWS buckets block public access. Prefer a least-privilege `iam.statements` over `\"*\"` resources. - Keep secrets out of YAML: use `${env:...}` in CI or a secret manager via `${tf:...}`. - Report vulnerabilities privately (see `SECURITY.md` in the repository root).",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0140",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-security-notes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-security-notes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#security-notes"
+  ],
+  "excerpt": "[docs/troubleshooting.md#security-notes]\n- 500 responses never include exception details unless `PSKIT_DEBUG` is set. - `.env`, Terraform state and `pskit*.yml` are excluded from bundles. `.pskit/` is git-ignored. - `auth: none` routes are public. Embedded workflow orchestrators get a public `POST /workflows/<name>` route unless you set `options.http: false`. - `resources:` connection values are function environment variables: they land in Terraform state and, on premises, in `pskit_host.json`. Pass the *name* of a secret variable instead of the secret ([resources.md](resources.md#secrets)). - On premises, set `admin_token` when the host binds beyond loopback: it guards `/__pskit/*` (queues, invoke, workflows, executions, logs, stats). `pskit dashboard --serve` binds loopback and never sends that token to the browser. - Created AWS buckets block public access. Prefer a least-privilege `iam.statements` over `\"*\"` resources. - Keep secrets out of YAML: use `${env:...}` in CI or a secret manager via `${tf:...}`. - Report vulnerabilities privately (see `SECURITY.md` in the repository root).",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0141",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-security-notes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-security-notes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#security-notes"
+  ],
+  "excerpt": "[docs/troubleshooting.md#security-notes]\n- 500 responses never include exception details unless `PSKIT_DEBUG` is set. - `.env`, Terraform state and `pskit*.yml` are excluded from bundles. `.pskit/` is git-ignored. - `auth: none` routes are public. Embedded workflow orchestrators get a public `POST /workflows/<name>` route unless you set `options.http: false`. - `resources:` connection values are function environment variables: they land in Terraform state and, on premises, in `pskit_host.json`. Pass the *name* of a secret variable instead of the secret ([resources.md](resources.md#secrets)). - On premises, set `admin_token` when the host binds beyond loopback: it guards `/__pskit/*` (queues, invoke, workflows, executions, logs, stats). `pskit dashboard --serve` binds loopback and never sends that token to the browser. - Created AWS buckets block public access. Prefer a least-privilege `iam.statements` over `\"*\"` resources. - Keep secrets out of YAML: use `${env:...}` in CI or a secret manager via `${tf:...}`. - Report vulnerabilities privately (see `SECURITY.md` in the repository root).",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0142",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-security-notes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-security-notes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#security-notes"
+  ],
+  "excerpt": "[docs/troubleshooting.md#security-notes]\n- 500 responses never include exception details unless `PSKIT_DEBUG` is set. - `.env`, Terraform state and `pskit*.yml` are excluded from bundles. `.pskit/` is git-ignored. - `auth: none` routes are public. Embedded workflow orchestrators get a public `POST /workflows/<name>` route unless you set `options.http: false`. - `resources:` connection values are function environment variables: they land in Terraform state and, on premises, in `pskit_host.json`. Pass the *name* of a secret variable instead of the secret ([resources.md](resources.md#secrets)). - On premises, set `admin_token` when the host binds beyond loopback: it guards `/__pskit/*` (queues, invoke, workflows, executions, logs, stats). `pskit dashboard --serve` binds loopback and never sends that token to the browser. - Created AWS buckets block public access. Prefer a least-privilege `iam.statements` over `\"*\"` resources. - Keep secrets out of YAML: use `${env:...}` in CI or a secret manager via `${tf:...}`. - Report vulnerabilities privately (see `SECURITY.md` in the repository root).",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0143",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-security-notes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-security-notes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#security-notes"
+  ],
+  "excerpt": "[docs/troubleshooting.md#security-notes]\n- 500 responses never include exception details unless `PSKIT_DEBUG` is set. - `.env`, Terraform state and `pskit*.yml` are excluded from bundles. `.pskit/` is git-ignored. - `auth: none` routes are public. Embedded workflow orchestrators get a public `POST /workflows/<name>` route unless you set `options.http: false`. - `resources:` connection values are function environment variables: they land in Terraform state and, on premises, in `pskit_host.json`. Pass the *name* of a secret variable instead of the secret ([resources.md](resources.md#secrets)). - On premises, set `admin_token` when the host binds beyond loopback: it guards `/__pskit/*` (queues, invoke, workflows, executions, logs, stats). `pskit dashboard --serve` binds loopback and never sends that token to the browser. - Created AWS buckets block public access. Prefer a least-privilege `iam.statements` over `\"*\"` resources. - Keep secrets out of YAML: use `${env:...}` in CI or a secret manager via `${tf:...}`. - Report vulnerabilities privately (see `SECURITY.md` in the repository root).",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0144",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-security-notes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-security-notes.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#security-notes"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0145",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-security-notes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-security-notes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#security-notes"
+  ],
+  "excerpt": "[docs/troubleshooting.md#security-notes]\n- 500 responses never include exception details unless `PSKIT_DEBUG` is set. - `.env`, Terraform state and `pskit*.yml` are excluded from bundles. `.pskit/` is git-ignored. - `auth: none` routes are public. Embedded workflow orchestrators get a public `POST /workflows/<name>` route unless you set `options.http: false`. - `resources:` connection values are function environment variables: they land in Terraform state and, on premises, in `pskit_host.json`. Pass the *name* of a secret variable instead of the secret ([resources.md](resources.md#secrets)). - On premises, set `admin_token` when the host binds beyond loopback: it guards `/__pskit/*` (queues, invoke, workflows, executions, logs, stats). `pskit dashboard --serve` binds loopback and never sends that token to the browser. - Created AWS buckets block public access. Prefer a least-privilege `iam.statements` over `\"*\"` resources. - Keep secrets out of YAML: use `${env:...}` in CI or a secret manager via `${tf:...}`. - Report vulnerabilities privately (see `SECURITY.md` in the repository root).",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0146",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-security-notes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-security-notes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#security-notes"
+  ],
+  "excerpt": "[docs/troubleshooting.md#security-notes]\n- 500 responses never include exception details unless `PSKIT_DEBUG` is set. - `.env`, Terraform state and `pskit*.yml` are excluded from bundles. `.pskit/` is git-ignored. - `auth: none` routes are public. Embedded workflow orchestrators get a public `POST /workflows/<name>` route unless you set `options.http: false`. - `resources:` connection values are function environment variables: they land in Terraform state and, on premises, in `pskit_host.json`. Pass the *name* of a secret variable instead of the secret ([resources.md](resources.md#secrets)). - On premises, set `admin_token` when the host binds beyond loopback: it guards `/__pskit/*` (queues, invoke, workflows, executions, logs, stats). `pskit dashboard --serve` binds loopback and never sends that token to the browser. - Created AWS buckets block public access. Prefer a least-privilege `iam.statements` over `\"*\"` resources. - Keep secrets out of YAML: use `${env:...}` in CI or a secret manager via `${tf:...}`. - Report vulnerabilities privately (see `SECURITY.md` in the repository root).",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0147",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-security-notes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-security-notes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#security-notes"
+  ],
+  "excerpt": "[docs/troubleshooting.md#security-notes]\n- 500 responses never include exception details unless `PSKIT_DEBUG` is set. - `.env`, Terraform state and `pskit*.yml` are excluded from bundles. `.pskit/` is git-ignored. - `auth: none` routes are public. Embedded workflow orchestrators get a public `POST /workflows/<name>` route unless you set `options.http: false`. - `resources:` connection values are function environment variables: they land in Terraform state and, on premises, in `pskit_host.json`. Pass the *name* of a secret variable instead of the secret ([resources.md](resources.md#secrets)). - On premises, set `admin_token` when the host binds beyond loopback: it guards `/__pskit/*` (queues, invoke, workflows, executions, logs, stats). `pskit dashboard --serve` binds loopback and never sends that token to the browser. - Created AWS buckets block public access. Prefer a least-privilege `iam.statements` over `\"*\"` resources. - Keep secrets out of YAML: use `${env:...}` in CI or a secret manager via `${tf:...}`. - Report vulnerabilities privately (see `SECURITY.md` in the repository root).",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0148",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-security-notes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-security-notes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#security-notes"
+  ],
+  "excerpt": "[docs/troubleshooting.md#security-notes]\n- 500 responses never include exception details unless `PSKIT_DEBUG` is set. - `.env`, Terraform state and `pskit*.yml` are excluded from bundles. `.pskit/` is git-ignored. - `auth: none` routes are public. Embedded workflow orchestrators get a public `POST /workflows/<name>` route unless you set `options.http: false`. - `resources:` connection values are function environment variables: they land in Terraform state and, on premises, in `pskit_host.json`. Pass the *name* of a secret variable instead of the secret ([resources.md](resources.md#secrets)). - On premises, set `admin_token` when the host binds beyond loopback: it guards `/__pskit/*` (queues, invoke, workflows, executions, logs, stats). `pskit dashboard --serve` binds loopback and never sends that token to the browser. - Created AWS buckets block public access. Prefer a least-privilege `iam.statements` over `\"*\"` resources. - Keep secrets out of YAML: use `${env:...}` in CI or a secret manager via `${tf:...}`. - Report vulnerabilities privately (see `SECURITY.md` in the repository root).",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0149",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-security-notes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-security-notes.md",
+  "persona": "contributor",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#security-notes"
+  ],
+  "excerpt": "[docs/troubleshooting.md#security-notes]\n- 500 responses never include exception details unless `PSKIT_DEBUG` is set. - `.env`, Terraform state and `pskit*.yml` are excluded from bundles. `.pskit/` is git-ignored. - `auth: none` routes are public. Embedded workflow orchestrators get a public `POST /workflows/<name>` route unless you set `options.http: false`. - `resources:` connection values are function environment variables: they land in Terraform state and, on premises, in `pskit_host.json`. Pass the *name* of a secret variable instead of the secret ([resources.md](resources.md#secrets)). - On premises, set `admin_token` when the host binds beyond loopback: it guards `/__pskit/*` (queues, invoke, workflows, executions, logs, stats). `pskit dashboard --serve` binds loopback and never sends that token to the browser. - Created AWS buckets block public access. Prefer a least-privilege `iam.statements` over `\"*\"` resources. - Keep secrets out of YAML: use `${env:...}` in CI or a secret manager via `${tf:...}`. - Report vulnerabilities privately (see `SECURITY.md` in the repository root).",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0150",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-security-notes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-security-notes.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#security-notes"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_about_0001",
+  "category": "k_about",
+  "card_ids": [],
+  "card_path": "",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_about_0002",
+  "category": "k_about",
+  "card_ids": [],
+  "card_path": "",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_about_0003",
+  "category": "k_about",
+  "card_ids": [],
+  "card_path": "",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_about_0004",
+  "category": "k_about",
+  "card_ids": [],
+  "card_path": "",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_about_0005",
+  "category": "k_about",
+  "card_ids": [],
+  "card_path": "",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_about_0006",
+  "category": "k_about",
+  "card_ids": [],
+  "card_path": "",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_about_0007",
+  "category": "k_about",
+  "card_ids": [],
+  "card_path": "",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_about_0008",
+  "category": "k_about",
+  "card_ids": [],
+  "card_path": "",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_about_0009",
+  "category": "k_about",
+  "card_ids": [],
+  "card_path": "",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_about_0010",
+  "category": "k_about",
+  "card_ids": [],
+  "card_path": "",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_about_0011",
+  "category": "k_about",
+  "card_ids": [],
+  "card_path": "",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_about_0012",
+  "category": "k_about",
+  "card_ids": [],
+  "card_path": "",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_about_0013",
+  "category": "k_about",
+  "card_ids": [],
+  "card_path": "",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_about_0014",
+  "category": "k_about",
+  "card_ids": [],
+  "card_path": "",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_about_0015",
+  "category": "k_about",
+  "card_ids": [],
+  "card_path": "",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_about_0016",
+  "category": "k_about",
+  "card_ids": [],
+  "card_path": "",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_about_0017",
+  "category": "k_about",
+  "card_ids": [],
+  "card_path": "",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_about_0018",
+  "category": "k_about",
+  "card_ids": [],
+  "card_path": "",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_about_0019",
+  "category": "k_about",
+  "card_ids": [],
+  "card_path": "",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_about_0020",
+  "category": "k_about",
+  "card_ids": [],
+  "card_path": "",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ }
+]

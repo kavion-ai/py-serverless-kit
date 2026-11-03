@@ -1,0 +1,762 @@
+[
+ {
+  "id": "k_onprem_0001",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-backup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-backup.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#backups"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#backups]\n`Backup` streams a dump out of the container into `.pskit/backups/` on this machine, or a folder you choose (**Backup → Save to folder → Browse…**, remembered; CLI `--dir` / `-o`), also from an SSH server: Data directories are copied while the service runs. For Kafka and NATS, stop producers first for a consistent copy.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0002",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-backup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-backup.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#backups"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#backups]\n`Backup` streams a dump out of the container into `.pskit/backups/` on this machine, or a folder you choose (**Backup → Save to folder → Browse…**, remembered; CLI `--dir` / `-o`), also from an SSH server: Data directories are copied while the service runs. For Kafka and NATS, stop producers first for a consistent copy.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0003",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-backup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-backup.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#backups"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#backups]\n`Backup` streams a dump out of the container into `.pskit/backups/` on this machine, or a folder you choose (**Backup → Save to folder → Browse…**, remembered; CLI `--dir` / `-o`), also from an SSH server: Data directories are copied while the service runs. For Kafka and NATS, stop producers first for a consistent copy.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0004",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-backup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-backup.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#backups"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#backups]\n`Backup` streams a dump out of the container into `.pskit/backups/` on this machine, or a folder you choose (**Backup → Save to folder → Browse…**, remembered; CLI `--dir` / `-o`), also from an SSH server: Data directories are copied while the service runs. For Kafka and NATS, stop producers first for a consistent copy.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0005",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-backup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-backup.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#backups"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#backups]\n`Backup` streams a dump out of the container into `.pskit/backups/` on this machine, or a folder you choose (**Backup → Save to folder → Browse…**, remembered; CLI `--dir` / `-o`), also from an SSH server: Data directories are copied while the service runs. For Kafka and NATS, stop producers first for a consistent copy.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0006",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-backup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-backup.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#backups"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0007",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-backup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-backup.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#backups"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#backups]\n`Backup` streams a dump out of the container into `.pskit/backups/` on this machine, or a folder you choose (**Backup → Save to folder → Browse…**, remembered; CLI `--dir` / `-o`), also from an SSH server: Data directories are copied while the service runs. For Kafka and NATS, stop producers first for a consistent copy.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0008",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-backup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-backup.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#backups"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#backups]\n`Backup` streams a dump out of the container into `.pskit/backups/` on this machine, or a folder you choose (**Backup → Save to folder → Browse…**, remembered; CLI `--dir` / `-o`), also from an SSH server: Data directories are copied while the service runs. For Kafka and NATS, stop producers first for a consistent copy.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0009",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-backup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-backup.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#backups"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#backups]\n`Backup` streams a dump out of the container into `.pskit/backups/` on this machine, or a folder you choose (**Backup → Save to folder → Browse…**, remembered; CLI `--dir` / `-o`), also from an SSH server: Data directories are copied while the service runs. For Kafka and NATS, stop producers first for a consistent copy.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0010",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-backup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-backup.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#backups"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#backups]\n`Backup` streams a dump out of the container into `.pskit/backups/` on this machine, or a folder you choose (**Backup → Save to folder → Browse…**, remembered; CLI `--dir` / `-o`), also from an SSH server: Data directories are copied while the service runs. For Kafka and NATS, stop producers first for a consistent copy.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0011",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-browse"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-browse.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#pskits-own-browsers-when-the-native-ui-is-missing"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#pskits-own-browsers-when-the-native-ui-is-missing]\nEvery service and role above was created with Docker and driven through its pskit driver (publish, receive, settle; put, list, get) during development. Queues and buckets on Azurite, LocalStack, fake-gcs-server and RustFS are created on first use by the driver (`create_queue` / `create_bucket`), from the host's side, so a firewall between your laptop and the server doesn't matter and an emulator restart is survived. Extra ports (consoles, Azurite's queue port) move with the main port: a second RabbitMQ on port 5682 gets its UI on 15682.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0012",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-browse"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-browse.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#pskits-own-browsers-when-the-native-ui-is-missing"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0013",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-browse"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-browse.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#pskits-own-browsers-when-the-native-ui-is-missing"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#pskits-own-browsers-when-the-native-ui-is-missing]\nEvery service and role above was created with Docker and driven through its pskit driver (publish, receive, settle; put, list, get) during development. Queues and buckets on Azurite, LocalStack, fake-gcs-server and RustFS are created on first use by the driver (`create_queue` / `create_bucket`), from the host's side, so a firewall between your laptop and the server doesn't matter and an emulator restart is survived. Extra ports (consoles, Azurite's queue port) move with the main port: a second RabbitMQ on port 5682 gets its UI on 15682.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0014",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-browse"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-browse.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#pskits-own-browsers-when-the-native-ui-is-missing"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#pskits-own-browsers-when-the-native-ui-is-missing]\nEvery service and role above was created with Docker and driven through its pskit driver (publish, receive, settle; put, list, get) during development. Queues and buckets on Azurite, LocalStack, fake-gcs-server and RustFS are created on first use by the driver (`create_queue` / `create_bucket`), from the host's side, so a firewall between your laptop and the server doesn't matter and an emulator restart is survived. Extra ports (consoles, Azurite's queue port) move with the main port: a second RabbitMQ on port 5682 gets its UI on 15682.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0015",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-browse"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-browse.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#pskits-own-browsers-when-the-native-ui-is-missing"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#pskits-own-browsers-when-the-native-ui-is-missing]\nEvery service and role above was created with Docker and driven through its pskit driver (publish, receive, settle; put, list, get) during development. Queues and buckets on Azurite, LocalStack, fake-gcs-server and RustFS are created on first use by the driver (`create_queue` / `create_bucket`), from the host's side, so a firewall between your laptop and the server doesn't matter and an emulator restart is survived. Extra ports (consoles, Azurite's queue port) move with the main port: a second RabbitMQ on port 5682 gets its UI on 15682.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0016",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-browse"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-browse.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#pskits-own-browsers-when-the-native-ui-is-missing"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#pskits-own-browsers-when-the-native-ui-is-missing]\nEvery service and role above was created with Docker and driven through its pskit driver (publish, receive, settle; put, list, get) during development. Queues and buckets on Azurite, LocalStack, fake-gcs-server and RustFS are created on first use by the driver (`create_queue` / `create_bucket`), from the host's side, so a firewall between your laptop and the server doesn't matter and an emulator restart is survived. Extra ports (consoles, Azurite's queue port) move with the main port: a second RabbitMQ on port 5682 gets its UI on 15682.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0017",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-browse"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-browse.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#pskits-own-browsers-when-the-native-ui-is-missing"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#pskits-own-browsers-when-the-native-ui-is-missing]\nEvery service and role above was created with Docker and driven through its pskit driver (publish, receive, settle; put, list, get) during development. Queues and buckets on Azurite, LocalStack, fake-gcs-server and RustFS are created on first use by the driver (`create_queue` / `create_bucket`), from the host's side, so a firewall between your laptop and the server doesn't matter and an emulator restart is survived. Extra ports (consoles, Azurite's queue port) move with the main port: a second RabbitMQ on port 5682 gets its UI on 15682.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0018",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-browse"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-browse.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#pskits-own-browsers-when-the-native-ui-is-missing"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0019",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-browse"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-browse.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#pskits-own-browsers-when-the-native-ui-is-missing"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#pskits-own-browsers-when-the-native-ui-is-missing]\nEvery service and role above was created with Docker and driven through its pskit driver (publish, receive, settle; put, list, get) during development. Queues and buckets on Azurite, LocalStack, fake-gcs-server and RustFS are created on first use by the driver (`create_queue` / `create_bucket`), from the host's side, so a firewall between your laptop and the server doesn't matter and an emulator restart is survived. Extra ports (consoles, Azurite's queue port) move with the main port: a second RabbitMQ on port 5682 gets its UI on 15682.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0020",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-browse"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-browse.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#pskits-own-browsers-when-the-native-ui-is-missing"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#pskits-own-browsers-when-the-native-ui-is-missing]\nEvery service and role above was created with Docker and driven through its pskit driver (publish, receive, settle; put, list, get) during development. Queues and buckets on Azurite, LocalStack, fake-gcs-server and RustFS are created on first use by the driver (`create_queue` / `create_bucket`), from the host's side, so a firewall between your laptop and the server doesn't matter and an emulator restart is survived. Extra ports (consoles, Azurite's queue port) move with the main port: a second RabbitMQ on port 5682 gets its UI on 15682.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0021",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-console"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-console.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#console-and-terminal"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#console-and-terminal]\n*Shell in the container* runs any line with `sh -c` inside the service's container. Each line runs on its own (no state between lines), on this machine or over SSH; credentials are hidden in the output. When the image has no client (Dragonfly, NATS, ElasticMQ, RustFS, Memcached), a small helper container joins the service's private network for that command. Servers have the same **Shell** under *Servers*.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0022",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-console"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-console.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#console-and-terminal"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#console-and-terminal]\n*Shell in the container* runs any line with `sh -c` inside the service's container. Each line runs on its own (no state between lines), on this machine or over SSH; credentials are hidden in the output. When the image has no client (Dragonfly, NATS, ElasticMQ, RustFS, Memcached), a small helper container joins the service's private network for that command. Servers have the same **Shell** under *Servers*.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0023",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-console"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-console.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#console-and-terminal"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#console-and-terminal]\n*Shell in the container* runs any line with `sh -c` inside the service's container. Each line runs on its own (no state between lines), on this machine or over SSH; credentials are hidden in the output. When the image has no client (Dragonfly, NATS, ElasticMQ, RustFS, Memcached), a small helper container joins the service's private network for that command. Servers have the same **Shell** under *Servers*.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0024",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-console"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-console.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#console-and-terminal"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0025",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-console"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-console.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#console-and-terminal"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#console-and-terminal]\n*Shell in the container* runs any line with `sh -c` inside the service's container. Each line runs on its own (no state between lines), on this machine or over SSH; credentials are hidden in the output. When the image has no client (Dragonfly, NATS, ElasticMQ, RustFS, Memcached), a small helper container joins the service's private network for that command. Servers have the same **Shell** under *Servers*.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0026",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-console"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-console.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#console-and-terminal"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#console-and-terminal]\n*Shell in the container* runs any line with `sh -c` inside the service's container. Each line runs on its own (no state between lines), on this machine or over SSH; credentials are hidden in the output. When the image has no client (Dragonfly, NATS, ElasticMQ, RustFS, Memcached), a small helper container joins the service's private network for that command. Servers have the same **Shell** under *Servers*.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0027",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-console"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-console.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#console-and-terminal"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#console-and-terminal]\n*Shell in the container* runs any line with `sh -c` inside the service's container. Each line runs on its own (no state between lines), on this machine or over SSH; credentials are hidden in the output. When the image has no client (Dragonfly, NATS, ElasticMQ, RustFS, Memcached), a small helper container joins the service's private network for that command. Servers have the same **Shell** under *Servers*.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0028",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-console"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-console.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#console-and-terminal"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#console-and-terminal]\n*Shell in the container* runs any line with `sh -c` inside the service's container. Each line runs on its own (no state between lines), on this machine or over SSH; credentials are hidden in the output. When the image has no client (Dragonfly, NATS, ElasticMQ, RustFS, Memcached), a small helper container joins the service's private network for that command. Servers have the same **Shell** under *Servers*.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0029",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-console"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-console.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#console-and-terminal"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#console-and-terminal]\n*Shell in the container* runs any line with `sh -c` inside the service's container. Each line runs on its own (no state between lines), on this machine or over SSH; credentials are hidden in the output. When the image has no client (Dragonfly, NATS, ElasticMQ, RustFS, Memcached), a small helper container joins the service's private network for that command. Servers have the same **Shell** under *Servers*.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0030",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-console"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-console.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#console-and-terminal"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0031",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-database-replicas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-database-replicas.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0032",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-database-replicas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-database-replicas.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0033",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-database-replicas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-database-replicas.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0034",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-database-replicas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-database-replicas.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0035",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-database-replicas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-database-replicas.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0036",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-database-replicas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-database-replicas.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0037",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-database-replicas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-database-replicas.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0038",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-database-replicas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-database-replicas.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0039",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-database-replicas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-database-replicas.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_onprem_0040",
+  "category": "k_onprem",
+  "card_ids": [
+   "onprem-database-replicas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-database-replicas.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/services.md#databases-one-server-or-a-primary-with-read-replicas]\n- **Single server**: one container on this machine or a server. To scale it up, give that server more CPU and memory (vertical scaling). Nothing else changes. - **Primary + read replicas** (horizontal scaling): the **primary** takes every write, each **read replica** on another server keeps a copy and answers reads, and an optional **load balancer** gives the functions one address that sends writes to the primary and reads to the replicas. Add replicas later as reads grow.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ }
+]

@@ -1,0 +1,793 @@
+[
+ {
+  "id": "k_cmd_0521",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-package"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-package.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-package"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0522",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-package"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-package.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-package"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0523",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-package"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-package.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-package"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0524",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-package"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-package.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-package"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0525",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-package"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-package.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-package"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0526",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-package"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-package.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-package"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0527",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-package"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-package.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-package"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0528",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-package"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-package.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-package"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0529",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-plan"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-plan.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-plan"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0530",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-plan"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-plan.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-plan"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0531",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-plan"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-plan.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-plan"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0532",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-plan"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-plan.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-plan"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0533",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-plan"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-plan.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-plan"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0534",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-plan"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-plan.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-plan"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0535",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-plan"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-plan.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-plan"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0536",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-plan"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-plan.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-plan"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0537",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-plan"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-plan.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-plan"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0538",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-plan"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-plan.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-plan"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0539",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-plan"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-plan.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-plan"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0540",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-providers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-providers.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-providers"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0541",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-providers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-providers.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-providers"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0542",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-providers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-providers.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-providers"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0543",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-providers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-providers.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-providers"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0544",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-providers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-providers.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-providers"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0545",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-providers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-providers.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-providers"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0546",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-providers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-providers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-providers"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0547",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-providers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-providers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-providers"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0548",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-providers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-providers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-providers"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0549",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-providers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-providers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-providers"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0550",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-providers"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-providers.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-providers"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0551",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-pskit"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-pskit.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-resources-onprem"
+  ],
+  "excerpt": "[docs/cli.md#pskit-resources-onprem]\nDeleting a deployed resource runs `terraform destroy -target=...`. If it is still in `pskit.yml`, the next deploy creates it again, so remove it from `resources:` (or the trigger) first. Kept resources are deleted from their own small workspace in `.pskit/<provider>-<stage>/kept/`, which is removed when the last one is gone. Credentials are the same as for `pskit deploy`.",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0552",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-pskit"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-pskit.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-resources-onprem"
+  ],
+  "excerpt": "[docs/cli.md#pskit-resources-onprem]\nDeleting a deployed resource runs `terraform destroy -target=...`. If it is still in `pskit.yml`, the next deploy creates it again, so remove it from `resources:` (or the trigger) first. Kept resources are deleted from their own small workspace in `.pskit/<provider>-<stage>/kept/`, which is removed when the last one is gone. Credentials are the same as for `pskit deploy`.",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0553",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-pskit"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-pskit.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-resources-onprem"
+  ],
+  "excerpt": "[docs/cli.md#pskit-resources-onprem]\nDeleting a deployed resource runs `terraform destroy -target=...`. If it is still in `pskit.yml`, the next deploy creates it again, so remove it from `resources:` (or the trigger) first. Kept resources are deleted from their own small workspace in `.pskit/<provider>-<stage>/kept/`, which is removed when the last one is gone. Credentials are the same as for `pskit deploy`.",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0554",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-pskit"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-pskit.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-resources-onprem"
+  ],
+  "excerpt": "[docs/cli.md#pskit-resources-onprem]\nDeleting a deployed resource runs `terraform destroy -target=...`. If it is still in `pskit.yml`, the next deploy creates it again, so remove it from `resources:` (or the trigger) first. Kept resources are deleted from their own small workspace in `.pskit/<provider>-<stage>/kept/`, which is removed when the last one is gone. Credentials are the same as for `pskit deploy`.",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0555",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-pskit"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-pskit.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "src/py_serverless_kit/cli/main.py",
+   "docs/cli.md#pskit-resources-onprem"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0556",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-pskit"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-pskit.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-resources-onprem"
+  ],
+  "excerpt": "[docs/cli.md#pskit-resources-onprem]\nDeleting a deployed resource runs `terraform destroy -target=...`. If it is still in `pskit.yml`, the next deploy creates it again, so remove it from `resources:` (or the trigger) first. Kept resources are deleted from their own small workspace in `.pskit/<provider>-<stage>/kept/`, which is removed when the last one is gone. Credentials are the same as for `pskit deploy`.",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0557",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-pskit"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-pskit.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-resources-onprem"
+  ],
+  "excerpt": "[docs/cli.md#pskit-resources-onprem]\nDeleting a deployed resource runs `terraform destroy -target=...`. If it is still in `pskit.yml`, the next deploy creates it again, so remove it from `resources:` (or the trigger) first. Kept resources are deleted from their own small workspace in `.pskit/<provider>-<stage>/kept/`, which is removed when the last one is gone. Credentials are the same as for `pskit deploy`.",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0558",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-pskit"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-pskit.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-resources-onprem"
+  ],
+  "excerpt": "[docs/cli.md#pskit-resources-onprem]\nDeleting a deployed resource runs `terraform destroy -target=...`. If it is still in `pskit.yml`, the next deploy creates it again, so remove it from `resources:` (or the trigger) first. Kept resources are deleted from their own small workspace in `.pskit/<provider>-<stage>/kept/`, which is removed when the last one is gone. Credentials are the same as for `pskit deploy`.",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0559",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-pskit"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-pskit.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-resources-onprem"
+  ],
+  "excerpt": "[docs/cli.md#pskit-resources-onprem]\nDeleting a deployed resource runs `terraform destroy -target=...`. If it is still in `pskit.yml`, the next deploy creates it again, so remove it from `resources:` (or the trigger) first. Kept resources are deleted from their own small workspace in `.pskit/<provider>-<stage>/kept/`, which is removed when the last one is gone. Credentials are the same as for `pskit deploy`.",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_cmd_0560",
+  "category": "k_cmd",
+  "card_ids": [
+   "cmd-pskit"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/command/cmd-pskit.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/cli.md#pskit-resources-onprem"
+  ],
+  "excerpt": "[docs/cli.md#pskit-resources-onprem]\nDeleting a deployed resource runs `terraform destroy -target=...`. If it is still in `pskit.yml`, the next deploy creates it again, so remove it from `resources:` (or the trigger) first. Kept resources are deleted from their own small workspace in `.pskit/<provider>-<stage>/kept/`, which is removed when the last one is gone. Credentials are the same as for `pskit deploy`.",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ }
+]

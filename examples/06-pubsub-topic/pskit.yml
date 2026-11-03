@@ -1,0 +1,30 @@
+service: order-events
+
+provider:
+  name: aws
+  region: us-east-1
+
+functions:
+  update-analytics:
+    handler: app.subscribers.update_analytics
+    events:
+      - topic: order-events                  # shorthand for {name: order-events}
+
+  notify-customer:
+    handler: app.subscribers.notify_customer
+    events:
+      - topic:
+          name: order-events                 # same topic -> fan-out
+          filter:                            # SNS filter policy on message attributes
+            event_type: ["order.shipped"]
+
+providers:
+  gcp:
+    region: us-central1
+    options: {project: "${env:GOOGLE_CLOUD_PROJECT, my-gcp-project}"}
+  azure:
+    region: eastus
+    options: {subscription_id: "${env:ARM_SUBSCRIPTION_ID, 00000000-0000-0000-0000-000000000000}"}
+  onprem:
+    region: local
+    options: {host: 127.0.0.1, port: 8086}

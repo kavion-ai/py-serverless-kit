@@ -1,0 +1,796 @@
+[
+ {
+  "id": "k_nav_0421",
+  "category": "k_nav",
+  "card_ids": [
+   "page-settings-transfer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-settings-transfer.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "dashboard-ui/src/studio/App.tsx"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0422",
+  "category": "k_nav",
+  "card_ids": [
+   "page-settings-transfer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-settings-transfer.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "dashboard-ui/src/studio/App.tsx"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0423",
+  "category": "k_nav",
+  "card_ids": [
+   "page-settings-transfer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-settings-transfer.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "dashboard-ui/src/studio/App.tsx"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0424",
+  "category": "k_nav",
+  "card_ids": [
+   "page-settings-transfer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-settings-transfer.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "dashboard-ui/src/studio/App.tsx"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0425",
+  "category": "k_nav",
+  "card_ids": [
+   "page-settings-transfer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-settings-transfer.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "dashboard-ui/src/studio/App.tsx"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0426",
+  "category": "k_nav",
+  "card_ids": [
+   "page-settings-transfer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-settings-transfer.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "dashboard-ui/src/studio/App.tsx"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0427",
+  "category": "k_nav",
+  "card_ids": [
+   "page-settings-transfer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-settings-transfer.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "dashboard-ui/src/studio/App.tsx"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0428",
+  "category": "k_nav",
+  "card_ids": [
+   "page-settings-transfer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-settings-transfer.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "dashboard-ui/src/studio/App.tsx"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0429",
+  "category": "k_nav",
+  "card_ids": [
+   "page-settings-transfer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-settings-transfer.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "dashboard-ui/src/studio/App.tsx"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0430",
+  "category": "k_nav",
+  "card_ids": [
+   "page-settings-transfer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-settings-transfer.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "dashboard-ui/src/studio/App.tsx"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0431",
+  "category": "k_nav",
+  "card_ids": [
+   "page-settings-transfer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-settings-transfer.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "dashboard-ui/src/studio/App.tsx"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0432",
+  "category": "k_nav",
+  "card_ids": [
+   "page-settings-transfer"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-settings-transfer.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "dashboard-ui/src/studio/App.tsx"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0433",
+  "category": "k_nav",
+  "card_ids": [
+   "page-setup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-setup.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0434",
+  "category": "k_nav",
+  "card_ids": [
+   "page-setup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-setup.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0435",
+  "category": "k_nav",
+  "card_ids": [
+   "page-setup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-setup.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0436",
+  "category": "k_nav",
+  "card_ids": [
+   "page-setup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-setup.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0437",
+  "category": "k_nav",
+  "card_ids": [
+   "page-setup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-setup.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0438",
+  "category": "k_nav",
+  "card_ids": [
+   "page-setup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-setup.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0439",
+  "category": "k_nav",
+  "card_ids": [
+   "page-setup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-setup.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0440",
+  "category": "k_nav",
+  "card_ids": [
+   "page-setup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-setup.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0441",
+  "category": "k_nav",
+  "card_ids": [
+   "page-setup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-setup.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0442",
+  "category": "k_nav",
+  "card_ids": [
+   "page-setup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-setup.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0443",
+  "category": "k_nav",
+  "card_ids": [
+   "page-setup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-setup.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0444",
+  "category": "k_nav",
+  "card_ids": [
+   "page-setup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-setup.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0445",
+  "category": "k_nav",
+  "card_ids": [
+   "page-setup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-setup.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0446",
+  "category": "k_nav",
+  "card_ids": [
+   "page-setup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-setup.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0447",
+  "category": "k_nav",
+  "card_ids": [
+   "page-setup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-setup.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0448",
+  "category": "k_nav",
+  "card_ids": [
+   "page-setup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-setup.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0449",
+  "category": "k_nav",
+  "card_ids": [
+   "page-setup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-setup.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0450",
+  "category": "k_nav",
+  "card_ids": [
+   "page-setup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-setup.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0451",
+  "category": "k_nav",
+  "card_ids": [
+   "page-setup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-setup.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0452",
+  "category": "k_nav",
+  "card_ids": [
+   "page-setup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-setup.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0453",
+  "category": "k_nav",
+  "card_ids": [
+   "page-setup"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-setup.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Setup.tsx",
+   "docs/studio.md#setup-logs-and-provider-differences"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0454",
+  "category": "k_nav",
+  "card_ids": [
+   "page-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-smtp-dns.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0455",
+  "category": "k_nav",
+  "card_ids": [
+   "page-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-smtp-dns.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0456",
+  "category": "k_nav",
+  "card_ids": [
+   "page-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-smtp-dns.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Resources.tsx",
+   "dashboard-ui/src/studio/components/OnPremServices.tsx"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0457",
+  "category": "k_nav",
+  "card_ids": [
+   "page-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-smtp-dns.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0458",
+  "category": "k_nav",
+  "card_ids": [
+   "page-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-smtp-dns.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0459",
+  "category": "k_nav",
+  "card_ids": [
+   "page-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-smtp-dns.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0460",
+  "category": "k_nav",
+  "card_ids": [
+   "page-smtp-dns"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-smtp-dns.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/smtp/README.md#dns-records-at-your-domain-provider"
+  ],
+  "excerpt": "[docs/smtp/README.md#dns-records-at-your-domain-provider]\n- Most providers want only the part before your root domain in *Name*: `mail.inbound` and `inbound` for `example.com`, or `@` for the root domain itself. `10` is the MX priority; some providers have a separate field for it. - **Cloudflare**: set the A record to *DNS only* (grey cloud). The proxy does not carry mail. - Optional, for a subdomain that only receives mail: `TXT inbound \"v=spf1 -all\"`. This says the subdomain never sends mail, so nobody can send spoofed mail from it. - Check the records with `nslookup -type=mx inbound.example.com` and `nslookup mail.inbound.example.com`. Changes show up after a few minutes, sometimes hours.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ }
+]

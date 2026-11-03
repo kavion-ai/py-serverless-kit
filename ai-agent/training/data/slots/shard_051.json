@@ -1,0 +1,791 @@
+[
+ {
+  "id": "k_res_0341",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-gcp-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-gcp-readme.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/README.md#google-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0342",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-gcp-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-gcp-readme.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/README.md#google-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0343",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-gcp-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-gcp-readme.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/README.md#google-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0344",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-gcp-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-gcp-readme.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/gcp/README.md#google-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0345",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-huawei-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-huawei-readme.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/README.md#huawei-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0346",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-huawei-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-huawei-readme.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/README.md#huawei-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0347",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-huawei-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-huawei-readme.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/README.md#huawei-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0348",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-huawei-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-huawei-readme.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/README.md#huawei-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0349",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-huawei-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-huawei-readme.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/README.md#huawei-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0350",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-huawei-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-huawei-readme.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/README.md#huawei-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0351",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-huawei-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-huawei-readme.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/README.md#huawei-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0352",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-huawei-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-huawei-readme.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/huawei/README.md#huawei-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0353",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-ibm-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-ibm-readme.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/README.md#ibm-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0354",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-ibm-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-ibm-readme.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/README.md#ibm-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0355",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-ibm-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-ibm-readme.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/README.md#ibm-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0356",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-ibm-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-ibm-readme.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/README.md#ibm-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0357",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-ibm-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-ibm-readme.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/README.md#ibm-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0358",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-ibm-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-ibm-readme.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/README.md#ibm-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0359",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-ibm-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-ibm-readme.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/README.md#ibm-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0360",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-ibm-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-ibm-readme.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/ibm/README.md#ibm-cloud-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0361",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-onprem-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-onprem-readme.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/README.md#on-premises-resources"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/README.md#on-premises-resources]\nHow to give functions on an on-premises host (`provider.name: onprem`) the queues, buckets, topics, databases and caches they use: the host's own built-in ones, or services you already run (Redis, MinIO, RabbitMQ, PostgreSQL) or that live in a cloud (SQS, Azure Storage queues, Pub/Sub, S3, R2, ...).",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0362",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-onprem-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-onprem-readme.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/README.md#on-premises-resources"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/README.md#on-premises-resources]\nHow to give functions on an on-premises host (`provider.name: onprem`) the queues, buckets, topics, databases and caches they use: the host's own built-in ones, or services you already run (Redis, MinIO, RabbitMQ, PostgreSQL) or that live in a cloud (SQS, Azure Storage queues, Pub/Sub, S3, R2, ...).",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0363",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-onprem-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-onprem-readme.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/README.md#on-premises-resources"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/README.md#on-premises-resources]\nHow to give functions on an on-premises host (`provider.name: onprem`) the queues, buckets, topics, databases and caches they use: the host's own built-in ones, or services you already run (Redis, MinIO, RabbitMQ, PostgreSQL) or that live in a cloud (SQS, Azure Storage queues, Pub/Sub, S3, R2, ...).",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0364",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-onprem-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-onprem-readme.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/README.md#on-premises-resources"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/README.md#on-premises-resources]\nHow to give functions on an on-premises host (`provider.name: onprem`) the queues, buckets, topics, databases and caches they use: the host's own built-in ones, or services you already run (Redis, MinIO, RabbitMQ, PostgreSQL) or that live in a cloud (SQS, Azure Storage queues, Pub/Sub, S3, R2, ...).",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0365",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-onprem-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-onprem-readme.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/README.md#on-premises-resources"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/README.md#on-premises-resources]\nHow to give functions on an on-premises host (`provider.name: onprem`) the queues, buckets, topics, databases and caches they use: the host's own built-in ones, or services you already run (Redis, MinIO, RabbitMQ, PostgreSQL) or that live in a cloud (SQS, Azure Storage queues, Pub/Sub, S3, R2, ...).",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0366",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-onprem-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-onprem-readme.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/README.md#on-premises-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0367",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-onprem-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-onprem-readme.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/README.md#on-premises-resources"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/README.md#on-premises-resources]\nHow to give functions on an on-premises host (`provider.name: onprem`) the queues, buckets, topics, databases and caches they use: the host's own built-in ones, or services you already run (Redis, MinIO, RabbitMQ, PostgreSQL) or that live in a cloud (SQS, Azure Storage queues, Pub/Sub, S3, R2, ...).",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0368",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-onprem-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-onprem-readme.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/README.md#on-premises-resources"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/README.md#on-premises-resources]\nHow to give functions on an on-premises host (`provider.name: onprem`) the queues, buckets, topics, databases and caches they use: the host's own built-in ones, or services you already run (Redis, MinIO, RabbitMQ, PostgreSQL) or that live in a cloud (SQS, Azure Storage queues, Pub/Sub, S3, R2, ...).",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0369",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-oracle-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-oracle-readme.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/README.md#oracle-cloud-oci-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0370",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-oracle-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-oracle-readme.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/README.md#oracle-cloud-oci-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0371",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-oracle-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-oracle-readme.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/README.md#oracle-cloud-oci-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0372",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-oracle-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-oracle-readme.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/README.md#oracle-cloud-oci-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0373",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-oracle-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-oracle-readme.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/README.md#oracle-cloud-oci-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0374",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-oracle-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-oracle-readme.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/README.md#oracle-cloud-oci-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0375",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-oracle-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-oracle-readme.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/README.md#oracle-cloud-oci-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0376",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-oracle-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-oracle-readme.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/README.md#oracle-cloud-oci-resources",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0377",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-readme.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0378",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-readme.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0379",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-readme.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0380",
+  "category": "k_res",
+  "card_ids": [
+   "res-guide-readme"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-guide-readme.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/README.md#adding-resources-step-by-step-guides"
+  ],
+  "excerpt": "[docs/resource-guides/README.md#adding-resources-step-by-step-guides]\nThese guides show how to plug a service you **already created in the cloud console** into a pskit project: where to click in the portal to find each value, what to put in `pskit.yml`, and how a handler reads it. They complement the reference page [resources.md](../resources.md), which lists every field and provider rule.",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ }
+]

@@ -1,0 +1,792 @@
+[
+ {
+  "id": "k_res_0541",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage]\nRun functions when files appear in a bucket, and read or write objects: the host's built-in buckets, a shared folder, MinIO or another S3-compatible store, or a bucket in a cloud (S3, R2, Azure Blob, GCS, ...). The host lists each watched bucket every `poll_seconds` and compares ETags: a new or changed object emits `created`, a missing one `deleted`. Objects already there at the first start are recorded, not emitted.",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0542",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage]\nRun functions when files appear in a bucket, and read or write objects: the host's built-in buckets, a shared folder, MinIO or another S3-compatible store, or a bucket in a cloud (S3, R2, Azure Blob, GCS, ...). The host lists each watched bucket every `poll_seconds` and compares ETags: a new or changed object emits `created`, a missing one `deleted`. Objects already there at the first start are recorded, not emitted.",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0543",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage]\nRun functions when files appear in a bucket, and read or write objects: the host's built-in buckets, a shared folder, MinIO or another S3-compatible store, or a bucket in a cloud (S3, R2, Azure Blob, GCS, ...). The host lists each watched bucket every `poll_seconds` and compares ETags: a new or changed object emits `created`, a missing one `deleted`. Objects already there at the first start are recorded, not emitted.",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0544",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-storage.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage"
+  ],
+  "excerpt": "[docs/resource-guides/onprem/storage.md#on-premises-storage-type-storage]\nRun functions when files appear in a bucket, and read or write objects: the host's built-in buckets, a shared folder, MinIO or another S3-compatible store, or a bucket in a cloud (S3, R2, Azure Blob, GCS, ...). The host lists each watched bucket every `poll_seconds` and compares ETags: a new or changed object emits `created`, a missing one `deleted`. Objects already there at the first start are recorded, not emitted.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0545",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-topic.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/topic.md#on-premises-topics-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0546",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-topic.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/topic.md#on-premises-topics-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0547",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-topic.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/topic.md#on-premises-topics-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0548",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-topic.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/topic.md#on-premises-topics-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0549",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-topic.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/topic.md#on-premises-topics-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0550",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-topic.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/topic.md#on-premises-topics-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0551",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-topic.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/topic.md#on-premises-topics-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0552",
+  "category": "k_res",
+  "card_ids": [
+   "res-onprem-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-onprem-topic.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/onprem/topic.md#on-premises-topics-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0553",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-cache.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/cache.md#oci-cache-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0554",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-cache.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/cache.md#oci-cache-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0555",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-cache.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/cache.md#oci-cache-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0556",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-cache.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/cache.md#oci-cache-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0557",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-cache.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/cache.md#oci-cache-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0558",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-cache.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/cache.md#oci-cache-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0559",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-cache.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/cache.md#oci-cache-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0560",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-cache.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/cache.md#oci-cache-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0561",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-custom.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/oracle/custom.md#other-oci-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/oracle/custom.md#other-oci-services-type-custom]\n`custom` is for anything that isn't a bucket, queue, topic, database or cache: Vault secrets, Streaming, NoSQL Database, a third-party API. pskit only passes connection details to your functions (`external: true` is required). The recipe is always the same: copy the **OCID** and **endpoint** from the console, add a policy for the functions' dynamic group (see [README.md](README.md#how-pskit-runs-on-oci-why-some-steps-matter)), and put the values in `connection`.",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0562",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-custom.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/custom.md#other-oci-services-type-custom",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0563",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-custom.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/oracle/custom.md#other-oci-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/oracle/custom.md#other-oci-services-type-custom]\n`custom` is for anything that isn't a bucket, queue, topic, database or cache: Vault secrets, Streaming, NoSQL Database, a third-party API. pskit only passes connection details to your functions (`external: true` is required). The recipe is always the same: copy the **OCID** and **endpoint** from the console, add a policy for the functions' dynamic group (see [README.md](README.md#how-pskit-runs-on-oci-why-some-steps-matter)), and put the values in `connection`.",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0564",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-custom.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/oracle/custom.md#other-oci-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/oracle/custom.md#other-oci-services-type-custom]\n`custom` is for anything that isn't a bucket, queue, topic, database or cache: Vault secrets, Streaming, NoSQL Database, a third-party API. pskit only passes connection details to your functions (`external: true` is required). The recipe is always the same: copy the **OCID** and **endpoint** from the console, add a policy for the functions' dynamic group (see [README.md](README.md#how-pskit-runs-on-oci-why-some-steps-matter)), and put the values in `connection`.",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0565",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-custom.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/oracle/custom.md#other-oci-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/oracle/custom.md#other-oci-services-type-custom]\n`custom` is for anything that isn't a bucket, queue, topic, database or cache: Vault secrets, Streaming, NoSQL Database, a third-party API. pskit only passes connection details to your functions (`external: true` is required). The recipe is always the same: copy the **OCID** and **endpoint** from the console, add a policy for the functions' dynamic group (see [README.md](README.md#how-pskit-runs-on-oci-why-some-steps-matter)), and put the values in `connection`.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0566",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-custom.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/oracle/custom.md#other-oci-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/oracle/custom.md#other-oci-services-type-custom]\n`custom` is for anything that isn't a bucket, queue, topic, database or cache: Vault secrets, Streaming, NoSQL Database, a third-party API. pskit only passes connection details to your functions (`external: true` is required). The recipe is always the same: copy the **OCID** and **endpoint** from the console, add a policy for the functions' dynamic group (see [README.md](README.md#how-pskit-runs-on-oci-why-some-steps-matter)), and put the values in `connection`.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0567",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-custom.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/oracle/custom.md#other-oci-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/oracle/custom.md#other-oci-services-type-custom]\n`custom` is for anything that isn't a bucket, queue, topic, database or cache: Vault secrets, Streaming, NoSQL Database, a third-party API. pskit only passes connection details to your functions (`external: true` is required). The recipe is always the same: copy the **OCID** and **endpoint** from the console, add a policy for the functions' dynamic group (see [README.md](README.md#how-pskit-runs-on-oci-why-some-steps-matter)), and put the values in `connection`.",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0568",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-custom.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/custom.md#other-oci-services-type-custom",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0569",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-database.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/database.md#oci-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0570",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-database.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/database.md#oci-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0571",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-database.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/database.md#oci-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0572",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-database.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/database.md#oci-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0573",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-database.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/database.md#oci-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0574",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-database.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/database.md#oci-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0575",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-database.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/database.md#oci-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0576",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-database.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/database.md#oci-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0577",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-queue.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/queue.md#oci-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0578",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-queue.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/queue.md#oci-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0579",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-queue.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/queue.md#oci-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0580",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-queue.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/queue.md#oci-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ }
+]

@@ -1,0 +1,768 @@
+[
+ {
+  "id": "k_nav_0141",
+  "category": "k_nav",
+  "card_ids": [
+   "page-deploy"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-deploy.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0142",
+  "category": "k_nav",
+  "card_ids": [
+   "page-deploy"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-deploy.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0143",
+  "category": "k_nav",
+  "card_ids": [
+   "page-deploy"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-deploy.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0144",
+  "category": "k_nav",
+  "card_ids": [
+   "page-deploy"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-deploy.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0145",
+  "category": "k_nav",
+  "card_ids": [
+   "page-deploy"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-deploy.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0146",
+  "category": "k_nav",
+  "card_ids": [
+   "page-deploy"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-deploy.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Deploy.tsx",
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0147",
+  "category": "k_nav",
+  "card_ids": [
+   "page-deploy"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-deploy.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0148",
+  "category": "k_nav",
+  "card_ids": [
+   "page-deploy"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-deploy.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0149",
+  "category": "k_nav",
+  "card_ids": [
+   "page-deploy"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-deploy.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0150",
+  "category": "k_nav",
+  "card_ids": [
+   "page-deploy"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-deploy.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0151",
+  "category": "k_nav",
+  "card_ids": [
+   "page-deploy"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-deploy.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0152",
+  "category": "k_nav",
+  "card_ids": [
+   "page-deploy"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-deploy.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Deploy.tsx",
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0153",
+  "category": "k_nav",
+  "card_ids": [
+   "page-deploy"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-deploy.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0154",
+  "category": "k_nav",
+  "card_ids": [
+   "page-deploy"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-deploy.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0155",
+  "category": "k_nav",
+  "card_ids": [
+   "page-full-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-full-vscode.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0156",
+  "category": "k_nav",
+  "card_ids": [
+   "page-full-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-full-vscode.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0157",
+  "category": "k_nav",
+  "card_ids": [
+   "page-full-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-full-vscode.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0158",
+  "category": "k_nav",
+  "card_ids": [
+   "page-full-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-full-vscode.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Code.tsx",
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0159",
+  "category": "k_nav",
+  "card_ids": [
+   "page-full-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-full-vscode.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0160",
+  "category": "k_nav",
+  "card_ids": [
+   "page-full-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-full-vscode.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0161",
+  "category": "k_nav",
+  "card_ids": [
+   "page-full-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-full-vscode.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0162",
+  "category": "k_nav",
+  "card_ids": [
+   "page-full-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-full-vscode.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0163",
+  "category": "k_nav",
+  "card_ids": [
+   "page-full-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-full-vscode.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0164",
+  "category": "k_nav",
+  "card_ids": [
+   "page-full-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-full-vscode.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0165",
+  "category": "k_nav",
+  "card_ids": [
+   "page-full-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-full-vscode.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Code.tsx",
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0166",
+  "category": "k_nav",
+  "card_ids": [
+   "page-full-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-full-vscode.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0167",
+  "category": "k_nav",
+  "card_ids": [
+   "page-full-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-full-vscode.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0168",
+  "category": "k_nav",
+  "card_ids": [
+   "page-full-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-full-vscode.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0169",
+  "category": "k_nav",
+  "card_ids": [
+   "page-full-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-full-vscode.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0170",
+  "category": "k_nav",
+  "card_ids": [
+   "page-full-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-full-vscode.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0171",
+  "category": "k_nav",
+  "card_ids": [
+   "page-full-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-full-vscode.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Code.tsx",
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0172",
+  "category": "k_nav",
+  "card_ids": [
+   "page-full-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-full-vscode.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0173",
+  "category": "k_nav",
+  "card_ids": [
+   "page-full-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-full-vscode.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0174",
+  "category": "k_nav",
+  "card_ids": [
+   "page-full-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-full-vscode.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0175",
+  "category": "k_nav",
+  "card_ids": [
+   "page-full-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-full-vscode.md",
+  "persona": "ops_engineer",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0176",
+  "category": "k_nav",
+  "card_ids": [
+   "page-full-vscode"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-full-vscode.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#full-vs-code-code-server-in-docker"
+  ],
+  "excerpt": "[docs/studio.md#full-vs-code-code-server-in-docker]\n1. Studio checks for the Docker CLI and a running daemon. If either is missing, it shows how to install Docker. 2. **Pull & start** pulls the image if it isn't present (the log streams in the panel), then starts `pskit-studio-<id>` with your project mounted at `/home/coder/project`, published on `127.0.0.1` only, and waits until it answers. 3. The editor opens inside the studio, with **Open in new tab** and **Stop**. A container that's already running is reused. Stop removes it; your files stay in the project folder.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0177",
+  "category": "k_nav",
+  "card_ids": [
+   "page-functions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-functions.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "dashboard-ui/src/studio/views/Functions.tsx",
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0178",
+  "category": "k_nav",
+  "card_ids": [
+   "page-functions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-functions.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0179",
+  "category": "k_nav",
+  "card_ids": [
+   "page-functions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-functions.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_nav_0180",
+  "category": "k_nav",
+  "card_ids": [
+   "page-functions"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/page/page-functions.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/studio.md#what-you-can-do"
+  ],
+  "excerpt": "[docs/studio.md#what-you-can-do]\nEvery edit goes into an in-memory draft and is validated as you type (the same checks as `pskit validate`, for the provider and stage you pick in the top bar). Problems link to the field they concern. **Save** (Ctrl/Cmd+S) writes `pskit.yml`; undo/redo work across pages. Nothing touches disk until you save, and closing the tab with unsaved changes asks first.",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ }
+]

@@ -1,0 +1,795 @@
+[
+ {
+  "id": "k_res_0581",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-queue.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/queue.md#oci-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0582",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-queue.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/queue.md#oci-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0583",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-queue.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/queue.md#oci-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0584",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-queue"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-queue.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/queue.md#oci-queue-type-queue",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0585",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-storage.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/storage.md#oci-object-storage-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0586",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-storage.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/storage.md#oci-object-storage-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0587",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-storage.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/storage.md#oci-object-storage-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0588",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-storage.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/storage.md#oci-object-storage-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0589",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-storage.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/storage.md#oci-object-storage-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0590",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-storage.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/storage.md#oci-object-storage-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0591",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-storage.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/storage.md#oci-object-storage-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0592",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-storage"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-storage.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/storage.md#oci-object-storage-bucket-type-storage",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0593",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-topic.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/topic.md#oci-notifications-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0594",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-topic.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/topic.md#oci-notifications-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0595",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-topic.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/topic.md#oci-notifications-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0596",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-topic.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/topic.md#oci-notifications-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0597",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-topic.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/topic.md#oci-notifications-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0598",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-topic.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/topic.md#oci-notifications-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0599",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-topic.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/topic.md#oci-notifications-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0600",
+  "category": "k_res",
+  "card_ids": [
+   "res-oracle-topic"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-oracle-topic.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/oracle/topic.md#oci-notifications-topic-type-topic",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0601",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-cache.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/cache.md#tencent-cloud-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0602",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-cache.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/cache.md#tencent-cloud-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0603",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-cache.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/cache.md#tencent-cloud-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0604",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-cache.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/cache.md#tencent-cloud-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0605",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-cache.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/cache.md#tencent-cloud-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0606",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-cache.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/cache.md#tencent-cloud-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0607",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-cache.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/cache.md#tencent-cloud-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0608",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-cache"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-cache.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/cache.md#tencent-cloud-redis-type-cache",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0609",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-custom.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/tencent/custom.md#other-tencent-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/tencent/custom.md#other-tencent-cloud-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Secrets Manager, a third-party API, anything else. pskit only passes its connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and the **names** in the console, keep the keys in environment variables, and put the rest in `connection`.",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0610",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-custom.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/tencent/custom.md#other-tencent-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/tencent/custom.md#other-tencent-cloud-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Secrets Manager, a third-party API, anything else. pskit only passes its connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and the **names** in the console, keep the keys in environment variables, and put the rest in `connection`.",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0611",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-custom.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/tencent/custom.md#other-tencent-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/tencent/custom.md#other-tencent-cloud-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Secrets Manager, a third-party API, anything else. pskit only passes its connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and the **names** in the console, keep the keys in environment variables, and put the rest in `connection`.",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0612",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-custom.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/tencent/custom.md#other-tencent-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/tencent/custom.md#other-tencent-cloud-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Secrets Manager, a third-party API, anything else. pskit only passes its connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and the **names** in the console, keep the keys in environment variables, and put the rest in `connection`.",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0613",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-custom.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/tencent/custom.md#other-tencent-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/tencent/custom.md#other-tencent-cloud-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Secrets Manager, a third-party API, anything else. pskit only passes its connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and the **names** in the console, keep the keys in environment variables, and put the rest in `connection`.",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0614",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-custom.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/tencent/custom.md#other-tencent-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/tencent/custom.md#other-tencent-cloud-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Secrets Manager, a third-party API, anything else. pskit only passes its connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and the **names** in the console, keep the keys in environment variables, and put the rest in `connection`.",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0615",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-custom.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/custom.md#other-tencent-cloud-services-type-custom",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0616",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-custom"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-custom.md",
+  "persona": "beginner",
+  "grounding": "search",
+  "sources": [
+   "docs/resource-guides/tencent/custom.md#other-tencent-cloud-services-type-custom"
+  ],
+  "excerpt": "[docs/resource-guides/tencent/custom.md#other-tencent-cloud-services-type-custom]\n`custom` is for any service that isn't a bucket, queue, topic, database or cache: Secrets Manager, a third-party API, anything else. pskit only passes its connection details to your functions (`external: true` is required). The recipe is always the same: find the **endpoint** and the **names** in the console, keep the keys in environment variables, and put the rest in `connection`.",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0617",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/database.md#tencent-cloud-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0618",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/database.md#tencent-cloud-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0619",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/database.md#tencent-cloud-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_res_0620",
+  "category": "k_res",
+  "card_ids": [
+   "res-tencent-database"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/resource/res-tencent-database.md",
+  "persona": "beginner",
+  "grounding": "closed",
+  "sources": [
+   "docs/resource-guides/tencent/database.md#tencent-cloud-databases-type-database",
+   "docs/resources.md#fields"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ }
+]

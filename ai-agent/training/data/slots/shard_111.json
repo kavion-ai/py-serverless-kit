@@ -1,0 +1,762 @@
+[
+ {
+  "id": "k_trouble_0091",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-installation-and-tooling"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-installation-and-tooling.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "[docs/troubleshooting.md#installation-and-tooling]\n**`pip install failed while vendoring dependencies`** : For vendoring providers (aws, alibaba, ibm, digitalocean, tencent, huawei), pskit downloads **Linux** wheels (`manylinux2014_<arch>`, `--only-binary=:all:`) for the target Python version. A package with no such wheel fails. Fixes: - pin a version that publishes manylinux wheels; - add flags with `package.pip_args`; - for pure-Python packages, check that they ship a wheel at all.",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0092",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-installation-and-tooling"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-installation-and-tooling.md",
+  "persona": "informal_non_native",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0093",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-installation-and-tooling"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-installation-and-tooling.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "[docs/troubleshooting.md#installation-and-tooling]\n**`pip install failed while vendoring dependencies`** : For vendoring providers (aws, alibaba, ibm, digitalocean, tencent, huawei), pskit downloads **Linux** wheels (`manylinux2014_<arch>`, `--only-binary=:all:`) for the target Python version. A package with no such wheel fails. Fixes: - pin a version that publishes manylinux wheels; - add flags with `package.pip_args`; - for pure-Python packages, check that they ship a wheel at all.",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0094",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-installation-and-tooling"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-installation-and-tooling.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "[docs/troubleshooting.md#installation-and-tooling]\n**`pip install failed while vendoring dependencies`** : For vendoring providers (aws, alibaba, ibm, digitalocean, tencent, huawei), pskit downloads **Linux** wheels (`manylinux2014_<arch>`, `--only-binary=:all:`) for the target Python version. A package with no such wheel fails. Fixes: - pin a version that publishes manylinux wheels; - add flags with `package.pip_args`; - for pure-Python packages, check that they ship a wheel at all.",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0095",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-installation-and-tooling"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-installation-and-tooling.md",
+  "persona": "informal_non_native",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "[docs/troubleshooting.md#installation-and-tooling]\n**`pip install failed while vendoring dependencies`** : For vendoring providers (aws, alibaba, ibm, digitalocean, tencent, huawei), pskit downloads **Linux** wheels (`manylinux2014_<arch>`, `--only-binary=:all:`) for the target Python version. A package with no such wheel fails. Fixes: - pin a version that publishes manylinux wheels; - add flags with `package.pip_args`; - for pure-Python packages, check that they ship a wheel at all.",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0096",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-installation-and-tooling"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-installation-and-tooling.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "[docs/troubleshooting.md#installation-and-tooling]\n**`pip install failed while vendoring dependencies`** : For vendoring providers (aws, alibaba, ibm, digitalocean, tencent, huawei), pskit downloads **Linux** wheels (`manylinux2014_<arch>`, `--only-binary=:all:`) for the target Python version. A package with no such wheel fails. Fixes: - pin a version that publishes manylinux wheels; - add flags with `package.pip_args`; - for pure-Python packages, check that they ship a wheel at all.",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0097",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-installation-and-tooling"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-installation-and-tooling.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "[docs/troubleshooting.md#installation-and-tooling]\n**`pip install failed while vendoring dependencies`** : For vendoring providers (aws, alibaba, ibm, digitalocean, tencent, huawei), pskit downloads **Linux** wheels (`manylinux2014_<arch>`, `--only-binary=:all:`) for the target Python version. A package with no such wheel fails. Fixes: - pin a version that publishes manylinux wheels; - add flags with `package.pip_args`; - for pure-Python packages, check that they ship a wheel at all.",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0098",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-installation-and-tooling"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-installation-and-tooling.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0099",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-installation-and-tooling"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-installation-and-tooling.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "[docs/troubleshooting.md#installation-and-tooling]\n**`pip install failed while vendoring dependencies`** : For vendoring providers (aws, alibaba, ibm, digitalocean, tencent, huawei), pskit downloads **Linux** wheels (`manylinux2014_<arch>`, `--only-binary=:all:`) for the target Python version. A package with no such wheel fails. Fixes: - pin a version that publishes manylinux wheels; - add flags with `package.pip_args`; - for pure-Python packages, check that they ship a wheel at all.",
+  "provider": "tencent",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0100",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-installation-and-tooling"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-installation-and-tooling.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "[docs/troubleshooting.md#installation-and-tooling]\n**`pip install failed while vendoring dependencies`** : For vendoring providers (aws, alibaba, ibm, digitalocean, tencent, huawei), pskit downloads **Linux** wheels (`manylinux2014_<arch>`, `--only-binary=:all:`) for the target Python version. A package with no such wheel fails. Fixes: - pin a version that publishes manylinux wheels; - add flags with `package.pip_args`; - for pure-Python packages, check that they ship a wheel at all.",
+  "provider": "huawei",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0101",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-installation-and-tooling"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-installation-and-tooling.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "[docs/troubleshooting.md#installation-and-tooling]\n**`pip install failed while vendoring dependencies`** : For vendoring providers (aws, alibaba, ibm, digitalocean, tencent, huawei), pskit downloads **Linux** wheels (`manylinux2014_<arch>`, `--only-binary=:all:`) for the target Python version. A package with no such wheel fails. Fixes: - pin a version that publishes manylinux wheels; - add flags with `package.pip_args`; - for pure-Python packages, check that they ship a wheel at all.",
+  "provider": "oracle",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0102",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-installation-and-tooling"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-installation-and-tooling.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "[docs/troubleshooting.md#installation-and-tooling]\n**`pip install failed while vendoring dependencies`** : For vendoring providers (aws, alibaba, ibm, digitalocean, tencent, huawei), pskit downloads **Linux** wheels (`manylinux2014_<arch>`, `--only-binary=:all:`) for the target Python version. A package with no such wheel fails. Fixes: - pin a version that publishes manylinux wheels; - add flags with `package.pip_args`; - for pure-Python packages, check that they ship a wheel at all.",
+  "provider": "ibm",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0103",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-installation-and-tooling"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-installation-and-tooling.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "[docs/troubleshooting.md#installation-and-tooling]\n**`pip install failed while vendoring dependencies`** : For vendoring providers (aws, alibaba, ibm, digitalocean, tencent, huawei), pskit downloads **Linux** wheels (`manylinux2014_<arch>`, `--only-binary=:all:`) for the target Python version. A package with no such wheel fails. Fixes: - pin a version that publishes manylinux wheels; - add flags with `package.pip_args`; - for pure-Python packages, check that they ship a wheel at all.",
+  "provider": "digitalocean",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0104",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-installation-and-tooling"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-installation-and-tooling.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "[docs/troubleshooting.md#installation-and-tooling]\n**`pip install failed while vendoring dependencies`** : For vendoring providers (aws, alibaba, ibm, digitalocean, tencent, huawei), pskit downloads **Linux** wheels (`manylinux2014_<arch>`, `--only-binary=:all:`) for the target Python version. A package with no such wheel fails. Fixes: - pin a version that publishes manylinux wheels; - add flags with `package.pip_args`; - for pure-Python packages, check that they ship a wheel at all.",
+  "provider": "cloudflare",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0105",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-installation-and-tooling"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-installation-and-tooling.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0106",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-installation-and-tooling"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-installation-and-tooling.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "[docs/troubleshooting.md#installation-and-tooling]\n**`pip install failed while vendoring dependencies`** : For vendoring providers (aws, alibaba, ibm, digitalocean, tencent, huawei), pskit downloads **Linux** wheels (`manylinux2014_<arch>`, `--only-binary=:all:`) for the target Python version. A package with no such wheel fails. Fixes: - pin a version that publishes manylinux wheels; - add flags with `package.pip_args`; - for pure-Python packages, check that they ship a wheel at all.",
+  "provider": "aws",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0107",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-installation-and-tooling"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-installation-and-tooling.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "[docs/troubleshooting.md#installation-and-tooling]\n**`pip install failed while vendoring dependencies`** : For vendoring providers (aws, alibaba, ibm, digitalocean, tencent, huawei), pskit downloads **Linux** wheels (`manylinux2014_<arch>`, `--only-binary=:all:`) for the target Python version. A package with no such wheel fails. Fixes: - pin a version that publishes manylinux wheels; - add flags with `package.pip_args`; - for pure-Python packages, check that they ship a wheel at all.",
+  "provider": "azure",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0108",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-installation-and-tooling"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-installation-and-tooling.md",
+  "persona": "terse_expert",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#installation-and-tooling"
+  ],
+  "excerpt": "[docs/troubleshooting.md#installation-and-tooling]\n**`pip install failed while vendoring dependencies`** : For vendoring providers (aws, alibaba, ibm, digitalocean, tencent, huawei), pskit downloads **Linux** wheels (`manylinux2014_<arch>`, `--only-binary=:all:`) for the target Python version. A package with no such wheel fails. Fixes: - pin a version that publishes manylinux wheels; - add flags with `package.pip_args`; - for pure-Python packages, check that they ship a wheel at all.",
+  "provider": "gcp",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0109",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-provider-gotchas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-provider-gotchas.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#provider-gotchas"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0110",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-provider-gotchas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-provider-gotchas.md",
+  "persona": "terse_expert",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#provider-gotchas"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0111",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-provider-gotchas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-provider-gotchas.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#provider-gotchas"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0112",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-provider-gotchas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-provider-gotchas.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#provider-gotchas"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0113",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-provider-gotchas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-provider-gotchas.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#provider-gotchas"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0114",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-provider-gotchas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-provider-gotchas.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#provider-gotchas"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0115",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-provider-gotchas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-provider-gotchas.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#provider-gotchas"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0116",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-provider-gotchas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-provider-gotchas.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#provider-gotchas"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0117",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-provider-gotchas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-provider-gotchas.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#provider-gotchas"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0118",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-provider-gotchas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-provider-gotchas.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#provider-gotchas"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0119",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-provider-gotchas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-provider-gotchas.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#provider-gotchas"
+  ],
+  "excerpt": "",
+  "provider": "gcp",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0120",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-provider-gotchas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-provider-gotchas.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#provider-gotchas"
+  ],
+  "excerpt": "",
+  "provider": "alibaba",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0121",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-provider-gotchas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-provider-gotchas.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#provider-gotchas"
+  ],
+  "excerpt": "",
+  "provider": "tencent",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0122",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-provider-gotchas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-provider-gotchas.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#provider-gotchas"
+  ],
+  "excerpt": "",
+  "provider": "huawei",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0123",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-provider-gotchas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-provider-gotchas.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#provider-gotchas"
+  ],
+  "excerpt": "",
+  "provider": "oracle",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0124",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-provider-gotchas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-provider-gotchas.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#provider-gotchas"
+  ],
+  "excerpt": "",
+  "provider": "ibm",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0125",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-provider-gotchas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-provider-gotchas.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#provider-gotchas"
+  ],
+  "excerpt": "",
+  "provider": "digitalocean",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0126",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-provider-gotchas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-provider-gotchas.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#provider-gotchas"
+  ],
+  "excerpt": "",
+  "provider": "cloudflare",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0127",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-provider-gotchas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-provider-gotchas.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#provider-gotchas"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0128",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-provider-gotchas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-provider-gotchas.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#provider-gotchas"
+  ],
+  "excerpt": "",
+  "provider": "aws",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0129",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-provider-gotchas"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-provider-gotchas.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/troubleshooting.md#provider-gotchas"
+  ],
+  "excerpt": "",
+  "provider": "azure",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_trouble_0130",
+  "category": "k_trouble",
+  "card_ids": [
+   "trouble-security-notes"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/troubleshooting/trouble-security-notes.md",
+  "persona": "aws_migrator",
+  "grounding": "search",
+  "sources": [
+   "docs/troubleshooting.md#security-notes"
+  ],
+  "excerpt": "[docs/troubleshooting.md#security-notes]\n- 500 responses never include exception details unless `PSKIT_DEBUG` is set. - `.env`, Terraform state and `pskit*.yml` are excluded from bundles. `.pskit/` is git-ignored. - `auth: none` routes are public. Embedded workflow orchestrators get a public `POST /workflows/<name>` route unless you set `options.http: false`. - `resources:` connection values are function environment variables: they land in Terraform state and, on premises, in `pskit_host.json`. Pass the *name* of a secret variable instead of the secret ([resources.md](resources.md#secrets)). - On premises, set `admin_token` when the host binds beyond loopback: it guards `/__pskit/*` (queues, invoke, workflows, executions, logs, stats). `pskit dashboard --serve` binds loopback and never sends that token to the browser. - Created AWS buckets block public access. Prefer a least-privilege `iam.statements` over `\"*\"` resources. - Keep secrets out of YAML: use `${env:...}` in CI or a secret manager via `${tf:...}`. - Report vulnerabilities privately (see `SECURITY.md` in the repository root).",
+  "provider": "gcp",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ }
+]

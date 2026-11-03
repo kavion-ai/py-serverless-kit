@@ -1,0 +1,75 @@
+service: orders-ddb
+
+provider:
+  name: aws
+  region: us-east-1
+
+  environment:
+    # ${tf:...} is passed to Terraform untouched -> the real table name after apply.
+    ORDERS_TABLE: "${tf:aws_dynamodb_table.orders.name}"
+
+  iam:
+    statements:
+      - actions: ["dynamodb:GetItem", "dynamodb:PutItem", "dynamodb:Query"]
+        resources:
+          - "${tf:aws_dynamodb_table.orders.arn}"
+          - "${tf:aws_dynamodb_table.orders.arn}/index/*"
+
+  # Remote state: required for teams and CI so everyone shares one state file.
+  # Create the bucket (versioning on) and lock table once, outside this service.
+  state:
+    backend: s3
+    config:
+      bucket: "${env:TF_STATE_BUCKET, acme-terraform-state}"
+      key: "${self:service}/${opt:stage}/terraform.tfstate"
+      region: us-east-1
+      dynamodb_table: "${env:TF_LOCK_TABLE, terraform-locks}"
+      encrypt: true
+
+  terraform:
+    required_version: ">= 1.5.0"
+    provider_version: "~> 5.60"            # pin the AWS provider for reproducible plans
+    # Raw Terraform JSON, deep-merged into the generated main.tf.json.
+    extra:
+      resource:
+        aws_dynamodb_table:
+          orders:
+            name: "${self:service}-${opt:stage}-orders"
+            billing_mode: PAY_PER_REQUEST
+            hash_key: id
+            attribute:
+              - {name: id, type: S}
+            point_in_time_recovery: {enabled: true}
+            server_side_encryption: {enabled: true}
+      output:
+        orders_table_arn:
+          value: "${aws_dynamodb_table.orders.arn}"   # raw Terraform: no tf: prefix needed here
+
+functions:
+  create-order:
+    handler: app.handlers.create_order
+    events:
+      - http: POST /orders
+  get-order:
+    handler: app.handlers.get_order
+    events:
+      - http: GET /orders/{id}
+
+# On this machine there is no DynamoDB table and no S3 state bucket. The handler
+# already uses an in-memory repository when PSKIT_PROVIDER is not aws.
+providers:
+  onprem:
+    region: local
+    options: {host: 127.0.0.1, port: 8091}
+    environment:
+      ORDERS_TABLE: orders
+    state:
+      backend: null
+
+# Shell commands run from the project root. PSKIT_SERVICE, PSKIT_STAGE,
+# PSKIT_PROVIDER and PSKIT_WORK_DIR are set for them.
+hooks:
+  before_deploy:
+    - python -m pytest -q tests                   # don't ship red builds
+  after_deploy:
+    - python scripts/smoke_test.py

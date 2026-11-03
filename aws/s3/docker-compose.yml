@@ -1,0 +1,27 @@
+# Run one of the two servers (they are interchangeable and read the same data directory):
+#   S3_SECRET_ACCESS_KEY=change-me-please docker compose up -d s3-python
+#   S3_SECRET_ACCESS_KEY=change-me-please docker compose up -d s3-nodejs
+# Console: http://127.0.0.1:9000/ui/  (access key ID pskit, the secret key as password)
+x-common: &common
+  restart: unless-stopped
+  environment:
+    S3_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID:-pskit}
+    S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:?set S3_SECRET_ACCESS_KEY}
+    S3_REGION: ${S3_REGION:-us-east-1}
+  ports:
+    - "127.0.0.1:9000:9000"
+  volumes:
+    - s3-data:/data
+
+services:
+  s3-python:
+    <<: *common
+    build: {context: ., dockerfile: python/Dockerfile}
+    image: pskit/s3:python
+  s3-nodejs:
+    <<: *common
+    build: {context: ., dockerfile: nodejs/Dockerfile}
+    image: pskit/s3:nodejs
+
+volumes:
+  s3-data:

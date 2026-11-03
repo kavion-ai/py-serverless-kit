@@ -1,0 +1,1326 @@
+[
+  {
+    "id": "redis",
+    "label": "Redis",
+    "kind": "service",
+    "image": "redis:7-alpine",
+    "port": 6379,
+    "extra_ports": [],
+    "roles": [
+      "queue",
+      "stream",
+      "cache"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": true,
+    "gui": [],
+    "companion": "Redis Commander",
+    "gui_logins": [
+      "password",
+      "none"
+    ],
+    "default_user": "default",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Caches and queues",
+    "notes": "Queue (redis driver: leased lists), stream (redis_stream driver: consumer group, several hosts) or a cache for handlers."
+  },
+  {
+    "id": "valkey",
+    "label": "Valkey",
+    "kind": "service",
+    "image": "valkey/valkey:8-alpine",
+    "port": 6379,
+    "extra_ports": [],
+    "roles": [
+      "queue",
+      "stream",
+      "cache"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": true,
+    "gui": [],
+    "companion": "Redis Commander",
+    "gui_logins": [
+      "password",
+      "none"
+    ],
+    "default_user": "default",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Caches and queues",
+    "notes": "Open-source Redis fork; same redis and redis_stream drivers."
+  },
+  {
+    "id": "rabbitmq",
+    "label": "RabbitMQ",
+    "kind": "service",
+    "image": "rabbitmq:3-management-alpine",
+    "port": 5672,
+    "extra_ports": [
+      15672
+    ],
+    "roles": [
+      "queue"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": true,
+    "gui": [
+      "Management UI"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Queues and streams",
+    "notes": "AMQP with manual acks through a small driver class pskit adds to your app (needs pika). Management UI on port 15672. Backups hold definitions (queues, users), not messages."
+  },
+  {
+    "id": "elasticmq",
+    "label": "ElasticMQ (SQS-compatible)",
+    "kind": "service",
+    "image": "softwaremill/elasticmq-native:1.6.11",
+    "port": 9324,
+    "extra_ports": [
+      9325
+    ],
+    "roles": [
+      "queue"
+    ],
+    "backup": false,
+    "persistent": false,
+    "auth": false,
+    "gui": [
+      "Queue browser"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Queues and streams",
+    "notes": "Amazon SQS API, used through the sqs driver. Keeps messages in memory: a restart empties it, so use it for development and tests. UI on port 9325."
+  },
+  {
+    "id": "postgres",
+    "label": "PostgreSQL",
+    "kind": "service",
+    "image": "postgres:16-alpine",
+    "port": 5432,
+    "extra_ports": [],
+    "roles": [
+      "database"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": true,
+    "gui": [],
+    "companion": "Adminer (database UI)",
+    "gui_logins": [
+      "password"
+    ],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": {
+      "method": "Streaming replication (WAL)",
+      "balancer": "pgpool-II",
+      "balancer_port": 6432,
+      "async": "The primary commits at once and streams the WAL to the replicas, which follow a few milliseconds behind. Fastest; a crash of the primary can lose the last transactions not yet streamed.",
+      "sync": "A commit waits until at least one replica has the WAL on disk (synchronous_standby_names = ANY 1 (*)). No committed write is lost, but writes wait while no replica is connected.",
+      "routing": "pgpool-II sends writes and transactions to the primary and spreads plain SELECTs over the replicas (the primary only when none is up).",
+      "local": true
+    },
+    "import_types": [
+      ".sql",
+      ".sql.gz",
+      ".dump"
+    ],
+    "group": "Databases",
+    "notes": ""
+  },
+  {
+    "id": "mysql",
+    "label": "MySQL",
+    "kind": "service",
+    "image": "mysql:8.4",
+    "port": 3306,
+    "extra_ports": [],
+    "roles": [
+      "database"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": true,
+    "gui": [],
+    "companion": "Adminer (database UI)",
+    "gui_logins": [
+      "password"
+    ],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": {
+      "method": "GTID replication (binary log)",
+      "balancer": "ProxySQL",
+      "balancer_port": 6033,
+      "async": "The primary commits at once; replicas apply the binary log right after. Fastest; a crash of the primary can lose the last transactions.",
+      "sync": "Semi-synchronous: a commit waits until one replica has received it (back to async after 10 s without a replica, so writes never hang).",
+      "routing": "ProxySQL sends writes, transactions and SELECT ... FOR UPDATE to the primary and other SELECTs to the replicas (the primary only when none is up).",
+      "local": true
+    },
+    "import_types": [
+      ".sql",
+      ".sql.gz"
+    ],
+    "group": "Databases",
+    "notes": ""
+  },
+  {
+    "id": "mariadb",
+    "label": "MariaDB",
+    "kind": "service",
+    "image": "mariadb:11",
+    "port": 3306,
+    "extra_ports": [],
+    "roles": [
+      "database"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": true,
+    "gui": [],
+    "companion": "Adminer (database UI)",
+    "gui_logins": [
+      "password"
+    ],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": {
+      "method": "GTID replication (binary log)",
+      "balancer": "ProxySQL",
+      "balancer_port": 6033,
+      "async": "The primary commits at once; replicas apply the binary log right after. Fastest; a crash of the primary can lose the last transactions.",
+      "sync": "Semi-synchronous: a commit waits until one replica has received it (back to async after 10 s without a replica, so writes never hang).",
+      "routing": "ProxySQL sends writes, transactions and SELECT ... FOR UPDATE to the primary and other SELECTs to the replicas (the primary only when none is up).",
+      "local": true
+    },
+    "import_types": [
+      ".sql",
+      ".sql.gz"
+    ],
+    "group": "Databases",
+    "notes": ""
+  },
+  {
+    "id": "mongodb",
+    "label": "MongoDB",
+    "kind": "service",
+    "image": "mongo:7",
+    "port": 27017,
+    "extra_ports": [],
+    "roles": [
+      "database"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": true,
+    "gui": [],
+    "companion": "Mongo Express",
+    "gui_logins": [
+      "password",
+      "none"
+    ],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": {
+      "method": "Replica set",
+      "balancer": "",
+      "balancer_port": 0,
+      "async": "Write concern w: 1: a write is acknowledged by the primary alone; secondaries copy the oplog right after. A crash of the primary can roll back the last writes.",
+      "sync": "Write concern w: majority: a write is acknowledged once most members have it, so it survives the loss of the primary.",
+      "routing": "No load balancer: the MongoDB driver connects to every member from one replica set URL, writes to the primary and reads from secondaries (readPreference=secondaryPreferred). If the primary fails, the members elect a new one and the driver follows.",
+      "local": false
+    },
+    "import_types": [
+      ".archive",
+      ".archive.gz",
+      ".gz"
+    ],
+    "group": "Databases",
+    "notes": ""
+  },
+  {
+    "id": "minio",
+    "label": "MinIO (S3-compatible)",
+    "kind": "service",
+    "image": "bitnamilegacy/minio:2025.7.23",
+    "port": 9000,
+    "extra_ports": [
+      9001
+    ],
+    "roles": [
+      "storage"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": true,
+    "gui": [
+      "Console"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [
+      "s3"
+    ],
+    "replication": null,
+    "import_types": [],
+    "group": "Object storage",
+    "notes": "Buckets watched through the minio driver. Console on port 9001."
+  },
+  {
+    "id": "kafka",
+    "label": "Kafka (Redpanda, single node)",
+    "kind": "service",
+    "image": "redpandadata/redpanda:v24.3.6",
+    "port": 9092,
+    "extra_ports": [],
+    "roles": [
+      "queue"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": false,
+    "gui": [],
+    "companion": "Kafka UI",
+    "gui_logins": [
+      "password",
+      "none"
+    ],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Queues and streams",
+    "notes": "Kafka API (Redpanda, no ZooKeeper). Consumed through a driver class pskit adds to your app (needs kafka-python). No authentication: keep the port on a private network."
+  },
+  {
+    "id": "nats",
+    "label": "NATS JetStream",
+    "kind": "service",
+    "image": "nats:2.10-alpine",
+    "port": 4222,
+    "extra_ports": [
+      8222
+    ],
+    "roles": [
+      "queue"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": true,
+    "gui": [
+      "Monitoring (JSON)"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Queues and streams",
+    "notes": "A JetStream stream with a durable pull consumer, through a driver class pskit adds to your app (needs nats-py). Monitoring on port 8222."
+  },
+  {
+    "id": "dragonfly",
+    "label": "Dragonfly (Redis-compatible)",
+    "kind": "service",
+    "image": "docker.dragonflydb.io/dragonflydb/dragonfly:v1.25.1",
+    "port": 6379,
+    "extra_ports": [],
+    "roles": [
+      "queue",
+      "stream",
+      "cache"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": true,
+    "gui": [],
+    "companion": "Redis Commander",
+    "gui_logins": [
+      "password",
+      "none"
+    ],
+    "default_user": "default",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Caches and queues",
+    "notes": "A faster Redis-compatible store: the same redis / redis_stream drivers and clients. Password only (user default)."
+  },
+  {
+    "id": "keydb",
+    "label": "KeyDB (Redis-compatible)",
+    "kind": "service",
+    "image": "eqalpha/keydb:latest",
+    "port": 6379,
+    "extra_ports": [],
+    "roles": [
+      "queue",
+      "stream",
+      "cache"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": true,
+    "gui": [],
+    "companion": "Redis Commander",
+    "gui_logins": [
+      "password",
+      "none"
+    ],
+    "default_user": "default",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Caches and queues",
+    "notes": "Multithreaded Redis fork: the same redis / redis_stream drivers and clients."
+  },
+  {
+    "id": "apache-kafka",
+    "label": "Apache Kafka (KRaft, single node)",
+    "kind": "service",
+    "image": "apache/kafka:3.8.1",
+    "port": 9092,
+    "extra_ports": [],
+    "roles": [
+      "queue"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": false,
+    "gui": [],
+    "companion": "Kafka UI",
+    "gui_logins": [
+      "password",
+      "none"
+    ],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Queues and streams",
+    "notes": "The Apache Kafka distribution (no ZooKeeper), consumed through the Kafka driver class pskit adds (needs kafka-python). No authentication: keep the port on a private network."
+  },
+  {
+    "id": "lavinmq",
+    "label": "LavinMQ (AMQP 0.9.1)",
+    "kind": "service",
+    "image": "cloudamqp/lavinmq:latest",
+    "port": 5672,
+    "extra_ports": [
+      15672
+    ],
+    "roles": [
+      "queue"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": true,
+    "gui": [
+      "Management UI"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Queues and streams",
+    "notes": "A light, fast AMQP broker that speaks RabbitMQ's protocol: the RabbitMQ driver class and clients work unchanged. Management UI on port 15672."
+  },
+  {
+    "id": "azurite",
+    "label": "Azurite (Azure Blob + Queue emulator)",
+    "kind": "service",
+    "image": "mcr.microsoft.com/azure-storage/azurite:3.33.0",
+    "port": 10000,
+    "extra_ports": [
+      10001
+    ],
+    "roles": [
+      "queue",
+      "storage"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": true,
+    "gui": [],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Object storage",
+    "notes": "Azure Storage blobs (port 10000) and queues (10001) with your own account name and key: the azure_blob / azure_queue drivers and the Azure SDKs work unchanged. Browse it with Azure Storage Explorer."
+  },
+  {
+    "id": "localstack",
+    "label": "LocalStack (SQS, S3, Secrets Manager)",
+    "kind": "service",
+    "image": "localstack/localstack:3.8",
+    "port": 4566,
+    "extra_ports": [],
+    "roles": [
+      "queue",
+      "storage",
+      "secrets"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": false,
+    "gui": [
+      "Status (JSON)"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [
+      "s3",
+      "aws-secrets"
+    ],
+    "replication": null,
+    "import_types": [],
+    "group": "AWS emulators",
+    "notes": "Amazon SQS, S3, Secrets Manager and SSM Parameter Store on one port: the sqs / s3 drivers, get_secret(), boto3 and the AWS CLI work with endpoint_url. Credentials are not checked (test / test). For development and tests."
+  },
+  {
+    "id": "openbao",
+    "label": "OpenBao (Vault-compatible secrets)",
+    "kind": "service",
+    "image": "openbao/openbao:2.1.0",
+    "port": 8200,
+    "extra_ports": [],
+    "roles": [
+      "secrets"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": true,
+    "gui": [],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [
+      "vault"
+    ],
+    "replication": null,
+    "import_types": [],
+    "group": "Secrets",
+    "notes": "A secret manager with the HashiCorp Vault API (KV v2 at secret/): get_secret() / put_secret(), hvac, node-vault and the vault / bao CLI. The password is the access token. OpenBao's release images ship without its web UI, so use Browse secrets (pskit's UI: folders, versions, add / edit / delete). Backups hold the data and the unseal key: keep them safe."
+  },
+  {
+    "id": "fake-gcs",
+    "label": "fake-gcs-server (Cloud Storage emulator)",
+    "kind": "service",
+    "image": "fsouza/fake-gcs-server:1.52",
+    "port": 4443,
+    "extra_ports": [],
+    "roles": [
+      "storage"
+    ],
+    "backup": false,
+    "persistent": true,
+    "auth": false,
+    "gui": [],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [
+      "gcs"
+    ],
+    "replication": null,
+    "import_types": [],
+    "group": "Object storage",
+    "notes": "Google Cloud Storage JSON API: the gcs driver (emulator mode) and the google-cloud-storage library work with its endpoint. No authentication. For development and tests."
+  },
+  {
+    "id": "rustfs",
+    "label": "RustFS (S3-compatible)",
+    "kind": "service",
+    "image": "rustfs/rustfs:latest",
+    "port": 9000,
+    "extra_ports": [
+      9001
+    ],
+    "roles": [
+      "storage"
+    ],
+    "backup": false,
+    "persistent": true,
+    "auth": true,
+    "gui": [
+      "Console"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [
+      "s3"
+    ],
+    "replication": null,
+    "import_types": [],
+    "group": "Object storage",
+    "notes": "An S3-compatible object store with a web console (port 9001), an alternative to MinIO: the s3 driver, boto3 and the AWS CLI work with its endpoint."
+  },
+  {
+    "id": "memcached",
+    "label": "Memcached",
+    "kind": "service",
+    "image": "memcached:1.6-alpine",
+    "port": 11211,
+    "extra_ports": [],
+    "roles": [
+      "cache"
+    ],
+    "backup": false,
+    "persistent": false,
+    "auth": false,
+    "gui": [],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Caches and queues",
+    "notes": "In-memory cache; nothing to back up."
+  },
+  {
+    "id": "mailpit",
+    "label": "Mailpit (SMTP)",
+    "kind": "service",
+    "image": "axllent/mailpit:latest",
+    "port": 1025,
+    "extra_ports": [
+      8025
+    ],
+    "roles": [
+      "custom"
+    ],
+    "backup": false,
+    "persistent": false,
+    "auth": false,
+    "gui": [
+      "Mailbox"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Tools",
+    "notes": "An SMTP server that keeps every mail for inspection (web UI on port 8025). For development and tests."
+  },
+  {
+    "id": "smtp",
+    "label": "SMTP server (receive mail, Node.js)",
+    "kind": "service",
+    "image": "node:22-alpine",
+    "port": 25,
+    "extra_ports": [],
+    "roles": [
+      "smtp"
+    ],
+    "backup": false,
+    "persistent": true,
+    "auth": false,
+    "gui": [],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Mail",
+    "notes": "Receives mail for your domains and runs the functions attached to it with the mail: from, to, cc, subject, text, html, headers and attachments (also in the Amazon SES event shape). Never relays. After creating it, How to use lists the DNS records (A, MX) to add at your domain provider."
+  },
+  {
+    "id": "secretsmanager",
+    "label": "AWS Secrets Manager compatible (Python)",
+    "kind": "service",
+    "image": "python:3.12-alpine",
+    "port": 4584,
+    "extra_ports": [],
+    "roles": [
+      "secrets"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": true,
+    "gui": [
+      "Secrets console"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [
+      "aws-secrets"
+    ],
+    "replication": null,
+    "import_types": [],
+    "group": "Secrets",
+    "notes": "pskit's own Secrets Manager server (Python, code in aws/secretsmanager): the Secrets Manager API with SigV4 authentication (user = access key ID, password = secret access key). boto3, the AWS SDKs, the AWS CLI and get_secret() work with its endpoint. Versions and stages, tags, delete with a recovery window, restore. Values are encrypted at rest (AES-256-GCM, a data key per version wrapped by a generated master key). Its own web console (/ui/) signs in with the same user and password."
+  },
+  {
+    "id": "secretsmanager-node",
+    "label": "AWS Secrets Manager compatible (Node.js)",
+    "kind": "service",
+    "image": "node:22-alpine",
+    "port": 4584,
+    "extra_ports": [],
+    "roles": [
+      "secrets"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": true,
+    "gui": [
+      "Secrets console"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [
+      "aws-secrets"
+    ],
+    "replication": null,
+    "import_types": [],
+    "group": "Secrets",
+    "notes": "pskit's own Secrets Manager server (Node.js, code in aws/secretsmanager): the Secrets Manager API with SigV4 authentication (user = access key ID, password = secret access key). boto3, the AWS SDKs, the AWS CLI and get_secret() work with its endpoint. Versions and stages, tags, delete with a recovery window, restore. Values are encrypted at rest (AES-256-GCM, a data key per version wrapped by a generated master key). Its own web console (/ui/) signs in with the same user and password."
+  },
+  {
+    "id": "s3",
+    "label": "Amazon S3 compatible (Python)",
+    "kind": "service",
+    "image": "python:3.12-alpine",
+    "port": 9000,
+    "extra_ports": [],
+    "roles": [
+      "storage"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": true,
+    "gui": [
+      "S3 console"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [
+      "s3"
+    ],
+    "replication": null,
+    "import_types": [],
+    "group": "Object storage",
+    "notes": "pskit's own S3 server (Python, code in aws/s3): the S3 API with SigV4 authentication (user = access key ID, password = secret access key). boto3, the AWS SDKs, the AWS CLI and the s3 driver work with its endpoint. Versioning, multipart uploads, presigned URLs, policies, CORS, lifecycle rules, object lock, website hosting. Its own web console (/ui/) signs in with the same user and password."
+  },
+  {
+    "id": "s3-node",
+    "label": "Amazon S3 compatible (Node.js)",
+    "kind": "service",
+    "image": "node:22-alpine",
+    "port": 9000,
+    "extra_ports": [],
+    "roles": [
+      "storage"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": true,
+    "gui": [
+      "S3 console"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [
+      "s3"
+    ],
+    "replication": null,
+    "import_types": [],
+    "group": "Object storage",
+    "notes": "pskit's own S3 server (Node.js, code in aws/s3): the S3 API with SigV4 authentication (user = access key ID, password = secret access key). boto3, the AWS SDKs, the AWS CLI and the s3 driver work with its endpoint. Versioning, multipart uploads, presigned URLs, policies, CORS, lifecycle rules, object lock, website hosting. Its own web console (/ui/) signs in with the same user and password."
+  },
+  {
+    "id": "localemu",
+    "label": "LocalEmu (AWS emulator: SQS, S3, Secrets Manager, ...)",
+    "kind": "service",
+    "image": "localemu/localemu:latest",
+    "port": 4566,
+    "extra_ports": [],
+    "roles": [
+      "queue",
+      "storage",
+      "secrets"
+    ],
+    "backup": false,
+    "persistent": false,
+    "auth": false,
+    "gui": [
+      "Dashboard"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [
+      "s3",
+      "aws-secrets"
+    ],
+    "replication": null,
+    "import_types": [],
+    "group": "AWS emulators",
+    "notes": "An open-source AWS emulator (Apache-2.0 fork of LocalStack, 130+ services) on one port: the sqs / s3 drivers, get_secret(), boto3, the AWS CLI and Terraform work with endpoint_url. Credentials are not checked (test / test). Built-in dashboard with an S3 browser. For development and tests."
+  },
+  {
+    "id": "infisical",
+    "label": "Infisical (secrets manager with web UI)",
+    "kind": "service",
+    "image": "infisical/infisical:latest",
+    "port": 8080,
+    "extra_ports": [],
+    "roles": [
+      "secrets"
+    ],
+    "backup": false,
+    "persistent": false,
+    "auth": true,
+    "gui": [
+      "Infisical"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Secrets",
+    "notes": "Open-source secrets manager (projects, environments, versions, audit log, access control) with its own PostgreSQL and Redis next to it. Open the web UI and create the admin account, then a project and a machine identity (Universal Auth): put its client id / secret and the project id in the env file and get_secret() / getSecret() read from Infisical. ENCRYPTION_KEY stays in the env file: keep it, the data cannot be read without it."
+  },
+  {
+    "id": "grafana",
+    "label": "Grafana (dashboards)",
+    "kind": "service",
+    "image": "grafana/grafana:11.3.0",
+    "port": 3000,
+    "extra_ports": [],
+    "roles": [
+      "custom"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": true,
+    "gui": [
+      "Grafana"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Monitoring",
+    "notes": "Dashboards and alerts over Prometheus, Loki, PostgreSQL, ClickHouse and 100+ data sources."
+  },
+  {
+    "id": "prometheus",
+    "label": "Prometheus (metrics)",
+    "kind": "service",
+    "image": "prom/prometheus:v2.55.1",
+    "port": 9090,
+    "extra_ports": [],
+    "roles": [
+      "custom"
+    ],
+    "backup": false,
+    "persistent": true,
+    "auth": false,
+    "gui": [
+      "Prometheus UI"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Monitoring",
+    "notes": "Metrics database and query UI. Scrapes itself by default; add targets in /etc/prometheus/prometheus.yml (Console: sh). No login: keep it on a private network."
+  },
+  {
+    "id": "uptime-kuma",
+    "label": "Uptime Kuma (uptime monitor)",
+    "kind": "service",
+    "image": "louislam/uptime-kuma:1",
+    "port": 3001,
+    "extra_ports": [],
+    "roles": [
+      "custom"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": true,
+    "gui": [
+      "Uptime Kuma"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Monitoring",
+    "notes": "Checks HTTP, TCP, DNS, Docker containers ... every minute and alerts by mail, Slack, Telegram. Create the admin account on the first visit."
+  },
+  {
+    "id": "jaeger",
+    "label": "Jaeger (tracing, OpenTelemetry)",
+    "kind": "service",
+    "image": "jaegertracing/all-in-one:1.62.0",
+    "port": 16686,
+    "extra_ports": [
+      4317,
+      4318
+    ],
+    "roles": [
+      "custom"
+    ],
+    "backup": false,
+    "persistent": false,
+    "auth": false,
+    "gui": [
+      "Jaeger UI"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Monitoring",
+    "notes": "Distributed tracing: send OpenTelemetry traces to OTLP gRPC :4317 or HTTP :4318 and search them in the UI. Keeps traces in memory. No login: keep it on a private network."
+  },
+  {
+    "id": "keycloak",
+    "label": "Keycloak (login, SSO, OAuth2 / OIDC)",
+    "kind": "service",
+    "image": "quay.io/keycloak/keycloak:26.0",
+    "port": 8080,
+    "extra_ports": [],
+    "roles": [
+      "custom"
+    ],
+    "backup": false,
+    "persistent": true,
+    "auth": true,
+    "gui": [
+      "Admin console"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Identity",
+    "notes": "Identity provider: users, groups, social login, MFA and OpenID Connect / OAuth2 tokens for your APIs. Runs in dev mode (H2 database in the volume, HTTP); put it behind HTTPS for production."
+  },
+  {
+    "id": "meilisearch",
+    "label": "Meilisearch (search engine)",
+    "kind": "service",
+    "image": "getmeili/meilisearch:v1.11",
+    "port": 7700,
+    "extra_ports": [],
+    "roles": [
+      "custom"
+    ],
+    "backup": false,
+    "persistent": true,
+    "auth": true,
+    "gui": [
+      "Search preview"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Search",
+    "notes": "Typo-tolerant full-text search with a REST API and a search preview UI (the master key is the password)."
+  },
+  {
+    "id": "typesense",
+    "label": "Typesense (search engine)",
+    "kind": "service",
+    "image": "typesense/typesense:27.1",
+    "port": 8108,
+    "extra_ports": [],
+    "roles": [
+      "custom"
+    ],
+    "backup": false,
+    "persistent": true,
+    "auth": true,
+    "gui": [],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Search",
+    "notes": "Fast typo-tolerant search with a REST API (the API key is the password)."
+  },
+  {
+    "id": "qdrant",
+    "label": "Qdrant (vector database)",
+    "kind": "service",
+    "image": "qdrant/qdrant:v1.12.4",
+    "port": 6333,
+    "extra_ports": [
+      6334
+    ],
+    "roles": [
+      "database"
+    ],
+    "backup": false,
+    "persistent": true,
+    "auth": true,
+    "gui": [
+      "Dashboard"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Databases",
+    "notes": "Vector similarity search for embeddings (RAG, recommendations). REST on the port, gRPC on 6334; the API key is the password."
+  },
+  {
+    "id": "clickhouse",
+    "label": "ClickHouse (analytics database)",
+    "kind": "service",
+    "image": "clickhouse/clickhouse-server:24.8",
+    "port": 8123,
+    "extra_ports": [
+      9000
+    ],
+    "roles": [
+      "database"
+    ],
+    "backup": false,
+    "persistent": true,
+    "auth": true,
+    "gui": [
+      "SQL playground"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Databases",
+    "notes": "Column-store SQL for analytics and logs. HTTP on the port (SQL playground at /play), native protocol on 9000."
+  },
+  {
+    "id": "neo4j",
+    "label": "Neo4j (graph database)",
+    "kind": "service",
+    "image": "neo4j:5",
+    "port": 7687,
+    "extra_ports": [
+      7474
+    ],
+    "roles": [
+      "database"
+    ],
+    "backup": false,
+    "persistent": true,
+    "auth": true,
+    "gui": [
+      "Neo4j Browser"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "neo4j",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Databases",
+    "notes": "Graph database queried with Cypher over Bolt (the port); Neo4j Browser on 7474. The user is always neo4j."
+  },
+  {
+    "id": "mosquitto",
+    "label": "Eclipse Mosquitto (MQTT broker)",
+    "kind": "service",
+    "image": "eclipse-mosquitto:2",
+    "port": 1883,
+    "extra_ports": [],
+    "roles": [
+      "custom"
+    ],
+    "backup": false,
+    "persistent": true,
+    "auth": false,
+    "gui": [],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Queues and streams",
+    "notes": "MQTT for IoT devices and sensors. Anonymous access: keep it on a private network."
+  },
+  {
+    "id": "n8n",
+    "label": "n8n (workflow automation)",
+    "kind": "service",
+    "image": "n8nio/n8n:latest",
+    "port": 5678,
+    "extra_ports": [],
+    "roles": [
+      "custom"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": true,
+    "gui": [
+      "n8n"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Automation",
+    "notes": "Visual workflow automation with 400+ integrations; call your pskit functions with its HTTP node or the Lambda-compatible invoke API. Create the owner account on the first visit."
+  },
+  {
+    "id": "portainer",
+    "label": "Portainer (Docker UI)",
+    "kind": "service",
+    "image": "portainer/portainer-ce:2.21.4",
+    "port": 9000,
+    "extra_ports": [
+      9443
+    ],
+    "roles": [
+      "custom"
+    ],
+    "backup": false,
+    "persistent": true,
+    "auth": true,
+    "gui": [
+      "Portainer"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Tools",
+    "notes": "Manage the server's containers, images, volumes and networks in the browser. Create the admin account within 5 minutes of the first start (otherwise restart it)."
+  },
+  {
+    "id": "gitea",
+    "label": "Gitea (Git hosting)",
+    "kind": "service",
+    "image": "gitea/gitea:1.22",
+    "port": 3000,
+    "extra_ports": [],
+    "roles": [
+      "custom"
+    ],
+    "backup": true,
+    "persistent": true,
+    "auth": true,
+    "gui": [
+      "Gitea"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Tools",
+    "notes": "Self-hosted Git with pull requests, issues, packages and Actions. Finish the install page on the first visit; the first account is the admin."
+  },
+  {
+    "id": "nginx-proxy-manager",
+    "label": "Nginx Proxy Manager (reverse proxy, Let's Encrypt)",
+    "kind": "service",
+    "image": "jc21/nginx-proxy-manager:latest",
+    "port": 81,
+    "extra_ports": [
+      80,
+      443
+    ],
+    "roles": [
+      "custom"
+    ],
+    "backup": false,
+    "persistent": true,
+    "auth": true,
+    "gui": [
+      "Admin UI"
+    ],
+    "companion": null,
+    "gui_logins": [],
+    "default_user": "pskit",
+    "browsers": [],
+    "replication": null,
+    "import_types": [],
+    "group": "Web",
+    "notes": "Point domains at your functions (port 8080) and services with free HTTPS certificates, from a web UI. First login admin@example.com / changeme (you are asked to change it). Needs ports 80 and 443 free."
+  },
+  {
+    "id": "docker",
+    "label": "Docker",
+    "kind": "runtime",
+    "roles": [],
+    "notes": "Installs and starts Docker on an SSH server (needed by every service above, and by method: docker).",
+    "group": "Languages and Docker",
+    "versions": []
+  },
+  {
+    "id": "python",
+    "label": "Python 3",
+    "kind": "runtime",
+    "roles": [],
+    "notes": "system: the distribution's python3 with venv and pip. 3.X: that exact CPython (standalone build through uv, any distro) as /usr/local/bin/python3.X, so the host runs with python: system and runtime python3.X.",
+    "group": "Languages and Docker",
+    "versions": [
+      "system",
+      "3.13",
+      "3.12",
+      "3.11",
+      "3.10",
+      "3.9",
+      "3.14"
+    ]
+  },
+  {
+    "id": "nodejs",
+    "label": "Node.js",
+    "kind": "runtime",
+    "roles": [],
+    "notes": "Node.js and npm from NodeSource (apt / dnf; Alpine: its own version). Needed by Node.js functions with node: system, PM2 and npm-based tools.",
+    "group": "Languages",
+    "versions": [
+      "22",
+      "24",
+      "20",
+      "18"
+    ]
+  },
+  {
+    "id": "java",
+    "label": "Java (OpenJDK)",
+    "kind": "runtime",
+    "roles": [],
+    "notes": "Headless OpenJDK runtime from the distribution's packages.",
+    "group": "Languages",
+    "versions": [
+      "21",
+      "17"
+    ]
+  },
+  {
+    "id": "go",
+    "label": "Go",
+    "kind": "runtime",
+    "roles": [],
+    "notes": "The official Go toolchain in /usr/local/go (linked into /usr/local/bin).",
+    "group": "Languages",
+    "versions": [
+      "1.23.4",
+      "1.22.10"
+    ]
+  },
+  {
+    "id": "nginx",
+    "label": "nginx",
+    "kind": "runtime",
+    "roles": [],
+    "notes": "nginx from the distribution's packages, enabled and started. Put a reverse proxy to the pskit host (port 8080) in /etc/nginx/conf.d/.",
+    "group": "Web servers",
+    "versions": []
+  },
+  {
+    "id": "caddy",
+    "label": "Caddy",
+    "kind": "runtime",
+    "roles": [],
+    "notes": "The caddy binary in /usr/local/bin (automatic HTTPS). Try it with: caddy reverse-proxy --from :80 --to 127.0.0.1:8080.",
+    "group": "Web servers",
+    "versions": [
+      "2.8.4"
+    ]
+  },
+  {
+    "id": "certbot",
+    "label": "Certbot (Let's Encrypt)",
+    "kind": "runtime",
+    "roles": [],
+    "notes": "certbot with its nginx plugin where the distribution has it (dnf needs EPEL).",
+    "group": "Web servers",
+    "versions": []
+  },
+  {
+    "id": "pm2",
+    "label": "PM2",
+    "kind": "runtime",
+    "roles": [],
+    "notes": "PM2 (npm install -g pm2) to keep Node.js apps running; install Node.js first.",
+    "group": "Process managers",
+    "versions": []
+  },
+  {
+    "id": "git",
+    "label": "Git",
+    "kind": "runtime",
+    "roles": [],
+    "notes": "git from the distribution's packages.",
+    "group": "Tools",
+    "versions": []
+  },
+  {
+    "id": "tools",
+    "label": "Basic tools",
+    "kind": "runtime",
+    "roles": [],
+    "notes": "curl, wget, unzip, jq, htop, tmux and netcat for working on the server.",
+    "group": "Tools",
+    "versions": []
+  }
+]

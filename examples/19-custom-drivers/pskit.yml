@@ -1,0 +1,82 @@
+# Custom on-premises drivers: your own class feeds a queue or storage trigger.
+#
+# `driver: custom` + `class: "<module>:<Class>"` loads a class from this app.
+# Every other option is passed to its constructor (`<name>_env: VAR` reads VAR
+# from the host's environment first, so secrets stay out of generated files).
+service: custom-drivers
+
+provider:
+  name: onprem
+  region: local
+  runtime: python3.12
+  options:
+    host: 127.0.0.1
+    port: 8091
+
+resources:
+  jobs:                                  # a durable queue in one SQLite file
+    type: queue
+    external: true
+    options:
+      driver: custom
+      class: app.backends:SqliteQueue
+      path: data/queues.sqlite3          # relative to the deployed host
+      table: jobs
+  jobs-dlq:                              # its dead-letter queue, same file, another table
+    type: queue
+    external: true
+    options:
+      driver: custom
+      class: app.backends:SqliteQueue
+      path: data/queues.sqlite3
+      table: jobs_dlq
+  inbox:                                 # a folder (or NFS / SMB share) watched like a bucket
+    type: storage
+    external: true
+    options:
+      driver: custom
+      class: app.backends:FolderStorage
+      root: data/inbox
+  # Template drivers wrapping client libraries (add the library to requirements.txt):
+  # events:
+  #   type: queue
+  #   external: true
+  #   options: {driver: custom, class: app.rabbitmq_queue:RabbitQueue, url_env: RABBITMQ_URL, queue: events}
+  # orders:
+  #   type: queue
+  #   external: true
+  #   options: {driver: custom, class: app.kafka_queue:KafkaQueue, bootstrap_servers: "kafka:9092", topic: orders, group_id: workers}
+
+functions:
+  enqueue:
+    handler: app.handlers.enqueue
+    events:
+      - http: POST /jobs
+  worker:
+    handler: app.handlers.work
+    events:
+      - queue: {resource: jobs, batch_size: 10, max_receive: 3, dead_letter: jobs-dlq}
+  dead-letters:
+    handler: app.handlers.dead_letters
+    events:
+      - queue: {resource: jobs-dlq}
+  on-file:
+    handler: app.handlers.on_file
+    events:
+      - storage: {resource: inbox, events: [created, deleted]}
+
+# On a cloud the same resources are plain external queues / buckets (the custom
+# classes are on-premises only); these blocks just make `--provider` switch cleanly.
+providers:
+  aws:
+    region: eu-west-1
+  gcp:
+    region: us-central1
+    options: {project: "${env:GOOGLE_CLOUD_PROJECT, my-gcp-project}"}
+  azure:
+    region: eastus
+    options: {subscription_id: "${env:ARM_SUBSCRIPTION_ID, 00000000-0000-0000-0000-000000000000}"}
+    functions:                # Azure blob triggers have no `deleted` event
+      on-file:
+        events:
+          - storage: {resource: inbox}

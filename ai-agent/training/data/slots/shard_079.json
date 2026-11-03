@@ -1,0 +1,762 @@
+[
+ {
+  "id": "k_scale_0061",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0062",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0063",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0064",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0065",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0066",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0067",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0068",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0069",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0070",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0071",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0072",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0073",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0074",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0075",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "ops_engineer",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0076",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0077",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0078",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0079",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0080",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0081",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0082",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0083",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0084",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0085",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "aws_migrator",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0086",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0087",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Code",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0088",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Test",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0089",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Deploy",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0090",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Logs",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0091",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "YAML",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0092",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "none",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0093",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Overview",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0094",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Setup",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0095",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "ask",
+  "page": "Functions",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0096",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "auto",
+  "page": "Workflows",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0097",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "ask",
+  "page": "Resources",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0098",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "prod",
+  "mode": "auto",
+  "page": "Cluster",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0099",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "dev",
+  "mode": "ask",
+  "page": "Load balancers",
+  "multi_turn": false
+ },
+ {
+  "id": "k_scale_0100",
+  "category": "k_scale",
+  "card_ids": [
+   "onprem-cluster-lifecycle"
+  ],
+  "card_path": "ai-agent/training/knowledge/cards/onprem/onprem-cluster-lifecycle.md",
+  "persona": "contributor",
+  "grounding": "closed",
+  "sources": [
+   "docs/cluster.md#commands"
+  ],
+  "excerpt": "",
+  "provider": "onprem",
+  "stage": "staging",
+  "mode": "auto",
+  "page": "Network map",
+  "multi_turn": false
+ }
+]
