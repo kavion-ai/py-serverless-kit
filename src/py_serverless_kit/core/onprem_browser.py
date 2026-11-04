@@ -319,7 +319,7 @@ def _expires(body: Dict[str, Any]) -> int:
     """Seconds a share link stays valid: any whole number from 1 second to 7 days (default 1 hour)."""
     raw = body.get("expires")
     try:
-        expires = int(raw) if raw not in (None, "") else 3600
+        expires = 3600 if raw is None or raw == "" else int(raw)
     except (TypeError, ValueError):
         raise BrowseError("expires must be a number of seconds") from None
     if not 1 <= expires <= MAX_SHARE:
