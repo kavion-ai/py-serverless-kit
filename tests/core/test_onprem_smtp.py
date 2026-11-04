@@ -41,7 +41,8 @@ def test_local_service_publishes_the_port_and_reaches_the_host_through_docker(tm
     assert env["PSKIT_FUNCTIONS_URL"] == "http://host.docker.internal:9000"
     assert env["PSKIT_SMTP_DOMAINS"] == "inbound.example.com" and env["PSKIT_SMTP_PORT"] == "25"
     assert base64.b64decode(env["PSKIT_SMTP_JS"]) == onprem_smtp.SCRIPT.read_bytes()
-    assert "PSKIT_ADMIN_TOKEN" not in env
+    generated = (tmp_path / ".pskit" / "onprem-dev" / "admin-token").read_text("utf-8")
+    assert env["PSKIT_ADMIN_TOKEN"] == generated, "a host on the network refuses mail without its token"
     assert run[-3:] == ["sh", "-c", onprem_smtp.START] and run[-4] == "node:22-alpine"
     assert entry["resource"] == {"type": "smtp", "external": True, "connection": {
         "host": "127.0.0.1", "port": 25, "domains": "inbound.example.com", "hostname": "mail.inbound.example.com"}}

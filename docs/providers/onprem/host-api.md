@@ -15,11 +15,22 @@ stays out of the file:
 provider:
   name: onprem
   options:
-    admin_token: "${env:PSKIT_ADMIN_TOKEN, }"    # empty default = no token
+    admin_token: "${env:PSKIT_ADMIN_TOKEN, }"    # empty default: see below
 ```
 
-When a token is set, every `/__pskit/*` call except `GET /__pskit/health` needs the header `x-pskit-token: <token>`.
-For the AWS-compatible APIs below, pass the token as the AWS access key id. pskit's own commands read the token from
+**With no token set**, what happens depends on where the host listens:
+
+- **On the network** (`host: 0.0.0.0`, a server address, `method: docker`, or several placement groups): pskit generates
+  a token, keeps it in `.pskit/onprem-<stage>/admin-token` and warns you on deploy. A host started on such an address
+  with no token at all refuses to start.
+- **On loopback only** (`127.0.0.1`, the default): no token is needed from this machine. Requests from a web page on
+  another site, or with a `Host` name other than a loopback one, are refused, so a page you visit cannot drive the host.
+
+When a token applies, every `/__pskit/*` call needs the header `x-pskit-token: <token>`. `GET /__pskit/health` always
+answers, for load balancers and probes, but without the token it says only `{"ok": true}`.
+
+For the AWS-compatible APIs below, pass the token as the AWS access key id. **The SigV4 signature is not verified**: the
+access key id is a bearer token sent in clear text, so reach a host on the network over TLS or a tunnel. pskit's own commands read the token from
 the deploy record (`.pskit/onprem-<stage>/onprem_deployed.json`) and send it for you; studio keeps it server-side.
 `pskit client info` prints the endpoint, the token and code to call the host. In studio: **Overview & provider** ->
 **On-premises options** -> **Admin token**.

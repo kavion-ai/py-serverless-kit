@@ -40,6 +40,7 @@ GROUP_RE = re.compile(r"^[a-z][a-z0-9-]{0,20}$")
 TARGET_KEYS = ("server", "cluster", "local")
 GROUP_KEYS = set(TARGET_KEYS) | {"functions", "port", "advertise"}
 TOKEN_FILE = "peer-token"  # noqa: S105 - a file name: .pskit/onprem-<stage>/peer-token (out of git)
+ADMIN_TOKEN_FILE = "admin-token"  # noqa: S105 - a file name, next to it
 # What a group's own pskit.yml options may not repeat (they come from its target).
 _TARGET_DEPLOY_KEYS = ("server", "host", "user", "port", "pem", "identity_file", "identity", "password_file", "auth",
                        "known_hosts", "docker_host")
@@ -350,7 +351,16 @@ def owners(config: Any, function_group: Dict[str, str], default: str,
 def peer_token(root: Path, stage: str) -> str:
     """The hosts' shared secret for ``onprem-<stage>``: made once, kept in ``.pskit`` (out of git) so a deploy
     from the same project always renders the same token."""
-    path = Path(root) / ".pskit" / f"onprem-{stage}" / TOKEN_FILE
+    return _stage_token(root, stage, TOKEN_FILE)
+
+
+def admin_token(root: Path, stage: str) -> str:
+    """The admin token generated for ``onprem-<stage>`` when a host that listens on the network has none set."""
+    return _stage_token(root, stage, ADMIN_TOKEN_FILE)
+
+
+def _stage_token(root: Path, stage: str, name: str) -> str:
+    path = Path(root) / ".pskit" / f"onprem-{stage}" / name
     try:
         token = path.read_text("utf-8").strip()
     except OSError:

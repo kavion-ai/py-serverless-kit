@@ -54,9 +54,12 @@ loaded at start for variables the process environment does not already set.
 from __future__ import annotations
 
 import base64
+import hmac
 import inspect
+import ipaddress
 import json
 import os
+import re
 import shutil
 import signal
 import socket
@@ -178,10 +181,38 @@ def _segment(name: str, what: str) -> str:
 
 
 def _key_parts(key: str) -> List[str]:
-    parts = [unquote(part) for part in str(key).split("/") if part not in ("", ".")]
-    if not parts or any(part == ".." for part in parts):
+    """The folders and name of an object key. The key is already decoded: decoding it again here is what let
+    ``%252E%252E%252F`` become ``../`` after the check."""
+    parts = [part for part in str(key).split("/") if part not in ("", ".")]
+    if not parts or any(part == ".." or "\x00" in part for part in parts):
         raise ValueError(f"invalid object key {key!r}")
     return parts
+
+
+def _object_path(root: Path, key: str) -> Path:
+    """Where ``key`` lives under the bucket folder ``root``. Checked on the resolved path, so a backslash or drive
+    in a key on Windows, or a symlink inside the bucket, cannot lead out of it."""
+    base = Path(root).resolve()
+    path = base.joinpath(*_key_parts(key))
+    if base not in path.resolve().parents:
+        raise ValueError(f"invalid object key {key!r}")
+    return path
+
+
+def is_loopback_bind(host: str) -> bool:
+    """Whether ``host`` (a bind address or a Host header's name) is this machine only. Unknown names are not."""
+    text = str(host or "").strip().strip("[]").lower()
+    if text == "localhost":
+        return True
+    try:
+        return ipaddress.ip_address(text).is_loopback
+    except ValueError:
+        return False
+
+
+def token_matches(sent: Optional[str], token: str) -> bool:
+    """Constant-time comparison. An empty token never matches."""
+    return bool(sent and token) and hmac.compare_digest(str(sent).encode("utf-8"), str(token).encode("utf-8"))
 
 
 def _body_text(message: Any) -> str:
@@ -661,10 +692,7 @@ class Broker:
         if driver is not None:
             driver.put("/".join(_key_parts(key)), data)
             return None
-        parts = _key_parts(key)
-        path = self.bucket_dir(bucket)
-        for part in parts:
-            path = path / part
+        path = _object_path(self.bucket_dir(bucket), key)
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(data)
         return path
@@ -673,19 +701,13 @@ class Broker:
         driver = self._storage_drivers.get(bucket)
         if driver is not None:
             return bytes(driver.get("/".join(_key_parts(key))))
-        path = self.bucket_dir(bucket)
-        for part in _key_parts(key):
-            path = path / part
-        return path.read_bytes()
+        return _object_path(self.bucket_dir(bucket), key).read_bytes()
 
     def delete_object(self, bucket: str, key: str) -> bool:
         driver = self._storage_drivers.get(bucket)
         if driver is not None:
             return bool(driver.delete("/".join(_key_parts(key))))
-        parts = _key_parts(key)
-        path = self.bucket_dir(bucket)
-        for part in parts:
-            path = path / part
+        path = _object_path(self.bucket_dir(bucket), key)
         if not path.is_file():
             return False
         path.unlink()
@@ -1709,6 +1731,11 @@ class Host:
     # ---------------------------------------------------------------- http
     def make_server(self, port: Optional[int] = None) -> ThreadingHTTPServer:
         bind = str(self.spec.get("host") or "127.0.0.1")
+        if not is_loopback_bind(bind) and not (self.spec.get("admin_token") or self.spec.get("peer_token")):
+            # pskit generates a token for these hosts, so this is a hand-written or edited pskit_host.json.
+            raise ValueError(f"refusing to listen on {bind} without an admin_token: anyone on the network could "
+                             "invoke functions and read storage, queues and logs. Set provider.options.admin_token "
+                             "and deploy again, or bind to 127.0.0.1.")
         chosen = int(self.spec.get("port") or 8080) if port is None else port
         httpd = _Server((bind, chosen), self._handler())
         httpd.host = self  # type: ignore[attr-defined]
@@ -1850,13 +1877,27 @@ class Host:
                     raise ValueError("request body is too large")
                 return self.rfile.read(length) if length else b""
 
+            def _is_open(self) -> bool:
+                """No admin token on a loopback-only host: this machine's tools need none."""
+                return not host.spec.get("admin_token") and is_loopback_bind(str(host.spec.get("host") or "127.0.0.1"))
+
+            def _from_this_machine(self) -> bool:
+                """A web page can reach a loopback port too, through the visitor's browser. Refuse a page on another
+                site (Origin, Sec-Fetch-Site) and a hostile name that resolves to 127.0.0.1 (DNS rebinding: Host)."""
+                if (self.headers.get("sec-fetch-site") or "").lower() == "cross-site":
+                    return False
+                origin = self.headers.get("origin")
+                if origin is not None and not is_loopback_bind(urlsplit(origin).hostname or ""):
+                    return False
+                name = self.headers.get("host")
+                return name is None or is_loopback_bind(urlsplit("//" + name).hostname or "")
+
             def _admin_ok(self) -> bool:
-                token = str(host.spec.get("admin_token") or "")
-                if not token:
-                    return True
+                if self._is_open():
+                    return self._from_this_machine()
                 sent = self.headers.get("x-pskit-token")
-                peer = str(host.spec.get("peer_token") or "")
-                return sent == token or bool(peer and sent == peer)
+                return (token_matches(sent, str(host.spec.get("admin_token") or ""))
+                        or token_matches(sent, str(host.spec.get("peer_token") or "")))
 
             @property
             def _from_peer(self) -> bool:
@@ -1888,7 +1929,8 @@ class Host:
                 try:
                     url = urlsplit(self.path)
                     if url.path == "/__pskit/health" or url.path == "/__pskit":
-                        return self._json(200, host.health())
+                        # Load balancers and probes only need the status; the details are for the token holder.
+                        return self._json(200, host.health() if self._admin_ok() else {"ok": True})
                     if url.path == "/__pskit/logs/local":
                         return self._local_logs(url)
                     # AWS-compatible APIs: existing boto3 / AWS SDK code only changes endpoint_url.
@@ -2077,11 +2119,16 @@ class Host:
 
             # ------------------------------------------------------------ AWS-compatible APIs
             def _aws_ok(self) -> bool:
-                """No token, the pskit header, or the token used as the AWS access key id (SigV4 credential)."""
-                token = str(host.spec.get("admin_token") or "")
-                if not token or self.headers.get("x-pskit-token") == token:
+                """The pskit header, or the token as the AWS access key id. The SigV4 signature is NOT verified: the
+                access key id is a bearer token, sent in clear text, so use it over TLS or a tunnel."""
+                if self._admin_ok():
                     return True
-                return f"Credential={token}/" in (self.headers.get("authorization") or "")
+                token = str(host.spec.get("admin_token") or "")
+                match = re.search(r"(?:^|[\s,])Credential=([^\s,]+)", self.headers.get("authorization") or "")
+                if not token or not match:
+                    return False
+                credential = match.group(1)
+                return credential[len(token):len(token) + 1] == "/" and token_matches(credential[:len(token)], token)
 
             def _aws_error(self, status: int, code: str, message: str, query_code: str = "") -> None:
                 headers = {"content-type": "application/x-amz-json-1.0", "x-amzn-errortype": code}

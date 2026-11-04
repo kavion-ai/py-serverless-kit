@@ -358,6 +358,10 @@ def remember_deploy(work_dir: Path, server: Optional[str], cluster: Optional[str
     path = Path(work_dir) / DEPLOYED_FILE
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_bytes((json.dumps(data, indent=2, sort_keys=True) + "\n").encode("utf-8"))
+    try:
+        path.chmod(0o600)  # the spec holds the admin token
+    except OSError:
+        pass
     return data
 
 

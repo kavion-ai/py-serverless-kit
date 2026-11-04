@@ -36,6 +36,7 @@ import copy
 import dataclasses
 import hashlib
 import json
+import os
 import re
 import shutil
 import sys
@@ -46,7 +47,7 @@ from typing import Any, Callable, Dict, List, Optional, Tuple
 from ..config.schema import ResourceConfig, ServiceConfig, is_generated_handler
 from ..runtime.cron import CronError, next_cron, resolve_zone
 from ..runtime.drivers import S3_PRESETS
-from ..runtime.onprem_host import ENV_FILE
+from ..runtime.onprem_host import ENV_FILE, is_loopback_bind
 from .base import HTTP, QUEUE, SCHEDULE, SMTP, STORAGE, TOPIC, Issue, Provider, RenderContext
 from .onprem_remote import _extended_path, _rmtree, dockerfile_text, launcher_text, node_bin_rel, systemd_unit_text
 from .onprem_spec import (
@@ -205,6 +206,15 @@ if __name__ == "__main__":
 def _write(path: Path, text: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_bytes(text.replace("\r\n", "\n").encode("utf-8"))
+
+
+def _write_secret(path: Path, data: bytes) -> None:
+    """Owner-only from the first byte: ``pskit_host.json`` holds tokens, ``host.env`` holds app secrets."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd = os.open(str(path), os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
+    with os.fdopen(fd, "wb") as handle:
+        handle.write(data)
+    os.chmod(path, 0o600)  # the file may already exist with a wider mode
 
 
 def _join_dir(base: str, child: str, posix: bool) -> str:
@@ -841,13 +851,31 @@ class OnPremProvider(Provider):
             "data_dir": self._data_dir_str(cfg, ctx.root, spec),
             "poll_seconds": float(options.get("poll_seconds") or 0.5),
             **{key: options[key] for key in _TUNING if key in options},
-            "admin_token": str(options.get("admin_token") or ""),
+            "admin_token": self._admin_token(ctx, host),
             "services": services,
             "resources": resources,
             "functions": functions,
             "deploy": deploy_json,
             "unit_name": unit,
         }
+
+    def _admin_token(self, ctx: RenderContext, bind: str) -> str:
+        """The configured token. A host that listens on the network never runs without one, so it gets a generated
+        token (see ``_warn_generated_token``); a loopback host may run without."""
+        token = str(ctx.config.provider.options.get("admin_token") or "")
+        if token or is_loopback_bind(bind):
+            return token
+        from ..core.onprem_placement import admin_token
+
+        return admin_token(ctx.root, ctx.config.provider.stage)
+
+    def _warn_generated_token(self, doc: TerraformDoc, ctx: RenderContext, spec: Dict[str, Any]) -> None:
+        if spec.get("admin_token") and not ctx.config.provider.options.get("admin_token"):
+            doc.warnings.append(
+                f"the host listens on {spec.get('host')} with no provider.options.admin_token, so pskit generated one "
+                f"(.pskit/onprem-{ctx.config.provider.stage}/admin-token). Callers outside pskit must send it as "
+                "x-pskit-token or PSKIT_ADMIN_TOKEN; `pskit client info` prints it."
+            )
 
     def write_project(self, ctx: RenderContext, spec: Dict[str, Any], app_dir: str = APP_DIR,
                       exclude: Tuple[str, ...] = (), requirements: Tuple[str, ...] = (),
@@ -885,12 +913,12 @@ class OnPremProvider(Provider):
                                  f" failed. Functions that need conflicting versions belong on different servers"
                                  f" (provider.options.placement).\n{exc}") from None
         text = json.dumps(spec, indent=2, sort_keys=True) + "\n"
-        _write(root / "pskit_host.json", text)
+        _write_secret(root / "pskit_host.json", text.encode("utf-8"))
         env_target = root / ENV_FILE
         options = ctx.config.provider.options
         env_source = self._env_file_path(ctx.config, ctx.root) if options.get("env_file") else None
         if env_source is not None and env_source.is_file():
-            env_target.write_bytes(env_source.read_bytes())
+            _write_secret(env_target, env_source.read_bytes())
         elif env_target.exists():
             env_target.unlink()
         _write(root / "onprem_ctl.py", _CTL)
@@ -935,6 +963,7 @@ class OnPremProvider(Provider):
             self._render_groups(doc, ctx)
             return
         spec = self._spec(ctx)
+        self._warn_generated_token(doc, ctx, spec)
         digest = self.write_project(ctx, spec)
         doc.resource(
             "terraform_data",
@@ -1087,6 +1116,7 @@ class OnPremProvider(Provider):
             spec["functions"] = {f: v for f, v in spec["functions"].items() if parsed["function_group"].get(f) == name}
             group_ctx[name] = gctx
             specs[name] = spec
+        self._warn_generated_token(doc, ctx, specs[default] if default in specs else next(iter(specs.values())))
         groups = {name: {"url": spec["endpoint"]} for name, spec in specs.items()}
         function_groups = {f: {"group": g, "timeout": cfg.timeout_of(cfg.functions[f])}
                            for f, g in parsed["function_group"].items() if f in cfg.functions}

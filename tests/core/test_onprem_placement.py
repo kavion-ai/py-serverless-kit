@@ -255,8 +255,10 @@ def _free_port() -> int:
         return int(sock.getsockname()[1])
 
 
-def _http(url: str, data: bytes = None, timeout: float = 30):  # type: ignore[assignment]
+def _http(url: str, data: bytes = None, timeout: float = 30, token: str = ""):  # type: ignore[assignment]
     req = urllib.request.Request(url, data=data, method="POST" if data is not None else "GET")
+    if token:
+        req.add_header("x-pskit-token", token)
     try:
         with urllib.request.urlopen(req, timeout=timeout) as resp:  # noqa: S310 - test hosts
             return resp.status, json.loads(resp.read().decode() or "null")
@@ -270,6 +272,7 @@ def test_groups_call_each_other(make_project, render, tmp_path):
         "            port:", f"            data_dir: {tmp_path.as_posix()}/d\n            port:", 1) + GPU_JOB,
         files=HANDLERS)
     render(project)
+    token = (project.root / ".pskit" / f"onprem-{project.config.provider.stage}" / "admin-token").read_text("utf-8")
     procs = []
     try:
         for folder in ("onprem_app", "onprem_app_gpu"):
@@ -286,22 +289,25 @@ def test_groups_call_each_other(make_project, render, tmp_path):
                     pass
                 assert time.time() < deadline, f"host on {port} did not start"
                 time.sleep(0.2)
+        # They listen on the network, so the admin API is closed without the token pskit generated.
+        assert _http(f"http://127.0.0.1:{api_port}/__pskit/stats")[0] == 401
+        assert _http(f"http://127.0.0.1:{gpu_port}/__pskit/stats")[0] == 401
         # Each server answers only the routes of its own functions (no placement.gateway): it says where to go.
         status, body = _http(f"http://127.0.0.1:{api_port}/resize")
         assert status == 404 and f"127.0.0.1:{gpu_port}/resize" in body and "runs on group gpu" in body
         assert _http(f"http://127.0.0.1:{gpu_port}/resize") == (200, {"resize": "gpu", "data": None})
         # resize is gpujob's first task: its call on the gpu host starts gpujob, which runs on the default group.
         while True:
-            items = _http(f"http://127.0.0.1:{api_port}/__pskit/executions?workflow=gpujob")[1]["items"]
+            items = _http(f"http://127.0.0.1:{api_port}/__pskit/executions?workflow=gpujob", token=token)[1]["items"]
             if items and items[0]["status"] != "RUNNING":
                 break
             assert time.time() < deadline + 15, items
             time.sleep(0.2)
-        run = _http(f"http://127.0.0.1:{api_port}/__pskit/executions/{items[0]['execution_id']}")[1]
+        run = _http(f"http://127.0.0.1:{api_port}/__pskit/executions/{items[0]['execution_id']}", token=token)[1]
         assert run["status"] == "SUCCEEDED", run
         assert run["output"] == {"step": "hello", "data": {"resize": "gpu", "data": None}}
         # pskit trigger --direct / the studio's Test: the envelope is unwrapped, and the call reaches gpu.
-        status, body = _http(f"http://127.0.0.1:{api_port}/__pskit/invoke/resize", b'{"__pskit": "invoke", "data": {"n": 1}}')
+        status, body = _http(f"http://127.0.0.1:{api_port}/__pskit/invoke/resize", b'{"__pskit": "invoke", "data": {"n": 1}}', token=token)
         assert (status, body) == (200, {"result": {"resize": "gpu", "data": {"n": 1}}})
         status, body = _http(f"http://127.0.0.1:{api_port}/hello")
         assert status == 200 and body["resize"] == {"resize": "gpu", "data": {"size": 2}}
@@ -309,7 +315,7 @@ def test_groups_call_each_other(make_project, render, tmp_path):
         assert status == 200 and body["status"] == "SUCCEEDED"
         assert body["output"] == {"resize": "gpu", "data": {"step": "hello", "data": {"x": 1}}}
         # A queue owned by the gpu group, sent to through the api host, runs the gpu group's worker.
-        status, _ = _http(f"http://127.0.0.1:{api_port}/__pskit/queues/jobs", b'{"messages": [{"message": {"n": 7}}]}')
+        status, _ = _http(f"http://127.0.0.1:{api_port}/__pskit/queues/jobs", b'{"messages": [{"message": {"n": 7}}]}', token=token)
         assert status == 202
         got = project.work_dir / "onprem_app_gpu" / "got.txt"
         while not got.is_file() and time.time() < deadline + 15:

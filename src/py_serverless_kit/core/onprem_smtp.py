@@ -46,6 +46,10 @@ def _onprem_options(raw: Optional[Dict[str, Any]]) -> Dict[str, Any]:
     return options if isinstance(options, dict) else {}
 
 
+def _stage(raw: Optional[Dict[str, Any]]) -> str:
+    return str(((raw or {}).get("provider") or {}).get("stage") or "dev")
+
+
 def admin_token(raw: Optional[Dict[str, Any]], root: Path, env_file: str) -> str:
     """The host's ``admin_token`` (``${env:NAME}`` read from the env file or this environment)."""
     from ..runtime.onprem_host import parse_env_text
@@ -63,7 +67,12 @@ def admin_token(raw: Optional[Dict[str, Any]], root: Path, env_file: str) -> str
     elif "${" in token:
         raise ServiceError("provider.options.admin_token: use a plain value or ${env:NAME} so the SMTP server can "
                            "send it to the host")
-    return token
+    if token:
+        return token
+    # No token set: a host on the network uses the generated one, which a loopback host just ignores.
+    from .onprem_placement import admin_token as generated
+
+    return generated(root, _stage(raw))
 
 
 def check(body: Dict[str, Any], raw: Optional[Dict[str, Any]], root: Path, target: Dict[str, Any]) -> Dict[str, Any]:

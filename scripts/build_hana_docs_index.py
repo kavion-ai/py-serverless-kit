@@ -9,6 +9,7 @@ Run from anywhere after changing the docs:
 from __future__ import annotations
 
 import argparse
+import gzip
 import sys
 from pathlib import Path
 
@@ -26,7 +27,8 @@ def main() -> int:
     data = docs_index.encode(cards)
     current = docs_index.INDEX.read_bytes() if docs_index.INDEX.is_file() else b""
     if args.check:
-        if current != data:
+        # The content, not the gzip bytes: those differ between zlib builds for identical input.
+        if not current or gzip.decompress(current) != gzip.decompress(data):
             print("Hana's docs index is out of date: run python scripts/build_hana_docs_index.py")
             return 1
         print(f"Hana's docs index is up to date ({len(cards)} cards).")

@@ -540,7 +540,7 @@ def _host_endpoint(project: Any, record: Optional[Dict[str, Any]]) -> str:
 def _aws_sdk_section(project: Any, record: Optional[Dict[str, Any]], key: str, native: str) -> str:
     """Existing boto3 / AWS SDK code against the host's SQS-compatible API."""
     endpoint = _host_endpoint(project, record)
-    token = bool(project.config.provider.options.get("admin_token"))
+    token = bool(((record or {}).get("spec") or {}).get("admin_token") or project.config.provider.options.get("admin_token"))
     creds = 'aws_access_key_id=os.environ["PSKIT_ADMIN_TOKEN"], aws_secret_access_key="x"' if token else (
         'aws_access_key_id="pskit", aws_secret_access_key="pskit"')
     js_creds = 'accessKeyId: process.env.PSKIT_ADMIN_TOKEN, secretAccessKey: "x"' if token else (

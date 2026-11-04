@@ -59,6 +59,13 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 from urllib.parse import parse_qsl, quote, urlsplit
 
+try:  # A vetted, constant-time implementation when it is installed; the same formats either way.
+    from cryptography.exceptions import InvalidTag
+    from cryptography.hazmat.primitives.ciphers.aead import AESGCM, ChaCha20Poly1305
+except ImportError:
+    AESGCM = ChaCha20Poly1305 = None  # type: ignore[assignment,misc]
+    InvalidTag = Exception  # type: ignore[assignment,misc]
+
 VERSION = "1.0.0"
 ENV = os.environ
 PORT = int(ENV.get("SM_PORT") or 4584)
@@ -301,7 +308,26 @@ def _ctr(cipher: _AES256, iv: bytes, start: int, data: bytes) -> bytes:
     return bytes(out)
 
 
+def _aead_seal(aead: Any, key: bytes, nonce: bytes, plain: bytes, aad: bytes) -> Tuple[bytes, bytes]:
+    sealed = aead(key).encrypt(nonce, plain, aad or None)
+    return sealed[:-16], sealed[-16:]
+
+
+def _aead_open(aead: Any, key: bytes, nonce: bytes, ct: bytes, tag: bytes, aad: bytes, name: str) -> bytes:
+    try:
+        return bytes(aead(key).decrypt(nonce, ct + tag, aad or None))
+    except InvalidTag:
+        raise DecryptError(f"{name} tag mismatch") from None
+
+
+def _vetted(key: bytes, nonce: bytes, tag: bytes = bytes(16)) -> bool:
+    """Use the ``cryptography`` package for this call? Odd sizes stay with the code below, which reports them."""
+    return AESGCM is not None and len(key) == 32 and len(nonce) == 12 and len(tag) == 16
+
+
 def aes_gcm_encrypt(key: bytes, iv: bytes, plain: bytes, aad: bytes) -> Tuple[bytes, bytes]:
+    if _vetted(key, iv):
+        return _aead_seal(AESGCM, key, iv, plain, aad)
     cipher = _AES256(key)
     h = int.from_bytes(cipher.encrypt_block(bytes(16)), "big")
     ct = _ctr(cipher, iv, 2, plain)
@@ -310,6 +336,8 @@ def aes_gcm_encrypt(key: bytes, iv: bytes, plain: bytes, aad: bytes) -> Tuple[by
 
 
 def aes_gcm_decrypt(key: bytes, iv: bytes, ct: bytes, tag: bytes, aad: bytes) -> bytes:
+    if _vetted(key, iv, tag):
+        return _aead_open(AESGCM, key, iv, ct, tag, aad, "AES-GCM")
     cipher = _AES256(key)
     h = int.from_bytes(cipher.encrypt_block(bytes(16)), "big")
     want = _xor(cipher.encrypt_block(iv + b"\0\0\0\1"), _ghash(h, aad, ct).to_bytes(16, "big"))
@@ -374,11 +402,15 @@ def _chacha_mac_data(aad: bytes, ct: bytes) -> bytes:
 
 
 def chacha20_poly1305_encrypt(key: bytes, nonce: bytes, plain: bytes, aad: bytes) -> Tuple[bytes, bytes]:
+    if _vetted(key, nonce):
+        return _aead_seal(ChaCha20Poly1305, key, nonce, plain, aad)
     ct = _chacha20(key, nonce, 1, plain)
     return ct, _poly1305(_chacha_block(key, 0, nonce)[:32], _chacha_mac_data(aad, ct))
 
 
 def chacha20_poly1305_decrypt(key: bytes, nonce: bytes, ct: bytes, tag: bytes, aad: bytes) -> bytes:
+    if _vetted(key, nonce, tag):
+        return _aead_open(ChaCha20Poly1305, key, nonce, ct, tag, aad, "ChaCha20-Poly1305")
     want = _poly1305(_chacha_block(key, 0, nonce)[:32], _chacha_mac_data(aad, ct))
     if not hmac.compare_digest(want, tag):
         raise DecryptError("ChaCha20-Poly1305 tag mismatch")

@@ -359,6 +359,10 @@ def _docker_remote_script(docker: Dict[str, Any], spec: Dict[str, Any], remote_t
     return "".join(lines)
 
 
+# Docker on Windows copies every file as 0755, whatever its mode here.
+_IMAGE_SECRETS = "RUN chmod 600 pskit_host.json && if [ -f host.env ]; then chmod 600 host.env; fi\n"
+
+
 def dockerfile_text(runtime: str, port: int, node_runtime: str = "") -> str:
     """The host image. Python services start from ``python:3.x-slim``.
 
@@ -377,6 +381,7 @@ def dockerfile_text(runtime: str, port: int, node_runtime: str = "") -> str:
             "WORKDIR /opt/pskit\n"
             "COPY staging/ /opt/pskit/app/\n"
             "COPY pskit_host.json onprem_ctl.py host.env* /opt/pskit/\n"
+            f"{_IMAGE_SECRETS}"
             "ENV PYTHONUNBUFFERED=1\n"
             f"EXPOSE {port}\n"
             'CMD ["python3", "onprem_ctl.py", "foreground"]\n'
@@ -387,6 +392,7 @@ def dockerfile_text(runtime: str, port: int, node_runtime: str = "") -> str:
         "WORKDIR /opt/pskit\n"
         "COPY staging/ /opt/pskit/app/\n"
         "COPY pskit_host.json onprem_ctl.py host.env* /opt/pskit/\n"
+        f"{_IMAGE_SECRETS}"
         "ENV PYTHONUNBUFFERED=1\n"
         f"EXPOSE {port}\n"
         'CMD ["python", "onprem_ctl.py", "foreground"]\n'
@@ -463,6 +469,8 @@ def _tar_filter(info: tarfile.TarInfo) -> tarfile.TarInfo:
     info.gname = ""
     if info.name.endswith("pskit-run.sh") or info.name == "node/bin/node":
         info.mode = 0o755
+    elif info.name in ("pskit_host.json", "host.env"):  # tokens and app secrets; also when packed on Windows
+        info.mode = 0o600
     return info
 
 
@@ -567,6 +575,7 @@ def _ssh_apply_script(spec: Dict[str, Any]) -> str:
         + 'tar -xf "$REMOTE/release.tar.gz" -C "$REMOTE"\n'
         + 'rm -f "$REMOTE/release.tar.gz"\n'
         + 'chmod 755 "$REMOTE/pskit-run.sh" 2>/dev/null || true\n'
+        + 'chmod 600 "$REMOTE/pskit_host.json" "$REMOTE/host.env" 2>/dev/null || true\n'
         + 'if [ "$INSTALL" = "systemd" ]; then\n'
         + "  if ! command -v systemctl >/dev/null 2>&1; then\n"
         + '    echo "pskit: systemd is not on this server. Set options.deploy.install: process." >&2\n'

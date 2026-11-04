@@ -58,12 +58,34 @@ def _used_ports(run: RunFn) -> List[int]:
     return [int(p) for p in text.split() if p.isdigit()]
 
 
-def _ssh_parts(target: Dict[str, Any]) -> Tuple[List[str], str, List[str]]:
+def _host_key_options(root: Path, target: Dict[str, Any]) -> Tuple[List[str], List[str]]:
+    """(docker -v mounts, ssh options) that make the terminal check the server's host key.
+
+    The container starts empty, so it needs the keys from outside or a changed key (a man in the middle) is never
+    noticed. ``known_hosts: <file>`` is strict, as on a deploy. Otherwise the first connection is trusted, as on a
+    deploy, and remembered in ``.pskit/terminal/known_hosts``; your own ~/.ssh/known_hosts is checked as well."""
+    known = str(target.get("known_hosts") or "accept-new")
+    if known not in ("accept-new", "ignore"):
+        return ["-v", f"{known}:/pskit/known_hosts:ro"], ["-o", "UserKnownHostsFile=/pskit/known_hosts",
+                                                          "-o", "StrictHostKeyChecking=yes"]
+    if known == "ignore":  # the user turned the check off for this server
+        return [], ["-o", "UserKnownHostsFile=/dev/null", "-o", "StrictHostKeyChecking=no"]
+    folder = Path(root).resolve() / ".pskit" / "terminal"
+    folder.mkdir(parents=True, exist_ok=True)
+    mounts = ["-v", f"{folder}:/pskit/hosts"]
+    files = "/pskit/hosts/known_hosts"
+    mine = Path.home() / ".ssh" / "known_hosts"
+    if mine.is_file():
+        mounts += ["-v", f"{mine}:/pskit/my_known_hosts:ro"]
+        files += " /pskit/my_known_hosts"
+    return mounts, ["-o", f"UserKnownHostsFile={files}", "-o", "StrictHostKeyChecking=accept-new"]
+
+
+def _ssh_parts(root: Path, target: Dict[str, Any]) -> Tuple[List[str], str, List[str]]:
     """(docker -v mounts, the shell prelude that prepares keys, the ssh command) for a server target."""
-    mounts: List[str] = []
+    mounts, host_key = _host_key_options(root, target)
     prelude = ["mkdir -p /root/.ssh", "chmod 700 /root/.ssh"]
-    ssh = ["ssh", "-t", "-p", str(int(target.get("port") or 22)), "-o", "StrictHostKeyChecking=accept-new",
-           "-o", "ServerAliveInterval=30"]
+    ssh = ["ssh", "-t", "-p", str(int(target.get("port") or 22)), *host_key, "-o", "ServerAliveInterval=30"]
     identity = str(target.get("identity_file") or "")
     password_file = str(target.get("password_file") or "")
     if password_file:
@@ -79,8 +101,7 @@ def _ssh_parts(target: Dict[str, Any]) -> Tuple[List[str], str, List[str]]:
         home_ssh = Path.home() / ".ssh"
         if home_ssh.is_dir():
             mounts += ["-v", f"{home_ssh}:/pskit/ssh:ro"]
-            prelude += ["cp -r /pskit/ssh/. /root/.ssh/ 2>/dev/null", "chmod 600 /root/.ssh/* 2>/dev/null",
-                        "rm -f /root/.ssh/known_hosts"]
+            prelude += ["cp -r /pskit/ssh/. /root/.ssh/ 2>/dev/null", "chmod 600 /root/.ssh/* 2>/dev/null"]
     ssh.append(f"{target['user']}@{target['host']}")
     return mounts, " && ".join(prelude) + " ; ", ssh
 
@@ -111,7 +132,7 @@ def start_terminal(
         tgt = entry["target"]
         title = f"{key} ({entry.get('service')})"
         if tgt.get("method") == "ssh":
-            mounts, prelude, ssh = _ssh_parts(tgt)
+            mounts, prelude, ssh = _ssh_parts(root, tgt)
             remote = f"if docker info >/dev/null 2>&1; then docker {inner}; else sudo -n docker {inner}; fi"
             command = prelude + "exec " + " ".join(shlex.quote(a) for a in ssh) + " " + shlex.quote(remote)
         else:
@@ -129,7 +150,7 @@ def start_terminal(
         else:
             raise TerminalError("pick a saved server, an SSH target or a service")
         title = describe_target(tgt)
-        mounts, prelude, ssh = _ssh_parts(tgt)
+        mounts, prelude, ssh = _ssh_parts(root, tgt)
         command = prelude + "exec " + " ".join(shlex.quote(a) for a in ssh)
     used = _used_ports(runner)
     port = FIRST_PORT

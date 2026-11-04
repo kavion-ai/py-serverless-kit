@@ -24,3 +24,11 @@ We aim to acknowledge reports within 3 business days and to ship a fix or mitiga
 - Created storage buckets block public access (AWS) and use uniform access (GCP).
 - `auth: none` HTTP routes are public. Use `auth: iam` or `auth: jwt` where the provider supports them.
 - Embedded workflow orchestrators get an HTTP trigger by default. Set `workflows.<name>.options.http: false` to make them invoke-only.
+- An on-prem host that listens on the network always has an admin token: `provider.options.admin_token`, or one generated into `.pskit/onprem-<stage>/admin-token`. It refuses to start without one. A loopback-only host needs no token from this machine and refuses requests driven by a web page on another site.
+- On-prem files holding secrets (`pskit_host.json`, `host.env`, the deploy record, the token files) are mode `0600`, locally, in the release archive and on the server.
+- Browser terminals remember and check SSH host keys, and refuse a server whose key changed. The first connection is trusted unless `known_hosts` names a file of pinned keys.
+
+### Known limits
+
+- The on-prem host's AWS-compatible APIs treat the access key id as a bearer token and do not verify the SigV4 signature. The host serves plain HTTP: use TLS or a tunnel on an untrusted network.
+- Service passwords are passed to `docker run` / `docker exec` as `-e NAME=value` arguments, so they are visible in the process list of the machine running them while the command runs.

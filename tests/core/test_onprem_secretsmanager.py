@@ -340,6 +340,30 @@ def test_ciphers_match_the_published_test_vectors():
             sm.aes_cbc_hmac_decrypt(key, bytes(16), ct, tag[:-1] + bytes([tag[-1] ^ 1]), b"a")
 
 
+def test_the_cryptography_package_and_the_builtin_ciphers_read_each_other(monkeypatch):
+    pytest.importorskip("cryptography")
+    sm = _crypto()
+    assert sm.AESGCM is not None
+    aead = (sm.AESGCM, sm.ChaCha20Poly1305)
+    key, nonce, plain, aad = bytes(range(32)), bytes(range(12)), b"a secret value" * 50, b"secret-id"
+    for encrypt, decrypt in ((sm.aes_gcm_encrypt, sm.aes_gcm_decrypt),
+                             (sm.chacha20_poly1305_encrypt, sm.chacha20_poly1305_decrypt)):
+        for sealed_aad in (aad, b""):
+            vetted = encrypt(key, nonce, plain, sealed_aad)
+            monkeypatch.setattr(sm, "AESGCM", None)
+            builtin = encrypt(key, nonce, plain, sealed_aad)
+            assert builtin == vetted
+            assert decrypt(key, nonce, *vetted, sealed_aad) == plain  # written by the package, read without it
+            with pytest.raises(sm.DecryptError):
+                decrypt(key, nonce, vetted[0], bytes(16), sealed_aad)
+            monkeypatch.setattr(sm, "AESGCM", aead[0])
+            assert decrypt(key, nonce, *builtin, sealed_aad) == plain  # and the other way
+            with pytest.raises(sm.DecryptError):  # a wrong tag is the same error from the package
+                decrypt(key, nonce, vetted[0], bytes(16), sealed_aad)
+    with pytest.raises(ValueError):  # a bad key size is still refused, not silently accepted
+        sm.aes_gcm_encrypt(bytes(16), nonce, plain, aad)
+
+
 @pytest.mark.parametrize("alg", list(ALGS))
 @pytest.mark.parametrize("impl", IMPLS)
 def test_values_are_encrypted_at_rest_and_both_servers_read_them(impl, alg, tmp_path):

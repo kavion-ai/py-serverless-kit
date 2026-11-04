@@ -3,6 +3,7 @@ for the real one, so nothing here needs Docker, a GPU or the network."""
 
 from __future__ import annotations
 
+import gzip
 import json
 import sys
 import threading
@@ -115,7 +116,8 @@ def test_search_docs_returns_cited_excerpts():
 def test_docs_index_is_up_to_date():
     if not (REPO / "docs").is_dir():
         pytest.skip("docs not in this checkout")
-    assert docs_index.INDEX.read_bytes() == docs_index.encode(docs_index.build(REPO)), (
+    # The content, not the gzip bytes: those differ between zlib builds for identical input.
+    assert gzip.decompress(docs_index.INDEX.read_bytes()) == gzip.decompress(docs_index.encode(docs_index.build(REPO))), (
         "docs changed: run python scripts/build_hana_docs_index.py")
 
 

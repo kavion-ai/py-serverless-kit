@@ -6,6 +6,31 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Security
+- **On-prem admin API no longer open on the network.** With no `admin_token`, a host on `0.0.0.0` (set by hand, by
+  `method: docker` or by placement groups) accepted anyone. pskit now generates a token for these hosts
+  (`.pskit/onprem-<stage>/admin-token`), and a host started on a network address with no token refuses to start.
+  **Action needed:** callers outside pskit must send the token as `x-pskit-token` / `PSKIT_ADMIN_TOKEN`
+  (`pskit client info` prints it). Re-create SMTP servers so they send it too.
+- **On-prem object keys could leave the bucket folder.** A double-encoded key (`%252E%252E%252F...`) wrote outside the
+  bucket, and the host's own code lives under the data directory. Keys are now decoded once and the resolved path is
+  checked. A key containing `%` is now stored literally, instead of being decoded a second time.
+- A loopback host without a token refuses requests from web pages on other sites and DNS rebinding.
+- `GET /__pskit/health` returns only `{"ok": true}` without the token.
+- `pskit_host.json`, `host.env` and the deploy record are mode `0600` (they were `0644`).
+- Browser terminals no longer discard SSH host keys, so a changed key (a man in the middle) is refused.
+- Tokens are compared in constant time, and the AWS access key id must equal the token rather than merely appear in
+  the header. The SigV4 signature is still not verified; this is now documented.
+- The Python Secrets Manager uses the `cryptography` package for AES-GCM and ChaCha20-Poly1305 when it is installed.
+
+### Fixed
+- `test_docs_index_is_up_to_date` and `build_hana_docs_index.py --check` compare content, not gzip bytes, which differ
+  between zlib builds.
+
+### CI
+- Python 3.9 runs on `ubuntu-24.04` (`ubuntu-latest` is 26.04, which has no 3.9 build). Pushes to `dev` run CI. Actions
+  moved to their Node 24 releases.
+
 ## [2.11.1] - 2026-11-03
 
 ### Added
