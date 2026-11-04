@@ -1,0 +1,118 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "0 3 * * 1"  # weekly, Monday 03:00 UTC: also runs the macOS tests
+  workflow_dispatch:      # "Run workflow" button: also runs the macOS tests
+
+permissions:
+  contents: read
+
+# A new push cancels the older run of the same branch / PR, so stale jobs don't hold runners.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: tests (py${{ matrix.python }}, ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        python: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+        include:
+          - os: windows-latest
+            python: "3.12"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+      - run: pip install -e ".[dev]"
+      - run: ruff check src tests
+      - run: mypy
+      # A hung test fails after 5 minutes with its stack trace instead of stalling the job.
+      - run: pytest --timeout=300 --cov=py_serverless_kit --cov-report=term-missing
+
+  # macOS runners are few and often queued for a long time, so not on every push / PR.
+  test-macos:
+    name: tests (py3.12, macos-latest)
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e ".[dev]"
+      - run: pytest --timeout=300
+
+  terraform-validate:
+    name: terraform validate (${{ matrix.provider }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        provider: [aws, azure, gcp, alibaba, oracle, ibm, digitalocean, tencent, huawei, cloudflare]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.9.8"
+          terraform_wrapper: false
+      - run: pip install -e .
+      - name: Render and validate
+        env:
+          TF_PLUGIN_CACHE_DIR: ${{ runner.temp }}/tf-cache
+        run: |
+          mkdir -p "$TF_PLUGIN_CACHE_DIR"
+          python scripts/validate_all_providers.py --provider ${{ matrix.provider }}
+
+  dashboard-ui:
+    name: dashboard and studio UI builds are committed
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: dashboard-ui/package-lock.json
+      - name: Build
+        working-directory: dashboard-ui
+        run: npm ci && npm run build
+      - name: Unit tests
+        working-directory: dashboard-ui
+        run: npm test
+      - name: template.html and studio.html match dashboard-ui/
+        run: |
+          git diff --exit-code src/py_serverless_kit/dashboard/template.html src/py_serverless_kit/studio/studio.html
+          test -z "$(git status --porcelain src/py_serverless_kit/studio/studio.html)"
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install build twine
+      - run: python -m build
+      - run: twine check --strict dist/*
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
