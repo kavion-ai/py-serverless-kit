@@ -25,6 +25,8 @@ The Keycloak service in the on-prem catalog has these settings (read from `core/
 
 ## Create Keycloak in studio
 
+![The Create Keycloak form](../../images/studio/services/keycloak.png)
+
 The studio creates Keycloak from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

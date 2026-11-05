@@ -24,6 +24,8 @@ The Qdrant service in the on-prem catalog has these settings (read from `core/on
 
 ## Create Qdrant in studio
 
+![The Create Qdrant form](../../images/studio/services/qdrant.png)
+
 The studio creates Qdrant from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

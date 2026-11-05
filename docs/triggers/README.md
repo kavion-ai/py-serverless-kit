@@ -76,6 +76,8 @@ validation (`studio/meta.py::trigger_support`). "error" fails validation; "ignor
 
 ## Add a trigger in studio
 
+![The trigger cards in the Create function wizard](../images/studio/function-trigger-cards.png)
+
 Every pskit trigger is added the same way in studio.
 
 1. Sidebar **Functions** → click the function (or **+ Create function**).

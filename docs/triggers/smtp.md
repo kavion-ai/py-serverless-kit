@@ -76,6 +76,8 @@ function may see the same mail twice. pskit does not check spam, viruses, SPF, D
 
 ## Add an SMTP trigger in studio
 
+![The E-mail (SMTP) trigger form](../images/studio/trigger-smtp.png)
+
 The pskit studio flow creates the SMTP server and the trigger together.
 
 1. Make sure the provider is **onprem** (the **+ SMTP server** button is disabled otherwise).

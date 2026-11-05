@@ -24,6 +24,8 @@ The Grafana service in the on-prem catalog has these settings (read from `core/o
 
 ## Create Grafana in studio
 
+![The Create Grafana form](../../images/studio/services/grafana.png)
+
 The studio creates Grafana from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

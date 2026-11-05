@@ -26,6 +26,8 @@ The Redis service in the on-prem catalog has these settings (read from `core/onp
 
 ## Create Redis in studio
 
+![The Create Redis form](../../images/studio/services/redis.png)
+
 The studio creates Redis from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

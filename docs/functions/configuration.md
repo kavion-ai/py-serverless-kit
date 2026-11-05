@@ -56,6 +56,8 @@ functions:
 
 ## Set function settings in studio
 
+![Function settings in the wizard](../images/studio/function-basics.png)
+
 The pskit studio function wizard holds every key. Open **Functions**, click the function name (or **+ Create
 function**).
 

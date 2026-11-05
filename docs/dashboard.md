@@ -29,6 +29,8 @@ pskit dashboard -d path/to/project
 
 ## What it shows
 
+![The deployment dashboard](images/studio/dashboard.png)
+
 **Overview:** summary cards (deployments, functions with the HTTP count, workflows, resources, providers), then a sortable, filterable, paginated table of deployments with provider and tier, status (`deployed`, `removed`, `local`), region, endpoint and last update. Light and dark themes follow the system setting, and a toggle remembers your choice.
 
 **Deployment page** (click a row). The header shows region, update time, artifact hash, endpoint and pskit version. On premises in live mode it adds cards for uptime, invocations, errors and queued messages. The tabs are:

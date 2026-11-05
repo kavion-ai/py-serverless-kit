@@ -25,6 +25,8 @@ The Kafka service in the on-prem catalog has these settings (read from `core/onp
 
 ## Create Kafka in studio
 
+![The Create Kafka form](../../images/studio/services/kafka.png)
+
 The studio creates Kafka from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

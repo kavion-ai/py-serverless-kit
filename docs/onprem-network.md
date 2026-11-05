@@ -199,9 +199,14 @@ firewall change; they reach servers over SSH.
 
 ## Example: one load balancer, two placement groups
 
-```
-users ──80──► lb1 ──8080──► app1 (group api, default)  ◄──8080──►  gpu1 (group gpu)
-admin ──22──► lb1, app1, gpu1
+```mermaid
+flowchart LR
+    users["Users"] -->|"80"| lb1
+    lb1 -->|"8080"| app1["app1<br/>group api, default"]
+    app1 <-->|"8080"| gpu1["gpu1<br/>group gpu"]
+    admin["Admin"] -->|"22"| lb1
+    admin -->|"22"| app1
+    admin -->|"22"| gpu1
 ```
 
 ```bash

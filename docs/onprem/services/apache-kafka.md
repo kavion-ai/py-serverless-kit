@@ -25,6 +25,8 @@ The Apache Kafka service in the on-prem catalog has these settings (read from `c
 
 ## Create Apache Kafka in studio
 
+![The Create Apache Kafka form](../../images/studio/services/apache-kafka.png)
+
 The studio creates Apache Kafka from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

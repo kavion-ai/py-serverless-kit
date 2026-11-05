@@ -65,6 +65,8 @@ software to **install** on a server (Docker, Python, Node.js, nginx, ...): see
 
 ## How the studio groups the on-prem service catalog
 
+![The service catalog](../../images/studio/service-catalog.png)
+
 The studio's *Create a service* drawer shows the on-prem service catalog in groups. Each card shows the label, a
 short note, the port and the web UI.
 
@@ -83,6 +85,10 @@ short note, the port and the web UI.
 | Install on a server: ... | Docker, Python, Node.js, Java, Go, nginx, Caddy, Certbot, PM2, Git, basic tools |
 
 ## Create an on-prem service in studio
+
+![The service catalog with its databases](../../images/studio/service-catalog-databases.png)
+
+![The Create PostgreSQL form](../../images/studio/database-form.png)
 
 An on-prem service is created from the **Resources** page. These steps are the same for every service; each
 service page lists the fields that differ.
@@ -161,6 +167,8 @@ fake-gcs-server, SMTP server, Prometheus, Mosquitto, Jaeger) refuse a user or pa
 Gitea and Nginx Proxy Manager ask you to create their admin account on the first visit, so leave both empty.
 
 ## Manage an on-prem service from its row
+
+![A service row with its buttons](../../images/studio/database-listed.png)
 
 Each created on-prem service is a row in the *On-prem services* card (columns Key, Service, Used as, Where,
 Endpoint). The buttons:

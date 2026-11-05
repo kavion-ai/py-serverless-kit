@@ -25,6 +25,8 @@ The Nginx Proxy Manager service in the on-prem catalog has these settings (read 
 
 ## Create Nginx Proxy Manager in studio
 
+![The Create Nginx Proxy Manager form](../../images/studio/services/nginx-proxy-manager.png)
+
 The studio creates Nginx Proxy Manager from the *Resources* page, with a form that checks every field before it
 starts:
 

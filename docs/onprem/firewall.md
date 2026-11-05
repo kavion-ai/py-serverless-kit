@@ -43,6 +43,8 @@ These commands also print their rules: `pskit cluster create`, `pskit cluster jo
 
 ## See the firewall rules in studio
 
+![The Firewall panel with the ports of a server](../images/studio/firewall.png)
+
 The studio shows the same firewall rules in a **Firewall** panel on three pages, and in each job's output:
 
 1. **Deploy**: the **Firewall** panel below the deploy job, for the project's servers.

@@ -24,6 +24,8 @@ The n8n service in the on-prem catalog has these settings (read from `core/onpre
 
 ## Create n8n in studio
 
+![The Create n8n form](../../images/studio/services/n8n.png)
+
 The studio creates n8n from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

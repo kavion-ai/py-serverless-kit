@@ -77,6 +77,8 @@ and then raise the replicas.
 
 ## Set up capacity alerts when a cluster is full in studio
 
+![The When every server is full section](../../images/studio/cluster-alert.png)
+
 Capacity alerts call one of your functions and / or POST to a webhook when the cluster is full, at most once per
 cooldown (default 30 minutes).
 

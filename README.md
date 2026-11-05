@@ -480,19 +480,33 @@ On premises, queues can also live in Redis or other drivers, storage in MinIO or
 
 ## How it works
 
-```
- pskit studio ──► pskit.yml ──► provider validation ──► packager ──────────► artifact.zip
-                                (capabilities,           (your code + pskit
-                                 limits, runtimes)        runtime + manifest + shim)
-                                        │
-                                        ▼
-                              provider renderer ──► .pskit/<provider>-<stage>/main.tf.json
-                                                              │ terraform init / apply
-                                                              ▼
-                                       deployment.json ──► dashboard/index.html
+**At deploy time**, your project becomes Terraform:
 
- At runtime:  cloud event ──► shim ──► runtime adapter for the cloud ──► Event ──► your handler
-              your result ──► Response / raw value ──► adapter ──► native cloud response
+```mermaid
+flowchart LR
+    studio["pskit studio"] --> yml["pskit.yml"]
+    yml --> validate["Provider validation<br/>capabilities, limits, runtimes"]
+    validate --> pack["Packager<br/>your code, pskit runtime,<br/>manifest and shim"]
+    pack --> zip["artifact.zip"]
+    zip --> render["Provider renderer"]
+    render --> tf["main.tf.json"]
+    tf -->|"terraform init and apply"| record["deployment.json"]
+    record --> dash["dashboard/index.html"]
+```
+
+**At run time**, the same handler answers on every cloud:
+
+```mermaid
+sequenceDiagram
+    participant Cloud as Cloud platform
+    participant Shim
+    participant Adapter as Runtime adapter
+    participant Handler as Your handler
+    Cloud->>Shim: Native event
+    Shim->>Adapter: Forward the event
+    Adapter->>Handler: Portable Event and Context
+    Handler-->>Adapter: Response or plain value
+    Adapter-->>Cloud: Native response
 ```
 
 More: [docs/architecture.md](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs/architecture.md).

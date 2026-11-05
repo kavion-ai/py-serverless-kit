@@ -39,22 +39,26 @@ deploy_docs/          # maintainer docs (publishing, contributing)
 
 ### How a deploy flows through the code
 
-```
-pskit deploy
-  -> config.loader.load_config       read YAML, extends, providers:/stages: overrides, ${...} variables
-  -> core.project.Project            pick provider, add embedded-workflow orchestrator functions
-  -> Provider.validate               capability / limit checks -> Issues
-  -> packaging.build_artifact        sources + vendored runtime + manifest + provider shim -> artifact.zip
-  -> Provider.render                 TerraformDoc -> .pskit/<provider>-<stage>/main.tf.json
-  -> terraform init/apply            TerraformRunner
-  -> core.describe.build_record      terraform outputs -> deployment.json
-  -> dashboard.write_dashboard       .pskit/dashboard/index.html
+```mermaid
+flowchart TD
+    deploy["pskit deploy"] --> load["config.loader.load_config<br/>read YAML, extends, overrides, variables"]
+    load --> project["core.project.Project<br/>pick the provider, add orchestrator functions"]
+    project --> validate["Provider.validate<br/>capability and limit checks: Issues"]
+    validate --> build["packaging.build_artifact<br/>sources, runtime, manifest, shim: artifact.zip"]
+    build --> render["Provider.render<br/>TerraformDoc: main.tf.json"]
+    render --> tf["terraform init and apply<br/>TerraformRunner"]
+    tf --> record["core.describe.build_record<br/>terraform outputs: deployment.json"]
+    record --> dash["dashboard.write_dashboard<br/>.pskit/dashboard/index.html"]
 ```
 
 At runtime in the cloud:
 
-```
-platform -> shim (e.g. pskit_entry.handler) -> runtime.adapters.<cloud> -> runtime.dispatch.execute -> your handler
+```mermaid
+flowchart LR
+    platform["Platform"] --> shim["Shim<br/>e.g. pskit_entry.handler"]
+    shim --> adapter["runtime.adapters.cloud"]
+    adapter --> dispatch["runtime.dispatch.execute"]
+    dispatch --> handler["Your handler"]
 ```
 
 ## Development setup

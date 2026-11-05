@@ -25,6 +25,8 @@ The LocalStack service in the on-prem catalog has these settings (read from `cor
 
 ## Create LocalStack in studio
 
+![The Create LocalStack form](../../images/studio/services/localstack.png)
+
 The studio creates LocalStack from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

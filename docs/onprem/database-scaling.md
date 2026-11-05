@@ -38,6 +38,8 @@ On-prem database replication follows these rules (pskit refuses other layouts wi
 
 ## Create a replicated database in studio
 
+![The Replication box of the Create PostgreSQL form](../images/studio/replication.png)
+
 The studio creates a replicated database from the **Resources** page.
 
 1. Save every server first (**Resources → Servers**): one for the primary, one per replica, and one for the load

@@ -103,6 +103,8 @@ Bound functions lose its `PSKIT_RESOURCE_*` variables.
 
 ## Open the How to use guide of a resource
 
+![The How to use guide of a database](../images/studio/service-how-to-use.png)
+
 **How to use** on a resource row opens an end-to-end guide for that resource, for the top bar's provider and stage,
 built from the saved `pskit.yml`: the library to install for Python and Node.js, the `pskit.yml` and trigger, handler
 code, local tests (`pskit invoke`, `pskit dev`), deployed tests and provider notes. On premises it adds complete

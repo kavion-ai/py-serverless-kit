@@ -55,6 +55,8 @@ The host polls each bucket (`provider.options.poll_seconds`) and turns new and d
 
 ## Attach a cloud resource in studio
 
+![The Add resource drawer with its on-premises driver list](../images/studio/resource-add.png)
+
 The studio attaches a cloud queue or bucket to on-prem functions through the resource drawer's driver picker.
 
 1. Open **Resources** and click **+ Add resource**.

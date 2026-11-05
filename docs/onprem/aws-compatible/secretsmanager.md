@@ -63,6 +63,8 @@ Error responses are JSON (`{"__type": "<code>", "message": "..."}` and the `x-am
 
 ## Create the Secrets Manager server in studio
 
+![The Create AWS Secrets Manager compatible form](../../images/studio/services/secretsmanager.png)
+
 The Secrets Manager server is created from the *Resources* page in studio:
 
 1. Open **Resources** in the sidebar.

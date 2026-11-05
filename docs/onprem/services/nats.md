@@ -25,6 +25,8 @@ The NATS JetStream service in the on-prem catalog has these settings (read from 
 
 ## Create NATS JetStream in studio
 
+![The Create NATS JetStream form](../../images/studio/services/nats.png)
+
 The studio creates NATS JetStream from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

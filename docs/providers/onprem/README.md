@@ -213,6 +213,8 @@ The bundle is written to `.pskit/onprem-<stage>/onprem_app/`. See [deploy-method
 
 ## Deploy on premises in studio
 
+![A finished on-prem deploy with every step done](../../images/studio/deploy-done.png)
+
 1. Run `pskit studio --open`.
 2. **Overview & provider** -> click the **On-premises** card -> confirm the switch.
 3. Set **Port** (and **Bind address** `0.0.0.0` for a server). In **On-premises deployment** pick a **Saved server** or

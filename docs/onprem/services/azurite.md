@@ -26,6 +26,8 @@ The Azurite service in the on-prem catalog has these settings (read from `core/o
 
 ## Create Azurite in studio
 
+![The Create Azurite form](../../images/studio/services/azurite.png)
+
 The studio creates Azurite from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

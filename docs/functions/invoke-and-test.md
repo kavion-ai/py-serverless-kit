@@ -107,6 +107,10 @@ Example project: `examples/09-function-invoke`.
 
 ## Test a function in studio
 
+![The Test page with an event](../images/studio/test.png)
+
+![The result of a local run](../images/studio/test-result.png)
+
 The pskit studio **Test** page runs a function locally or sends a real event to the deployment.
 
 1. In the sidebar click **Test** (or click **Test** on a row of the **Functions** page).

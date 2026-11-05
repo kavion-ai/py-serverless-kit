@@ -24,6 +24,8 @@ The KeyDB service in the on-prem catalog has these settings (read from `core/onp
 
 ## Create KeyDB in studio
 
+![The Create KeyDB form](../../images/studio/services/keydb.png)
+
 The studio creates KeyDB from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

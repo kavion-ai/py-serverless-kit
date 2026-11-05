@@ -24,6 +24,8 @@ The Portainer service in the on-prem catalog has these settings (read from `core
 
 ## Create Portainer in studio
 
+![The Create Portainer form](../../images/studio/services/portainer.png)
+
 The studio creates Portainer from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

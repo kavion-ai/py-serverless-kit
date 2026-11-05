@@ -2,30 +2,53 @@
 
 pskit has two halves:
 
-- **Deploy-time** (the `pskit` CLI): turns `pskit.yml` into a deterministic zip plus Terraform JSON, and runs Terraform.
-- **Run-time** (`py_serverless_kit.runtime`): a standard-library-only package copied into every bundle. It translates each cloud's native events into one portable model and calls your handler.
+- **Deploy-time** (the `pskit` CLI and `pskit studio`): turns `pskit.yml` into a deterministic zip plus Terraform JSON, and runs Terraform.
+- **Run-time** (`py_serverless_kit.runtime`, or `runtime_js` for Node.js): a package with no third-party dependencies, copied into every bundle. It translates each cloud's native events into one portable model and calls your handler.
+
+## Overview
+
+```mermaid
+flowchart TB
+    subgraph you["You"]
+        studio["pskit studio<br/>web UI and Hana"]
+        cli["pskit CLI"]
+    end
+    subgraph deploy["Deploy-time, on your machine"]
+        yml["pskit.yml"]
+        vault[".pskit-vault/<br/>encrypted team secrets"]
+        pipe["Config, validation, packaging<br/>and Terraform rendering"]
+        tf["Terraform or OpenTofu"]
+    end
+    subgraph run["Run-time, inside every bundle"]
+        shim["Provider shim"]
+        adapter["Runtime adapter"]
+        dispatch["Dispatch"]
+        handler["Your Python or Node.js handler"]
+    end
+    studio -->|"edits"| yml
+    studio -->|"starts pskit jobs"| cli
+    cli --> pipe
+    yml --> pipe
+    vault -.->|"decrypted after login"| pipe
+    pipe --> tf
+    tf -->|"creates functions, triggers and resources"| target["AWS, Azure, GCP and 7 more clouds,<br/>or your own servers"]
+    target --> shim
+    shim --> adapter --> dispatch --> handler
+```
 
 ## Deploy pipeline
 
-```
-pskit.yml (+ extends, providers:, stages:, CLI flags)
-   │  config/loader.py      merge layers, resolve ${env|opt|self|file}
-   ▼
-ServiceConfig (pydantic)    config/schema.py - strict validation
-   │  core/project.py       pick Provider, default runtime, add <wf>-orchestrator functions
-   ▼
-Provider.validate()         capability / limit checks -> errors & warnings
-   │  packaging/builder.py
-   ▼
-.pskit/<provider>-<stage>/
-   ├── build/               sources + py_serverless_kit/runtime + pskit_manifest.json + shim
-   ├── artifact.zip         deterministic (sorted entries, fixed timestamps)
-   │  Provider.render()     providers/<cloud>.py -> TerraformDoc
-   ├── main.tf.json         Terraform JSON (no HCL templating)
-   │  terraform init / apply   terraform/runner.py
-   ├── terraform.tfstate    (unless provider.state configures a backend)
-   │  core/describe.py      `terraform output pskit` + config
-   └── deployment.json  ──► dashboard/generator.py ──► .pskit/dashboard/index.html
+```mermaid
+flowchart TD
+    yml["pskit.yml<br/>extends, providers:, stages:, CLI flags"]
+    yml -->|"config/loader.py: merge layers, resolve variables"| config["ServiceConfig<br/>config/schema.py: strict pydantic validation"]
+    config -->|"core/project.py: pick the Provider, add orchestrator functions"| validate["Provider.validate()<br/>capability and limit checks: errors and warnings"]
+    validate -->|"packaging/builder.py, packaging/node.py"| build["build/<br/>sources, runtime, pskit_manifest.json, shim"]
+    build --> zip["artifact.zip<br/>deterministic: sorted entries, fixed timestamps"]
+    zip -->|"Provider.render(): providers/cloud.py"| tf["main.tf.json<br/>Terraform JSON, no HCL templating"]
+    tf -->|"terraform/runner.py: init and apply"| state["terraform.tfstate<br/>unless provider.state sets a backend"]
+    state -->|"core/describe.py: terraform output pskit, plus config"| record["deployment.json"]
+    record -->|"dashboard/generator.py"| dash[".pskit/dashboard/index.html"]
 ```
 
 Key properties:
@@ -34,6 +57,8 @@ Key properties:
 - **Reproducible artifacts.** The zip is byte-identical for identical inputs. Unchanged code means an unchanged hash and no redeploy.
 - **One directory per provider and stage.** Each has its own Terraform workspace and state, so `aws-dev` and `gcp-prod` never interfere.
 - **Every provider emits a `pskit` output** with the shape `{functions: {name: {id, arn?, url?, base_url?, console?}}, workflows: {...}, endpoint}`. `pskit info` and the dashboard use only this output, which keeps them provider-agnostic.
+
+Everything from `build/` to `deployment.json` lives in `.pskit/<provider>-<stage>/`.
 
 ## Bundle layout
 
@@ -56,24 +81,23 @@ At run time the host keeps its state under `data_dir`: `queues/`, `buckets/`, `t
 
 ## Runtime flow
 
-```
-cloud platform
-   │ native event + context
-   ▼
-shim (generated, 2-3 lines)
-   ▼
-runtime/adapters/<cloud>.py
-   │ to_event(): HTTP / queue / topic / storage / schedule / __pskit envelope -> Event
-   │ to_context(): request id, deadline, memory -> Context
-   ▼
-runtime/dispatch.py  execute(event, ctx, function)
-   │ resolve function in pskit_manifest.json (or $PSKIT_FUNCTION / $PSKIT_HANDLER)
-   │ HTTP: route match -> path_params, 405, CORS preflight
-   │ import handler (cached), call fn(event[, ctx]), await if coroutine
-   │ HTTP: coerce result -> Response, map HttpError/exceptions -> JSON errors, log request
-   │ other: return result / re-raise for platform retries; BatchResult semantics
-   ▼
-adapter: Response/result -> native response
+```mermaid
+sequenceDiagram
+    participant Cloud as Cloud platform
+    participant Shim as Shim (generated)
+    participant Adapter as runtime/adapters/cloud.py
+    participant Dispatch as runtime/dispatch.py
+    participant Handler as Your handler
+    Cloud->>Shim: Native event and context
+    Shim->>Adapter: Forward them
+    Note over Adapter: to_event() turns HTTP, queue, topic, storage, schedule<br/>and the __pskit envelope into an Event<br/>to_context() builds the Context: request id, deadline, memory
+    Adapter->>Dispatch: execute(event, ctx, function)
+    Note over Dispatch: Find the function in pskit_manifest.json or the environment<br/>HTTP: match the route, path params, 405, CORS preflight
+    Dispatch->>Handler: Import once, then call fn(event[, ctx])
+    Handler-->>Dispatch: Result, await it if it is a coroutine
+    Note over Dispatch: HTTP: make a Response, map errors to JSON, log the request<br/>Other: return the result or re-raise for platform retries, BatchResult
+    Dispatch-->>Adapter: Response or result
+    Adapter-->>Cloud: Native response
 ```
 
 **The `__pskit` envelope.** Payloads that pskit itself produces are wrapped as `{"__pskit": "<schedule|workflow|invoke>", "data": ...}`. These are schedule inputs, workflow task inputs and `invoke()` calls. Because the adapter can recognise the envelope, the handler sees the right `event.type` even on clouds where everything arrives as HTTP (GCP, IBM, DigitalOcean, Cloudflare, Oracle). On those clouds, failures come back as `500 {"errorType", "cause"}` so native workflows can match errors by exception name.
@@ -83,6 +107,83 @@ adapter: Response/result -> native response
 **Resources.** `resources:` entries become `PSKIT_RESOURCE_<KEY>_*` environment variables (`ServiceConfig.binding_environment`, plus provider-known ARNs/URLs/ids), and `runtime/resources.py` reads them back. On premises, an event's `driver` binding makes the host's `Broker` use `runtime/drivers/redis.py` (queues) or `runtime/drivers/s3.py` (storage) instead of directories.
 
 **On-premises observability.** `runtime/hostlog.py` captures logging, stdout/stderr, one entry per invocation, and host notes into a ring buffer plus `<data_dir>/logs/host.jsonl`, tagged per thread with the current function and request id. The host serves it at `/__pskit/logs`, with counters at `/__pskit/stats`. `pskit logs` and `pskit dashboard --serve` (`dashboard/server.py`) read those endpoints through `core/onprem_control.py`, which keeps the admin token server-side. `core/cloud_logs.py` puts one interface (query, streams, delete) over the host and the cloud log services (CloudWatch Logs, Cloud Logging, Log Analytics) so the CLI, dashboard and studio share it.
+
+## Workflow engines
+
+The same `workflows:` definition runs on the engine of the target:
+
+```mermaid
+flowchart LR
+    wf["workflows: in pskit.yml"] --> aws["workflows/asl.py<br/>AWS Step Functions"]
+    wf --> gcp["workflows/gcp.py<br/>Google Cloud Workflows"]
+    wf --> azure["workflows/azure_logic.py<br/>Azure Logic Apps, with engine: native"]
+    wf --> embedded["runtime/workflow.py<br/>built-in engine, in a generated orchestrator function"]
+```
+
+## Node.js services
+
+A service is either Python or Node.js, chosen by `provider.runtime`. The config, validation and Terraform steps are the
+same. Only the packaging and the runtime differ:
+
+```mermaid
+flowchart LR
+    src["JavaScript or TypeScript handlers"] --> node["packaging/node.py<br/>compile TypeScript, install or bundle npm packages"]
+    node --> bundle["Bundle with pskit_runtime/<br/>copied from runtime_js/, no dependencies"]
+    bundle --> cloud["A cloud's Node.js runtime"]
+    bundle --> host["On-prem host<br/>runtime/node_worker.py runs one worker per function"]
+```
+
+`pskit_manifest.json` is the same as for Python. `runtime_js/` has its own `dispatch.js`, `workflow.js` and `adapters/`.
+
+## On-premises host
+
+On premises there is no cloud platform, so the bundle runs under a long-lived host process, `runtime/onprem_host.py`. It
+is started on this machine, over SSH, in Docker or on a scaling cluster.
+
+```mermaid
+flowchart TB
+    users["Users and other programs"] -->|"HTTP routes and /__pskit API"| host["pskit host<br/>runtime/onprem_host.py"]
+    timer["Schedules"] --> host
+    drivers["Queues, buckets and topics:<br/>files, Redis, S3, or cloud services"] --> host
+    smtp["SMTP server"] -->|"POST /__pskit/smtp/key"| host
+    host --> dispatch["runtime/dispatch.py, or a Node.js worker"]
+    dispatch --> handler["Your handlers"]
+    host --> workflow["runtime/workflow.py<br/>workflow executions"]
+    host --> logs["runtime/hostlog.py<br/>logs and invocation stats"]
+    host <-->|"function groups: runtime/peers.py"| peers["Hosts on other servers"]
+```
+
+## Studio and Hana
+
+`pskit studio` is a local web server. Every call needs the token printed at start, and it edits the same `pskit.yml` the
+CLI uses.
+
+```mermaid
+flowchart LR
+    browser["Browser<br/>studio.html, built from dashboard-ui"] -->|"HTTP with the session token"| server["studio/server.py"]
+    server -->|"read and save"| yml["pskit.yml and code"]
+    server -->|"sys.executable -m py_serverless_kit"| jobs["studio/jobs.py<br/>validate, plan, deploy, ..."]
+    jobs --> tf["The deploy pipeline"]
+    server --> auth["studio/auth.py<br/>login, permissions, audit"]
+    server --> hana["studio/hana/<br/>router, tools, docs index"]
+    hana --> model["Model on this machine or your server"]
+```
+
+## Accounts and the vault
+
+In a team project, `.env` files and `.pskit` settings are stored encrypted in `.pskit-vault/`, which is committed. Each
+step of a login needs the one before it, so no single secret opens the data. Details:
+[Accounts, encrypted project data and the audit log](security-vault.md).
+
+```mermaid
+flowchart LR
+    master["Master key"] --> accounts["Accounts file<br/>vault.json"]
+    password["Password"] --> private["Account's private key"]
+    accounts --> private
+    private --> keys["Data keys of the areas<br/>this account may read"]
+    keys --> files["Decrypted to the normal paths<br/>until logout"]
+    recovery["Recovery code and master key"] -.->|"new admin password"| accounts
+```
 
 ## State handling
 

@@ -26,6 +26,8 @@ The MongoDB service in the on-prem catalog has these settings (read from `core/o
 
 ## Create MongoDB in studio
 
+![The Create MongoDB form](../../images/studio/services/mongodb.png)
+
 The studio creates MongoDB from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

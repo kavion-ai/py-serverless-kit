@@ -3,10 +3,11 @@
 A load balancer is a saved server that runs OpenResty (nginx with Lua) in Docker and spreads HTTP requests over
 the servers that run your functions. One load balancer can serve **many projects and clusters by path**:
 
-```
-http://lb1/xyz/...   ->  project xyz (its servers)
-http://lb1/abc/...   ->  project abc
-http://lb1/yyy/...   ->  every deployment on cluster prod, by service name
+```mermaid
+flowchart LR
+    lb["Load balancer lb1"] -->|"http://lb1/xyz/..."| xyz["Project xyz<br/>its servers"]
+    lb -->|"http://lb1/abc/..."| abc["Project abc"]
+    lb -->|"http://lb1/yyy/..."| prod["Every deployment on cluster prod,<br/>by service name"]
 ```
 
 You can have several load balancers (`edge`, `internal`, ...). Each has a default algorithm; a project can pick
@@ -34,6 +35,8 @@ server's response header time. A server that fails is retried on the next one an
 `weight` (1..100, per saved server) is used by weighted round robin, least connections and least time.
 
 ## Create one and put projects on it
+
+![The New load balancer drawer](images/studio/balancer.png)
 
 ```bash
 pskit resources onprem servers add lb1 --host 10.0.0.9 --user ubuntu --key ~/.ssh/lb1.pem

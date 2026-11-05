@@ -51,6 +51,8 @@ must stay in the default group.
 
 ## Split functions across servers in studio (Deploy page)
 
+![Functions split into two groups on the Deploy page](../images/studio/placement.png)
+
 The studio edits placement on the **Deploy** page, in the **Where functions run** box.
 
 1. Open **Deploy**. In **Where functions run** pick **Split functions across servers** (instead of **All functions
@@ -67,6 +69,8 @@ The studio edits placement on the **Deploy** page, in the **Where functions run*
 6. Save and deploy. After the deploy each group shows its endpoint.
 
 ## Put one function in a group in studio (Functions page)
+
+![The Runs on field in the Create function wizard](../images/studio/function-basics.png)
 
 The **Functions** page has a **Runs on** field per function.
 

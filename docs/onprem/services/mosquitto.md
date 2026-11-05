@@ -25,6 +25,8 @@ The Eclipse Mosquitto service in the on-prem catalog has these settings (read fr
 
 ## Create Eclipse Mosquitto in studio
 
+![The Create Eclipse Mosquitto form](../../images/studio/services/mosquitto.png)
+
 The studio creates Eclipse Mosquitto from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

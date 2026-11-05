@@ -30,6 +30,8 @@ A typed SSH password is saved to `.pskit/ssh/<user>@<host>-<port>.pass` (owner-o
 
 ## Add a server in studio
 
+![The Add a server drawer](../images/studio/server-add.png)
+
 The studio adds a saved server from the *Servers* card on the Resources page, or from the Overview page.
 
 1. Open **Resources** in the sidebar and scroll to the *On-prem services* card. The **Servers** card is inside it.

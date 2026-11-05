@@ -133,6 +133,8 @@ pskit cluster requests prod --follow
 
 ## Alert when every cluster server is full
 
+![The When every server is full section](../images/studio/cluster-alert.png)
+
 The **When every server is full** card calls a function and / or a webhook when no server has room.
 
 1. Set the limits: **CPU full at %**, **Memory full at %**, **Disk full at %**.

@@ -73,6 +73,8 @@ Studio also refuses requests with a foreign `Host` header or a cross-site `Origi
 
 ## The studio sidebar map
 
+![The studio with its sidebar](../images/studio/overview.png)
+
 The studio sidebar lists the same 13 pages for every provider, in this order. A number next to **Functions**,
 **Workflows** and **Resources** counts the entries; a red number counts validation problems on that page.
 
@@ -103,6 +105,8 @@ Panels that are not sidebar pages have their own guides: [Hana, the AI assistant
 [Monitoring and alerts](monitoring.md).
 
 ## The studio top bar
+
+![The top bar: provider, stage, validation, undo and Save](../images/studio/provider-switch.png)
 
 The studio top bar is the same on every page:
 

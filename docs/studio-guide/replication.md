@@ -9,6 +9,8 @@ How replication works per engine is in [Database scaling](../onprem/database-sca
 
 ## Create a replicated database in studio
 
+![The Replication box of the Create PostgreSQL form](../images/studio/replication.png)
+
 The **Scaling** field of the Create a service drawer turns replication on for databases that support it.
 
 1. Open **Resources** → **On-prem services** → **+ Create service** and pick a database card (for example

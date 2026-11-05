@@ -27,6 +27,8 @@ The PostgreSQL service in the on-prem catalog has these settings (read from `cor
 
 ## Create PostgreSQL in studio
 
+![The Create PostgreSQL form](../../images/studio/services/postgres.png)
+
 The studio creates PostgreSQL from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

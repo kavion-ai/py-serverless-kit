@@ -53,6 +53,8 @@ retry rules apply.
 
 ## Add a schedule trigger in studio
 
+![The Schedule trigger form](../images/studio/trigger-schedule.png)
+
 1. Sidebar **Functions** → open the function → **2 Triggers** → card **Schedule** (default `rate: 5 minutes`).
 2. **Run**: choose one of
    - **Every…**: **Interval** number plus `minute` / `hour` / `day`, or a preset chip (`1 minute`, `5 minutes`,

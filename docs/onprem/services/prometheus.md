@@ -25,6 +25,8 @@ The Prometheus service in the on-prem catalog has these settings (read from `cor
 
 ## Create Prometheus in studio
 
+![The Create Prometheus form](../../images/studio/services/prometheus.png)
+
 The studio creates Prometheus from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

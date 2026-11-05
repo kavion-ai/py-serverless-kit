@@ -27,18 +27,16 @@ SSH server / Scaling cluster*.
 
 Each deployment (`pskit-<service>-<stage>`) runs the function host image as two workloads:
 
-```
-                      users ──► :8080 (Swarm mesh / k3s ServiceLB / each Nomad server)
-                                   │
-              ┌────────────────────┼────────────────────┐
-              ▼                    ▼                    ▼
-         web replica          web replica          web replica        ← `replicas` copies, spread over servers
-     (HTTP routes, invoke)  (HTTP routes, invoke)  (HTTP routes, invoke)
-              │ queues, topics, buckets, workflows, logs, /__pskit admin
-              └────────────────────┼────────────────────┘
-                                   ▼
-                          main replica (1, on the master)
-        schedules · built-in queues / topics / buckets · workflow executions · logs · stats · data volume
+```mermaid
+flowchart TB
+    users["Users"] --> mesh["Port 8080<br/>Swarm mesh, k3s ServiceLB or each Nomad server"]
+    mesh --> web1["Web replica<br/>HTTP routes, invoke"]
+    mesh --> web2["Web replica<br/>HTTP routes, invoke"]
+    mesh --> web3["Web replica<br/>HTTP routes, invoke"]
+    web1 -->|"queues, topics, buckets,<br/>workflows, logs, /__pskit admin"| main
+    web2 --> main
+    web3 --> main
+    main["Main replica: one, on the master<br/>schedules, built-in queues, topics and buckets,<br/>workflow executions, logs, stats, data volume"]
 ```
 
 * **web** replicas serve your HTTP routes and `invoke()` calls. Adding replicas or servers adds HTTP capacity.
@@ -68,6 +66,8 @@ While that wait runs, the deploy prints each Nomad allocation and the main repli
 they happen. If the port never answers, the output ends with `nomad job status` and those logs.
 
 ## Set up
+
+![The New scaling cluster drawer](images/studio/cluster-new.png)
 
 1. **Save the servers** (once): *Resources → On-prem services → Servers → + Add server*, or
 
@@ -204,12 +204,12 @@ connections (the default) or least time; `--weight edge1=3` per server; see
 To share one load balancer between clusters and projects by path instead (`http://lb/<service>/`), attach a
 named one: `pskit lb attach edge --cluster prod` ([load balancers](load-balancers.md)).
 
-```
-                users ──► http://<lb1>/  (nginx on lb1, port 80)
-                              │  fewest open connections first
-            ┌─────────────────┼─────────────────┐
-            ▼                 ▼                 ▼
-     edge1 (master)       edge2 (join)      edge3 (join)      :8080 on each
+```mermaid
+flowchart TB
+    users["Users"] --> lb["http://lb1/<br/>nginx on lb1, port 80"]
+    lb -->|"fewest open connections first"| edge1["edge1, master<br/>port 8080"]
+    lb --> edge2["edge2, joined<br/>port 8080"]
+    lb --> edge3["edge3, joined<br/>port 8080"]
 ```
 
 ```bash
@@ -332,6 +332,10 @@ the tail reads every server's own buffer and shows them together. A web replica'
 server cannot reach the main replica. Picking one server in the Logs view reads that server only.
 
 ## Monitor, scale and add servers when it is full
+
+![A cluster with its servers](images/studio/cluster-card.png)
+
+*The example servers here are placeholders, so they show as offline. A live server shows its CPU, memory and disk.*
 
 The studio's **Scaling cluster** page shows every server's CPU (over one second), memory and disk with the
 limits, the orchestrator's view (ready, drained, offline), each deployment's running / desired replicas, and

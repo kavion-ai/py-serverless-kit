@@ -30,6 +30,8 @@ Every command that loads the project accepts `-s`: `validate`, `package`, `plan`
 
 ## Choose the stage in studio
 
+![The provider and stage in the top bar](../images/studio/provider-switch.png)
+
 Studio has two stage settings:
 
 - **Top bar → stage**: the stage that **Validate**, the **Deploy** page, **Test** and **Logs** use. It starts with

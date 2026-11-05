@@ -26,6 +26,8 @@ The SMTP server service in the on-prem catalog has these settings (read from `co
 
 ## Create SMTP server in studio
 
+![The Create SMTP server form](../../images/studio/services/smtp.png)
+
 The studio creates SMTP server from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

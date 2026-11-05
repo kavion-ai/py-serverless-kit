@@ -25,6 +25,8 @@ The ElasticMQ service in the on-prem catalog has these settings (read from `core
 
 ## Create ElasticMQ in studio
 
+![The Create ElasticMQ form](../../images/studio/services/elasticmq.png)
+
 The studio creates ElasticMQ from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

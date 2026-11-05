@@ -5,11 +5,20 @@ events by hand, a SAM template and a hand-written ASL state machine. `after/` is
 service on py-serverless-kit. It deploys to AWS first, unchanged in behaviour, and then
 to GCP, Azure or any other supported cloud by changing the provider.
 
-```
-before/                              after/
-  lambda_function.py   ──────────►     app/orders.py      (business logic kept)
-  template.yaml        ──┐
-  state_machine.asl.json ┴─────────►   pskit.yml          (functions + triggers + workflow)
+```mermaid
+flowchart LR
+    subgraph before["before/"]
+        lambda["lambda_function.py"]
+        template["template.yaml"]
+        asl["state_machine.asl.json"]
+    end
+    subgraph after["after/"]
+        orders["app/orders.py<br/>business logic kept"]
+        yml["pskit.yml<br/>functions, triggers and workflow"]
+    end
+    lambda --> orders
+    template --> yml
+    asl --> yml
 ```
 
 ## Step 1 · Inventory what you have

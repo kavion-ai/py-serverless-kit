@@ -23,6 +23,8 @@ The Typesense service in the on-prem catalog has these settings (read from `core
 
 ## Create Typesense in studio
 
+![The Create Typesense form](../../images/studio/services/typesense.png)
+
 The studio creates Typesense from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

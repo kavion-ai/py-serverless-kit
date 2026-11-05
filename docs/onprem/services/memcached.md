@@ -24,6 +24,8 @@ The Memcached service in the on-prem catalog has these settings (read from `core
 
 ## Create Memcached in studio
 
+![The Create Memcached form](../../images/studio/services/memcached.png)
+
 The studio creates Memcached from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

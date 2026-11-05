@@ -14,6 +14,8 @@ nothing you type is sent to a cloud.
 
 ## Open the chat
 
+![A question and answer in the Hana panel](images/studio/hana-chat.png)
+
 Click Hana's round avatar at the bottom right of every studio page, or press **Ctrl+I** (**Cmd+I** on macOS). The
 chat window stays open while you move between pages; Hana is told which page you are on, the provider and the
 stage selected in the top bar.
@@ -122,6 +124,8 @@ Nothing runs until you click. The outcome ("Saved server app-1, SSH test passed"
 continue ("now create redis on it").
 
 ## Where Hana runs
+
+![Where should Hana run? in the Hana panel](images/studio/hana-setup.png)
 
 The first time, the panel asks where the model should run:
 

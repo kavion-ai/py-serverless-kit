@@ -20,9 +20,19 @@ The orders service on premises uses five Linux servers reachable over SSH (root,
 | `db2` | 10.0.0.12 | PostgreSQL read replica, Redis cache, MinIO bucket |
 | `lb1` | 10.0.0.9 | the load balancer (OpenResty), outside the cluster |
 
-```text
-users -> lb1:80 (/orders/) -> app1:8080, app2:8080 (Swarm)  -> pgpool db1:6432 -> postgres db1 (writes), db2 (reads)
-                                                             -> redis db2:6379, minio db2:9000
+```mermaid
+flowchart LR
+    users["Users"] -->|"/orders/"| lb1["lb1:80"]
+    lb1 --> app1["app1:8080<br/>Swarm"]
+    lb1 --> app2["app2:8080<br/>Swarm"]
+    app1 --> pgpool["pgpool db1:6432"]
+    app2 --> pgpool
+    pgpool -->|"writes"| db1["postgres db1"]
+    pgpool -->|"reads"| db2["postgres db2"]
+    app1 --> redis["redis db2:6379"]
+    app2 --> redis
+    app1 --> minio["minio db2:9000"]
+    app2 --> minio
 ```
 
 On your own machine you need pskit, OpenSSH (`ssh`, `scp`) and Docker (a cluster deploy builds the image here).

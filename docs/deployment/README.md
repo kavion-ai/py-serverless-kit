@@ -256,6 +256,8 @@ needs.
 
 ## Deploy from studio on the Deploy page
 
+![The Deploy page](../images/studio/deploy.png)
+
 The studio **Deploy** page runs the same `pskit` commands in the project folder, with your shell's credentials.
 
 1. Start studio: `pskit studio --open`.
@@ -279,6 +281,8 @@ locally** (`pskit workflow run --history`) and **Recent jobs**. Click a job to s
 forget one, or **Clear finished** to forget all finished jobs. Only one deploy-type job runs at a time.
 
 ## Follow an on-prem deploy step by step in studio
+
+![A finished deploy with every step done](../images/studio/deploy-done.png)
 
 For on-prem **Deploy** and **Remove** jobs the studio output has two tabs: **Steps** and **Raw log**. The Steps tab
 splits the job into rows that show *waiting*, *running*, *done*, *failed* or *cancelled*:

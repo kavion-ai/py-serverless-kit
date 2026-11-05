@@ -25,6 +25,8 @@ The RabbitMQ service in the on-prem catalog has these settings (read from `core/
 
 ## Create RabbitMQ in studio
 
+![The Create RabbitMQ form](../../images/studio/services/rabbitmq.png)
+
 The studio creates RabbitMQ from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

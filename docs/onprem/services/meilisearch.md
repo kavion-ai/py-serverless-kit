@@ -24,6 +24,8 @@ The Meilisearch service in the on-prem catalog has these settings (read from `co
 
 ## Create Meilisearch in studio
 
+![The Create Meilisearch form](../../images/studio/services/meilisearch.png)
+
 The studio creates Meilisearch from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

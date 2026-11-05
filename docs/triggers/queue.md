@@ -82,6 +82,8 @@ Raising an exception instead fails the whole batch on every cloud.
 
 ## Add a queue trigger in studio
 
+![The Queue trigger form](../images/studio/trigger-queue.png)
+
 1. Sidebar **Functions** → open the function → **2 Triggers** → card **Queue** (default name `<function>-jobs`,
    `batch_size: 10`).
 2. **Source**:

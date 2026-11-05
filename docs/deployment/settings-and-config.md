@@ -228,6 +228,8 @@ is missing, so CI can stop early.
 
 ## Fix setup problems in studio on Setup & credentials
 
+![The Setup & credentials page](../images/studio/setup.png)
+
 The studio **Setup & credentials** page runs the same checks and can fix several of them in place.
 
 1. Click **Setup & credentials** in the sidebar.

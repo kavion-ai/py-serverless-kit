@@ -53,6 +53,8 @@ follow the stage's last deploy. Every option, the docker and cluster variants an
 
 ## Set up an on-prem project in studio, step by step
 
+![The Overview & provider page](../images/studio/overview.png)
+
 An on-prem project in studio goes from nothing to deployed functions with a service in these steps:
 
 1. Start studio with `pskit studio` in the project folder (see [studio guide](../studio-guide/README.md)).

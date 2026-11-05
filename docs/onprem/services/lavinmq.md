@@ -24,6 +24,8 @@ The LavinMQ service in the on-prem catalog has these settings (read from `core/o
 
 ## Create LavinMQ in studio
 
+![The Create LavinMQ form](../../images/studio/services/lavinmq.png)
+
 The studio creates LavinMQ from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

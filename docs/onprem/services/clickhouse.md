@@ -24,6 +24,8 @@ The ClickHouse service in the on-prem catalog has these settings (read from `cor
 
 ## Create ClickHouse in studio
 
+![The Create ClickHouse form](../../images/studio/services/clickhouse.png)
+
 The studio creates ClickHouse from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

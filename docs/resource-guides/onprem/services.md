@@ -77,6 +77,8 @@ with the main port: a second RabbitMQ on port 5682 gets its UI on 15682.
 
 ## In the studio
 
+![The service catalog](../../images/studio/service-catalog.png)
+
 1. **Resources → + On-prem service** (or *On-prem services → + Create service*, or *Add resource → Create a <type> on
    premises*).
 2. Pick a service. For Redis / Valkey choose **Queue** (list), **Stream** (consumer group) or **Cache**.

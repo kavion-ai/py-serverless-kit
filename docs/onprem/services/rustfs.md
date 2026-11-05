@@ -24,6 +24,8 @@ The RustFS service in the on-prem catalog has these settings (read from `core/on
 
 ## Create RustFS in studio
 
+![The Create RustFS form](../../images/studio/services/rustfs.png)
+
 The studio creates RustFS from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

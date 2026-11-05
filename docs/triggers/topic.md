@@ -54,6 +54,8 @@ the delivery. `BatchResult` works as for queues ([queue.md](queue.md#retry-only-
 
 ## Add a topic trigger in studio
 
+![The Topic trigger form](../images/studio/trigger-topic.png)
+
 1. Sidebar **Functions** → open the function → **2 Triggers** → card **Topic** (default name `<function>-events`).
 2. **Source**: **Create new topic** (**Topic name**, optionally **Create & select**), **Project resource (N)**,
    **Pick from <provider>** (AWS, GCP with `google-cloud-pubsub`, on premises; others ask you to type the name) or

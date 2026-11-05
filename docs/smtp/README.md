@@ -16,12 +16,12 @@ It takes three steps:
 
 ## How it works
 
-```
-sender's mail server ──SMTP:25──> SMTP server (Docker: Node.js smtp-server + mailparser)
-                                     │ refuses mail for other domains (never a relay)
-                                     │ parses the mail
-                                     └─HTTP POST /__pskit/smtp/<key>──> pskit host ──> every function with
-                                                                                       `smtp: {resource: <key>}`
+```mermaid
+flowchart LR
+    sender["Sender's mail server"] -->|"SMTP, port 25"| smtp["SMTP server in Docker<br/>Node.js smtp-server and mailparser"]
+    smtp -->|"mail for other domains"| refused["Refused: never a relay"]
+    smtp -->|"parsed mail: HTTP POST /__pskit/smtp/key"| host["pskit host"]
+    host --> fn["Every function with<br/>smtp: {resource: key}"]
 ```
 
 - The SMTP server is a `node:22-alpine` container that runs a small script (`core/onprem_smtp.js`) using nodemailer's
@@ -41,6 +41,8 @@ sender's mail server ──SMTP:25──> SMTP server (Docker: Node.js smtp-serv
   typed in yourself is kept.
 
 ## Create it
+
+![The Create SMTP server form](../images/studio/smtp-form.png)
 
 In the studio: **Resources → + SMTP server**.
 

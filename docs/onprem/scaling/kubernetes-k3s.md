@@ -21,6 +21,8 @@ A Kubernetes (k3s) cluster needs:
 
 ## Create a Kubernetes (k3s) cluster in studio
 
+![The New scaling cluster drawer. Pick Kubernetes (k3s) as the orchestrator](../../images/studio/cluster-new.png)
+
 The studio creates a k3s cluster from the **Scaling cluster** page.
 
 1. Open **Scaling cluster** in the sidebar and click **+ New cluster**.

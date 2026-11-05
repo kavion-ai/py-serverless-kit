@@ -7,6 +7,8 @@ file or its own folder with its own dependencies) and how to write the handler i
 
 ## Create a function in studio
 
+![Step 1 of the Create function wizard: Basics](../images/studio/function-basics.png)
+
 The studio **Functions** page has a four-step wizard that writes the `functions:` entry for you and can create the
 handler code.
 

@@ -113,10 +113,13 @@ ciphertext. File names are hidden too. Your code is not encrypted, so that it st
 
 **At login.** Each step needs the one before it:
 
-```text
-master key  ->  accounts file
-password    ->  your private key
-private key ->  the keys of the areas your account may read  ->  those files are decrypted
+```mermaid
+flowchart LR
+    master["Master key"] --> accounts["Accounts file"]
+    accounts --> private["Your private key"]
+    password["Password"] --> private
+    private --> keys["Keys of the areas<br/>your account may read"]
+    keys --> files["Those files are decrypted"]
 ```
 
 So someone with only the master key, or only a username and password, gets nothing. Each kind of data (env files,

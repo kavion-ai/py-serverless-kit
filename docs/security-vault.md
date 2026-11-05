@@ -9,6 +9,8 @@ This page is the reference.
 
 ## First start
 
+![Who will use this project?](images/studio/first-start.png)
+
 `pskit studio` on a new project asks who will use it:
 
 * **Just me, on this computer:** no login, no master key, nothing encrypted and nothing added to git. Everything works
@@ -33,6 +35,8 @@ git push
 ```
 
 ## Logging in
+
+![The login screen: master key, username and password](images/studio/login.png)
 
 Every login needs three things: the **master key**, a **username** and a **password**. Each does a different job:
 
@@ -126,6 +130,8 @@ expiring (12 hours) encrypts and removes the plaintext. After a crash, the next 
 
 ## Permissions
 
+![Adding a user and ticking permissions per feature](images/studio/permissions.png)
+
 Admins can do everything. For a user, the admin ticks create, read, update and delete per feature in **Users & audit**,
 or runs:
 
@@ -148,6 +154,8 @@ Use a dedicated account with only the permissions it needs. Keep these in your C
 profile or a file on your computer saves the key on disk, which is what pskit no longer does.
 
 ## Audit log
+
+![The audit log](images/studio/audit.png)
 
 Every change, refused action, login (also failed ones), deploy, job result, CLI command and account change is recorded
 with the user, time, machine and target. Secret values never are. See it in **Users & audit** or with:

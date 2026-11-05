@@ -25,6 +25,8 @@ Open http://127.0.0.1:8770/#token=q3V...  (Ctrl+C to stop)
 
 ## What you can do
 
+![The studio with its sidebar and provider cards](images/studio/overview.png)
+
 | Page | What it does |
 |---|---|
 | **New project** | Appears when the folder has no `pskit.yml`: service name, one of the 11 providers, starter template |

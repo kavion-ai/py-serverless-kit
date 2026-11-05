@@ -91,6 +91,8 @@ cluster or this machine, and a port when two groups share a server.
 
 ## How the groups work together
 
+![Functions split into two groups on the Deploy page](images/studio/placement.png)
+
 Every group is an independent host. Each one knows where every function lives and calls the others over HTTP
 with a shared secret (`.pskit/onprem-<stage>/peer-token`, out of git):
 

@@ -31,6 +31,8 @@ The AWS Secrets Manager compatible service in the on-prem catalog has these sett
 
 ## Create AWS Secrets Manager compatible in studio
 
+![The Create AWS Secrets Manager compatible form](../../images/studio/services/secretsmanager.png)
+
 The studio creates AWS Secrets Manager compatible from the *Resources* page, with a form that checks every field
 before it starts:
 

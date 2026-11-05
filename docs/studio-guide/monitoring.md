@@ -26,6 +26,8 @@ pskit resources onprem servers top app-1
 
 ## Watch a service's containers in studio
 
+![Live monitoring of a PostgreSQL service](../images/studio/service-monitor.png)
+
 The **Live monitoring** switch in a service's **Details** turns on measuring ("On (every 5 s)"). Nothing is measured
 while it is off.
 
@@ -39,6 +41,8 @@ pskit resources onprem monitor orders-db --watch 5
 ```
 
 ## Turn on alerts for an on-prem service
+
+![The Details of a service with its alert settings](../images/studio/service-details.png)
 
 The **Alerts** card in a service's **Details** (and the **Alerts** box when you create a database) sends an alert when
 a container crosses a limit. The badge says **on** or **off**; "last check" shows the last result.

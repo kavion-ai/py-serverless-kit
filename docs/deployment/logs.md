@@ -149,6 +149,8 @@ Studio checks these packages on **Setup & credentials** (*Python package ...*, m
 
 ## Read logs in studio on the Logs page
 
+![Live logs of a deployed project](../images/studio/logs.png)
+
 The studio **Logs** page shows a live tail of the deployment chosen in the top bar.
 
 1. In the top bar, pick the provider in **validate & deploy as** and type the **stage**.

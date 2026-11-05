@@ -8,20 +8,20 @@ An order pipeline that uses **every state type**, written once and compiled to:
 | GCP | native | Google Cloud Workflows |
 | Azure and the other 7 clouds | embedded | an extra `order-pipeline-orchestrator` function running the pskit engine |
 
-```
-Validate ──catch ValueError──────────────────────────────► Rejected (fail)
-   │
- Route (choice)
-   ├─ total > 1000 AND NOT vip ─► ManualReview (wait 30s) ─┐
-   ├─ channel == b2b OR currency == CHF ─► Invoice (pass) ──┼──────────────┐
-   └─ default ──────────────────────────────────────────────┤              │
-                                                            ▼              │
-                       Reserve (map over items, 5 at a time) ─catch OutOfStock─► Rejected
-                                                            │              │
-                       Charge (retry PaymentGatewayTimeout x3,             │
-                               catch PaymentDeclined ─► Declined (fail))   │
-                                                            ▼              ▼
-                                   Fulfil (parallel: Confirm ‖ Ship) ─► Done (succeed)
+```mermaid
+flowchart TD
+    Validate["Validate<br/>task"] -->|"catch ValueError"| Rejected(["Rejected<br/>fail"])
+    Validate --> Route{"Route<br/>choice"}
+    Route -->|"total > 1000 and not vip"| ManualReview["ManualReview<br/>wait 30 s"]
+    Route -->|"channel is b2b or currency is CHF"| Invoice["Invoice<br/>pass"]
+    Route -->|"default"| Reserve["Reserve<br/>map over items, 5 at a time"]
+    ManualReview --> Reserve
+    Invoice --> Fulfil
+    Reserve -->|"catch OutOfStock"| Rejected
+    Reserve --> Charge["Charge<br/>task, retry PaymentGatewayTimeout"]
+    Charge -->|"catch PaymentDeclined"| Declined(["Declined<br/>fail"])
+    Charge --> Fulfil["Fulfil<br/>parallel: Confirm and Ship"]
+    Fulfil --> Done(["Done<br/>succeed"])
 ```
 
 ## State types used

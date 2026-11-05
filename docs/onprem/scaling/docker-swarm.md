@@ -27,6 +27,8 @@ A Docker Swarm cluster needs a few things on your machine and on the servers:
 
 ## Create a Docker Swarm cluster in studio
 
+![The New scaling cluster drawer with Docker Swarm selected](../../images/studio/cluster-new.png)
+
 The studio creates a Docker Swarm cluster from the **Scaling cluster** page.
 
 1. Open **Scaling cluster** in the sidebar.

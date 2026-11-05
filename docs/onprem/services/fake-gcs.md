@@ -24,6 +24,8 @@ The fake-gcs-server service in the on-prem catalog has these settings (read from
 
 ## Create fake-gcs-server in studio
 
+![The Create fake-gcs-server form](../../images/studio/services/fake-gcs.png)
+
 The studio creates fake-gcs-server from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

@@ -24,6 +24,8 @@ The Uptime Kuma service in the on-prem catalog has these settings (read from `co
 
 ## Create Uptime Kuma in studio
 
+![The Create Uptime Kuma form](../../images/studio/services/uptime-kuma.png)
+
 The studio creates Uptime Kuma from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

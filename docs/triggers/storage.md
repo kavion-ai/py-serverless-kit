@@ -64,6 +64,8 @@ connection ([../onprem/resources.md](../onprem/resources.md)). Return a `BatchRe
 
 ## Add a storage trigger in studio
 
+![The Storage trigger form](../images/studio/trigger-storage.png)
+
 1. Sidebar **Functions** → open the function → **2 Triggers** → card **Storage** (default bucket
    `<function>-uploads`, `events: [created]`).
 2. **Source**: **Create new bucket** (**Bucket name**, optionally **Create & select** to add it to Resources),

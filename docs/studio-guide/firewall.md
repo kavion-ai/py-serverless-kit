@@ -13,6 +13,8 @@ The rules themselves and how to apply them in a cloud firewall are in [On-prem f
 
 ## Read the firewall panel in studio
 
+![The Firewall panel with the ports of a server](../images/studio/firewall.png)
+
 The studio Firewall panel has one block per server (name and address).
 
 1. Open the panel (Deploy → **Firewall**, or a cluster or load balancer page). **Refresh** reads the rules again; the

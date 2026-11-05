@@ -69,6 +69,8 @@ Node.js: `event.http.pathParams`, `event.http.json()`.
 
 ## Add an HTTP trigger in studio
 
+![The HTTP endpoint trigger form](../images/studio/function-trigger-http.png)
+
 1. Sidebar **Functions** → open the function → **2 Triggers** → card **HTTP endpoint**.
 2. **Route**: pick the method and type the path (default `/<function-name>`). Path parameters appear in a hint with
    the `event.http.path_params[...]` expression.

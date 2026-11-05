@@ -35,6 +35,8 @@ A Nomad cluster needs:
 
 ## Create a Nomad cluster in studio
 
+![The New scaling cluster drawer. Pick HashiCorp Nomad as the orchestrator](../../images/studio/cluster-new.png)
+
 The studio creates a Nomad cluster from the **Scaling cluster** page.
 
 1. Open **Scaling cluster** and click **+ New cluster**.

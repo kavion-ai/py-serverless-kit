@@ -26,6 +26,8 @@ The MySQL service in the on-prem catalog has these settings (read from `core/onp
 
 ## Create MySQL in studio
 
+![The Create MySQL form](../../images/studio/services/mysql.png)
+
 The studio creates MySQL from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

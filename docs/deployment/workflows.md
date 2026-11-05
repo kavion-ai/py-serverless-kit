@@ -77,6 +77,10 @@ operators (`equals`, `gt`, `in`, `matches`, `is_present`, `and`, `or`, `not`, ..
 
 ## Build a workflow in the studio builder
 
+![The workflow builder](../images/studio/workflow.png)
+
+![A selected state and its settings](../images/studio/workflow-state.png)
+
 The studio **Workflows** page draws the workflow as a diagram and writes `workflows:` for you.
 
 1. Click **Workflows** in the sidebar, then **+ Create workflow**.

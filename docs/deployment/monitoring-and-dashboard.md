@@ -53,6 +53,8 @@ rules are in [dashboard.md](../dashboard.md#live-mode).
 
 ## What the deployment dashboard shows
 
+![The deployment dashboard](../images/studio/dashboard.png)
+
 The overview page has summary cards (deployments, functions, workflows, resources, providers) and a table of
 deployments: provider and tier, status (`deployed`, `removed`, `local`), region, endpoint, last update. Click a row
 for one deployment:
@@ -115,6 +117,8 @@ A server that can't be reached shows the SSH error instead. Which projects use a
 same list ([servers](../onprem/servers.md)).
 
 ## Monitor an on-prem service live
+
+![Live monitoring of a PostgreSQL service](../images/studio/service-monitor.png)
 
 On-prem services (Redis, PostgreSQL, MySQL, MariaDB, MongoDB, MinIO, ...) have live monitoring. pskit measures every
 container of the service: CPU and memory (`docker stats`), how full the data disk is, and for PostgreSQL, MySQL,

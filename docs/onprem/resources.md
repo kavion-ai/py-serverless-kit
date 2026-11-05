@@ -90,6 +90,8 @@ resources:
 
 ## Add or edit a resource in studio
 
+![The Add resource drawer](../images/studio/resource-add.png)
+
 The resource drawer edits any resource, including the on-prem driver.
 
 1. Open **Resources** and click **+ Add resource** (or click a resource name to open *Resource &lt;key&gt;*).

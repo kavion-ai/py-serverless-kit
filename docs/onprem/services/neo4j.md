@@ -24,6 +24,8 @@ The Neo4j service in the on-prem catalog has these settings (read from `core/onp
 
 ## Create Neo4j in studio
 
+![The Create Neo4j form](../../images/studio/services/neo4j.png)
+
 The studio creates Neo4j from the *Resources* page, with a form that checks every field before it starts:
 
 1. Open the **Resources** page in the sidebar.

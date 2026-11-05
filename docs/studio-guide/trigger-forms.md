@@ -15,6 +15,8 @@ example, `auth: jwt` is not supported on Azure, and a timezone is ignored by som
 
 ## Add an HTTP endpoint trigger in studio
 
+![The HTTP endpoint trigger form](../images/studio/function-trigger-http.png)
+
 The HTTP endpoint form ("Call the function with an HTTP request (API route)") writes an `http:` event.
 
 1. **Route** (required): pick the method (`GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `ANY`, ...) and type the path,
@@ -39,6 +41,8 @@ More: [HTTP triggers](../triggers/http.md).
 
 ## Add a schedule trigger in studio
 
+![The Schedule trigger form](../images/studio/trigger-schedule.png)
+
 The Schedule form ("Run on a timer: every N minutes, at a set time, or a cron expression") writes a `schedule:` event.
 **Run** has three modes:
 
@@ -58,6 +62,12 @@ A rate runs every N units from deploy time. Days after the 28th are skipped in s
 More: [Schedule triggers](../triggers/schedule.md).
 
 ## Add a queue, storage or topic trigger in studio
+
+![The Queue trigger form](../images/studio/trigger-queue.png)
+
+![The Storage trigger form](../images/studio/trigger-storage.png)
+
+![The Topic trigger form](../images/studio/trigger-topic.png)
 
 The Queue, Storage and Topic forms share one layout. **Source** has four choices:
 
@@ -105,6 +115,8 @@ instead**. What each provider can list:
 | Others | Not available | type the name |
 
 ## Add an e-mail (SMTP) trigger in studio
+
+![The E-mail (SMTP) trigger form](../images/studio/trigger-smtp.png)
 
 The E-mail (SMTP) form ("Run when mail arrives for your domain", on premises) writes an `smtp:` event.
 

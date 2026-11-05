@@ -9,6 +9,8 @@ section of the [Deploy page](deploy.md) (target provider `onprem`) and the **Run
 
 ## Split functions across servers in studio
 
+![Functions split into two groups on the Deploy page](../images/studio/placement.png)
+
 The **Where functions run** section on the Deploy page (hint `provider.options.placement`) turns placement on.
 
 1. Open **Deploy** with the top bar on `onprem`, and open **Where functions run**.

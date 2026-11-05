@@ -79,6 +79,8 @@ Use the provider capability matrix and these questions to pick a provider:
 
 ## Switch a project to another provider in studio
 
+![Google Cloud Functions picked in the top bar](../images/studio/provider-switch.png)
+
 Switching provider in studio keeps your old settings so you can switch back.
 
 1. Run `pskit studio --open` in the project folder.
