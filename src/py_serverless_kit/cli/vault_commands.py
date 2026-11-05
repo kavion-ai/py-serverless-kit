@@ -268,6 +268,20 @@ def vault_rotate(directory: str) -> None:
     click.echo(f"NEW MASTER KEY  {key}\nCommit .pskit-vault/ and give the key to the developers. Shown only once.")
 
 
+@vault_group.command("rotate-recovery-code")
+@_DIR
+@_guarded
+def vault_rotate_recovery(directory: str) -> None:
+    """Replace the recovery code, e.g. after it leaked or was lost. All encrypted data gets new keys."""
+    from ..vault import workspace as ws
+
+    vault = _vault(directory)
+    session = _admin(vault)
+    code = ws.rotate_recovery(vault, session.identity)
+    ws.log(vault, session, "vault.rotate-recovery-code")
+    click.echo(f"NEW RECOVERY CODE  {code}\nKeep it offline. Shown only once. Commit and push .pskit-vault/ now.")
+
+
 @vault_group.command("recover")
 @click.option("-u", "--username", prompt="Admin account to recover")
 @_DIR

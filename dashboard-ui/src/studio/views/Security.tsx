@@ -267,6 +267,7 @@ function Users() {
   const [presets, setPresets] = useState<Record<string, Perms>>({});
   const [error, setError] = useState<string | null>(null);
   const [newKey, setNewKey] = useState<string | null>(null);
+  const [newCode, setNewCode] = useState<string | null>(null);
   const load = useCallback(() => {
     Promise.all([api.authUsers(), api.authFeatures()]).then(
       ([u, f]) => {
@@ -292,6 +293,17 @@ function Users() {
       api.authRotateMaster().then((r) => setNewKey(r.master_key), (exc: unknown) => toast(errorMessage(exc), "err"));
     });
   };
+  const rotateRecovery = () => {
+    void confirm({
+      title: "Replace the recovery code?",
+      body: "The old code stops working and all encrypted data gets new keys. Do this when the code leaked or was lost. Teammates keep their passwords and the master key.",
+      danger: true,
+      confirmLabel: "Replace it",
+    }).then((yes) => {
+      if (!yes) return;
+      api.authRotateRecovery().then((r) => setNewCode(r.recovery_code), (exc: unknown) => toast(errorMessage(exc), "err"));
+    });
+  };
   return (
     <div className="stack">
       <NewUser features={features} presets={presets} onCreated={load} />
@@ -310,6 +322,21 @@ function Users() {
         ) : (
           <button type="button" className="btn btn-danger btn-sm" onClick={rotate}>
             Replace the master key
+          </button>
+        )}
+      </div>
+      <div className="card card-pad stack">
+        <b>Recovery code</b>
+        {newCode ? (
+          <>
+            <p>
+              <b>Copy the new code now, it is shown only once.</b> Keep it offline, then commit and push <code className="mono">.pskit-vault/</code>.
+            </p>
+            <code className="mono auth-secret-value">{newCode}</code>
+          </>
+        ) : (
+          <button type="button" className="btn btn-danger btn-sm" onClick={rotateRecovery}>
+            Replace the recovery code
           </button>
         )}
       </div>

@@ -4,6 +4,9 @@
 encrypted form lives in `.pskit-vault/`, which **is** committed. Accounts control who can decrypt what and who can do
 what, and everything is logged.
 
+New to this? Start with the step-by-step guide: [Accounts and team setup in studio](studio-guide/accounts-and-team.md).
+This page is the reference.
+
 ## First start
 
 `pskit studio` on a new project asks who will use it:
@@ -16,7 +19,7 @@ As the admin of a team project you then get two secrets, **shown only once**:
 
 | Secret | Who has it | What it does |
 | --- | --- | --- |
-| **Master key** (`pskm-...`) | Every developer of the project | Needed at every login, together with a username and password. pskit never saves it, so keep it in a password manager |
+| **Master key** (`pskm-...`) | Every developer of the project | Needed at every login, together with a username and password. pskit does not keep it after you log out, so store it in a password manager |
 | **Recovery code** (`pskr-...`) | The admin, offline | Together with the master key, sets a new admin password if every admin password is lost |
 
 pskit also encrypts the secrets the project already has and adds `.pskit/`, `.env` and `.env.*` to `.gitignore`. If git
@@ -28,6 +31,33 @@ git add .pskit-vault .gitignore
 git commit -m "chore: add encrypted project data"
 git push
 ```
+
+## Logging in
+
+Every login needs three things: the **master key**, a **username** and a **password**. Each does a different job:
+
+1. The master key opens the encrypted accounts file. It decrypts no data by itself.
+2. The password opens that account's private key.
+3. The private key opens the data keys of the areas that account may read, and only those.
+
+So two people with the same master key can see different data, and a stolen password is useless without the master key.
+
+You stay logged in until one of these happens, and then the next login asks for all three again:
+
+* you log out;
+* the session expires, after 12 hours;
+* for the studio, it stops or crashes.
+
+For a terminal, `pskit login` lasts until you run `pskit logout` or the 12 hours end, so commands in between do not ask
+again. The studio and the terminal log in separately.
+
+**Deleting `.pskit/` is not logging out.** After deleting it, the next login still needs all three and restores the
+encrypted files from `.pskit-vault/`. But if you were logged in when you deleted it:
+
+* `.env` files stay as plaintext, because they are outside `.pskit/`. Delete them yourself, or use `pskit logout` first;
+* changes in `.pskit/` that were not encrypted yet are lost;
+* generated build output such as `.pskit/<provider>-<stage>/main.tf.json` does not come back, because it is not in the
+  vault. The next `pskit deploy` writes it again.
 
 ## Using pskit without accounts
 
@@ -114,7 +144,8 @@ judged like this, so treat update on **Code** as able to change them.
 A studio route or CLI command with no entry in `vault/permissions.py` is admin-only.
 
 For scripts and CI, set `PSKIT_MASTER_KEY`, `PSKIT_USER` and `PSKIT_PASSWORD`: the command logs in, runs and logs out.
-Use a dedicated account with only the permissions it needs.
+Use a dedicated account with only the permissions it needs. Keep these in your CI's secret store: writing them in a shell
+profile or a file on your computer saves the key on disk, which is what pskit no longer does.
 
 ## Audit log
 
@@ -135,6 +166,8 @@ but git history shows it.
 
 * Anyone who can read the repository but has no master key sees only ciphertext.
 * A developer with the master key and an account cannot decrypt areas their account does not hold, even outside pskit.
+* Someone who learns a username and password but has no master key cannot log in, on any computer. This assumes nobody is
+  logged in there and no old `~/.pskit/vault-keys/` file is left.
 
 **Not protected. Plan for these:**
 
@@ -171,6 +204,7 @@ but git history shows it.
 | --- | --- |
 | Your password | An admin runs `pskit vault users reset-password` |
 | Every admin password | `pskit vault recover`, with the recovery code **and** the master key |
+| The recovery code, or it leaked | An admin runs `pskit vault rotate-recovery-code` or uses **Replace the recovery code** in **Users & audit**. All encrypted data gets new keys, so push right away. Old commits stay readable with the old code and the master key they used |
 | The master key | An admin who is still logged in runs `pskit vault rotate-master-key` to get a new one. The recovery code cannot replace it |
 | The master key, with no admin logged in | The data cannot be recovered. That is by design |
 
@@ -185,4 +219,5 @@ but git history shows it.
 | `pskit vault users list\|add\|set\|reset-password\|remove` | Manage accounts |
 | `pskit vault audit` | Read the log |
 | `pskit vault rotate-master-key` | Replace the master key |
+| `pskit vault rotate-recovery-code` | Replace the recovery code, and give all encrypted data new keys |
 | `pskit vault recover` | Use the recovery code and the master key to set a new admin password |

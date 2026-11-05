@@ -28,6 +28,10 @@ All notable changes to this project are documented here. The format follows [Kee
 - New projects also ignore `.env.*` in their `.gitignore`.
 
 ### Security
+- **The recovery code can be replaced**: `pskit vault rotate-recovery-code` or **Users & audit**. All encrypted data gets
+  new keys, so the old code stops working.
+- **The `viewer` preset no longer decrypts anything.** It included read on Deployments, which opens Terraform state and
+  tokens. Accounts already created keep the permissions they have.
 - **The master key is no longer saved on the computer.** It was kept as plaintext in `~/.pskit/vault-keys/`, so a username
   and password were enough to decrypt everything on that computer. Every login now asks for the master key, and
   `--no-remember` is gone. The old file is deleted at your next login. **Action needed:** keep the master key in a

@@ -28,7 +28,7 @@ import time
 import zlib
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Collection, Dict, Iterator, List, Optional, Tuple
+from typing import Any, Collection, Dict, Iterator, List, Optional, Set, Tuple
 
 from . import crypto, permissions
 from .crypto import InvalidTag
@@ -333,6 +333,23 @@ class Vault:
         identity.master = master
         return crypto.format_secret(MASTER_PREFIX, master)
 
+    def rotate_recovery(self, identity: Identity) -> str:
+        """A new recovery code, e.g. after the old one leaked. Every area gets a new key too: the old code and an old
+        copy of this file from git history would otherwise still open today's data. Crash safe: nothing changes until
+        the accounts naming the new generations are saved."""
+        doc = self.accounts(identity.master)
+        keys = _keys_of(self.id, doc, identity.username, identity.private)
+        for area in doc["areas"]:
+            if area not in keys:
+                raise VaultError(f"you do not hold the {area} key, so you cannot replace the recovery code", 403, "forbidden")
+        recovery = crypto.random_key()
+        doc["recovery_public"] = crypto.b64(_recovery_pair(recovery)["public"])
+        replaced = {area: self._reseal_area(doc, area, keys[area], _holders(doc, area)) for area in doc["areas"]}
+        self._write(identity.master, doc)
+        for area, generation in replaced.items():
+            self._drop_generation(area, generation)
+        return crypto.format_secret(RECOVERY_PREFIX, recovery)
+
     def recover(self, master: bytes, recovery_code: str, username: str, password: str) -> None:
         """Every admin password is lost: the recovery code plus the master key set a new admin password."""
         recovery = crypto.parse_secret(RECOVERY_PREFIX, recovery_code, "recovery code")
@@ -358,7 +375,7 @@ class Vault:
         vid = self.id
         keys = _keys_of(vid, doc, identity.username, identity.private)
         for area, info in doc["areas"].items():
-            wanted = {name for name, user in doc["users"].items() if area in permissions.areas_for(user)}
+            wanted = _holders(doc, area)
             current = set(info["wraps"]) - {_RECOVERY}
             if current == wanted:
                 continue
@@ -372,6 +389,12 @@ class Vault:
     def _rotate_area(self, master: bytes, doc: Dict[str, Any], area: str, old: bytes, wanted: Collection[str]) -> None:
         """Crash safe: new files sit next to the old ones until the accounts naming the new generation are saved, and
         ``read_area`` only takes files of the current generation."""
+        generation = self._reseal_area(doc, area, old, wanted)
+        self._write(master, doc)
+        self._drop_generation(area, generation)
+
+    def _reseal_area(self, doc: Dict[str, Any], area: str, old: bytes, wanted: Collection[str]) -> int:
+        """Encrypt an area again with a new key, in ``doc`` only until it is saved. Returns the generation replaced."""
         info = doc["areas"][area]
         new_key = crypto.random_key()
         generation = int(info["generation"])
@@ -380,7 +403,9 @@ class Vault:
         info["generation"] = generation + 1
         info["wraps"] = {}
         _wrap_for(self.id, doc, area, new_key, [*sorted(wanted), _RECOVERY])
-        self._write(master, doc)
+        return generation
+
+    def _drop_generation(self, area: str, generation: int) -> None:
         offset = len(_MAGIC) + 4
         for path in self.data_dir(area).glob("*.enc"):
             if struct.unpack(">I", path.read_bytes()[len(_MAGIC) : offset])[0] == generation:
@@ -399,6 +424,10 @@ def _check_role(role: str) -> None:
 def _keep_an_admin(doc: Dict[str, Any]) -> None:
     if not any(u.get("role") == "admin" and not u.get("disabled") for u in doc["users"].values()):
         raise VaultError("the vault must keep at least one active admin", 409, "last_admin")
+
+
+def _holders(doc: Dict[str, Any], area: str) -> Set[str]:
+    return {name for name, user in doc["users"].items() if area in permissions.areas_for(user)}
 
 
 def _recovery_pair(recovery: bytes) -> Dict[str, bytes]:

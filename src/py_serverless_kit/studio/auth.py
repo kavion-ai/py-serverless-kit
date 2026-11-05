@@ -345,6 +345,12 @@ class Auth:
             ws.write_session(self.root, session)
             ws.log(self.vault, session, "vault.rotate-master-key")
             return 200, {"master_key": key}
+        if rest == ["recovery-code", "rotate"] and method == "POST":
+            if user.get("role") != "admin":
+                self._deny("users", "u")
+            code = ws.rotate_recovery(self.vault, session.identity)
+            ws.log(self.vault, session, "vault.rotate-recovery-code")
+            return 200, {"recovery_code": code}
         raise StudioError(404 if method == "GET" else 405, "unknown auth endpoint")
 
     def _mode(self, body: Dict[str, Any], token: str) -> Tuple[int, Any]:

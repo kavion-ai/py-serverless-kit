@@ -378,6 +378,19 @@ def test_recovery_over_the_api(server):
     assert login(base, "root-admin", "a brand new password")[0] == 200
 
 
+def test_only_an_admin_replaces_the_recovery_code(server):
+    base, _root, _httpd = server
+    doc = setup_admin(base)
+    dev = add_user(base, doc["session"], {"users": "crud"})
+    assert call(base, "POST", "/api/auth/recovery-code/rotate", {}, dev)[0] == 403
+    status, rotated = call(base, "POST", "/api/auth/recovery-code/rotate", {}, doc["session"])
+    assert status == 200 and rotated["recovery_code"].startswith("pskr-")
+    assert rotated["recovery_code"] != doc["recovery_code"]
+    new_password = {"master_key": doc["master_key"], "username": "root-admin", "password": "a brand new password"}
+    assert call(base, "POST", "/api/auth/recover", {**new_password, "recovery_code": doc["recovery_code"]})[0] == 401
+    assert call(base, "POST", "/api/auth/recover", {**new_password, "recovery_code": rotated["recovery_code"]})[0] == 200
+
+
 def test_rotating_the_master_key_over_the_api(server):
     base, _root, _httpd = server
     doc = setup_admin(base)

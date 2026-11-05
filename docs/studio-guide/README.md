@@ -89,6 +89,7 @@ The studio sidebar lists the same 13 pages for every provider, in this order. A 
 | 11 | Deploy | [deploy.md](deploy.md) | Validate, package, plan, deploy, info, remove; placement; firewall |
 | 12 | Logs | [logs.md](logs.md) | Live logs and stored log streams |
 | 13 | YAML | [yaml.md](yaml.md) | Preview, diff and raw edit of `pskit.yml` |
+| 14 | Users & audit | [accounts-and-team.md](accounts-and-team.md) | Just me or a team, admin, master key, recovery code, user permissions, audit log |
 
 Pages that only work on premises stay in the sidebar for every provider. **Scaling cluster** and **Load balancers**
 show a warning box when the project's provider is not `onprem` (switch it in Overview). **Network map** lists on-prem

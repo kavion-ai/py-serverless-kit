@@ -212,7 +212,8 @@ Studio can write files in the project and run deploys with your cloud credential
 
 - It binds to `127.0.0.1` by default.
 - The first start asks who will use the project. **Just me** (or `pskit studio --no-auth`) means no login and nothing
-  encrypted. **A team** creates an admin account: everyone then logs in, each account has its own permissions, and
+  encrypted. **A team** creates an admin account: everyone then logs in with the master key, a username and a password,
+  each time the studio starts. Each account has its own permissions, and
   `.env` and `.pskit` data is kept encrypted. See [Accounts, encrypted project data and the audit log](security-vault.md).
 - Every API call also needs the session token from the printed URL, so nothing else on this machine can reach the
   login. A new token is generated each time studio starts.

@@ -260,6 +260,7 @@ export const api = {
   authResetPassword: (username: string, password: string) =>
     request<{ reset: string }>("POST", `/api/auth/users/${encodeURIComponent(username)}/reset-password`, { password }),
   authRotateMaster: () => request<{ master_key: string }>("POST", "/api/auth/master-key/rotate", {}),
+  authRotateRecovery: () => request<{ recovery_code: string }>("POST", "/api/auth/recovery-code/rotate", {}),
   authAudit: (user: string, action: string) =>
     request<{ entries: AuditEntry[]; total: number; tampered: string[] }>("GET", "/api/auth/audit", undefined, { query: { user, action } }),
   health: () => request<{ ok: boolean; version: string; root: string }>("GET", "/api/health"),

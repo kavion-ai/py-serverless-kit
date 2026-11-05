@@ -1,6 +1,8 @@
 # py-serverless-kit documentation
 
-Write a Python function once, describe its triggers in `pskit.yml`, and deploy it to any of 10 clouds or to an on-premises host with Terraform. Moving to another target means changing `provider.name`. The handler code stays the same.
+Write a function once in Python or Node.js (JavaScript or TypeScript), describe its triggers in `pskit.yml`, and deploy it to any of 10 clouds or to an on-premises host with Terraform. Moving to another target means changing `provider.name`. The handler code stays the same.
+
+New here? Read the [project README](../README.md) for an overview, then [Getting started](getting-started.md). For Node.js, also read [Node.js and TypeScript](nodejs.md). Python handlers are covered by the [Handler API](handlers.md), and a service uses one language.
 
 ## Start here: guides by topic
 
@@ -45,6 +47,7 @@ Hana, the studio assistant, searches all of these pages before she answers. Afte
 | [Providers](providers.md) | Capability matrix plus one section per cloud: options, credentials, resources, limits |
 | [CLI reference](cli.md) | Every `pskit` command and flag |
 | [Local development](local-development.md) | `pskit dev`, `pskit invoke`, `.env`, testing with `LocalRunner` |
+| [Accounts and team setup](studio-guide/accounts-and-team.md) | Step by step: just me or a team at the first start, the admin account, what the master key and recovery code do, how data is protected, how user permissions work |
 | [Accounts and encryption](security-vault.md) | First-run admin and master key, encrypted `.env` and `.pskit` data safe to commit, create/read/update/delete permissions per feature, audit log, and what this does not protect against |
 | [Studio](studio.md) | `pskit studio`: build functions, triggers, workflows, resources and on-prem drivers in a web UI, edit code (built-in editor or VS Code in Docker) and deploy |
 | [Hana, the AI assistant](assistant.md) | The chat in `pskit studio`: answers, how-to steps and project changes with your approval; the model runs locally in Docker |

@@ -54,7 +54,8 @@ AREAS: Tuple[str, ...] = ("env", "servers", "services", "clusters", "deployments
 DEPLOY_AREAS: Tuple[str, ...] = AREAS
 
 PRESETS: Dict[str, Dict[str, str]] = {
-    "viewer": {"project": "r", "functions": "r", "workflows": "r", "code": "r", "deploy": "r", "logs": "r", "resources": "r"},
+    # No read on deploy: that decrypts Terraform state and tokens, so a viewer holds no keys at all.
+    "viewer": {"project": "r", "functions": "r", "workflows": "r", "code": "r", "logs": "r", "resources": "r"},
     "developer": {
         "project": "ru", "functions": "crud", "workflows": "crud", "code": "crud", "test": "crud", "logs": "r",
         "resources": "r", "deploy": "r",

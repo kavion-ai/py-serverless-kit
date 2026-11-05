@@ -179,6 +179,45 @@ def test_recovery_code_restores_a_lost_admin(created):
     assert dict(vault.read_area("env", vault.area_keys(back)["env"], 1))[".env.onprem"] == SECRET.encode()
 
 
+def test_replacing_the_recovery_code_revokes_the_old_one(created):
+    vault, admin, _key, old_code = created
+    old_doc = vault.accounts(admin.master)
+    old_keys = vault.area_keys(admin)
+    old_files = {p.name for p in vault.data_dir("env").glob("*.enc")}
+
+    new_code = ws.rotate_recovery(vault, admin)
+
+    assert new_code != old_code
+    with pytest.raises(VaultError, match="wrong recovery"):
+        vault.recover(admin.master, old_code, "root-admin", "brand new password")
+    # An old vault.json from git history opens old keys only, and those no longer open today's data.
+    new_keys = vault.area_keys(admin)
+    assert all(new_keys[area] != old_keys[area] for area in old_keys)
+    assert old_doc["areas"]["env"]["generation"] + 1 == vault.accounts(admin.master)["areas"]["env"]["generation"]
+    assert not old_files & {p.name for p in vault.data_dir("env").glob("*.enc")}
+    generation = vault.accounts(admin.master)["areas"]["env"]["generation"]
+    assert dict(vault.read_area("env", new_keys["env"], generation))[".env.onprem"] == SECRET.encode()
+    assert dict(vault.read_area("env", old_keys["env"], generation - 1)) == {}
+
+    vault.recover(admin.master, new_code, "root-admin", "brand new password")
+    assert vault.authenticate(admin.master, "root-admin", "brand new password").username == "root-admin"
+
+
+def test_replacing_the_recovery_code_keeps_what_each_account_holds(created):
+    vault, admin, _key, _recovery = created
+    vault.add_user(admin, "reader", USER_PW, "user", {"env": "r"})
+    ws.rotate_recovery(vault, admin)
+    reader = vault.authenticate(admin.master, "reader", USER_PW)
+    keys = vault.area_keys(reader)
+    assert set(keys) == {"env"}
+    generation = vault.accounts(admin.master)["areas"]["env"]["generation"]
+    assert dict(vault.read_area("env", keys["env"], generation))[".env.onprem"] == SECRET.encode()
+
+
+def test_the_viewer_preset_decrypts_nothing():
+    assert permissions.areas_for({"role": "user", "permissions": permissions.PRESETS["viewer"]}) == frozenset()
+
+
 def test_rotating_the_master_key_keeps_the_audit_log(created):
     vault, admin, old_key, _recovery = created
     audit.record(vault, admin.master, "root-admin", "cli", "before")
@@ -498,6 +537,15 @@ def test_cli_permissions(cli_project):
     runner.invoke(cli, ["login", "-u", "root-admin"], input=f"{key}\n{ADMIN_PW}\n")
     out = runner.invoke(cli, ["vault", "audit", "--user", "reader"]).output
     assert "cli.deploy" in out and "denied" in out
+
+
+def test_cli_replaces_the_recovery_code(cli_project):
+    runner = CliRunner()
+    _init(runner)
+    result = runner.invoke(cli, ["vault", "rotate-recovery-code"])
+    assert result.exit_code == 0, result.output
+    assert "NEW RECOVERY CODE  pskr-" in result.output
+    assert "cli" in runner.invoke(cli, ["vault", "audit", "--action", "rotate-recovery-code"]).output
 
 
 def test_cli_env_login_for_scripts(cli_project, monkeypatch):

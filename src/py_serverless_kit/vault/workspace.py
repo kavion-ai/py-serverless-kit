@@ -424,6 +424,12 @@ def live_sessions(vault: Vault) -> List[Session]:
     return live
 
 
+def rotate_recovery(vault: Vault, identity: Identity) -> str:
+    """Under the lock, so the background seal cannot write files with the keys being replaced."""
+    with _FileLock(vault.root):
+        return vault.rotate_recovery(identity)
+
+
 # ------------------------------------------------------------------------------- saved master key (no longer used)
 def saved_master_path(vault: Vault) -> Path:
     """Where earlier versions kept the master key in plaintext. It is never read: a key on disk next to the vault would
