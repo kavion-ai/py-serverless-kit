@@ -449,3 +449,39 @@ def test_the_studios_http_handler_stub_also_runs_as_a_workflow_step(tmp_path):
     exec((tmp_path / "functions" / "step01" / "handler.py").read_text("utf-8"), scope)  # noqa: S102 - our stub
     out = scope["main"](Event(type=EventType.INVOKE, data={"hello": "world"}), Context(function="step01"))
     assert out == {"message": "Hello, world!", "input": {"hello": "world"}}
+
+
+# ------------------------------------------------------------------------------------- disabled functions
+def test_parse_skips_a_disabled_function_listed_in_a_group():
+    raw = {"groups": {"api": {"server": "app1"}, "gpu": {"server": "gpu1", "functions": ["resize", "worker"]}}}
+    parsed = pl.parse(raw, ["hello", "worker"], [], disabled=["resize"])
+    assert parsed["function_group"] == {"hello": "api", "worker": "gpu"}
+    assert parsed["groups"]["gpu"]["functions"] == ["worker"]
+
+
+def _config_with_disabled(*names):
+    """The split project with ``names`` switched off, and the workflow calling only ``hello``."""
+    config = _config(9180, 9181)
+    for name in names:
+        assert f"          {name}:\n" in config
+        config = config.replace(f"          {name}:\n", f"          {name}:\n            enabled: false\n", 1)
+    first = "First: {type: task, function: hello, next: Second}"
+    second = "              Second: {type: task, function: resize, end: true}\n"
+    assert first in config and second in config
+    return config.replace(first, "First: {type: task, function: hello, end: true}").replace(second, "")
+
+
+def test_a_disabled_function_keeps_its_group_and_is_not_deployed(make_project, render):
+    project = make_project(_config_with_disabled("resize"), files=HANDLERS)
+    assert [str(i) for i in project.validate() if i.level == "error"] == []
+    out = render(project)["output"]["pskit"]["value"]
+    assert "resize" not in out["functions"]
+    assert out["groups"]["gpu"]["functions"] == ["worker"]
+
+
+def test_a_group_with_only_disabled_functions_still_deploys_its_host(make_project, render):
+    project = make_project(_config_with_disabled("resize", "worker"), files=HANDLERS)
+    assert [str(i) for i in project.validate() if i.level == "error"] == []
+    tf = render(project)
+    assert set(tf["resource"]["terraform_data"]) == {"host", "host_gpu"}
+    assert tf["output"]["pskit"]["value"]["groups"]["gpu"]["functions"] == []

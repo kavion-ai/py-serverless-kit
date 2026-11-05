@@ -25,6 +25,7 @@ import {
 } from "../placement";
 import { DeployedLogs } from "./Logs";
 import { href, navigate } from "../route";
+import { useAuth } from "../auth";
 import { providersSupporting, useStudio } from "../store";
 import { flushHandlerStubs, forgetHandlerStub, queueHandlerStub } from "../stubs";
 import { EVENT_TYPES, type EventType, type FunctionSplitResult, type Json, type JsonObject, type ProviderMeta } from "../types";
@@ -112,6 +113,7 @@ function SplitPlan({ plans }: { plans: FunctionSplitResult[] }) {
 }
 
 function FunctionList() {
+  const { can } = useAuth();
   const { draft, state, edit, replace, issuesAt, provider, providerName, dirty, save, setProject, reload } = useStudio();
   const confirm = useConfirm();
   const toast = useToast();
@@ -326,7 +328,7 @@ function FunctionList() {
           <a className="btn btn-sm" href={href("code", handlerFile(str(r.fn.handler)))} title="Open handler code">
             Code
           </a>
-          {sharedOf(r) && (
+          {sharedOf(r) && can("functions", "u") && can("code", "u") && (
             <button
               type="button"
               className="btn btn-sm"
@@ -337,12 +339,16 @@ function FunctionList() {
               {splitting === r.name ? "Moving…" : "Own folder"}
             </button>
           )}
-          <button type="button" className="btn btn-sm" onClick={() => duplicate(r)}>
-            Duplicate
-          </button>
-          <button type="button" className="btn btn-sm btn-danger" onClick={() => void remove(r.name)}>
-            Delete
-          </button>
+          {can("functions", "c") && (
+            <button type="button" className="btn btn-sm" onClick={() => duplicate(r)}>
+              Duplicate
+            </button>
+          )}
+          {can("functions", "d") && (
+            <button type="button" className="btn btn-sm btn-danger" onClick={() => void remove(r.name)}>
+              Delete
+            </button>
+          )}
         </span>
       ),
     },
@@ -361,12 +367,14 @@ function FunctionList() {
         title="Functions"
         subtitle="Each function is a handler plus the triggers that call it."
         actions={
-          <a className="btn btn-primary" href={href("functions", "new")}>
-            + Create function
-          </a>
+          can("functions", "c") ? (
+            <a className="btn btn-primary" href={href("functions", "new")}>
+              + Create function
+            </a>
+          ) : undefined
         }
       />
-      {placement && sharedNames.length > 0 && (
+      {placement && sharedNames.length > 0 && can("functions", "u") && can("code", "u") && (
         <div className="hint-box warn split-bar">
           <div className="grow">
             <b>
@@ -395,7 +403,7 @@ function FunctionList() {
           onRowClick={(r) => navigate("functions", r.name)}
           emptyTitle={rows.length ? "No function matches" : "No functions yet"}
           emptyHint={
-            rows.length ? undefined : (
+            rows.length || !can("functions", "c") ? undefined : (
               <a className="btn btn-primary" href={href("functions", "new")}>
                 Create your first function
               </a>
@@ -447,6 +455,8 @@ const STEPS: { id: Step; label: string }[] = [
 ];
 
 function FunctionWizard({ name: existing }: { name: string | null }) {
+  const { can } = useAuth();
+  const mayApply = can("functions", existing ? "u" : "c");
   const studio = useStudio();
   const { draft, meta, provider, providerName, replace, issuesAt, state } = studio;
   const toast = useToast();
@@ -638,9 +648,11 @@ function FunctionWizard({ name: existing }: { name: string | null }) {
                 Open code
               </a>
             )}
-            <button type="button" className="btn btn-primary" disabled={blocking || busy} onClick={() => void apply()}>
-              {existing ? "Apply changes" : "Create function"}
-            </button>
+            {mayApply && (
+              <button type="button" className="btn btn-primary" disabled={blocking || busy} onClick={() => void apply()}>
+                {existing ? "Apply changes" : "Create function"}
+              </button>
+            )}
           </>
         }
       />
@@ -657,6 +669,7 @@ function FunctionWizard({ name: existing }: { name: string | null }) {
         ))}
       </ol>
 
+      <fieldset className="perm-fieldset" disabled={!mayApply}>
       {step === "basics" && (
         <Section title="Basics">
           <div className="form">
@@ -969,6 +982,8 @@ function FunctionWizard({ name: existing }: { name: string | null }) {
         </Section>
       )}
 
+      </fieldset>
+
       <div className="wizard-nav">
         <button type="button" className="btn" disabled={stepIndex === 0} onClick={() => setStep(STEPS[stepIndex - 1].id)}>
           ← Back
@@ -977,11 +992,11 @@ function FunctionWizard({ name: existing }: { name: string | null }) {
           <button type="button" className="btn btn-primary" onClick={() => setStep(STEPS[stepIndex + 1].id)}>
             Next: {STEPS[stepIndex + 1].label} →
           </button>
-        ) : (
+        ) : mayApply ? (
           <button type="button" className="btn btn-primary" disabled={blocking || busy} onClick={() => void apply()}>
             {existing ? "Apply changes" : "Create function"}
           </button>
-        )}
+        ) : null}
       </div>
     </div>
   );

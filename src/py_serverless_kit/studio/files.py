@@ -11,6 +11,7 @@ from .project import StudioError
 
 EXCLUDED = {
     ".pskit",
+    ".pskit-vault",
     ".git",
     ".venv",
     "venv",
@@ -61,7 +62,10 @@ def resolve(root: Path, rel: Any, *, must_exist: bool = True) -> Path:
     parts = [p for p in text.split("/") if p not in ("", ".")]
     if not parts or any(p == ".." for p in parts):
         raise StudioError(400, "path must stay inside the project")
-    if any(p in EXCLUDED for p in parts):
+    # Windows opens `.ENV`, `.pskit.` and `.env::$DATA` as the plain name, so compare what the file system would open.
+    if any(":" in p for p in parts):
+        raise StudioError(400, "invalid file name")
+    if any(p.lower().rstrip(". ") in EXCLUDED for p in parts):
         raise StudioError(403, f"{parts[0] if parts[0] in EXCLUDED else 'that folder'} is not editable here")
     base = root.resolve()
     target = base.joinpath(*parts)

@@ -1,5 +1,8 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useReducer, useRef, type ReactNode } from "react";
 import { api, ApiError, errorMessage } from "./api";
+import { useAuth } from "./auth";
+import { useToast } from "./components/Feedback";
+import { describeNeed, featureOfPath, projectNeeds } from "./permissions";
 import type { Issue, Json, JsonObject, Meta, ProjectState, ProviderMeta, ValidateResult } from "./types";
 import { clearShadow } from "./shadow";
 import { asObject, deepEqual, getIn, isObject, parseWhere, pathKey, setIn, str, type Path } from "./util";
@@ -165,6 +168,8 @@ export function StudioProvider({
   meta: Meta;
   children: ReactNode;
 }) {
+  const { can } = useAuth();
+  const toast = useToast();
   const [state, dispatch] = useReducer(reducer, initial, (s) => reducer(s, { type: "loaded", project, meta }));
   const abort = useRef<AbortController | null>(null);
   const tick = useRef(0);
@@ -217,6 +222,8 @@ export function StudioProvider({
     async (force = false, raw?: JsonObject): Promise<boolean> => {
       const draft = raw ?? state.draft;
       if (!draft) return false;
+      const refused = projectNeeds(state.saved || {}, draft).filter(([f, a]) => !can(f, a));
+      if (refused.length) throw new Error(`You do not have ${refused.map(describeNeed).join(" or ")}`);
       if (raw) dispatch({ type: "replace", raw });
       dispatch({ type: "saving", on: true });
       try {
@@ -233,7 +240,13 @@ export function StudioProvider({
         dispatch({ type: "saving", on: false });
       }
     },
-    [state.draft, state.mtime],
+    [state.draft, state.saved, state.mtime, can],
+  );
+
+  // Never start an edit that could not be saved: "Deleted (not saved yet)" would read as if it had worked.
+  const refusedBy = useCallback(
+    (raw: JsonObject) => projectNeeds(state.saved || {}, raw).filter(([f, a]) => !can(f, a)),
+    [state.saved, can],
   );
 
   const reload = useCallback(async () => {
@@ -253,8 +266,22 @@ export function StudioProvider({
       dirty,
       providerName,
       provider: metaValue.providers.find((p) => p.name === providerName),
-      edit: (path, v, opts) => dispatch({ type: "edit", path, value: v, coalesce: opts?.coalesce }),
-      replace: (raw) => dispatch({ type: "replace", raw }),
+      edit: (path, v, opts) => {
+        const feature = featureOfPath(path[0]);
+        if (!can(feature, "c") && !can(feature, "u") && !can(feature, "d")) {
+          toast(`You do not have permission to change ${feature}`, "err");
+          return;
+        }
+        dispatch({ type: "edit", path, value: v, coalesce: opts?.coalesce });
+      },
+      replace: (raw) => {
+        const refused = refusedBy(raw);
+        if (refused.length) {
+          toast(`You do not have ${refused.map(describeNeed).join(" or ")}`, "err");
+          return;
+        }
+        dispatch({ type: "replace", raw });
+      },
       undo: () => dispatch({ type: "undo" }),
       redo: () => dispatch({ type: "redo" }),
       save,
@@ -278,7 +305,7 @@ export function StudioProvider({
         return !!p && p.capabilities.includes(capability);
       },
     }),
-    [state, metaValue, dirty, providerName, save, reload, issues, runValidation],
+    [state, metaValue, dirty, providerName, save, reload, issues, runValidation, can, toast, refusedBy],
   );
 
   return <StudioContext.Provider value={value}>{children}</StudioContext.Provider>;

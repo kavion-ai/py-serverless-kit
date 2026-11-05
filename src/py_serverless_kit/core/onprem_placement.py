@@ -55,11 +55,13 @@ def configured(options: Dict[str, Any]) -> bool:
     return isinstance(raw, dict) and bool(raw.get("groups"))
 
 
-def parse(raw: Any, functions: List[str], workflows: Optional[List[str]] = None) -> Dict[str, Any]:
+def parse(raw: Any, functions: List[str], workflows: Optional[List[str]] = None,
+          disabled: Optional[List[str]] = None) -> Dict[str, Any]:
     """``{default, groups: {name: {target: {kind: value}, functions: [...], port?}}, function_group: {fn: group}}``.
 
     ``functions`` are the project's (enabled) function names; generated workflow orchestrators
-    (``<workflow>-orchestrator``) always belong to the default group."""
+    (``<workflow>-orchestrator``) always belong to the default group. ``disabled`` functions may stay listed in
+    a group, so they return to it when enabled again, but are not placed."""
     if raw is None:
         return {}
     if not isinstance(raw, dict):
@@ -77,6 +79,7 @@ def parse(raw: Any, functions: List[str], workflows: Optional[List[str]] = None)
         raise PlacementError(f"options.placement.default {default!r} is not one of the groups"
                              f" ({', '.join(groups_raw)})")
     known = set(functions)
+    off = set(disabled or [])
     orchestrators = {f"{w}-orchestrator" for w in workflows or []}
     function_group: Dict[str, str] = {}
     groups: Dict[str, Dict[str, Any]] = {}
@@ -115,6 +118,8 @@ def parse(raw: Any, functions: List[str], workflows: Optional[List[str]] = None)
             raise PlacementError(f"{where}.functions is a list of function names")
         for fn in listed:
             fn = str(fn)
+            if fn in off and fn not in known:
+                continue
             if fn in orchestrators:
                 raise PlacementError(f"{where}: {fn} orchestrates a workflow; workflows run on the default group"
                                      f" ({default}), their steps run wherever their functions are")

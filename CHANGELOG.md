@@ -6,7 +6,32 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [2.12.0] - 2026-11-05
+
+### Added
+- **Accounts, encrypted project data and an audit log** ([docs](docs/security-vault.md)), optional per project. The first
+  `pskit studio` start asks who will use the project. **Just me** (or `pskit studio --no-auth`) works as before: no login
+  and nothing encrypted. **A team** asks for an admin account and shows a master key and a recovery code once. `.env` files and `.pskit` settings are
+  encrypted (AES-256-GCM) into `.pskit-vault/`, which is safe to commit; they are re-encrypted after each save and the
+  plaintext is removed at logout. A new developer clones, enters the master key, username and password, and gets only
+  the areas their account may read. Admins set create, read, update and delete per feature. Every change, refusal,
+  login and deploy is logged. Saving `pskit.yml` is judged by what changes: creating, changing and deleting a function
+  (or workflow, or resource) are separate permissions. New commands: `pskit login`, `logout`, `whoami`, `pskit vault ...`.
+
+### Changed
+- In a project with a vault, `pskit studio` requires a login and CLI commands need `pskit login`, or `PSKIT_MASTER_KEY`,
+  `PSKIT_USER` and `PSKIT_PASSWORD` in scripts. Projects without a vault keep working from the CLI as before.
+- `cryptography` is now a required dependency.
+- Studio: **Where functions run** on the Deploy page lists every function with its deploy switch (enabled, disabled on
+  on premises, disabled everywhere), both with all functions on one target and split across servers. The section now
+  starts open.
+- New projects also ignore `.env.*` in their `.gitignore`.
+
 ### Security
+- **The master key is no longer saved on the computer.** It was kept as plaintext in `~/.pskit/vault-keys/`, so a username
+  and password were enough to decrypt everything on that computer. Every login now asks for the master key, and
+  `--no-remember` is gone. The old file is deleted at your next login. **Action needed:** keep the master key in a
+  password manager, because a lost key cannot be replaced by the recovery code.
 - **On-prem admin API no longer open on the network.** With no `admin_token`, a host on `0.0.0.0` (set by hand, by
   `method: docker` or by placement groups) accepted anyone. pskit now generates a token for these hosts
   (`.pskit/onprem-<stage>/admin-token`), and a host started on a network address with no token refuses to start.
@@ -24,6 +49,8 @@ All notable changes to this project are documented here. The format follows [Kee
 - The Python Secrets Manager uses the `cryptography` package for AES-GCM and ChaCha20-Poly1305 when it is installed.
 
 ### Fixed
+- On premises: disabling a function listed in a placement group no longer fails validation with `no function`. It stays
+  listed, is not deployed, and returns to its group when enabled again.
 - `test_docs_index_is_up_to_date` and `build_hana_docs_index.py --check` compare content, not gzip bytes, which differ
   between zlib builds.
 

@@ -213,6 +213,22 @@ Scale on-prem functions over a master plus joined servers (Docker Swarm, Kuberne
 (`--server NAME` goes back to one server; the stage remembers either). `pskit resources onprem create KEY --service S
 --cluster NAME [--node SERVER]` places a resource on a server of the cluster.
 
+## `pskit login`, `logout`, `whoami`, `pskit vault`
+
+In a project with a vault (`.pskit-vault/`), commands need a login with the right permission, and their changes are
+encrypted when they end. Without a vault nothing changes. See
+[Accounts, encrypted project data and the audit log](security-vault.md).
+
+```bash
+pskit vault init                       # first admin; shows the master key and recovery code once
+pskit login                            # master key, username, password (all three every time)
+pskit vault users add priya --preset developer
+pskit vault audit --user priya
+pskit logout                           # encrypts and removes the plaintext
+```
+
+For scripts: `PSKIT_MASTER_KEY`, `PSKIT_USER` and `PSKIT_PASSWORD`.
+
 ## `pskit settings`
 
 `.pskit` is kept out of git, so a fresh clone on another machine has no saved servers, clusters or SSH logins.

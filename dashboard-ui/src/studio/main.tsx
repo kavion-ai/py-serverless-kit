@@ -1,7 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { captureToken } from "./api";
-import { StudioApp } from "./App";
+import { StudioApp, TokenScreen } from "./App";
+import { AuthGate } from "./auth";
 import "../styles.css";
 import "./studio.css";
 
@@ -12,7 +13,9 @@ const root = document.getElementById("root");
 if (root) {
   createRoot(root).render(
     <StrictMode>
-      <StudioApp />
+      <AuthGate onTokenMissing={<TokenScreen />}>
+        <StudioApp />
+      </AuthGate>
     </StrictMode>,
   );
 }

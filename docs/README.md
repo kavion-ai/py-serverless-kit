@@ -45,6 +45,7 @@ Hana, the studio assistant, searches all of these pages before she answers. Afte
 | [Providers](providers.md) | Capability matrix plus one section per cloud: options, credentials, resources, limits |
 | [CLI reference](cli.md) | Every `pskit` command and flag |
 | [Local development](local-development.md) | `pskit dev`, `pskit invoke`, `.env`, testing with `LocalRunner` |
+| [Accounts and encryption](security-vault.md) | First-run admin and master key, encrypted `.env` and `.pskit` data safe to commit, create/read/update/delete permissions per feature, audit log, and what this does not protect against |
 | [Studio](studio.md) | `pskit studio`: build functions, triggers, workflows, resources and on-prem drivers in a web UI, edit code (built-in editor or VS Code in Docker) and deploy |
 | [Hana, the AI assistant](assistant.md) | The chat in `pskit studio`: answers, how-to steps and project changes with your approval; the model runs locally in Docker |
 | [Dashboard](dashboard.md) | The deployment UI: static page, or live with logs and workflow executions (`--serve`) |

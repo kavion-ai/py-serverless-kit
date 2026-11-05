@@ -1034,7 +1034,8 @@ class OnPremProvider(Provider):
         from ..core.onprem_placement import parse
 
         names = [n for n, fn in config.functions.items() if fn.enabled and not is_generated_handler(fn.handler)]
-        return parse(_placement_of(config.provider.options), names, list(config.workflows))
+        return parse(_placement_of(config.provider.options), names, list(config.workflows),
+                     disabled=config.disabled["functions"])
 
     def _placement_validation(self, config: ServiceConfig) -> List[Issue]:
         raw = config.provider.options.get("placement")

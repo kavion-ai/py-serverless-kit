@@ -20,7 +20,9 @@ from urllib.parse import parse_qs, unquote, urlsplit
 
 from .._version import __version__
 from ..dashboard.server import _allowed_hosts, is_loopback
+from ..vault.errors import VaultError
 from . import devenv, files, guides, project, system
+from .auth import Auth
 from .discover import discover
 from .jobs import JobManager
 from .project import StudioError
@@ -41,10 +43,13 @@ _MUTATING = ("POST", "PUT", "DELETE")
 class Studio:
     """State shared by request handlers."""
 
-    def __init__(self, root: Path, token: Optional[str] = None, vscode_image: Optional[str] = None) -> None:
+    def __init__(
+        self, root: Path, token: Optional[str] = None, vscode_image: Optional[str] = None, auth: bool = True,
+    ) -> None:
         self.root = Path(root).resolve()
         self.token = token if token is not None else secrets.token_urlsafe(24)
         self.jobs = JobManager(self.root)
+        self.auth: Optional[Auth] = Auth(self.root, self.jobs.any_running) if auth else None
         self.terminal_urls: Dict[str, str] = {}  # browser terminal name -> its secret URL (known only here)
         self.vscode = VSCode(self.root, image=vscode_image)
         self._meta: Optional[Dict[str, Any]] = None
@@ -142,6 +147,12 @@ def _obj(body: Any) -> Dict[str, Any]:
 def make_handler(app: Studio) -> type:
     class Handler(BaseHTTPRequestHandler):
         server_version = "pskit-studio"
+        _body_read: bool = False
+        _body_value: Any = None
+        _session: Any = None
+        _api_parts: List[str] = []  # noqa: RUF012 - replaced per request
+        _audit_body: Any = None
+        _audit_extra: Optional[Dict[str, Any]] = None
         protocol_version = "HTTP/1.1"
 
         def log_message(self, fmt: str, *args: Any) -> None:
@@ -176,14 +187,19 @@ def make_handler(app: Studio) -> type:
             return length
 
         def _body(self) -> Any:
+            """Read once per request: the permission check and the route may both need it."""
+            if self._body_read:
+                return self._body_value
             length = self._length()
             raw = self.rfile.read(length) if length else b""
+            self._body_read = True
             if not raw.strip():
                 return None
             try:
-                return json.loads(raw.decode("utf-8"))
+                self._body_value = json.loads(raw.decode("utf-8"))
             except (UnicodeDecodeError, ValueError):
                 raise StudioError(400, "request body must be JSON") from None
+            return self._body_value
 
         def _drain(self) -> None:
             # Unread request body: read a bounded amount, then close, so the client gets the error
@@ -240,8 +256,43 @@ def make_handler(app: Studio) -> type:
         def do_DELETE(self) -> None:  # noqa: N802
             self._handle()
 
+        def _gate(self, method: str, url: Any, params: Dict[str, List[str]]) -> Optional[Tuple[int, Any]]:
+            """Accounts: answers /api/auth/* itself; everything else needs a session with the right permission."""
+            assert app.auth is not None
+            parts = [unquote(p) for p in url.path.split("/") if p][1:]
+            token = self.headers.get("x-pskit-session") or ""
+            if parts[:1] == ["auth"]:
+                flat = {k: (v[0] if v else "") for k, v in params.items()}
+                return app.auth.api(method, parts[1:], _obj(self._body()) if method in _MUTATING else {}, token, flat)
+            if app.auth.is_open():
+                return None
+            session = app.auth.require(token)
+            self._session = session
+            self._api_parts = parts
+            body = self._body() if method in _MUTATING else None
+            self._audit_body = body
+            path = None
+            if parts == ["files"]:
+                path = _param(params, "path") if method == "GET" else str(_obj(body).get("path") or "") or None
+            try:
+                self._audit_extra = app.auth.authorize(session, method, parts, body if isinstance(body, dict) else {}, path)
+            except StudioError as exc:
+                feature, action = exc.extra.get("feature"), exc.extra.get("action")
+                app.auth.after_call(session, method, parts, body, exc.status,
+                                    denied_action=f"{feature}.{action}" if feature else None)
+                self._session = None  # logged here
+                raise
+            return None
+
+        def _audit(self, method: str, status: int) -> None:
+            if app.auth is not None and self._session is not None:
+                app.auth.after_call(self._session, method, self._api_parts, self._audit_body, status, self._audit_extra)
+                self._session = None
+
         def _handle(self) -> None:
             method = "GET" if self.command == "HEAD" else self.command
+            self._body_read, self._body_value = False, None
+            self._session, self._api_parts, self._audit_body, self._audit_extra = None, [], None, None
             if not self._host_ok():
                 self._drain()
                 return self._json(421, {"error": "unexpected Host header"})
@@ -263,13 +314,23 @@ def make_handler(app: Studio) -> type:
                     problem = self._write_problem()
                     if problem:
                         raise StudioError(*problem)
-                status, payload = self._api(method, url.path, parse_qs(url.query, keep_blank_values=True))
+                params = parse_qs(url.query, keep_blank_values=True)
+                gated = self._gate(method, url, params) if app.auth is not None else None
+                if gated is not None:
+                    return self._json(*gated)
+                status, payload = self._api(method, url.path, params)
+                self._audit(method, status)  # encrypts this request's changes before the client hears it is done
                 self._json(status, payload)
             except StudioError as exc:
-                if exc.status in (401, 403, 413, 415):
+                self._audit(method, exc.status)
+                if exc.status in (401, 403, 413, 415) and not self._body_read:
                     self._drain()
                 self._json(exc.status, {"error": exc.message, **exc.extra})
+            except VaultError as exc:
+                self._audit(method, exc.status)
+                self._json(exc.status, {"error": exc.message, "code": exc.code})
             except Exception as exc:  # noqa: BLE001 - last-resort JSON error
+                self._audit(method, 500)
                 self._json(500, {"error": f"{type(exc).__name__}: {exc}"})
 
         # ------------------------------------------------------------ routes
@@ -305,7 +366,10 @@ def make_handler(app: Studio) -> type:
                     str(body.get("language") or "python"),
                 )
             if parts == ["files", "tree"] and method == "GET":
-                return 200, files.tree(root)
+                listing = files.tree(root)
+                if app.auth is not None and self._session is not None:
+                    listing["entries"] = app.auth.visible_tree(self._session, listing["entries"])
+                return 200, listing
             if parts == ["files"]:
                 if method == "GET":
                     return 200, files.read_file(root, _param(params, "path"))
@@ -473,7 +537,12 @@ def make_handler(app: Studio) -> type:
                     args = body.get("args") or {}
                     if not isinstance(args, dict):
                         raise StudioError(400, "args must be an object")
-                    job = app.jobs.start(str(body.get("command") or ""), body.get("provider"), body.get("stage"), args)
+                    command = str(body.get("command") or "")
+                    extras: Dict[str, Any] = {}
+                    if app.auth is not None and self._session is not None:
+                        extras = {"env": app.auth.job_env(self._session),
+                                  "on_finish": app.auth.on_job_finish(self._session, command)}
+                    job = app.jobs.start(command, body.get("provider"), body.get("stage"), args, **extras)
                     return 202, {"job_id": job.id}
             if len(parts) == 2 and parts[0] == "jobs" and method == "DELETE":
                 return 200, app.jobs.clear(parts[1])
@@ -1086,8 +1155,10 @@ def make_server(
     port: int = 8770,
     token: Optional[str] = None,
     vscode_image: Optional[str] = None,
+    auth: bool = True,
 ) -> StudioHTTPServer:
-    app = Studio(root, token=token, vscode_image=vscode_image)
+    """``auth=False`` leaves the accounts layer out, for tests of the API behind it. Users choose in the studio."""
+    app = Studio(root, token=token, vscode_image=vscode_image, auth=auth)
     httpd = StudioHTTPServer((host, port), make_handler(app))
     httpd.allowed_hosts = _allowed_hosts(host, httpd.server_address[1])
     httpd.studio = app

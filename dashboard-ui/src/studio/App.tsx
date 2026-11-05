@@ -3,9 +3,11 @@ import { Drawer, Modal } from "../components/Drawer";
 import { ErrorBanner, Spinner } from "../components/Feedback";
 import { api, ApiError, errorMessage, MOCK } from "./api";
 import { ConfirmProvider, ToastProvider, useToast } from "./components/Feedback";
+import { useAuth } from "./auth";
 import { HanaAvatar } from "./hana/HanaCards";
 import { HanaPanel } from "./hana/HanaPanel";
 import { IssueList } from "./components/Misc";
+import { describeNeed, projectNeeds } from "./permissions";
 import { href, navigate, routeForWhere, useRoute, type View } from "./route";
 import { flushHandlerStubs } from "./stubs";
 import { StudioProvider, useStudio } from "./store";
@@ -21,6 +23,7 @@ import { FunctionsView } from "./views/Functions";
 import { NewProject } from "./views/NewProject";
 import { OverviewView } from "./views/Overview";
 import { ResourcesView } from "./views/Resources";
+import { SecurityView } from "./views/Security";
 import { SettingsTransfer, SetupView } from "./views/Setup";
 import { TestView } from "./views/Test";
 import { WorkflowsView } from "./views/Workflows";
@@ -83,7 +86,7 @@ export function StudioApp() {
   }, [attempt]);
 
   let body: ReactNode;
-  if (error instanceof ApiError && error.status === 401) {
+  if (error instanceof ApiError && error.status === 401 && error.code === "token") {
     body = <TokenScreen />;
   } else if (error) {
     body = (
@@ -113,7 +116,7 @@ export function StudioApp() {
   );
 }
 
-function TokenScreen() {
+export function TokenScreen() {
   return (
     <div className="center-screen">
       <div className="card card-pad token-card">
@@ -146,7 +149,23 @@ const NAV: { view: View; label: string; icon: string }[] = [
   { view: "deploy", label: "Deploy", icon: "▲" },
   { view: "logs", label: "Logs", icon: "☰" },
   { view: "yaml", label: "YAML", icon: "≡" },
+  { view: "security", label: "Users & audit", icon: "⚿" },
 ];
+
+// The feature a page mainly shows. A page the account cannot read leaves the menu; the server refuses it anyway.
+const NAV_FEATURE: Partial<Record<View, string>> = {
+  setup: "settings",
+  functions: "functions",
+  workflows: "workflows",
+  resources: "resources",
+  cluster: "clusters",
+  balancers: "balancers",
+  network: "network",
+  code: "code",
+  test: "test",
+  deploy: "deploy",
+  logs: "logs",
+};
 
 function isEditable(el: EventTarget | null): boolean {
   if (!(el instanceof HTMLElement)) return false;
@@ -158,6 +177,9 @@ function Shell() {
   const { state, draft, dirty, meta, save, undo, redo, setTarget, reload, closeConflict } = studio;
   const route = useRoute();
   const toast = useToast();
+  const { can, status, logout } = useAuth();
+  const canChange = (feature: string) => can(feature, "c") || can(feature, "u") || can(feature, "d");
+  const refused = projectNeeds(state.saved || {}, draft).filter(([f, a]) => !can(f, a));
   const [issuesOpen, setIssuesOpen] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -268,6 +290,9 @@ function Shell() {
     case "yaml":
       page = <YamlView />;
       break;
+    case "security":
+      page = <SecurityView />;
+      break;
     default:
       page = <OverviewView />;
   }
@@ -338,22 +363,23 @@ function Shell() {
           <button
             type="button"
             className="btn btn-primary save-btn"
-            disabled={!dirty || state.saving}
+            disabled={!dirty || state.saving || refused.length > 0}
             onClick={() => void doSave()}
-            title="Save pskit.yml (Ctrl+S)"
+            title={refused.length ? `You do not have ${refused.map(describeNeed).join(" or ")}` : "Save pskit.yml (Ctrl+S)"}
           >
             {dirty && <span className="dirty-dot" aria-label="unsaved changes" />}
             {state.saving ? "Saving…" : dirty ? "Save" : "Saved"}
           </button>
-          <button type="button" className="btn" onClick={() => setSettingsOpen(true)} title="Import / export the project's settings (.pskit) and pskit.yml">
+          <button type="button" className="btn" hidden={status.state !== "open" && status.role !== "admin"} onClick={() => setSettingsOpen(true)} title="Import / export the project's settings (.pskit) and pskit.yml">
             ⇅ Settings
           </button>
           <ThemeToggle />
         </div>
       </header>
-      {hanaOpen && <HanaPanel onClose={() => setHanaOpen(false)} />}
+      {hanaOpen && can("hana", "r") && <HanaPanel onClose={() => setHanaOpen(false)} />}
       <button
         type="button"
+        hidden={!can("hana", "r")}
         className={`hana-fab${hanaOpen ? " open" : ""}`}
         onClick={() => setHanaOpen((o) => !o)}
         title={hanaOpen ? "Close Hana (Ctrl+I)" : "Ask Hana, the AI assistant (Ctrl+I)"}
@@ -371,7 +397,7 @@ function Shell() {
         </Drawer>
       )}
       <nav className="studio-nav" aria-label="Sections">
-        {NAV.map((n) => {
+        {NAV.filter((n) => !NAV_FEATURE[n.view] || can(NAV_FEATURE[n.view] as string, "r")).map((n) => {
           const count = countFor(n.view);
           const bad = issueCountFor(n.view);
           return (
@@ -392,10 +418,19 @@ function Shell() {
             </div>
           ))}
           <div>pskit {meta.version}</div>
+          {status.state !== "open" && <div className="row-gap">
+            <span className="grow">{status.user}</span>
+            <button type="button" className="btn btn-ghost btn-sm" onClick={() => void logout()}>
+              Log out
+            </button>
+          </div>}
         </div>
       </nav>
       <main className="studio-main">
         {state.validationError && <ErrorBanner message={`Validation unavailable: ${state.validationError}`} onRetry={studio.validateNow} />}
+        {NAV_FEATURE[route.view] && !canChange(NAV_FEATURE[route.view] as string) && status.state !== "open" && (
+          <div className="hint-box perm-banner">Read only: your account can look at this page but not change anything here.</div>
+        )}
         {page}
       </main>
       {issuesOpen && (

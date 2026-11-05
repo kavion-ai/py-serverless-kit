@@ -199,7 +199,7 @@ def test_hello():
     assert resp.status == 200
 """
 
-GITIGNORE = ".pskit/\n.venv/\n__pycache__/\n*.pyc\n.env\n"
+GITIGNORE = ".pskit/\n.venv/\n__pycache__/\n*.pyc\n.env\n.env.*\n!.env.example\n"
 
 
 # --------------------------------------------------------------------- Node.js / TypeScript
@@ -434,7 +434,7 @@ TSCONFIG = """{
 }
 """
 
-NODE_GITIGNORE = ".pskit/\nnode_modules/\ndist/\n.env\n"
+NODE_GITIGNORE = ".pskit/\nnode_modules/\ndist/\n.env\n.env.*\n!.env.example\n"
 
 
 def _package_json(service: str, typescript: bool) -> str:

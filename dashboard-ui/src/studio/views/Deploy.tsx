@@ -11,6 +11,7 @@ import { DeployedGroups, PlacementEditor, readPlacement } from "../components/Pl
 import { targetLabel } from "../placement";
 import { FirewallPanel } from "../components/FirewallPanel";
 import { useJob } from "../jobs";
+import { useAuth } from "../auth";
 import { useStudio } from "../store";
 import { compatProblems, overridesOn, restoreTriggersOn, setEnabledOn, skipTriggersOn, type CompatProblem } from "../compat";
 import type { Job, Json, JsonObject, OnPremCluster } from "../types";
@@ -28,6 +29,9 @@ const ACTIONS = [
 ] as const;
 
 export function DeployView() {
+  const { can } = useAuth();
+  // The same rules as the server: job_permission() in vault/permissions.py.
+  const mayRun = (command: string) => (command === "deploy" ? can("deploy", "c") : command === "remove" ? can("deploy", "d") : command === "validate" || can("deploy", "r"));
   const { state, dirty, draft, save, meta, replace } = useStudio();
   const toast = useToast();
   const confirm = useConfirm();
@@ -352,13 +356,13 @@ export function DeployView() {
         </div>
       )}
       {onprem && (
-        <Section title="Where functions run" hint="provider.options.placement" defaultOpen={!!placement}>
+        <Section title="Where functions run" hint="provider.options.placement">
           <PlacementEditor />
         </Section>
       )}
       <div className="action-grid">
         {ACTIONS.map((a) => (
-          <button key={a.command} type="button" className={`action-card btn ${a.tone}`} disabled={running} onClick={() => void run(a.command, a.command === "remove" && !deleteData ? { keep_resources: true } : undefined)} title={a.hint}>
+          <button key={a.command} type="button" className={`action-card btn ${a.tone}`} disabled={running || !mayRun(a.command)} onClick={() => void run(a.command, a.command === "remove" && !deleteData ? { keep_resources: true } : undefined)} title={a.hint}>
             <b>{a.label}</b>
             <span className="small">{a.hint}</span>
           </button>

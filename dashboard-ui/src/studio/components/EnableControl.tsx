@@ -9,12 +9,14 @@ type Mode = "on" | "off-here" | "off";
  * Deploy a function / workflow everywhere, skip it on the current provider only
  * (`providers.<cloud>.<section>.<name>.enabled: false`), or skip it everywhere (`enabled: false`).
  */
-export function EnableControl({ section, name, compact }: { section: "functions" | "workflows"; name: string; compact?: boolean }) {
-  const { draft, replace, providerName, provider } = useStudio();
+/** `provider`: the cloud "Disabled on ..." applies to (default: the one in pskit.yml). */
+export function EnableControl({ section, name, compact, provider }: { section: "functions" | "workflows"; name: string; compact?: boolean; provider?: string }) {
+  const { draft, replace, providerName: configured, meta } = useStudio();
+  const providerName = provider || configured;
   const everywhere = asObject(asObject(draft[section])[name]).enabled !== false;
   const here = isEnabled(draft, providerName, section, name);
   const mode: Mode = !everywhere ? "off" : !here ? "off-here" : "on";
-  const label = provider?.display_name || providerName;
+  const label = meta.providers.find((p) => p.name === providerName)?.display_name || providerName;
   const change = (next: Mode) => {
     let raw: JsonObject = setEnabledOn(draft, null, section, name, next !== "off");
     if (next === "off-here") raw = setEnabledOn(raw, providerName, section, name, false);

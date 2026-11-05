@@ -88,6 +88,65 @@ function writeSession(key: string, value: string): void {
 
 let memoryToken: string | null = null;
 
+// The login of this tab (`x-pskit-session`). Kept per tab, gone when the tab closes.
+const SESSION_KEY = "pskit-studio-session";
+let memorySession: string | null = null;
+
+export function setSession(value: string | null): void {
+  memorySession = value;
+  writeSession(SESSION_KEY, value || "");
+}
+
+function session(): string | null {
+  return memorySession || readSession(SESSION_KEY) || null;
+}
+
+export interface AuthStatus {
+  state: "open" | "setup" | "login" | "password_change" | "ready";
+  user?: string;
+  role?: string;
+  permissions?: Record<string, string>;
+  areas?: string[];
+}
+
+export interface VaultSetupResult extends AuthStatus {
+  session: string;
+  master_key: string;
+  recovery_code: string;
+  sealed: string[];
+  gitignore_added: string[];
+  tracked_plaintext: string[];
+}
+
+export interface VaultUser {
+  username: string;
+  role: string;
+  permissions: Record<string, string>;
+  areas: string[];
+  disabled: boolean;
+  must_change: boolean;
+  created_at: string;
+  created_by: string;
+}
+
+export interface FeatureInfo {
+  name: string;
+  label: string;
+  help: string;
+  full_access: boolean;
+}
+
+export interface AuditEntry {
+  ts: string;
+  user: string;
+  source: string;
+  action: string;
+  target: string;
+  outcome: string;
+  host: string;
+  details: Record<string, unknown>;
+}
+
 /** Take `#token=...` from the URL (once), keep it in sessionStorage, and remove it from the address bar. */
 export function captureToken(): string | null {
   const match = /(?:^#|[#&])token=([A-Za-z0-9_\-.~%]+)/.exec(window.location.hash);
@@ -133,6 +192,8 @@ async function request<T>(method: Method, path: string, body?: unknown, opts: Re
   const headers: Record<string, string> = { accept: "application/json" };
   const t = token();
   if (t) headers["x-studio-token"] = t;
+  const s = session();
+  if (s) headers["x-pskit-session"] = s;
   if (body !== undefined) headers["content-type"] = "application/json";
   let resp: Response;
   try {
@@ -160,12 +221,47 @@ async function request<T>(method: Method, path: string, body?: unknown, opts: Re
   if (!resp.ok) {
     const obj = (data && typeof data === "object" ? data : {}) as Record<string, unknown>;
     const msg = typeof obj.error === "string" ? obj.error : `HTTP ${resp.status}`;
+    // Logged out, expired or disabled while working: back to the login screen.
+    if ((resp.status === 401 && (obj.code === "login" || obj.code === "setup")) || (resp.status === 403 && obj.code === "password_change")) {
+      window.dispatchEvent(new Event("pskit-auth-lost"));
+    }
     throw new ApiError(resp.status, msg, obj);
   }
   return data as T;
 }
 
 export const api = {
+  authStatus: () => request<AuthStatus>("GET", "/api/auth/status"),
+  authMode: (mode: "none" | "accounts") => request<AuthStatus>("POST", "/api/auth/mode", { mode }),
+  authSetup: async (username: string, password: string) => {
+    const result = await request<VaultSetupResult>("POST", "/api/auth/setup", { username, password });
+    setSession(result.session);
+    return result;
+  },
+  authLogin: async (masterKey: string, username: string, password: string) => {
+    const result = await request<AuthStatus & { session: string; conflicts: string[] }>("POST", "/api/auth/login", {
+      master_key: masterKey, username, password,
+    });
+    setSession(result.session);
+    return result;
+  },
+  authLogout: () => request<{ state: string }>("POST", "/api/auth/logout", {}),
+  authPassword: (old: string, next: string) => request<AuthStatus>("POST", "/api/auth/password", { old, new: next }),
+  authRecover: (masterKey: string, recoveryCode: string, username: string, password: string) =>
+    request<{ recovered: string }>("POST", "/api/auth/recover", { master_key: masterKey, recovery_code: recoveryCode, username, password }),
+  authSync: () => request<{ written: string[]; removed: string[]; conflicts: string[]; kept: string[] }>("POST", "/api/auth/sync", {}),
+  authFeatures: () => request<{ features: FeatureInfo[]; presets: Record<string, Record<string, string>> }>("GET", "/api/auth/features"),
+  authUsers: () => request<{ users: VaultUser[] }>("GET", "/api/auth/users"),
+  authAddUser: (username: string, password: string, role: string, permissions: Record<string, string>) =>
+    request<VaultUser>("POST", "/api/auth/users", { username, password, role, permissions }),
+  authUpdateUser: (username: string, changes: { role?: string; permissions?: Record<string, string>; disabled?: boolean }) =>
+    request<VaultUser>("PUT", `/api/auth/users/${encodeURIComponent(username)}`, changes),
+  authRemoveUser: (username: string) => request<{ removed: string }>("DELETE", `/api/auth/users/${encodeURIComponent(username)}`),
+  authResetPassword: (username: string, password: string) =>
+    request<{ reset: string }>("POST", `/api/auth/users/${encodeURIComponent(username)}/reset-password`, { password }),
+  authRotateMaster: () => request<{ master_key: string }>("POST", "/api/auth/master-key/rotate", {}),
+  authAudit: (user: string, action: string) =>
+    request<{ entries: AuditEntry[]; total: number; tampered: string[] }>("GET", "/api/auth/audit", undefined, { query: { user, action } }),
   health: () => request<{ ok: boolean; version: string; root: string }>("GET", "/api/health"),
   meta: () => request<Meta>("GET", "/api/meta"),
   project: () => request<ProjectState>("GET", "/api/project"),

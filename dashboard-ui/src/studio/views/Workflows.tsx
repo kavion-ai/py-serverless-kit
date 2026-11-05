@@ -7,6 +7,7 @@ import { useConfirm, useToast } from "../components/Feedback";
 import { EnumSelect, FormRow, JsonInput, NumberInput, Section, Segmented, TextInput } from "../components/Forms";
 import { InlineIssues, PageHeader } from "../components/Misc";
 import { href, navigate } from "../route";
+import { useAuth } from "../auth";
 import { useStudio } from "../store";
 import type { Issue, Json, JsonObject } from "../types";
 import { asArray, asObject, getIn, NAME_RE, parseWhere, pathKey, setIn, str, uniqueName, type Path } from "../util";
@@ -29,6 +30,7 @@ export function WorkflowsView({ rest }: { rest: string[] }) {
 }
 
 function WorkflowList() {
+  const { can } = useAuth();
   const { draft, edit, replace, providerName, provider, state } = useStudio();
   const confirm = useConfirm();
   const toast = useToast();
@@ -59,6 +61,7 @@ function WorkflowList() {
           <button
             type="button"
             className="btn btn-primary"
+            hidden={!can("workflows", "c")}
             onClick={() => {
               setNewName(uniqueName("my-workflow", Object.keys(asObject(draft.workflows))));
               setCreating(true);
@@ -101,6 +104,7 @@ function WorkflowList() {
                   <button
                     type="button"
                     className="btn btn-sm btn-danger"
+                    hidden={!can("workflows", "d")}
                     onClick={async () => {
                       const ok = await confirm({ title: `Delete workflow ${name}?`, confirmLabel: "Delete", danger: true });
                       if (ok !== "confirm") return;

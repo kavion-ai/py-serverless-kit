@@ -8,6 +8,7 @@ import { useConfirm, useToast } from "../components/Feedback";
 import { Segmented, TextInput } from "../components/Forms";
 import { PageHeader } from "../components/Misc";
 import { useJob } from "../jobs";
+import { useAuth } from "../auth";
 import { useStudio } from "../store";
 import { asObject, str } from "../util";
 import { href, navigate } from "../route";
@@ -79,6 +80,7 @@ export function CodeView({ rest }: { rest: string[] }) {
 }
 
 function Editor({ openPath }: { openPath: string }) {
+  const { can } = useAuth();
   const toast = useToast();
   const confirm = useConfirm();
   const [entries, setEntries] = useState<FileEntry[] | null>(null);
@@ -288,7 +290,7 @@ function Editor({ openPath }: { openPath: string }) {
               <span className="mono small">{tab.path}</span>
               <span className="grow" />
               <span className="muted small">{languageOf(tab.path)}</span>
-              <button type="button" className="btn btn-sm btn-primary" disabled={tab.text === tab.saved} onClick={() => void save(tab.path)}>
+              <button type="button" className="btn btn-sm btn-primary" hidden={!can("code", "u")} disabled={tab.text === tab.saved} onClick={() => void save(tab.path)}>
                 Save (Ctrl+S)
               </button>
             </div>
@@ -298,6 +300,7 @@ function Editor({ openPath }: { openPath: string }) {
                 value={tab.text}
                 language={languageOf(tab.path)}
                 ariaLabel={`Editing ${tab.path}`}
+                readOnly={!can("code", "u")}
                 onChange={(text) => setTabs((ts) => ts.map((x) => (x.path === tab.path ? { ...x, text } : x)))}
                 onSave={() => void save(tab.path)}
                 minHeight={480}

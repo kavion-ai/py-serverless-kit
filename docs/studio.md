@@ -52,7 +52,7 @@ asks first.
 - **Logs** shows the logs of the deployed provider/stage (on-prem, AWS, GCP and Azure with a Log Analytics workspace). You can list the stored log streams and delete the ones you select, or all of them (AWS and on-prem). Each function's **Logging** section sets its log level and can show its live logs.
 - **Private key**: the SSH key field has **Browse…**, which lists folders on the machine running studio (it starts in `~/.ssh`). Only names and sizes are listed; file contents are never read.
 - **Provider differences**: trigger types the provider can't run aren't offered. Options it rejects (for example `auth: jwt` on Azure) or ignores (a timezone on Azure timers) are listed on each trigger, worked out from the provider's own validation.
-- **Enable / disable**: functions and workflows can be disabled everywhere (`enabled: false`) or only on the current provider (`providers.<cloud>...enabled: false`). A single trigger can be disabled on one provider too. The Deploy page and the provider switch list everything that won't run on the target and offer to disable it there.
+- **Enable / disable**: functions and workflows can be disabled everywhere (`enabled: false`) or only on the current provider (`providers.<cloud>...enabled: false`). A single trigger can be disabled on one provider too. The Deploy page and the provider switch list everything that won't run on the target and offer to disable it there. On premises, **Where functions run** on the Deploy page has the same switch for every function, with all functions on one target or split across servers.
 
 ## Test functions
 
@@ -211,8 +211,11 @@ machine or a saved server in Docker (studio installs it), or at any OpenAI-compa
 Studio can write files in the project and run deploys with your cloud credentials, so:
 
 - It binds to `127.0.0.1` by default.
-- Every API call needs the session token from the printed URL. Anyone who has that URL has full access, so don't share
-  it. A new token is generated each time studio starts.
+- The first start asks who will use the project. **Just me** (or `pskit studio --no-auth`) means no login and nothing
+  encrypted. **A team** creates an admin account: everyone then logs in, each account has its own permissions, and
+  `.env` and `.pskit` data is kept encrypted. See [Accounts, encrypted project data and the audit log](security-vault.md).
+- Every API call also needs the session token from the printed URL, so nothing else on this machine can reach the
+  login. A new token is generated each time studio starts.
 - Requests with a foreign `Host` header (DNS rebinding) or a cross-site `Origin` are refused, and bodies are capped at 2 MiB.
 - The file editor only reaches files inside the project. It never touches `.pskit/`, `.git/`, `.venv/`,
   `node_modules/` or `__pycache__`, and refuses binary files or files over 1 MiB.

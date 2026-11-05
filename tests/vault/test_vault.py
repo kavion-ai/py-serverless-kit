@@ -1,0 +1,521 @@
+"""The vault: keys, grants and revocation, sealing, conflicts, the audit log and the CLI login."""
+
+from __future__ import annotations
+
+import json
+import subprocess
+from pathlib import Path
+
+import click
+import pytest
+from click.testing import CliRunner
+
+from py_serverless_kit.cli.main import cli
+from py_serverless_kit.vault import audit, crypto, permissions
+from py_serverless_kit.vault import workspace as ws
+from py_serverless_kit.vault.errors import VaultError
+from py_serverless_kit.vault.store import MASTER_PREFIX, Vault
+
+ADMIN_PW = "correct horse battery"
+USER_PW = "first password here"
+SECRET = "DB_PASSWORD=hunter2-very-secret\n"
+
+
+@pytest.fixture(autouse=True)
+def fast_kdf(monkeypatch, tmp_path):
+    monkeypatch.setattr(crypto, "SCRYPT_N", 2**14)
+    monkeypatch.setenv("PSKIT_HOME", str(tmp_path / "home"))
+    for name in ("PSKIT_MASTER_KEY", "PSKIT_USER", "PSKIT_PASSWORD", "PSKIT_VAULT_SESSION"):
+        monkeypatch.delenv(name, raising=False)
+
+
+@pytest.fixture
+def project(tmp_path):
+    root = tmp_path / "proj"
+    root.mkdir()
+    (root / ".env.onprem").write_bytes(SECRET.encode())
+    (root / ".pskit").mkdir()
+    (root / ".pskit" / "onprem-servers.json").write_text('{"edge": {"password": "ssh-secret-value"}}')
+    return root
+
+
+@pytest.fixture
+def created(project):
+    vault, admin, master_key, recovery = Vault.create(project, "root-admin", ADMIN_PW)
+    ws.seal(vault, admin)
+    return vault, admin, master_key, recovery
+
+
+def all_vault_bytes(vault: Vault) -> bytes:
+    return b"".join(p.read_bytes() for p in vault.dir.rglob("*") if p.is_file())
+
+
+def test_vault_files_hold_no_plaintext(created):
+    vault, _admin, _key, _recovery = created
+    raw = all_vault_bytes(vault)
+    for needle in (b"hunter2", b"ssh-secret", b"root-admin", b".env.onprem", b"onprem-servers", b"permissions"):
+        assert needle not in raw
+
+
+def test_master_key_alone_opens_no_data(created):
+    vault, _admin, master_key, _recovery = created
+    master = crypto.parse_secret(MASTER_PREFIX, master_key, "master key")
+    doc = vault.accounts(master)  # it can read the accounts, which hold only wrapped keys
+    assert "hunter2" not in json.dumps(doc)
+    with pytest.raises(VaultError, match="wrong username"):
+        vault.authenticate(master, "root-admin", "not the right password")
+
+
+def test_login_needs_the_master_key_and_the_password(created):
+    vault, admin, master_key, _recovery = created
+    with pytest.raises(VaultError, match="wrong master key"):
+        vault.authenticate(crypto.random_key(), "root-admin", ADMIN_PW)
+    with pytest.raises(VaultError, match="wrong username"):
+        vault.authenticate(admin.master, "nobody", ADMIN_PW)
+    assert vault.authenticate(crypto.parse_secret(MASTER_PREFIX, master_key, "k"), "root-admin", ADMIN_PW).username
+
+
+def test_master_key_typo_is_told_apart(created):
+    _vault, _admin, master_key, _recovery = created
+    typo = master_key[:10] + ("A" if master_key[10] != "A" else "B") + master_key[11:]
+    with pytest.raises(VaultError, match="typo"):
+        crypto.parse_secret(MASTER_PREFIX, typo, "master key")
+    with pytest.raises(VaultError, match="starts with"):
+        crypto.parse_secret(MASTER_PREFIX, "nonsense", "master key")
+
+
+def test_weak_kdf_in_a_changed_vault_is_refused():
+    with pytest.raises(VaultError, match="unsafe"):
+        crypto.password_key("x", b"s" * 16, 2**4, 8, 1)
+
+
+def test_second_developer_gets_only_what_was_granted(created, tmp_path):
+    vault, admin, master_key, _recovery = created
+    vault.add_user(admin, "dev", USER_PW, perms={"code": "crud", "env": "r"})
+
+    # The other developer's clone: the vault, no plaintext.
+    clone = tmp_path / "clone"
+    clone.mkdir()
+    subprocess.run(["cp", "-r", str(vault.dir), str(clone)], check=False)
+    theirs = Vault(clone)
+    master = crypto.parse_secret(MASTER_PREFIX, master_key, "k")
+    session = ws.login(theirs, master, "dev", USER_PW, "cli")
+    ws.open_workspace(theirs, session)
+    assert (clone / ".env.onprem").read_text() == SECRET
+    assert not (clone / ".pskit" / "onprem-servers.json").exists()  # no read on servers
+    assert set(theirs.area_keys(session.identity)) == {"env"}
+
+
+def test_revoking_rotates_the_key_and_keeps_the_data(created):
+    vault, admin, _key, _recovery = created
+    vault.add_user(admin, "dev", USER_PW, perms={"env": "r"})
+    dev = vault.authenticate(admin.master, "dev", USER_PW)
+    old_key = vault.area_keys(dev)["env"]
+
+    vault.update_user(admin, "dev", {"permissions": {}})
+    assert vault.area_keys(dev) == {}
+    doc = vault.accounts(admin.master)
+    assert doc["areas"]["env"]["generation"] == 2
+    new_key = vault.area_keys(admin)["env"]
+    assert new_key != old_key
+    assert dict(vault.read_area("env", new_key, 2)) == {".env.onprem": SECRET.encode()}
+    assert list(vault.data_dir("env").glob("*.enc"))
+    assert list(vault.read_area("env", new_key, 1)) == []  # old generation gone
+
+
+def test_granting_later_works_without_the_users_password(created):
+    vault, admin, _key, _recovery = created
+    vault.add_user(admin, "dev", USER_PW, perms={})
+    dev = vault.authenticate(admin.master, "dev", USER_PW)
+    assert vault.area_keys(dev) == {}
+    vault.update_user(admin, "dev", {"permissions": {"servers": "r"}})
+    assert set(vault.area_keys(dev)) == {"servers"}
+
+
+def test_deploy_permission_holds_the_keys_a_deploy_needs(created):
+    vault, admin, _key, _recovery = created
+    vault.add_user(admin, "ops", USER_PW, perms={"deploy": "c"})
+    assert set(vault.area_keys(vault.authenticate(admin.master, "ops", USER_PW))) == set(permissions.AREAS)
+
+
+def test_a_user_cannot_grant(created):
+    vault, admin, _key, _recovery = created
+    vault.add_user(admin, "dev", USER_PW, perms={"env": "r"})
+    dev = vault.authenticate(admin.master, "dev", USER_PW)
+    with pytest.raises(VaultError, match="do not hold"):
+        vault.update_user(dev, "dev", {"permissions": {"servers": "r"}})
+
+
+def test_vault_keeps_an_admin(created):
+    vault, admin, _key, _recovery = created
+    with pytest.raises(VaultError, match="at least one active admin"):
+        vault.update_user(admin, "root-admin", {"role": "user"})
+    with pytest.raises(VaultError, match="at least one active admin"):
+        vault.update_user(admin, "root-admin", {"disabled": True})
+
+
+def test_change_and_reset_password(created):
+    vault, admin, _key, _recovery = created
+    vault.add_user(admin, "dev", USER_PW, perms={"env": "r"})
+    dev = vault.authenticate(admin.master, "dev", USER_PW)
+    assert vault.user(dev)["must_change"] is True
+    vault.change_password(dev, USER_PW, "my own new password")
+    assert vault.user(dev)["must_change"] is False
+    with pytest.raises(VaultError):
+        vault.authenticate(admin.master, "dev", USER_PW)
+
+    vault.reset_password(admin, "dev", "admin chose this one")
+    fresh = vault.authenticate(admin.master, "dev", "admin chose this one")
+    assert set(vault.area_keys(fresh)) == {"env"}
+    assert vault.area_keys(dev) == {}  # the session from before the reset lost its keys
+
+
+def test_recovery_code_restores_a_lost_admin(created):
+    vault, admin, _key, recovery = created
+    with pytest.raises(VaultError, match="wrong recovery"):
+        vault.recover(admin.master, crypto.format_secret("pskr", crypto.random_key()), "root-admin", "brand new password")
+    vault.recover(admin.master, recovery, "root-admin", "brand new password")
+    back = vault.authenticate(admin.master, "root-admin", "brand new password")
+    assert dict(vault.read_area("env", vault.area_keys(back)["env"], 1))[".env.onprem"] == SECRET.encode()
+
+
+def test_rotating_the_master_key_keeps_the_audit_log(created):
+    vault, admin, old_key, _recovery = created
+    audit.record(vault, admin.master, "root-admin", "cli", "before")
+    new_key = vault.rotate_master(admin)
+    with pytest.raises(VaultError, match="wrong master key"):
+        vault.accounts(crypto.parse_secret(MASTER_PREFIX, old_key, "k"))
+    master = crypto.parse_secret(MASTER_PREFIX, new_key, "k")
+    audit.record(vault, master, "root-admin", "cli", "after")
+    result = audit.read(vault, master)
+    assert {e["action"] for e in result["entries"]} == {"before", "after"}
+    assert result["tampered"] == []
+
+
+def test_changing_a_sealed_file_is_detected(created):
+    vault, admin, _key, _recovery = created
+    enc = next(vault.data_dir("env").glob("*.enc"))
+    raw = bytearray(enc.read_bytes())
+    raw[-1] ^= 1
+    enc.write_bytes(bytes(raw))
+    with pytest.raises(VaultError, match="changed or is damaged"):
+        ws.unseal(vault, admin)
+
+
+def test_accounts_cannot_be_edited_without_the_master_key(created):
+    vault, admin, _key, _recovery = created
+    header = json.loads(vault.path.read_text())
+    blob = bytearray(crypto.unb64(header["accounts"]))
+    blob[-1] ^= 1
+    header["accounts"] = crypto.b64(bytes(blob))
+    vault.path.write_text(json.dumps(header))
+    with pytest.raises(VaultError, match="changed or are damaged"):
+        vault.accounts(admin.master)
+
+
+def test_sealed_files_cannot_be_moved_between_areas(created):
+    vault, admin, _key, _recovery = created
+    keys = vault.area_keys(admin)
+    enc = next(vault.data_dir("env").glob("*.enc"))
+    target = vault.data_dir("servers") / enc.name
+    target.write_bytes(enc.read_bytes())
+    with pytest.raises(VaultError):
+        list(vault.read_area("servers", keys["servers"], 1))
+
+
+def test_a_vault_file_cannot_write_over_code(created):
+    vault, admin, _key, _recovery = created
+    key = vault.area_keys(admin)["env"]
+    vault.seal_file("env", key, 1, "../evil.py", b"x")
+    with pytest.raises(VaultError, match="outside the project"):
+        ws.unseal(vault, admin)
+    vault.remove_file("env", key, "../evil.py")
+    vault.seal_file("env", key, 1, "app/handlers.py", b"x")
+    with pytest.raises(VaultError, match="may not write"):
+        ws.unseal(vault, admin)
+
+
+def test_only_changed_files_are_rewritten(created, project):
+    vault, admin, _key, _recovery = created
+    enc = next(vault.data_dir("env").glob("*.enc"))
+    before = enc.read_bytes()
+    assert ws.seal(vault, admin)["sealed"] == []
+    assert enc.read_bytes() == before
+    (project / ".env.onprem").write_bytes((SECRET + "MORE=1\n").encode())
+    assert ws.seal(vault, admin)["sealed"] == [".env.onprem"]
+    assert enc.read_bytes() != before  # same file name: git sees an update
+    assert len(list(vault.data_dir("env").glob("*.enc"))) == 1
+
+
+def test_deleted_file_leaves_the_vault(created, project):
+    vault, admin, _key, _recovery = created
+    (project / ".env.onprem").unlink()
+    assert ws.seal(vault, admin)["removed"] == [".env.onprem"]
+    assert list(vault.data_dir("env").glob("*.enc")) == []
+
+
+def test_read_only_account_does_not_write_the_vault(created, project):
+    vault, admin, _key, _recovery = created
+    vault.add_user(admin, "dev", USER_PW, perms={"env": "r"})
+    dev = vault.authenticate(admin.master, "dev", USER_PW)
+    (project / ".env.onprem").write_bytes(b"EDITED=1\n")
+    assert ws.seal(vault, dev) == {"sealed": [], "removed": [], "skipped": [".env.onprem"]}
+
+
+def test_logout_removes_plaintext_but_not_unsealed_edits_from_a_read_only_account(created, project):
+    vault, admin, _key, _recovery = created
+    session = ws.Session("s1", admin, "cli", 9e12)
+    ws.write_session(project, session)
+    ws.close_session(vault, session)
+    assert not (project / ".env.onprem").exists()
+    assert not (project / ".pskit" / "onprem-servers.json").exists()
+
+    session = ws.login(vault, admin.master, "root-admin", ADMIN_PW, "cli")
+    ws.open_workspace(vault, session)
+    assert (project / ".env.onprem").read_text() == SECRET
+
+
+def test_plaintext_stays_while_another_session_holds_it(created, project):
+    vault, admin, _key, _recovery = created
+    one = ws.login(vault, admin.master, "root-admin", ADMIN_PW, "cli")
+    two = ws.login(vault, admin.master, "root-admin", ADMIN_PW, "cli")
+    ws.close_session(vault, one)
+    assert (project / ".env.onprem").exists()
+    ws.close_session(vault, two)
+    assert not (project / ".env.onprem").exists()
+
+
+def test_expired_session_is_sealed_and_cleaned_up(created, project):
+    vault, admin, _key, _recovery = created
+    ws.write_session(project, ws.Session("old", admin, "cli", 1.0))
+    (project / ".env.onprem").write_bytes(b"CHANGED=1\n")
+    assert ws.live_sessions(vault) == []
+    assert not (project / ".env.onprem").exists()
+    assert dict(vault.read_area("env", vault.area_keys(admin)["env"], 1))[".env.onprem"] == b"CHANGED=1\n"
+
+
+def test_pull_with_local_edit_keeps_both(created, project):
+    vault, admin, _key, _recovery = created
+    ws.seal(vault, admin)
+    key = vault.area_keys(admin)["env"]
+    vault.seal_file("env", key, 1, ".env.onprem", b"FROM_TEAMMATE=1\n")  # what a git pull brings
+    (project / ".env.onprem").write_bytes(b"MY_EDIT=1\n")
+    result = ws.unseal(vault, admin)
+    assert result["conflicts"] == [".env.onprem"]
+    assert (project / ".env.onprem").read_text() == "FROM_TEAMMATE=1\n"
+    assert (project / ".env.onprem.vault-conflict").read_text() == "MY_EDIT=1\n"
+
+
+def test_local_edit_after_a_crash_is_not_overwritten(created, project):
+    vault, admin, _key, _recovery = created
+    (project / ".env.onprem").write_bytes(b"EDITED_BEFORE_CRASH=1\n")
+    session = ws.login(vault, admin.master, "root-admin", ADMIN_PW, "cli")
+    opened = ws.open_workspace(vault, session)
+    assert opened["kept"] == [".env.onprem"] and opened["conflicts"] == []
+    assert dict(vault.read_area("env", vault.area_keys(admin)["env"], 1))[".env.onprem"] == b"EDITED_BEFORE_CRASH=1\n"
+
+
+def test_env_detection():
+    for name in (".env", ".env.onprem", "sub/.env.local", ".ENV", ".env.", ".env/", ".env::$DATA", "a\\.env"):
+        assert ws.is_env_file(name), name
+    for name in (".env.example", ".env.sample", "app/env.py", ".environment", ".env.onprem.vault-conflict"):
+        assert not ws.is_env_file(name), name
+
+
+def test_gitignore_is_added_once_and_keeps_the_vault(project):
+    (project / ".gitignore").write_text("build/")
+    assert ".env.*" in ws.ensure_gitignore(project)
+    text = (project / ".gitignore").read_text()
+    assert text.startswith("build/\n") and ".pskit/" in text and ".pskit-vault" not in text.replace("(encrypted)", "").split("\n", 2)[2]
+    assert ws.ensure_gitignore(project) == []
+
+
+def test_tracked_plaintext_is_reported(project):
+    subprocess.run(["git", "init", "-q"], cwd=project, check=True)
+    subprocess.run(["git", "add", "-f", ".env.onprem"], cwd=project, check=True)
+    assert ws.tracked_plaintext(project) == [".env.onprem"]
+
+
+def test_audit_detects_changed_and_removed_lines(created):
+    vault, admin, _key, _recovery = created
+    for name in ("one", "two", "three"):
+        audit.record(vault, admin.master, "root-admin", "cli", name)
+    path = next((vault.dir / "audit").glob("*.log"))
+    assert audit.read(vault, admin.master)["tampered"] == []
+    lines = path.read_text().splitlines()
+    path.write_text("\n".join([lines[0], lines[2]]) + "\n")  # one line taken out
+    assert audit.read(vault, admin.master)["tampered"] == [path.name]
+
+
+def test_audit_details_drop_secrets():
+    details = audit.safe_details({
+        "path": "app.py", "password": "x", "passphrase": "x", "text": "x", "api_key": "x", "master_key": "x",
+        "token": "x", "env": {"A": "x"}, "value": "x", "command": "deploy", "stage": "dev",
+    })
+    assert details == {"path": "app.py", "command": "deploy", "stage": "dev"}
+
+
+# ------------------------------------------------------------------------------- permissions
+def _commands(group: click.Group, prefix=()):
+    for name, command in group.commands.items():
+        path = (*prefix, name)
+        if isinstance(command, click.Group):
+            yield from _commands(command, path)
+        else:
+            yield path
+
+
+def test_every_cli_command_has_a_permission():
+    missing = [
+        " ".join(path) for path in _commands(cli)
+        if path[0] not in permissions.OPEN_COMMANDS and permissions.cli_permission(path) == permissions.ADMIN_ONLY
+    ]
+    assert missing == []
+
+
+def test_no_one_can_be_granted_admin_only():
+    with pytest.raises(VaultError):
+        permissions.clean({"admin": "u"})
+    user = {"role": "user", "permissions": {name: "crud" for name in permissions.FEATURES}}
+    assert not permissions.allowed(user, *permissions.ADMIN_ONLY)
+
+
+@pytest.mark.parametrize("method,parts,expected", [
+    ("PUT", ["project"], ("project", "u")),
+    ("GET", ["files"], ("code", "r")),
+    ("PUT", ["files"], ("code", "u")),
+    ("POST", ["onprem-services"], ("services", "c")),
+    ("GET", ["onprem-services", "pg"], ("services", "r")),
+    ("POST", ["onprem-services", "pg", "remove"], ("services", "d")),
+    ("POST", ["onprem-services", "pg", "backup"], ("services", "u")),
+    ("POST", ["onprem-services", "pg", "browse", "s3", "list"], ("services", "r")),
+    ("POST", ["onprem-services", "pg", "browse", "s3", "delete"], ("services", "u")),
+    ("POST", ["onprem-servers", "edge", "shell"], ("shell", "u")),
+    ("POST", ["onprem-terminals"], ("shell", "u")),
+    ("POST", ["vscode", "start"], ("shell", "u")),
+    ("POST", ["hana", "messages"], ("hana", "u")),
+    ("POST", ["settings-bundle", "export"], permissions.ADMIN_ONLY),
+    ("POST", ["something-new"], permissions.ADMIN_ONLY),
+    ("DELETE", ["project"], permissions.ADMIN_ONLY),
+])
+def test_studio_routes(method, parts, expected):
+    assert permissions.studio_permission(method, parts) == expected
+
+
+def test_jobs_by_command():
+    assert permissions.job_permission("deploy") == ("deploy", "c")
+    assert permissions.job_permission("remove") == ("deploy", "d")
+    assert permissions.job_permission("invented") == permissions.ADMIN_ONLY
+
+
+def test_project_read_is_for_everyone_and_disabled_means_nothing():
+    assert permissions.allowed({"role": "user"}, "project", "r")
+    assert not permissions.allowed({"role": "user"}, "project", "u")
+    assert not permissions.allowed({"role": "admin", "disabled": True}, "project", "r")
+    assert permissions.areas_for({"role": "admin", "disabled": True}) == frozenset()
+
+
+# ------------------------------------------------------------------------------- CLI
+@pytest.fixture
+def cli_project(project, monkeypatch):
+    (project / "pskit.yml").write_text(
+        "service: demo\nprovider: {name: aws, region: us-east-1}\n"
+        "functions:\n  hello: {handler: app.hello, events: [{http: GET /hello}]}\n"
+    )
+    (project / "app.py").write_text("def hello(event, ctx):\n    return {}\n")
+    monkeypatch.chdir(project)
+    return project
+
+
+def _init(runner):
+    result = runner.invoke(cli, ["vault", "init", "-u", "root-admin"], input=f"{ADMIN_PW}\n{ADMIN_PW}\n")
+    assert result.exit_code == 0, result.output
+    line = next(ln for ln in result.output.splitlines() if ln.startswith("MASTER KEY"))
+    return line.split()[-1]
+
+
+def test_no_vault_changes_nothing(cli_project):
+    assert CliRunner().invoke(cli, ["validate"]).exit_code == 0
+
+
+def test_cli_flow(cli_project, tmp_path):
+    runner = CliRunner()
+    key = _init(runner)
+    assert (cli_project / ".pskit-vault" / "vault.json").is_file()
+    assert ".env.*" in (cli_project / ".gitignore").read_text()
+
+    assert runner.invoke(cli, ["validate"]).exit_code == 0  # logged in by init
+    assert runner.invoke(cli, ["logout"]).exit_code == 0
+    assert not (cli_project / ".env.onprem").exists()
+
+    result = runner.invoke(cli, ["validate"])
+    assert result.exit_code != 0 and "pskit login" in result.output
+    assert runner.invoke(cli, ["validate", "--help"]).exit_code == 0  # help needs no login
+
+    result = runner.invoke(cli, ["login", "-u", "root-admin"], input=f"{key}\n{ADMIN_PW}\n")
+    assert result.exit_code == 0, result.output
+    assert "master key" in result.output.lower()
+    assert (cli_project / ".env.onprem").read_text() == SECRET
+
+    # the master key is not saved: the password alone is refused, on this computer too
+    runner.invoke(cli, ["logout"])
+    assert not (tmp_path / "home" / "vault-keys").exists()
+    assert runner.invoke(cli, ["login", "-u", "root-admin"], input=f"{ADMIN_PW}\n").exit_code != 0
+    assert not (cli_project / ".env.onprem").exists()
+    assert runner.invoke(cli, ["login", "-u", "root-admin"], input=f"{key}\n{ADMIN_PW}\n").exit_code == 0
+
+    # a command's change is sealed when it ends
+    (cli_project / ".env.onprem").write_bytes(b"NEW=1\n")
+    assert runner.invoke(cli, ["validate"]).exit_code == 0
+    vault = Vault(cli_project)
+    master = crypto.parse_secret(MASTER_PREFIX, key, "master key")
+    admin = vault.authenticate(master, "root-admin", ADMIN_PW)
+    assert dict(vault.read_area("env", vault.area_keys(admin)["env"], 1))[".env.onprem"].startswith(b"NEW=1")
+    audit_out = runner.invoke(cli, ["vault", "audit"]).output
+    assert "cli.validate" in audit_out and "auth.login" in audit_out
+
+
+def test_cli_permissions(cli_project):
+    runner = CliRunner()
+    key = _init(runner)
+    args = ["vault", "users", "add", "reader", "--allow", "deploy=r"]
+    assert runner.invoke(cli, args, input=f"{USER_PW}\n{USER_PW}\n").exit_code == 0
+    runner.invoke(cli, ["logout"])
+
+    assert runner.invoke(cli, ["login", "-u", "reader"], input=f"{key}\n{USER_PW}\n").exit_code == 0
+    refused = runner.invoke(cli, ["validate"])
+    assert "new password" in refused.output
+    changed = runner.invoke(cli, ["vault", "password"], input=f"{USER_PW}\nreader own password\nreader own password\n")
+    assert changed.exit_code == 0, changed.output
+
+    assert runner.invoke(cli, ["validate"]).exit_code == 0
+    refused = runner.invoke(cli, ["deploy"])
+    assert refused.exit_code != 0 and "create permission on deploy" in refused.output
+    assert runner.invoke(cli, ["vault", "users", "list"]).exit_code != 0
+    assert runner.invoke(cli, ["vault", "audit"]).exit_code != 0
+
+    runner.invoke(cli, ["logout"])
+    runner.invoke(cli, ["login", "-u", "root-admin"], input=f"{key}\n{ADMIN_PW}\n")
+    out = runner.invoke(cli, ["vault", "audit", "--user", "reader"]).output
+    assert "cli.deploy" in out and "denied" in out
+
+
+def test_cli_env_login_for_scripts(cli_project, monkeypatch):
+    runner = CliRunner()
+    key = _init(runner)
+    runner.invoke(cli, ["logout"])
+    monkeypatch.setenv("PSKIT_MASTER_KEY", key)
+    monkeypatch.setenv("PSKIT_USER", "root-admin")
+    monkeypatch.setenv("PSKIT_PASSWORD", ADMIN_PW)
+    assert runner.invoke(cli, ["validate"]).exit_code == 0
+    assert not (cli_project / ".env.onprem").exists()  # closed again at the end of the command
+
+
+def test_packaging_leaves_the_vault_out(cli_project):
+    from py_serverless_kit.packaging.builder import DEFAULT_EXCLUDES
+
+    assert ".pskit-vault/**" in DEFAULT_EXCLUDES
+
+
+def test_paths_are_strings(project):
+    assert all(isinstance(p, str) for p in ws.scan_area(Path(project), "env"))

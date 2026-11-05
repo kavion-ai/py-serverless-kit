@@ -37,6 +37,7 @@ DEFAULT_EXCLUDES = (
     ".git/**",
     ".hg/**",
     ".pskit/**",
+    ".pskit-vault/**",
     ".terraform/**",
     ".venv/**",
     "venv/**",

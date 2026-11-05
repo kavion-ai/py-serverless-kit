@@ -9,13 +9,14 @@ import sys
 import traceback
 import webbrowser
 from pathlib import Path
-from typing import Any, Callable, Dict, Optional, Tuple
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
 import click
 
 from .._version import __version__
 from ..config.loader import ConfigError
 from ..config.schema import NODE_RUNTIMES, PROVIDERS, PYTHON_RUNTIMES
+from .vault_commands import register as _register_vault_commands
 
 COMMON_ERRORS: tuple = ()
 
@@ -194,6 +195,15 @@ Operate
               pskit workflow cancel <execution-id>
               pskit workflow show order --format asl
 \b
+Accounts and encrypted project data (docs/security-vault.md)
+  login       Unlock the project: master key, username, password
+  logout      Encrypt your changes and remove the plaintext
+  whoami      Show the logged-in account
+  Create      pskit vault init
+  Sync        pskit vault status   pskit vault sync
+  Accounts    pskit vault users    pskit vault password   pskit vault recover
+  Audit       pskit vault audit    pskit vault rotate-master-key
+\b
 Reference
   providers   Capability matrix of every cloud   pskit providers --json
 \b
@@ -203,7 +213,32 @@ Project options (most commands): -c/--config FILE  -p/--provider NAME  -s/--stag
 Run `pskit COMMAND --help` for every option of a command. Docs: docs/cli.md"""
 
 
-@click.group(context_settings=CONTEXT, epilog=ROOT_EPILOG)
+class _ProtectedGroup(click.Group):
+    """In a project with a vault, a command needs a login with the right permission, and its changes get encrypted."""
+
+    def resolve_command(self, ctx: click.Context, args: List[str]) -> Any:
+        name, command, rest = super().resolve_command(ctx, args)
+        if name and command is not None and not {"--help", "-h"} & set(rest):
+            from ..vault.cli_gate import gate
+            from ..vault.errors import VaultError
+
+            words = [name]
+            current = command
+            for word in rest:
+                if not isinstance(current, click.Group) or word.startswith("-") or word not in current.commands:
+                    break
+                current = current.commands[word]
+                words.append(word)
+            try:
+                finish = gate(words, rest)
+            except VaultError as exc:
+                raise click.ClickException(exc.message) from None
+            if finish is not None:
+                ctx.call_on_close(finish)
+        return name, command, rest
+
+
+@click.group(cls=_ProtectedGroup, context_settings=CONTEXT, epilog=ROOT_EPILOG)
 @click.version_option(__version__, prog_name="py-serverless-kit")
 def cli() -> None:
     """py-serverless-kit: write Python functions once, deploy them to any cloud.
@@ -216,6 +251,9 @@ def cli() -> None:
       pskit deploy --stage dev       # terraform apply
       pskit dashboard --open         # see everything you deployed
     """
+
+
+_register_vault_commands(cli)
 
 
 # ----------------------------------------------------------------------------- init
@@ -2773,8 +2811,15 @@ def dashboard(
     help="Print every step of Hana's chats in this terminal: messages, model requests and answers, tool calls "
     "with arguments and results, plans, cards, errors (passwords stay hidden). --ailogs or --ailogs=true.",
 )
+@click.option(
+    "--no-auth",
+    is_flag=True,
+    help="No login and nothing encrypted, for one person on one computer. Remembered for this project. "
+    "Refused when the project has accounts.",
+)
 def studio(
-    directory: str, bind_host: str, port: int, open_browser: bool, vscode_image: Optional[str], ailogs: bool
+    directory: str, bind_host: str, port: int, open_browser: bool, vscode_image: Optional[str], ailogs: bool,
+    no_auth: bool,
 ) -> None:
     """Edit the project in the browser (writes pskit.yml).
 
@@ -2785,13 +2830,24 @@ def studio(
       pskit studio --open
       pskit studio -d path/to/project --port 8800
       pskit studio --ailogs=true        # Hana's conversations, tool calls and results in this terminal
+      pskit studio --no-auth            # just you: no login, nothing encrypted
+
+    The first start asks whether this project is just for you (no login) or for a team (accounts, encrypted data that
+    can be committed). See docs/security-vault.md.
     """
+    from ..studio.auth import choose_no_accounts
     from ..studio.hana import ailog
     from ..studio.server import is_loopback, make_server, studio_url
+    from ..vault.errors import VaultError
 
     if ailogs:
         ailog.enable()
     root = Path(directory).resolve()
+    if no_auth:
+        try:
+            choose_no_accounts(root)
+        except VaultError as exc:
+            raise click.ClickException(f"{exc.message}: run pskit studio without --no-auth") from None
     try:
         httpd = make_server(root, bind_host, port, vscode_image=vscode_image)
     except OSError as exc:
@@ -2799,8 +2855,9 @@ def studio(
     url = studio_url(httpd)
     if not is_loopback(bind_host):
         fail(
-            f"warning: listening on {bind_host}. The studio edits files and runs deploys; anyone with the "
-            "link (it contains the session token) can do the same."
+            f"warning: listening on {bind_host}, over plain HTTP. The link's token, passwords and the master key cross "
+            "the network unencrypted: put this behind TLS, or use an SSH tunnel. Without accounts, anyone with the "
+            "link can edit files and run deploys."
         )
     ok(f"pskit studio for {root}")
     echo(f"Open {url}  (Ctrl+C to stop)")
@@ -2813,6 +2870,8 @@ def studio(
     except KeyboardInterrupt:
         pass
     finally:
+        if httpd.studio is not None and httpd.studio.auth is not None:
+            httpd.studio.auth.shutdown()  # encrypts the changes and removes the plaintext
         httpd.server_close()
 
 

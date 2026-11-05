@@ -23,6 +23,9 @@ Per group: one of `server`, `cluster` or `local: true` (the default group may le
 server) and `advertise` (the URL the other groups call, when the server's own address is not reachable).
 
 The studio's **Deploy** page has the same editor ("Where functions run"), and each function shows where it runs.
+The editor also lists every function with its deploy switch, with or without groups. A disabled function
+(`enabled: false`) may stay listed in a group: it is not deployed, and returns to that group when enabled again. A
+group left with no enabled function still gets its server set up, with nothing to run.
 
 ## Each function is its own sub-project
 

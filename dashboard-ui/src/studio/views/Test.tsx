@@ -8,6 +8,7 @@ import { PageHeader } from "../components/Misc";
 import { DeployedBadge, ServerSelect, useServerChoice } from "../components/ServerPicker";
 import { useJob } from "../jobs";
 import { href, navigate } from "../route";
+import { useAuth } from "../auth";
 import { useStudio } from "../store";
 import type { Json, SavedTestEvent, TestGuide, TestTrigger } from "../types";
 import { DeployedLogs } from "./Logs";
@@ -23,6 +24,7 @@ function copy(text: string, toast: ReturnType<typeof useToast>) {
 
 /** Test a function: pick a trigger, edit the event, run it locally or send it to the deployed stage. */
 export function TestView({ rest }: { rest: string[] }) {
+  const { can } = useAuth();
   const { state, dirty, save, meta } = useStudio();
   const toast = useToast();
   const confirm = useConfirm();
@@ -247,12 +249,13 @@ export function TestView({ rest }: { rest: string[] }) {
                   </div>
                 )}
                 <div className="row-gap wrap">
-                  <button type="button" className="btn btn-primary" disabled={job.status === "running"} onClick={() => void runLocal()} title="Runs the handler on this machine with a synthetic event">
+                  <button type="button" className="btn btn-primary" hidden={!can("test", "c")} disabled={job.status === "running"} onClick={() => void runLocal()} title="Runs the handler on this machine with a synthetic event">
                     ▶ Run locally
                   </button>
                   <button
                     type="button"
                     className="btn btn-primary"
+                    hidden={!can("test", "c")}
                     disabled={job.status === "running" || !trigger.remote.supported}
                     title={trigger.remote.supported ? `Send a real event to ${providerName}/${target.stage}` : trigger.remote.reason}
                     onClick={() => void sendRemote()}

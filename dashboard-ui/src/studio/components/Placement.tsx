@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { api } from "../api";
+import { useAuth } from "../auth";
+import { isEnabled } from "../compat";
 import { useStudio } from "../store";
 import type { DeployedGroup, JsonObject, OnPremCluster, OnPremDeployed, OnPremServer } from "../types";
 import { asArray, asObject, getIn, isObject, setIn, str } from "../util";
@@ -25,6 +27,7 @@ import {
   type RunsOnChoice,
   type RunsOnErrors,
 } from "../placement";
+import { EnableControl } from "./EnableControl";
 import { ServerForm } from "./OnPremMachines";
 import { ServerSelect } from "./ServerPicker";
 import { FormRow, NumberInput, Segmented, TextInput } from "./Forms";
@@ -61,6 +64,33 @@ export function usePlacementTargets(enabled: boolean): { servers: OnPremServer[]
   }, [enabled]);
   useEffect(reload, [reload]);
   return { servers, clusters, reload };
+}
+
+/** Which functions a deploy on premises includes: the Functions page's Deploy control, for both placement modes. */
+function DeployedFunctions({ functions, placement }: { functions: string[]; placement: Placement | null }) {
+  const { draft } = useStudio();
+  const { can } = useAuth();
+  if (!functions.length) return null;
+  const on = functions.filter((fn) => isEnabled(draft, "onprem", "functions", fn)).length;
+  return (
+    <fieldset className="perm-fieldset placement-deploy" disabled={!can("functions", "u")}>
+      <div className="row-gap wrap">
+        <b>
+          Functions to deploy ({on} of {functions.length})
+        </b>
+        <span className="muted small">Disabled functions stay in pskit.yml but are not deployed.</span>
+      </div>
+      <ul className="placement-deploy-list">
+        {functions.map((fn) => (
+          <li key={fn}>
+            <span className="mono grow">{fn}</span>
+            <GroupBadge placement={placement} fn={fn} />
+            <EnableControl section="functions" name={fn} provider="onprem" compact />
+          </li>
+        ))}
+      </ul>
+    </fieldset>
+  );
 }
 
 /** "Where functions run": one target for everything, or groups of functions on different servers / clusters. */
@@ -104,10 +134,13 @@ export function PlacementEditor() {
         <code className="mono small muted">provider.options.placement</code>
       </div>
       {!placement ? (
-        <p className="muted small">
-          Every function runs on the machine or cluster picked above. Split them to put, say, GPU functions on a GPU server and the API on another; each
-          server then installs only what its functions need.
-        </p>
+        <>
+          <p className="muted small">
+            Every function runs on the machine or cluster picked above. Split them to put, say, GPU functions on a GPU server and the API on another; each
+            server then installs only what its functions need.
+          </p>
+          <DeployedFunctions functions={functions} placement={null} />
+        </>
       ) : (
         <>
           <p className="muted small">
@@ -148,6 +181,7 @@ export function PlacementEditor() {
               ))}
             </div>
           )}
+          <DeployedFunctions functions={functions} placement={placement} />
           <div className="placement-groups">
             {placement.groups.map((g) => (
               <GroupCard
@@ -155,6 +189,7 @@ export function PlacementEditor() {
                 group={g}
                 placement={placement}
                 functions={functions}
+                isOn={(fn) => isEnabled(draft, "onprem", "functions", fn)}
                 servers={servers}
                 clusters={clusters}
                 issues={groupIssues(g.name).map((i) => i.message)}
@@ -210,6 +245,7 @@ function GroupCard({
   group,
   placement,
   functions,
+  isOn,
   servers,
   clusters,
   issues,
@@ -222,6 +258,7 @@ function GroupCard({
   group: PlacementGroup;
   placement: Placement;
   functions: string[];
+  isOn: (fn: string) => boolean;
   servers: OnPremServer[];
   clusters: OnPremCluster[];
   issues: string[];
@@ -363,8 +400,10 @@ function GroupCard({
                 {functions.map((fn) => {
                   const where = groupOfFn(fn);
                   const here = where === group.name;
+                  const off = !isOn(fn);
+                  const tip = here ? `Runs in ${group.name}` : `Runs in ${where}; tick to move it here`;
                   return (
-                    <label key={fn} className={`placement-fn${here ? " on" : ""}`} title={here ? `Runs in ${group.name}` : `Runs in ${where}; tick to move it here`}>
+                    <label key={fn} className={`placement-fn${here ? " on" : ""}${off ? " off" : ""}`} title={off ? `Disabled: not deployed. ${tip}` : tip}>
                       <input
                         type="checkbox"
                         checked={here}
@@ -373,10 +412,12 @@ function GroupCard({
                       />
                       <span className="mono">{fn}</span>
                       {!here && <span className="muted small">· {where}</span>}
+                      {off && <span className="muted small">· disabled</span>}
                     </label>
                   );
                 })}
               </div>
+              {!mine.some(isOn) && <div className="form-help">No enabled function in this group: its server is still set up, with nothing to run.</div>}
               {isDefault && !others.length && <div className="form-help">Add another group to move functions out of the default group.</div>}
               {leaving.length > 0 && (
                 <div className="hint-box row-gap wrap" role="group" aria-label="Move functions to another group">

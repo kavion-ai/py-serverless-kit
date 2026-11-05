@@ -625,6 +625,10 @@ details.advanced > summary { cursor: pointer; font-weight: 600; color: var(--mut
 .placement-fn { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); cursor: pointer; font-size: 12.5px; }
 .placement-fn.on { border-color: var(--accent); background: var(--accent-soft); }
 .placement-fn input:disabled { cursor: default; }
+.placement-fn.off > .mono { text-decoration: line-through; }
+.placement-deploy { display: grid; gap: 6px; margin: 8px 0; }
+.placement-deploy-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.placement-deploy-list li { display: flex; align-items: center; gap: 8px; }
 .placement-fn-actions { margin-bottom: 6px; }
 .deploy-groups { flex-basis: 100%; display: grid; gap: 8px; }
 
@@ -932,3 +936,16 @@ details.advanced > summary { cursor: pointer; font-weight: 600; color: var(--mut
 .hana-user-row:hover .hana-edit-btn, .hana-edit-btn:focus-visible { opacity: 1; }
 .hana-edit { align-self: stretch; display: flex; flex-direction: column; gap: 4px; }
 .hana-edit textarea { width: 100%; font-family: var(--sans); }
+
+/* Login, first-run admin and the permission grid */
+.auth-card { width: min(520px, 94vw); display: flex; flex-direction: column; gap: 14px; }
+.auth-secret { border: 1px solid var(--border, #8884); border-radius: 8px; padding: 10px 12px; }
+.auth-secret-value { display: block; margin: 8px 0; word-break: break-all; user-select: all; }
+.perm-grid td:not(:first-child), .perm-grid th:not(:first-child) { text-align: center; width: 64px; }
+.notice-warn { border: 1px solid #d9a441; border-radius: 8px; padding: 10px 12px; }
+.text-danger { color: #d64545; }
+.auth-choice { display: flex; flex-direction: column; gap: 4px; text-align: left; padding: 12px 14px; border: 1px solid var(--border, #8884); border-radius: 8px; background: transparent; color: inherit; cursor: pointer; font: inherit; }
+.auth-choice:hover { border-color: var(--accent, #5b5bd6); }
+.perm-fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+.perm-banner { margin-bottom: 12px; }
+.btn[hidden], .hana-fab[hidden] { display: none !important; }

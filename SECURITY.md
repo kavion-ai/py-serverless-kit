@@ -30,5 +30,10 @@ We aim to acknowledge reports within 3 business days and to ship a fix or mitiga
 
 ### Known limits
 
+Accounts and the encrypted vault have limits of their own, listed in
+[docs/security-vault.md](docs/security-vault.md#what-this-protects-against-and-what-it-does-not). In short, only reading
+secrets is enforced by encryption; the other permissions are enforced by pskit on the developer's own machine.
+
+
 - The on-prem host's AWS-compatible APIs treat the access key id as a bearer token and do not verify the SigV4 signature. The host serves plain HTTP: use TLS or a tunnel on an untrusted network.
 - Service passwords are passed to `docker run` / `docker exec` as `-e NAME=value` arguments, so they are visible in the process list of the machine running them while the command runs.

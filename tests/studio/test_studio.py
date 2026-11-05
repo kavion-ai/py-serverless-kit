@@ -49,7 +49,7 @@ workflows:
 @pytest.fixture
 def studio(make_project, tmp_path):
     make_project(CONFIG)
-    httpd = make_server(tmp_path, "127.0.0.1", 0, token=TOKEN)
+    httpd = make_server(tmp_path, "127.0.0.1", 0, token=TOKEN, auth=False)
     thread = threading.Thread(target=httpd.serve_forever, daemon=True)
     thread.start()
     base = f"http://127.0.0.1:{httpd.server_address[1]}"

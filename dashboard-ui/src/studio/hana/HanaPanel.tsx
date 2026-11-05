@@ -40,6 +40,7 @@ const PAGE: Record<View, string> = {
   deploy: "Deploy",
   logs: "Logs",
   yaml: "YAML",
+  security: "Users & audit",
 };
 
 const SUGGESTIONS = [

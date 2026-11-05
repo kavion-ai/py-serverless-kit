@@ -221,11 +221,19 @@ class JobManager:
         provider: Optional[str] = None,
         stage: Optional[str] = None,
         args: Optional[Dict[str, Any]] = None,
+        *,
+        env: Optional[Dict[str, str]] = None,
+        on_finish: Optional[Callable[[Job], None]] = None,
     ) -> Job:
         argv = build_argv(command, provider, stage, args)
         return self.run_process(
-            command, [sys.executable, "-m", "py_serverless_kit", *argv], exclusive=command in EXCLUSIVE
+            command, [sys.executable, "-m", "py_serverless_kit", *argv], exclusive=command in EXCLUSIVE, env=env,
+            on_finish=on_finish,
         )
+
+    def any_running(self) -> bool:
+        with self._lock:
+            return any(j.status == "running" for j in self._jobs.values())
 
     def run_process(
         self,

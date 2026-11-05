@@ -12,6 +12,7 @@ import { EnumSelect, FieldForm, FormRow, KeyValueEditor, Segmented, TextInput, T
 import { DiscoverModal, InlineIssues, PageHeader } from "../components/Misc";
 import { href, navigate } from "../route";
 import { api, errorMessage } from "../api";
+import { useAuth } from "../auth";
 import { useStudio } from "../store";
 import type { Driver, Json, JsonObject, OnPremService, OnPremServicesState, ResourceBinding } from "../types";
 import { asArray, asObject, CLASS_RE, getIn, NAME_RE, setIn, str, uniqueName, type Path } from "../util";
@@ -40,6 +41,7 @@ const CLOUD_LABEL: Record<string, string> = {
 };
 
 export function ResourcesView({ rest }: { rest: string[] }) {
+  const { can } = useAuth();
   const { draft, replace, issuesAt, state } = useStudio();
   const confirm = useConfirm();
   const toast = useToast();
@@ -273,9 +275,11 @@ export function ResourcesView({ rest }: { rest: string[] }) {
             <button type="button" className="btn" onClick={() => setCreateOnprem({})} disabled={!onprem} title="Start Redis, Kafka, PostgreSQL, MinIO, OpenBao, ... with Docker and add it here">
               + On-prem service
             </button>
-            <a className="btn btn-primary" href={href("resources", "new")}>
-              + Add resource
-            </a>
+            {can("resources", "c") && (
+              <a className="btn btn-primary" href={href("resources", "new")}>
+                + Add resource
+              </a>
+            )}
           </span>
         }
       />
