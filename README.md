@@ -10,7 +10,7 @@
 
 **[Read the full documentation](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs/README.md)** · **[Jump to the steps](#build-a-project-in-studio)**
 
-![pskit studio: the provider cards on the Overview page](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/overview.png)
+![pskit studio: the provider cards on the Overview page](./docs/images/studio/overview.png)
 
 ## Contents
 
@@ -111,7 +111,7 @@ pip install py-serverless-kit
 pskit studio
 ```
 
-![Installing pskit and starting studio in a terminal](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/install.png)
+![Installing pskit and starting studio in a terminal](./docs/images/studio/install.png)
 
 Open the link it prints. Everything else happens in the browser. Press **Ctrl+C** in the terminal to stop studio.
 
@@ -124,7 +124,7 @@ The first start in a project asks this once.
 - **Just me, on this computer:** no login, and nothing is encrypted.
 - **A team, sharing through git:** an admin account, user permissions and an audit log, with secrets kept encrypted so they can be shared through git. See [step 21](#21-work-as-a-team).
 
-![Who will use this project? Just me, or a team](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/first-start.png)
+![Who will use this project? Just me, or a team](./docs/images/studio/first-start.png)
 
 ## 3. Create the project
 
@@ -136,7 +136,7 @@ In a folder with no project yet, studio opens **Create a pskit project**.
 4. Choose a **Template**: **HTTP API**, **Events**, **Workflow** or **Everything**.
 5. Click **Create project**.
 
-![The Create a pskit project page](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/new-project.png)
+![The Create a pskit project page](./docs/images/studio/new-project.png)
 
 More: [New project guide](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs/studio-guide/new-project.md).
 
@@ -144,7 +144,7 @@ More: [New project guide](https://github.com/kavion-ai/py-serverless-kit/blob/ma
 
 Open **Setup & credentials**. It checks what this machine needs to deploy to the provider you picked, and shows how to fix what is missing. Then click **Check again**.
 
-![The Setup & credentials page with its checks](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/setup.png)
+![The Setup & credentials page with its checks](./docs/images/studio/setup.png)
 
 More: [Setup guide](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs/studio-guide/setup.md).
 
@@ -152,11 +152,11 @@ More: [Setup guide](https://github.com/kavion-ai/py-serverless-kit/blob/main/doc
 
 Open **Overview & provider** and click a provider card. Set its region and options on the same page.
 
-![The provider cards on the Overview & provider page](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/overview.png)
+![The provider cards on the Overview & provider page](./docs/images/studio/overview.png)
 
 **To move to another cloud later**, pick it under **validate & deploy as** in the top bar and deploy again. Your handlers do not change. The red and green count next to it shows at once if something needs fixing for that cloud.
 
-![Google Cloud Functions picked in the top bar](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/provider-switch.png)
+![Google Cloud Functions picked in the top bar](./docs/images/studio/provider-switch.png)
 
 More: [Overview guide](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs/studio-guide/overview.md).
 
@@ -166,11 +166,11 @@ More: [Overview guide](https://github.com/kavion-ai/py-serverless-kit/blob/main/
 2. On **Basics**, enter the **Function name**. The **Handler** follows the name until you edit it.
 3. Click **Next: Triggers**.
 
-![Step 1 of the Create function wizard: Basics](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/function-basics.png)
+![Step 1 of the Create function wizard: Basics](./docs/images/studio/function-basics.png)
 
 When you finish the wizard, the function appears in the table. Press **Save** in the top bar to write it to `pskit.yml`.
 
-![The Functions page with HTTP, schedule and queue triggers](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/functions.png)
+![The Functions page with HTTP, schedule and queue triggers](./docs/images/studio/functions.png)
 
 More: [Functions guide](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs/studio-guide/functions.md).
 
@@ -178,11 +178,11 @@ More: [Functions guide](https://github.com/kavion-ai/py-serverless-kit/blob/main
 
 On the **Triggers** step, click what should call the function: **HTTP endpoint**, **Schedule**, **Queue**, **Storage**, **Topic** or **E-mail (SMTP)**. Then fill in its form. Triggers the provider can't run are disabled.
 
-![The Triggers step with the HTTP endpoint form](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/function-trigger-http.png)
+![The Triggers step with the HTTP endpoint form](./docs/images/studio/function-trigger-http.png)
 
 Next, set variables on **Environment & permissions**. **Review** shows exactly what changes in `pskit.yml`. Click **Create function**.
 
-![The Review step showing the changes to pskit.yml](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/function-review.png)
+![The Review step showing the changes to pskit.yml](./docs/images/studio/function-review.png)
 
 More: [Trigger forms](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs/studio-guide/trigger-forms.md).
 
@@ -190,7 +190,7 @@ More: [Trigger forms](https://github.com/kavion-ai/py-serverless-kit/blob/main/d
 
 Open **Code** to edit handlers in the built-in editor, or switch to **Full VS Code**. You can also use your own editor.
 
-![The built-in code editor](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/code.png)
+![The built-in code editor](./docs/images/studio/code.png)
 
 More: [Code guide](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs/studio-guide/code.md).
 
@@ -198,19 +198,19 @@ More: [Code guide](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs
 
 1. Open **Workflows** and click **+ Create workflow**.
 
-![The workflow list](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/workflows.png)
+![The workflow list](./docs/images/studio/workflows.png)
 
 2. Enter the **Name** and click **Create**.
 
-![The New workflow dialog](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/workflow-create.png)
+![The New workflow dialog](./docs/images/studio/workflow-create.png)
 
 3. Add states from the palette: **task**, **choice**, **wait**, **pass**, **parallel**, **map**, **succeed** and **fail**. A new state is chained after the selected one.
 
-![The workflow builder with its palette and diagram](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/workflow.png)
+![The workflow builder with its palette and diagram](./docs/images/studio/workflow.png)
 
 4. Click a state to edit it, including its function, next state, **Retry** and **Catch**. Then press **Save**.
 
-![A selected state and its settings](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/workflow-state.png)
+![A selected state and its settings](./docs/images/studio/workflow-state.png)
 
 The same workflow becomes **AWS Step Functions** on AWS and **Google Cloud Workflows** on GCP. Other clouds run it with a built-in engine, and Azure can use Logic Apps.
 
@@ -226,7 +226,7 @@ Use this for a bucket, queue, topic, database or any other service, created by p
 
 Handlers read it with `resource("key")` on every cloud.
 
-![The Add resource drawer](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/resource-add.png)
+![The Add resource drawer](./docs/images/studio/resource-add.png)
 
 More: [Resources guide](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs/studio-guide/resources.md).
 
@@ -236,16 +236,16 @@ For on-premises projects, studio can start the database for you with Docker, on 
 
 1. On **Resources**, click **+ Create service** and pick a card, such as **PostgreSQL**.
 
-![The service catalog with its databases](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/service-catalog-databases.png)
+![The service catalog with its databases](./docs/images/studio/service-catalog-databases.png)
 
 2. Check the **Resource key** and **Where** it runs. Leave **Password** empty to get a strong random one, kept out of `pskit.yml`.
 3. Click **Create**.
 
-![The Create PostgreSQL form](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/database-form.png)
+![The Create PostgreSQL form](./docs/images/studio/database-form.png)
 
 4. When it is created, press **Save**. The database is now a resource of the project, and its row has **How to use**, **Console**, **Terminal** and **Backup**.
 
-![PostgreSQL running and added to the project](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/database-listed.png)
+![PostgreSQL running and added to the project](./docs/images/studio/database-listed.png)
 
 More: [On-prem services guide](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs/studio-guide/onprem-services.md).
 
@@ -254,11 +254,11 @@ More: [On-prem services guide](https://github.com/kavion-ai/py-serverless-kit/bl
 1. Open **Test** and click a function.
 2. Choose the event and edit the payload. Save events you use often.
 
-![The Test page with an event](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/test.png)
+![The Test page with an event](./docs/images/studio/test.png)
 
 3. Click **Run locally**. It runs on your machine, with no cloud needed. Once deployed, you can also send a real event.
 
-![The result of a local run](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/test-result.png)
+![The result of a local run](./docs/images/studio/test-result.png)
 
 More: [Test guide](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs/studio-guide/test.md).
 
@@ -269,11 +269,11 @@ More: [Test guide](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs
 
 The same page has **Validate**, **Package**, **Plan**, **Info** and **Remove**. If your project uses something the target cloud can't support, studio tells you clearly instead of deploying something half-working.
 
-![The Deploy page](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/deploy.png)
+![The Deploy page](./docs/images/studio/deploy.png)
 
 The steps update live until the deploy is done, and **Done** shows your endpoint.
 
-![A finished deploy with every step done](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/deploy-done.png)
+![A finished deploy with every step done](./docs/images/studio/deploy-done.png)
 
 More: [Deploy guide](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs/studio-guide/deploy.md).
 
@@ -281,7 +281,7 @@ More: [Deploy guide](https://github.com/kavion-ai/py-serverless-kit/blob/main/do
 
 Open **Logs** to follow your deployed functions live. Filter by level, function or source, or search the messages. This example shows a workflow whose payment step failed once, was retried and then succeeded.
 
-![Live logs of a deployed project](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/logs.png)
+![Live logs of a deployed project](./docs/images/studio/logs.png)
 
 More: [Logs guide](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs/studio-guide/logs.md).
 
@@ -289,7 +289,7 @@ More: [Logs guide](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs
 
 Everything you do in studio is saved in a plain `pskit.yml` that you can keep in git. Open **YAML** to preview it, compare it with the file on disk, or edit it directly.
 
-![The YAML page](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/yaml.png)
+![The YAML page](./docs/images/studio/yaml.png)
 
 More: [YAML guide](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs/studio-guide/yaml.md).
 
@@ -300,11 +300,11 @@ Hana answers questions about pskit and can change your project after you approve
 1. Click the round avatar at the bottom right, or press **Ctrl+I**.
 2. The first time, choose **Where should Hana run?** and click **Install & start**. The Docker image is about 4 GB.
 
-![Where should Hana run? in the Hana panel](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/hana-setup.png)
+![Where should Hana run? in the Hana panel](./docs/images/studio/hana-setup.png)
 
 3. Ask your question. Hana can make mistakes, so check her answers.
 
-![A question and answer in the Hana panel](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/hana-chat.png)
+![A question and answer in the Hana panel](./docs/images/studio/hana-chat.png)
 
 More: [Hana guide](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs/studio-guide/hana.md).
 
@@ -320,7 +320,7 @@ These steps are for projects using the **On-premises** provider.
 2. Enter a **Name**, the **Host** and the **User**, and choose how to **Log in with**.
 3. Click **Save and test**.
 
-![The Add a server drawer](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/server-add.png)
+![The Add a server drawer](./docs/images/studio/server-add.png)
 
 More: [Servers guide](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs/studio-guide/servers.md).
 
@@ -332,14 +332,14 @@ Run your functions on several servers with Docker Swarm, Kubernetes (k3s) or Nom
 2. Enter the **Cluster name**, choose the **Orchestrator** and pick the **Master server**.
 3. Click **Create**. pskit installs it over SSH.
 
-![The New scaling cluster drawer](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/cluster-new.png)
+![The New scaling cluster drawer](./docs/images/studio/cluster-new.png)
 
 4. Click **+ Join server** to add more servers at any time.
 5. Turn on **Deploy this project's functions to** your cluster, press **Save**, then deploy from the **Deploy** page.
 
 Each server shows its CPU, memory and disk, and an alert can tell you when every server is full.
 
-![A cluster with its servers](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/cluster-card.png)
+![A cluster with its servers](./docs/images/studio/cluster-card.png)
 
 *The example servers in this picture are placeholders, so they show as offline. A live server shows its CPU, memory and disk.*
 
@@ -353,7 +353,7 @@ Give several projects and clusters one address, separated by path.
 2. Enter the **Name**, pick the **Server** and choose how it spreads requests. There are six algorithms, each explained on the form.
 3. Click **Create**.
 
-![The New load balancer drawer](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/balancer.png)
+![The New load balancer drawer](./docs/images/studio/balancer.png)
 
 More: [Load balancers guide](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs/studio-guide/load-balancers.md).
 
@@ -361,11 +361,11 @@ More: [Load balancers guide](https://github.com/kavion-ai/py-serverless-kit/blob
 
 Open **Network map** to see every server and the connections it must accept and open, for deploys, clusters, load balancers and services.
 
-![The network map of a cluster](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/network.png)
+![The network map of a cluster](./docs/images/studio/network.png)
 
 Click a machine to see each port it must allow, and why. The **Firewall** panel on the **Deploy** page lists the same rules with ready-made commands.
 
-![One machine selected, with the ports it must allow](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/network-machine.png)
+![One machine selected, with the ports it must allow](./docs/images/studio/network-machine.png)
 
 More: [Network map guide](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs/studio-guide/network.md).
 
@@ -379,26 +379,26 @@ With **A team**, `.env` files and `.pskit` settings are encrypted (AES-256-GCM) 
 
 **The admin creates the account.** Choose a username and a password of at least 12 characters.
 
-![Create the admin account](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/admin-create.png)
+![Create the admin account](./docs/images/studio/admin-create.png)
 
 **Save the two keys.** They are shown only once.
 
 - **Master key:** shared with the team and needed at every login. pskit does not save it, so keep it in a password manager.
 - **Recovery code:** kept offline by the admin. With the master key, it sets a new admin password if all are lost.
 
-![The master key and recovery code screen, with the values hidden in this picture](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/keys.png)
+![The master key and recovery code screen, with the values hidden in this picture](./docs/images/studio/keys.png)
 
 **Add your teammates.** Open **Users & audit > Users & permissions** and click **Add a user**. Start from the `viewer`, `developer` or `operator` preset and tick create, read, update and delete per feature. An account can decrypt only the data its permissions allow.
 
-![Adding a user and ticking permissions per feature](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/permissions.png)
+![Adding a user and ticking permissions per feature](./docs/images/studio/permissions.png)
 
 **Each teammate logs in** with the master key, their username and their password.
 
-![The login screen asks for the master key, username and password](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/login.png)
+![The login screen asks for the master key, username and password](./docs/images/studio/login.png)
 
 **See who did what** on the **Audit log** tab: every change, refused action, login and deploy.
 
-![The audit log](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/images/studio/audit.png)
+![The audit log](./docs/images/studio/audit.png)
 
 Permissions other than decrypting are enforced by pskit on each person's own computer, so your cloud credentials and git branch protection still protect production. Read the [team setup guide](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs/studio-guide/accounts-and-team.md) and [what this protects against](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs/security-vault.md#what-this-protects-against-and-what-it-does-not).
 
