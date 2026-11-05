@@ -16,13 +16,7 @@ It takes three steps:
 
 ## How it works
 
-```mermaid
-flowchart LR
-    sender["Sender's mail server"] -->|"SMTP, port 25"| smtp["SMTP server in Docker<br/>Node.js smtp-server and mailparser"]
-    smtp -->|"mail for other domains"| refused["Refused: never a relay"]
-    smtp -->|"parsed mail: HTTP POST /__pskit/smtp/key"| host["pskit host"]
-    host --> fn["Every function with<br/>smtp: {resource: key}"]
-```
+![Mail arrives over SMTP on port 25. Other domains are refused, and parsed mail is posted to the pskit host, which runs the attached functions](../images/diagrams/smtp-flow.png)
 
 - The SMTP server is a `node:22-alpine` container that runs a small script (`core/onprem_smtp.js`) using nodemailer's
   [`smtp-server`](https://nodemailer.com/extras/smtp-server/) and [`mailparser`](https://nodemailer.com/extras/mailparser/).

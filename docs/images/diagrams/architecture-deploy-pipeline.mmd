@@ -1,0 +1,10 @@
+flowchart TD
+    yml["pskit.yml<br/>extends, providers:, stages:, CLI flags"]
+    yml -->|"config/loader.py: merge layers, resolve variables"| config["ServiceConfig<br/>config/schema.py: strict pydantic validation"]
+    config -->|"core/project.py: pick the Provider, add orchestrator functions"| validate["Provider.validate()<br/>capability and limit checks: errors and warnings"]
+    validate -->|"packaging/builder.py, packaging/node.py"| build["build/<br/>sources, runtime, pskit_manifest.json, shim"]
+    build --> zip["artifact.zip<br/>deterministic: sorted entries, fixed timestamps"]
+    zip -->|"Provider.render(): providers/cloud.py"| tf["main.tf.json<br/>Terraform JSON, no HCL templating"]
+    tf -->|"terraform/runner.py: init and apply"| state["terraform.tfstate<br/>unless provider.state sets a backend"]
+    state -->|"core/describe.py: terraform output pskit, plus config"| record["deployment.json"]
+    record -->|"dashboard/generator.py"| dash[".pskit/dashboard/index.html"]

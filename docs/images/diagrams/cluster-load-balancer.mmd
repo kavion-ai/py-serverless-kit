@@ -1,0 +1,5 @@
+flowchart TB
+    users["Users"] --> lb["http://lb1/<br/>nginx on lb1, port 80"]
+    lb -->|"fewest open connections first"| edge1["edge1, master<br/>port 8080"]
+    lb --> edge2["edge2, joined<br/>port 8080"]
+    lb --> edge3["edge3, joined<br/>port 8080"]

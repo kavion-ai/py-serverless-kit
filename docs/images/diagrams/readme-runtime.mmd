@@ -1,0 +1,10 @@
+sequenceDiagram
+    participant Cloud as Cloud platform
+    participant Shim
+    participant Adapter as Runtime adapter
+    participant Handler as Your handler
+    Cloud->>Shim: Native event
+    Shim->>Adapter: Forward the event
+    Adapter->>Handler: Portable Event and Context
+    Handler-->>Adapter: Response or plain value
+    Adapter-->>Cloud: Native response

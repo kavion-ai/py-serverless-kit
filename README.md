@@ -482,32 +482,11 @@ On premises, queues can also live in Redis or other drivers, storage in MinIO or
 
 **At deploy time**, your project becomes Terraform:
 
-```mermaid
-flowchart LR
-    studio["pskit studio"] --> yml["pskit.yml"]
-    yml --> validate["Provider validation<br/>capabilities, limits, runtimes"]
-    validate --> pack["Packager<br/>your code, pskit runtime,<br/>manifest and shim"]
-    pack --> zip["artifact.zip"]
-    zip --> render["Provider renderer"]
-    render --> tf["main.tf.json"]
-    tf -->|"terraform init and apply"| record["deployment.json"]
-    record --> dash["dashboard/index.html"]
-```
+![Deploy flow: pskit studio, pskit.yml, validation, packaging, Terraform rendering, deployment record and dashboard](./docs/images/diagrams/readme-deploy.png)
 
 **At run time**, the same handler answers on every cloud:
 
-```mermaid
-sequenceDiagram
-    participant Cloud as Cloud platform
-    participant Shim
-    participant Adapter as Runtime adapter
-    participant Handler as Your handler
-    Cloud->>Shim: Native event
-    Shim->>Adapter: Forward the event
-    Adapter->>Handler: Portable Event and Context
-    Handler-->>Adapter: Response or plain value
-    Adapter-->>Cloud: Native response
-```
+![Run-time flow: the cloud event passes through the shim and runtime adapter to your handler, and the response comes back](./docs/images/diagrams/readme-runtime.png)
 
 More: [docs/architecture.md](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs/architecture.md).
 

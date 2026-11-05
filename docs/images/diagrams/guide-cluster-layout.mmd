@@ -1,0 +1,12 @@
+flowchart LR
+    users["Users"] -->|"/orders/"| lb1["lb1:80"]
+    lb1 --> app1["app1:8080<br/>Swarm"]
+    lb1 --> app2["app2:8080<br/>Swarm"]
+    app1 --> pgpool["pgpool db1:6432"]
+    app2 --> pgpool
+    pgpool -->|"writes"| db1["postgres db1"]
+    pgpool -->|"reads"| db2["postgres db2"]
+    app1 --> redis["redis db2:6379"]
+    app2 --> redis
+    app1 --> minio["minio db2:9000"]
+    app2 --> minio

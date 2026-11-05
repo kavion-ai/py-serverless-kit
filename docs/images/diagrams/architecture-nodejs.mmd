@@ -1,0 +1,5 @@
+flowchart LR
+    src["JavaScript or TypeScript handlers"] --> node["packaging/node.py<br/>compile TypeScript, install or bundle npm packages"]
+    node --> bundle["Bundle with pskit_runtime/<br/>copied from runtime_js/, no dependencies"]
+    bundle --> cloud["A cloud's Node.js runtime"]
+    bundle --> host["On-prem host<br/>runtime/node_worker.py runs one worker per function"]

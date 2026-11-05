@@ -1,0 +1,8 @@
+flowchart LR
+    browser["Browser<br/>studio.html, built from dashboard-ui"] -->|"HTTP with the session token"| server["studio/server.py"]
+    server -->|"read and save"| yml["pskit.yml and code"]
+    server -->|"sys.executable -m py_serverless_kit"| jobs["studio/jobs.py<br/>validate, plan, deploy, ..."]
+    jobs --> tf["The deploy pipeline"]
+    server --> auth["studio/auth.py<br/>login, permissions, audit"]
+    server --> hana["studio/hana/<br/>router, tools, docs index"]
+    hana --> model["Model on this machine or your server"]

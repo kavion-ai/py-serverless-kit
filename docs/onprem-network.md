@@ -199,15 +199,7 @@ firewall change; they reach servers over SSH.
 
 ## Example: one load balancer, two placement groups
 
-```mermaid
-flowchart LR
-    users["Users"] -->|"80"| lb1
-    lb1 -->|"8080"| app1["app1<br/>group api, default"]
-    app1 <-->|"8080"| gpu1["gpu1<br/>group gpu"]
-    admin["Admin"] -->|"22"| lb1
-    admin -->|"22"| app1
-    admin -->|"22"| gpu1
-```
+![Users reach lb1 on port 80, lb1 reaches app1 on 8080, app1 and gpu1 talk on 8080, and the admin reaches all three on 22](images/diagrams/network-function-groups.png)
 
 ```bash
 # lb1

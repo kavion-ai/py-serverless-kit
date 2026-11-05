@@ -1,0 +1,4 @@
+flowchart LR
+    lb["Load balancer lb1"] -->|"http://lb1/xyz/..."| xyz["Project xyz<br/>its servers"]
+    lb -->|"http://lb1/abc/..."| abc["Project abc"]
+    lb -->|"http://lb1/yyy/..."| prod["Every deployment on cluster prod,<br/>by service name"]

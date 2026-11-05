@@ -8,21 +8,7 @@ An order pipeline that uses **every state type**, written once and compiled to:
 | GCP | native | Google Cloud Workflows |
 | Azure and the other 7 clouds | embedded | an extra `order-pipeline-orchestrator` function running the pskit engine |
 
-```mermaid
-flowchart TD
-    Validate["Validate<br/>task"] -->|"catch ValueError"| Rejected(["Rejected<br/>fail"])
-    Validate --> Route{"Route<br/>choice"}
-    Route -->|"total > 1000 and not vip"| ManualReview["ManualReview<br/>wait 30 s"]
-    Route -->|"channel is b2b or currency is CHF"| Invoice["Invoice<br/>pass"]
-    Route -->|"default"| Reserve["Reserve<br/>map over items, 5 at a time"]
-    ManualReview --> Reserve
-    Invoice --> Fulfil
-    Reserve -->|"catch OutOfStock"| Rejected
-    Reserve --> Charge["Charge<br/>task, retry PaymentGatewayTimeout"]
-    Charge -->|"catch PaymentDeclined"| Declined(["Declined<br/>fail"])
-    Charge --> Fulfil["Fulfil<br/>parallel: Confirm and Ship"]
-    Fulfil --> Done(["Done<br/>succeed"])
-```
+![The order-pipeline workflow: Validate, Route, ManualReview or Invoice, Reserve, Charge, Fulfil and Done, with Rejected and Declined as failures](../../docs/images/diagrams/example-workflow-orders.png)
 
 ## State types used
 

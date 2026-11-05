@@ -1,0 +1,5 @@
+flowchart LR
+    sender["Sender's mail server"] -->|"SMTP, port 25"| smtp["SMTP server in Docker<br/>Node.js smtp-server and mailparser"]
+    smtp -->|"mail for other domains"| refused["Refused: never a relay"]
+    smtp -->|"parsed mail: HTTP POST /__pskit/smtp/key"| host["pskit host"]
+    host --> fn["Every function with<br/>smtp: {resource: key}"]

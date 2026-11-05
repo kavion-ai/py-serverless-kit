@@ -1,0 +1,7 @@
+flowchart LR
+    users["Users"] -->|"80"| lb1
+    lb1 -->|"8080"| app1["app1<br/>group api, default"]
+    app1 <-->|"8080"| gpu1["gpu1<br/>group gpu"]
+    admin["Admin"] -->|"22"| lb1
+    admin -->|"22"| app1
+    admin -->|"22"| gpu1

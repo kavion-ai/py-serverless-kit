@@ -39,27 +39,11 @@ deploy_docs/          # maintainer docs (publishing, contributing)
 
 ### How a deploy flows through the code
 
-```mermaid
-flowchart TD
-    deploy["pskit deploy"] --> load["config.loader.load_config<br/>read YAML, extends, overrides, variables"]
-    load --> project["core.project.Project<br/>pick the provider, add orchestrator functions"]
-    project --> validate["Provider.validate<br/>capability and limit checks: Issues"]
-    validate --> build["packaging.build_artifact<br/>sources, runtime, manifest, shim: artifact.zip"]
-    build --> render["Provider.render<br/>TerraformDoc: main.tf.json"]
-    render --> tf["terraform init and apply<br/>TerraformRunner"]
-    tf --> record["core.describe.build_record<br/>terraform outputs: deployment.json"]
-    record --> dash["dashboard.write_dashboard<br/>.pskit/dashboard/index.html"]
-```
+![pskit deploy calls load_config, Project, Provider.validate, build_artifact, Provider.render, terraform, build_record and write_dashboard in order](../docs/images/diagrams/contributing-deploy.png)
 
 At runtime in the cloud:
 
-```mermaid
-flowchart LR
-    platform["Platform"] --> shim["Shim<br/>e.g. pskit_entry.handler"]
-    shim --> adapter["runtime.adapters.cloud"]
-    adapter --> dispatch["runtime.dispatch.execute"]
-    dispatch --> handler["Your handler"]
-```
+![Platform, shim, runtime adapter, dispatch.execute and your handler](../docs/images/diagrams/contributing-runtime.png)
 
 ## Development setup
 

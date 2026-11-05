@@ -1,0 +1,6 @@
+flowchart LR
+    lb["Load balancer lb1"]
+    lb -->|"http://lb1/orders/"| t0["project orders (its server)"]
+    lb -->|"http://lb1/billing/"| t1["project billing"]
+    lb -->|"http://lb1/shop/"| t2["deployment shop on cluster prod"]
+    lb -->|"http://lb1/report/"| t3["deployment report on cluster batch"]

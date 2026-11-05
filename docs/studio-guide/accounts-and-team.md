@@ -113,14 +113,7 @@ ciphertext. File names are hidden too. Your code is not encrypted, so that it st
 
 **At login.** Each step needs the one before it:
 
-```mermaid
-flowchart LR
-    master["Master key"] --> accounts["Accounts file"]
-    accounts --> private["Your private key"]
-    password["Password"] --> private
-    private --> keys["Keys of the areas<br/>your account may read"]
-    keys --> files["Those files are decrypted"]
-```
+![Login chain: the master key opens the accounts file, the password opens your private key, and that opens the keys of your areas, so those files are decrypted](../images/diagrams/login-chain.png)
 
 So someone with only the master key, or only a username and password, gets nothing. Each kind of data (env files,
 servers, services, clusters, deployments, studio data) has its own key, and an account receives only the keys it is

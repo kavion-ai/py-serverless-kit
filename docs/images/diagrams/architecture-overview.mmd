@@ -1,0 +1,26 @@
+flowchart TB
+    subgraph you["You"]
+        studio["pskit studio<br/>web UI and Hana"]
+        cli["pskit CLI"]
+    end
+    subgraph deploy["Deploy-time, on your machine"]
+        yml["pskit.yml"]
+        vault[".pskit-vault/<br/>encrypted team secrets"]
+        pipe["Config, validation, packaging<br/>and Terraform rendering"]
+        tf["Terraform or OpenTofu"]
+    end
+    subgraph run["Run-time, inside every bundle"]
+        shim["Provider shim"]
+        adapter["Runtime adapter"]
+        dispatch["Dispatch"]
+        handler["Your Python or Node.js handler"]
+    end
+    studio -->|"edits"| yml
+    studio -->|"starts pskit jobs"| cli
+    cli --> pipe
+    yml --> pipe
+    vault -.->|"decrypted after login"| pipe
+    pipe --> tf
+    tf -->|"creates functions, triggers and resources"| target["AWS, Azure, GCP and 7 more clouds,<br/>or your own servers"]
+    target --> shim
+    shim --> adapter --> dispatch --> handler

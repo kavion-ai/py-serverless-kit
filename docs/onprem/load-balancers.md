@@ -126,14 +126,7 @@ passed in `X-Forwarded-Prefix: /shop`. `/shop` redirects to `/shop/`.
 One named load balancer can serve many projects and clusters, each under its own path. Its routes are stored on the
 load balancer server, so projects in other folders or on other machines share it without overwriting each other.
 
-```mermaid
-flowchart LR
-    lb["Load balancer lb1"]
-    lb -->|"http://lb1/orders/"| t0["project orders (its server)"]
-    lb -->|"http://lb1/billing/"| t1["project billing"]
-    lb -->|"http://lb1/shop/"| t2["deployment shop on cluster prod"]
-    lb -->|"http://lb1/report/"| t3["deployment report on cluster batch"]
-```
+![A shared load balancer sends /orders/, /billing/, /shop/ and /report/ to different projects and clusters](../images/diagrams/load-balancer-shared.png)
 
 **In studio**
 

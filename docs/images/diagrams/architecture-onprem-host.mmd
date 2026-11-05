@@ -1,0 +1,10 @@
+flowchart TB
+    users["Users and other programs"] -->|"HTTP routes and /__pskit API"| host["pskit host<br/>runtime/onprem_host.py"]
+    timer["Schedules"] --> host
+    drivers["Queues, buckets and topics:<br/>files, Redis, S3, or cloud services"] --> host
+    smtp["SMTP server"] -->|"POST /__pskit/smtp/key"| host
+    host --> dispatch["runtime/dispatch.py, or a Node.js worker"]
+    dispatch --> handler["Your handlers"]
+    host --> workflow["runtime/workflow.py<br/>workflow executions"]
+    host --> logs["runtime/hostlog.py<br/>logs and invocation stats"]
+    host <-->|"function groups: runtime/peers.py"| peers["Hosts on other servers"]

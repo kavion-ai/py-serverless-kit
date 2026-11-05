@@ -1,0 +1,5 @@
+flowchart LR
+    platform["Platform"] --> shim["Shim<br/>e.g. pskit_entry.handler"]
+    shim --> adapter["runtime.adapters.cloud"]
+    adapter --> dispatch["runtime.dispatch.execute"]
+    dispatch --> handler["Your handler"]

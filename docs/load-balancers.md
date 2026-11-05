@@ -3,12 +3,7 @@
 A load balancer is a saved server that runs OpenResty (nginx with Lua) in Docker and spreads HTTP requests over
 the servers that run your functions. One load balancer can serve **many projects and clusters by path**:
 
-```mermaid
-flowchart LR
-    lb["Load balancer lb1"] -->|"http://lb1/xyz/..."| xyz["Project xyz<br/>its servers"]
-    lb -->|"http://lb1/abc/..."| abc["Project abc"]
-    lb -->|"http://lb1/yyy/..."| prod["Every deployment on cluster prod,<br/>by service name"]
-```
+![One load balancer sends each path to a different project or cluster](images/diagrams/load-balancer-paths.png)
 
 You can have several load balancers (`edge`, `internal`, ...). Each has a default algorithm; a project can pick
 its own for its route.

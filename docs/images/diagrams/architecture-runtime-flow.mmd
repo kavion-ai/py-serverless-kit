@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant Cloud as Cloud platform
+    participant Shim as Shim (generated)
+    participant Adapter as runtime/adapters/cloud.py
+    participant Dispatch as runtime/dispatch.py
+    participant Handler as Your handler
+    Cloud->>Shim: Native event and context
+    Shim->>Adapter: Forward them
+    Note over Adapter: to_event() turns HTTP, queue, topic, storage, schedule<br/>and the __pskit envelope into an Event<br/>to_context() builds the Context: request id, deadline, memory
+    Adapter->>Dispatch: execute(event, ctx, function)
+    Note over Dispatch: Find the function in pskit_manifest.json or the environment<br/>HTTP: match the route, path params, 405, CORS preflight
+    Dispatch->>Handler: Import once, then call fn(event[, ctx])
+    Handler-->>Dispatch: Result, await it if it is a coroutine
+    Note over Dispatch: HTTP: make a Response, map errors to JSON, log the request<br/>Other: return the result or re-raise for platform retries, BatchResult
+    Dispatch-->>Adapter: Response or result
+    Adapter-->>Cloud: Native response

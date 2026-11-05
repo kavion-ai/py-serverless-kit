@@ -1,0 +1,9 @@
+flowchart TB
+    users["Users"] --> mesh["Port 8080<br/>Swarm mesh, k3s ServiceLB or each Nomad server"]
+    mesh --> web1["Web replica<br/>HTTP routes, invoke"]
+    mesh --> web2["Web replica<br/>HTTP routes, invoke"]
+    mesh --> web3["Web replica<br/>HTTP routes, invoke"]
+    web1 -->|"queues, topics, buckets,<br/>workflows, logs, /__pskit admin"| main
+    web2 --> main
+    web3 --> main
+    main["Main replica: one, on the master<br/>schedules, built-in queues, topics and buckets,<br/>workflow executions, logs, stats, data volume"]

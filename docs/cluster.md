@@ -27,17 +27,7 @@ SSH server / Scaling cluster*.
 
 Each deployment (`pskit-<service>-<stage>`) runs the function host image as two workloads:
 
-```mermaid
-flowchart TB
-    users["Users"] --> mesh["Port 8080<br/>Swarm mesh, k3s ServiceLB or each Nomad server"]
-    mesh --> web1["Web replica<br/>HTTP routes, invoke"]
-    mesh --> web2["Web replica<br/>HTTP routes, invoke"]
-    mesh --> web3["Web replica<br/>HTTP routes, invoke"]
-    web1 -->|"queues, topics, buckets,<br/>workflows, logs, /__pskit admin"| main
-    web2 --> main
-    web3 --> main
-    main["Main replica: one, on the master<br/>schedules, built-in queues, topics and buckets,<br/>workflow executions, logs, stats, data volume"]
-```
+![Cluster workloads: users reach web replicas through port 8080, and the web replicas use the one main replica on the master](images/diagrams/cluster-replicas.png)
 
 * **web** replicas serve your HTTP routes and `invoke()` calls. Adding replicas or servers adds HTTP capacity.
 * The **main** replica runs on the master with the data volume. It owns everything stateful: schedules run once,
@@ -204,13 +194,7 @@ connections (the default) or least time; `--weight edge1=3` per server; see
 To share one load balancer between clusters and projects by path instead (`http://lb/<service>/`), attach a
 named one: `pskit lb attach edge --cluster prod` ([load balancers](load-balancers.md)).
 
-```mermaid
-flowchart TB
-    users["Users"] --> lb["http://lb1/<br/>nginx on lb1, port 80"]
-    lb -->|"fewest open connections first"| edge1["edge1, master<br/>port 8080"]
-    lb --> edge2["edge2, joined<br/>port 8080"]
-    lb --> edge3["edge3, joined<br/>port 8080"]
-```
+![One load balancer spreads users' requests over edge1, edge2 and edge3 on port 8080](images/diagrams/cluster-load-balancer.png)
 
 ```bash
 pskit resources onprem servers add lb1 --ssh root@10.0.0.9 --pem ~/.ssh/edge.pem

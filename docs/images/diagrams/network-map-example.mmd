@@ -1,0 +1,11 @@
+flowchart LR
+    users["Users / clients"] -->|"80"| lb1
+    admin["This machine (pskit)"] -->|"22"| lb1
+    admin -->|"22"| edge1
+    admin -->|"22"| edge2
+    lb1 -->|"8080"| edge1
+    lb1 -->|"8080"| edge2
+    edge2 -->|"2377, 7946, 4789, 8080"| edge1["edge1 (master)"]
+    edge1 -->|"7946, 4789"| edge2
+    edge1 -->|"6379"| cache1["cache1 (Redis)"]
+    edge2 -->|"6379"| cache1

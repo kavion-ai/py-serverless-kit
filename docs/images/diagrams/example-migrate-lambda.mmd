@@ -1,0 +1,13 @@
+flowchart LR
+    subgraph before["before/"]
+        lambda["lambda_function.py"]
+        template["template.yaml"]
+        asl["state_machine.asl.json"]
+    end
+    subgraph after["after/"]
+        orders["app/orders.py<br/>business logic kept"]
+        yml["pskit.yml<br/>functions, triggers and workflow"]
+    end
+    lambda --> orders
+    template --> yml
+    asl --> yml

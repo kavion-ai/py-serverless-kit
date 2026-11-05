@@ -1,0 +1,5 @@
+flowchart LR
+    wf["workflows: in pskit.yml"] --> aws["workflows/asl.py<br/>AWS Step Functions"]
+    wf --> gcp["workflows/gcp.py<br/>Google Cloud Workflows"]
+    wf --> azure["workflows/azure_logic.py<br/>Azure Logic Apps, with engine: native"]
+    wf --> embedded["runtime/workflow.py<br/>built-in engine, in a generated orchestrator function"]

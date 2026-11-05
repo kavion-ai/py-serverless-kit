@@ -65,19 +65,7 @@ pskit firewall                            # the same connections as rules, per s
 A typical on-prem network map for one load balancer in front of a Swarm cluster looks like this (arrows point at the
 side that accepts):
 
-```mermaid
-flowchart LR
-    users["Users / clients"] -->|"80"| lb1
-    admin["This machine (pskit)"] -->|"22"| lb1
-    admin -->|"22"| edge1
-    admin -->|"22"| edge2
-    lb1 -->|"8080"| edge1
-    lb1 -->|"8080"| edge2
-    edge2 -->|"2377, 7946, 4789, 8080"| edge1["edge1 (master)"]
-    edge1 -->|"7946, 4789"| edge2
-    edge1 -->|"6379"| cache1["cache1 (Redis)"]
-    edge2 -->|"6379"| cache1
-```
+![Example network: users to lb1 on 80, this machine to every server on 22, lb1 to edge1 and edge2 on 8080, cluster ports between edge1 and edge2, and both to Redis on 6379](../images/diagrams/network-map-example.png)
 
 Read it per machine: on `edge1` open 2377 / 7946 / 4789 / 8080 from `edge2`, 8080 from `lb1`, and 22 from your
 machine. The exact `ufw` commands are in `pskit firewall --server edge1`.

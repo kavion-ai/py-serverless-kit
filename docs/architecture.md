@@ -7,49 +7,11 @@ pskit has two halves:
 
 ## Overview
 
-```mermaid
-flowchart TB
-    subgraph you["You"]
-        studio["pskit studio<br/>web UI and Hana"]
-        cli["pskit CLI"]
-    end
-    subgraph deploy["Deploy-time, on your machine"]
-        yml["pskit.yml"]
-        vault[".pskit-vault/<br/>encrypted team secrets"]
-        pipe["Config, validation, packaging<br/>and Terraform rendering"]
-        tf["Terraform or OpenTofu"]
-    end
-    subgraph run["Run-time, inside every bundle"]
-        shim["Provider shim"]
-        adapter["Runtime adapter"]
-        dispatch["Dispatch"]
-        handler["Your Python or Node.js handler"]
-    end
-    studio -->|"edits"| yml
-    studio -->|"starts pskit jobs"| cli
-    cli --> pipe
-    yml --> pipe
-    vault -.->|"decrypted after login"| pipe
-    pipe --> tf
-    tf -->|"creates functions, triggers and resources"| target["AWS, Azure, GCP and 7 more clouds,<br/>or your own servers"]
-    target --> shim
-    shim --> adapter --> dispatch --> handler
-```
+![Overview: studio and CLI drive the deploy-time pipeline, Terraform creates the target, and the bundle runs the shim, adapter, dispatch and your handler](images/diagrams/architecture-overview.png)
 
 ## Deploy pipeline
 
-```mermaid
-flowchart TD
-    yml["pskit.yml<br/>extends, providers:, stages:, CLI flags"]
-    yml -->|"config/loader.py: merge layers, resolve variables"| config["ServiceConfig<br/>config/schema.py: strict pydantic validation"]
-    config -->|"core/project.py: pick the Provider, add orchestrator functions"| validate["Provider.validate()<br/>capability and limit checks: errors and warnings"]
-    validate -->|"packaging/builder.py, packaging/node.py"| build["build/<br/>sources, runtime, pskit_manifest.json, shim"]
-    build --> zip["artifact.zip<br/>deterministic: sorted entries, fixed timestamps"]
-    zip -->|"Provider.render(): providers/cloud.py"| tf["main.tf.json<br/>Terraform JSON, no HCL templating"]
-    tf -->|"terraform/runner.py: init and apply"| state["terraform.tfstate<br/>unless provider.state sets a backend"]
-    state -->|"core/describe.py: terraform output pskit, plus config"| record["deployment.json"]
-    record -->|"dashboard/generator.py"| dash[".pskit/dashboard/index.html"]
-```
+![Deploy pipeline from pskit.yml through ServiceConfig, validation, build, artifact.zip, main.tf.json, Terraform state and deployment.json to the dashboard](images/diagrams/architecture-deploy-pipeline.png)
 
 Key properties:
 
@@ -81,24 +43,7 @@ At run time the host keeps its state under `data_dir`: `queues/`, `buckets/`, `t
 
 ## Runtime flow
 
-```mermaid
-sequenceDiagram
-    participant Cloud as Cloud platform
-    participant Shim as Shim (generated)
-    participant Adapter as runtime/adapters/cloud.py
-    participant Dispatch as runtime/dispatch.py
-    participant Handler as Your handler
-    Cloud->>Shim: Native event and context
-    Shim->>Adapter: Forward them
-    Note over Adapter: to_event() turns HTTP, queue, topic, storage, schedule<br/>and the __pskit envelope into an Event<br/>to_context() builds the Context: request id, deadline, memory
-    Adapter->>Dispatch: execute(event, ctx, function)
-    Note over Dispatch: Find the function in pskit_manifest.json or the environment<br/>HTTP: match the route, path params, 405, CORS preflight
-    Dispatch->>Handler: Import once, then call fn(event[, ctx])
-    Handler-->>Dispatch: Result, await it if it is a coroutine
-    Note over Dispatch: HTTP: make a Response, map errors to JSON, log the request<br/>Other: return the result or re-raise for platform retries, BatchResult
-    Dispatch-->>Adapter: Response or result
-    Adapter-->>Cloud: Native response
-```
+![Run-time sequence: cloud platform, shim, adapter, dispatch and your handler, with the steps each one performs](images/diagrams/architecture-runtime-flow.png)
 
 **The `__pskit` envelope.** Payloads that pskit itself produces are wrapped as `{"__pskit": "<schedule|workflow|invoke>", "data": ...}`. These are schedule inputs, workflow task inputs and `invoke()` calls. Because the adapter can recognise the envelope, the handler sees the right `event.type` even on clouds where everything arrives as HTTP (GCP, IBM, DigitalOcean, Cloudflare, Oracle). On those clouds, failures come back as `500 {"errorType", "cause"}` so native workflows can match errors by exception name.
 
@@ -112,26 +57,14 @@ sequenceDiagram
 
 The same `workflows:` definition runs on the engine of the target:
 
-```mermaid
-flowchart LR
-    wf["workflows: in pskit.yml"] --> aws["workflows/asl.py<br/>AWS Step Functions"]
-    wf --> gcp["workflows/gcp.py<br/>Google Cloud Workflows"]
-    wf --> azure["workflows/azure_logic.py<br/>Azure Logic Apps, with engine: native"]
-    wf --> embedded["runtime/workflow.py<br/>built-in engine, in a generated orchestrator function"]
-```
+![One workflow definition compiles to AWS Step Functions, Google Cloud Workflows or Azure Logic Apps, or runs on the built-in engine](images/diagrams/architecture-workflow-engines.png)
 
 ## Node.js services
 
 A service is either Python or Node.js, chosen by `provider.runtime`. The config, validation and Terraform steps are the
 same. Only the packaging and the runtime differ:
 
-```mermaid
-flowchart LR
-    src["JavaScript or TypeScript handlers"] --> node["packaging/node.py<br/>compile TypeScript, install or bundle npm packages"]
-    node --> bundle["Bundle with pskit_runtime/<br/>copied from runtime_js/, no dependencies"]
-    bundle --> cloud["A cloud's Node.js runtime"]
-    bundle --> host["On-prem host<br/>runtime/node_worker.py runs one worker per function"]
-```
+![Node.js services: handlers are compiled and bundled with pskit_runtime, then run on a cloud's Node.js runtime or an on-prem Node.js worker](images/diagrams/architecture-nodejs.png)
 
 `pskit_manifest.json` is the same as for Python. `runtime_js/` has its own `dispatch.js`, `workflow.js` and `adapters/`.
 
@@ -140,34 +73,14 @@ flowchart LR
 On premises there is no cloud platform, so the bundle runs under a long-lived host process, `runtime/onprem_host.py`. It
 is started on this machine, over SSH, in Docker or on a scaling cluster.
 
-```mermaid
-flowchart TB
-    users["Users and other programs"] -->|"HTTP routes and /__pskit API"| host["pskit host<br/>runtime/onprem_host.py"]
-    timer["Schedules"] --> host
-    drivers["Queues, buckets and topics:<br/>files, Redis, S3, or cloud services"] --> host
-    smtp["SMTP server"] -->|"POST /__pskit/smtp/key"| host
-    host --> dispatch["runtime/dispatch.py, or a Node.js worker"]
-    dispatch --> handler["Your handlers"]
-    host --> workflow["runtime/workflow.py<br/>workflow executions"]
-    host --> logs["runtime/hostlog.py<br/>logs and invocation stats"]
-    host <-->|"function groups: runtime/peers.py"| peers["Hosts on other servers"]
-```
+![On-premises host: HTTP, schedules, drivers and SMTP reach the pskit host, which runs handlers, workflows and logs and talks to hosts on other servers](images/diagrams/architecture-onprem-host.png)
 
 ## Studio and Hana
 
 `pskit studio` is a local web server. Every call needs the token printed at start, and it edits the same `pskit.yml` the
 CLI uses.
 
-```mermaid
-flowchart LR
-    browser["Browser<br/>studio.html, built from dashboard-ui"] -->|"HTTP with the session token"| server["studio/server.py"]
-    server -->|"read and save"| yml["pskit.yml and code"]
-    server -->|"sys.executable -m py_serverless_kit"| jobs["studio/jobs.py<br/>validate, plan, deploy, ..."]
-    jobs --> tf["The deploy pipeline"]
-    server --> auth["studio/auth.py<br/>login, permissions, audit"]
-    server --> hana["studio/hana/<br/>router, tools, docs index"]
-    hana --> model["Model on this machine or your server"]
-```
+![Studio: the browser calls the studio server, which edits pskit.yml, starts pskit jobs, handles login and permissions, and runs Hana](images/diagrams/architecture-studio-hana.png)
 
 ## Accounts and the vault
 
@@ -175,15 +88,7 @@ In a team project, `.env` files and `.pskit` settings are stored encrypted in `.
 step of a login needs the one before it, so no single secret opens the data. Details:
 [Accounts, encrypted project data and the audit log](security-vault.md).
 
-```mermaid
-flowchart LR
-    master["Master key"] --> accounts["Accounts file<br/>vault.json"]
-    password["Password"] --> private["Account's private key"]
-    accounts --> private
-    private --> keys["Data keys of the areas<br/>this account may read"]
-    keys --> files["Decrypted to the normal paths<br/>until logout"]
-    recovery["Recovery code and master key"] -.->|"new admin password"| accounts
-```
+![Vault login chain: the master key opens the accounts file, the password opens the private key, and that opens the data keys the account may read](images/diagrams/architecture-vault.png)
 
 ## State handling
 

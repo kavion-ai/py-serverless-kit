@@ -1,0 +1,9 @@
+flowchart LR
+    studio["pskit studio"] --> yml["pskit.yml"]
+    yml --> validate["Provider validation<br/>capabilities, limits, runtimes"]
+    validate --> pack["Packager<br/>your code, pskit runtime,<br/>manifest and shim"]
+    pack --> zip["artifact.zip"]
+    zip --> render["Provider renderer"]
+    render --> tf["main.tf.json"]
+    tf -->|"terraform init and apply"| record["deployment.json"]
+    record --> dash["dashboard/index.html"]

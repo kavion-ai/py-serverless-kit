@@ -1,0 +1,7 @@
+flowchart LR
+    master["Master key"] --> accounts["Accounts file<br/>vault.json"]
+    password["Password"] --> private["Account's private key"]
+    accounts --> private
+    private --> keys["Data keys of the areas<br/>this account may read"]
+    keys --> files["Decrypted to the normal paths<br/>until logout"]
+    recovery["Recovery code and master key"] -.->|"new admin password"| accounts
