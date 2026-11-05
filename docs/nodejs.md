@@ -123,7 +123,7 @@ package:
     npm_args: [--legacy-peer-deps]
 ```
 
-Node.js 18+ and npm must be on `PATH` where you package. ES modules work too:
+Node.js 18+ and npm must be on `PATH` where you package ([how to install them](requirements.md#nodejs-and-npm)). ES modules work too:
 set `"type": "module"` in `package.json` or use `.mjs` files; handlers are loaded with `import()`.
 
 ## Local development

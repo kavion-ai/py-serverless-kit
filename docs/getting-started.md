@@ -7,10 +7,12 @@ pip install py-serverless-kit          # CLI: `pskit` (alias: `py-serverless-kit
 pip install "py-serverless-kit[aws]"   # optional: boto3, needed for invoke() on AWS
 ```
 
-Requirements:
+Requirements (install steps for every system are in [Requirements](requirements.md)):
 
-- **Python ≥ 3.9** for the CLI.
-- **Terraform ≥ 1.5** (<https://developer.hashicorp.com/terraform/install>) or **OpenTofu**. pskit finds `terraform` or `tofu` on `PATH`; to use a specific binary, set `PSKIT_TERRAFORM_BIN` or `provider.terraform.binary`.
+- **Python 3.9 or newer** for the CLI.
+- **Terraform 1.5 or newer**, or **OpenTofu**. pskit finds `terraform` or `tofu` on `PATH`. To use a specific binary, set `PSKIT_TERRAFORM_BIN`.
+- **Node.js 18 or newer and npm**, for Node.js and TypeScript projects.
+- **Docker** and the **OpenSSH client**, for some on-premises features.
 - Credentials for the cloud you deploy to (see [step 6](#6-configure-cloud-credentials)).
 
 You don't need Terraform or credentials for local development, `pskit validate` or `pskit package`.

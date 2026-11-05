@@ -55,8 +55,20 @@ TOOLS: Dict[str, Dict[str, Any]] = {
             ["winget install Hashicorp.Terraform", "or: choco install terraform", "Open a new terminal afterwards."],
             ["brew tap hashicorp/tap", "brew install hashicorp/tap/terraform"],
             [
-                "Follow the apt/yum repository steps on the install page, or download the zip,",
-                "unzip it and move `terraform` to a folder on PATH (e.g. /usr/local/bin).",
+                "Debian / Ubuntu:",
+                "wget -O - https://apt.releases.hashicorp.com/gpg"
+                " | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg",
+                'echo "deb [arch=$(dpkg --print-architecture)'
+                " signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg]"
+                " https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release"
+                ' || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list',
+                "sudo apt update && sudo apt install terraform",
+                "RHEL, CentOS, Rocky, AlmaLinux:",
+                "sudo yum install -y yum-utils",
+                "sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo",
+                "sudo yum -y install terraform",
+                "Other distributions: download the zip from the install page, unzip it and move"
+                " `terraform` to a folder on PATH (e.g. /usr/local/bin).",
             ],
         ),
     },
@@ -196,10 +208,35 @@ TOOLS: Dict[str, Dict[str, Any]] = {
         "steps": _steps(
             ["winget install Docker.DockerDesktop", "Start Docker Desktop and wait until it says it is running."],
             ["brew install --cask docker", "Start Docker Desktop."],
-            ["curl -fsSL https://get.docker.com | sh", "sudo usermod -aG docker $USER   # then log in again"],
+            [
+                "curl -fsSL https://get.docker.com -o get-docker.sh",
+                "sudo sh get-docker.sh   # for development; on production servers use your distribution's guide",
+                "sudo usermod -aG docker $USER   # then log in again",
+            ],
+        ),
+    },
+    "node": {
+        "title": "Node.js and npm",
+        "exes": ["node"],
+        "links": [{"label": "Download Node.js", "url": "https://nodejs.org/en/download"}],
+        "steps": _steps(
+            ["winget install -e --id OpenJS.NodeJS.22", "Open a new terminal afterwards."],
+            ["brew install node@22", "brew link --overwrite node@22"],
+            [
+                "Debian / Ubuntu:",
+                "curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh",
+                "sudo -E bash nodesource_setup.sh",
+                "sudo apt install -y nodejs",
+                "RHEL, CentOS, Fedora, Amazon Linux:",
+                "curl -fsSL https://rpm.nodesource.com/setup_22.x -o nodesource_setup.sh",
+                "sudo bash nodesource_setup.sh",
+                "sudo yum install -y nodejs",
+            ],
         ),
     },
 }
+
+MIN_NODE = 18
 
 PROVIDER_CLI = {
     "aws": "aws",
@@ -438,7 +475,43 @@ def check_tool(tool: str, required: bool = True, purpose: str = "") -> Dict[str,
 
 def check_python() -> Dict[str, Any]:
     version = ".".join(str(v) for v in sys.version_info[:3])
-    return _check("python", "Python", OK, f"Python {version} ({sys.executable})")
+    detail = f"Python {version} ({sys.executable})"
+    if importlib.util.find_spec("pip") is not None:
+        return _check("python", "Python", OK, detail)
+    command = f"{Path(sys.executable).name} -m ensurepip"
+    return _check(
+        "python",
+        "Python",
+        WARNING,
+        f"{detail} has no pip, so a deploy that installs dependencies will fail",
+        _fix("Add pip to this Python. Virtual environments made with uv have none.", commands=[command]),
+    )
+
+
+def _service_runtime(raw: Optional[Dict[str, Any]]) -> str:
+    provider = (raw or {}).get("provider")
+    return str(provider.get("runtime") or "") if isinstance(provider, dict) else ""
+
+
+def check_node(raw: Optional[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Node.js services are compiled and packaged on this machine, so it needs ``node`` and ``npm``."""
+    if not _service_runtime(raw).startswith("nodejs"):
+        return []
+    tool = check_tool("node", required=True, purpose="this is a Node.js service")
+    if tool["status"] != OK:
+        return [tool]
+    spec = TOOLS["node"]
+    fix = _fix(f"Install Node.js {MIN_NODE} or newer, then open a new terminal.", spec["links"], spec["steps"])
+    result = _run([tool["detail"], "--version"])
+    version = result[1] if result else ""
+    found = re.match(r"v?(\d+)\.", version)
+    if found and int(found.group(1)) < MIN_NODE:
+        return [_check("tool:node", spec["title"], MISSING, f"{version} is too old: {MIN_NODE} or newer is needed", fix)]
+    if found:
+        tool["detail"] = f"Node.js {version} ({tool['detail']})"
+    if not _which("npm"):
+        return [tool, _check("tool:npm", "npm", MISSING, "npm not found on PATH", fix)]
+    return [tool]
 
 
 def _aws_credentials() -> Dict[str, Any]:
@@ -853,6 +926,7 @@ def check(provider: str, raw: Optional[Dict[str, Any]] = None, root: Optional[Pa
     checks: List[Dict[str, Any]] = [
         check_python(),
         check_tool("terraform", required=True, purpose="pskit deploys with it"),
+        *check_node(raw),
     ]
     if provider == "onprem":
         checks.extend(onprem_checks(raw))

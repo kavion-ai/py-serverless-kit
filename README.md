@@ -16,7 +16,7 @@
 
 **Start**
 
-1. [Install and start studio](#1-install-and-start-studio)
+1. [Install and start studio](#1-install-and-start-studio) and [what you need](#what-you-need)
 2. [Choose who will use the project](#2-choose-who-will-use-the-project)
 3. [Create the project](#3-create-the-project)
 4. [Check your tools and credentials](#4-check-your-tools-and-credentials)
@@ -115,7 +115,18 @@ pskit studio
 
 Open the link it prints. Everything else happens in the browser. Press **Ctrl+C** in the terminal to stop studio.
 
-You need **Python 3.9 or newer** and **Terraform 1.5 or newer** (or OpenTofu). For Node.js projects you also need **Node.js 18 or newer and npm**. Step 4 checks all of this for you.
+### What you need
+
+| Tool | When |
+|---|---|
+| **Python 3.9 or newer** | Always |
+| **Terraform 1.5 or newer**, or OpenTofu | To deploy, also on premises |
+| **Node.js 18 or newer** and npm | Node.js and TypeScript projects |
+| **Docker** | One-click services, scaling clusters, Full VS Code, Hana with Docker |
+| **OpenSSH client** | Your own servers |
+| **Git** | Sharing a team project |
+
+Install steps for Windows, macOS and Linux are in [Requirements](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs/requirements.md). Step 4 checks your machine.
 
 ## 2. Choose who will use the project
 

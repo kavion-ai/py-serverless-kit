@@ -203,6 +203,7 @@ Accounts and encrypted project data (docs/security-vault.md)
   Sync        pskit vault status   pskit vault sync
   Accounts    pskit vault users    pskit vault password   pskit vault recover
   Audit       pskit vault audit    pskit vault rotate-master-key
+              pskit vault rotate-recovery-code
 \b
 Reference
   providers   Capability matrix of every cloud   pskit providers --json

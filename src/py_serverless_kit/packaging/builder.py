@@ -172,6 +172,11 @@ def _pip_install(reqs_file: Path, target: Path, flags: List[str], extra: List[st
     )
     proc = subprocess.run(cmd, capture_output=True, text=True)
     if proc.returncode != 0:
+        if "No module named pip" in (proc.stderr or proc.stdout):
+            raise BuildError(
+                f"this Python has no pip, so dependencies cannot be installed ({sys.executable}).\n"
+                f"Add it with `{Path(sys.executable).name} -m ensurepip`, or set `package.vendor: false`."
+            )
         raise BuildError(
             "pip install failed while vendoring dependencies:\n"
             + (proc.stderr or proc.stdout)[-4000:]

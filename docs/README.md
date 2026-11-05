@@ -2,7 +2,7 @@
 
 Write a function once in Python or Node.js (JavaScript or TypeScript), describe its triggers in `pskit.yml`, and deploy it to any of 10 clouds or to an on-premises host with Terraform. Moving to another target means changing `provider.name`. The handler code stays the same.
 
-New here? Read the [project README](../README.md) for an overview, then [Getting started](getting-started.md). For Node.js, also read [Node.js and TypeScript](nodejs.md). Python handlers are covered by the [Handler API](handlers.md), and a service uses one language.
+New here? Read the [project README](../README.md) for an overview, then [Requirements](requirements.md) and [Getting started](getting-started.md). For Node.js, also read [Node.js and TypeScript](nodejs.md). Python handlers are covered by the [Handler API](handlers.md), and a service uses one language.
 
 ## Start here: guides by topic
 
@@ -27,6 +27,7 @@ Hana, the studio assistant, searches all of these pages before she answers. Afte
 | Page | What it covers |
 |---|---|
 | [Scenarios](scenarios.md) | Step-by-step guides by use case: HTTP API, queues, existing resources, Redis/MinIO on premises, databases, workflows, schedules, stages, logs, testing |
+| [Requirements](requirements.md) | What you need and when (Python, Terraform, Node.js, Docker, OpenSSH, Git, cloud CLIs), with install steps for Windows, macOS and Linux |
 | [Getting started](getting-started.md) | Install, scaffold a project, run it locally, set up cloud credentials, deploy, inspect, remove |
 | [Configuration reference](configuration.md) | Every `pskit.yml` key, `extends:`, `providers:`/`stages:` overrides, variables, escape hatches |
 | [Events (triggers)](events.md) | `http`, `schedule`, `queue`, `storage`, `topic`, `smtp`, with shorthand forms and per-provider support |

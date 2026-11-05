@@ -51,6 +51,10 @@ provider:
 follow the stage's last deploy. Every option, the docker and cluster variants and function groups are explained in
 [deployment](../deployment/README.md); the provider block in [the on-prem provider page](../providers/onprem/README.md).
 
+## What on-prem projects need
+
+Your machine and your servers need different things: see [Requirements](../requirements.md#your-own-servers).
+
 ## Set up an on-prem project in studio, step by step
 
 ![The Overview & provider page](../images/studio/overview.png)

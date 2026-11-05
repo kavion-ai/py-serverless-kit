@@ -4,7 +4,8 @@ Search terms: setup, credentials, doctor, prerequisites, terraform missing, aws 
 
 The **Setup & credentials** page checks what this machine needs to deploy: tools, credentials and provider settings.
 Everything runs where pskit studio runs. Sidebar: **Setup & credentials** (⚙). It is the studio side of
-`pskit doctor`.
+`pskit doctor`. Node.js and npm are checked for Node.js projects. The full list, with install steps for every system, is in
+[Requirements](../requirements.md).
 
 ## Check tools and credentials in studio
 

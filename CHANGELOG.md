@@ -19,6 +19,9 @@ All notable changes to this project are documented here. The format follows [Kee
   (or workflow, or resource) are separate permissions. New commands: `pskit login`, `logout`, `whoami`, `pskit vault ...`.
 
 ### Changed
+- **`pskit doctor` and Setup & credentials check Node.js and npm** for Node.js projects, including the version, and warn
+  when this Python has no pip. Terraform on Linux now shows real commands. A deploy that fails because pip is missing says
+  so and how to fix it. New [requirements page](docs/requirements.md) with install steps for Windows, macOS and Linux.
 - In a project with a vault, `pskit studio` requires a login and CLI commands need `pskit login`, or `PSKIT_MASTER_KEY`,
   `PSKIT_USER` and `PSKIT_PASSWORD` in scripts. Projects without a vault keep working from the CLI as before.
 - `cryptography` is now a required dependency.

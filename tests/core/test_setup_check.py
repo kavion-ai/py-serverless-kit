@@ -164,6 +164,55 @@ def test_required_options(clean, monkeypatch):
     assert checks["option:subnet_ids"]["status"] == "missing"
 
 
+NODE_PROJECT = {"provider": {"name": "aws", "runtime": "nodejs20"}}
+
+
+def test_python_project_needs_no_node(clean):
+    assert "tool:node" not in by_id(sc.check("aws", {"provider": {"name": "aws", "runtime": "python3.12"}}))
+
+
+def test_missing_node_has_install_steps(clean):
+    report = sc.check("aws", NODE_PROJECT)
+    node = by_id(report)["tool:node"]
+    assert node["status"] == "missing" and not report["ok"]
+    assert all(node["fix"]["steps"][os_name] for os_name in ("windows", "macos", "linux"))
+
+
+def _node_tools(monkeypatch, version, npm=True):
+    monkeypatch.setattr(sc, "_which", lambda name: None if name == "npm" and not npm else f"/bin/{name}")
+    monkeypatch.setattr(sc, "_run", lambda argv, timeout=8.0: (0, version if argv[0] == "/bin/node" else "Terraform v1.9.0"))
+
+
+def test_node_version_is_checked(clean, monkeypatch):
+    _node_tools(monkeypatch, "v22.11.0")
+    node = by_id(sc.check("aws", NODE_PROJECT))["tool:node"]
+    assert node["status"] == "ok" and node["detail"].startswith("Node.js v22.11.0")
+    _node_tools(monkeypatch, "v16.20.2")
+    node = by_id(sc.check("aws", NODE_PROJECT))["tool:node"]
+    assert node["status"] == "missing" and "too old" in node["detail"] and node["fix"]["steps"]["linux"]
+
+
+def test_missing_npm_is_reported(clean, monkeypatch):
+    _node_tools(monkeypatch, "v22.11.0", npm=False)
+    checks = by_id(sc.check("aws", NODE_PROJECT))
+    assert checks["tool:node"]["status"] == "ok" and checks["tool:npm"]["status"] == "missing"
+
+
+def test_python_without_pip_is_a_warning(clean, monkeypatch):
+    monkeypatch.setattr(sc.importlib.util, "find_spec", lambda name: None)
+    item = sc.check_python()
+    assert item["status"] == "warning" and "no pip" in item["detail"]
+    assert "ensurepip" in item["fix"]["commands"][0]
+    monkeypatch.setattr(sc.importlib.util, "find_spec", lambda name: object())
+    assert sc.check_python()["status"] == "ok"
+
+
+def test_linux_terraform_steps_are_commands(clean):
+    steps = sc.TOOLS["terraform"]["steps"]["linux"]
+    assert any("apt install terraform" in step for step in steps)
+    assert any("yum -y install terraform" in step for step in steps)
+
+
 def test_onprem_local_needs_nothing_else(clean, monkeypatch):
     monkeypatch.setattr(sc, "_which", lambda name: f"/bin/{name}")
     monkeypatch.setattr(sc, "_run", lambda argv, timeout=8.0: (0, "Terraform v1.9.0"))
