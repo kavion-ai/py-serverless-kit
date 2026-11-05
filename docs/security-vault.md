@@ -190,8 +190,8 @@ but git history shows it.
 * **Generated build output is not encrypted.** `.pskit/<provider>-<stage>/` (`host.env`, `pskit_host.json`,
   `main.tf.json`, artifacts) and `.pskit/backups/` stay as plaintext, because a running local host reads them. They
   are gitignored.
-* **SSH keys outside the project** (`~/.ssh/...`) are not carried. Copy them with `pskit settings export`, or keep them
-  in `.pskit/ssh/`.
+* **SSH keys outside the project** (`~/.ssh/...`) are not carried. Copy them with `pskit settings export`, keep them
+  in `.pskit/ssh/`, or paste the key text when adding the server: it is sealed with the other server logins.
 * **Terminals, VS Code and Hana are marked full access:** they reach all that the process can, whatever the grid says.
 * **Deploy permission means access to secrets.** Whoever can deploy could also ship code that prints them.
 * **All accounts are one encrypted file.** `.pskit-vault/vault.json` cannot be merged. Commit and push right after changing
@@ -225,7 +225,7 @@ but git history shows it.
 | `pskit vault status` / `sync` | Show sessions and tracked plaintext / apply a pull |
 | `pskit vault password` | Change your password |
 | `pskit vault users list\|add\|set\|reset-password\|remove` | Manage accounts |
-| `pskit vault audit` | Read the log |
+| `pskit vault audit` | Read the log (`--offset`, `-n` for pages) |
 | `pskit vault rotate-master-key` | Replace the master key |
 | `pskit vault rotate-recovery-code` | Replace the recovery code, and give all encrypted data new keys |
 | `pskit vault recover` | Use the recovery code and the master key to set a new admin password |

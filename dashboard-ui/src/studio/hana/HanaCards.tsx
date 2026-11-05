@@ -2,6 +2,7 @@ import { useEffect, useId, useState, type ReactNode } from "react";
 import { api, errorMessage } from "../api";
 import { useConfirm } from "../components/Feedback";
 import { PlacementEditor } from "../components/Placement";
+import { defaultServerHome } from "../components/OnPremMachines";
 import { readPlacement, targetLabel } from "../placement";
 import { useStudio } from "../store";
 import { useJob } from "../jobs";
@@ -295,9 +296,11 @@ function ServerCard({
   const [user, setUser] = useState(card.user || "ubuntu");
   const [port, setPort] = useState(String(card.port || 22));
   const [pem, setPem] = useState(card.identity_file);
-  const [home, setHome] = useState(card.home || "");
-  const [dataDir, setDataDir] = useState(card.data_dir || "");
-  const [bind, setBind] = useState(card.bind || "");
+  const [homeInput, setHome] = useState<string | null>(card.home || null);
+  const [dataDirInput, setDataDir] = useState<string | null>(card.data_dir || null);
+  const [bind, setBind] = useState(card.bind || "0.0.0.0");
+  const home = homeInput ?? defaultServerHome(user);
+  const dataDir = dataDirInput ?? defaultServerHome(user);
   const [auth, setAuth] = useState<"key" | "agent" | "password">(
     card.auth === "password" || card.auth === "agent" ? card.auth : "key",
   );

@@ -17,6 +17,7 @@ import os
 import secrets
 import stat
 import subprocess
+import sys
 import threading
 import time
 from dataclasses import dataclass
@@ -180,6 +181,10 @@ def _write_private(path: Path, data: bytes) -> None:
     with os.fdopen(fd, "wb") as handle:
         handle.write(data)
     os.replace(tmp, path)
+    if sys.platform == "win32" and ".pskit/ssh/" in path.as_posix():  # OpenSSH refuses a key others can read
+        from ..core.ssh_keys import restrict_to_owner
+
+        restrict_to_owner(path)
 
 
 # ------------------------------------------------------------------------------- seal / unseal

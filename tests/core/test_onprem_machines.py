@@ -30,7 +30,7 @@ def test_saved_servers_round_trip(tmp_path):
     assert names == ["edge1", "home", "lab"]
     stored = json.loads((tmp_path / ".pskit" / "onprem-servers.json").read_text("utf-8"))["servers"]
     assert "Lab-pass1" not in json.dumps(stored)
-    secret = Path(stored["lab"]["password_file"])
+    secret = tmp_path / stored["lab"]["password_file"]  # relative: the JSON is shared by clones at other paths
     assert secret.read_text("utf-8") == "Lab-pass1"
     assert stored["edge1"]["identity_file"].endswith("k.pem") and stored["edge1"]["description"] == "rack 2"
     assert "identity_file" not in stored["home"] and stored["home"]["sudo"] is True

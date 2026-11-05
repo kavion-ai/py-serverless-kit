@@ -155,6 +155,17 @@ Payload shapes per trigger type:
 | topic | `{"message": ..., "attributes": {...}}` |
 | schedule / invoke | `event.data` |
 
+## `pskit dlq`
+
+Failed queue messages, for functions with `dlq` in `pskit.yml`. See [dead-letter queues](dead-letter-queues.md).
+
+```bash
+pskit dlq list                        # every dead-letter queue and its depth
+pskit dlq list worker --offset 20 -n 20
+pskit dlq inspect worker MESSAGE_ID
+pskit dlq replay worker MESSAGE_ID    # or --all (-y to skip the question), --to QUEUE
+```
+
 ## `pskit resources`
 
 The buckets, queues and topics pskit created for this stage: **deployed** ones (in the stage's Terraform state) and
@@ -223,7 +234,7 @@ encrypted when they end. Without a vault nothing changes. See
 pskit vault init                       # first admin; shows the master key and recovery code once
 pskit login                            # master key, username, password (all three every time)
 pskit vault users add priya --preset developer
-pskit vault audit --user priya
+pskit vault audit --user priya                 # newest first; next page: --offset 100 -n 100
 pskit logout                           # encrypts and removes the plaintext
 ```
 

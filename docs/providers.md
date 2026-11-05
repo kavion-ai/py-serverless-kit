@@ -43,7 +43,7 @@ Every generated configuration (all 11 providers) passes `terraform validate`. Th
 |---|---|
 | http | API Gateway **HTTP API** (one per service, `$default` stage), Lambda proxy v2; `auth: iam` → `AWS_IAM`, `auth: jwt` → JWT authorizer; CORS on the API |
 | schedule | EventBridge Scheduler (supports `timezone`) |
-| queue | SQS (+ optional DLQ / FIFO), event source mapping with `ReportBatchItemFailures` |
+| queue | SQS (+ optional [DLQ](dead-letter-queues.md) / FIFO), event source mapping with `ReportBatchItemFailures` |
 | storage | S3 bucket (public access blocked) + bucket notification |
 | topic | SNS topic + subscription (filter policy) |
 | workflows | Step Functions state machine (`options.type: STANDARD \| EXPRESS` per workflow) |
@@ -107,7 +107,7 @@ Functions with several triggers are **split into multiple Cloud Functions** auto
 
 **Resources:** `google_storage_bucket` (+ object) for sources, `google_cloudfunctions2_function`, `google_cloud_run_service_iam_member`, `google_service_account`, `google_project_iam_member`, `google_cloud_scheduler_job`, `google_pubsub_topic`, `google_workflows_workflow`.
 
-**Limits:** `auth: jwt`/`key` aren't supported. Event-triggered functions are limited to 540 s. `queue.dead_letter`/`fifo`/`batch_size` and `topic.filter` are not applied (warnings). `iam.statements` are ignored: grant roles to `options.service_account`. The bundle's root `main.py` is generated, so don't put your own `main.py` at the source root.
+**Limits:** `auth: jwt`/`key` aren't supported. Event-triggered functions are limited to 540 s. `queue.dead_letter`/`fifo`/`batch_size` and `topic.filter` are not applied (warnings). `dlq` on a function does work: it uses a Pub/Sub push subscription instead of Eventarc and needs 5 to 100 delivery attempts. See [dead-letter queues](dead-letter-queues.md). `iam.statements` are ignored: grant roles to `options.service_account`. The bundle's root `main.py` is generated, so don't put your own `main.py` at the source root.
 
 ---
 
@@ -138,7 +138,7 @@ One **Linux Consumption Function App** hosts every function of a service, using 
 |---|---|
 | http | `@app.route`; `auth: key` → function key |
 | schedule | timer trigger (NCRONTAB, UTC) |
-| queue | Storage Queue in the app's storage account (poison queue `<name>-poison`) |
+| queue | Storage Queue in the app's storage account (poison queue `<name>-poison`; with `dlq`, pskit creates it and sets `maxDequeueCount`) |
 | storage | Blob container + blob trigger (created/updated only) |
 | topic | Service Bus namespace/topic + one subscription per function |
 | workflows | embedded orchestrator function by default; `engine: native` → **Azure Logic App** (Consumption) |

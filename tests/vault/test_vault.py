@@ -386,6 +386,23 @@ def test_audit_detects_changed_and_removed_lines(created):
     assert audit.read(vault, admin.master)["tampered"] == [path.name]
 
 
+def test_audit_pages_newest_first_with_filters(created):
+    vault, admin, _key, _recovery = created
+    for i in range(7):
+        audit.record(vault, admin.master, "root-admin" if i % 2 else "dev", "cli", f"step.{i}")
+    all_entries = audit.read(vault, admin.master)["entries"]
+    first = audit.read(vault, admin.master, limit=3)
+    second = audit.read(vault, admin.master, limit=3, offset=3)
+    last = audit.read(vault, admin.master, limit=3, offset=6)
+    assert first["total"] == second["total"] == last["total"] == 7
+    assert (first["offset"], second["offset"], first["limit"]) == (0, 3, 3)
+    assert first["entries"] + second["entries"] + last["entries"] == all_entries and len(last["entries"]) == 1
+    assert audit.read(vault, admin.master, limit=3, offset=99)["entries"] == []
+    assert audit.read(vault, admin.master, limit=0, offset=-5)["offset"] == 0
+    dev = audit.read(vault, admin.master, user="dev", limit=2, offset=2)
+    assert dev["total"] == 4 and len(dev["entries"]) == 2 and {e["user"] for e in dev["entries"]} == {"dev"}
+
+
 def test_audit_details_drop_secrets():
     details = audit.safe_details({
         "path": "app.py", "password": "x", "passphrase": "x", "text": "x", "api_key": "x", "master_key": "x",

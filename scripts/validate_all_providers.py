@@ -98,6 +98,7 @@ def _project_yaml(name: str) -> str:
         functions["queue-worker"] = {
             "handler": "app.handlers.job",
             "events": [{"queue": {"name": "pskit-validate-jobs"}}],
+            **({"dlq": {"max_retries": 4}} if get_provider(name).supports_dlq else {}),
         }
     if "storage" in caps:
         functions["uploads"] = {

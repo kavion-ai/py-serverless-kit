@@ -76,6 +76,13 @@ def _hms(seconds: int) -> str:
     return f"{seconds // 3600:02d}:{seconds % 3600 // 60:02d}:{seconds % 60:02d}"
 
 
+POISON_SUFFIX = "-poison"  # Azure Functions moves a message here after maxDequeueCount deliveries
+
+
+def _dlq_attempts(config: ServiceConfig) -> List[int]:
+    return sorted({ev.max_receive for fn in config.functions.values() if fn.dlq is not None for ev in fn.events_of("queue")})
+
+
 class AzureProvider(Provider):
     name = "azure"
     display_name = "Azure Functions"
@@ -85,6 +92,7 @@ class AzureProvider(Provider):
     terraform_local_name = "azurerm"
     default_region = "eastus"
     capabilities = frozenset({HTTP, SCHEDULE, QUEUE, STORAGE, TOPIC, WORKFLOW_NATIVE})
+    supports_dlq = True
     max_name_length = 60
     name_pattern = r"[^a-z0-9-]"
     runtimes = {f"python3.{v}": f"3.{v}" for v in (9, 10, 11, 12)}
@@ -179,10 +187,14 @@ class AzureProvider(Provider):
 
     def _host_json(self, config: ServiceConfig) -> str:
         timeout = max([config.timeout_of(fn) for fn in config.functions.values()] or [config.provider.timeout])
+        extensions: Dict[str, Any] = {"http": {"routePrefix": ""}}
+        attempts = _dlq_attempts(config)
+        if attempts:  # one setting for the whole Function App: see the warning in extra_validation
+            extensions["queues"] = {"maxDequeueCount": max(attempts)}
         host = {
             "version": "2.0",
             "extensionBundle": {"id": "Microsoft.Azure.Functions.ExtensionBundle", "version": "[4.*, 5.0.0)"},
-            "extensions": {"http": {"routePrefix": ""}},
+            "extensions": extensions,
             "functionTimeout": _hms(min(timeout, self.max_timeout)),
             "logging": {"logLevel": {"default": "Information"}},
         }
@@ -294,6 +306,16 @@ class AzureProvider(Provider):
         env_seen: Dict[str, str] = {}
         if config.provider.iam.statements:
             issues.append(Issue("warning", "iam.statements are AWS-style and ignored on Azure", "provider.iam"))
+        attempts = _dlq_attempts(config)
+        if len(attempts) > 1:
+            issues.append(
+                Issue(
+                    "warning",
+                    f"one Function App has one delivery limit for all its queues: using {max(attempts)} "
+                    f"(the functions ask for {', '.join(map(str, attempts))})",
+                    "functions",
+                )
+            )
         for name, fn in config.functions.items():
             where = f"functions.{name}"
             for key, value in fn.environment.items():
@@ -327,13 +349,18 @@ class AzureProvider(Provider):
                     )
                 if ev.fifo:
                     issues.append(Issue("warning", "Storage Queues are not FIFO; queue.fifo is ignored", where))
-                if ev.dead_letter:
+                # `dlq: true` asks for no name; anything else names a queue that cannot be used here.
+                if ev.dead_letter and not (fn.dlq is not None and fn.dlq.queue is None):
                     issues.append(
                         Issue(
                             "warning",
                             "Storage Queues move poison messages to '<queue>-poison'; dead_letter is ignored",
                             where,
                         )
+                    )
+                if fn.dlq is not None and len(ev.name) + len(POISON_SUFFIX) > 63:
+                    issues.append(
+                        Issue("error", f"queue name {ev.name!r} is too long for its poison queue (63 characters)", where)
                     )
             for ev in fn.events_of("storage"):
                 if not _STORAGE_NAME.match(ev.bucket):
@@ -489,6 +516,10 @@ class AzureProvider(Provider):
 
         # queues / containers / service bus (events, then managed resources no event uses)
         queues = [ev.name for _n, fn in ctx.function_items() for ev in fn.events_of("queue") if not ev.existing]
+        queues += [
+            ev.name + POISON_SUFFIX for _n, fn in ctx.function_items() if fn.dlq is not None
+            for ev in fn.events_of("queue") if not ev.existing
+        ]
         containers = [ev.bucket for _n, fn in ctx.function_items() for ev in fn.events_of("storage") if not ev.existing]
         topics = [ev.name for _n, fn in ctx.function_items() for ev in fn.events_of("topic") if not ev.existing]
         for key, res in self.standalone(cfg):

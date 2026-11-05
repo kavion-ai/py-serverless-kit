@@ -321,6 +321,19 @@ def test_saves_are_sealed_and_audited_before_the_response(server):
     assert "DB_PASSWORD" not in json.dumps(entries)
 
 
+def test_audit_log_is_paged(server):
+    base, root, _httpd = server
+    session = setup_admin(base)["session"]
+    for _ in range(4):  # each failed login is an entry; a fifth would lock the account
+        login(base, "root-admin", "wrong password!!")
+    page = call(base, "GET", "/api/auth/audit?limit=2&offset=1", session=session)[1]
+    assert len(page["entries"]) == 2 and page["offset"] == 1 and page["limit"] == 2 and page["total"] >= 4
+    every = call(base, "GET", "/api/auth/audit", session=session)[1]
+    assert page["entries"] == every["entries"][1:3]
+    assert call(base, "GET", "/api/auth/audit?limit=99999", session=session)[1]["limit"] == 500
+    assert call(base, "GET", "/api/auth/audit?limit=x&offset=y", session=session)[1]["offset"] == 0
+
+
 def test_denied_calls_are_audited(server):
     base, _root, _httpd = server
     admin = setup_admin(base)["session"]

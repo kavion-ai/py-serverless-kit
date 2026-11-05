@@ -256,24 +256,36 @@ function ServerFacts({ result }: { result: OnPremServerTest }) {
   );
 }
 
+/** What a new server starts with, as `default_settings` in core/onprem_servers.py: the SSH user's home folder. */
+export function defaultServerHome(user: string): string {
+  const name = user.trim() || "root";
+  return name === "root" ? "/root" : `/home/${name}`;
+}
+
 export function ServerForm({ initial, taken, onClose, onSaved }: { initial: OnPremServer | null; taken: string[]; onClose: () => void; onSaved: (name: string) => void }) {
   const [name, setName] = useState(initial?.name || "");
   const [host, setHost] = useState(initial?.host || "");
   const [user, setUser] = useState(initial?.user || "ubuntu");
   const [port, setPort] = useState<number | undefined>(initial?.port || 22);
   const [auth, setAuth] = useState<"key" | "agent" | "password">(initial?.auth || (initial?.password_file ? "password" : initial?.identity_file ? "key" : "agent"));
-  const [pem, setPem] = useState(initial?.identity_file || "");
+  const [keySource, setKeySource] = useState<"file" | "text">(initial?.key_stored ? "text" : "file");
+  const [pem, setPem] = useState(initial?.key_stored ? "" : initial?.identity_file || "");
+  const [keyText, setKeyText] = useState("");
   const [password, setPassword] = useState("");
   const [sudo, setSudo] = useState(!!initial?.sudo);
   const [description, setDescription] = useState(initial?.description || "");
-  const [home, setHome] = useState(initial?.home || "");
-  const [bind, setBind] = useState(initial?.bind || "");
-  const [dataDir, setDataDir] = useState(initial?.data_dir || "");
+  // A new server follows the SSH user until a field is edited; an existing one shows what was saved.
+  const [homeInput, setHome] = useState<string | null>(initial ? initial.home || "" : null);
+  const [bind, setBind] = useState(initial ? initial.bind || "" : "0.0.0.0");
+  const [dataDirInput, setDataDir] = useState<string | null>(initial ? initial.data_dir || "" : null);
+  const home = homeInput ?? defaultServerHome(user);
+  const dataDir = dataDirInput ?? defaultServerHome(user);
   const [error, setError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const nameError = !SERVER_NAME_RE.test(name) ? "start with a letter; letters, digits, _ . -" : !initial && taken.includes(name) ? "already saved" : null;
   const hostError = !host.trim() ? "host name or IP" : null;
-  const authError = auth === "key" && !pem.trim() ? "path of the private key" : auth === "password" && !password && !initial?.password_file ? "the SSH password" : null;
+  const keyError = keySource === "file" ? (!pem.trim() ? "path of the private key" : null) : !keyText.trim() && !initial?.key_stored ? "paste the private key" : null;
+  const authError = auth === "key" ? keyError : auth === "password" && !password && !initial?.password_file ? "the SSH password" : null;
   const pathError = (value: string) => (value.trim() && !/^\/[A-Za-z0-9._/-]*$/.test(value.trim()) ? "an absolute Linux path, e.g. /srv/pskit" : null);
   const homeError = pathError(home);
   const dataDirError = pathError(dataDir);
@@ -283,7 +295,11 @@ export function ServerForm({ initial, taken, onClose, onSaved }: { initial: OnPr
     setSaving(true);
     setError(null);
     const target: JsonObject = { host: host.trim(), user: user.trim() || "root", port: port || 22, sudo, auth };
-    if (auth === "key") target.identity_file = pem.trim();
+    if (auth === "key" && keySource === "file") target.identity_file = pem.trim();
+    if (auth === "key" && keySource === "text") {
+      if (keyText.trim()) target.private_key = keyText;
+      else target.identity_file = initial?.identity_file || ""; // editing: keep the saved key
+    }
     if (auth === "password" && password) target.password = password;
     target.home = home.trim();
     target.bind = bind.trim();
@@ -333,15 +349,45 @@ export function ServerForm({ initial, taken, onClose, onSaved }: { initial: OnPr
             value={auth}
             onChange={(v) => setAuth(v as "key" | "agent" | "password")}
             options={[
-              { value: "key", label: "Key file (.pem)" },
+              { value: "key", label: "Private key" },
               { value: "agent", label: "SSH agent / default key" },
               { value: "password", label: "Password" },
             ]}
           />
         </FormRow>
         {auth === "key" && (
-          <FormRow label="Private key (.pem)">
+          <FormRow label="Key from">
+            <Segmented
+              label="Key from"
+              value={keySource}
+              onChange={(v) => setKeySource(v as "file" | "text")}
+              options={[
+                { value: "file", label: "File path" },
+                { value: "text", label: "Paste key text" },
+              ]}
+            />
+          </FormRow>
+        )}
+        {auth === "key" && keySource === "file" && (
+          <FormRow label="Private key (.pem)" help="A file on this machine. Everyone who uses this server needs their own copy at this path; to share it with your team, paste the key text instead.">
             <TextInput mono value={pem} placeholder="~/.ssh/server.pem" onChange={setPem} />
+          </FormRow>
+        )}
+        {auth === "key" && keySource === "text" && (
+          <FormRow
+            label="Private key text"
+            help="Saved in .pskit/ssh/keys/ (owner-only, out of git) and never shown again. If the project has a vault it is encrypted there too, and only accounts allowed to read Servers, or to deploy, can decrypt it."
+          >
+            <textarea
+              className="input mono"
+              rows={8}
+              spellCheck={false}
+              autoComplete="off"
+              aria-label="Private key text"
+              value={keyText}
+              placeholder={initial?.key_stored ? "A key is saved. Leave empty to keep it, or paste a new one." : "-----BEGIN OPENSSH PRIVATE KEY-----"}
+              onChange={(e) => setKeyText(e.target.value)}
+            />
           </FormRow>
         )}
         {auth === "password" && (
@@ -357,14 +403,14 @@ export function ServerForm({ initial, taken, onClose, onSaved }: { initial: OnPr
         <FormRow
           label="Home path"
           error={homeError}
-          help="Where pskit keeps files: functions deploy to <home>/<service>-<stage>, cluster scripts and image copies go to <home>/pskit-cluster. Empty: /opt/pskit for functions, the SSH user's home for cluster files."
+          help="Where pskit keeps files: functions deploy to <home>/<service>-<stage>, cluster scripts and image copies go to <home>/pskit-cluster. New servers start with the SSH user's home. Empty: /opt/pskit for functions, the SSH user's home for cluster files."
         >
-          <TextInput mono value={home} placeholder="/opt/pskit" onChange={setHome} invalid={!!homeError} />
+          <TextInput mono value={home} placeholder="/home/ubuntu" onChange={setHome} invalid={!!homeError} />
         </FormRow>
         <FormRow
           label="Bind address"
           error={bindError}
-          help="The address the functions' host and services listen on: 0.0.0.0 (every interface), 127.0.0.1 (only the server itself, reached over SSH) or one of its IPs (e.g. the private one). A specific IP is also its address in a cluster. Empty: 127.0.0.1 for functions, 0.0.0.0 for services. A host set in pskit.yml (other than 127.0.0.1) wins."
+          help="The address the functions' host and services listen on: 0.0.0.0 (every interface, so check the server's firewall), 127.0.0.1 (only the server itself, reached over SSH) or one of its IPs (e.g. the private one). A specific IP is also its address in a cluster. New servers start with 0.0.0.0. Empty: 127.0.0.1 for functions, 0.0.0.0 for services. A host set in pskit.yml (other than 127.0.0.1) wins."
         >
           <TextInput mono value={bind} placeholder="0.0.0.0 / 10.0.0.5" onChange={setBind} invalid={!!bindError} />
         </FormRow>
@@ -373,7 +419,7 @@ export function ServerForm({ initial, taken, onClose, onSaved }: { initial: OnPr
           error={dataDirError}
           help="Where data lives: services keep their data in <data>/<container> (a folder you can back up, instead of a Docker volume), the functions' built-in queues / buckets go to it (provider.options.data_dir), and a cluster master keeps the main replica's data in <data>/<stack>. Applies to what you create or deploy from now on."
         >
-          <TextInput mono value={dataDir} placeholder="/data/pskit" onChange={setDataDir} invalid={!!dataDirError} />
+          <TextInput mono value={dataDir} placeholder="/home/ubuntu" onChange={setDataDir} invalid={!!dataDirError} />
         </FormRow>
         <FormRow label="Description">
           <TextInput value={description} onChange={setDescription} placeholder="optional note" />

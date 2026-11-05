@@ -77,6 +77,31 @@ test("Pub/Sub CloudEvent: queue vs topic and scheduler envelope", async () => {
   assert.deepStrictEqual(out, { got: { r: 1 }, type: "schedule" });
 });
 
+test("Pub/Sub push delivery: 204, or 500 so Pub/Sub retries", async () => {
+  bundle(FUNCTIONS, HANDLERS);
+  process.env.PSKIT_FUNCTION = "sub";
+  process.env.PSKIT_TRIGGER_KIND = "queue";
+  const { http } = require(path.join(RT, "adapters", "gcp"));
+  const push = (fn, text) => {
+    process.env.PSKIT_FUNCTION = fn;
+    return {
+      method: "POST", path: "/", headers: {}, query: {},
+      rawBody: Buffer.from(JSON.stringify({
+        message: { data: Buffer.from(text).toString("base64"), attributes: { k: "v" }, messageId: "m-9" },
+        subscription: "projects/p/subscriptions/worker-push",
+      })),
+    };
+  };
+  const ok = fakeRes();
+  await http(push("sub", "hello"), ok);
+  assert.strictEqual(ok.statusCode, 204);
+  assert.deepStrictEqual(globalThis.__seen, [["queue", "hello", { k: "v" }]]);
+  const failed = fakeRes();
+  await http(push("nothing-here", "hello"), failed);
+  assert.strictEqual(failed.statusCode, 500);
+  delete process.env.PSKIT_TRIGGER_KIND;
+});
+
 test("Storage CloudEvent applies prefix/suffix filters", async () => {
   bundle(FUNCTIONS, HANDLERS);
   process.env.PSKIT_FUNCTION = "obj";

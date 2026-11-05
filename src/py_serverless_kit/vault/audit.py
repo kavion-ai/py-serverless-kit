@@ -76,8 +76,10 @@ def record(
 
 def read(
     vault: Vault, master: bytes, *, user: Optional[str] = None, action: Optional[str] = None, limit: int = 500,
+    offset: int = 0,
 ) -> Dict[str, Any]:
-    """Newest first. ``tampered`` names the files with a line that fails its check."""
+    """A page of the entries, newest first. ``total`` counts every entry that matches the filters, and ``tampered``
+    names the files with a line that fails its check, whichever page was asked for."""
     keys = [crypto.unb64(k) for k in vault.accounts(master)["audit_keys"]]
     entries: List[Dict[str, Any]] = []
     tampered: List[str] = []
@@ -98,4 +100,8 @@ def read(
     if action:
         entries = [e for e in entries if action in str(e.get("action") or "")]
     entries.sort(key=lambda e: str(e.get("ts") or ""), reverse=True)
-    return {"entries": entries[: max(1, limit)], "total": len(entries), "tampered": tampered}
+    limit, offset = max(1, limit), max(0, offset)
+    return {
+        "entries": entries[offset : offset + limit], "total": len(entries), "offset": offset, "limit": limit,
+        "tampered": tampered,
+    }

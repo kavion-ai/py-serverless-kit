@@ -6,6 +6,52 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [2.13.0] - 2026-11-05
+
+### Added
+- **Dead-letter queues and replay.** `dlq` on a function in `pskit.yml` moves messages that keep failing to a dead-letter
+  queue after `max_retries`, on AWS, Azure, GCP and on premises. New commands: `pskit dlq list`, `inspect` and `replay`
+  (one message, or `--all`). See [dead-letter queues](docs/dead-letter-queues.md).
+- **Paste an SSH private key when adding a server**, in the studio or with `pskit resources onprem servers add
+  --ssh-key-env` / `--ssh-key-stdin`, instead of pointing at a file. It is checked and saved in `.pskit/ssh/keys/`. In a
+  project with a vault it is encrypted, and only accounts with read on Servers, or a deploy permission, can decrypt it.
+- **The audit log has pages**: in **Users & audit**, with `--offset` on `pskit vault audit`, and `offset` on the API.
+
+### Changed
+- **New servers start with the SSH user's home and every interface**: home path and data directory `/home/<user>` (`/root`
+  for root) and bind address `0.0.0.0`, in the studio and in `servers add`. Change them, or pass `""` to leave one unset.
+  **Check the server's firewall:** `0.0.0.0` makes the functions and services reachable from the network. Servers already
+  saved keep their settings.
+
+### Fixed
+- Saved SSH passwords and keys work in a teammate's clone at another path: `.pskit/onprem-servers.json` stores files under
+  `.pskit/ssh` relative to the project, and absolute paths written by another clone are corrected when read.
+- Changing how a server logs in, or removing it, deletes the password or key pskit saved for it once nothing else uses it.
+
+## [2.12.2] - 2026-11-05
+
+### Fixed
+- Screenshots and diagrams show in the description on PyPI. The README keeps relative image paths for GitHub and editors,
+  and the build turns them into full URLs for the package.
+
+## [2.12.1] - 2026-11-05
+
+### Changed
+- **`pskit doctor` and Setup & credentials check Node.js and npm** for Node.js projects, including the version, and warn
+  when this Python has no pip. Terraform on Linux now shows real commands. A deploy that fails because pip is missing says
+  so and how to fix it. New [requirements page](docs/requirements.md) with install steps for Windows, macOS and Linux.
+- **Documentation:** the README now walks through studio step by step. Every studio guide page and every on-prem service
+  page has screenshots, and the diagrams are images with Mermaid sources in `docs/images/diagrams/`.
+
+### Security
+- **The recovery code can be replaced**: `pskit vault rotate-recovery-code` or **Users & audit**. All encrypted data gets
+  new keys, so the old code stops working.
+- **The `viewer` preset no longer decrypts anything.** It included read on Deployments, which opens Terraform state and
+  tokens. Accounts already created keep the permissions they have.
+
+### Fixed
+- `pskit --help` lists `pskit vault rotate-recovery-code`.
+
 ## [2.12.0] - 2026-11-05
 
 ### Added
@@ -19,9 +65,6 @@ All notable changes to this project are documented here. The format follows [Kee
   (or workflow, or resource) are separate permissions. New commands: `pskit login`, `logout`, `whoami`, `pskit vault ...`.
 
 ### Changed
-- **`pskit doctor` and Setup & credentials check Node.js and npm** for Node.js projects, including the version, and warn
-  when this Python has no pip. Terraform on Linux now shows real commands. A deploy that fails because pip is missing says
-  so and how to fix it. New [requirements page](docs/requirements.md) with install steps for Windows, macOS and Linux.
 - In a project with a vault, `pskit studio` requires a login and CLI commands need `pskit login`, or `PSKIT_MASTER_KEY`,
   `PSKIT_USER` and `PSKIT_PASSWORD` in scripts. Projects without a vault keep working from the CLI as before.
 - `cryptography` is now a required dependency.
@@ -31,10 +74,6 @@ All notable changes to this project are documented here. The format follows [Kee
 - New projects also ignore `.env.*` in their `.gitignore`.
 
 ### Security
-- **The recovery code can be replaced**: `pskit vault rotate-recovery-code` or **Users & audit**. All encrypted data gets
-  new keys, so the old code stops working.
-- **The `viewer` preset no longer decrypts anything.** It included read on Deployments, which opens Terraform state and
-  tokens. Accounts already created keep the permissions they have.
 - **The master key is no longer saved on the computer.** It was kept as plaintext in `~/.pskit/vault-keys/`, so a username
   and password were enough to decrypt everything on that computer. Every login now asks for the master key, and
   `--no-remember` is gone. The old file is deleted at your next login. **Action needed:** keep the master key in a

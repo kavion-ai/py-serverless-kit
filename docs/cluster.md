@@ -138,8 +138,10 @@ machine; `pskit info` shows `deployed on: cluster prod (master edge1 (10.0.0.5))
 
 ## Per-server settings: home path, bind address, data directory
 
-A saved server can carry three optional defaults (*Add a server* in the studio, or
-`pskit resources onprem servers add edge1 --ssh root@10.0.0.5 --home /srv/pskit --bind 10.0.0.5 --data-dir /data/pskit`):
+A saved server can carry three defaults (*Add a server* in the studio, or
+`pskit resources onprem servers add edge1 --ssh root@10.0.0.5 --home /srv/pskit --bind 10.0.0.5 --data-dir /data/pskit`).
+A new server starts with the SSH user's home for both paths (`/home/<user>`, `/root` for root) and `0.0.0.0`, which is
+reachable from the network, so check the server's firewall. Clear a field in the studio, or pass `""`, to leave it unset:
 
 | Setting | Functions on this server | Resources on this server | In a cluster |
 |---|---|---|---|

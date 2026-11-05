@@ -864,7 +864,7 @@ def how_to(kind: str, root: Path, names: List[str], service: Optional[Dict[str, 
                 "1. Open **Resources** > **On-prem services**, then **Servers** > **+ Add server** (or **Scaling "
                 "cluster** > **+ Add a server**).\n"
                 "2. Enter a name, the host (IP or DNS name), the SSH user and port.\n"
-                "3. **Log in with**: a key file (.pem), the SSH agent, or a password.\n"
+                "3. **Log in with**: a private key (a file path or pasted key text), the SSH agent, or a password.\n"
                 "4. Optional: **Use sudo**, the home path, bind address and data directory.\n"
                 "5. Click **Save and test**: studio logs in once and shows the OS, CPU, memory and Docker.\n\n"
                 "**In the terminal**\n```bash\npskit resources onprem servers add app-1 --ssh ubuntu@203.0.113.10 "

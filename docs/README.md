@@ -41,6 +41,7 @@ Hana, the studio assistant, searches all of these pages before she answers. Afte
 | [Workflows](workflows.md) | State machines: native AWS Step Functions / GCP Workflows, or the embedded engine anywhere |
 | [Workflow executions](workflow-executions.md) | Execution ids, async start, status/history/cancel from the CLI, dashboard and HTTP |
 | [Resources](resources.md) | `resources:`: managed or external storage, queues, topics, databases and other services; on-prem Redis and S3 drivers |
+| [Dead-letter queues](dead-letter-queues.md) | `dlq:` on a function, and `pskit dlq` to list, inspect and replay failed messages |
 | [Existing cloud code](resource-guides/compatibility.md) | Lambda ARNs, boto3 Lambda / SQS code, S3 / Azure / GCS SDKs: what works on each provider, the one-line change, the pskit way |
 | [pskit client and HTTP API](client.md) | Call an on-prem host from any Python / Node.js program or over HTTP: queues, buckets, topics, functions; tunnels and timeouts |
 | [Using resources from code](resource-usage.md) | Libraries to install (Python / Node.js) for every resource type and provider, handler code, local and deployed tests |

@@ -1,6 +1,7 @@
 // Accounts, permissions per feature, the audit log and the account's own password.
 import { useCallback, useEffect, useState, type FormEvent } from "react";
 import { ErrorBanner, Spinner } from "../../components/Feedback";
+import { Pagination } from "../../components/Pagination";
 import { api, errorMessage, type AuditEntry, type FeatureInfo, type VaultUser } from "../api";
 import { MIN_PASSWORD, useAuth } from "../auth";
 import { useConfirm, useToast } from "../components/Feedback";
@@ -346,28 +347,37 @@ function Users() {
 
 function Audit() {
   const [entries, setEntries] = useState<AuditEntry[] | null>(null);
+  const [total, setTotal] = useState(0);
   const [tampered, setTampered] = useState<string[]>([]);
   const [user, setUser] = useState("");
   const [action, setAction] = useState("");
+  const [page, setPage] = useState(0);
+  const [pageSize, setPageSize] = useState(50);
   const [error, setError] = useState<string | null>(null);
   const load = useCallback(() => {
-    api.authAudit(user, action).then(
+    api.authAudit(user, action, page * pageSize, pageSize).then(
       (r) => {
+        // Entries can disappear from under a page only through a narrower filter, which resets it; stay in range anyway.
+        if (r.total > 0 && r.entries.length === 0 && page > 0) {
+          setPage(Math.max(0, Math.ceil(r.total / pageSize) - 1));
+          return;
+        }
         setEntries(r.entries);
+        setTotal(r.total);
         setTampered(r.tampered);
         setError(null);
       },
       (exc: unknown) => setError(errorMessage(exc)),
     );
-  }, [user, action]);
+  }, [user, action, page, pageSize]);
   useEffect(load, [load]);
   if (error) return <ErrorBanner message={error} onRetry={load} />;
   return (
     <div className="stack">
       {tampered.length > 0 && <div className="notice notice-warn">These audit files were changed after they were written: {tampered.join(", ")}</div>}
       <div className="row-gap">
-        <input className="input" placeholder="User" aria-label="Filter by user" value={user} onChange={(e) => setUser(e.target.value)} />
-        <input className="input" placeholder="Action, like deploy" aria-label="Filter by action" value={action} onChange={(e) => setAction(e.target.value)} />
+        <input className="input" placeholder="User" aria-label="Filter by user" value={user} onChange={(e) => { setUser(e.target.value); setPage(0); }} />
+        <input className="input" placeholder="Action, like deploy" aria-label="Filter by action" value={action} onChange={(e) => { setAction(e.target.value); setPage(0); }} />
         <button type="button" className="btn btn-sm" onClick={load}>
           Refresh
         </button>
@@ -399,6 +409,18 @@ function Audit() {
             ))}
           </tbody>
         </table>
+      )}
+      {entries && (
+        <Pagination
+          page={page}
+          pageSize={pageSize}
+          total={total}
+          onPage={setPage}
+          onPageSize={(size) => {
+            setPageSize(size);
+            setPage(0);
+          }}
+        />
       )}
     </div>
   );

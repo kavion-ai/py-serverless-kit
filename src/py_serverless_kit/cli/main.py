@@ -178,6 +178,10 @@ Operate
               pskit client info
               pskit client install-node
               pskit client tunnel
+  dlq         list | inspect | replay  (failed queue messages)
+              pskit dlq list
+              pskit dlq inspect worker MESSAGE_ID
+              pskit dlq replay worker --all
   resources   list | send | check | usage | data | clear | delete | onprem
               pskit resources list -s dev
               pskit resources delete aws_s3_bucket.b_uploads -s dev
@@ -738,6 +742,130 @@ def resources_data(project, key: str, offset: int, limit: int, prefix: str, as_j
             echo(f"  {item['id'][:24]:<26}{item['body'][:100]}{extra}")
     if total is not None and offset + shown < total:
         echo(f"next page: pskit resources data {key} --offset {offset + shown} -n {limit}")
+
+
+@cli.group("dlq", short_help="Failed queue messages: list, inspect, replay.")
+def dlq() -> None:
+    """Failed queue messages: list dead-letter queues, inspect messages, replay them.
+
+    \b
+    Set up with `dlq:` on a function in pskit.yml:
+      dlq: {queue: orders-dlq, max_retries: 3}
+    \b
+    Examples:
+      pskit dlq list                      # every dead-letter queue and how many messages it holds
+      pskit dlq list worker               # the messages of worker's dead-letter queue
+      pskit dlq inspect worker MESSAGE_ID # one message in full
+      pskit dlq replay worker MESSAGE_ID  # send it back to the queue it came from
+      pskit dlq replay worker --all
+    """
+
+
+@dlq.command("list", short_help="Dead-letter queues, or the messages of one (paginated).")
+@project_options
+@click.argument("name", required=False)
+@click.option("--offset", default=0, show_default=True, help="Skip this many messages.")
+@click.option("-n", "--limit", default=20, show_default=True, help="Messages per page (max 500).")
+@click.option("--json", "as_json", is_flag=True, help="Print JSON.")
+def dlq_list(project, name: Optional[str], offset: int, limit: int, as_json: bool) -> None:  # noqa: ANN001
+    """Without NAME: every dead-letter queue. With NAME (a function or a queue): its messages. Nothing is consumed."""
+    from ..core import dlq as core
+    from ..core.deployer import Deployer
+    from ..core.testing import TriggerError
+
+    record = Deployer(project, echo=echo).load_record()
+    try:
+        result: Any = core.messages(project, record, name, offset, limit) if name else core.overview(project, record)
+    except TriggerError as exc:
+        raise click.ClickException(str(exc)) from None
+    if as_json:
+        click.echo(json.dumps(result, indent=2, default=str))
+        return
+    if not name:
+        if not result:
+            echo("No dead-letter queues. Add `dlq:` to a function with a queue trigger.")
+        for row in result:
+            depth = row.get("error") or ("?" if row["depth"] is None else f"{row['depth']} message(s)")
+            echo(f"{row['queue']}: {depth}  (from {', '.join(row['sources'])}; functions {', '.join(row['functions'])}; "
+                 f"moved after {row['max_receive']} deliveries)")
+        return
+    shown, total = len(result["items"]), result["total"]
+    info(f"{result['queue']}: messages {offset + 1 if shown else 0}-{offset + shown} of {'?' if total is None else total}")
+    for item in result["items"]:
+        body = str(item.get("body") or "").replace("\n", " ")
+        reason = (item.get("attributes") or {}).get("pskit_error")
+        echo(f"  {item['id']:<34}{body[:80]}" + (f"  [{reason[:60]}]" if reason else ""))
+    if (total is not None and offset + shown < total) or (total is None and shown == limit):
+        echo(f"next page: pskit dlq list {name} --offset {offset + shown} -n {limit}")
+
+
+@dlq.command("inspect", short_help="One failed message in full.")
+@project_options
+@click.argument("name")
+@click.argument("message_id")
+@click.option("--json", "as_json", is_flag=True, help="Print JSON.")
+def dlq_inspect(project, name: str, message_id: str, as_json: bool) -> None:  # noqa: ANN001
+    """Show message MESSAGE_ID of NAME's dead-letter queue (NAME: a function or a queue). Nothing is consumed."""
+    from ..core import dlq as core
+    from ..core.deployer import Deployer
+    from ..core.testing import TriggerError
+
+    try:
+        item = core.inspect(project, Deployer(project, echo=echo).load_record(), name, message_id)
+    except TriggerError as exc:
+        raise click.ClickException(str(exc)) from None
+    if as_json:
+        click.echo(json.dumps(item, indent=2, default=str))
+        return
+    for key, value in item.items():
+        if key not in ("body", "attributes"):
+            echo(f"{key}: {value}")
+    echo("attributes: " + json.dumps(item.get("attributes") or {}, indent=2, default=str))
+    echo("body:")
+    click.echo(item.get("body") if isinstance(item.get("body"), str) else json.dumps(item.get("body"), indent=2))
+
+
+@dlq.command("replay", short_help="Send failed messages back to their queue.")
+@project_options
+@click.argument("name")
+@click.argument("message_ids", nargs=-1)
+@click.option("--all", "replay_all", is_flag=True, help="Every message in the queue.")
+@click.option("--to", default=None, help="Send to this queue instead of the one each message came from.")
+@click.option("-y", "--yes", is_flag=True, help="With --all: do not ask for confirmation.")
+@click.option("--json", "as_json", is_flag=True, help="Print JSON.")
+def dlq_replay(  # noqa: ANN201
+    project, name: str, message_ids: tuple, replay_all: bool, to: Optional[str], yes: bool, as_json: bool,  # noqa: ANN001
+):
+    """Send messages of NAME's dead-letter queue (NAME: a function or a queue) back, by id or with --all.
+
+    A message leaves the dead-letter queue once its queue has accepted the copy, so its function runs it again. If
+    the message fails again it comes back here. Exits with 1 when a message could not be replayed.
+    """
+    from ..core import dlq as core
+    from ..core.deployer import Deployer
+    from ..core.testing import TriggerError
+
+    if bool(message_ids) == replay_all:
+        raise click.UsageError("give message ids, or --all")
+    if replay_all and not yes and not as_json:
+        click.confirm(f"Replay every message of the dead-letter queue of {name}?", abort=True)
+    record = Deployer(project, echo=echo).load_record()
+    try:
+        result = core.replay(project, record, name, None if replay_all else list(message_ids), to)
+    except TriggerError as exc:
+        raise click.ClickException(str(exc)) from None
+    if as_json:
+        click.echo(json.dumps(result, indent=2, default=str))
+    else:
+        ok(f"Replayed {len(result['replayed'])} message(s) from {result['queue']}")
+        for item in result["replayed"]:
+            echo(f"  {item['id']} -> {item['to']}")
+        for item in result["failed"]:
+            fail(f"{item['id']}: {item['error']}")
+        for ident in result["missing"]:
+            fail(f"{ident}: not in {result['queue']}")
+    if result["failed"] or result["missing"]:
+        raise SystemExit(1)
 
 
 @resources.command("clear", short_help="Delete the data of a built-in on-prem queue, bucket or topic.")
@@ -1355,19 +1483,22 @@ def resources_onprem_servers_list(as_json: bool, config_path: Optional[str]) -> 
 @resources_onprem_servers.command("add")
 @click.argument("name")
 @click.option("--ssh", "ssh", required=True, help="user@host[:port]")
-@click.option("--pem", default=None, help="Private key (empty: the SSH agent or your default key).")
+@click.option("--pem", default=None, help="Private key file (empty: the SSH agent or your default key).")
+@click.option("--ssh-key-env", default=None, help="Save the private key text in this variable (encrypted in a vault).")
+@click.option("--ssh-key-stdin", is_flag=True, help="Save the private key text read from stdin (encrypted in a vault).")
 @click.option("--ssh-password-env", default=None, help="Log in with the password in this variable (sshpass).")
 @click.option("--ssh-password-file", default=None, help="Log in with the password in this file (sshpass).")
 @click.option("--sudo", is_flag=True, help="Run docker / installs with sudo -n.")
 @click.option("--description", default="", help="A note shown in the studio.")
-@click.option("--home", default="", help="Where pskit keeps files there (default /opt/pskit; cluster files in ~).")
-@click.option("--bind", default="", help="Address the functions and services listen on (0.0.0.0, 127.0.0.1 or an IP).")
-@click.option("--data-dir", "data_dir", default="", help="Where data lives there (default: Docker volumes / the app).")
+@click.option("--home", default=None, help="Where pskit keeps files there. Default: /home/<user> (/root for root).")
+@click.option("--bind", default=None, help="Address the functions and services listen on. Default: 0.0.0.0.")
+@click.option("--data-dir", "data_dir", default=None, help="Where data lives there. Default: /home/<user> (/root for root).")
 @click.option("--test/--no-test", "run_test", default=True, help="Log in once after saving (default: yes).")
 @click.option("-c", "--config", "config_path", default=None, help="Config file (default: pskit.yml).")
 def resources_onprem_servers_add(  # noqa: PLR0913
-    name: str, ssh: str, pem: Optional[str], ssh_password_env: Optional[str], ssh_password_file: Optional[str],
-    sudo: bool, description: str, home: str, bind: str, data_dir: str, run_test: bool, config_path: Optional[str],
+    name: str, ssh: str, pem: Optional[str], ssh_key_env: Optional[str], ssh_key_stdin: bool,
+    ssh_password_env: Optional[str], ssh_password_file: Optional[str], sudo: bool, description: str,
+    home: Optional[str], bind: Optional[str], data_dir: Optional[str], run_test: bool, config_path: Optional[str],
 ) -> None:
     """Save (or replace) server NAME.
 
@@ -1375,15 +1506,30 @@ def resources_onprem_servers_add(  # noqa: PLR0913
     --home /srv/pskit --bind 10.0.0.5 --data-dir /data/pskit are this server's defaults: functions deploy to
     <home>/<service>-<stage> and listen on the bind address, services publish their port on it and keep their data
     in <data-dir>/<container>, a cluster master keeps the main replica's data in <data-dir>/<stack>.
+    Pass "" to leave one unset. A bind address of 0.0.0.0 reaches the network: check the server's firewall.
+
+    \b
+    Key text instead of a file (in a project with a vault it is encrypted, and only accounts allowed to read
+    servers can decrypt it):
+      pskit resources onprem servers add edge1 --ssh ubuntu@10.0.0.5 --ssh-key-env EDGE1_KEY
+      cat key.pem | pskit resources onprem servers add edge1 --ssh ubuntu@10.0.0.5 --ssh-key-stdin
     """
     from ..core import onprem_servers as srv
 
     root, _path, _raw = _raw_project(config_path)
     user, _, rest = ssh.rpartition("@")
     host, _, ssh_port = rest.partition(":")
+    defaults = srv.default_settings(user or "root")
     raw: dict = {"host": host, "user": user or "root", "port": int(ssh_port or 22), "sudo": sudo,
-                 "home": home, "bind": bind, "data_dir": data_dir}
-    if ssh_password_env:
+                 "home": defaults["home"] if home is None else home,
+                 "bind": defaults["bind"] if bind is None else bind,
+                 "data_dir": defaults["data_dir"] if data_dir is None else data_dir}
+    if ssh_key_env and ssh_key_stdin:
+        raise click.ClickException("pick one: --ssh-key-env or --ssh-key-stdin")
+    if ssh_key_env or ssh_key_stdin:
+        text = _env_value(ssh_key_env) if ssh_key_env else sys.stdin.read()
+        raw.update({"auth": "key", "private_key": text})
+    elif ssh_password_env:
         raw.update({"auth": "password", "password": _env_value(ssh_password_env)})
     elif ssh_password_file:
         raw.update({"auth": "password", "password_file": ssh_password_file})

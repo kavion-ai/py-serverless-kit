@@ -331,10 +331,11 @@ class Auth:
         if rest == ["audit"] and method == "GET":
             if not permissions.allowed(user, "audit", "r"):
                 self._deny("audit", "r")
-            limit = params.get("limit") or "500"
+            limit, offset = params.get("limit") or "", params.get("offset") or ""
             return 200, audit.read(
                 self.vault, session.identity.master, user=params.get("user") or None,
-                action=params.get("action") or None, limit=int(limit) if limit.isdigit() else 500,
+                action=params.get("action") or None, limit=min(int(limit), 500) if limit.isdigit() else 500,
+                offset=int(offset) if offset.isdigit() else 0,
             )
         if rest and rest[0] == "users":
             return self._users(session, user, method, rest[1:], body)

@@ -153,6 +153,7 @@ class Provider(ABC):
     terraform_local_name: ClassVar[Optional[str]] = None
     default_region: ClassVar[str] = ""
     capabilities: ClassVar[FrozenSet[str]] = frozenset({HTTP})
+    supports_dlq: ClassVar[bool] = False  # moves failed queue messages to a dead-letter queue (`dlq:` on a function)
     max_name_length: ClassVar[int] = 64
     name_pattern: ClassVar[str] = r"[^a-z0-9-]"
     runtimes: ClassVar[Dict[str, str]] = {}
@@ -278,6 +279,10 @@ class Provider(ABC):
                             where,
                         )
                     )
+            if fn.dlq is not None and not self.supports_dlq:
+                issues.append(Issue("error", f"{self.display_name} has no dead-letter queues in pskit; remove `dlq`", where))
+            elif fn.dlq is not None and not fn.events_of("queue"):
+                issues.append(Issue("warning", "`dlq` only applies to queue triggers, and this function has none", where))
             if not self.storage_service_buckets:
                 for sev in fn.events_of("storage"):
                     res = config.resources.get(sev.resource or "")

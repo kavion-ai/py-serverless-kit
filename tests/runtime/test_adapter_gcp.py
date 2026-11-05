@@ -129,6 +129,49 @@ def test_pubsub_queue_event(monkeypatch):
     assert event.time.year == 2024
 
 
+def _push(data, attributes=None):
+    encoded = base64.b64encode(data).decode("ascii")
+    return json.dumps({
+        "message": {"data": encoded, "attributes": attributes or {}, "messageId": "m-9", "publishTime": "2024-01-02T03:04:05Z"},
+        "subscription": "projects/p/subscriptions/worker-push",
+        "deliveryAttempt": 2,
+    }).encode("utf-8")
+
+
+def test_a_push_delivery_runs_like_a_queue_event(monkeypatch):
+    monkeypatch.setenv("PSKIT_TRIGGER_KIND", "queue")
+    body, status, _headers = gcp.http(FakeRequest("POST", "/", _push(b'{"job": 1}', {"k": "v"})))
+    assert status == 204 and body == b""
+    event = SEEN["event"]
+    assert event.type == "queue" and event.records[0].id == "m-9"
+    assert event.records[0].json() == {"job": 1} and event.records[0].attributes == {"k": "v"}
+
+
+def test_a_failed_push_delivery_answers_500_so_pubsub_retries(monkeypatch):
+    monkeypatch.setenv("PSKIT_TRIGGER_KIND", "queue")
+
+    def boom(_ce):
+        raise ValueError("bad input")
+
+    monkeypatch.setattr(gcp, "cloud_event", boom)
+    body, status, _headers = gcp.http(FakeRequest("POST", "/", _push(b"x")))
+    assert status == 500 and json.loads(body)["errorType"] == "ValueError"
+
+
+def test_a_scheduler_envelope_can_arrive_by_push(monkeypatch):
+    monkeypatch.setenv("PSKIT_TRIGGER_KIND", "queue")
+    envelope = json.dumps({"__pskit": "schedule", "data": {"r": 1}, "source": "gcp.scheduler"}).encode()
+    _body, status, _headers = gcp.http(FakeRequest("POST", "/", _push(envelope)))
+    assert status == 204 and SEEN["event"].type == "schedule" and SEEN["event"].data == {"r": 1}
+
+
+def test_an_http_body_that_looks_like_a_push_stays_http_without_a_trigger(monkeypatch):
+    monkeypatch.delenv("PSKIT_TRIGGER_KIND", raising=False)
+    assert gcp._pubsub_push(_push(b"x")) is None
+    monkeypatch.setenv("PSKIT_TRIGGER_KIND", "queue")
+    assert gcp._pubsub_push(b'{"message": "hi"}') is None and gcp._pubsub_push(b"{broken") is None
+
+
 def test_pubsub_topic_default_and_scheduler_envelope():
     assert gcp.to_cloud_event(_pubsub(b"hi"), "users").type == "topic"
     env = json.dumps({"__pskit": "schedule", "data": {"r": 1}, "source": "gcp.scheduler"}).encode()

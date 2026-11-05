@@ -71,15 +71,16 @@ import uuid
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Tuple
+from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 from urllib.error import HTTPError, URLError
-from urllib.parse import parse_qsl, quote, unquote, urlsplit
+from urllib.parse import parse_qsl, quote, unquote, urlencode, urlsplit
 from urllib.request import Request, urlopen
 
-from . import hostlog
+from . import dead_letters, hostlog
 from .batch import BatchResult
 from .context import Context
 from .cron import CronError, next_cron, rate_seconds, resolve_zone
+from .dead_letters import SOURCE_ATTRIBUTE
 from .dispatch import execute
 from .event import Event, EventType, Headers, HttpRequest, Record
 from .executions import NO_ENTRY, Executor, FileExecutionStore, entry_function, valid_id
@@ -487,7 +488,10 @@ class Broker:
                 claimed.append(msg)
             return claimed
 
-    def settle_queue(self, ev: Dict[str, Any], claimed: List[Dict[str, Any]], failed: Iterable[str], now: float) -> None:
+    def settle_queue(
+        self, ev: Dict[str, Any], claimed: List[Dict[str, Any]], failed: Iterable[str], now: float, error: str = "",
+    ) -> None:
+        """``error``: why they failed, when known. It stays with a message moved to the dead-letter queue."""
         failed_ids = {str(item) for item in failed}
         max_receive = int(ev.get("max_receive") or 5)
         dead = ev.get("dead_letter")
@@ -495,7 +499,7 @@ class Broker:
         if driver is not None:
             target = None
             if dead:
-                target = self._queue_drivers.get(str(dead)) or _BuiltinQueue(self, str(dead), str(ev["name"]))
+                target = _DeadLetterTarget(self, str(dead), str(ev["name"]), error)
             driver.settle(claimed, failed_ids, max_receive, target, now)
             return
         with self._lock:
@@ -508,11 +512,10 @@ class Broker:
                 current["receives"] = int(current.get("receives") or 0) + 1
                 if dead and current["receives"] >= max_receive:
                     path.unlink(missing_ok=True)
-                    self.submit_queue(
-                        str(dead),
-                        current.get("body"),
-                        {"pskit_source_queue": ev["name"], "pskit_receives": current["receives"]},
-                    )
+                    attributes = dict(current.get("attributes") or {})
+                    attributes.update(_dead_attributes(str(ev["name"]), error, now))
+                    attributes["pskit_receives"] = current["receives"]
+                    self.submit_queue(str(dead), current.get("body"), attributes)
                 else:
                     current["visible_at"] = now
                     _write_json(path, current)
@@ -591,6 +594,55 @@ class Broker:
                     msg["leased"] = float(msg.get("visible_at") or 0) > now
                     items.append(_brief(msg))
         return {"supported": True, "total": len(files), "items": items}
+
+    def queue_messages(
+        self, name: str, offset: int, limit: int, now: float, ident: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        """A page of a dead-letter queue, or one message, with whole bodies. Nothing is consumed."""
+        driver = self._queue_drivers.get(name)
+        if driver is not None:
+            depth = int(driver.depth())
+            items = dead_letters.page(driver, offset, limit, now, ident=ident)
+            return {"total": depth if depth >= 0 else None, "items": items}
+        with self._lock:
+            directory = self.queue_dir(name) / "messages"
+            files = sorted(directory.glob("*.json")) if directory.is_dir() else []
+            found = (_read_json(path, None) for path in (files if ident else files[offset : offset + limit]))
+            items = [m for m in found if isinstance(m, dict) and (not ident or str(m.get("id")) == ident)]
+        return {"total": len(files), "items": items}
+
+    def replay_queue(self, name: str, ids: Optional[Iterable[str]], where: Any, now: float) -> Dict[str, Any]:
+        """Send messages of a dead-letter queue back. ``where(message)`` says to which queue; see ``dead_letters``."""
+        def submit(to: str, body: str, attributes: Dict[str, Any]) -> None:
+            self.submit_queue(to, body, attributes)
+
+        driver = self._queue_drivers.get(name)
+        if driver is not None:
+            return dead_letters.replay(driver, submit, where, ids, now)
+        wanted = None if ids is None else {str(i) for i in ids}
+        replayed: List[Dict[str, Any]] = []
+        failed: List[Dict[str, Any]] = []
+        seen: Set[str] = set()
+        with self._lock:
+            directory = self.queue_dir(name) / "messages"
+            for path in sorted(directory.glob("*.json")) if directory.is_dir() else []:
+                msg = _read_json(path, None)
+                ident = str(msg.get("id")) if isinstance(msg, dict) else ""
+                if not ident or (wanted is not None and ident not in wanted):
+                    continue
+                seen.add(ident)
+                to = where(msg)
+                if not to:
+                    failed.append({"id": ident, "error": "the queue it came from is unknown: choose one with --to"})
+                    continue
+                try:
+                    submit(to, msg.get("body"), dead_letters.replay_attributes(msg.get("attributes")))
+                except Exception as exc:  # noqa: BLE001 - reported per message; the message stays
+                    failed.append({"id": ident, "error": f"{type(exc).__name__}: {exc}"})
+                    continue
+                path.unlink(missing_ok=True)
+                replayed.append({"id": ident, "to": to})
+        return {"replayed": replayed, "failed": failed, "missing": sorted((wanted or set()) - seen)}
 
     def peek_topic(self, name: str, offset: int, limit: int) -> Dict[str, Any]:
         with self._lock:
@@ -730,17 +782,26 @@ class Broker:
         return found
 
 
-class _BuiltinQueue:
-    """Dead-letter target for a driver queue whose DLQ is a builtin queue."""
+def _dead_attributes(source: str, error: str, now: float) -> Dict[str, Any]:
+    """What a message carries in a dead-letter queue: where to replay it to, and what is known about the failure."""
+    out: Dict[str, Any] = {SOURCE_ATTRIBUTE: source, "pskit_dead_at": round(now, 3)}
+    if error:
+        out["pskit_error"] = error[:500]
+    return out
 
-    def __init__(self, broker: Broker, name: str, source: str) -> None:
+
+class _DeadLetterTarget:
+    """Dead-letter target of a driver queue: any queue of this broker, builtin or with a driver."""
+
+    def __init__(self, broker: Broker, name: str, source: str, error: str = "") -> None:
         self._broker = broker
         self._name = name
         self._source = source
+        self._error = error
 
     def submit(self, body: str, attributes: Dict[str, Any]) -> str:
-        attrs: Dict[str, Any] = {"pskit_source_queue": self._source}
-        attrs.update(attributes or {})
+        attrs = dict(attributes or {})
+        attrs.update(_dead_attributes(self._source, self._error, time.time()))
         return self._broker.submit_queue(self._name, body, attrs)
 
 
@@ -1626,10 +1687,12 @@ class Host:
             except Exception as exc:  # noqa: BLE001
                 self._note(f"queue {queue} -> {function} failed: {exc}")
                 failed = [str(msg.get("id")) for msg in claimed]
+                error = f"{type(exc).__name__}: {exc}"
             else:
                 failed = list(result.failed) if isinstance(result, BatchResult) else []
+                error = ""
             try:
-                self.broker.settle_queue(ev, claimed, failed, now)
+                self.broker.settle_queue(ev, claimed, failed, now, error)
             except Exception as exc:  # noqa: BLE001
                 self._note(f"queue {queue}: could not settle messages: {exc}")
         if now - self._last_recover >= 5:
@@ -2015,6 +2078,8 @@ class Host:
                         parts[1], _int_arg(query, "offset", 0), min(500, _int_arg(query, "limit", 50)), time.time()
                     )
                     return self._json(200, page)
+                if parts and parts[0] == "queues" and len(parts) == 3 and parts[2] in ("messages", "replay"):
+                    return self._dead_letters(parts[1], parts[2], query, raw)
                 if parts and parts[0] == "queues" and len(parts) == 2:
                     return self._queue(parts[1], raw)
                 if parts and parts[0] == "queues" and len(parts) == 3 and parts[2] in ("lease", "ack", "nack"):
@@ -2281,6 +2346,42 @@ class Host:
                     res = host._resource(key)
                     return self._json(200, {"deleted": host.broker.delete_message(str(res.get("name") or key), query.get("id") or "")})
                 return self._json(405, {"error": f"method not allowed on .../{action}"})
+
+            def _dead_letters(self, name: str, action: str, query: Dict[str, str], raw: bytes) -> None:
+                """``pskit dlq``: read a dead-letter queue, or send its messages back."""
+                if self.command != ("GET" if action == "messages" else "POST"):
+                    return self._json(405, {"error": f"wrong method for {action}"})
+                peers: Any = None if self._from_peer else getattr(host.broker, "peers", None)
+                owner = peers.owner("queue", name) if peers is not None else None
+                if owner:  # the queue is kept by another group of this project
+                    path = f"/__pskit/queues/{quote(name, safe='')}/{action}"
+                    if action == "messages":
+                        return self._json(200, peers.call(owner, "GET", f"{path}?{urlencode(query)}"))
+                    return self._json(200, peers.call(owner, "POST", path, raw=raw, timeout=900))
+                known = host.queue_names()
+                if name not in known:
+                    return self._json(404, {"error": f"unknown queue {name!r}; known: {', '.join(known) or 'none'}"})
+                now = time.time()
+                if action == "messages":
+                    page = host.broker.queue_messages(
+                        name, _int_arg(query, "offset", 0), min(500, _int_arg(query, "limit", 20)), now,
+                        query.get("id") or None,
+                    )
+                    return self._json(200, page)
+                body = json.loads(raw.decode("utf-8") or "{}")
+                if not isinstance(body, dict):
+                    raise ValueError("body must be a JSON object")
+                ids, to, sources = body.get("ids"), str(body.get("to") or ""), body.get("sources") or []
+                if ids is not None and not isinstance(ids, list):
+                    raise ValueError("ids must be a list, or left out for every message")
+                if to and to not in known:  # a typo would quietly create a new queue
+                    return self._json(400, {"error": f"unknown queue {to!r}; known: {', '.join(known)}"})
+
+                def where(msg: Dict[str, Any]) -> Optional[str]:
+                    recorded = str((msg.get("attributes") or {}).get(SOURCE_ATTRIBUTE) or "")
+                    return to or recorded or (str(sources[0]) if len(sources) == 1 else None)
+
+                return self._json(200, host.broker.replay_queue(name, ids, where, now))
 
             def _lease(self, name: str, action: str, raw: bytes) -> None:
                 if self.command != "POST":

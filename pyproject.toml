@@ -1,12 +1,11 @@
 [build-system]
-requires = ["hatchling>=1.24"]
+requires = ["hatchling>=1.24", "hatch-fancy-pypi-readme>=24.1"]
 build-backend = "hatchling.build"
 
 [project]
 name = "py-serverless-kit"
-dynamic = ["version"]
+dynamic = ["version", "readme"]
 description = "Write a Python serverless function once and deploy it to AWS, Azure, GCP, 7 more clouds, or an on-premises host with one YAML file, powered by Terraform."
-readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [{ name = "Asif Khan @ Kavion.ai" }]
@@ -61,6 +60,18 @@ Homepage = "https://github.com/kavion-ai/py-serverless-kit"
 Documentation = "https://github.com/kavion-ai/py-serverless-kit/tree/main/docs"
 Issues = "https://github.com/kavion-ai/py-serverless-kit/issues"
 Changelog = "https://github.com/kavion-ai/py-serverless-kit/blob/main/CHANGELOG.md"
+
+# PyPI cannot resolve relative paths. The README keeps ./docs/... for GitHub and editors, and only the
+# package description gets full URLs, which need the images on the main branch.
+[tool.hatch.metadata.hooks.fancy-pypi-readme]
+content-type = "text/markdown"
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+path = "README.md"
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
+pattern = '\]\(\./docs/'
+replacement = '](https://raw.githubusercontent.com/kavion-ai/py-serverless-kit/main/docs/'
 
 [tool.hatch.version]
 path = "src/py_serverless_kit/_version.py"

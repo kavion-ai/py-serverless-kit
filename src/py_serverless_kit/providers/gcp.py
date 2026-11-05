@@ -88,6 +88,7 @@ class Deployment:
     action: Optional[str] = None  # storage: created | deleted
     schedules: List[Any] = field(default_factory=list)
     pubsub_schedules: bool = False  # schedules publish to this deployment's topic
+    pushed: bool = False  # a queue under `dlq:` is delivered by its own push subscription, not an Eventarc trigger
 
 
 def plan_deployments(name: str, fn: FunctionConfig, needs_http: bool = False) -> List[Deployment]:
@@ -101,7 +102,8 @@ def plan_deployments(name: str, fn: FunctionConfig, needs_http: bool = False) ->
         for action in actions:
             i = counters.get(ev.type, 0)
             counters[ev.type] = i + 1
-            triggers.append(Deployment(f"{name}-{ev.type}{i}", ev.type, ev.config, action))
+            pushed = ev.type == "queue" and fn.dlq is not None
+            triggers.append(Deployment(f"{name}-{ev.type}{i}", ev.type, ev.config, action, pushed=pushed))
     schedules = fn.events_of("schedule")
     pubsub = next((d for d in triggers if d.kind in ("queue", "topic")), None)
     want_http = bool(fn.events_of("http")) or not triggers or needs_http or bool(schedules and pubsub is None)
@@ -129,6 +131,7 @@ class GcpProvider(Provider):
     terraform_local_name = "google"
     default_region = "us-central1"
     capabilities = frozenset({HTTP, SCHEDULE, QUEUE, STORAGE, TOPIC, WORKFLOW_NATIVE})
+    supports_dlq = True
     max_name_length = 63
     name_pattern = r"[^a-z0-9-]"
     runtimes = {f"python3.{v}": f"python3{v}" for v in (9, 10, 11, 12, 13)}
@@ -193,11 +196,21 @@ class GcpProvider(Provider):
             where = f"functions.{name}"
             triggers = [e for e in fn.events if e.type in TRIGGERS]
             for ev in fn.events_of("queue"):
-                if ev.dead_letter:
+                if ev.dead_letter and fn.dlq is None:
                     issues.append(
                         Issue(
                             "warning",
-                            "queue.dead_letter is not applied on GCP (Eventarc manages the subscription)",
+                            "queue.dead_letter is not applied on GCP (Eventarc manages the subscription); "
+                            "use `dlq` on the function",
+                            where,
+                        )
+                    )
+                if fn.dlq is not None and not 5 <= ev.max_receive <= 100:
+                    issues.append(
+                        Issue(
+                            "error",
+                            f"Pub/Sub allows 5 to 100 delivery attempts before a dead-letter topic; {ev.name} asks for "
+                            f"{ev.max_receive} (dlq.max_retries must be 4 to 99)",
                             where,
                         )
                     )
@@ -314,6 +327,8 @@ class GcpProvider(Provider):
                         "member": "serviceAccount:" + invoker_email,
                     },
                 )
+                if dep.pushed:
+                    self._dead_letter(doc, ctx, fn, dep, ref(res, "url"), invoker_email)
                 if dep.kind == "http":
                     urls[name] = ref(res, "url")
                     if any(ev.auth == "none" for ev in fn.events_of("http")):
@@ -382,6 +397,59 @@ class GcpProvider(Provider):
             doc.resource("google_pubsub_topic", label, {"name": name, "labels": labels(ctx.tags())})
         return f"google_pubsub_topic.{tf_id(label)}"
 
+    def _dead_letter(
+        self, doc: TerraformDoc, ctx: RenderContext, fn: FunctionConfig, dep: Deployment, url: str, invoker_email: str
+    ) -> None:
+        """An Eventarc trigger's subscription cannot have a dead-letter policy, so this deployment gets its own push
+        subscription. A second one on the dead-letter topic keeps the messages until ``pskit dlq`` replays them."""
+        ev = dep.config
+        project = ctx.opt("project", "")
+        source = self._topic(doc, ctx, ev.name, ev.existing)
+        dead = self._topic(doc, ctx, ev.dead_letter, False)
+        number = ref(doc.data("google_project", "pskit", {"project_id": project}), "number")
+        agent = f"serviceAccount:service-{number}@gcp-sa-pubsub.iam.gserviceaccount.com"
+        subscription = doc.resource(
+            "google_pubsub_subscription",
+            f"{dep.key}-push",
+            {
+                "name": ctx.physical_name(f"{dep.key}-push"),
+                "topic": ref(source, "id"),
+                "ack_deadline_seconds": min(600, max(10, ctx.config.timeout_of(fn))),
+                "labels": labels(ctx.tags()),
+                "expiration_policy": {"ttl": ""},
+                "retry_policy": {"minimum_backoff": "10s", "maximum_backoff": "600s"},
+                "dead_letter_policy": {"dead_letter_topic": ref(dead, "id"), "max_delivery_attempts": ev.max_receive},
+                "push_config": {
+                    "push_endpoint": url,
+                    "oidc_token": {"service_account_email": invoker_email, "audience": url},
+                },
+            },
+        )
+        doc.resource(
+            "google_pubsub_subscription_iam_member",
+            f"{dep.key}-push-agent",
+            {"subscription": ref(subscription, "name"), "role": "roles/pubsub.subscriber", "member": agent},
+        )
+        label = f"dead-{ev.dead_letter}"
+        if not doc.has_resource("google_pubsub_subscription", label):
+            doc.resource(
+                "google_pubsub_subscription",
+                label,
+                {
+                    "name": f"{ev.dead_letter}-sub",  # the name `pskit dlq` reads
+                    "topic": ref(dead, "id"),
+                    "ack_deadline_seconds": 60,
+                    "message_retention_duration": "604800s",
+                    "labels": labels(ctx.tags()),
+                    "expiration_policy": {"ttl": ""},
+                },
+            )
+            doc.resource(
+                "google_pubsub_topic_iam_member",
+                f"{label}-agent",
+                {"topic": ref(dead, "id"), "role": "roles/pubsub.publisher", "member": agent},
+            )
+
     def _function(
         self,
         doc: TerraformDoc,
@@ -414,12 +482,14 @@ class GcpProvider(Provider):
             "labels": labels(dict(ctx.tags(fn), **{"pskit-function": name})),
             "build_config": {
                 "runtime": self.runtime_id(cfg.runtime_of(fn)),
-                "entry_point": "pskit_http" if dep.kind == "http" else "pskit_event",
+                "entry_point": "pskit_http" if dep.kind == "http" or dep.pushed else "pskit_event",
                 "source": {"storage_source": {"bucket": ref(src_bucket, "name"), "object": ref(src_obj, "name")}},
             },
             "service_config": service_config,
         }
-        if dep.kind != "http":
+        if dep.pushed:
+            env["PSKIT_TRIGGER_KIND"] = dep.kind  # delivered by the subscription in _dead_letter
+        elif dep.kind != "http":
             ev = dep.config
             et: Dict[str, Any] = {
                 "trigger_region": ctx.region,

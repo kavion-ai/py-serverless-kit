@@ -57,6 +57,7 @@ class AwsProvider(Provider):
     terraform_version = ">= 5.40"
     default_region = "us-east-1"
     capabilities = frozenset(ALL_CAPABILITIES)
+    supports_dlq = True
     max_name_length = 64
     name_pattern = r"[^a-z0-9_-]"
     runtimes = {f"python3.{v}": f"python3.{v}" for v in (9, 10, 11, 12, 13)}
@@ -103,6 +104,14 @@ class AwsProvider(Provider):
                 Issue("error", "artifact_upload must be 's3' or 'direct'", "provider.options.artifact_upload")
             )
         for name, fn in config.functions.items():
+            for queue in fn.events_of("queue"):
+                if queue.existing and queue.dead_letter:
+                    issues.append(Issue(
+                        "warning",
+                        f"queue {queue.name} already exists, so pskit does not change it: set its redrive policy yourself "
+                        f"for messages to reach {queue.dead_letter}",
+                        f"functions.{name}",
+                    ))
             for ev in fn.events_of("http"):
                 if ev.auth == "key":
                     issues.append(

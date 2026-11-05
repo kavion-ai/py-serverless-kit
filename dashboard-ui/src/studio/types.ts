@@ -478,6 +478,8 @@ export interface OnPremServer {
   port?: number;
   auth?: "key" | "agent" | "password";
   identity_file?: string;
+  /** identity_file is a key pasted as text, kept by pskit (encrypted when the project has a vault). */
+  key_stored?: boolean;
   password_file?: string;
   sudo?: boolean;
   description?: string;

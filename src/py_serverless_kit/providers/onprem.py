@@ -250,6 +250,7 @@ class OnPremProvider(Provider):
     terraform_source = "terraform.io/builtin/terraform"
     default_region = "local"
     capabilities = frozenset({HTTP, SCHEDULE, QUEUE, STORAGE, TOPIC, SMTP})
+    supports_dlq = True
     max_name_length = 63
     runtimes = {f"python3.{minor}": f"python3.{minor}" for minor in (9, 10, 11, 12, 13, 14)}
     # Node.js functions run in a `node` worker process driven by the (Python) host.

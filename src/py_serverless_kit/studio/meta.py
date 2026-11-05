@@ -577,7 +577,7 @@ def build_meta() -> Dict[str, Any]:
         "providers": providers,
         "provider_fields": _COMMON_PROVIDER,
         "events": events,
-        "function_fields": model_fields(schema.FunctionConfig, "function", skip=("events",)),
+        "function_fields": model_fields(schema.FunctionConfig, "function", skip=("events", "dlq")),
         "resource_fields": model_fields(schema.ResourceConfig, "resource"),
         "resource_types": list(schema.RESOURCE_TYPES),
         "event_resource_types": list(schema.EVENT_RESOURCE_TYPES),

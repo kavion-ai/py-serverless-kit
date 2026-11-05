@@ -1,8 +1,10 @@
 """Saved SSH servers: name a machine once, then create services, install software, open consoles and deploy to it.
 
 Stored in ``.pskit/onprem-servers.json`` (out of git, like the rest of ``.pskit``). Only connection details are
-kept: a password typed in the studio goes to ``.pskit/ssh/<user>@<host>-<port>.pass`` (owner-only), never into the
-JSON, ``pskit.yml`` or Terraform state.
+kept: a password typed in the studio goes to ``.pskit/ssh/<user>@<host>-<port>.pass`` and a private key given as text to
+``.pskit/ssh/keys/<server>.pem`` (owner-only), never into the JSON, ``pskit.yml`` or Terraform state. In a project with
+a vault those files and the JSON are sealed into ``.pskit-vault/``: only accounts holding the key of the ``servers`` area
+can decrypt them. So that the JSON works in every clone, files under ``.pskit/ssh`` are stored relative to the project.
 
 ``provider.options.deploy: {server: NAME}`` in ``pskit.yml`` (or ``pskit deploy --server NAME``) deploys the
 functions to that machine: its host, user, port and login replace those in ``options.deploy``.
@@ -24,6 +26,9 @@ LOCAL = "local"  # ``--server local``: this machine, whatever the last deploy us
 DEPLOYED_FILE = "onprem_deployed.json"  # .pskit/onprem-<stage>/: where the last successful deploy went
 _NAME = re.compile(r"^[A-Za-z][A-Za-z0-9_.-]{0,62}$")
 _KEEP = ("host", "user", "port", "identity_file", "password_file", "auth", "sudo", "known_hosts")
+_SECRET_FILES = ("identity_file", "password_file")
+_SSH_DIR = Path(".pskit") / "ssh"
+_KEYS_DIR = _SSH_DIR / "keys"
 
 RunFn = Callable[[List[str], Optional[Path]], Tuple[int, str]]
 
@@ -49,19 +54,56 @@ def _path(root: Path) -> Path:
     return root / SERVERS_FILE
 
 
+def _inside(path: str, folder: Path) -> Optional[str]:
+    """``path`` relative to ``folder`` (POSIX) when it is inside it, else None."""
+    if not path:
+        return None
+    try:
+        rel = os.path.relpath(os.path.abspath(path), os.path.abspath(folder))
+    except ValueError:  # another drive
+        return None
+    return None if rel == os.pardir or rel.startswith(os.pardir + os.sep) else rel.replace(os.sep, "/")
+
+
+def _stored_path(value: str, root: Path) -> str:
+    rel = _inside(value, root / _SSH_DIR)
+    return (_SSH_DIR / rel).as_posix() if rel else value
+
+
+def _local_path(value: str, root: Path) -> str:
+    """Where a secret file is in this clone. Also fixes an absolute path written by another clone of the project."""
+    text = value.replace("\\", "/")
+    prefix = _SSH_DIR.as_posix() + "/"
+    if text.startswith(prefix):
+        return str(root / text)
+    marker = "/" + prefix
+    if marker in text and not os.path.isfile(value):
+        return str(root / _SSH_DIR / text.split(marker, 1)[1])
+    return value
+
+
 def load_servers(root: Path) -> Dict[str, Dict[str, Any]]:
     try:
         data = json.loads(_path(root).read_text("utf-8"))
     except (OSError, ValueError):
         return {}
     servers = data.get("servers") if isinstance(data, dict) else None
-    return {k: v for k, v in (servers or {}).items() if isinstance(v, dict)}
+    out = {k: v for k, v in (servers or {}).items() if isinstance(v, dict)}
+    for item in out.values():
+        for field in _SECRET_FILES:
+            if isinstance(item.get(field), str):
+                item[field] = _local_path(item[field], root)
+    return out
 
 
 def _write(root: Path, servers: Dict[str, Dict[str, Any]]) -> None:
     path = _path(root)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_bytes((json.dumps({"servers": servers}, indent=2, sort_keys=True) + "\n").encode("utf-8"))
+    stored = {
+        name: {k: _stored_path(v, root) if k in _SECRET_FILES and isinstance(v, str) else v for k, v in item.items()}
+        for name, item in servers.items()
+    }
+    path.write_bytes((json.dumps({"servers": stored}, indent=2, sort_keys=True) + "\n").encode("utf-8"))
 
 
 def list_servers(root: Path) -> List[Dict[str, Any]]:
@@ -69,6 +111,7 @@ def list_servers(root: Path) -> List[Dict[str, Any]]:
 
     return [
         {"name": name, **{k: v for k, v in item.items() if k != "password"},
+         "key_stored": _inside(str(item.get("identity_file") or ""), root / _KEYS_DIR) is not None,
          "label": describe_target({**item, "method": "ssh"})}
         for name, item in sorted(load_servers(root).items())
     ]
@@ -167,9 +210,38 @@ def server_settings(raw: Dict[str, Any]) -> Dict[str, str]:
     return out
 
 
+def default_settings(user: str) -> Dict[str, str]:
+    """What a new server starts with in the studio and ``servers add``: the SSH user's home, which it can write to
+    without sudo (``/home/<user>``, for root ``/root``), and every interface. Saving keeps what was chosen, so empty
+    fields stay empty; ``server_settings`` documents what each one means."""
+    home = "/root" if user == "root" else f"/home/{user}"
+    return {"home": home, "data_dir": home, "bind": "0.0.0.0"}  # noqa: S104
+
+
+def _forget_unused_secrets(root: Path, item: Dict[str, Any], servers: Dict[str, Dict[str, Any]]) -> None:
+    """Delete the secret files pskit saved for ``item`` once no saved server or service uses them."""
+    from .onprem_services import load_state
+
+    targets = list(servers.values())
+    for entry in load_state(root).get("services", {}).values():
+        target = entry.get("target") if isinstance(entry, dict) else None
+        if isinstance(target, dict):
+            targets.append(target)
+    for field in _SECRET_FILES:
+        secret = str(item.get(field) or "")
+        if not _inside(secret, root / _SSH_DIR) or not os.path.isfile(secret):
+            continue
+        same = os.path.normcase(os.path.abspath(secret))
+        if not any(os.path.normcase(os.path.abspath(str(t.get(f)))) == same
+                   for t in targets for f in _SECRET_FILES if t.get(f)):
+            os.remove(secret)
+
+
 def save_server(root: Path, name: str, raw: Dict[str, Any], *, description: str = "") -> Dict[str, Any]:
-    """Add or replace server ``name`` (validated like a service target; a password is saved to a file)."""
+    """Add or replace server ``name`` (validated like a service target; a password or a key given as ``private_key``
+    text is saved to a file)."""
     from .onprem_services import ServiceError, normalize_target
+    from .ssh_keys import clean_private_key, write_owner_only
 
     if not _NAME.match(str(name)):
         raise ServerError("server name: start with a letter; letters, digits, _ . - (max 63)")
@@ -178,6 +250,13 @@ def save_server(root: Path, name: str, raw: Dict[str, Any], *, description: str 
     previous = load_servers(root).get(name) or {}
     body = {**raw, "method": "ssh"}
     body.pop("server", None)
+    key_text = str(body.pop("private_key", None) or "").strip()
+    key = ""
+    if key_text and str(body.get("auth") or "key") == "key":
+        try:
+            key = clean_private_key(key_text)
+        except ValueError as exc:
+            raise ServerError(f"private key: {exc}") from None
     if body.get("auth") == "password" and not body.get("password") and not body.get("password_file"):
         body["password_file"] = previous.get("password_file") or ""    # editing: keep the saved password
     try:
@@ -189,9 +268,14 @@ def save_server(root: Path, name: str, raw: Dict[str, Any], *, description: str 
     item.update(server_settings(raw))
     if description:
         item["description"] = str(description)[:200]
+    if key:
+        path = root / _KEYS_DIR / f"{name}.pem"
+        write_owner_only(path, key.encode("ascii"))
+        item["identity_file"] = str(path)
     servers = load_servers(root)
     servers[name] = item
     _write(root, servers)
+    _forget_unused_secrets(root, previous, servers)
     return item
 
 
@@ -209,10 +293,7 @@ def remove_server(root: Path, name: str, raw: Optional[Dict[str, Any]] = None) -
     item = servers.pop(str(name))
     _write(root, servers)
     warnings = [f"{place} still names {name!r}: point it at another saved server" for place in refs["other"]]
-    secret = str(item.get("password_file") or "")
-    still_used = any(s.get("password_file") == secret for s in servers.values())
-    if secret and not still_used and Path(secret).parent == root / ".pskit" / "ssh" and os.path.isfile(secret):
-        os.remove(secret)
+    _forget_unused_secrets(root, item, servers)
     return warnings
 
 

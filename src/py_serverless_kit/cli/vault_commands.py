@@ -302,11 +302,14 @@ def vault_recover(username: str, directory: str) -> None:
 @vault_group.command("audit")
 @click.option("--user", default=None, help="Only this account.")
 @click.option("--action", default=None, help="Only actions containing this text, like deploy or users.")
-@click.option("-n", "--limit", default=100, show_default=True)
+@click.option("-n", "--limit", default=100, show_default=True, help="Entries per page.")
+@click.option("--offset", default=0, show_default=True, help="Skip this many entries.")
 @click.option("--json", "as_json", is_flag=True)
 @_DIR
 @_guarded
-def vault_audit(user: Optional[str], action: Optional[str], limit: int, as_json: bool, directory: str) -> None:
+def vault_audit(
+    user: Optional[str], action: Optional[str], limit: int, offset: int, as_json: bool, directory: str,
+) -> None:
     """Show who did what, newest first."""
     from ..vault import audit, permissions
 
@@ -314,7 +317,7 @@ def vault_audit(user: Optional[str], action: Optional[str], limit: int, as_json:
     session = _session(vault)
     if not permissions.allowed(vault.user(session.identity), "audit", "r"):
         raise click.ClickException("you do not have read permission on audit")
-    result = audit.read(vault, session.identity.master, user=user, action=action, limit=limit)
+    result = audit.read(vault, session.identity.master, user=user, action=action, limit=limit, offset=offset)
     if as_json:
         click.echo(json.dumps(result, indent=2))
         return
@@ -323,6 +326,10 @@ def vault_audit(user: Optional[str], action: Optional[str], limit: int, as_json:
             f"{entry['ts']}  {entry['user']:<16} {entry['source']:<8} {entry['action']:<28} "
             f"{entry.get('target') or '-'}  {entry['outcome']}"
         )
+    shown = len(result["entries"])
+    click.echo(f"entries {result['offset'] + 1 if shown else 0}-{result['offset'] + shown} of {result['total']}", err=True)
+    if result["offset"] + shown < result["total"]:
+        click.echo(f"next page: pskit vault audit --offset {result['offset'] + shown} -n {result['limit']}", err=True)
     for name in result["tampered"]:
         click.echo(f"WARNING: {name} was changed after it was written", err=True)
 

@@ -243,6 +243,15 @@ class IamConfig(_Model):
     role: Optional[str] = Field(None, description="use an existing role / service account instead of creating one")
 
 
+class DlqConfig(_Model):
+    """Where a function's failed queue messages go. Applies to the function's queue triggers."""
+
+    queue: Optional[str] = Field(
+        None, description="dead-letter queue: a name or a queue resource. Default: <function>-dlq (Azure: <queue>-poison)"
+    )
+    max_retries: int = Field(4, ge=0, le=99, description="retries after the first delivery before a message is moved")
+
+
 class FunctionConfig(_Model):
     handler: str
     description: str = ""
@@ -256,7 +265,18 @@ class FunctionConfig(_Model):
     concurrency: Optional[int] = Field(None, ge=0, description="reserved / max instances")
     architecture: Optional[Literal["x86_64", "arm64"]] = None
     iam: IamConfig = Field(default_factory=IamConfig)
+    dlq: Optional[DlqConfig] = Field(None, description="send messages that keep failing to a dead-letter queue")
     options: Dict[str, Any] = Field(default_factory=dict)
+
+    @field_validator("dlq", mode="before")
+    @classmethod
+    def _dlq(cls, v: Any) -> Any:
+        """``dlq: true`` and ``dlq: <queue>`` are short for the mapping; ``dlq: false`` turns it off in a stage."""
+        if v is True:
+            return {}
+        if v is False:
+            return None
+        return {"queue": v} if isinstance(v, str) else v
 
     @field_validator("runtime")
     @classmethod
@@ -650,6 +670,7 @@ class ServiceConfig(_Model):
     @model_validator(mode="after")
     def _cross_refs(self) -> ServiceConfig:
         self._resolve_resources()
+        self._apply_dlq()
         off = set(self._disabled.get("functions", []))
         for wf_name, wf in self.workflows.items():
             for fn in wf.task_functions():
@@ -667,6 +688,23 @@ class ServiceConfig(_Model):
                     raise ValueError(f"route {key} is used by both {seen[key]!r} and {fn_name!r}")
                 seen[key] = fn_name
         return self
+
+    def _apply_dlq(self) -> None:
+        """``dlq:`` on a function fills in its queue events; a ``dead_letter`` or ``max_receive`` set on an event wins."""
+        for fn_name, fn_cfg in self.functions.items():
+            if fn_cfg.dlq is None:
+                continue
+            target = fn_cfg.dlq.queue or f"{fn_name}-dlq"
+            res = self.resources.get(target)
+            if res is not None:
+                if res.type != "queue":
+                    raise ValueError(f"function {fn_name!r}: dlq names resource {target!r}, which is a {res.type}")
+                target = res.native_name(target)
+            for ev in fn_cfg.events_of("queue"):
+                if not ev.dead_letter:
+                    ev.dead_letter = target
+                if "max_receive" not in ev.model_fields_set:
+                    ev.max_receive = fn_cfg.dlq.max_retries + 1
 
     def _resolve_resources(self) -> None:
         orchestrators = {f"{w}-orchestrator" for w in self.workflows}

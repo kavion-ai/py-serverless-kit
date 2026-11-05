@@ -81,10 +81,40 @@ function send(res, status, headers, body, cookies) {
   res.send(body);
 }
 
+/** A Pub/Sub push delivery (queues with a dead-letter topic, see providers/gcp.py) as a CloudEvent, or null. */
+function pubsubPush(body) {
+  if (!process.env.PSKIT_TRIGGER_KIND || body[0] !== 0x7b) return null;
+  let doc;
+  try {
+    doc = JSON.parse(body.toString("utf8"));
+  } catch (_err) {
+    return null;
+  }
+  if (!doc || typeof doc.message !== "object" || doc.message === null || !("subscription" in doc)) return null;
+  return {
+    type: "google.cloud.pubsub.topic.v1.messagePublished",
+    id: doc.message.messageId,
+    source: doc.subscription,
+    time: doc.message.publishTime,
+    data: doc,
+  };
+}
+
 async function http(req, res) {
   const fn = functionName();
   const body = rawBody(req);
   const reqId = requestId(req.headers);
+  const pushed = pubsubPush(body);
+  if (pushed) {
+    try {
+      await cloudEvent(pushed);
+    } catch (err) {
+      // Any answer but 2xx makes Pub/Sub deliver it again, then dead-letter it.
+      const payload = { errorType: errorName(err), cause: errorText(err) };
+      return send(res, 500, { "content-type": JSON_TYPE }, Buffer.from(dumps(payload), "utf8"));
+    }
+    return send(res, 204, {}, Buffer.alloc(0));
+  }
   const wrapped = body[0] === 0x7b ? unwrapEnvelope(body) : null;
   if (wrapped) {
     const event = new Event({ type: wrapped[0], provider: PROVIDER, function: fn, data: wrapped[1], source: (wrapped[2].source || null), raw: req });

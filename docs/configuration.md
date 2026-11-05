@@ -97,6 +97,7 @@ functions:
         - {actions: ["dynamodb:PutItem"], resources: ["${tf:aws_dynamodb_table.orders.arn}"]}
     events:
       - http: POST /orders
+    dlq: {queue: orders-dlq, max_retries: 3}   # failed queue messages: see dead-letter-queues.md
     options: {}                     # merged into the provider's function resource (escape hatch)
 ```
 
@@ -110,6 +111,7 @@ functions:
 | `events` | list | `[]` (no events = invoke-only function) |
 | `concurrency` | int ≥ 0 | — |
 | `iam` | like `provider.iam` | statements are added to the provider-level ones; a dedicated role is created (AWS) |
+| `dlq` | `true`, a queue name, or `{queue, max_retries}` | off. Queue triggers only; AWS, Azure, GCP and on premises. See [dead-letter queues](dead-letter-queues.md) |
 | `options` | mapping | `{}` |
 
 Event syntax is in [events.md](events.md). Deployed functions are named `<service>-<stage>-<function>`, lowercased, with invalid characters replaced and long names shortened with a stable hash.

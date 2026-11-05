@@ -65,11 +65,19 @@ See [Hana](../assistant.md).
 ```bash
 pskit resources onprem servers add edge1 --ssh ubuntu@10.0.0.5 --pem ~/.ssh/edge1.pem
 pskit resources onprem servers add db-box --ssh azureuser@13.72.87.80              # SSH agent / default key
+pskit resources onprem servers add edge2 --ssh ubuntu@10.0.0.6 --ssh-key-env EDGE2_KEY   # key text, saved by pskit
 pskit resources onprem servers add lab --ssh root@192.168.1.20:2222 --ssh-password-env LAB_PW --sudo
 pskit resources onprem servers add big --ssh ubuntu@10.0.0.9 --pem key.pem \
     --home /srv/pskit --bind 10.0.0.9 --data-dir /data/pskit --description "8 CPU, 32 GB"
 pskit resources onprem servers list [--json]
 ```
+
+Key text (`--ssh-key-env`, `--ssh-key-stdin`, or **Paste key text** in the studio) is saved in `.pskit/ssh/keys/<server>.pem`
+and never shown again. A key with a passphrase is refused, because pskit can't answer the prompt: use the SSH agent for it.
+In a project with a [vault](../security-vault.md), the key is encrypted and your team can use it without passing files around.
+
+A new server's home path and data directory default to the SSH user's home, and its bind address to `0.0.0.0`, which is
+reachable from the network: check the server's firewall. `--home`, `--data-dir` and `--bind` change them.
 
 Running `servers add` again with the same name replaces the entry.
 

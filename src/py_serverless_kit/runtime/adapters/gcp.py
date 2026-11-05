@@ -68,10 +68,35 @@ def _render(resp: Response) -> Tuple[bytes, int, List[Tuple[str, str]]]:
     return body, status, items
 
 
+def _pubsub_push(body: bytes) -> Optional[Dict[str, Any]]:
+    """A Pub/Sub push delivery (queues with a dead-letter topic, see ``providers/gcp.py``) as a CloudEvent."""
+    if not os.environ.get("PSKIT_TRIGGER_KIND") or body[:1] != b"{":
+        return None
+    try:
+        doc = json.loads(body)
+    except ValueError:
+        return None
+    message = doc.get("message") if isinstance(doc, dict) else None
+    if not isinstance(message, dict) or "subscription" not in doc:
+        return None
+    return {
+        "type": "google.cloud.pubsub.topic.v1.messagePublished", "id": message.get("messageId"),
+        "source": doc["subscription"], "time": message.get("publishTime"), "data": doc,
+    }
+
+
 def http(request: Any) -> Tuple[bytes, int, Any]:
     fn = function_name()
     body = request.get_data() or b""
     req_id = _request_id(request.headers)
+    pushed = _pubsub_push(body)
+    if pushed is not None:
+        try:
+            cloud_event(pushed)
+        except Exception as exc:  # noqa: BLE001 - any answer but 2xx makes Pub/Sub deliver it again, then dead-letter it
+            payload = {"errorType": type(exc).__name__, "cause": str(exc)}
+            return dumps(payload).encode("utf-8"), 500, [("content-type", _JSON)]
+        return b"", 204, []
     wrapped = unwrap_envelope(body) if body[:1] == b"{" else None
     if wrapped is not None:
         kind, data, meta = wrapped
