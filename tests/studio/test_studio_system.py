@@ -239,3 +239,11 @@ def test_resource_test_guide_and_send_args(studio):  # noqa: F811
     assert argv == ["resources", "send", "--provider", "aws", "--stage", "dev", "jobs", "--json", "-d", '{"a": 1}']
     with pytest.raises(StudioError):
         build_argv("resource-send", "aws", "dev", {"resource": "--all"})
+
+
+def test_trigger_fields_explain_themselves_with_an_example():
+    from py_serverless_kit.studio.meta import _HELP
+
+    keys = [f"queue.{k}" for k in ("batch_size", "batch_window", "visibility_timeout", "dead_letter", "max_receive", "fifo")]
+    keys += ["storage.prefix", "storage.suffix", "topic.filter"]  # the rest of these forms is written in TriggerForms.tsx
+    assert [key for key in keys if "Example:" not in _HELP.get(key, "")] == []

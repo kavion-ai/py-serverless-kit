@@ -33,21 +33,43 @@ _HELP = {
     "queue.name": "Queue name (pskit prefixes managed names). Or pick a resource.",
     "queue.resource": "A `resources:` entry of type queue.",
     "queue.existing": "The queue already exists; pskit attaches to it and never deletes it.",
-    "queue.batch_size": "Messages per invocation.",
-    "queue.batch_window": "Seconds to wait to fill a batch.",
-    "queue.dead_letter": "Queue receiving messages that failed max_receive times.",
+    "queue.batch_size": "The most messages one function call receives. Example: 10 passes up to 10 at once; 1 passes one by one.",
+    "queue.batch_window": (
+        "Seconds to wait for a fuller batch before calling the function; 0 = do not wait. Example: 5 sends what has "
+        "arrived after 5 seconds. On premises this applies to the built-in file queue only."
+    ),
+    "queue.visibility_timeout": (
+        "Seconds a message stays hidden while it is processed. If the function crashes or hangs, the message comes "
+        "back after this. Empty = 6 x the function timeout, at least 30. Example: 180 for a 30-second function."
+    ),
+    "queue.dead_letter": (
+        "Optional. The queue that keeps messages that keep failing, so you can inspect or replay them. Pick a queue "
+        "of this project or type a new name. On premises, without one, a failing message retries forever. "
+        "Example: jobs-dlq."
+    ),
+    "queue.max_receive": (
+        "Failed deliveries allowed before a message moves to the dead-letter queue. Only used with a dead-letter "
+        "queue. Example: 3 moves it after the third failure."
+    ),
+    "queue.fifo": (
+        "Keep messages in the order they were sent. On AWS it also drops duplicates and adds .fifo to the name. "
+        "Example: the steps of one payment."
+    ),
     "storage.bucket": "Bucket name. Or pick a resource; on-premises, both: this bucket on the resource's service.",
     "storage.resource": "A `resources:` entry of type storage (on-premises: the storage service it connects to).",
     "storage.existing": "The bucket already exists; pskit attaches to it and never deletes it.",
-    "storage.prefix": "Only keys starting with this.",
-    "storage.suffix": "Only keys ending with this, e.g. .csv.",
+    "storage.prefix": "Optional. Only files whose path starts with this. Example: uploads/ skips files in other folders.",
+    "storage.suffix": "Optional. Only files whose name ends with this. Example: .csv skips every other file type.",
     "topic.name": "Topic name. Or pick a resource.",
     "topic.resource": "A `resources:` entry of type topic.",
-    "topic.filter": "Attribute filter, e.g. {event_type: [created]}.",
+    "topic.filter": (
+        "Optional. Deliver only messages with these attributes; empty = all. Support differs per provider. "
+        'Example: {"type": ["created"]} skips updated and deleted messages.'
+    ),
     "function.handler": "module.function, e.g. app.handlers.process.",
     "function.runtime": "Overrides provider.runtime for this function.",
     "function.concurrency": "Reserved / maximum concurrent instances.",
-    "function.options": "Provider-specific settings for this function.",
+    "function.options": "Settings only this provider understands, for this function. Example: {layers: [my-layer]} on AWS.",
     "function.iam": "Extra IAM statements, or {role: existing-role}.",
     "resource.external": "Already exists (or runs elsewhere): pskit never creates or deletes it.",
     "resource.name": "Native name. Managed default: the resource key.",
@@ -180,7 +202,7 @@ _COMMON_PROVIDER = [
     suggest(field("memory", "Memory (MB)", "int", default=256, min=64, max=32768), MEMORY_SIZES),
     suggest(field("timeout", "Timeout (s)", "int", default=30, min=1, max=3600), TIMEOUTS),
     field("architecture", "Architecture", "enum", default="x86_64", options=["x86_64", "arm64"]),
-    field("environment", "Environment", "map", help="Variables for every function. Use ${env:VAR} for secrets."),
+    field("environment", "Environment", "map", help="Settings every function reads when it runs. Use ${env:VAR} for secrets. Example: LOG_FORMAT = json."),
     field("tags", "Tags", "map"),
     field("log_retention_days", "Log retention (days)", "int", default=14, min=1),
 ]

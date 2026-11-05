@@ -22,7 +22,7 @@ FEATURES: Dict[str, Tuple[str, str, bool]] = {
     "workflows": ("Workflows", "create, change or delete workflows in pskit.yml", False),
     "code": ("Code", "Source files in the project", False),
     "env": ("Env files", ".env and .env.* (read decrypts them)", False),
-    "deploy": ("Deployments", "create = deploy, delete = remove, read = plan and info. Deploying decrypts secrets", False),
+    "deploy": ("Deployments", "create = deploy, delete = remove, read = plan and info. Decrypts Terraform state and tokens only", False),
     "test": ("Test", "Invoke functions, trigger events, run workflows, saved test events", False),
     "logs": ("Logs", "Function and host logs", False),
     "resources": ("Resources", "Resources in pskit.yml, and using them: list, send, inspect, clear, delete", False),
@@ -49,9 +49,6 @@ AREA_OF_FEATURE: Dict[str, str] = {
     "hana": "studio",
 }
 AREAS: Tuple[str, ...] = ("env", "servers", "services", "clusters", "deployments", "studio")
-# A deploy has to read these to run, so a right to deploy holds their keys. The app still does not show them, but this
-# account's own machine could decrypt them: deploy is a trusted permission.
-DEPLOY_AREAS: Tuple[str, ...] = AREAS
 
 PRESETS: Dict[str, Dict[str, str]] = {
     # No read on deploy: that decrypts Terraform state and tokens, so a viewer holds no keys at all.
@@ -136,10 +133,7 @@ def areas_for(user: Dict[str, Any]) -> FrozenSet[str]:
         return frozenset(AREAS)
     perms = user.get("permissions") or {}
     areas = {area for feature, area in AREA_OF_FEATURE.items() if "r" in str(perms.get(feature) or "")}
-    deploy = str(perms.get("deploy") or "")
-    if set(deploy) & set("cud"):
-        areas.update(DEPLOY_AREAS)
-    elif "r" in deploy:
+    if perms.get("deploy"):  # its own area only: servers, env and the rest need read on their own feature
         areas.add("deployments")
     return frozenset(areas)
 

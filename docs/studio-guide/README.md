@@ -114,7 +114,6 @@ The studio top bar is the same on every page:
 |---|---|
 | ☰ (narrow windows) | Opens the sidebar |
 | Service name (λ logo) | Goes to Overview |
-| **validate & deploy as** | The provider used for validation, Deploy, Test and Logs. It does not change `pskit.yml` |
 | **stage** | The stage for validation, Deploy, Test and Logs (lowercase letters, digits and `-`, up to 16 characters) |
 | ↶ / ↷ | Undo / redo |
 | **N errors · N warnings** | Opens the **Problems** panel; click a problem to jump to the page and field it concerns |

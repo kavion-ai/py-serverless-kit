@@ -108,7 +108,9 @@ code. If you and a teammate changed the same protected file, the vault's version
 | `deployments` | `deployment.json`, `onprem_deployed.json`, `admin-token`, `peer-token`, `terraform.tfstate` per stage | read on Deployments |
 | `studio` | Saved test events, Hana settings | read on Test or Hana |
 
-Any account with create, update or delete on **Deployments** holds every key, because a deploy needs them.
+An account decrypts only the areas it has read on, right now. **Deployments** holds its own area and no other, so a
+deploy that needs a saved server, an env file or a service also needs read on **Servers**, **Env files** or **On-prem
+services**. A deploy without them prints which ones it cannot decrypt.
 
 Each save in the studio is encrypted before the request returns. A background check every 3 seconds catches what other
 processes write, and each CLI command encrypts its changes when it ends. Logging out, stopping the studio or a session
@@ -123,6 +125,10 @@ expiring (12 hours) encrypts and removes the plaintext. After a crash, the next 
 * An account's private key is encrypted with its password, and the accounts file is encrypted with the master key.
   Decrypting data takes **the master key and the password of an account that holds that area**.
 * Taking access away gives that area a new key and re-encrypts it.
+* A permission change applies without a new login. In the studio it takes effect within a few seconds; with the CLI, at
+  the next command. In another clone, that happens once `git pull` brings the change. What the account gained is
+  decrypted and what it lost is deleted, except a file with unsealed edits or one another account logged in to that
+  folder may read.
 * The master key is not saved between logins, so a copy of the repository and of your home folder is not enough to open
   the accounts file. It is on disk only inside a login session (see below).
 * Earlier versions saved it as plaintext in `~/.pskit/vault-keys/<vault id>`. That copy is no longer read, and is deleted

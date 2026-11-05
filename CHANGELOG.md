@@ -6,6 +6,33 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Added
+- **Pick the dead-letter queue from a list** on a queue trigger in the studio, or type a new name.
+- **Plain help with an example** on every trigger type and its fields, and on the function's basics, environment variables,
+  concurrency, tags and permissions in the studio.
+
+### Fixed
+- `dead_letter` naming a `type: queue` resource now means that resource's queue on every provider. On AWS and GCP, a resource
+  with its own `name` used to get a second queue called after the resource key.
+
+## [2.13.1] - 2026-11-05
+
+### Changed
+- **The studio header no longer shows the provider.** Choose it on **Overview & provider**; the stage stays in the top bar. To
+  deploy to another provider for one run, use `pskit deploy -p <provider>`.
+
+- **An account decrypts only what it has read on.** Create, update or delete on **Deployments** used to hold every key,
+  including SSH keys, env files and service passwords. It now holds Terraform state and tokens only. **Check your
+  deployers:** a deploy that needs a saved server, an env file or a service now also needs read on that feature, and
+  prints which ones it cannot decrypt. In an existing vault the extra keys stop working at once, and the next admin login
+  replaces them, which re-encrypts those areas: commit `.pskit-vault/` afterwards.
+
+### Fixed
+- **Permission changes apply to accounts that are logged in.** A new permission is decrypted, and a revoked one's files
+  are deleted, within a few seconds in the studio and at the next CLI command. Revoked SSH keys and other decrypted files
+  used to stay on disk until logout, even after logging in again. Files with unsealed edits stay, and so do files another
+  account logged in to that folder may read.
+
 ## [2.13.0] - 2026-11-05
 
 ### Added

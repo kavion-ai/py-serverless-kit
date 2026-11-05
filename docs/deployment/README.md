@@ -261,7 +261,7 @@ needs.
 The studio **Deploy** page runs the same `pskit` commands in the project folder, with your shell's credentials.
 
 1. Start studio: `pskit studio --open`.
-2. In the top bar, pick the target in **validate & deploy as** (the provider) and type the **stage**.
+2. Pick the provider on **Overview & provider** and type the **stage** in the top bar.
 3. Click **Deploy** in the sidebar.
 4. If a box says *N items won't run on PROVIDER*, click **Disable all of them on PROVIDER** (or one of the
    **Disable trigger / function / workflow on PROVIDER** buttons). This writes `providers.<cloud>` overrides, so

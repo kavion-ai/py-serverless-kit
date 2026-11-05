@@ -16,7 +16,7 @@ environment, as with the CLI (see [Setup & credentials](setup.md)). Every button
 
 The studio **Deploy** action builds the bundle and runs `terraform apply`.
 
-1. Pick the provider and stage in the top bar (**validate & deploy as**, **stage**).
+1. Pick the provider on **Overview & provider** and the **stage** in the top bar.
 2. Open **Deploy**. If the draft has unsaved changes, a yellow box says so; commands use `pskit.yml` on disk.
 3. On premises, choose where it runs in the **Run on** bar (next section).
 4. Click **Deploy** ("Build and apply").

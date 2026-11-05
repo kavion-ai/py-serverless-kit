@@ -53,8 +53,7 @@ Remove `ORDERS_DB_URL` / `CACHE_URL` from `environment`, the `custom:` block and
 `receipts` resource; the services below write their own settings. Then `pskit validate`.
 
 **In studio**: **Overview & provider** → **Provider** → click the **On-premises** card → confirm **Switch
-provider**. Under **Defaults for every function** set **Region** `local` and **Stage** `prod`. Top bar: **validate &
-deploy as** *On-premises*, **stage** `prod`. **Save**.
+provider**. Under **Defaults for every function** set **Region** `local` and **Stage** `prod`. Top bar: **stage** `prod`. **Save**.
 
 Every on-prem option: [providers/onprem/README.md](../providers/onprem/README.md).
 

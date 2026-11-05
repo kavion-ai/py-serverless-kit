@@ -181,7 +181,7 @@ Deploying to Tencent from studio uses the credentials of the machine running stu
    SCF** to keep them for other clouds. When the runtime is not supported, studio clears it so the default applies.
 2. Under **Defaults for every function**, check **Runtime** (python3.9 or python3.10) and **Memory (MB)** (64, 128 or a
    multiple of 128).
-3. Click **Save**. Check **validate & deploy as** and the **stage** in the top bar.
+3. Click **Save**. Check the **stage** in the top bar.
 4. Sidebar **Deploy** → **Validate** → **Plan** → **Deploy**. Then **Info**.
 
 ## Read Tencent logs and test functions

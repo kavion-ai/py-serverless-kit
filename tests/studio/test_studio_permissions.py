@@ -54,6 +54,22 @@ def login_as(base, admin, perms, name="dev"):
     return session
 
 
+def test_a_logged_in_account_sees_a_new_permission_at_once(studio):
+    base, _root, admin = studio
+    session = login_as(base, admin, {})
+    assert call(base, "GET", "/api/auth/status", session=session)[1]["areas"] == []
+    assert call(base, "GET", "/api/onprem-servers", session=session)[0] == 403
+
+    assert call(base, "PUT", "/api/auth/users/dev", {"permissions": {"servers": "r"}}, admin)[0] == 200
+    status = call(base, "GET", "/api/auth/status", session=session)[1]
+    assert status["areas"] == ["servers"] and "r" in status["permissions"]["servers"]
+    assert call(base, "GET", "/api/onprem-servers", session=session)[0] == 200
+
+    assert call(base, "PUT", "/api/auth/users/dev", {"permissions": {}}, admin)[0] == 200
+    assert call(base, "GET", "/api/auth/status", session=session)[1]["areas"] == []
+    assert call(base, "GET", "/api/onprem-servers", session=session)[0] == 403
+
+
 def save(base, session, change):
     project = call(base, "GET", "/api/project", session=session)[1]
     raw = change(project["raw"])

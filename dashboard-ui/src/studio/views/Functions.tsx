@@ -673,7 +673,7 @@ function FunctionWizard({ name: existing }: { name: string | null }) {
       {step === "basics" && (
         <Section title="Basics">
           <div className="form">
-            <FormRow label="Function name" required error={nameError} htmlFor="fname">
+            <FormRow label="Function name" required error={nameError} htmlFor="fname" help="A short name for this function in pskit.yml. Example: send_invoice.">
               <TextInput id="fname" mono autoFocus={!existing} value={name} invalid={!!nameError} onChange={updateName} />
             </FormRow>
             <FormRow label="Deploy" help={existing ? "Disabled functions stay in pskit.yml but are not deployed (everywhere, or only on this provider)." : "Off: kept in pskit.yml but never deployed."}>
@@ -683,7 +683,7 @@ function FunctionWizard({ name: existing }: { name: string | null }) {
                 <Toggle checked={fn.enabled !== false} label={fn.enabled === false ? "disabled everywhere" : "enabled"} onChange={(b) => setField("enabled", b ? undefined : false)} />
               )}
             </FormRow>
-            <FormRow label="Description" htmlFor="fdesc">
+            <FormRow label="Description" htmlFor="fdesc" help="Optional note for your team. Example: Emails the invoice when an order is paid.">
               <TextInput id="fdesc" value={str(fn.description)} onChange={(v) => setField("description", v)} placeholder="What does it do?" />
             </FormRow>
             <FormRow
@@ -691,7 +691,7 @@ function FunctionWizard({ name: existing }: { name: string | null }) {
               required
               htmlFor="fhandler"
               error={[...(handlerError ? [handlerError] : []), ...fieldIssues("handler")]}
-              help={handlerTouched ? undefined : "Derived from the name until you edit it."}
+              help={`The code to run, as file.function. ${handlerTouched ? "" : "Derived from the name until you edit it. "}Example: app.handlers.process runs process() in app/handlers.`}
             >
               <TextInput
                 id="fhandler"
@@ -756,7 +756,7 @@ function FunctionWizard({ name: existing }: { name: string | null }) {
               </FormRow>
             )}
             <div className="form-grid">
-              <FormRow label="Runtime" htmlFor="frt">
+              <FormRow label="Runtime" htmlFor="frt" help="The language version it runs on; inherit uses the project's. Example: python3.12.">
                 <EnumSelect
                   id="frt"
                   value={str(fn.runtime)}
@@ -766,7 +766,7 @@ function FunctionWizard({ name: existing }: { name: string | null }) {
                   onChange={(v) => setField("runtime", v || undefined)}
                 />
               </FormRow>
-              <FormRow label="Memory (MB)" htmlFor="fmem">
+              <FormRow label="Memory (MB)" htmlFor="fmem" help="RAM for each run. Too little makes it fail, and more can cost more on a cloud. Example: 512 for image resizing.">
                 <ComboInput
                   id="fmem"
                   numeric
@@ -776,7 +776,7 @@ function FunctionWizard({ name: existing }: { name: string | null }) {
                   onChange={(v) => setField("memory", v === "" ? undefined : Number(v))}
                 />
               </FormRow>
-              <FormRow label="Timeout (s)" htmlFor="fto" help={provider ? `max ${provider.max_timeout}s` : undefined} error={fieldIssues("timeout")}>
+              <FormRow label="Timeout (s)" htmlFor="fto" help={`How long one run may take before it is stopped${provider ? ` (max ${provider.max_timeout}s)` : ""}. Example: 30 for an API, 300 for a report.`} error={fieldIssues("timeout")}>
                 <ComboInput
                   id="fto"
                   numeric
@@ -786,7 +786,7 @@ function FunctionWizard({ name: existing }: { name: string | null }) {
                   onChange={(v) => setField("timeout", v === "" ? undefined : Number(v))}
                 />
               </FormRow>
-              <FormRow label="Architecture">
+              <FormRow label="Architecture" help="The processor type. Keep inherit unless you know you need another. Example: arm64 is often cheaper on AWS.">
                 <Segmented
                   label="Architecture"
                   value={str(fn.architecture, "inherit")}
@@ -910,7 +910,7 @@ function FunctionWizard({ name: existing }: { name: string | null }) {
         <>
           <Section title="Logging" hint="log level and live logs">
             <div className="form">
-              <FormRow label="Log level" help="Sets PSKIT_LOG_LEVEL for this function: ctx.logger output below it is dropped.">
+              <FormRow label="Log level" help="How much this function logs: ctx.logger output below this level is dropped (sets PSKIT_LOG_LEVEL). Example: DEBUG while fixing a bug, WARNING in production.">
                 <Segmented
                   label="Log level"
                   value={str(asObject(fn.environment).PSKIT_LOG_LEVEL, "inherit")}
@@ -941,14 +941,19 @@ function FunctionWizard({ name: existing }: { name: string | null }) {
             )}
           </Section>
           <Section title="Environment variables" hint="merged over the provider-wide ones">
+            <p className="muted small">
+              Settings your code reads when it runs, so they are not written into the code. <b>Example:</b> <code className="mono">TABLE_NAME</code> ={" "}
+              <code className="mono">orders</code>, read with <code className="mono">os.environ["TABLE_NAME"]</code> in Python or{" "}
+              <code className="mono">process.env.TABLE_NAME</code> in Node.js. For a secret, use <code className="mono">{"${env:DB_PASSWORD}"}</code> so the value is not stored in pskit.yml.
+            </p>
             <KeyValueEditor value={asObject(fn.environment)} keyPattern={/^[A-Za-z_][A-Za-z0-9_]*$/} onChange={(v) => setField("environment", v)} />
           </Section>
           <Section title="Concurrency & tags" defaultOpen={fn.concurrency !== undefined || !!fn.tags}>
             <div className="form">
-              <FormRow label="Reserved concurrency / max instances" help="Leave empty for the provider default.">
+              <FormRow label="Reserved concurrency / max instances" help="The most copies that may run at once. Leave empty for the provider default. Example: 5 to protect a small database.">
                 <NumberInput integer min={0} value={typeof fn.concurrency === "number" ? fn.concurrency : undefined} onChange={(v) => setField("concurrency", v)} />
               </FormRow>
-              <FormRow label="Tags">
+              <FormRow label="Tags" help="Labels on the cloud resources, for finding them and tracking cost. Example: team = billing.">
                 <KeyValueEditor value={asObject(fn.tags)} secrets={false} keyPlaceholder="tag" addLabel="Add tag" onChange={(v) => setField("tags", v)} />
               </FormRow>
             </div>
@@ -1035,7 +1040,7 @@ function IamSection({ value, onChange }: { value: JsonObject; onChange: (v: Json
   return (
     <Section title="Permissions (IAM)" defaultOpen={false} hint="advanced">
       <div className="form">
-        <FormRow label="Existing role" help="Use an existing role / service account instead of the one pskit creates.">
+        <FormRow label="Existing role" help="Use an existing role / service account instead of the one pskit creates. Example: arn:aws:iam::123456789012:role/my-role.">
           <TextInput mono value={str(value.role)} placeholder="arn:aws:iam::123456789012:role/my-role" onChange={(r) => commit(statements, r || undefined)} />
         </FormRow>
         {statements.map((st, i) => (
@@ -1055,14 +1060,14 @@ function IamSection({ value, onChange }: { value: JsonObject; onChange: (v: Json
                 Remove
               </button>
             </div>
-            <FormRow label="Actions" help="comma separated, e.g. s3:GetObject, dynamodb:Query">
+            <FormRow label="Actions" help="What the function may do, comma separated. Example: s3:GetObject, dynamodb:Query.">
               <TextInput
                 mono
                 value={asArray(st.actions).map((a) => str(a)).join(", ")}
                 onChange={(t) => commit(statements.map((s, j) => (j === i ? { ...s, actions: t.split(",").map((x) => x.trim()).filter(Boolean) } : s)))}
               />
             </FormRow>
-            <FormRow label="Resources" help="comma separated ARNs; empty = *">
+            <FormRow label="Resources" help="What those actions apply to, as comma separated ARNs; empty = everything (*). Example: arn:aws:s3:::invoices/*.">
               <TextInput
                 mono
                 value={asArray(st.resources).map((a) => str(a)).join(", ")}

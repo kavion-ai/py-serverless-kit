@@ -203,7 +203,7 @@ Deploying to AWS from studio runs the same commands with the credentials of the 
 2. Under **Defaults for every function**, pick the **Region**, **Runtime**, **Memory (MB)**, **Timeout (s)**,
    **Architecture** and **Log retention (days)**. Fill **AWS Lambda options** if you need them.
 3. Click **Save** in the top bar (or Ctrl+S).
-4. In the top bar, check **validate & deploy as** shows **AWS Lambda** and type the **stage**.
+4. In the top bar, type the **stage**.
 5. In the sidebar, click **Deploy**. Click **Validate**, then **Plan** to preview, then **Deploy**. The live log appears
    under the buttons. A stage whose name starts with `prod` asks you to type `aws/<stage>` to confirm.
 6. Click **Info** to print the URLs and ids. **Recent jobs** at the bottom keeps the finished runs.

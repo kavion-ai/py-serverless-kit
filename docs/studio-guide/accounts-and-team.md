@@ -191,7 +191,7 @@ Some ticks also control which data the account can decrypt:
 | Read on Clusters or Load balancers | Cluster and load balancer settings |
 | Read on Test or Hana AI | Saved test events and Hana settings |
 | Read on Deployments | Deployment records, Terraform state and tokens |
-| Create, update or delete on Deployments | **Everything**, because a deploy needs it |
+| Create, update or delete on Deployments | `terraform.tfstate`, deployment info and tokens. A deploy that needs a saved server, env file or service also needs read on that feature |
 
 Terraform state and tokens can hold secrets, so read on Deployments is not harmless. That is why `viewer` leaves it out,
 so a viewer does not see plans or deployment info unless you tick it.
@@ -204,7 +204,7 @@ settings**. Editing `pskit.yml` as a file under **Code** counts the same.
 
 ### Permissions to give with care
 
-* **Deployments (create, update, delete):** holds every key, and could ship code that prints secrets.
+* **Deployments (create, update, delete):** decrypts Terraform state and tokens, and could ship code that prints secrets.
 * **Terminals & VS Code, Hana AI:** full access. They reach everything the process can, whatever the grid says.
 * **Update on Code:** can change handler code and files named by `extends`.
 

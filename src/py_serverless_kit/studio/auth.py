@@ -102,6 +102,7 @@ class Auth:
 
     def sweep_once(self) -> None:
         """Catches what no request saved (a deploy's output, a watcher). Keeps sessions alive and ends expired ones."""
+        self._sync_access()
         for token, session in list(self.sessions.items()):
             if session.expires < time.time():
                 self.sessions.pop(token, None)
@@ -122,6 +123,11 @@ class Auth:
             ws.close_session(self.vault, session)
         self.sessions.clear()
         self._closing = []
+
+    def _sync_access(self) -> None:
+        """Permissions apply to whoever is logged in. Waits for a running deploy, which still needs its plaintext."""
+        if not self.jobs_running():
+            ws.sync_access(self.vault)
 
     def _seal(self, session: ws.Session) -> None:
         try:
@@ -389,6 +395,7 @@ class Auth:
         if len(rest) == 1 and method == "PUT":
             changes: Dict[str, Any] = {k: body[k] for k in ("role", "permissions", "disabled") if k in body}
             updated = vault.update_user(identity, rest[0], changes)
+            self._sync_access()
             ws.log(vault, session, "users.u", rest[0], details={
                 "role": str(updated["role"]), "permissions": str(updated["permissions"])[:300],
                 "disabled": bool(updated["disabled"]),
@@ -398,6 +405,7 @@ class Auth:
             if rest[0] == session.username:
                 raise StudioError(409, "you cannot remove your own account")
             vault.remove_user(identity, rest[0])
+            self._sync_access()
             ws.log(vault, session, "users.d", rest[0])
             return 200, {"removed": rest[0]}
         if len(rest) == 2 and rest[1] == "reset-password" and method == "POST":

@@ -153,7 +153,7 @@ Studio checks these packages on **Setup & credentials** (*Python package ...*, m
 
 The studio **Logs** page shows a live tail of the deployment chosen in the top bar.
 
-1. In the top bar, pick the provider in **validate & deploy as** and type the **stage**.
+1. Pick the provider on **Overview & provider** and type the **stage** in the top bar.
 2. Click **Logs** in the sidebar.
 3. On premises, check the **Server** (it starts on the server the stage was deployed to). On a cluster or with
    placement the box says **Source**: every replica or every group, and there is no picker.

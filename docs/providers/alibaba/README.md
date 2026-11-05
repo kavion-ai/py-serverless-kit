@@ -192,7 +192,7 @@ Deploying to Alibaba from studio uses the credentials of the machine running stu
    **beta**). The dialog lists queue triggers and native workflows that won't run there; pick **Switch & disable on
    Alibaba Cloud Function Compute** to keep them for other clouds.
 2. Pick the **Region** under **Defaults for every function**; fill **CLI profile** if you use one.
-3. Click **Save**. Check **validate & deploy as** and the **stage** in the top bar.
+3. Click **Save**. Check the **stage** in the top bar.
 4. Sidebar **Deploy** → **Validate** → **Plan** → **Deploy**. Then **Info**.
 
 ## Read Alibaba logs and test functions

@@ -177,7 +177,7 @@ Deploying to Azure from studio uses the credentials of the machine running studi
 2. Under **Defaults for every function**, pick the **Region**. Fill **Subscription ID** in **Azure Functions options**
    (the default `${env:ARM_SUBSCRIPTION_ID}` reads the variable).
 3. Click **Save** in the top bar.
-4. In the top bar, check **validate & deploy as** shows **Azure Functions** and set the **stage**.
+4. In the top bar, set the **stage**.
 5. Sidebar **Deploy** → click **Validate**, **Plan**, then **Deploy**. Watch the live log. A `prod*` stage asks you to
    type `azure/<stage>`.
 6. Click **Info** for the URLs.

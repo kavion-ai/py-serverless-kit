@@ -6,13 +6,13 @@ import { useStudio } from "../store";
 import type { DiscoverItem, DiscoverResult, EventType, Field, Json, JsonObject, TriggerRule } from "../types";
 import { asArray, asObject, describeCron, isObject, NAME_RE, pathParams, str, uniqueName, validCron, type NormalEvent } from "../util";
 
-export const EVENT_INFO: Record<EventType, { label: string; icon: string; blurb: string }> = {
-  http: { label: "HTTP endpoint", icon: "⇄", blurb: "Call the function with an HTTP request (API route)." },
-  schedule: { label: "Schedule", icon: "⏱", blurb: "Run on a timer: every N minutes, at a set time, or a cron expression." },
-  queue: { label: "Queue", icon: "☰", blurb: "Process messages from a queue in batches, with retries." },
-  storage: { label: "Storage", icon: "▣", blurb: "React to files created or deleted in a bucket." },
-  topic: { label: "Topic", icon: "✺", blurb: "Receive published messages (fan-out pub/sub)." },
-  smtp: { label: "E-mail (SMTP)", icon: "✉", blurb: "Run when mail arrives for your domain: from, to, cc, subject, body and attachments (on premises)." },
+export const EVENT_INFO: Record<EventType, { label: string; icon: string; blurb: string; example: string }> = {
+  http: { label: "HTTP endpoint", icon: "⇄", blurb: "Call the function with an HTTP request (API route).", example: "GET /users/42 returns that user to a website or app." },
+  schedule: { label: "Schedule", icon: "⏱", blurb: "Run on a timer: every N minutes, at a set time, or a cron expression.", example: "send a sales report every day at 09:00." },
+  queue: { label: "Queue", icon: "☰", blurb: "Process messages from a queue in batches, with retries.", example: "an order is added to a queue, and this function sends the confirmation e-mail." },
+  storage: { label: "Storage", icon: "▣", blurb: "React to files created or deleted in a bucket.", example: "a photo is uploaded, and this function makes a thumbnail." },
+  topic: { label: "Topic", icon: "✺", blurb: "Receive published messages (fan-out pub/sub).", example: "one \"order placed\" message runs billing, stock and e-mail functions." },
+  smtp: { label: "E-mail (SMTP)", icon: "✉", blurb: "Run when mail arrives for your domain: from, to, cc, subject, body and attachments (on premises).", example: "mail to support@example.com opens a ticket." },
 };
 
 export function defaultEvent(type: EventType, name: string): NormalEvent {
@@ -100,6 +100,9 @@ export function TriggerForm({ event, onChange, fnName }: { event: NormalEvent; o
   }
   return (
     <div className="stack">
+      <p className="muted small">
+        {EVENT_INFO[event.type].blurb} <b>Example:</b> {EVENT_INFO[event.type].example}
+      </p>
       <ProviderRules type={event.type} config={event.config} />
       {form}
     </div>
@@ -119,7 +122,7 @@ function SmtpForm({ config, set }: { config: JsonObject; set: (k: string, v: Jso
         label="SMTP server"
         required
         error={!resource ? "pick the SMTP server that receives the mail" : null}
-        help="Create one under Resources → + SMTP server (or On-prem services → Mail); its DNS guide lists the records to add at your domain provider."
+        help="The mail server that receives the messages. Create one under Resources → + SMTP server (or On-prem services → Mail); its DNS guide lists the records to add at your domain provider. Example: support-mail."
       >
         <EnumSelect value={resource} allowEmpty emptyLabel="choose…" options={servers.map(([k]) => k)} onChange={(v) => set("resource", v)} />
       </FormRow>
@@ -148,7 +151,12 @@ function HttpForm({ config, set }: { config: JsonObject; set: (k: string, v: Jso
   const corsObj = asObject(cors);
   return (
     <div className="form">
-      <FormRow label="Route" required error={pathOk ? null : "use segments like /users/{id} or /files/{path+}"}>
+      <FormRow
+        label="Route"
+        required
+        error={pathOk ? null : "use segments like /users/{id} or /files/{path+}"}
+        help="The method and URL path that run this function. {name} captures a part of the URL, and {name+} captures the rest of it. Example: GET /users/{id} runs for /users/42 with id = 42."
+      >
         <div className="route-input">
           <EnumSelect value={str(config.method, "GET")} options={methods} onChange={(m) => set("method", m)} />
           <TextInput mono value={path} invalid={!pathOk} placeholder="/users/{id}" onChange={(p) => set("path", p.startsWith("/") ? p : `/${p}`)} />
@@ -164,7 +172,7 @@ function HttpForm({ config, set }: { config: JsonObject; set: (k: string, v: Jso
           → <code className="mono">event.http.path_params["{params[0]}"]</code>
         </div>
       )}
-      <FormRow label="Auth" help={`none = public. Options ${provider} can't enforce are disabled (hover for why).`}>
+      <FormRow label="Auth" help={`Who may call it. none = anyone, iam = cloud accounts, jwt = users with a login token, key = callers with an API key. Options ${provider} can't enforce are disabled (hover for why). Example: jwt for an API only logged-in users call.`}>
         <Segmented
           label="Auth"
           value={str(config.auth, "none")}
@@ -176,15 +184,15 @@ function HttpForm({ config, set }: { config: JsonObject; set: (k: string, v: Jso
         />
       </FormRow>
       {str(config.auth) === "jwt" && (
-        <FormRow label="Authorizer" help='e.g. {"issuer": "https://…", "audience": ["api"]}'>
+        <FormRow label="Authorizer" help='Which login tokens to accept: who issued them and who they are for. Example: {"issuer": "https://login.example.com", "audience": ["api"]}'>
           <JsonInput value={config.authorizer} onChange={(v) => set("authorizer", v)} rows={4} />
         </FormRow>
       )}
-      <FormRow label="CORS">
+      <FormRow label="CORS" help="Turn on when a website on another domain calls this from the browser. Example: a site at https://app.example.com calling this API.">
         <Toggle checked={corsOn} label={corsOn ? "enabled" : "off"} onChange={(on) => set("cors", on ? true : undefined)} />
       </FormRow>
       {corsOn && (
-        <FormRow label="Allowed origins" help="Empty = any origin (*).">
+        <FormRow label="Allowed origins" help="The websites allowed to call it. Empty = any website (*). Example: https://app.example.com">
           <ListEditor
             value={asArray(corsObj.origins).map((o) => str(o))}
             placeholder="https://app.example.com"
@@ -314,7 +322,7 @@ function ScheduleForm({
   const zones = timeZones();
   return (
     <div className="form">
-      <FormRow label="Run">
+      <FormRow label="Run" help="How to set the timing. Every… repeats at an interval, At a specific time picks a clock time, and Cron is for anything more complex. Example: Every… 15 minutes.">
         <Segmented
           label="Schedule type"
           value={mode}
@@ -335,7 +343,7 @@ function ScheduleForm({
         />
       </FormRow>
       {mode === "rate" && (
-        <FormRow label="Interval" help="Rates run every N minutes, hours or days from deploy time.">
+        <FormRow label="Interval" help="How often it runs, counted from deploy time. Example: every 15 minutes, to sync new orders.">
           <div className="row-gap wrap">
             <span className="muted">every</span>
             <NumberInput integer min={1} value={amount} onChange={(n) => setRate(n, unit)} />
@@ -352,7 +360,7 @@ function ScheduleForm({
       )}
       {mode === "time" && (
         <>
-          <FormRow label="Repeat">
+          <FormRow label="Repeat" help="Which days it runs. Example: Weekdays runs Monday to Friday.">
             <Segmented
               label="Repeat"
               value={time.repeat}
@@ -367,7 +375,7 @@ function ScheduleForm({
             />
           </FormRow>
           {time.repeat === "weekly" && (
-            <FormRow label="Days">
+            <FormRow label="Days" help="The days of the week to run. Example: Mon and Thu.">
               <div className="row-gap wrap">
                 {DAYS.map((d, i) => (
                   <label key={d} className="check">
@@ -386,7 +394,7 @@ function ScheduleForm({
             </FormRow>
           )}
           {(time.repeat === "monthly" || time.repeat === "yearly") && (
-            <FormRow label="On" help={time.dom > 28 ? "Months without this day are skipped." : undefined}>
+            <FormRow label="On" help={time.dom > 28 ? "Months without this day are skipped." : "The day of the month to run. Example: day 1 for a monthly invoice run."}>
               <div className="row-gap">
                 {time.repeat === "yearly" && (
                   <EnumSelect value={String(time.month)} options={MONTHS.map((mo, i) => ({ value: String(i + 1), label: mo }))} onChange={(v) => setTime({ month: Number(v) })} />
@@ -415,7 +423,7 @@ function ScheduleForm({
       {mode === "cron" && (
         <FormRow
           label="Cron"
-          help={validCron(cron) ? `→ ${describeCron(cron)}` : "5 fields: minute hour day-of-month month day-of-week"}
+          help={validCron(cron) ? `→ ${describeCron(cron)}` : "5 fields: minute hour day-of-month month day-of-week. Example: 0 9 * * 1-5 runs at 09:00, Monday to Friday."}
           error={cron && !validCron(cron) ? "a cron expression has exactly 5 fields" : null}
         >
           <div className="stack-xs">
@@ -431,7 +439,7 @@ function ScheduleForm({
         </FormRow>
       )}
       {mode !== "rate" && (
-        <FormRow label="Timezone" help="The time above is in this zone.">
+        <FormRow label="Timezone" help="The time above is in this zone. Example: Asia/Kolkata makes 09:00 mean 09:00 in India.">
           <ComboInput
             value={str(config.timezone)}
             options={zones}
@@ -440,10 +448,10 @@ function ScheduleForm({
           />
         </FormRow>
       )}
-      <FormRow label="Input" help="JSON passed as event.data on every run (optional).">
+      <FormRow label="Input" help="Optional. JSON your function receives as event.data on every run. Example: {&quot;report&quot;: &quot;daily&quot;}">
         <JsonInput value={config.input} onChange={(v) => set("input", v)} rows={3} placeholder='{"report": "daily"}' />
       </FormRow>
-      <FormRow label="Enabled">
+      <FormRow label="Enabled" help="Off pauses the schedule without deleting it. Example: pause a report during a migration.">
         <Toggle checked={config.enabled !== false} onChange={(b) => set("enabled", b ? undefined : false)} label={config.enabled === false ? "paused" : "active"} />
       </FormRow>
     </div>
@@ -475,7 +483,10 @@ function SourceForm({
   const [mode, setModeState] = useState<SourceMode>(config.resource ? "resource" : config.existing ? "existing" : "new");
   const noun = type === "storage" ? "bucket" : type;
   const region = str(asObject(draft.provider).region) || meta.providers.find((p) => p.name === providerName)?.default_region;
-  const fields: Field[] = (meta.events[type] || []).filter((f) => !HANDLED.has(f.key));
+  const fields: Field[] = (meta.events[type] || [])
+    .filter((f) => !HANDLED.has(f.key))
+    // The queues of this project, not the one being read: messages must not fail back into their own queue.
+    .map((f) => (f.key === "dead_letter" ? { ...f, suggestions: resources.map(([k]) => k).filter((k) => k !== str(config.resource) && k !== str(config.name)) } : f));
   const fallback = `${fnName}-${type === "storage" ? "uploads" : type === "queue" ? "jobs" : "events"}`;
   // On-premises a storage trigger can watch any bucket on a storage resource's service.
   const serviceBuckets = type === "storage" && !!meta.providers.find((p) => p.name === providerName)?.storage_service_buckets;
@@ -543,7 +554,10 @@ function SourceForm({
 
   return (
     <div className="form">
-      <FormRow label="Source">
+      <FormRow
+        label="Source"
+        help={`Where the ${noun} comes from: a new one pskit creates, one from this project, or one that already exists. Example: Project resource to share one ${noun} between functions.`}
+      >
         <Segmented
           label={`${noun} source`}
           value={mode}
@@ -567,8 +581,8 @@ function SourceForm({
           required
           help={
             serviceBuckets
-              ? "The storage resource whose service (driver, endpoint, keys) the trigger watches: MinIO, RustFS, Ceph, AWS S3, R2, Wasabi or any S3-compatible store. Set it up on the Resources page."
-              : "Name, managed/external and on-prem driver come from the Resources page."
+              ? "The storage resource whose service (driver, endpoint, keys) the trigger watches: MinIO, RustFS, Ceph, AWS S3, R2, Wasabi or any S3-compatible store. Set it up on the Resources page. Example: media-store."
+              : `The ${noun} to use, from the Resources page, which holds its name and settings. Example: ${fallback}.`
           }
         >
           <EnumSelect
@@ -587,7 +601,7 @@ function SourceForm({
       {mode === "resource" && serviceBuckets && (
         <FormRow
           label="Bucket"
-          help={`Any bucket on this service; empty = the resource's own bucket (${resourceBucket(str(config.resource), asObject(asObject(draft.resources)[str(config.resource)]))}). With create_bucket on the resource, a missing bucket is created on first use.`}
+          help={`Any bucket on this service; empty = the resource's own bucket (${resourceBucket(str(config.resource), asObject(asObject(draft.resources)[str(config.resource)]))}). With create_bucket on the resource, a missing bucket is created on first use. Example: invoices.`}
         >
           <TextInput
             mono
@@ -613,8 +627,8 @@ function SourceForm({
           required
           help={
             mode === "new"
-              ? "pskit creates it on deploy. “Create & select” also adds it to Resources, so other functions can bind it and it shows up in this list."
-              : "The exact name in the account; pskit only attaches the trigger."
+              ? `pskit creates it on deploy. “Create & select” also adds it to Resources, so other functions can bind it and it shows up in this list. Example: ${fallback}.`
+              : `The exact name in the account; pskit only attaches the trigger and never deletes it. Example: ${fallback}.`
           }
         >
           <div className="row-gap">
@@ -628,7 +642,7 @@ function SourceForm({
         </FormRow>
       )}
       {type === "storage" && (
-        <FormRow label="Fire on">
+        <FormRow label="Fire on" help="Which file changes run the function. Example: created, to process each new upload.">
           <div className="row-gap">
             {["created", "deleted"].map((ev) => {
               const list = asArray(config.events).map((e) => str(e));

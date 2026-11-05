@@ -166,3 +166,18 @@ def test_enabled_is_not_part_of_the_workflow_definition():
 
     wf = WorkflowConfig.model_validate({"enabled": True, "start_at": "s", "states": {"s": {"type": "pass"}}})
     assert "enabled" not in definition_dict(wf)
+
+
+def test_dead_letter_naming_a_queue_resource_means_that_resources_queue():
+    cfg = ServiceConfig.model_validate({
+        "service": "svc",
+        "provider": {"name": "aws"},
+        "resources": {"failed": {"type": "queue", "name": "failed-jobs"}, "files": {"type": "storage"}},
+        "functions": {
+            "a": {"handler": "app.a", "events": [{"queue": {"name": "jobs", "dead_letter": "failed"}}]},
+            "b": {"handler": "app.b", "events": [{"queue": {"name": "more", "dead_letter": "brand-new"}}]},
+            "c": {"handler": "app.c", "events": [{"queue": {"name": "last", "dead_letter": "files"}}]},
+        },
+    })
+    dead = {name: fn.events_of("queue")[0].dead_letter for name, fn in cfg.functions.items()}
+    assert dead == {"a": "failed-jobs", "b": "brand-new", "c": "files"}

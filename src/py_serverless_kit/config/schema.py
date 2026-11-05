@@ -690,8 +690,13 @@ class ServiceConfig(_Model):
         return self
 
     def _apply_dlq(self) -> None:
-        """``dlq:`` on a function fills in its queue events; a ``dead_letter`` or ``max_receive`` set on an event wins."""
+        """``dlq:`` on a function fills in its queue events; a ``dead_letter`` or ``max_receive`` set on an event wins.
+        A ``dead_letter`` naming a queue resource means that resource's queue, on every provider."""
         for fn_name, fn_cfg in self.functions.items():
+            for ev in fn_cfg.events_of("queue"):
+                dead = self.resources.get(ev.dead_letter or "")
+                if dead is not None and dead.type == "queue":
+                    ev.dead_letter = dead.native_name(str(ev.dead_letter))
             if fn_cfg.dlq is None:
                 continue
             target = fn_cfg.dlq.queue or f"{fn_name}-dlq"

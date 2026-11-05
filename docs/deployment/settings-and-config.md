@@ -72,7 +72,7 @@ providers:
 ```
 
 One file now deploys to three clouds: `pskit deploy -p aws`, `-p gcp`, `-p azure`. In studio, the provider picked in
-**Overview & provider** writes `provider.name`; the top bar's **validate & deploy as** picks the target for one run.
+**Overview & provider** writes `provider.name`, and validation and Deploy use it.
 
 ## Switch a function, trigger or workflow off on one cloud
 

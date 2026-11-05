@@ -30,6 +30,7 @@ from .store import Identity, Vault, atomic_write
 
 STATE_DIR = Path(".pskit") / ".vault"
 MANIFEST = "manifest.json"
+ACCESS_SEEN = "access"
 MAX_FILE = 32 * 1024 * 1024
 CONFLICT_SUFFIX = ".vault-conflict"
 SESSION_SECONDS = 12 * 3600
@@ -267,6 +268,8 @@ def unseal(vault: Vault, identity: Identity) -> Dict[str, List[str]]:
                     if not target.is_file():
                         del manifest[rel]
         _save_manifest(root, manifest)
+    # Access may have been revoked since the last unseal (also by a `git pull`), and keys only stop new decrypts.
+    out["removed"] += wipe(root, set(keys) | _held_areas(vault, live_sessions(vault)))
     return out
 
 
@@ -379,9 +382,32 @@ def login(
 
 def open_workspace(vault: Vault, session: Session) -> Dict[str, List[str]]:
     """Unseal first: what a crash left behind then counts as a local edit and is merged, not overwritten."""
+    try:
+        vault.apply_grants(session.identity)
+    except VaultError:
+        pass  # another account's key is missing here: the next admin change reports it
     result = unseal(vault, session.identity)
     seal(vault, session.identity)
     return result
+
+
+def sync_access(vault: Vault) -> bool:
+    """Apply a permission change to everyone logged in here, without a new login: what they gained is decrypted, what
+    they lost is removed. Does nothing until the accounts change (an admin here, or a `git pull`)."""
+    seen = vault.root / STATE_DIR / ACCESS_SEEN
+    current = _sha(str(vault.header().get("accounts")).encode("utf-8"))
+    try:
+        if seen.read_text("ascii").strip() == current:
+            return False
+    except OSError:
+        pass
+    for session in live_sessions(vault):
+        try:
+            unseal(vault, session.identity)
+        except VaultError:
+            pass  # removed, or the master key was rotated: this session holds nothing any more
+    atomic_write(seen, current.encode("ascii"))
+    return True
 
 
 def _held_areas(vault: Vault, sessions: Iterable[Session]) -> Set[str]:

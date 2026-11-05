@@ -41,7 +41,7 @@ same files as `pskit init`.
 
 Studio opens with the sidebar on the left: **Overview & provider**, **Setup & credentials**, **Functions**,
 **Workflows**, **Resources**, **Scaling cluster**, **Load balancers**, **Network map**, **Code**, **Test**,
-**Deploy**, **Logs**, **YAML**. The top bar has **validate & deploy as** (provider) and **stage**, undo / redo, the
+**Deploy**, **Logs**, **YAML**. The top bar has **stage**, undo / redo, the
 problems counter, **Validate**, **Save**, **⇅ Settings** and the theme switch. Page guide:
 [studio-guide/README.md](../studio-guide/README.md).
 
@@ -300,9 +300,9 @@ deployed.
 
 ![A finished deploy with every step done](../images/studio/deploy-done.png)
 
-The **Deploy** page runs pskit in the project folder as the provider and stage from the top bar.
+The **Deploy** page runs pskit in the project folder as the provider chosen on **Overview & provider** and the stage from the top bar.
 
-1. Top bar: **validate & deploy as** *AWS Lambda*, **stage** `dev`.
+1. **Overview & provider**: provider *AWS Lambda*. Top bar: **stage** `dev`.
 2. Set the database and cache URLs for this session: **Setup & credentials** → **Environment variables**, or
    start studio from a shell where `ORDERS_DB_URL` and `CACHE_URL` are exported.
 3. Click **Deploy**. Click the **Validate** card, then **Plan** to see what Terraform will create.

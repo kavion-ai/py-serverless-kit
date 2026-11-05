@@ -29,7 +29,7 @@ Storage, Topic, SMTP, Native workflows). The provider's notes appear under the c
    `providers.<new provider>`, so the other clouds keep those triggers and workflows.
 4. In both cases the old `provider.options` and `provider.region` move to `providers.<old provider>`, so switching back
    restores them. A runtime the new provider does not offer is cleared. Handler code does not change.
-5. The top bar's **validate & deploy as** follows the new provider. Press **Save**.
+5. Validation, Deploy, Test and Logs follow the new provider. Press **Save**.
 
 The written result, switching from AWS to GCP:
 

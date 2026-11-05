@@ -165,7 +165,7 @@ Open **Overview & provider** and click a provider card. Set its region and optio
 
 ![The provider cards on the Overview & provider page](./docs/images/studio/overview.png)
 
-**To move to another cloud later**, pick it under **validate & deploy as** in the top bar and deploy again. Your handlers do not change. The red and green count next to it shows at once if something needs fixing for that cloud.
+**To move to another cloud later**, pick it on **Overview & provider** and deploy again. Your handlers do not change. The problems count in the top bar shows at once if something needs fixing for that cloud.
 
 ![Google Cloud Functions picked in the top bar](./docs/images/studio/provider-switch.png)
 

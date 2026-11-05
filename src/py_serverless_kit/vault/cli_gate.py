@@ -15,7 +15,7 @@ import os
 import sys
 import time
 from pathlib import Path
-from typing import TYPE_CHECKING, Callable, Optional, Sequence
+from typing import TYPE_CHECKING, Any, Callable, Optional, Sequence
 
 if TYPE_CHECKING:
     from .store import Vault
@@ -92,6 +92,19 @@ def _env_login(vault: Vault) -> Optional[Session]:
     return session
 
 
+def _warn_locked(vault: Any, identity: Any, path: Sequence[str]) -> None:
+    """A deploy may need saved settings this account cannot decrypt: say so before it fails on a missing file."""
+    if " ".join(path) not in ("deploy", "plan", "remove"):
+        return
+    locked = sorted({"env", "servers", "services", "clusters"} - set(vault.area_keys(identity)))
+    if locked:
+        print(
+            f"note: this account has no read permission on {', '.join(locked)}, so those saved settings are not "
+            "decrypted for it. If this command needs them, ask an admin for read.",
+            file=sys.stderr,
+        )
+
+
 def gate(path: Sequence[str], args: Sequence[str]) -> Optional[Callable[[], None]]:
     """Check a command. Returns what to run when it ends, or raises VaultError. None: nothing to do."""
     root = find_root(start_dir(args))
@@ -100,7 +113,7 @@ def gate(path: Sequence[str], args: Sequence[str]) -> Optional[Callable[[], None
     from . import permissions
     from .errors import VaultError
     from .store import Vault
-    from .workspace import close_session, load_session, log, seal
+    from .workspace import close_session, load_session, log, seal, sync_access
 
     if path[0] in permissions.OPEN_COMMANDS:
         return None
@@ -111,12 +124,17 @@ def gate(path: Sequence[str], args: Sequence[str]) -> Optional[Callable[[], None
         if loaded is None or loaded.expires < time.time():
             raise VaultError("the studio session of this job has ended", 401, "session")
         vault.user(loaded.identity)
+        _warn_locked(vault, loaded.identity, path)
         return lambda: _quiet(lambda: seal(vault, loaded.identity))
 
     from_env = _env_login(vault)
     session = from_env or current_session(root)
     if session is None:
         raise VaultError(f"this project is protected: run `pskit login` first (in {root})", 401, "login")
+    try:
+        sync_access(vault)  # before the check below: a revoked account must lose the files even when refused
+    except (VaultError, OSError):
+        pass
     user = vault.user(session.identity)
     if user.get("must_change"):
         raise VaultError("set a new password first: pskit vault password", 403, "password_change")
@@ -128,6 +146,7 @@ def gate(path: Sequence[str], args: Sequence[str]) -> Optional[Callable[[], None
             close_session(vault, from_env)
         raise VaultError(f"you do not have {_WORDS[action]} permission on {feature} (`pskit {name}`)", 403, "forbidden")
     log(vault, session, f"cli.{name}")
+    _warn_locked(vault, session.identity, path)
     active = session
 
     def finish() -> None:

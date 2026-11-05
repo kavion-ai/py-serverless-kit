@@ -132,10 +132,59 @@ def test_granting_later_works_without_the_users_password(created):
     assert set(vault.area_keys(dev)) == {"servers"}
 
 
-def test_deploy_permission_holds_the_keys_a_deploy_needs(created):
+def test_deploy_permission_decrypts_only_its_own_area(created):
     vault, admin, _key, _recovery = created
     vault.add_user(admin, "ops", USER_PW, perms={"deploy": "c"})
-    assert set(vault.area_keys(vault.authenticate(admin.master, "ops", USER_PW))) == set(permissions.AREAS)
+    assert set(vault.area_keys(vault.authenticate(admin.master, "ops", USER_PW))) == {"deployments"}
+
+
+@pytest.mark.parametrize(
+    ("feature", "area"),
+    [("env", "env"), ("servers", "servers"), ("services", "services"), ("clusters", "clusters"),
+     ("balancers", "clusters"), ("test", "studio"), ("hana", "studio"), ("deploy", "deployments")],
+)
+def test_read_on_one_feature_decrypts_only_its_area(feature, area):
+    assert permissions.areas_for({"permissions": {feature: "r"}}) == {area}
+
+
+def test_keys_from_the_wider_old_rules_stop_working_and_are_rotated_at_the_admin_login(created, monkeypatch):
+    vault, admin, _key, _recovery = created
+    with monkeypatch.context() as old_rules:
+        old_rules.setattr(permissions, "areas_for", lambda user: frozenset(permissions.AREAS))
+        vault.add_user(admin, "ops", USER_PW, perms={"deploy": "c"})
+    ops = vault.authenticate(admin.master, "ops", USER_PW)
+    assert "ops" in vault.accounts(admin.master)["areas"]["servers"]["wraps"]
+    assert set(vault.area_keys(ops)) == {"deployments"}
+
+    assert vault.apply_grants(ops) is False  # not an admin
+    assert vault.apply_grants(admin) is True
+    doc = vault.accounts(admin.master)
+    assert "ops" not in doc["areas"]["servers"]["wraps"]
+    assert doc["areas"]["servers"]["generation"] == 2
+    assert vault.apply_grants(admin) is False
+
+
+def test_a_logged_in_account_gets_and_loses_files_without_a_new_login(created, project):
+    vault, admin, master_key, _recovery = created
+    vault.add_user(admin, "dev", USER_PW, perms={})
+    master = crypto.parse_secret(MASTER_PREFIX, master_key, "k")
+    ws.open_workspace(vault, ws.login(vault, master, "dev", USER_PW, "cli"))
+    servers, env = project / ".pskit" / "onprem-servers.json", project / ".env.onprem"
+    assert not servers.exists() and not env.exists()
+    ws.sync_access(vault)
+    assert ws.sync_access(vault) is False  # nothing changed
+
+    vault.update_user(admin, "dev", {"permissions": {"servers": "r"}})
+    assert ws.sync_access(vault) is True
+    assert servers.exists() and not env.exists()  # only what was granted
+
+    vault.update_user(admin, "dev", {"permissions": {"env": "r"}})
+    assert ws.sync_access(vault) is True
+    assert env.exists() and not servers.exists()
+
+    vault.remove_user(admin, "dev")
+    assert ws.sync_access(vault) is True
+    assert not env.exists()
 
 
 def test_a_user_cannot_grant(created):
@@ -312,6 +361,34 @@ def test_logout_removes_plaintext_but_not_unsealed_edits_from_a_read_only_accoun
     session = ws.login(vault, admin.master, "root-admin", ADMIN_PW, "cli")
     ws.open_workspace(vault, session)
     assert (project / ".env.onprem").read_text() == SECRET
+
+
+def test_revoked_account_loses_the_plaintext_at_its_next_sync(created, project):
+    vault, admin, master_key, _recovery = created
+    vault.add_user(admin, "dev", USER_PW, perms={"servers": "r"})
+    master = crypto.parse_secret(MASTER_PREFIX, master_key, "k")
+    session = ws.login(vault, master, "dev", USER_PW, "cli")
+    ws.open_workspace(vault, session)
+    servers = project / ".pskit" / "onprem-servers.json"
+    assert servers.exists()
+
+    vault.update_user(admin, "dev", {"permissions": {}})
+    assert ".pskit/onprem-servers.json" in ws.unseal(vault, session.identity)["removed"]
+    assert not servers.exists()
+    assert dict(vault.read_area("servers", vault.area_keys(admin)["servers"], 2))  # the vault keeps it
+
+
+def test_sync_keeps_the_plaintext_another_session_holds(created, project):
+    vault, admin, master_key, _recovery = created
+    vault.add_user(admin, "dev", USER_PW, perms={"servers": "r"})
+    master = crypto.parse_secret(MASTER_PREFIX, master_key, "k")
+    ws.login(vault, master, "root-admin", ADMIN_PW, "cli")
+    session = ws.login(vault, master, "dev", USER_PW, "cli")
+    ws.open_workspace(vault, session)
+
+    vault.update_user(admin, "dev", {"permissions": {}})
+    assert ws.unseal(vault, session.identity)["removed"] == []
+    assert (project / ".pskit" / "onprem-servers.json").exists()
 
 
 def test_plaintext_stays_while_another_session_holds_it(created, project):

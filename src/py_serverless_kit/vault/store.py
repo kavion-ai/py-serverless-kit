@@ -193,8 +193,12 @@ class Vault:
         return user
 
     def area_keys(self, identity: Identity) -> Dict[str, bytes]:
-        """The data keys this account can open right now."""
-        return _keys_of(self.id, self.accounts(identity.master), identity.username, identity.private)
+        """The data keys this account can open right now: never more than its permissions allow, whatever is wrapped."""
+        doc = self.accounts(identity.master)
+        user = (doc.get("users") or {}).get(identity.username)
+        allowed = permissions.areas_for(user) if isinstance(user, dict) else frozenset()
+        keys = _keys_of(self.id, doc, identity.username, identity.private)
+        return {area: key for area, key in keys.items() if area in allowed}
 
     # ------------------------------------------------------------------ data files
     def data_dir(self, area: str) -> Path:
@@ -370,6 +374,17 @@ class Vault:
         self._write(master, doc)
 
     # ------------------------------------------------------------------ grants
+    def apply_grants(self, identity: Identity) -> bool:
+        """Bring the key wraps in line with the permissions, for a vault made when these rules were wider. Admins only."""
+        doc = self.accounts(identity.master)
+        if (doc["users"].get(identity.username) or {}).get("role") != "admin":
+            return False
+        if all(set(info["wraps"]) - {_RECOVERY} == _holders(doc, area) for area, info in doc["areas"].items()):
+            return False
+        self._apply_grants(identity, doc)
+        self._write(identity.master, doc)
+        return True
+
     def _apply_grants(self, identity: Identity, doc: Dict[str, Any]) -> None:
         """Make the key wraps match the permissions. Losing access means a new key for that area."""
         vid = self.id

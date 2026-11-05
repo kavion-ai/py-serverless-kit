@@ -194,6 +194,12 @@ export function StudioProvider({
     [],
   );
 
+  // The target provider is not shown anywhere, so it must follow provider.name through undo, YAML edits and reloads.
+  useEffect(() => {
+    const name = str(getIn(state.draft ?? undefined, ["provider", "name"]));
+    if (name && state.target && name !== state.target.provider) dispatch({ type: "target", provider: name });
+  }, [state.draft, state.target]);
+
   // Live validation of the draft (debounced; stale requests are aborted).
   useEffect(() => {
     if (!state.draft) return undefined;

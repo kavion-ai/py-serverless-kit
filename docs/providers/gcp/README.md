@@ -157,7 +157,7 @@ Deploying to GCP from studio uses the credentials of the machine running studio.
 2. Under **Defaults for every function**, pick the **Region**. In **Google Cloud Functions options** fill **Project**
    (default `${env:GOOGLE_CLOUD_PROJECT}`) and optionally **Service account**.
 3. Click **Save** in the top bar.
-4. Check the top bar: **validate & deploy as** **Google Cloud Functions**, and the **stage**.
+4. Check the **stage** in the top bar.
 5. Sidebar **Deploy** → **Validate** → **Plan** → **Deploy**. A `prod*` stage asks you to type `gcp/<stage>`.
 6. Click **Info** for the function URLs.
 

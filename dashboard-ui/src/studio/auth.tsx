@@ -318,6 +318,19 @@ export function AuthGate({ children, onTokenMissing }: { children: ReactNode; on
     return () => window.removeEventListener("pskit-auth-lost", onLost);
   }, [refresh]);
 
+  // An admin can change this account's permissions while it is logged in.
+  const state = status?.state;
+  useEffect(() => {
+    if (MOCK || state !== "ready") return;
+    const timer = window.setInterval(() => {
+      api
+        .authStatus()
+        .then((next) => setStatus((prev) => (JSON.stringify(prev) === JSON.stringify(next) ? prev : next)))
+        .catch(() => undefined); // a dropped connection is not worth replacing the page with an error
+    }, 10000);
+    return () => window.clearInterval(timer);
+  }, [state]);
+
   const logout = useCallback(async () => {
     await api.authLogout().catch(() => undefined);
     setSession(null);

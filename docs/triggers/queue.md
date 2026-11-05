@@ -33,7 +33,7 @@ events:
 | `batch_size` | 10 | messages per invocation, 1 - 10000 |
 | `batch_window` | 0 | seconds, 0 - 300 |
 | `visibility_timeout` | `max(30, 6 x timeout)` | seconds a received message stays hidden |
-| `dead_letter` | | name of the dead-letter queue (pskit creates it on AWS and on premises) |
+| `dead_letter` | | a `type: queue` resource, or the name of a dead-letter queue (pskit creates it on AWS and on premises). In the studio, pick from the project's queues or type a name |
 | `max_receive` | 5 | deliveries before a message moves to `dead_letter` |
 | `fifo` | `false` | ordered queue with content-based de-duplication (AWS) |
 

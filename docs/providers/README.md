@@ -96,8 +96,8 @@ Switching provider in studio keeps your old settings so you can switch back.
 6. Fill the new section **<Provider> options** (for example **IBM Cloud Code Engine options**) on the same page.
 7. Click **Save** in the top bar (or press Ctrl+S).
 
-To deploy to another provider for one run without changing `provider.name`, use the top bar selector
-**validate & deploy as** and the **stage** field. The **Deploy** page then runs as that provider and stage.
+To deploy to another provider for one run without changing `provider.name`, use `pskit deploy -p <provider>`. In studio,
+the **Deploy** page runs as `provider.name` and the **stage** in the top bar.
 
 ## Switch provider from the terminal
 

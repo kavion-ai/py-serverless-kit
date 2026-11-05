@@ -314,21 +314,6 @@ function Shell() {
         </a>
         <div className="top-targets">
           <label className="top-select">
-            <span className="muted small">validate &amp; deploy as</span>
-            <select
-              className="select select-sm"
-              value={target.provider}
-              onChange={(e) => setTarget(e.target.value)}
-              aria-label="Target provider"
-            >
-              {meta.providers.map((p) => (
-                <option key={p.name} value={p.name}>
-                  {p.display_name}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="top-select">
             <span className="muted small">stage</span>
             <input
               className="input input-sm stage-input"

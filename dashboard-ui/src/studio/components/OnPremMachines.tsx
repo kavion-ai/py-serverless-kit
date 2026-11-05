@@ -376,7 +376,7 @@ export function ServerForm({ initial, taken, onClose, onSaved }: { initial: OnPr
         {auth === "key" && keySource === "text" && (
           <FormRow
             label="Private key text"
-            help="Saved in .pskit/ssh/keys/ (owner-only, out of git) and never shown again. If the project has a vault it is encrypted there too, and only accounts allowed to read Servers, or to deploy, can decrypt it."
+            help="Saved in .pskit/ssh/keys/ (owner-only, out of git) and never shown again. If the project has a vault it is encrypted there too, and only accounts allowed to read Servers can decrypt it."
           >
             <textarea
               className="input mono"
