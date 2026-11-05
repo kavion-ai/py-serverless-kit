@@ -8,6 +8,8 @@ plus the triggers that call it (`functions:` in `pskit.yml`).
 
 ## Read the functions table in studio
 
+![The functions table](../images/studio/functions.png)
+
 The studio functions table has one row per function. Click a row (or its name) to edit it.
 
 | Column | What it shows |
@@ -88,6 +90,8 @@ Details on every key: [Create functions](../functions/create.md) and [Function c
 
 ## Wizard step 1: Basics
 
+![Step 1 of the Create function wizard: Basics](../images/studio/function-basics.png)
+
 The Basics step of the studio function wizard sets the name, handler and resources of the function.
 
 | Field | Notes |
@@ -113,6 +117,8 @@ Renaming an existing function asks **Rename <old> to <new>?**: workflow task sta
 are updated too.
 
 ## Wizard step 2: Triggers
+
+![Step 2 of the wizard: trigger cards and the HTTP endpoint form](../images/studio/function-trigger-http.png)
 
 The Triggers step of the studio function wizard adds the events that call the function.
 
@@ -147,6 +153,8 @@ The Environment & permissions step of the studio function wizard has five sectio
 - **Provider-specific options** (`functions.<name>.options`), when the provider has any.
 
 ## Wizard step 4: Review
+
+![Step 4 of the wizard: the changes to pskit.yml](../images/studio/function-review.png)
 
 The Review step of the studio function wizard shows **Changes to pskit.yml** as a diff of the function entry (and of
 `provider.options.placement` when **Runs on** changed it).

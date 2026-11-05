@@ -9,6 +9,10 @@ like `pskit trigger`). Sidebar: **Test** (▶). **Test** on a function row opens
 
 ## Run a function locally from studio
 
+![The Test page with an event](../images/studio/test.png)
+
+![The result of a local run](../images/studio/test-result.png)
+
 The studio Test page runs a handler on this machine with a synthetic event; no cloud and no deploy are needed.
 
 1. Open **Test**. The left list shows every function and its trigger types ("invoke only" without triggers).

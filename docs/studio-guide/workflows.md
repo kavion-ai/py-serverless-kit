@@ -8,6 +8,8 @@ edits `workflows:` in `pskit.yml`. How workflows run on each cloud, and how to s
 
 ## Read the workflow list in studio
 
+![The workflow list](../images/studio/workflows.png)
+
 The studio workflow list shows one card per workflow: its name, description (or "N states, starts at X"), up to 8
 state chips with their type icons, the engine badge and the **Deploy** dropdown (**● Enabled**, **◐ Disabled on
 <Provider>**, **○ Disabled everywhere**, the same as for functions). **Delete** asks **Delete workflow <name>?**.
@@ -19,6 +21,8 @@ The page subtitle says how workflows run on the current provider:
 - Other providers: they run on pskit's embedded engine inside a generated `<workflow>-orchestrator` function.
 
 ## Create a workflow in studio
+
+![The New workflow dialog](../images/studio/workflow-create.png)
 
 The studio **+ Create workflow** button starts a new workflow with one state.
 
@@ -40,6 +44,8 @@ workflows:
 
 ## Add and connect states in the workflow builder
 
+![The workflow builder with its palette and diagram](../images/studio/workflow.png)
+
 The studio workflow editor has a palette, a diagram and an inspector.
 
 1. The palette buttons add a state: **task** (call a function), **choice** (branch on the data), **wait** (pause for N
@@ -52,6 +58,8 @@ The studio workflow editor has a palette, a diagram and an inspector.
 5. In the inspector, **Then** chooses **Go to** a state or **End** (for task, pass, wait, parallel and map).
 
 ## Edit a state in the workflow inspector
+
+![A selected state and its settings in the inspector](../images/studio/workflow-state.png)
 
 The studio workflow inspector edits the selected state. Every state has **State name** (with **Rename**; transitions
 into it are updated), **Comment** and **Delete** (asks **Delete state <name>?**; transitions into it are removed and

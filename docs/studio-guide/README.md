@@ -9,6 +9,8 @@ topic guides it links to.
 
 ## Install and start pskit studio
 
+![Installing pskit and starting studio in a terminal](../images/studio/install.png)
+
 pskit studio ships with the `py-serverless-kit` package; there is nothing extra to install.
 
 1. Install pskit (Python 3.9 or newer):

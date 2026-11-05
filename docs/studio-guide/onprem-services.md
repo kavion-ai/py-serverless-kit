@@ -10,6 +10,8 @@ to use it from code is in [On-prem services](../onprem/services/README.md).
 
 ## Read the on-prem services table in studio
 
+![A PostgreSQL service in the on-prem services table](../images/studio/database-listed.png)
+
 The studio on-prem services table lists the services created from this project.
 
 | Column | What it shows |
@@ -25,6 +27,10 @@ pskit browser), **Console**, **Terminal**, **Add to pskit.yml** (when it is not 
 (services that support it) and **Remove**. The header has **Guide** and **+ Create service**.
 
 ## Create an on-prem service in studio
+
+![The service catalog with its databases](../images/studio/service-catalog-databases.png)
+
+![The Create PostgreSQL form](../images/studio/database-form.png)
 
 The studio **Create a service** drawer starts a service with Docker and adds it to the draft.
 

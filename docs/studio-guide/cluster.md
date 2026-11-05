@@ -10,6 +10,8 @@ orchestrator are in [On-prem scaling](../onprem/scaling/README.md).
 
 ## Create a scaling cluster in studio
 
+![The New scaling cluster drawer](../images/studio/cluster-new.png)
+
 The studio **New scaling cluster** drawer installs an orchestrator on a master server over SSH.
 
 1. Save your servers first ([Servers panel](servers.md), or **Add a server** in the drawer).
@@ -60,6 +62,10 @@ pskit deploy --cluster prod
 ```
 
 ## Join, remove and watch cluster servers in studio
+
+![A cluster with its servers](../images/studio/cluster-card.png)
+
+*The example servers here are placeholders, so they show as offline. A live server shows its CPU, memory and disk.*
 
 The **Servers** card of a cluster shows each server's state and **CPU**, **Memory** and **Disk** meters against the
 cluster's limits ("A server is full at X% CPU, Y% memory or Z% disk"). It refreshes every 30 s; **Refresh** and

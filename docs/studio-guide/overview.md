@@ -13,6 +13,10 @@ digits or dashes. Renaming a deployed service creates new cloud resources on the
 
 ## Switch the provider in studio
 
+![The provider cards on the Overview & provider page](../images/studio/overview.png)
+
+![Google Cloud Functions picked in the top bar](../images/studio/provider-switch.png)
+
 The **Provider** section shows the same provider cards as the New project page (chips for HTTP, Schedule, Queue,
 Storage, Topic, SMTP, Native workflows). The provider's notes appear under the cards.
 

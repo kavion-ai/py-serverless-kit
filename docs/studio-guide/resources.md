@@ -10,6 +10,8 @@ the **In the cloud** section.
 
 ## Read the resources table in studio
 
+![The Resources page with a PostgreSQL database](../images/studio/database-listed.png)
+
 The studio resources table has one row per resource. Click a row to edit it.
 
 | Column | What it shows |
@@ -28,6 +30,8 @@ When a one-click on-prem service exists that is not in `pskit.yml`, a box "On-pr
 yet:" shows a **+ <key> (<service>)** button per service; it adds the resource (and its triggers) to the draft.
 
 ## Add a resource in studio
+
+![The Add resource drawer](../images/studio/resource-add.png)
 
 The studio **Add resource** drawer declares one resource.
 

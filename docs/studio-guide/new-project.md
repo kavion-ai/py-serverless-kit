@@ -7,6 +7,8 @@ the same as `pskit init`.
 
 ## Create a new project in studio
 
+![The Create a pskit project page](../images/studio/new-project.png)
+
 The studio New project page creates `pskit.yml` and starter handler code in an empty folder.
 
 1. Start studio in an empty folder:

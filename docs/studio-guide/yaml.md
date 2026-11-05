@@ -8,6 +8,8 @@ in [Configuration](../configuration.md).
 
 ## Preview and diff pskit.yml in studio
 
+![The YAML page](../images/studio/yaml.png)
+
 The studio YAML page has three modes in the switch at the top right:
 
 | Mode | What it shows |

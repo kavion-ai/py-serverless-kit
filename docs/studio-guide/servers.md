@@ -9,6 +9,8 @@ name everywhere: deploys, function groups, services, clusters and load balancers
 
 ## Add a server in studio
 
+![The Add a server drawer](../images/studio/server-add.png)
+
 The studio **Add a server** drawer saves one SSH machine and tests it.
 
 1. Open **Resources** and scroll to **Servers**. Click **+ Add server**. (The same form opens from **+ Add a server…**

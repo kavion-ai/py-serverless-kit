@@ -9,6 +9,8 @@ tools and her limits are described in full in [assistant.md](../assistant.md).
 
 ## Open the Hana chat panel
 
+![A question and answer in the Hana panel](../images/studio/hana-chat.png)
+
 The Hana chat panel opens from any studio page.
 
 1. Click the round avatar **Ask Hana** at the bottom right, or press **Ctrl+I** (Cmd+I on macOS). The panel stays
@@ -25,6 +27,8 @@ The Hana chat panel opens from any studio page.
 Hana is told the page you are on and the provider and stage in the top bar.
 
 ## Install Hana's model from studio
+
+![Where should Hana run? in the Hana panel](../images/studio/hana-setup.png)
 
 The first time, the Hana panel asks **Where should Hana run?** The choice is saved in `.pskit/studio/hana.json`.
 

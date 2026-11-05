@@ -12,6 +12,8 @@ still use a load balancer). The algorithms and setups are explained in
 
 ## Create a shared load balancer in studio
 
+![The New load balancer drawer](../images/studio/balancer.png)
+
 The studio **New load balancer** drawer installs OpenResty on one saved server.
 
 1. Save one more server for it on the [Servers panel](servers.md) (or **+ Add a server** in the drawer). It must not

@@ -9,6 +9,8 @@ Every label below is the exact text on screen.
 
 ## Start pskit studio in an empty folder
 
+![Installing pskit and starting studio in a terminal](../images/studio/install.png)
+
 `pskit studio` is a local web server; everything runs on your machine with your credentials.
 
 1. Install pskit (`pip install "py-serverless-kit[aws]"`), create an empty folder and start studio in it:
@@ -23,6 +25,8 @@ Every label below is the exact text on screen.
 3. The folder has no `pskit.yml`, so studio shows **Create a pskit project**.
 
 ## Create the project in the Create a pskit project screen
+
+![The Create a pskit project page](../images/studio/new-project.png)
 
 The **Create a pskit project** screen writes `pskit.yml`, `app/handlers.py`, `requirements.txt` and a test, the
 same files as `pskit init`.
@@ -53,6 +57,8 @@ for the **Problems** list, and click a problem to jump to the page that fixes it
 when they have problems.
 
 ## Check the machine on Setup & credentials
+
+![The Setup & credentials page](../images/studio/setup.png)
 
 The **Setup & credentials** page checks the tools and credentials this machine needs to deploy, the same as
 `pskit doctor`.
@@ -104,6 +110,8 @@ The HTTP API template created a sample function you don't need.
 
 ## Add the resources on the Resources page
 
+![The Add resource drawer](../images/studio/resource-add.png)
+
 The **Resources** page declares the queue, topic, bucket, database and cache once. Triggers and handlers refer to
 them by key.
 
@@ -124,6 +132,8 @@ Each row has **How to use** (libraries, `pskit.yml`, code and tests for that res
 **Guides** opens the per-cloud resource guides. Page details: [studio-guide/resources.md](../studio-guide/resources.md).
 
 ## Create the HTTP functions with the Create function wizard
+
+![The Triggers step with the HTTP endpoint form](../images/studio/function-trigger-http.png)
 
 The **Create function** wizard has four steps: **Basics**, **Triggers**, **Environment & permissions**,
 **Review**. Create `create-order` first.
@@ -196,6 +206,8 @@ Click **Save**. The **Functions** table now lists 11 functions; each row has **T
 
 ## Build the fulfil-order workflow on the Workflows page
 
+![The workflow builder](../images/studio/workflow.png)
+
 The **Workflows** page draws the state machine and edits one state at a time. On AWS it compiles to Step
 Functions.
 
@@ -222,6 +234,8 @@ Functions.
 11. **Save**. More: [studio-guide/workflows.md](../studio-guide/workflows.md).
 
 ## Write the handler code on the Code page
+
+![The built-in code editor](../images/studio/code.png)
 
 The **Code** page edits project files in the browser (**Built-in editor**), or in a full VS Code in Docker
 (**Full VS Code**).
@@ -264,6 +278,8 @@ Studio has no form for `stages:` and `hooks:`; the **YAML** page edits the raw f
 
 ## Test the functions locally on the Test page
 
+![The result of a local run](../images/studio/test-result.png)
+
 The **Test functions** page runs a handler on this machine with a sample event, or sends a real event once
 deployed.
 
@@ -282,6 +298,8 @@ deployed.
 
 ## Deploy the dev stage on the Deploy page
 
+![A finished deploy with every step done](../images/studio/deploy-done.png)
+
 The **Deploy** page runs pskit in the project folder as the provider and stage from the top bar.
 
 1. Top bar: **validate & deploy as** *AWS Lambda*, **stage** `dev`.
@@ -295,6 +313,8 @@ The **Deploy** page runs pskit in the project folder as the provider and stage f
 Page details: [studio-guide/deploy.md](../studio-guide/deploy.md).
 
 ## Send real events and read logs
+
+![Live logs of a deployed project](../images/studio/logs.png)
 
 1. **Test** → `create-order` → **☁ Send to aws / dev** sends the request to the deployed API. Switch on **Show the
    function's logs** to watch them next to the result.
@@ -318,6 +338,8 @@ Workflow executions after deploy: `pskit workflow start fulfil-order -i ...` or 
    External resources are never deleted.
 
 ## Ask Hana to do the same steps
+
+![A question and answer in the Hana panel](../images/studio/hana-chat.png)
 
 Hana, the AI assistant, can do many of the steps above from a chat message. Click **Ask Hana** at the bottom
 right (or Ctrl+I). The first time, pick where her model runs (Docker on this machine is recommended).

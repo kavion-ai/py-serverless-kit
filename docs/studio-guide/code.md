@@ -8,6 +8,8 @@ edit the real project files.
 
 ## Edit handler code in the built-in editor
 
+![The built-in code editor](../images/studio/code.png)
+
 The studio built-in editor is a file tree and a VS Code-style editor (CodeMirror: Python, YAML, JSON and JavaScript
 highlighting, search, tabs).
 

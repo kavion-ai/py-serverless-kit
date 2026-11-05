@@ -10,6 +10,10 @@ environment, as with the CLI (see [Setup & credentials](setup.md)). Every button
 
 ## Deploy a project from studio
 
+![The Deploy page](../images/studio/deploy.png)
+
+![A finished deploy with every step done](../images/studio/deploy-done.png)
+
 The studio **Deploy** action builds the bundle and runs `terraform apply`.
 
 1. Pick the provider and stage in the top bar (**validate & deploy as**, **stage**).

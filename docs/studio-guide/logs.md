@@ -16,6 +16,8 @@ read). It does the same as `pskit logs`. Where logs come from on each cloud is i
 
 ## Watch live logs in studio
 
+![Live logs of a deployed project](../images/studio/logs.png)
+
 The studio log viewer tails the deployed functions' logs.
 
 1. Pick the provider and stage in the top bar, then open **Logs**.

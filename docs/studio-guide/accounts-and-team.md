@@ -8,6 +8,8 @@ details and limits are in [Accounts, encrypted project data and the audit log](.
 
 ## The first start: just me or a team
 
+![Who will use this project?](../images/studio/first-start.png)
+
 The first time you run `pskit studio --open` in a project, it asks **Who will use this project?**
 
 |  | **Just me, on this computer** | **A team, sharing through git** |
@@ -37,6 +39,10 @@ Whichever you choose, the studio still needs the link it prints at start, and it
 
 ### What the admin does
 
+![Create the admin account](../images/studio/admin-create.png)
+
+![The master key and recovery code screen, with the values hidden here](../images/studio/keys.png)
+
 1. Run `pskit studio --open` and choose **A team, sharing through git**.
 2. Fill in **Create the admin account**: a username and a password of at least 12 characters, then **Create admin**.
 3. On **Copy these now**, copy the **Master key** and the **Recovery code** to a safe place. They are shown only this once.
@@ -54,6 +60,8 @@ Whichever you choose, the studio still needs the link it prints at start, and it
 6. Add each teammate as described in [Add a user](#add-a-user).
 
 ### What each teammate does
+
+![The login screen: master key, username and password](../images/studio/login.png)
 
 1. Get the master key and a first password from the admin, over a safe channel.
 2. Clone the project and start studio:
@@ -98,6 +106,8 @@ through a chat that keeps history.
 
 ## How your data is protected
 
+![The audit log](../images/studio/audit.png)
+
 **In git.** `.pskit-vault/` holds only encrypted data, so anyone who can read the repository but has no master key sees
 ciphertext. File names are hidden too. Your code is not encrypted, so that it stays reviewable.
 
@@ -136,6 +146,8 @@ A new user starts with nothing ticked and can only read `pskit.yml`. For each fe
 **read**, **update** and **delete**. The summary under the grid shows what the account can do.
 
 ### Add a user
+
+![Adding a user and ticking permissions per feature](../images/studio/permissions.png)
 
 1. Open **Users & audit > Users & permissions**, then **Add a user**.
 2. Enter the username and a first password of at least 12 characters, and keep the role `user`.

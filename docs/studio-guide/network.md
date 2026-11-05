@@ -9,6 +9,8 @@ and [On-prem networking](../onprem-network.md).
 
 ## Read the network map in studio
 
+![The network map of a cluster](../images/studio/network.png)
+
 The studio network map is a diagram of machines and arrows.
 
 1. Open **Network map**. If nothing is set up yet, it says to save a server under Resources → Servers, then deploy to
@@ -25,6 +27,8 @@ The studio network map is a diagram of machines and arrows.
 6. **Refresh** reloads the map.
 
 ## See the ports one machine must allow
+
+![One machine selected, with the ports it must allow](../images/studio/network-machine.png)
 
 The details card of a selected machine lists its connections in two tables:
 

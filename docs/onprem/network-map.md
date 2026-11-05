@@ -30,6 +30,8 @@ Each arrow is labelled with its ports; hover it for every port, protocol, level 
 
 ## Open the network map in studio
 
+![The network map of a cluster](../images/studio/network.png)
+
 The studio shows the on-prem network map on the **Network map** page.
 
 1. Open **Network map** in the sidebar. The page reads the project's servers, deployments, clusters, load balancers

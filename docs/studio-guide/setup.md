@@ -8,6 +8,8 @@ Everything runs where pskit studio runs. Sidebar: **Setup & credentials** (⚙).
 
 ## Check tools and credentials in studio
 
+![The Setup & credentials page with its checks](../images/studio/setup.png)
+
 The Setup page runs the same checks as `pskit doctor` for one provider.
 
 1. Open **Setup & credentials**. The **Provider** list starts on the top bar's provider; pick another to check it.
