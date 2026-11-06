@@ -54,7 +54,7 @@ send`, **Browse account** in studio and Step Functions executions need it on you
 The studio **Setup & credentials** page runs the same checks as `pskit doctor` for the provider you pick.
 
 1. Start studio in the project folder: `pskit studio --open`.
-2. In the sidebar, click **Setup & credentials**.
+2. Open **Setup & credentials**: add `#/setup` to the studio URL.
 3. In the **Provider** list at the top, pick **AWS Lambda**. Pick your **Operating system** so install steps match it.
 4. Read the **Checks** list. Each row shows a status (missing, check, optional or OK). Click **How to fix** on a row to
    see the download link and the commands for your OS.

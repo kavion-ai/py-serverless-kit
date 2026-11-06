@@ -5,8 +5,9 @@ Search terms: resources page, add resource, bucket, queue, topic, database, cach
 The **Resources** page declares the buckets, queues, topics, databases, caches and other services your functions use,
 once for every cloud. Sidebar: **Resources** (▤); the number counts resources. It edits `resources:` (and, for
 on-prem drivers on another provider, `providers.onprem.resources`). The page also holds the
-[On-prem services](onprem-services.md) panel with the [Servers](servers.md) panel, the **Test a resource** section and
-the **In the cloud** section.
+[On-prem servers](servers.md) and [On-prem services](onprem-services.md) panels, the **Test a resource** section and
+the **In the cloud** section. With the `onprem` provider the order follows setup: servers, then services, then the
+resources table. Other providers show the resources table first.
 
 ## Read the resources table in studio
 

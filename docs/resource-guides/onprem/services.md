@@ -92,7 +92,7 @@ with the main port: a second RabbitMQ on port 5682 gets its UI on 15682.
 6. **Deploy**, then test with **Resources → Test** or `pskit resources send <key>`.
 
 Each row then offers **Details** (container state, health, endpoint, credentials with *Show values*, the container
-log), **Backup**, **Add to pskit.yml** (if you removed it from the file) and **Remove** (keep or delete the data volume;
+log), **Backup**, **Add to resources** (if you removed it from the file) and **Remove** (keep or delete the data volume;
 the resource and its triggers are taken out of the draft).
 
 ## Credentials and network
@@ -326,7 +326,7 @@ Good to know:
 
 ## Servers: several machines
 
-Save each machine once under **On-prem services → Servers → + Add server** (name, host, user, port, *Log in with*,
+Save each machine once under **On-prem servers → + Add server** (name, host, user, port, *Log in with*,
 sudo), or with the CLI. Every place that asks *where* then offers it: the create form's **Server** list, **Deploy →
 Machine**, the shell and the terminal.
 

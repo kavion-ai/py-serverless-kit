@@ -68,7 +68,7 @@ export function ReplicationForm(props: {
         help={
           local
             ? "Every member on this machine, each on its own port: to try replication. Production replicas belong on other servers."
-            : "One member per saved server (Servers, below). Docker is installed on each server when missing."
+            : "One member per saved server (Resources → On-prem servers). Docker is installed on each server when missing."
         }
       >
         <Segmented

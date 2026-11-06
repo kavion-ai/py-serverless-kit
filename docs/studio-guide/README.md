@@ -80,8 +80,8 @@ The studio sidebar lists the same 13 pages for every provider, in this order. A 
 
 | # | Sidebar label | Page guide | What you do there |
 |---|---|---|---|
-| 1 | Overview & provider | [overview.md](overview.md) | Service name, provider cards, defaults for every function, provider options, on-prem deployment |
-| 2 | Setup & credentials | [setup.md](setup.md) | Tool and credential checks, AWS profile, session variables, `.venv`, move settings to another machine |
+| 1 | Overview & provider | [overview.md](overview.md) | Service name, provider cards, defaults for every function, provider options |
+| - | Setup & credentials (not in the sidebar: add `#/setup` to the URL) | [setup.md](setup.md) | Tool and credential checks, AWS profile, session variables, `.venv`, move settings to another machine |
 | 3 | Functions | [functions.md](functions.md) | Function table and the 4-step **Create function** wizard; trigger forms in [trigger-forms.md](trigger-forms.md) |
 | 4 | Workflows | [workflows.md](workflows.md) | Visual state-machine builder |
 | 5 | Resources | [resources.md](resources.md) | Buckets, queues, topics, databases; drivers; tester; data viewer; [on-prem services](onprem-services.md) and [servers](servers.md) |

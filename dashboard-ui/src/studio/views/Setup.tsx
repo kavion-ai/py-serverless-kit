@@ -598,8 +598,8 @@ function OnPremConnection() {
         />
       )}
       <p className="muted small">
-        More deploy settings (remote path, install mode, image…) are on <a href={href("overview")}>Overview &amp; provider</a>. Save
-        pskit.yml after changing them.
+        More deploy settings (remote path, install mode, image…) are under <code className="mono">provider.options.deploy</code> on the{" "}
+        <a href={href("yaml")}>YAML</a> page. Save pskit.yml after changing them.
       </p>
     </Section>
   );

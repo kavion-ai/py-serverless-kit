@@ -59,7 +59,7 @@ as set or missing.
 The studio **Setup & credentials** page checks the Azure CLI, the login and the subscription id.
 
 1. Run `pskit studio --open` in the project folder.
-2. In the sidebar, click **Setup & credentials**. In **Provider**, pick **Azure Functions**.
+2. Open **Setup & credentials**: add `#/setup` to the studio URL. In **Provider**, pick **Azure Functions**.
 3. On the credentials check, click **Sign in (az login)**. A browser window opens; the command output appears in the
    **Running: az login** section.
 4. In the **Environment variables** section, type your subscription id next to `ARM_SUBSCRIPTION_ID` and click **Set

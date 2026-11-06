@@ -41,7 +41,7 @@ export TENCENTCLOUD_REGION=ap-guangzhou       # optional default region
 pskit doctor -p tencent
 ```
 
-In studio: sidebar **Setup & credentials** → **Provider** **Tencent Cloud SCF** → in **Environment variables** fill
+In studio: **Setup & credentials** (add `#/setup` to the studio URL) → **Provider** **Tencent Cloud SCF** → in **Environment variables** fill
 `TENCENTCLOUD_SECRET_ID`, `TENCENTCLOUD_SECRET_KEY` and `TENCENTCLOUD_REGION` → **Set for this session** → **Check
 again**.
 

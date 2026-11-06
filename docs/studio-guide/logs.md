@@ -64,7 +64,7 @@ The **Log level** of a function is set in step 3 of the [function
 wizard](functions.md#wizard-step-3-environment--permissions): **inherit**, **DEBUG**, **INFO**, **WARNING** or
 **ERROR**. It writes `PSKIT_LOG_LEVEL` into the function's environment, and `ctx.logger` output below that level is
 dropped. For every function at once, set `PSKIT_LOG_LEVEL` under **Environment variables** on [Overview](overview.md).
-On premises, the host's own level is **Host tuning → log_level**.
+On premises, the host's own level is `provider.options.log_level` in `pskit.yml`.
 
 ## See also
 

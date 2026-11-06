@@ -6,6 +6,13 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [2.13.2] - 2026-11-06
+
+### Changed
+- **Studio Resources: on-prem servers and services are now two separate cards.** With the on-prem provider the page shows **On-prem servers** (**+ Add server**) first, then **On-prem services** (**+ Create service**), then the resource list. Other providers keep the resource list on top. The services card has a note: to use a service in a function, first add it to Resources. The row button **Add to pskit.yml** is now **Add to resources**.
+- **Studio Overview & provider no longer has On-premises deployment, Built-in services, Host tuning or Packaging.** The settings still work: edit `provider.options` and `package:` on the **YAML** page, and pick a machine on **Deploy**. Problems reported on them now open the **YAML** page.
+- **Setup & credentials is no longer in the studio sidebar.** Add `#/setup` to the studio URL, or use `pskit doctor`.
+
 ### Added
 - **Pick the dead-letter queue from a list** on a queue trigger in the studio, or type a new name.
 - **Plain help with an example** on every trigger type and its fields, and on the function's basics, environment variables,

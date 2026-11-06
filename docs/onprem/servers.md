@@ -50,9 +50,6 @@ The studio adds a saved server from the *Servers* card on the Resources page, or
    memory, free disk, Docker (and whether it is usable directly or via sudo), sudo, and installed Python, Node.js and
    nginx. A failed login shows the error under the row.
 
-The Overview page has the same form: **Overview & provider → On-premises deployment → Saved server → + Add a
-server…** (or **+ Add server**). A server saved there also becomes the deploy target of the stage.
-
 You can also ask Hana (the **Ask Hana** button): paste the IP, the SSH user and the `.pem` path, an
 `ssh -i key.pem ubuntu@1.2.3.4` command, or Terraform outputs such as `public_ip = "..."`, and she adds the server.
 See [Hana](../assistant.md).

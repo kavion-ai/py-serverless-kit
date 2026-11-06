@@ -13,7 +13,7 @@ and [On-prem networking](../onprem-network.md).
 
 The studio network map is a diagram of machines and arrows.
 
-1. Open **Network map**. If nothing is set up yet, it says to save a server under Resources → Servers, then deploy to
+1. Open **Network map**. If nothing is set up yet, it says to save a server under Resources → On-prem servers, then deploy to
    it, create a cluster, a load balancer or a service.
 2. Nodes are your saved servers, other addresses pskit knows from a deploy or a service, and the special nodes **This
    machine (pskit)**, **Users / clients** and **Internet**.

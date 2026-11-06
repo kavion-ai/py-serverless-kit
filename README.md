@@ -153,7 +153,7 @@ More: [New project guide](https://github.com/kavion-ai/py-serverless-kit/blob/ma
 
 ## 4. Check your tools and credentials
 
-Open **Setup & credentials**. It checks what this machine needs to deploy to the provider you picked, and shows how to fix what is missing. Then click **Check again**.
+Open **Setup & credentials**: add `#/setup` to the studio URL. It checks what this machine needs to deploy to the provider you picked, and shows how to fix what is missing. Then click **Check again**.
 
 ![The Setup & credentials page with its checks](./docs/images/studio/setup.png)
 

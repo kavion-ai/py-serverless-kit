@@ -208,7 +208,7 @@ dashboard: **Executions** → click a run → **Cancel**.
 
 The on-prem host keeps the newest 500 finished execution records (`provider.options.execution_retention`) and runs up
 to 8 executions at once (`provider.options.workflow_workers`). Runs left `RUNNING` when the host restarts become
-`ABORTED`. In studio: **Overview & provider** → **Host tuning**. `workflows.<name>.timeout` (seconds) ends a run as
+`ABORTED`. In studio: the **YAML** page. `workflows.<name>.timeout` (seconds) ends a run as
 `TIMED_OUT` on every engine.
 
 ## Turn a workflow off on one provider

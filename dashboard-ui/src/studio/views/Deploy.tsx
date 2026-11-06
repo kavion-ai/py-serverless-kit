@@ -341,7 +341,7 @@ export function DeployView() {
           )}
           <span className="muted small">
             The stage remembers the machine of its last deploy: Test, Logs and <code className="mono">pskit trigger</code> / <code className="mono">pskit logs</code> use it, and the next deploy goes there unless you pick another (<code className="mono">--server local</code> for this machine).{" "}
-            Saved servers come from <b>Resources → On-prem services → Servers</b>. The same as <code className="mono">pskit deploy --server NAME</code>; to make it permanent per stage set{" "}
+            Saved servers come from <b>Resources → On-prem servers</b>. The same as <code className="mono">pskit deploy --server NAME</code>; to make it permanent per stage set{" "}
             <code className="mono">provider.options.deploy.server</code>. Use one stage per machine to keep their deployments apart.
           </span>
             </>

@@ -39,7 +39,7 @@ same files as `pskit init`.
 5. Click **Create project**. If files already exist, a *Files already exist* dialog offers **Overwrite**.
    Page details: [studio-guide/new-project.md](../studio-guide/new-project.md).
 
-Studio opens with the sidebar on the left: **Overview & provider**, **Setup & credentials**, **Functions**,
+Studio opens with the sidebar on the left: **Overview & provider**, **Functions**,
 **Workflows**, **Resources**, **Scaling cluster**, **Load balancers**, **Network map**, **Code**, **Test**,
 **Deploy**, **Logs**, **YAML**. The top bar has **stage**, undo / redo, the
 problems counter, **Validate**, **Save**, **⇅ Settings** and the theme switch. Page guide:
@@ -63,7 +63,7 @@ when they have problems.
 The **Setup & credentials** page checks the tools and credentials this machine needs to deploy, the same as
 `pskit doctor`.
 
-1. Click **Setup & credentials**. Pick **Provider**: *AWS Lambda* and your **Operating system**.
+1. Open **Setup & credentials**: add `#/setup` to the studio URL. Pick **Provider**: *AWS Lambda* and your **Operating system**.
 2. Read **Checks**: each row is *ready*, *missing*, *check* or *optional*. Click **How to fix** on a missing row
    for install steps.
 3. No AWS credentials yet? Open **AWS credentials (aws configure)**, fill **Profile**, **Access key ID**,
@@ -95,8 +95,8 @@ inherits.
    | `CACHE_URL` | `${env:CACHE_URL, }` |
 
 5. **Tags**: add `team` = `shop`.
-6. **Packaging**: **Exclude globs** `tests/**`.
-7. Click **Save**.
+6. Click **Save**.
+7. To leave tests out of the bundle, open **YAML**, add `package: {exclude: ["tests/**"]}`, and click **Save**.
 
 Page details: [studio-guide/overview.md](../studio-guide/overview.md).
 

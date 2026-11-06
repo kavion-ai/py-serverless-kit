@@ -61,7 +61,7 @@ pskit doctor -p gcp
 The studio **Setup & credentials** page checks gcloud, ADC and the project.
 
 1. Run `pskit studio --open` in the project folder.
-2. Sidebar **Setup & credentials** → **Provider**: pick **Google Cloud Functions**.
+2. **Setup & credentials** (add `#/setup` to the studio URL) → **Provider**: pick **Google Cloud Functions**.
 3. On the **Google Cloud credentials** check, click **Sign in (gcloud ADC)**. It runs
    `gcloud auth application-default login`, opens a browser, and shows the output in **Running: ...**.
 4. In **Environment variables**, set `GOOGLE_CLOUD_PROJECT` (or `GOOGLE_APPLICATION_CREDENTIALS` for a key file) and

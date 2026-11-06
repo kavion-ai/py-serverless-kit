@@ -77,7 +77,7 @@ pskit resources onprem servers test app1     # OS, CPU, memory, disk, Docker acc
 `add` logs in once to test (`--no-test` skips it). Not root? Add `--sudo`. Password login: `--ssh-password-env
 VAR`. Optional per-server defaults: `--home`, `--bind`, `--data-dir`.
 
-**In studio**: **Resources** → scroll to **On-prem services** → **Servers** → **+ Add server**. In **Add a
+**In studio**: **Resources** → scroll to **On-prem servers** → **+ Add server**. In **Add a
 server** fill **Name** `app1`, **Host** `10.0.0.5`, **User** `root`, **SSH port** `22`, **Log in with** **Key file
 (.pem)**, **Private key (.pem)**; optional **Use sudo**, **Home path**, **Bind address**, **Data directory**,
 **Description**. Click **Save and test**. Repeat for the others. Each row has **Test**, **Live**, **Shell**,

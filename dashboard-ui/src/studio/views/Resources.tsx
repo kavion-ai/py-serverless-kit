@@ -283,6 +283,8 @@ export function ResourcesView({ rest }: { rest: string[] }) {
           </span>
         }
       />
+      {/* On premises the order is the setup order: servers, then services, then the resources functions use. */}
+      {onpremTarget && <OnPremServices onGuide={setGuide} key={onpremVersion} />}
       {notDeclared.length > 0 && (
         <div className="hint-box row-gap wrap">
           <span>
@@ -308,7 +310,7 @@ export function ResourcesView({ rest }: { rest: string[] }) {
       <div id="resource-test">
         <ResourceTester key={testing || ""} selected={testing} onSelect={setTesting} />
       </div>
-      <OnPremServices onGuide={setGuide} key={onpremVersion} />
+      {!onpremTarget && <OnPremServices onGuide={setGuide} key={onpremVersion} />}
       {createOnprem && onprem && (
         <CreateDrawer
           state={onprem}

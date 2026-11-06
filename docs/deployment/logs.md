@@ -115,7 +115,7 @@ The on-prem host records everything into one log:
 - host notes (source `host`): failed schedules, unreachable services, runs aborted by a restart, the listen address.
 
 The newest 5000 entries stay in memory and every entry is appended to `<data_dir>/logs/host.jsonl` (rotated at 10 MiB,
-three old files kept). Tune it under `provider.options` (studio: **Overview & provider** → **Host tuning**):
+three old files kept). Tune it under `provider.options` (studio: the **YAML** page):
 
 ```yaml
 provider:

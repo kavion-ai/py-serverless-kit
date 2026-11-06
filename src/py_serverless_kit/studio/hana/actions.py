@@ -849,7 +849,7 @@ def how_to(kind: str, root: Path, names: List[str], service: Optional[Dict[str, 
                 + scaling
                 + f"{n}. Set the name, then click **Create**. Docker is installed on the server when missing; the log "
                 "shows the progress, and the password is saved in the project's env file, not in pskit.yml.\n"
-                f"{n + 1}. On its row, click **Add to pskit.yml** so your functions get its connection.\n\n"
+                f"{n + 1}. On its row, click **Add to resources** so your functions get its connection.\n\n"
                 "**In the terminal**\n```bash\n"
                 f"pskit resources onprem create {key} --service {sid} --server {server}\n"
                 f"pskit resources onprem create {key} --service {sid} --cluster {clusters[0] if clusters else 'cluster-1'}"
@@ -861,7 +861,7 @@ def how_to(kind: str, root: Path, names: List[str], service: Optional[Dict[str, 
                 + f"\n\nWant me to prepare it? Say for example \"create {sid} on {server}\".")
     elif kind == "server":
         text = ("Steps to add a server:\n\n**In studio**\n"
-                "1. Open **Resources** > **On-prem services**, then **Servers** > **+ Add server** (or **Scaling "
+                "1. Open **Resources** > **On-prem servers** > **+ Add server** (or **Scaling "
                 "cluster** > **+ Add a server**).\n"
                 "2. Enter a name, the host (IP or DNS name), the SSH user and port.\n"
                 "3. **Log in with**: a private key (a file path or pasted key text), the SSH agent, or a password.\n"

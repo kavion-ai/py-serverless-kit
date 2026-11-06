@@ -88,7 +88,7 @@ pskit runs the AWS-compatible servers without building or pushing an image (code
 4. `docker start` runs `python /app/server.py` or `node /app/server.js`. The health check is
    `python /app/server.py --check` / `node /app/server.js --check`.
 5. pskit writes the credentials to the project's env file (default `.env.onprem`) and adds the resource to
-   `pskit.yml` (with `--save` on the CLI, or *Add to pskit.yml* / the automatic add in studio).
+   `pskit.yml` (with `--save` on the CLI, or *Add to resources* / the automatic add in studio).
 
 The container gets these settings from pskit; you do not set them yourself:
 

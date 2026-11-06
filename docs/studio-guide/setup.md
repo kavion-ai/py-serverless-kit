@@ -3,7 +3,7 @@
 Search terms: setup, credentials, doctor, prerequisites, terraform missing, aws configure, AWS profile, az login, gcloud login, aws sso, environment variables, virtual environment, venv, npm install, export settings, import settings, move to another machine
 
 The **Setup & credentials** page checks what this machine needs to deploy: tools, credentials and provider settings.
-Everything runs where pskit studio runs. Sidebar: **Setup & credentials** (⚙). It is the studio side of
+Everything runs where pskit studio runs. It is not in the sidebar: add `#/setup` to the studio URL, or follow the link on the **Logs** page. It is the studio side of
 `pskit doctor`. Node.js and npm are checked for Node.js projects. The full list, with install steps for every system, is in
 [Requirements](../requirements.md).
 

@@ -23,7 +23,7 @@ The studio on-prem services table lists the services created from this project.
 | **Endpoint** | `address:port` |
 
 Row buttons: **How to use** (**DNS guide** for SMTP), **Details**, **Browse** / **Browse secrets** (services with a
-pskit browser), **Console**, **Terminal**, **Add to pskit.yml** (when it is not in the project), **Backup**
+pskit browser), **Console**, **Terminal**, **Add to resources** (when it is not in the project), **Backup**
 (services that support it) and **Remove**. The header has **Guide** and **+ Create service**.
 
 ## Create an on-prem service in studio

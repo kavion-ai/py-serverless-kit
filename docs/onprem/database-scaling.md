@@ -42,7 +42,7 @@ On-prem database replication follows these rules (pskit refuses other layouts wi
 
 The studio creates a replicated database from the **Resources** page.
 
-1. Save every server first (**Resources → Servers**): one for the primary, one per replica, and one for the load
+1. Save every server first (**Resources → On-prem servers**): one for the primary, one per replica, and one for the load
    balancer if you want one (it may share a server with a member).
 2. In the **On-prem services** card click **+ Create service** and pick **PostgreSQL**, **MySQL**, **MariaDB** or
    **MongoDB**.

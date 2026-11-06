@@ -46,7 +46,7 @@ asks first.
 
 ## Setup, logs and provider differences
 
-- **Setup & credentials** runs the same checks as `pskit doctor` for the provider in the top bar: Terraform, the cloud's CLI, credentials, required provider options and, for on premises, ssh/scp/Docker and the key file. Each problem shows the download link and the steps for Windows, macOS or Linux. You can also:
+- **Setup & credentials** (not in the sidebar: add `#/setup` to the studio URL) runs the same checks as `pskit doctor` for the provider in the top bar: Terraform, the cloud's CLI, credentials, required provider options and, for on premises, ssh/scp/Docker and the key file. Each problem shows the download link and the steps for Windows, macOS or Linux. You can also:
   - save an AWS access key as a profile in `~/.aws`;
   - set provider variables such as `ARM_SUBSCRIPTION_ID` or `CLOUDFLARE_API_TOKEN` for this studio session only (secret values are never sent back to the browser);
   - start a browser login (`az login`, `gcloud auth application-default login`, `aws sso login`);
@@ -126,7 +126,7 @@ The **Test** page (or **Test** on a function row) sends events to a function:
 - **Resources → + On-prem service** creates a one-click service and adds it straight to the resource list (with
   triggers); **Add resource** has *Create a <type> on premises*. Services not yet in `pskit.yml` appear above the list
   with an **Add** button, and rows backed by one are marked `on-prem <service> · <server>`.
-- **On-prem services → Servers**: save several SSH machines (key file, agent or password), test them (OS, CPU,
+- **On-prem servers**: save several SSH machines (key file, agent or password), test them (OS, CPU,
   memory, disk, Docker, sudo), open a **Shell** or a full browser **Terminal**, and *Install / create* Node.js (22 /
   20 / 18), nginx, Java, Go, Caddy, Certbot, PM2, Git and tools. The create form's **Server** list and **Deploy →
   Machine** pick one. Every service has a **Console** (redis-cli, psql, mongosh, rpk, bao, ... or a shell in its

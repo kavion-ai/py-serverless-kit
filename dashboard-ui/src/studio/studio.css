@@ -509,6 +509,7 @@ details.advanced > summary { cursor: pointer; font-weight: 600; color: var(--mut
 .row-between { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
 .onprem-services { margin-top: 16px; }
 .onprem-services .table { margin-top: 8px; }
+.onprem-services .hint-box { margin-top: 8px; }
 .catalog-group { margin-bottom: 16px; }
 .catalog-group h4 { margin: 0 0 8px; color: var(--muted); font-weight: 600; }
 .catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; }

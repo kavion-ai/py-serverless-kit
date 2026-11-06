@@ -98,7 +98,7 @@ The **Run on** bar appears on the Deploy page when the target provider is `onpre
   each group's **Runs on** decides.
 
 A badge shows where the stage is deployed now and the deployed groups and load balancers. Saved servers come from
-[Resources → On-prem services → Servers](servers.md). To make the choice permanent per stage, set
+[Resources → On-prem servers](servers.md). To make the choice permanent per stage, set
 `provider.options.deploy.server`. Use one stage per machine to keep deployments apart.
 
 The **Where functions run** section below the bar is the [placement editor](placement.md), and the **Firewall**

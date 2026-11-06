@@ -98,7 +98,7 @@ export function LoadBalancersView({ rest }: { rest: string[] }) {
           </p>
           <ol className="small cluster-steps">
             <li>
-              Save one more server for it (<a href={href("resources")}>Resources → On-prem services → Servers</a>, or <b>Add a server</b> in the form): it
+              Save one more server for it (<a href={href("resources")}>Resources → On-prem servers</a>, or <b>Add a server</b> in the form): it
               must not be part of a cluster.
             </li>
             <li>

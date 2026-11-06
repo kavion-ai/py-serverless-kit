@@ -63,9 +63,8 @@ An on-prem project in studio goes from nothing to deployed functions with a serv
 
 1. Start studio with `pskit studio` in the project folder (see [studio guide](../studio-guide/README.md)).
 2. In the top bar pick **onprem** as the target provider (or create the project with the onprem provider).
-3. Save a server: **Resources → Servers → + Add server** (or **Overview & provider → On-premises deployment → +
-   Add server**), then **Save and test**. See [saved servers](servers.md).
-4. Choose where the functions run: **Overview & provider → On-premises deployment → Saved server**.
+3. Save a server: **Resources → On-prem servers → + Add server**, then **Save and test**. See [saved servers](servers.md).
+4. Choose where the functions run: **Deploy → Run on → One machine → Machine**.
 5. Create a service the functions use: **Resources → + On-prem service**, pick for example **Redis**, set **Where:
    One SSH server** and the server, tick the **Trigger functions**, **Create**. See [on-prem services](services/README.md).
 6. Click **Save** in the top bar, then open **Deploy** and deploy the stage.

@@ -9,7 +9,7 @@ measure. For cloud monitoring and the deployment dashboard, see
 
 | Where | What it shows |
 |---|---|
-| Resources → Servers → **Live** | One server's CPU, RAM and disk, every 4 s |
+| Resources → On-prem servers → **Live** | One server's CPU, RAM and disk, every 4 s |
 | Resources → On-prem services → **Details** → **Live monitoring** | Every container of a service, connections, data size, replica lag |
 | Resources → On-prem services → **Details** → **Alerts** | Alerts for one service |
 | Scaling cluster → **Servers** and **When every server is full** | See [cluster.md](cluster.md#alert-when-every-cluster-server-is-full) |

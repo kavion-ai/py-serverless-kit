@@ -46,7 +46,7 @@ pskit doctor -p alibaba
 `pskit doctor` reports `ALICLOUD_ACCESS_KEY / ALICLOUD_SECRET_KEY set`, or the `~/.aliyun/config.json` file when a
 profile is configured.
 
-In studio: sidebar **Setup & credentials** → **Provider** **Alibaba Cloud Function Compute** → in **Environment
+In studio: **Setup & credentials** (add `#/setup` to the studio URL) → **Provider** **Alibaba Cloud Function Compute** → in **Environment
 variables** type the values next to `ALICLOUD_ACCESS_KEY`, `ALICLOUD_SECRET_KEY` and `ALICLOUD_REGION` → **Set for this
 session** → **Check again**.
 

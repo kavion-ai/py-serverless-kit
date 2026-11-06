@@ -90,8 +90,7 @@ provider:
 | `execution_retention`, `workflow_workers`, `log_buffer`, `log_level`, `capture_output` | 500, 8, 5000, `INFO`, `true` | Host tuning. |
 
 Studio: **Overview & provider** -> **On-premises options** (**Bind address**, **Port**, **Advertised URL**, **Data
-directory**, **Poll interval (s)**, **Admin token**), then the sections **On-premises deployment**, **Built-in
-services** and **Host tuning**.
+directory**, **Poll interval (s)**, **Admin token**). Edit `deploy`, `services` and the host tuning keys on the **YAML** page.
 
 ## Choose the built-in on-prem services (options.services)
 
@@ -116,7 +115,7 @@ options:
 
 A single queue, bucket or topic can instead live in a real service (Redis, S3/MinIO, SQS, Azure Queue, Pub/Sub, ...):
 declare it under `resources:` with `options.driver`. See [onprem/resources.md](../../onprem/resources.md) and
-[onprem/cloud-resources.md](../../onprem/cloud-resources.md). Studio: **Overview & provider** -> **Built-in services**.
+[onprem/cloud-resources.md](../../onprem/cloud-resources.md). Studio: **Resources** -> the resource's **On-premises driver**.
 
 ## Run on several servers: cluster, placement and balancer options
 
@@ -217,8 +216,8 @@ The bundle is written to `.pskit/onprem-<stage>/onprem_app/`. See [deploy-method
 
 1. Run `pskit studio --open`.
 2. **Overview & provider** -> click the **On-premises** card -> confirm the switch.
-3. Set **Port** (and **Bind address** `0.0.0.0` for a server). In **On-premises deployment** pick a **Saved server** or
-   a **Deploy method** (**This machine**, **SSH server**, **Docker**). For SSH, click **Test SSH connection**.
+3. Set **Port** (and **Bind address** `0.0.0.0` for a server). Save the server under **Resources** ->
+   **On-prem servers** -> **+ Add server**.
 4. Click **Save**.
 5. **Deploy** -> under **Run on** choose **One machine** (then **Machine**) or **Scaling cluster** -> click **Deploy**
    -> confirm. The output has a **Steps** tab and a **Raw log** tab.

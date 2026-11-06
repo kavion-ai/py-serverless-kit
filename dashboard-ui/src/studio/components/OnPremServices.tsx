@@ -123,6 +123,13 @@ export function OnPremServices({ onGuide }: { onGuide: (ref: GuideRef) => void }
   };
 
   return (
+    <>
+    <ServersPanel
+      onInstall={(name) => {
+        setCreateServer(name);
+        setCreating("pick");
+      }}
+    />
     <div className="card card-pad onprem-services">
       <div className="row-between">
         <div>
@@ -141,6 +148,10 @@ export function OnPremServices({ onGuide }: { onGuide: (ref: GuideRef) => void }
             + Create service
           </button>
         </span>
+      </div>
+      <div className="hint-box small">
+        <span><b>To use a service in a function (Lambda), first add it to Resources:</b> click <b>Add to resources</b> on its row, then <b>Save</b>. Functions get its
+        connection only from the resource list. A service you create here is added for you, and still needs <b>Save</b>.</span>
       </div>
       {error && <div className="form-error">{error}</div>}
       {state && !state.services.length && <p className="muted">Nothing created yet.</p>}
@@ -204,8 +215,8 @@ export function OnPremServices({ onGuide }: { onGuide: (ref: GuideRef) => void }
                       </button>
                     )}
                     {svc.kind === "service" && !inProject(svc.key) && (
-                      <button type="button" className="btn btn-sm" onClick={() => void addToProject(svc)} title="Add the resource (and its triggers) to pskit.yml">
-                        Add to pskit.yml
+                      <button type="button" className="btn btn-sm" onClick={() => void addToProject(svc)} title="Add the resource (and its triggers) to pskit.yml, so functions can use it">
+                        Add to resources
                       </button>
                     )}
                     {state.catalog.find((c) => c.id === svc.service)?.backup && (
@@ -246,13 +257,8 @@ export function OnPremServices({ onGuide }: { onGuide: (ref: GuideRef) => void }
       {browse && <ServiceBrowser serviceKey={browse.key} kinds={browse.kinds} onClose={() => setBrowse(null)} />}
       {consoleKey && <ServiceConsole serviceKey={consoleKey} onClose={() => setConsoleKey(null)} />}
       {terminalKey && <TerminalDrawer request={{ key: terminalKey }} onClose={() => setTerminalKey(null)} />}
-      <ServersPanel
-        onInstall={(name) => {
-          setCreateServer(name);
-          setCreating("pick");
-        }}
-      />
     </div>
+    </>
   );
 }
 
@@ -421,7 +427,7 @@ export function CreateDrawer({
         ? "1 to 9 replicas"
         : null
       : servers.length < 2
-        ? "save at least two servers first (Servers, below): one for the primary, one per replica"
+        ? "save at least two servers first (Resources → On-prem servers): one for the primary, one per replica"
         : !primaryServer
           ? "pick the server that takes the writes"
           : !replicaServers.length

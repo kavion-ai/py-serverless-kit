@@ -108,7 +108,7 @@ and last error, plus queue depths. Counters reset when the host restarts. The li
 
 Saved on-prem servers have a live usage view in studio.
 
-1. Open **Resources** → **On-prem services** → **Servers**.
+1. Open **Resources** → **On-prem servers**.
 2. Click **Live** on a server row (it turns into **Live ●**).
 3. The row shows **CPU** (cores and load), **RAM** and **Disk** bars with small history graphs. They refresh every
    4 seconds while on. Click again to stop.

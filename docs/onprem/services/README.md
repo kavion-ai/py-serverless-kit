@@ -113,7 +113,7 @@ service page lists the fields that differ.
    deploy so the host gets the new env file.
 
 Services created earlier but missing from `pskit.yml` show in a hint box at the top of the Resources page
-(*On-prem services not in the resource list yet*) and as **Add to pskit.yml** on their row.
+(*On-prem services not in the resource list yet*) and as **Add to resources** on their row.
 
 ## Create an on-prem service from the terminal
 
@@ -180,7 +180,7 @@ Endpoint). The buttons:
 | **Browse** / **Browse secrets** | pskit's own browser for buckets (S3, Cloud Storage) or secrets (OpenBao, Secrets Manager) | none |
 | **Console** | run one command with the service's client, or *Shell in the container* | `pskit resources onprem console KEY "..."` |
 | **Terminal** | a full terminal in the browser | `pskit resources onprem terminal KEY` |
-| **Add to pskit.yml** | add the resource again (shown when it is missing) | `create ... --save` |
+| **Add to resources** | add the resource again (shown when it is missing) | `create ... --save` |
 | **Backup** | dump the data to `.pskit/backups/` or a folder you pick | `pskit resources onprem backup KEY [--dir DIR]` |
 | **Remove** | stop and delete the container; *Remove, keep data* or *Delete data too* | `pskit resources onprem remove KEY [--delete-data] [--save]` |
 

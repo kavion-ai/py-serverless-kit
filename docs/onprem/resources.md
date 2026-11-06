@@ -64,7 +64,7 @@ An on-prem service becomes a resource in one of three ways:
 
 1. **On create**: the studio's create form adds the resource (and the triggers you ticked) to the draft when the job
    finishes; the CLI does it with `--save`. Click **Save** in studio.
-2. **Later, in studio**: a service not in `pskit.yml` shows **Add to pskit.yml** on its row, and a button
+2. **Later, in studio**: a service not in `pskit.yml` shows **Add to resources** on its row, and a button
    *+ &lt;key&gt; (&lt;service&gt;)* in the hint *On-prem services not in the resource list yet* at the top of the
    Resources page.
 3. **By hand**: `pskit resources onprem create ...` without `--save` prints the YAML; paste it under `resources:`.

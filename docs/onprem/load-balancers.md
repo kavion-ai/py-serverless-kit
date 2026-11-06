@@ -57,7 +57,7 @@ balancer's port (80); each further deployment on the same cluster needs its own 
 
 **In studio**
 
-1. Save the load balancer server under **Resources → Servers** (it must not be in the cluster).
+1. Save the load balancer server under **Resources → On-prem servers** (it must not be in the cluster).
 2. Open **Scaling cluster**, select the cluster, find the **Load balancer** card and click **+ Set up load balancer**.
 3. In **Set up a load balancer for prod** pick the **Server**, the **Port** (default 80), optionally the **Address in
    the URL (optional)**, and **How it spreads requests** (the algorithm, plus **Weights (optional)**).

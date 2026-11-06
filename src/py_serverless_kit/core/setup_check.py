@@ -802,7 +802,7 @@ def _key_check(deploy: Dict[str, Any], required: bool) -> Dict[str, Any]:
     path = _key_path(deploy)
     title = "SSH private key"
     fix = _fix(
-        "Choose the .pem / private key file for the server (Overview > On-premises deployment > Private key).",
+        "Choose the .pem / private key file for the server (provider.options.deploy on the YAML page, or a saved server under Resources > On-prem servers).",
         steps=_steps(
             ['Remove access for other users: icacls key.pem /inheritance:r /grant:r "%USERNAME%:R"'],
             ["chmod 600 ~/.ssh/server.pem"],
@@ -866,7 +866,7 @@ def onprem_checks(raw: Optional[Dict[str, Any]]) -> List[Dict[str, Any]]:
                     "SSH host",
                     MISSING,
                     "options.deploy.host is empty",
-                    _fix("Set the server address on the Overview page (On-premises deployment)."),
+                    _fix("Set the server address: On-premises connection on the Setup page, or a saved server under Resources > On-prem servers."),
                 )
             )
         elif not _SAFE_HOST.match(host):

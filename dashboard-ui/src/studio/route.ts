@@ -44,6 +44,9 @@ export function navigate(view: View, ...rest: string[]): void {
   window.location.hash = href(view, ...rest);
 }
 
+/** On-prem `provider.options` keys with no form on the Overview page: they are edited in YAML. */
+export const YAML_ONLY_ONPREM_OPTIONS = new Set(["deploy", "services", "execution_retention", "workflow_workers", "log_buffer", "log_level", "capture_output"]);
+
 /** Where to go to fix an issue reported at `where`. */
 export function routeForWhere(where?: string): { view: View; rest: string[] } {
   if (!where) return { view: "yaml", rest: [] };
@@ -52,7 +55,7 @@ export function routeForWhere(where?: string): { view: View; rest: string[] } {
   if (head === "functions" && typeof name === "string") return { view: "functions", rest: [name] };
   if (head === "workflows" && typeof name === "string") return { view: "workflows", rest: [name] };
   if (head === "resources") return { view: "resources", rest: typeof name === "string" ? [name] : [] };
+  if (head === "provider" && path[1] === "options" && YAML_ONLY_ONPREM_OPTIONS.has(String(path[2]))) return { view: "yaml", rest: [] };
   if (head === "provider" || head === "service" || head === "providers") return { view: "overview", rest: [] };
-  if (head === "package") return { view: "overview", rest: [] };
   return { view: "yaml", rest: [] };
 }

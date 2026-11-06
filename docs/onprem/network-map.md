@@ -44,7 +44,7 @@ The studio shows the on-prem network map on the **Network map** page.
    level badge, reason), and **Used in** with links to the functions, clusters, load balancers or services.
 5. Click **Refresh** after a deploy or a change. Click the empty canvas to clear the selection.
 
-With no servers yet, the page says so: save a server under **Resources → Servers**, then deploy to it or create a
+With no servers yet, the page says so: save a server under **Resources → On-prem servers**, then deploy to it or create a
 cluster, a load balancer or a service.
 
 ## Where each saved server is used

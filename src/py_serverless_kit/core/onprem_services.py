@@ -2400,7 +2400,7 @@ def service_usage(root: Path, key: str, *, reveal: bool = False, probe: bool = T
         ))
     md.append(
         "## Use it from pskit functions\n\n"
-        f"Add it to `pskit.yml` (*Add to pskit.yml*, or it was added on create), then open **Resources → How to use** "
+        f"Add it to `pskit.yml` (*Add to resources*, or it was added on create), then open **Resources → How to use** "
         f"on `{key}`, or run `pskit resources usage {key}`: handler code, triggers and tests. Through the deployed "
         "host, scripts can also publish and browse with plain HTTP (shown there).\n"
     )

@@ -50,8 +50,8 @@ provider:
 ```
 
 If `provider.runtime` differs from the interpreter running `pskit`, validation warns and the host still uses the
-running one; set `python: bundle` to run exactly `provider.runtime`. In studio: **Overview & provider** ->
-**On-premises deployment** -> **Deploy method** **This machine**.
+running one; set `python: bundle` to run exactly `provider.runtime`. In studio: set it under
+`provider.options.deploy` on the **YAML** page.
 
 ## Deploy the on-prem host to a server over SSH (method ssh)
 
@@ -154,8 +154,8 @@ A saved server holds host, user, port, login, sudo and home path once (`pskit re
   `install`, ... stay. A `method` other than `ssh`, `scp` or `docker` becomes `ssh`.
 - For one run: `pskit deploy --server edge1` (or `PSKIT_DEPLOY_SERVER=edge1`); `--server local` deploys on this
   machine; `--cluster prod` (or `PSKIT_DEPLOY_CLUSTER=prod`) deploys on a scaling cluster.
-- In studio: **Overview & provider** -> **On-premises deployment** -> **Saved server** (or **+ Add server**), or per
-  run on **Deploy** -> **Run on** **One machine** -> **Machine**.
+- In studio: per run on **Deploy** -> **Run on** **One machine** -> **Machine**, or permanently under
+  `provider.options.deploy.server` on the **YAML** page.
 
 After a successful deploy, `.pskit/onprem-<stage>/onprem_deployed.json` records the server, login, port and admin token.
 The next `pskit deploy` without `--server` (and without `server`, `host` or a non-local `method` in `pskit.yml`) goes

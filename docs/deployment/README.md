@@ -133,7 +133,7 @@ pskit info -p onprem -s dev        # the endpoint, e.g. http://127.0.0.1:8080
 The SSH deploy method copies one `release.tar.gz` to a server with `scp`, then starts a process or a systemd unit
 and waits until `/__pskit/health` answers. The simplest setup is a saved server.
 
-1. Save the server once (studio: **Resources** → **On-prem services** → **Servers**):
+1. Save the server once (studio: **Resources** → **On-prem servers**):
 
    ```bash
    pskit resources onprem servers add edge1 --ssh root@10.0.0.5 --pem ~/.ssh/edge.pem

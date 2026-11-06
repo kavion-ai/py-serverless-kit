@@ -232,7 +232,7 @@ is missing, so CI can stop early.
 
 The studio **Setup & credentials** page runs the same checks and can fix several of them in place.
 
-1. Click **Setup & credentials** in the sidebar.
+1. Open **Setup & credentials**: add `#/setup` to the studio URL.
 2. Pick the **Provider** and the **Operating system** (guessed from your browser). The badge says *ready to deploy
    to PROVIDER*, *N missing* or *N to check*.
 3. In **Checks**, click **How to fix** on a row for links, steps for your OS and commands with **Copy**. Some rows

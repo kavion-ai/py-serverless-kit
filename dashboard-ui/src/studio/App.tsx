@@ -137,7 +137,6 @@ export function TokenScreen() {
 
 const NAV: { view: View; label: string; icon: string }[] = [
   { view: "overview", label: "Overview & provider", icon: "◎" },
-  { view: "setup", label: "Setup & credentials", icon: "⚙" },
   { view: "functions", label: "Functions", icon: "λ" },
   { view: "workflows", label: "Workflows", icon: "⇉" },
   { view: "resources", label: "Resources", icon: "▤" },

@@ -1,6 +1,6 @@
 {
   "name": "pskit",
-  "version": "2.13.1",
+  "version": "2.13.2",
   "description": "py-serverless-kit runtime for Node.js and TypeScript handlers (vendored into every bundle).",
   "main": "index.js",
   "types": "index.d.ts",

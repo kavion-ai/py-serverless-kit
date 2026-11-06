@@ -59,7 +59,7 @@ they happen. If the port never answers, the output ends with `nomad job status` 
 
 ![The New scaling cluster drawer](images/studio/cluster-new.png)
 
-1. **Save the servers** (once): *Resources → On-prem services → Servers → + Add server*, or
+1. **Save the servers** (once): *Resources → On-prem servers → + Add server*, or
 
    ```bash
    pskit resources onprem servers add edge1 --ssh root@10.0.0.5 --pem ~/.ssh/edge.pem

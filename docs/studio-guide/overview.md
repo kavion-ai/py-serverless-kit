@@ -82,43 +82,21 @@ The **<Provider> options** section (hint `provider.options`) shows the provider'
 project, the Azure subscription, the Oracle compartment or the Cloudflare account id. Required options are marked.
 Each provider's options are listed in [Providers](../providers/README.md).
 
-## Change packaging in studio
+## Change packaging and on-prem host settings in YAML
 
-The **Packaging** section (closed by default, hint `package`) edits `package:`:
+These settings have no form on this page. Edit them on the **YAML** page.
 
-| Field | Key | Default |
+| Setting | Key | Default |
 |---|---|---|
-| **Source directory** | `package.source` | `.` (relative to `pskit.yml`) |
-| **Requirements file** | `package.requirements` | `requirements.txt` |
-| **Exclude globs** | `package.exclude` | e.g. `tests/**`, `*.md` |
-| **Vendor dependencies** | `package.vendor` | provider decides; on = force `pip install` into the bundle, off = skip |
+| Source directory | `package.source` | `.` (relative to `pskit.yml`) |
+| Requirements file | `package.requirements` | `requirements.txt` |
+| Exclude globs | `package.exclude` | e.g. `tests/**`, `*.md` |
+| Vendor dependencies | `package.vendor` | provider decides; on = force `pip install` into the bundle, off = skip |
+| Where the on-prem host runs | `provider.options.deploy` | this machine |
+| Built-in queues, buckets and topics | `provider.options.services` | folders the host creates |
+| Host tuning | `provider.options`: `execution_retention`, `workflow_workers`, `log_buffer`, `log_level`, `capture_output` | 500, 8, 5000, `INFO`, on |
 
-## Choose where the on-prem host runs in studio
-
-The **On-premises deployment** section (hint `provider.options.deploy`) appears when the provider is `onprem`. It
-edits `provider.options.deploy`.
-
-1. **Saved server**: pick a server saved under [Resources → On-prem services → Servers](servers.md), or
-   **+ Add a server…** / **+ Add server** to open the server form. A saved server writes
-   `deploy: {method: ssh, server: NAME}` (or `docker`); its host, user, port and login come from the saved server.
-   **None: use the method below** clears it.
-2. **Where the host runs**: **This machine** (`local`), **SSH server** (`ssh`: scp plus a process or systemd) or
-   **Docker** (a container, locally or on a server over SSH).
-3. The fields under it depend on the method:
-
-   | Method | Fields |
-   |---|---|
-   | This machine | Python, Target OS, Target arch, Node.js, Node.js archive URL / SHA-256, Host Python |
-   | SSH server | SSH host (required), SSH user, SSH port, Private key (with **Browse…**), Known hosts, Use sudo, Remote path, Install as, Python, Target OS / arch, CPython archive URL / SHA-256, Node.js fields |
-   | Docker | Image, Container name, Docker host, Restart policy, Publish, Extra docker args, the SSH fields (optional), Install Docker on the server, Target OS / arch |
-
-4. With an SSH server (or Docker with a host) and no saved server, **Test SSH connection** runs
-   `ssh user@host echo pskit-ok` and shows **connected** or **failed: see the log**.
-
-A badge shows where this stage is deployed now, and the deployed function groups. Missing `ssh`, `scp` or Docker on
-this machine are checked on [Setup & credentials](setup.md).
-
-The written YAML for a saved server:
+To deploy a stage to a saved server every time:
 
 ```yaml
 provider:
@@ -129,19 +107,9 @@ provider:
       server: app-1
 ```
 
-From the terminal: `pskit deploy --server app-1` deploys to a saved server once; the YAML above makes it permanent.
-Details: [on-prem servers](../onprem/servers.md) and [on-prem provider](../providers/onprem/README.md).
-
-## Configure built-in services and host tuning for on-prem
-
-The **Built-in services** section (hint `provider.options.services`) sets where on-prem queues, buckets and topics
-live. For each of **Queue**, **Storage** and **Topic** choose **Built-in** (folders the host creates) or **Existing
-folder** with a path such as `/var/pskit/queues`. To attach an external queue or bucket per resource, use the
-[Resources page drivers](resources.md#pick-an-on-prem-driver-for-a-resource).
-
-The **Host tuning** section (closed by default) edits `provider.options` keys of the on-prem host:
-`execution_retention` (default 500), `workflow_workers` (8), `log_buffer` (5000), `log_level` (`INFO`; DEBUG to
-CRITICAL) and `capture_output` (on).
+For one deploy, pick the machine on **Deploy** -> **Run on** -> **Machine**, or run `pskit deploy --server app-1`. Save
+servers under [Resources -> On-prem servers](servers.md). Details: [on-prem servers](../onprem/servers.md) and
+[on-prem provider](../providers/onprem/README.md).
 
 ## See also
 

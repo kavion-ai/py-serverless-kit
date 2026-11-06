@@ -83,7 +83,7 @@ export function ClusterView({ rest }: { rest: string[] }) {
           <h3>No cluster yet</h3>
           <ol className="small cluster-steps">
             <li>
-              Save your servers once (<a href={href("resources")}>Resources → On-prem services → Servers</a>, or <b>Add a server</b> below).
+              Save your servers once (<a href={href("resources")}>Resources → On-prem servers</a>, or <b>Add a server</b> below).
             </li>
             <li>
               <b>+ New cluster</b>: choose the orchestrator and the master server. pskit installs it over SSH.

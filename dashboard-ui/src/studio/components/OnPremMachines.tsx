@@ -104,7 +104,7 @@ export function ServersPanel({ onInstall, onChanged }: { onInstall: (server: str
     <div className="card card-pad onprem-servers">
       <div className="row-between">
         <div>
-          <h3>Servers</h3>
+          <h3>On-prem servers</h3>
           <p className="muted small">
             Save each machine once (key file, SSH agent or password), then create services, install software, open a shell or terminal, and deploy to it
             (<code className="mono">pskit deploy --server NAME</code> or <b>Deploy → Machine</b>).
