@@ -139,7 +139,7 @@ One **Linux Consumption Function App** hosts every function of a service, using 
 | http | `@app.route`; `auth: key` → function key |
 | schedule | timer trigger (NCRONTAB, UTC) |
 | queue | Storage Queue in the app's storage account (poison queue `<name>-poison`; with `dlq`, pskit creates it and sets `maxDequeueCount`) |
-| storage | Blob container + blob trigger (created/updated only) |
+| storage | Blob container + blob trigger (`created` and `updated`; a delete is not a trigger) |
 | topic | Service Bus namespace/topic + one subscription per function |
 | workflows | embedded orchestrator function by default; `engine: native` → **Azure Logic App** (Consumption) |
 
@@ -147,7 +147,7 @@ One **Linux Consumption Function App** hosts every function of a service, using 
 
 **Native workflows (Logic Apps, opt-in).** `engine: auto` keeps the embedded engine on Azure; set `engine: native` on a workflow to deploy it as a Logic App with an HTTP request trigger. Start it with `POST` to the trigger's callback URL (`pskit info` shows it as the workflow `url`; it contains a SAS signature, so treat it like a secret). Task states call `POST /_pskit/invoke/<function>` on the Function App with the host's default function key, so every task function gets that route. See [workflows.md](workflows.md#compiler-notes-and-limits) for the limits.
 
-**Limits:** `auth: iam`/`jwt` aren't supported. `environment` is app-wide (warning on conflicting values). Timers ignore `timezone`. Blob `deleted` events aren't available. `fifo`, `dead_letter` and `topic.filter` aren't applied. Invoke-only functions (and task functions of native workflows) get `POST /_pskit/invoke/<name>` (function key).
+**Limits:** `auth: iam`/`jwt` aren't supported. `environment` is app-wide (warning on conflicting values). Timers ignore `timezone`. Blob triggers fire on create and replace (`events: created` and `updated`); `deleted` is rejected. Listing either `created` or `updated` deploys the same blob trigger, because Azure cannot subscribe to only one of them. `fifo`, `dead_letter` and `topic.filter` aren't applied. Invoke-only functions (and task functions of native workflows) get `POST /_pskit/invoke/<name>` (function key).
 
 ---
 

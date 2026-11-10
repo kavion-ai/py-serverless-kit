@@ -167,7 +167,7 @@ class Record:
     bucket: Optional[str] = None
     key: Optional[str] = None
     size: Optional[int] = None
-    action: Optional[str] = None  # "created" | "deleted"
+    action: Optional[str] = None  # "created" | "updated" | "deleted"
     raw: Any = None
 
     def text(self) -> str:

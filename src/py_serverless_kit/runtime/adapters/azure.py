@@ -133,6 +133,22 @@ def queue(msg: Any, function: str) -> Any:
     return execute(to_queue_event(msg, function), _context(function, getattr(msg, "id", None), msg), function)
 
 
+def _blob_action(blob: Any) -> str:
+    """``updated`` when the blob reports a last-modified time different from its creation time.
+
+    The Azure blob trigger fires for both a new blob and a replacement, and ``func.InputStream`` often has
+    neither timestamp. Without them the action stays ``created``.
+    """
+    props = getattr(blob, "properties", None)
+    if props is None:
+        props = blob
+    created = getattr(props, "creation_time", None)
+    modified = getattr(props, "last_modified", None)
+    if created is not None and modified is not None and created != modified:
+        return "updated"
+    return "created"
+
+
 def to_blob_event(blob: Any, function: str, bucket: str) -> Event:
     name = getattr(blob, "name", "") or ""
     key = name[len(bucket) + 1 :] if name.startswith(bucket + "/") else name
@@ -141,7 +157,7 @@ def to_blob_event(blob: Any, function: str, bucket: str) -> Event:
         bucket=bucket,
         key=key,
         size=getattr(blob, "length", None),
-        action="created",
+        action=_blob_action(blob),
         attributes={"uri": getattr(blob, "uri", None)},
         source="azure.storage.blob",
         raw=blob,

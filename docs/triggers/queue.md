@@ -23,6 +23,7 @@ events:
       max_receive: 5
       fifo: false                      # AWS: ordered FIFO queue, ".fifo" added to the name
   - queue: {resource: orders-queue, batch_size: 5}   # a resources: entry of type queue
+  - queue: {resource: broker, name: invoices}      # on premises: this queue on that queue service
 ```
 
 | Key | Default | Meaning |
@@ -36,6 +37,10 @@ events:
 | `dead_letter` | | a `type: queue` resource, or the name of a dead-letter queue (pskit creates it on AWS and on premises). In the studio, pick from the project's queues or type a name |
 | `max_receive` | 5 | deliveries before a message moves to `dead_letter` |
 | `fifo` | `false` | ordered queue with content-based de-duplication (AWS) |
+
+On premises only, `name` and `resource` may be set together. `resource` is the queue service (Redis, SQS, Azure Queue, and the other queue drivers) and `name` is the queue on that service. Empty `name` uses the resource's own queue. A directory queue resource is one folder, so it cannot take another name. On every other provider, a name that differs from the resource is an error.
+
+`pskit resources onprem create` with `--attach` accepts `--queue NAME` for a queue service.
 
 ## Read queue messages in the handler
 
@@ -152,7 +157,7 @@ pskit never deletes an `existing` queue or an `external` resource on `pskit remo
 | Message or symptom | Fix |
 |---|---|
 | `queue event needs 'name' or 'resource'` | set one |
-| `set either 'name' or 'resource' on the queue event, not both` | remove one |
+| `another queue on a resource's service is on-premises only` | on this cloud use `name` or `resource`, not a different queue on a resource |
 | `function 'x' has a queue event on resource 'y', which is a storage` | point at a queue resource |
 | `queue name 'Jobs' must be 3-63 lowercase letters, digits, dashes` (Azure) | rename |
 | `<Provider> does not support 'queue' events in pskit` | use aws, azure, gcp or onprem |

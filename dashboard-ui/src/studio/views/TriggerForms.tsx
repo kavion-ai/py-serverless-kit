@@ -10,7 +10,7 @@ export const EVENT_INFO: Record<EventType, { label: string; icon: string; blurb:
   http: { label: "HTTP endpoint", icon: "⇄", blurb: "Call the function with an HTTP request (API route).", example: "GET /users/42 returns that user to a website or app." },
   schedule: { label: "Schedule", icon: "⏱", blurb: "Run on a timer: every N minutes, at a set time, or a cron expression.", example: "send a sales report every day at 09:00." },
   queue: { label: "Queue", icon: "☰", blurb: "Process messages from a queue in batches, with retries.", example: "an order is added to a queue, and this function sends the confirmation e-mail." },
-  storage: { label: "Storage", icon: "▣", blurb: "React to files created or deleted in a bucket.", example: "a photo is uploaded, and this function makes a thumbnail." },
+  storage: { label: "Storage", icon: "▣", blurb: "React to files created, updated, or deleted in a bucket. Fire on lists the actions this cloud supports.", example: "a photo is uploaded, and this function makes a thumbnail." },
   topic: { label: "Topic", icon: "✺", blurb: "Receive published messages (fan-out pub/sub).", example: "one \"order placed\" message runs billing, stock and e-mail functions." },
   smtp: { label: "E-mail (SMTP)", icon: "✉", blurb: "Run when mail arrives for your domain: from, to, cc, subject, body and attachments (on premises).", example: "mail to support@example.com opens a ticket." },
 };
@@ -488,8 +488,12 @@ function SourceForm({
     // The queues of this project, not the one being read: messages must not fail back into their own queue.
     .map((f) => (f.key === "dead_letter" ? { ...f, suggestions: resources.map(([k]) => k).filter((k) => k !== str(config.resource) && k !== str(config.name)) } : f));
   const fallback = `${fnName}-${type === "storage" ? "uploads" : type === "queue" ? "jobs" : "events"}`;
+  const providerMeta = meta.providers.find((p) => p.name === providerName);
   // On-premises a storage trigger can watch any bucket on a storage resource's service.
-  const serviceBuckets = type === "storage" && !!meta.providers.find((p) => p.name === providerName)?.storage_service_buckets;
+  const serviceBuckets = type === "storage" && !!providerMeta?.storage_service_buckets;
+  // On-premises a queue trigger can name another queue on a queue resource's service.
+  const serviceQueues = type === "queue" && !!providerMeta?.queue_service_queues;
+  const supportedEvents = providerMeta?.storage_events ?? ["created", "deleted"];
 
   const setMode = (m: SourceMode) => {
     setModeState(m);
@@ -577,24 +581,41 @@ function SourceForm({
       </FormRow>
       {mode === "resource" && (
         <FormRow
-          label={serviceBuckets ? "Storage service" : "Resource"}
+          label={serviceBuckets ? "Storage service" : serviceQueues ? "Queue service" : "Resource"}
           required
           help={
             serviceBuckets
               ? "The storage resource whose service (driver, endpoint, keys) the trigger watches: MinIO, RustFS, Ceph, AWS S3, R2, Wasabi or any S3-compatible store. Set it up on the Resources page. Example: media-store."
-              : `The ${noun} to use, from the Resources page, which holds its name and settings. Example: ${fallback}.`
+              : serviceQueues
+                ? "The queue resource whose service (driver, endpoint, keys) the trigger reads: Redis, SQS, Azure Queue, RabbitMQ and the other queue drivers. Set it up on the Resources page. Example: jobs."
+                : `The ${noun} to use, from the Resources page, which holds its name and settings. Example: ${fallback}.`
           }
         >
           <EnumSelect
             value={str(config.resource)}
             options={resources.map(([k, r]) => {
-              const driver = storageDriverName(asObject(r));
+              const body = asObject(r);
+              const driver = type === "storage" ? storageDriverName(body) : queueDriverName(body);
+              const native = type === "storage" ? resourceBucket(k, body) : type === "queue" ? resourceQueue(k, body) : str(body.name) || k;
               return {
                 value: k,
-                label: `${k}${asObject(r).external ? " (external)" : ""} · ${resourceBucket(k, asObject(r))}${type === "storage" && driver ? ` · ${driver}` : ""}`,
+                label: `${k}${body.external ? " (external)" : ""} · ${native}${driver ? ` · ${driver}` : ""}`,
               };
             })}
             onChange={(k) => set("resource", k)}
+          />
+        </FormRow>
+      )}
+      {mode === "resource" && serviceQueues && (
+        <FormRow
+          label="Queue name"
+          help={`Any queue on this service; empty = the resource's own queue (${resourceQueue(str(config.resource), asObject(asObject(draft.resources)[str(config.resource)]))}). Example: invoices.`}
+        >
+          <TextInput
+            mono
+            value={str(config.name)}
+            placeholder={resourceQueue(str(config.resource), asObject(asObject(draft.resources)[str(config.resource)]))}
+            onChange={(v) => set("name", v.trim() ? v.trim() : undefined)}
           />
         </FormRow>
       )}
@@ -642,9 +663,9 @@ function SourceForm({
         </FormRow>
       )}
       {type === "storage" && (
-        <FormRow label="Fire on" help="Which file changes run the function. Example: created, to process each new upload.">
+        <FormRow label="Fire on" help="Which file changes run the function. The list is what this cloud can fire. Example: created, to process each new upload.">
           <div className="row-gap">
-            {["created", "deleted"].map((ev) => {
+            {storageEventOptions(supportedEvents, asArray(config.events).map((e) => str(e))).map((ev) => {
               const list = asArray(config.events).map((e) => str(e));
               const current = list.length ? list : ["created"];
               const on = current.includes(ev);
@@ -670,10 +691,46 @@ function SourceForm({
   );
 }
 
-/** The on-prem driver of a storage resource (`options.driver` or `connection.driver`), e.g. `minio`. */
-function storageDriverName(res: JsonObject): string {
+/** Actions this provider fires, plus any already selected action so a switch of provider still shows the error. */
+function storageEventOptions(supported: string[], selected: string[]): string[] {
+  const out = supported.length ? [...supported] : [];
+  for (const ev of selected.length ? selected : ["created"]) {
+    if (ev && !out.includes(ev)) out.push(ev);
+  }
+  return out.length ? out : ["created"];
+}
+
+/** The on-prem driver of a resource (`options.driver` or `connection.driver`), e.g. `minio` or `redis`. */
+function driverName(res: JsonObject): string {
   const raw = asObject(res.options).driver ?? asObject(res.connection).driver;
   return typeof raw === "string" ? raw : str(asObject(raw).use);
+}
+
+function storageDriverName(res: JsonObject): string {
+  return driverName(res);
+}
+
+function queueDriverName(res: JsonObject): string {
+  return driverName(res);
+}
+
+/** The queue a resource stands for: driver key, queue, name, subscription or queue id, else its name, else its key. */
+function resourceQueue(key: string, res: JsonObject): string {
+  const options = asObject(res.options);
+  const driver = asObject(options.driver);
+  const connection = asObject(res.connection);
+  return (
+    str(driver.key) ||
+    str(driver.queue) ||
+    str(driver.name) ||
+    str(driver.subscription) ||
+    str(driver.queue_id) ||
+    str(options.key) ||
+    str(options.queue) ||
+    str(connection.queue) ||
+    str(res.name) ||
+    key
+  );
 }
 
 /** The bucket a resource stands for: its driver's `bucket` / `container`, else its name, else its key. */

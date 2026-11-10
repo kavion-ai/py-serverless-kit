@@ -30,7 +30,10 @@ _HELP = {
     "schedule.cron": "Standard 5-field cron: 'min hour dom month dow'.",
     "schedule.input": "JSON passed to the handler as event.data.",
     "schedule.timezone": "IANA timezone for cron schedules.",
-    "queue.name": "Queue name (pskit prefixes managed names). Or pick a resource.",
+    "queue.name": (
+        "Queue name. Or pick a resource. On premises, both: this queue on the resource's service "
+        "(Redis key, SQS queue, Azure queue, ...). Empty uses the resource's own queue."
+    ),
     "queue.resource": "A `resources:` entry of type queue.",
     "queue.existing": "The queue already exists; pskit attaches to it and never deletes it.",
     "queue.batch_size": "The most messages one function call receives. Example: 10 passes up to 10 at once; 1 passes one by one.",
@@ -56,6 +59,7 @@ _HELP = {
         "Example: the steps of one payment."
     ),
     "storage.bucket": "Bucket name. Or pick a resource; on-premises, both: this bucket on the resource's service.",
+    "storage.events": "created, updated and/or deleted. The form lists only the actions this provider can fire.",
     "storage.resource": "A `resources:` entry of type storage (on-premises: the storage service it connects to).",
     "storage.existing": "The bucket already exists; pskit attaches to it and never deletes it.",
     "storage.prefix": "Optional. Only files whose path starts with this. Example: uploads/ skips files in other folders.",
@@ -508,6 +512,7 @@ _PROBES: Dict[str, List[Tuple[str, Any, Dict[str, Any]]]] = {
     ],
     "storage": [
         ("events", "deleted", {"events": ["created", "deleted"]}),
+        ("events", "updated", {"events": ["updated"]}),
         ("prefix", "uploads/", {"prefix": "uploads/"}),
         ("suffix", ".csv", {"suffix": ".csv"}),
         ("existing", True, {"existing": True}),
@@ -579,6 +584,8 @@ def build_meta() -> Dict[str, Any]:
                 "default_runtime": prov.default_runtime,
                 "max_timeout": desc["max_timeout"],
                 "storage_service_buckets": bool(desc.get("storage_service_buckets")),
+                "queue_service_queues": bool(desc.get("queue_service_queues")),
+                "storage_events": list(desc.get("storage_events") or []) if "storage" in desc["capabilities"] else [],
                 "notes": desc["notes"],
                 "options": PROVIDER_OPTIONS.get(name, []),
                 "regions": REGIONS.get(name, []),

@@ -962,6 +962,20 @@ def _env_value(name: str) -> str:
     return os.environ[name]
 
 
+_ONPREM_STORAGE_EVENTS = ("created", "updated", "deleted")
+
+
+def _storage_event_list(text: Optional[str]) -> Optional[list]:
+    """``created,updated`` from ``--storage-events``, or None when the option was omitted."""
+    if not text:
+        return None
+    items = [part.strip() for part in text.split(",") if part.strip()]
+    bad = [part for part in items if part not in _ONPREM_STORAGE_EVENTS]
+    if not items or bad:
+        raise click.ClickException("--storage-events: comma-separated created, updated, deleted")
+    return items
+
+
 def _service_call(fn: Callable[..., Any], *args: Any, **kwargs: Any) -> Any:
     from ..core.onprem_services import ServiceError
 
@@ -1028,6 +1042,19 @@ def resources_onprem_catalog(as_json: bool) -> None:
 @click.option("--balancer-port", type=int, default=None, help="With --balancer: its port (6432 / 6033).")
 @click.option("--sync", "sync", type=click.Choice(["async", "sync"]), default=None,
               help="With --replica: async (default, fastest) or sync (a commit waits for a replica).")
+@click.option("--failover", "failover", type=click.Choice(["off", "auto"]), default=None,
+              help="With --replica: off (default) keeps the primary you picked. auto promotes a replica when that "
+                   "primary stops answering. MongoDB always elects a new primary. PostgreSQL and MySQL need a "
+                   "load balancer for the functions' URL to follow the new primary.")
+@click.option("--write", "write", type=click.Choice(["single", "multi"]), default=None,
+              help="With --replica: single (default, one primary) or multi (MySQL and MariaDB: every member accepts "
+                   "writes). --primary is the first member; each --replica is another primary.")
+@click.option("--queue", "queue_name", default=None,
+              help="With --attach on a queue service: the queue name on that service (Redis key, SQS queue, ...). "
+                   "Empty uses the resource's own queue.")
+@click.option("--storage-events", "storage_events", default=None,
+              help="With --attach on a storage service: comma-separated created, updated, deleted "
+                   "(default: created).")
 @click.option("--import", "import_file", default=None, type=click.Path(exists=True, dir_okay=False),
               help="Database: load this dump once it is up (.sql, .sql.gz, .dump; MongoDB .archive).")
 @click.option("--alert-webhook", default=None, help="Alerts (CPU, memory, disk, replica lag, down) to this URL.")
@@ -1068,6 +1095,10 @@ def resources_onprem_create(  # noqa: PLR0913
     balancer: Optional[str],
     balancer_port: Optional[int],
     sync: Optional[str],
+    failover: Optional[str],
+    write: Optional[str],
+    queue_name: Optional[str],
+    storage_events: Optional[str],
     import_file: Optional[str],
     alert_webhook: Optional[str],
     alert_function: Optional[str],
@@ -1077,8 +1108,9 @@ def resources_onprem_create(  # noqa: PLR0913
 ) -> None:
     """Create KEY: a Docker container on this machine or an SSH server, ready for the on-prem host.
 
-    A database with --replica is replicated: --primary takes the writes, each --replica serves reads, and
-    --balancer gives the functions one address that splits them."""
+    A database with --replica is replicated: --primary takes the writes, each --replica serves reads (or is
+    another primary with --write multi), and --balancer gives the functions one address. --failover auto
+    promotes a replica when the primary stops answering."""
     from ..core import onprem_services as svc
 
     root, path, raw = _raw_project(config_path)
@@ -1114,12 +1146,16 @@ def resources_onprem_create(  # noqa: PLR0913
             raise click.ClickException("a replicated database runs on --primary / --replica servers, not --local, "
                                        "--cluster or --ssh")
         topology = {"mode": "replicated", "sync": sync or "async", "primary": primary or server or "",
-                    "replicas": list(replicas), "balancer": balancer or ""}
+                    "replicas": list(replicas), "balancer": balancer or "",
+                    "failover": failover or "off", "write": write or "single"}
         if balancer_port:
             topology["balancer_port"] = balancer_port
         target = None
-    elif primary or balancer or balancer_port or sync:
-        raise click.ClickException("--primary, --balancer and --sync go with --replica SERVER")
+    elif primary or balancer or balancer_port or sync or failover or write:
+        raise click.ClickException("--primary, --balancer, --sync, --failover and --write go with --replica SERVER")
+    events = _storage_event_list(storage_events)
+    if (queue_name or events) and not attach:
+        raise click.ClickException("--queue and --storage-events go with --attach FUNCTION")
     body = {
         "key": key,
         "service": service,
@@ -1145,6 +1181,16 @@ def resources_onprem_create(  # noqa: PLR0913
         if alert_webhook or alert_function else None,
     }
     entry = _service_call(svc.create, root, {k: v for k, v in body.items() if v is not None}, raw, echo)
+    if queue_name or events:
+        kind = str((entry.get("resource") or {}).get("type") or "")
+        if queue_name and kind != "queue":
+            raise click.ClickException("--queue is for a queue service")
+        if events and kind != "storage":
+            raise click.ClickException("--storage-events is for a storage service")
+        if queue_name:
+            entry["queue_name"] = queue_name
+        if events:
+            entry["storage_events"] = events
     if as_json:
         click.echo(json.dumps(svc.public_entry(entry), indent=2))
     if entry.get("kind") == "runtime":

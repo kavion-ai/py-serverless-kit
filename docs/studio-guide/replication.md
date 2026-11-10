@@ -23,7 +23,9 @@ The **Scaling** field of the Create a service drawer turns replication on for da
    |---|---|
    | **Members run on** | **Saved servers** (one member per server; Docker is installed when missing) or **This machine (try it)** (every member on this machine, each on its own port, to try replication) |
    | **Primary (writes)** | The server that takes every INSERT / UPDATE / DELETE. Pick your strongest server |
-   | **Read replicas** | Tick one server per replica (save at least two servers). On this machine: a number (1 to 9); replica 1 uses port + 1, and so on |
+   | **Read replicas** | Tick one server per replica (save at least two servers). On this machine: a number (1 to 9); replica 1 uses port + 1, and so on. With **Every member accepts writes** these are the other primaries |
+   | **If the primary dies** | **Keep this primary**, or **Promote a replica automatically**. MongoDB always elects a new primary; the box says so |
+   | **Writers** | MySQL and MariaDB: **One primary** or **Every member accepts writes**. Hidden where the engine has one primary |
    | **Primary → replicas** | **Asynchronous (fastest)** or **Synchronous (no lost writes)** |
    | **Load balancer** | A server for the engine's load balancer, or **None: connect to the primary, reads via READ_URLS**. On this machine: **Start <balancer> here (one address for the functions)** |
    | **Load balancer port** | What the functions connect to (a default that lets it share a server with a member) |
@@ -35,7 +37,7 @@ the env file).
 
 ```bash
 pskit resources onprem create orders-db --service postgres --primary db-1 --replica db-2 --replica db-3 \
-  --balancer lb-1 --sync async --save
+  --balancer lb-1 --sync async --failover auto --save
 pskit resources onprem replicas list orders-db
 ```
 

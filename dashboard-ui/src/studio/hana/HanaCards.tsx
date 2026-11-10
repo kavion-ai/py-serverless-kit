@@ -781,6 +781,10 @@ interface CatalogItem {
     balancer_port: number;
     async: string;
     sync: string;
+    multi?: boolean;
+    failover_always?: boolean;
+    failover_note?: string;
+    multi_note?: string;
   } | null;
 }
 
@@ -818,6 +822,8 @@ function ServiceCard({
     card.sync === "sync" ? "sync" : "async",
   );
   const [lbServer, setLbServer] = useState(card.primary || card.server || "");
+  const [failover, setFailover] = useState<"off" | "auto">("off");
+  const [writers, setWriters] = useState<"single" | "multi">("single");
   // the service's login: empty user = the service's default, empty password = a strong generated one
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
@@ -851,14 +857,19 @@ function ServiceCard({
   const spec = catalog.find((c) => c.id === service);
   const rep = role === "database" ? spec?.replication || null : null;
   const replicated = !!rep && scale === "replicated";
+  const multi = !!rep?.multi && writers === "multi";
   const scaleError = !replicated
     ? ""
     : servers.length < 2
-      ? "save at least two servers first: one for the primary, one per replica"
+      ? multi
+        ? "save at least two servers first: one per primary"
+        : "save at least two servers first: one for the primary, one per replica"
       : !primary
         ? "pick the primary"
         : !replicas.length
-          ? "pick at least one replica server"
+          ? multi
+            ? "pick at least one other primary"
+            : "pick at least one replica server"
           : "";
   const hasLogin = spec?.auth !== false;
   const loginError =
@@ -912,6 +923,8 @@ function ServiceCard({
       body.topology = {
         mode: "replicated",
         sync,
+        failover: rep.failover_always ? "auto" : failover,
+        write: rep.multi && writers === "multi" ? "multi" : "single",
         primary,
         replicas,
         balancer: rep.balancer ? lbServer : "",
@@ -1047,9 +1060,44 @@ function ServiceCard({
                 <option value="sync">sync (no lost writes)</option>
               </select>
             </label>
+            {rep.failover_always ? (
+              <span className="wide muted small">
+                {rep.failover_note ||
+                  "Members elect a new primary themselves, and the driver follows."}
+              </span>
+            ) : (
+              <label>
+                <span>If the primary dies</span>
+                <select
+                  className="select select-sm"
+                  value={failover}
+                  title={rep.failover_note}
+                  onChange={(e) => setFailover(e.target.value as "off" | "auto")}
+                  disabled={busy || done}
+                >
+                  <option value="off">keep the primary you picked</option>
+                  <option value="auto">promote a replica automatically</option>
+                </select>
+              </label>
+            )}
+            {rep.multi && (
+              <label>
+                <span>Writers</span>
+                <select
+                  className="select select-sm"
+                  value={writers}
+                  title={rep.multi_note}
+                  onChange={(e) => setWriters(e.target.value as "single" | "multi")}
+                  disabled={busy || done}
+                >
+                  <option value="single">one primary</option>
+                  <option value="multi">every member accepts writes</option>
+                </select>
+              </label>
+            )}
             <div className="wide hana-checks">
               <span className="muted small">
-                Read replicas ({replicas.length})
+                {multi ? `Other primaries (${replicas.length})` : `Read replicas (${replicas.length})`}
               </span>
               {servers
                 .filter((s) => s.name !== primary)

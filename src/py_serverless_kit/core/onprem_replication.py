@@ -19,6 +19,9 @@ port, on a private Docker network) to try it out. Replicas are added and removed
 ``url_env`` points at the load balancer (or the primary), ``<KEY>_WRITE_URL`` at the primary and ``<KEY>_READ_URLS``
 at the replicas.
 
+``topology.failover: auto`` promotes a replica when the primary stops answering (MongoDB already elects one).
+``topology.write: multi`` (MySQL and MariaDB) lets every member accept writes. PostgreSQL stays one primary.
+
 Only ``docker`` and ``ssh`` commands run, as everywhere in on-prem services. Secrets travel as container environment
 variables (masked in the job log), never inside a command line.
 """
@@ -134,6 +137,25 @@ def catalog_info(service: str) -> Optional[Dict[str, Any]]:
         return None
     info = {k: eng[k] for k in ("method", "balancer", "balancer_port", "async", "sync", "routing")}
     info["local"] = service != "mongodb"      # every member on this machine (to try it out)
+    info["multi"] = service in ("mysql", "mariadb")
+    info["failover_always"] = service == "mongodb"
+    if service == "mongodb":
+        info["failover_note"] = "Members elect a new primary themselves, and the driver follows."
+        info["multi_note"] = "A replica set has one primary. That election covers a dead primary."
+    elif service == "postgres":
+        info["failover_note"] = (
+            "Off keeps the primary you picked. Auto promotes a replica when that primary stops answering. "
+            "With pgpool-II, new writes go to the promoted member. Without it, the functions' URL stays "
+            "the old primary until you redeploy."
+        )
+        info["multi_note"] = "Streaming replication has one primary. Use automatic failover if that primary dies."
+    else:
+        info["failover_note"] = (
+            "Off keeps the primary you picked. Auto promotes a replica when that primary stops answering. "
+            "With ProxySQL, new writes go to the promoted member. Without it, the functions' URL stays "
+            "the old primary until you redeploy."
+        )
+        info["multi_note"] = "Every member accepts writes (circular GTID). Two members changing the same row can diverge."
     return info
 
 
@@ -152,8 +174,14 @@ def _ident(text: str) -> str:
 def _member(svc: Any, req: Dict[str, Any], root: Path, *, role: str, index: int, server: str, port: int,
             network: str) -> Dict[str, Any]:
     spec = svc.SERVICES[req["service"]]
-    name = "primary" if role == "primary" else f"r{index}"
-    container = req["container"] if role == "primary" else f"{req['container']}-{name}"
+    if index == 0:
+        name, container = "primary", req["container"]
+    elif role == "primary":
+        name = f"p{index}"
+        container = f"{req['container']}-{name}"
+    else:
+        name = f"r{index}"
+        container = f"{req['container']}-{name}"
     if server == LOCAL:
         target: Dict[str, Any] = {"method": "local"}
         address, bind = "127.0.0.1", "127.0.0.1"
@@ -231,6 +259,18 @@ def check(body: Dict[str, Any], req: Dict[str, Any], root: Path) -> Dict[str, An
     sync = str(topo.get("sync") or "async")
     if sync not in SYNC_MODES:
         raise _error("topology.sync must be async or sync")
+    failover = str(topo.get("failover") or "off").strip() or "off"
+    write = str(topo.get("write") or "single").strip() or "single"
+    if failover not in ("off", "auto"):
+        raise _error("topology.failover must be off or auto")
+    if write not in ("single", "multi"):
+        raise _error("topology.write must be single or multi")
+    if service == "postgres" and write == "multi":
+        raise _error("PostgreSQL streaming replication has one primary; use automatic failover (failover: auto)")
+    if service == "mongodb":
+        if write == "multi":
+            raise _error("a MongoDB replica set has one primary; it already elects a new one if that primary dies")
+        failover = "auto"
     primary = str(topo.get("primary") or "").strip()
     if not primary:
         raise _error("topology.primary: the saved server that takes the writes (or local for this machine)")
@@ -268,9 +308,10 @@ def check(body: Dict[str, Any], req: Dict[str, Any], root: Path) -> Dict[str, An
         raise _error("the load balancer must run on a server the functions reach; pick a saved server")
     port = int(req["port"])
     network = f"{req['container']}-net" if local else ""
+    multi = write == "multi"
     members = [_member(svc, req, root, role="primary", index=0, server=primary, port=port, network=network)]
     for i, server in enumerate(replicas, start=1):
-        members.append(_member(svc, req, root, role="replica", index=i, server=server,
+        members.append(_member(svc, req, root, role="primary" if multi else "replica", index=i, server=server,
                                port=port + i if local else port, network=network))
     lb: Optional[Dict[str, Any]] = None
     if balancer:
@@ -279,6 +320,9 @@ def check(body: Dict[str, Any], req: Dict[str, Any], root: Path) -> Dict[str, An
         if (("" if balancer == LOCAL else balancer), lb_port) in used:
             raise _error(f"port {lb_port} is a database port on {balancer}; pick another balancer_port")
         lb = _balancer(svc, req, root, balancer, lb_port, network)
+        if failover == "auto" and service in ("mysql", "mariadb") and not local:
+            # The watcher and ProxySQL admin share this network. It is not published to the host.
+            lb["network"] = f"{req['container']}-lb"
     first = members[0]
     out = dict(req)
     out.update({
@@ -293,6 +337,8 @@ def check(body: Dict[str, Any], req: Dict[str, Any], root: Path) -> Dict[str, An
             "mode": "replicated",
             "engine": service,
             "sync": sync,
+            "failover": failover,
+            "write": write,
             "local": local,
             "network": network,
             "replica_set": f"rs_{_ident(req['key'])}" if service == "mongodb" else "",
@@ -316,28 +362,50 @@ def _replicas_of(topo: Dict[str, Any]) -> List[Dict[str, Any]]:
 
 
 def _server_args(service: str, topo: Dict[str, Any], member: Dict[str, Any]) -> List[str]:
-    """mysqld / mariadbd / postgres arguments of a member."""
+    """mysqld / mariadbd / postgres arguments of a member.
+
+    With ``write: single`` (the default) the arguments are unchanged: server-id 1 on the primary and 101+ on
+    replicas, replicas read-only. ``write: multi`` gives every member its own server-id, circular GTID and
+    auto-increment offsets so two primaries do not mint the same ids.
+    """
     sync = topo["sync"] == "sync"
     primary = member["role"] == "primary"
+    multi = topo.get("write") == "multi"
     if service == "postgres":
         # Sync is switched on once a replica follows (_sync_on): set at start, the image's first-run setup would
         # wait forever for a replica.
         return ["postgres", "-c", "wal_level=replica", "-c", "max_wal_senders=16", "-c", "wal_keep_size=1GB",
                 "-c", "hot_standby=on", "-c", f"cluster_name={member['name']}"]
-    server_id = 1 if primary else 100 + int(member["index"])
+    if multi:
+        count = sum(1 for item in topo["members"] if item["role"] == "primary") or 1
+        server_id = 1 + int(member["index"])
+    else:
+        count = 1
+        server_id = 1 if primary else 100 + int(member["index"])
     args = [f"--server-id={server_id}", "--log-bin=mysql-bin", "--binlog-format=ROW", "--relay-log=relay-bin"]
     if service == "mysql":
         args += ["--gtid-mode=ON", "--enforce-gtid-consistency=ON", "--loose-mysql-native-password=ON"]
-        if sync:
+        if multi:
+            args += ["--log-replica-updates=ON"]
+        if sync and multi:
+            args += ["--plugin-load-add=semisync_source.so", "--loose-rpl-semi-sync-source-enabled=1",
+                     "--loose-rpl-semi-sync-source-timeout=10000",
+                     "--plugin-load-add=semisync_replica.so", "--loose-rpl-semi-sync-replica-enabled=1"]
+        elif sync:
             args += (["--plugin-load-add=semisync_source.so", "--loose-rpl-semi-sync-source-enabled=1",
                       "--loose-rpl-semi-sync-source-timeout=10000"] if primary else
                      ["--plugin-load-add=semisync_replica.so", "--loose-rpl-semi-sync-replica-enabled=1"])
     else:
         args += ["--log-slave-updates=ON"]
-        if sync:
+        if sync and multi:
+            args += ["--rpl-semi-sync-master-enabled=ON", "--rpl-semi-sync-master-timeout=10000",
+                     "--rpl-semi-sync-slave-enabled=ON"]
+        elif sync:
             args += (["--rpl-semi-sync-master-enabled=ON", "--rpl-semi-sync-master-timeout=10000"] if primary else
                      ["--rpl-semi-sync-slave-enabled=ON"])
-    if not primary:
+    if multi:
+        args += [f"--auto-increment-increment={count}", f"--auto-increment-offset={int(member['index']) + 1}"]
+    elif not primary:
         args += ["--read-only=ON"]
     return args
 
@@ -548,8 +616,10 @@ def _replica_lag_script(service: str) -> str:
 def _pgpool_args(req: Dict[str, Any], topo: Dict[str, Any], lb: Dict[str, Any], password: str,
                  secret: Dict[str, str]) -> List[str]:
     nodes, names = [], []
+    multi = topo.get("write") == "multi"
     for i, m in enumerate(topo["members"]):
-        weight = 0 if m["role"] == "primary" else 1      # reads go to replicas (the primary when none is up)
+        # Reads go to replicas (the primary when none is up). Multi-primary: every member takes reads and writes.
+        weight = 1 if multi else (0 if m["role"] == "primary" else 1)
         nodes.append(f"{i}:{m['link_host']}:{m['link_port']}:{weight}")
         names.append(m["name"])
     user = str(req.get("user") or "pskit")
@@ -566,6 +636,15 @@ def _pgpool_args(req: Dict[str, Any], topo: Dict[str, Any], lb: Dict[str, Any], 
         "PGPOOL_ENABLE_LOAD_BALANCING": "yes",
         "PGPOOL_SR_CHECK_PERIOD": "5",
     }
+    if topo.get("failover") == "auto":
+        # Health checks only when failover is on, so the default pgpool command line stays the same.
+        env["PGPOOL_HEALTH_CHECK_USER"] = user
+        env["PGPOOL_HEALTH_CHECK_PASSWORD"] = password
+        env["PGPOOL_HEALTH_CHECK_PERIOD"] = "10"
+        env["PGPOOL_HEALTH_CHECK_MAX_RETRIES"] = "2"
+        env["PGPOOL_HEALTH_CHECK_RETRY_DELAY"] = "5"
+        env["PGPOOL_FAILOVER_ON_BACKEND_ERROR"] = "on"
+        env["PSKIT_REPL_PASSWORD"] = secret["replication_password"]
     argv = _lb_head(req, lb)
     for k, v in env.items():
         argv += ["-e", f"{k}={v}"]
@@ -575,9 +654,15 @@ def _pgpool_args(req: Dict[str, Any], topo: Dict[str, Any], lb: Dict[str, Any], 
 def proxysql_config(req: Dict[str, Any], topo: Dict[str, Any], password: str, secret: Dict[str, str]) -> str:
     """ProxySQL's configuration: writes to hostgroup 10 (the primary), SELECTs to 20 (replicas, the primary as a
     last resort with weight 1)."""
+    multi = topo.get("write") == "multi"
+    # Admin listens on the Docker network only when a watcher must reach it. It is not published to the host.
+    admin_iface = "0.0.0.0:6032" if topo.get("failover") == "auto" else "127.0.0.1:6032"  # noqa: S104
     servers = []
     for m in topo["members"]:
-        if m["role"] == "primary":
+        if multi:
+            servers.append(f'  {{ address="{m["link_host"]}", port={m["link_port"]}, hostgroup=10, weight=1 }}')
+            servers.append(f'  {{ address="{m["link_host"]}", port={m["link_port"]}, hostgroup=20, weight=1 }}')
+        elif m["role"] == "primary":
             servers.append(f'  {{ address="{m["link_host"]}", port={m["link_port"]}, hostgroup=10, weight=1 }}')
             servers.append(f'  {{ address="{m["link_host"]}", port={m["link_port"]}, hostgroup=20, weight=1 }}')
         else:
@@ -588,7 +673,7 @@ def proxysql_config(req: Dict[str, Any], topo: Dict[str, Any], password: str, se
         'datadir="/var/lib/proxysql"\n'
         "admin_variables=\n{\n"
         f'  admin_credentials="pskit_admin:{secret["admin_password"]}"\n'
-        '  mysql_ifaces="127.0.0.1:6032"\n'
+        f'  mysql_ifaces="{admin_iface}"\n'
         "}\n"
         "mysql_variables=\n{\n"
         "  threads=4\n  max_connections=2048\n"
@@ -611,6 +696,14 @@ def proxysql_config(req: Dict[str, Any], topo: Dict[str, Any], password: str, se
 
 _PROXYSQL_START = ('echo "$PSKIT_LB_SECRET_CONFIG" | base64 -d > /etc/proxysql.cnf && '
                    "exec proxysql -f --initial -c /etc/proxysql.cnf -D /var/lib/proxysql")
+
+# The watcher points ProxySQL's write hostgroup at the promoted member. Placeholders are filled from the plan.
+_PROXYSQL_PROMOTE = (
+    '    {client} --host="{container}" --port=6032 -upskit_admin -p"$PSKIT_ADMIN_PASSWORD" -e '
+    '"DELETE FROM mysql_servers WHERE hostgroup_id=10; '
+    "INSERT INTO mysql_servers (hostgroup_id, hostname, port, weight) VALUES (10, '{host}', {port}, 1); "
+    'LOAD MYSQL SERVERS TO RUNTIME;" || true'
+)
 
 
 def _proxysql_args(req: Dict[str, Any], topo: Dict[str, Any], lb: Dict[str, Any], password: str,
@@ -648,6 +741,8 @@ def _start_balancer(ctx: _Ctx, req: Dict[str, Any], topo: Dict[str, Any], passwo
     ctx.docker(target, build(req, topo, lb, password, secret))
     _wait_container(ctx, target, lb["container"], _lb_health(req["service"]), f"the load balancer {lb['kind']}",
                     wait_seconds)
+    if req["service"] == "postgres" and topo.get("failover") == "auto":
+        _install_pgpool_failover(ctx, topo)
 
 
 def _check_balancer(ctx: _Ctx, req: Dict[str, Any], topo: Dict[str, Any]) -> None:
@@ -749,7 +844,12 @@ def _start_member(ctx: _Ctx, req: Dict[str, Any], topo: Dict[str, Any], member: 
     spec = svc.SERVICES[req["service"]]
     target = member["target"]
     mreq = _member_req(req, member)
-    what = "primary (writes)" if member["role"] == "primary" else f"replica {member['name']} (reads)"
+    if member["role"] == "primary" and member["name"] != "primary":
+        what = f"primary {member['name']} (writes)"
+    elif member["role"] == "primary":
+        what = "primary (writes)"
+    else:
+        what = f"replica {member['name']} (reads)"
     ctx.emit(f"Starting the {what} on {_where(member)} port {member['port']}")
     ctx.docker(target, ["rm", "-f", member["container"]], check=False, show=False)
     svc._prepare_volume(mreq, spec, target, ctx.sh, ctx.emit)
@@ -850,8 +950,265 @@ def connection(req: Dict[str, Any], topo: Dict[str, Any], password: str) -> Tupl
         connection_values["read_urls_env"] = f"{prefix}_READ_URLS"
     connection_values["replicas"] = len(replicas)
     connection_values["replication"] = topo["sync"]
+    if topo.get("write"):
+        connection_values["write"] = topo["write"]
+    if topo.get("failover"):
+        connection_values["failover"] = topo["failover"]
     resource["connection"] = connection_values
     return resource, env
+
+
+def _pg_failover_script(topo: Dict[str, Any]) -> str:
+    """pgpool ``failover_command``. New main host and port are ``$5`` and ``$6`` (``%H`` and ``%r``).
+
+    The replication password stays in ``PSKIT_REPL_PASSWORD``, already set on the container.
+    """
+    lines = [
+        "#!/bin/sh",
+        "NEW_HOST=$5",
+        "NEW_PORT=$6",
+        'USER="$PGPOOL_POSTGRES_USERNAME"',
+        'export PGPASSWORD="$PGPOOL_POSTGRES_PASSWORD"',
+        'psql -h "$NEW_HOST" -p "$NEW_PORT" -U "$USER" -d postgres -v ON_ERROR_STOP=1 '
+        '-c "SELECT pg_promote(false, 30);"',
+    ]
+    sql = (
+        f"ALTER SYSTEM SET primary_conninfo = 'host=$NEW_HOST port=$NEW_PORT user={REPL_USER} "
+        "password=$PSKIT_REPL_PASSWORD'; SELECT pg_reload_conf();"
+    )
+    for member in topo["members"]:
+        host, port = member["link_host"], member["link_port"]
+        lines.append(
+            f'if [ "$NEW_HOST" != "{host}" ] || [ "$NEW_PORT" != "{port}" ]; then '
+            f'inrec=$(psql -h "{host}" -p "{port}" -U "$USER" -d postgres -tAc '
+            '"SELECT pg_is_in_recovery()" || true); '
+            'if [ "$inrec" = "t" ]; then '
+            f'psql -h "{host}" -p "{port}" -U "$USER" -d postgres -c "{sql}"; fi; fi'
+        )
+    return "\n".join(lines) + "\n"
+
+
+def _install_pgpool_failover(ctx: _Ctx, topo: Dict[str, Any]) -> None:
+    """Replace bitnami's echo failover_command so a dead primary is actually promoted."""
+    lb = topo["balancer"]
+    encoded = base64.b64encode(_pg_failover_script(topo).encode("utf-8")).decode("ascii")
+    script = (
+        "set -e\n"
+        "printf '%s' \"$PSKIT_FAILOVER_B64\" | base64 -d > /tmp/pskit-failover.sh\n"
+        "chmod 755 /tmp/pskit-failover.sh\n"
+        "conf=/opt/bitnami/pgpool/conf/pgpool.conf\n"
+        "line=\"failover_command = '/tmp/pskit-failover.sh %d %h %p %m %H %r %M %P'\"\n"
+        "if grep -q '^failover_command' \"$conf\"; then sed -i \"s|^failover_command *=.*|$line|\" \"$conf\"; "
+        "else echo \"$line\" >> \"$conf\"; fi\n"
+        "pgpool reload >/dev/null 2>&1 || kill -HUP 1 || true\n"
+        "echo 'pgpool failover command installed'\n"
+    )
+    ctx.emit("Installing the pgpool failover command (promotes a replica if the primary stops answering)")
+    _exec(ctx, lb["target"], lb["container"], [], script, {"PSKIT_FAILOVER_B64": encoded})
+
+
+def _mysql_follow_script(service: str, source: Dict[str, Any]) -> str:
+    """Point one member at ``source`` and open writes. Safe on a member that was not a replica yet."""
+    host, port = source["link_host"], source["link_port"]
+    if service == "mysql":
+        client, stop, start, root = "mysql", "STOP REPLICA", "START REPLICA", "MYSQL_ROOT_PASSWORD"
+        change = (
+            f"CHANGE REPLICATION SOURCE TO SOURCE_HOST='{host}', SOURCE_PORT={port}, "
+            f"SOURCE_USER='{REPL_USER}', SOURCE_PASSWORD='$PSKIT_REPL_PASSWORD', "
+            "SOURCE_AUTO_POSITION=1, GET_SOURCE_PUBLIC_KEY=1"
+        )
+    else:
+        client, stop, start, root = "mariadb", "STOP SLAVE", "START SLAVE", "MARIADB_ROOT_PASSWORD"
+        change = (
+            f"CHANGE MASTER TO MASTER_HOST='{host}', MASTER_PORT={port}, "
+            f"MASTER_USER='{REPL_USER}', MASTER_PASSWORD='$PSKIT_REPL_PASSWORD', MASTER_USE_GTID=slave_pos"
+        )
+    return (
+        "set -e\n"
+        f'export MYSQL_PWD="${root}"\n'
+        f'{client} -uroot -e "{stop};" 2>/dev/null || true\n'
+        f'{client} -uroot -e "{change}; {start}; SET GLOBAL read_only=OFF;"\n'
+        "echo 'following the previous primary'\n"
+    )
+
+
+def _enable_multi(ctx: _Ctx, req: Dict[str, Any], topo: Dict[str, Any], secret: Dict[str, str]) -> None:
+    """Close the ring: member i follows i-1, and the first follows the last. Member 1 already follows 0."""
+    service = req["service"]
+    primaries = [m for m in topo["members"] if m["role"] == "primary"]
+    if len(primaries) < 2:
+        return
+    env = {"PSKIT_REPL_PASSWORD": secret["replication_password"]}
+    for index in range(2, len(primaries)):
+        follower, source = primaries[index], primaries[index - 1]
+        ctx.emit(f"{follower['name']} follows {source['name']} (multi-primary ring)")
+        _exec(ctx, follower["target"], follower["container"], [], _mysql_follow_script(service, source), env)
+    first, last = primaries[0], primaries[-1]
+    ctx.emit(f"{first['name']} follows {last['name']} (multi-primary ring)")
+    _exec(ctx, first["target"], first["container"], [], _mysql_follow_script(service, last), env)
+
+
+def _watcher_host(topo: Dict[str, Any]) -> Dict[str, Any]:
+    """A host that is still up when the first primary dies: the load balancer, else the first other member."""
+    if topo.get("balancer"):
+        return topo["balancer"]
+    replicas = _replicas_of(topo)
+    if replicas:
+        return replicas[0]
+    others = [m for m in topo["members"] if m["role"] == "primary" and m["name"] != "primary"]
+    if not others:
+        raise _error("automatic failover needs a replica, another primary, or a load balancer that stays up "
+                     "when the primary dies")
+    return others[0]
+
+
+def _mysql_watcher_script(service: str, topo: Dict[str, Any]) -> str:
+    """Ping the primary twice, then promote the first member that still answers and repoint the others."""
+    client = "mysql" if service == "mysql" else "mariadb"
+    admin = "mysqladmin" if service == "mysql" else "mariadb-admin"
+    stop = "STOP REPLICA; RESET REPLICA ALL" if service == "mysql" else "STOP SLAVE; RESET SLAVE ALL"
+    follow = (
+        "STOP REPLICA; CHANGE REPLICATION SOURCE TO SOURCE_HOST='{h}', SOURCE_PORT={p}, "
+        "SOURCE_USER='{u}', SOURCE_PASSWORD='$PSKIT_REPL_PASSWORD', SOURCE_AUTO_POSITION=1, "
+        "GET_SOURCE_PUBLIC_KEY=1; START REPLICA;"
+        if service == "mysql" else
+        "STOP SLAVE; CHANGE MASTER TO MASTER_HOST='{h}', MASTER_PORT={p}, "
+        "MASTER_USER='{u}', MASTER_PASSWORD='$PSKIT_REPL_PASSWORD', MASTER_USE_GTID=slave_pos; START SLAVE;"
+    )
+    primary = _primary_of(topo)
+    lines = [
+        "#!/bin/sh",
+        "miss=0",
+        f'PRIMARY_HOST="{primary["link_host"]}"',
+        f'PRIMARY_PORT="{primary["link_port"]}"',
+        'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"',
+        "while true; do",
+        f'  if {admin} --host="$PRIMARY_HOST" --port="$PRIMARY_PORT" -uroot --silent ping >/dev/null 2>&1; then',
+        "    miss=0; sleep 5; continue",
+        "  fi",
+        "  miss=$((miss + 1))",
+        '  if [ "$miss" -lt 2 ]; then sleep 5; continue; fi',
+        '  echo "primary $PRIMARY_HOST is not answering"',
+    ]
+    for member in topo["members"]:
+        if member["name"] == primary["name"]:
+            continue
+        host, port, name = member["link_host"], member["link_port"], member["name"]
+        lines.append(f'  if {admin} --host="{host}" --port="{port}" -uroot --silent ping >/dev/null 2>&1; then')
+        lines.append(f'    echo "promoting {name}"')
+        lines.append(
+            f'    {client} --host="{host}" --port="{port}" -uroot -e "{stop}; SET GLOBAL read_only=OFF;" || true'
+        )
+        for other in topo["members"]:
+            if other["name"] == name:
+                continue
+            sql = follow.format(h=host, p=port, u=REPL_USER)
+            lines.append(
+                f'    {client} --host="{other["link_host"]}" --port="{other["link_port"]}" -uroot -e "{sql}" || true'
+            )
+        lb = topo.get("balancer")
+        if lb:
+            lines.append(_PROXYSQL_PROMOTE.format(
+                client=client, container=lb["container"], host=host, port=port))
+        lines.append(f'    PRIMARY_HOST="{host}"; PRIMARY_PORT="{port}"; miss=0; sleep 15; continue')
+        lines.append("  fi")
+    lines.extend(["  sleep 5", "done", ""])
+    return "\n".join(lines)
+
+
+def _pg_watcher_script(topo: Dict[str, Any]) -> str:
+    """Same loop as the MySQL watcher, with ``pg_isready`` and ``pg_promote``. Used when there is no pgpool."""
+    primary = _primary_of(topo)
+    lines = [
+        "#!/bin/sh",
+        "miss=0",
+        f'PRIMARY_HOST="{primary["link_host"]}"',
+        f'PRIMARY_PORT="{primary["link_port"]}"',
+        'export PGPASSWORD="$POSTGRES_PASSWORD"',
+        'USER="$POSTGRES_USER"',
+        "while true; do",
+        '  if pg_isready -h "$PRIMARY_HOST" -p "$PRIMARY_PORT" -U "$USER" >/dev/null 2>&1; then',
+        "    miss=0; sleep 5; continue",
+        "  fi",
+        "  miss=$((miss + 1))",
+        '  if [ "$miss" -lt 2 ]; then sleep 5; continue; fi',
+        '  echo "primary $PRIMARY_HOST is not answering"',
+    ]
+    for member in topo["members"]:
+        if member["name"] == primary["name"]:
+            continue
+        host, port, name = member["link_host"], member["link_port"], member["name"]
+        lines.append(f'  if pg_isready -h "{host}" -p "{port}" -U "$USER" >/dev/null 2>&1; then')
+        lines.append(f'    echo "promoting {name}"')
+        lines.append(
+            f'    psql -h "{host}" -p "{port}" -U "$USER" -d postgres -c "SELECT pg_promote(false, 30);" || true'
+        )
+        for other in topo["members"]:
+            if other["name"] == name:
+                continue
+            lines.append(
+                f'    inrec=$(psql -h "{other["link_host"]}" -p "{other["link_port"]}" -U "$USER" -d postgres '
+                '-tAc "SELECT pg_is_in_recovery()" || true); '
+                'if [ "$inrec" = "t" ]; then '
+                f'psql -h "{other["link_host"]}" -p "{other["link_port"]}" -U "$USER" -d postgres -c '
+                f"\"ALTER SYSTEM SET primary_conninfo = 'host={host} port={port} user={REPL_USER} "
+                "password=$PSKIT_REPL_PASSWORD'; SELECT pg_reload_conf();\"; fi"
+            )
+        lines.append(f'    PRIMARY_HOST="{host}"; PRIMARY_PORT="{port}"; miss=0; sleep 15; continue')
+        lines.append("  fi")
+    lines.extend(["  sleep 5", "done", ""])
+    return "\n".join(lines)
+
+
+def _start_watcher(ctx: _Ctx, req: Dict[str, Any], topo: Dict[str, Any], password: str, secret: Dict[str, str],
+                   wait_seconds: float) -> None:
+    """A container that promotes a member when the primary stops answering. No Docker socket."""
+    host_item = _watcher_host(topo)
+    service = req["service"]
+    container = f"{req['container']}-failover"
+    if service == "postgres":
+        script = _pg_watcher_script(topo)
+        extra = [f"POSTGRES_PASSWORD={password}", f"POSTGRES_USER={req.get('user') or 'pskit'}",
+                 f"PSKIT_REPL_PASSWORD={secret['replication_password']}"]
+    else:
+        script = _mysql_watcher_script(service, topo)
+        extra = [f"MYSQL_ROOT_PASSWORD={password}", f"PSKIT_REPL_PASSWORD={secret['replication_password']}"]
+        if topo.get("balancer"):
+            extra.append(f"PSKIT_ADMIN_PASSWORD={secret['admin_password']}")
+    encoded = base64.b64encode(script.encode("utf-8")).decode("ascii")
+    argv = ["run", "-d", "--name", container, "--restart", "unless-stopped",
+            "--label", f"pskit.key={req['key']}", "--label", "pskit.member=failover",
+            "-e", f"PSKIT_FAILOVER_B64={encoded}"]
+    for item in extra:
+        argv += ["-e", item]
+    network = str(host_item.get("network") or "")
+    if network:
+        argv += ["--network", network]
+    argv += ["--entrypoint", "sh", req["image"], "-c",
+             'echo "$PSKIT_FAILOVER_B64" | base64 -d > /tmp/pskit-failover.sh && exec sh /tmp/pskit-failover.sh']
+    ctx.emit(f"Starting the failover watcher on {_where(host_item)} "
+             "(promotes a member if the primary stops answering)")
+    ctx.docker(host_item["target"], ["rm", "-f", container], check=False, show=False)
+    ctx.docker(host_item["target"], argv)
+    _wait_container(ctx, host_item["target"], container, "true", "the failover watcher", min(float(wait_seconds), 30))
+    topo["watcher"] = {
+        "name": "failover", "role": "watcher", "server": host_item.get("server") or "",
+        "address": host_item.get("address") or "", "port": 0, "container": container,
+        "target": host_item["target"], "network": network,
+    }
+    if not topo.get("balancer"):
+        ctx.emit("automatic failover promotes a replica, but the functions' URL stays the old primary until you "
+                 "point WRITE_URL at the new one or add a load balancer")
+
+
+def _arm_failover(ctx: _Ctx, req: Dict[str, Any], topo: Dict[str, Any], password: str, secret: Dict[str, str],
+                  wait_seconds: float) -> None:
+    """Start the watcher. PostgreSQL with pgpool installs its command inside the load balancer instead."""
+    if str(topo.get("failover") or "off") != "auto" or req["service"] == "mongodb":
+        return
+    if req["service"] == "postgres" and topo.get("balancer"):
+        return
+    _start_watcher(ctx, req, topo, password, secret, wait_seconds)
 
 
 def create(root: Path, req: Dict[str, Any], body: Dict[str, Any], raw: Optional[Dict[str, Any]], emit: Emit, *,
@@ -869,8 +1226,13 @@ def create(root: Path, req: Dict[str, Any], body: Dict[str, Any], raw: Optional[
     secret = _new_secrets(service)
     members = topo["members"]
     lb = topo.get("balancer")
-    emit(f"Creating {spec['label']} {req['key']!r}: primary + {len(members) - 1} replica(s), {topo['sync']} "
-         f"{eng['method'].lower()}" + (f", load balancer {lb['kind']}" if lb else ""))
+    if topo.get("write") == "multi":
+        shape = f"{len(members)} primaries"
+    else:
+        shape = f"primary + {len(members) - 1} replica(s)"
+    extra = ", automatic failover" if topo.get("failover") == "auto" and service != "mongodb" else ""
+    emit(f"Creating {spec['label']} {req['key']!r}: {shape}, {topo['sync']} "
+         f"{eng['method'].lower()}{extra}" + (f", load balancer {lb['kind']}" if lb else ""))
     wait = max(wait_seconds, 120)
     _prepare_targets(ctx, [m["target"] for m in members] + ([lb["target"]] if lb else []),
                      bool(body.get("install_docker", True)))
@@ -892,8 +1254,15 @@ def create(root: Path, req: Dict[str, Any], body: Dict[str, Any], raw: Optional[
         _join(ctx, req, topo, member, secret, wait)
     if service == "postgres" and topo["sync"] == "sync":
         _sync_on(ctx, topo)
+    if topo.get("write") == "multi" and service in ("mysql", "mariadb"):
+        _enable_multi(ctx, req, topo, secret)
     if lb:
+        lb_net = str(lb.get("network") or "")
+        if lb_net and lb_net != str(topo.get("network") or ""):
+            # Watcher and ProxySQL admin share this network. It is not published to the host.
+            ctx.docker(lb["target"], ["network", "create", lb_net], check=False, show=False)
         _start_balancer(ctx, req, topo, password, secret, wait)
+    _arm_failover(ctx, req, topo, password, secret, wait)
     resource, env_values = connection(req, topo, password)
     env_file = svc.env_file_of(raw)
     update = svc.update_env_file
@@ -903,6 +1272,9 @@ def create(root: Path, req: Dict[str, Any], body: Dict[str, Any], raw: Optional[
              f"{svc._var_prefix(req['key'])}_URL: " + (f"the load balancer ({lb['kind']})" if lb else
                                                      "the replica set" if service == "mongodb" else
                                                      "the primary; reads can use _READ_URLS")]
+    if topo.get("write") == "multi":
+        notes.append("every member accepts writes; two members changing the same row can diverge. "
+                     "Use the load balancer URL")
     entry = {
         "key": req["key"],
         "service": service,
@@ -999,23 +1371,28 @@ def add_replica(root: Path, key: str, server: str, emit: Emit, *, run: Optional[
     if len(members) - 1 >= MAX_REPLICAS:
         raise _error(f"at most {MAX_REPLICAS} replicas")
     req = _req_of(entry)
+    multi = topo.get("write") == "multi"
     index = int(topo.get("next_index") or len(members))
     port = int(members[0]["port"])
     if topo.get("local"):
         port = max(int(m["port"]) for m in members) + 1
-    member = _member(svc, req, root, role="replica", index=index, server=server, port=port,
+    member = _member(svc, req, root, role="primary" if multi else "replica", index=index, server=server, port=port,
                      network=str(topo.get("network") or ""))
     topo["members"] = [*members, member]
     topo["next_index"] = index + 1
     password = _password(entry)
     ctx = _Ctx(emit, run)
-    emit(f"Adding replica {member['name']} of {key!r} on {_where(member)}")
+    kind = "primary" if multi else "replica"
+    emit(f"Adding {kind} {member['name']} of {key!r} on {_where(member)}")
     _prepare_targets(ctx, [member["target"]], True)
     _pull(ctx, [member["target"]], req["image"])
     _start_member(ctx, req, topo, member, password, secret, wait_seconds)
     _join(ctx, req, topo, member, secret, wait_seconds)
+    if multi and req["service"] in ("mysql", "mariadb"):
+        _enable_multi(ctx, req, topo, secret)
     if topo.get("balancer"):
         _start_balancer(ctx, req, topo, password, secret, wait_seconds)
+    _arm_failover(ctx, req, topo, password, secret, wait_seconds)
     entry = _save(root, entry, req, topo, password, emit)
     from . import onprem_network as network
 
@@ -1034,24 +1411,48 @@ def remove_replica(root: Path, key: str, name: str, emit: Emit, *, delete_data: 
         raise _error(f"{key!r} has no replicas")
     topo = dict(entry["topology"])
     secret = dict(topo.get("secrets") or {})
-    member = next((m for m in topo["members"] if name in (m["name"], m["server"]) and m["role"] == "replica"), None)
-    if member is None:
-        names = ", ".join(f"{m['name']}" + (f" ({m['server']})" if m["server"] else "") for m in _replicas_of(topo))
-        raise _error(f"{key!r} has no replica {name!r}; replicas: {names}")
-    if len(_replicas_of(topo)) == 1:
-        raise _error("this is the last replica; remove the whole database instead (a replicated database keeps "
-                     "at least one)")
+    multi = str(topo.get("write") or "single") == "multi"
+    if multi:
+        member = next((m for m in topo["members"]
+                       if name in (m["name"], m["server"]) and m["role"] == "primary" and m["name"] != "primary"),
+                      None)
+        if member is None:
+            if any(name in (m["name"], m.get("server")) and m["name"] == "primary" for m in topo["members"]):
+                raise _error("the first primary stays; remove another primary, or remove the whole database")
+            names = ", ".join(
+                f"{m['name']}" + (f" ({m['server']})" if m["server"] else "")
+                for m in topo["members"] if m["role"] == "primary" and m["name"] != "primary"
+            )
+            raise _error(f"{key!r} has no other primary {name!r}; other primaries: {names}")
+        others = [m for m in topo["members"] if m["role"] == "primary" and m["name"] != "primary"]
+        if len(others) <= 1:
+            raise _error("this is the last other primary; a multi-primary database keeps at least two. "
+                         "Remove the whole database instead")
+    else:
+        member = next((m for m in topo["members"] if name in (m["name"], m["server"]) and m["role"] == "replica"),
+                      None)
+        if member is None:
+            names = ", ".join(
+                f"{m['name']}" + (f" ({m['server']})" if m["server"] else "") for m in _replicas_of(topo)
+            )
+            raise _error(f"{key!r} has no replica {name!r}; replicas: {names}")
+        if len(_replicas_of(topo)) == 1:
+            raise _error("this is the last replica; remove the whole database instead (a replicated database keeps "
+                         "at least one)")
     ctx = _Ctx(emit, run)
     req = _req_of(entry)
-    emit(f"Removing replica {member['name']} of {key!r} from {_where(member)}")
+    emit(f"Removing {'primary' if multi else 'replica'} {member['name']} of {key!r} from {_where(member)}")
     if entry["service"] == "mongodb":
         primary = _primary_of(topo)
         _exec(ctx, primary["target"], primary["container"], ["-e", f"PSKIT_JS={_mongo_remove_js(member)}"],
               _MONGOSH, {})
     topo["members"] = [m for m in topo["members"] if m["name"] != member["name"]]
     password = _password(entry)
+    if multi and entry["service"] in ("mysql", "mariadb"):
+        _enable_multi(ctx, req, topo, secret)
     if topo.get("balancer"):
         _start_balancer(ctx, req, topo, password, secret, 120)
+    _arm_failover(ctx, req, topo, password, secret, 30)
     ctx.docker(member["target"], ["rm", "-f", member["container"]], check=False)
     if delete_data:
         svc._drop_volume(member["target"], ctx.sh, member["volume"])
@@ -1069,14 +1470,25 @@ def remove_members(entry: Dict[str, Any], emit: Emit, *, delete_data: bool, run:
     ctx = _Ctx(emit, run)
     topo = entry["topology"]
     lb = topo.get("balancer")
+    watcher = topo.get("watcher") if isinstance(topo.get("watcher"), dict) else None
+    if watcher and watcher.get("container"):
+        ctx.docker(watcher["target"], ["rm", "-f", watcher["container"]], check=False)
     if lb:
         ctx.docker(lb["target"], ["rm", "-f", lb["container"]], check=False)
-    for member in _replicas_of(topo):
+    primary_container = str(entry.get("container") or "")
+    for member in topo["members"]:
+        if member.get("name") == "primary" or member.get("container") == primary_container:
+            continue
         ctx.docker(member["target"], ["rm", "-f", member["container"]], check=False)
         if delete_data:
             _drop_volume(member["target"], ctx.sh, member["volume"])
         else:
             emit(f"kept the data volume {member['volume']} on {_where(member)}")
+    lb_net = str((lb or {}).get("network") or "")
+    if lb_net and lb_net != str(topo.get("network") or ""):
+        target = (lb or watcher or {}).get("target")
+        if target:
+            ctx.docker(target, ["network", "rm", lb_net], check=False, show=False)
 
 
 def status(entry: Dict[str, Any], *, run: Optional[RunFn] = None) -> Dict[str, Any]:
@@ -1118,6 +1530,8 @@ def public(topo: Dict[str, Any]) -> Dict[str, Any]:
     out["members"] = [clean(m) for m in topo.get("members") or []]
     if topo.get("balancer"):
         out["balancer"] = clean(topo["balancer"])
+    if isinstance(topo.get("watcher"), dict):
+        out["watcher"] = clean(topo["watcher"])
     return out
 
 
@@ -1141,8 +1555,14 @@ def rules(entry: Dict[str, Any], clients: Sequence[Dict[str, str]]) -> List[Dict
         out.append(network.ssh_rule(whos[m["name"]]))
     primary = _primary_of(topo)
     replicas = _replicas_of(topo)
-    out.append(network.rule(whos["primary"], primary["port"], [whos[m["name"]] for m in replicas],
-                            f"{label}: replicas copy the primary's changes"))
+    primaries = [m for m in members if m["role"] == "primary"]
+    if len(primaries) > 1:
+        for m in primaries:
+            others = [whos[o["name"]] for o in primaries if o["name"] != m["name"]]
+            out.append(network.rule(whos[m["name"]], m["port"], others, f"{label}: primaries copy each other"))
+    else:
+        out.append(network.rule(whos["primary"], primary["port"], [whos[m["name"]] for m in replicas],
+                                f"{label}: replicas copy the primary's changes"))
     if entry.get("service") == "mongodb":
         for m in members:
             others = [whos[o["name"]] for o in members if o["name"] != m["name"]]
@@ -1159,4 +1579,16 @@ def rules(entry: Dict[str, Any], clients: Sequence[Dict[str, str]]) -> List[Dict
     for server, port in front:
         sources = [c for c in clients if c["address"] != server["address"]] or [network.who("your function servers")]
         out.append(network.rule(server, port, sources, f"{label}: your functions connect to it"))
+    watcher = topo.get("watcher") if isinstance(topo.get("watcher"), dict) else None
+    if watcher and str(topo.get("failover") or "") == "auto":
+        w_addr = str(watcher.get("address") or "")
+        lb_addr = str((lb or {}).get("address") or "")
+        # A watcher on the load balancer's server is already allowed to reach every member.
+        if w_addr and w_addr != lb_addr:
+            w_who = network.who(str(watcher.get("server") or w_addr), w_addr)
+            for m in members:
+                if str(m.get("address") or "") == w_addr:
+                    continue
+                out.append(network.rule(whos[m["name"]], m["port"], [w_who],
+                                        f"{label}: the failover watcher checks members"))
     return out

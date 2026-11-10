@@ -83,12 +83,17 @@ resource and selects it, so other functions can bind it and it shows in the **Pr
 
 Other fields:
 
-- **Storage**: **Fire on** `created` and / or `deleted`, plus prefix and suffix filters.
+- **Storage**: **Fire on** lists only the actions this cloud can fire (`created` and `deleted` on AWS, `created` and
+  `updated` on Azure, and so on), plus prefix and suffix filters. An action already selected stays visible after you
+  switch provider, so the rules box can show that it is not supported.
 - **Queue**: batch size (default 10), batch window, visibility timeout, dead letter queue, max receive and FIFO.
 - **Topic**: a message filter.
 - **On premises, storage**: with **Project resource**, the field is **Storage service** (the storage resource whose
   driver, endpoint and keys the trigger uses: MinIO, RustFS, Ceph, AWS S3, R2, Wasabi or any S3-compatible store)
   plus **Bucket** (any bucket on that service; empty = the resource's own bucket).
+- **On premises, queue**: with **Project resource**, the field is **Queue service** plus **Queue name** (any queue on
+  that service: a Redis key, an SQS queue, an Azure queue, and the other queue drivers; empty = the resource's own
+  queue).
 
 More: [Queue](../triggers/queue.md), [Storage](../triggers/storage.md), [Topic](../triggers/topic.md).
 

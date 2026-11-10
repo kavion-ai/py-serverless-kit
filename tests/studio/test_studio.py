@@ -117,6 +117,16 @@ def test_meta_catalog(studio):
                      "cloudflare", "onprem"}
     aws = next(p for p in meta["providers"] if p["name"] == "aws")
     assert "queue" in aws["capabilities"] and aws["default_region"] == "us-east-1" and aws["runtimes"]
+    assert aws["storage_events"] == ["created", "deleted"] and aws["queue_service_queues"] is False
+    azure = next(p for p in meta["providers"] if p["name"] == "azure")
+    assert azure["storage_events"] == ["created", "updated"]
+    oracle = next(p for p in meta["providers"] if p["name"] == "oracle")
+    assert oracle["storage_events"] == ["created", "updated", "deleted"]
+    onprem = next(p for p in meta["providers"] if p["name"] == "onprem")
+    assert onprem["queue_service_queues"] is True
+    assert onprem["storage_events"] == ["created", "updated", "deleted"]
+    ibm = next(p for p in meta["providers"] if p["name"] == "ibm")
+    assert ibm["storage_events"] == []
     gcp = next(p for p in meta["providers"] if p["name"] == "gcp")
     assert any(f["key"] == "project" and f["required"] for f in gcp["options"])
     assert set(meta["events"]) == {"http", "schedule", "queue", "storage", "topic", "smtp"}

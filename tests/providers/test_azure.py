@@ -93,7 +93,7 @@ def test_unsupported_combinations(make_project):
     """)
     msgs = " ".join(i.message for i in _errors(project))
     assert "auth 'jwt'" in msgs
-    assert "created/updated" in msgs
+    assert "deleted" in msgs and "created, updated" in msgs
     assert "servicebus_namespace_id" in msgs
 
 

@@ -13,17 +13,22 @@ writes. Handler code does not change: the resource's URL points at the load bala
 Replication is available for four on-prem database engines. Every other service (Redis, MinIO, ...) runs on a
 single server.
 
-| Engine | Replication | `sync` mode (a commit waits for a replica) | Database load balancer | Automatic failover |
-|---|---|---|---|---|
-| PostgreSQL | streaming replication (WAL) | `synchronous_standby_names = ANY 1 (*)`: no committed write lost, but writes wait while no replica is connected | pgpool-II (port 6432): writes and transactions to the primary, plain SELECTs to replicas | no |
-| MySQL | GTID replication (binary log) | semi-synchronous: waits for one replica, back to async after 10 s without one | ProxySQL (port 6033): writes, transactions and `SELECT ... FOR UPDATE` to the primary, other SELECTs to replicas | no |
-| MariaDB | GTID replication (binary log) | built-in semi-synchronous, same as MySQL | ProxySQL (port 6033) | no |
-| MongoDB | replica set | write concern `majority` | none: the driver connects to every member from one replica set URL (`readPreference=secondaryPreferred`) | yes: the members elect a new primary and the driver follows |
+| Engine | Replication | `sync` mode (a commit waits for a replica) | Database load balancer | If the primary dies | Several primaries |
+|---|---|---|---|---|---|
+| PostgreSQL | streaming replication (WAL) | `synchronous_standby_names = ANY 1 (*)`: no committed write lost, but writes wait while no replica is connected | pgpool-II (port 6432): writes and transactions to the primary, plain SELECTs to replicas | `failover: auto` promotes a replica. With pgpool-II, new writes go to it. Without a load balancer, the functions' URL stays the old primary until you point `WRITE_URL` at the new one | no: one primary. Use automatic failover |
+| MySQL | GTID replication (binary log) | semi-synchronous: waits for one replica, back to async after 10 s without one | ProxySQL (port 6033): writes, transactions and `SELECT ... FOR UPDATE` to the primary, other SELECTs to replicas | `failover: auto` promotes a replica and, with ProxySQL, moves the write hostgroup to it | `write: multi`: every member accepts writes (circular GTID) |
+| MariaDB | GTID replication (binary log) | built-in semi-synchronous, same as MySQL | ProxySQL (port 6033) | same as MySQL | same as MySQL |
+| MongoDB | replica set | write concern `majority` | none: the driver connects to every member from one replica set URL (`readPreference=secondaryPreferred`) | always on: the members elect a new primary and the driver follows | no: the replica set already elects one primary |
 
 `async` (the default) is fastest: the primary commits at once and replicas follow milliseconds behind, so a crash of
-the primary can lose the last transactions. PostgreSQL, MySQL and MariaDB have **no automatic failover** in pskit:
-if the primary is lost, writes stop until you fix or recreate it. When no replica is up, the load balancer sends
-reads to the primary.
+the primary can lose the last transactions. `failover: off` (the default for PostgreSQL, MySQL and MariaDB) keeps
+the primary you picked: if it is lost, writes stop until you fix it. `failover: auto` promotes a replica when that
+primary stops answering. A load balancer is what lets the functions follow the new primary. When no replica is up,
+the load balancer sends reads to the primary.
+
+`write: multi` is MySQL and MariaDB only. `--primary` is the first primary and each `--replica` is another primary.
+Every member accepts writes. Two members changing the same row can diverge; use the load balancer URL. At least two
+primaries stay. PostgreSQL and MongoDB reject `write: multi`.
 
 ## Limits of on-prem database replication
 
@@ -49,10 +54,14 @@ The studio creates a replicated database from the **Resources** page.
 3. In **Scaling** choose **Primary + read replicas** (**Single server** is the default).
 4. In **Members run on** choose **Saved servers** (or **This machine (try it)**).
 5. Pick **Primary (writes)** and tick the servers under **Read replicas** (on this machine: the number of replicas).
-6. In **Primary → replicas** choose **Asynchronous (fastest)** or **Synchronous (no lost writes)**.
-7. In **Load balancer** pick `pgpool-II on <server>` / `ProxySQL on <server>`, or **None: connect to the primary,
-   reads via READ_URLS**. Optionally set **Load balancer port**.
-8. Create. The job output shows each member starting, the replicas joining, and the firewall rules.
+   For MySQL or MariaDB, **Writers → Every member accepts writes** turns those servers into more primaries.
+6. **If the primary dies**: **Keep this primary**, or **Promote a replica automatically**. MongoDB always elects a
+   new primary; the form says so and does not offer Off.
+7. In **Primary → replicas** choose **Asynchronous (fastest)** or **Synchronous (no lost writes)**.
+8. In **Load balancer** pick `pgpool-II on <server>` / `ProxySQL on <server>`, or **None: connect to the primary,
+   reads via READ_URLS**. Optionally set **Load balancer port**. With automatic failover, a load balancer is what
+   the functions keep using after a promotion.
+9. Create. The job output shows each member starting, the replicas joining, and the firewall rules.
 
 ## Create a replicated database from the terminal
 
@@ -61,16 +70,23 @@ The `pskit resources onprem create` command makes a database replicated when you
 ```bash
 pskit resources onprem create orders-db --service postgres \
     --primary db1 --replica db2 --replica db3 \
-    --balancer lb1 --sync async --save
+    --balancer lb1 --sync async --failover auto --save
+
+# MySQL: every member accepts writes
+pskit resources onprem create orders-db --service mysql \
+    --primary db1 --replica db2 --replica db3 \
+    --balancer lb1 --write multi --save
 ```
 
 | Option | Meaning |
 |---|---|
-| `--primary SERVER` | saved server that takes the writes |
-| `--replica SERVER` | saved server for a read replica (repeat it); `local` runs every member on this machine |
+| `--primary SERVER` | saved server that takes the writes (the first primary when `--write multi`) |
+| `--replica SERVER` | saved server for a read replica (repeat it). With `--write multi` it is another primary. `local` runs every member on this machine |
 | `--balancer SERVER` | saved server for pgpool-II / ProxySQL (not for MongoDB) |
 | `--balancer-port N` | its port (default 6432 / 6033) |
 | `--sync async\|sync` | replication mode (default `async`) |
+| `--failover off\|auto` | `off` (default) keeps the primary you picked. `auto` promotes a replica when it stops answering. MongoDB always elects one |
+| `--write single\|multi` | `single` (default) is one primary. `multi` is MySQL and MariaDB: every member accepts writes |
 | `--import FILE` | load a dump (`.sql`, `.sql.gz`, `.dump`, MongoDB `.archive`) into the primary before replicas copy it |
 | `--save` | write the resource into `pskit.yml` |
 
@@ -83,7 +99,7 @@ A replicated database writes its connection values to the on-prem env file (defa
 |---|---|
 | `PSKIT_ORDERS_DB_URL` | the database load balancer; without one, the primary; MongoDB: the replica set URL |
 | `PSKIT_ORDERS_DB_WRITE_URL` | the primary (PostgreSQL, MySQL, MariaDB) |
-| `PSKIT_ORDERS_DB_READ_URLS` | the replicas, comma separated (PostgreSQL, MySQL, MariaDB) |
+| `PSKIT_ORDERS_DB_READ_URLS` | the replicas, comma separated (PostgreSQL, MySQL, MariaDB). Empty when every member is a primary |
 
 With a load balancer, use `_URL` for everything. Without one, send writes to `_WRITE_URL` and spread reads over
 `_READ_URLS` yourself:

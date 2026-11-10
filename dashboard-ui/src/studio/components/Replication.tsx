@@ -31,9 +31,14 @@ export function ReplicationForm(props: {
   setLbLocal: (v: boolean) => void;
   lbPort: number | undefined;
   setLbPort: (v: number | undefined) => void;
+  failover: "off" | "auto";
+  setFailover: (v: "off" | "auto") => void;
+  write: "single" | "multi";
+  setWrite: (v: "single" | "multi") => void;
   error: string | null;
 }) {
   const { item, info, servers, port, repOn, primary, replicas, sync } = props;
+  const multi = !!info.multi && props.write === "multi";
   const local = repOn === "local";
   const host = (name: string) => servers.find((s) => s.name === name)?.host || "";
   const lbOn = !!info.balancer && (local ? props.lbLocal : !!props.lbServer);
@@ -57,6 +62,7 @@ export function ReplicationForm(props: {
         }
       : null,
     driverRoutes: !info.balancer,
+    writers: (multi ? "multi" : "single") as "single" | "multi",
     growable: true,
   };
 
@@ -83,7 +89,7 @@ export function ReplicationForm(props: {
       </FormRow>
       {!local ? (
         <>
-          <FormRow label="Primary (writes)" required help="Takes every INSERT / UPDATE / DELETE. Pick your strongest server.">
+          <FormRow label={multi ? "First primary" : "Primary (writes)"} required help={multi ? "The first primary. Every other member accepts writes too." : "Takes every INSERT / UPDATE / DELETE. Pick your strongest server."}>
             <EnumSelect
               value={primary}
               onChange={props.setPrimary}
@@ -93,7 +99,11 @@ export function ReplicationForm(props: {
               ]}
             />
           </FormRow>
-          <FormRow label="Read replicas" required help="Each copies the primary and answers reads. Add or remove replicas later from Details.">
+          <FormRow
+            label={multi ? "Other primaries" : "Read replicas"}
+            required
+            help={multi ? "Each accepts writes (circular GTID). At least one. Two members changing the same row can diverge." : "Each copies the primary and answers reads. Add or remove replicas later from Details."}
+          >
             <div className="check-grid">
               {servers
                 .filter((s) => s.name !== primary)
@@ -107,18 +117,54 @@ export function ReplicationForm(props: {
                     {s.name} <span className="muted small">{s.host}</span>
                   </label>
                 ))}
-              {servers.length < 2 && <span className="muted">Save at least two servers below (one for the primary, one per replica).</span>}
+              {servers.length < 2 && (
+                <span className="muted">
+                  {multi
+                    ? "Save at least two servers below (one per primary)."
+                    : "Save at least two servers below (one for the primary, one per replica)."}
+                </span>
+              )}
             </div>
           </FormRow>
         </>
       ) : (
-        <FormRow label="Read replicas" help="Ports follow the primary's: replica 1 on port + 1, and so on.">
+        <FormRow label={multi ? "Other primaries" : "Read replicas"} help={multi ? "Each on the next port, and each accepts writes." : "Ports follow the primary's: replica 1 on port + 1, and so on."}>
           <NumberInput integer min={1} max={9} value={props.localReplicas} onChange={props.setLocalReplicas} />
         </FormRow>
       )}
-      <FormRow label="Primary → replicas" help={sync === "sync" ? info.sync : info.async}>
+      {info.failover_always ? (
+        <div className="hint-box">{info.failover_note || "Members elect a new primary themselves, and the driver follows."}</div>
+      ) : (
+        <FormRow label="If the primary dies" help={info.failover_note || "Auto promotes a replica when the primary stops answering. A load balancer lets the functions follow it."}>
+          <Segmented
+            label="If the primary dies"
+            value={props.failover}
+            onChange={(v) => props.setFailover(v as "off" | "auto")}
+            options={[
+              { value: "off", label: "Keep this primary" },
+              { value: "auto", label: "Promote a replica automatically" },
+            ]}
+          />
+        </FormRow>
+      )}
+      {info.multi ? (
+        <FormRow label="Writers" help={info.multi_note || "Every member accepts writes. Two members changing the same row can diverge."}>
+          <Segmented
+            label="Writers"
+            value={props.write}
+            onChange={(v) => props.setWrite(v as "single" | "multi")}
+            options={[
+              { value: "single", label: "One primary" },
+              { value: "multi", label: "Every member accepts writes" },
+            ]}
+          />
+        </FormRow>
+      ) : info.multi_note ? (
+        <div className="hint-box">{info.multi_note}</div>
+      ) : null}
+      <FormRow label={multi ? "Members copy each other" : "Primary → replicas"} help={sync === "sync" ? info.sync : info.async}>
         <Segmented
-          label="Primary → replicas"
+          label={multi ? "Members copy each other" : "Primary → replicas"}
           value={sync}
           onChange={(v) => props.setSync(v as "async" | "sync")}
           options={[
@@ -182,8 +228,11 @@ export function ReplicasPanel({ info, onChanged }: { info: OnPremService; onChan
   if (!topo) return null;
   const used = new Set(topo.members.map((m) => m.server));
   const free = servers.filter((s) => !used.has(s.name));
-  const primary = topo.members.find((m) => m.role === "primary") || topo.members[0];
+  const multi = topo.write === "multi";
+  const primaries = topo.members.filter((m) => m.role === "primary");
+  const primary = primaries.find((m) => m.name === "primary") || primaries[0] || topo.members[0];
   const replicas = topo.members.filter((m) => m.role === "replica");
+  const others = multi ? primaries.filter((m) => m !== primary) : replicas;
   const node = (m: { server: string; address: string; port: number; state?: string }): DiagramNode => ({
     title: m.server || THIS_MACHINE,
     detail: `${m.address}:${m.port}`,
@@ -201,8 +250,10 @@ export function ReplicasPanel({ info, onChanged }: { info: OnPremService; onChan
   };
   const remove = async (name: string) => {
     const answer = await confirm({
-      title: `Remove replica ${name}?`,
-      body: "Its container stops and the load balancer stops sending reads to it. Keep its data volume, or delete it.",
+      title: multi ? `Remove primary ${name}?` : `Remove replica ${name}?`,
+      body: multi
+        ? "Its container stops and the other primaries keep accepting writes. Keep its data volume, or delete it."
+        : "Its container stops and the load balancer stops sending reads to it. Keep its data volume, or delete it.",
       confirmLabel: "Remove, keep data",
       extra: [{ label: "Delete data too", value: "delete-data", danger: true }],
       danger: true,
@@ -220,15 +271,18 @@ export function ReplicasPanel({ info, onChanged }: { info: OnPremService; onChan
     <div className="replicas-panel stack-xs">
       <h4>
         Replication · {topo.sync === "sync" ? "synchronous" : "asynchronous"}
+        {multi ? " · several primaries" : ""}
+        {topo.failover === "auto" ? " · automatic failover" : ""}
         {topo.balancer ? ` · ${topo.balancer.kind} splits reads and writes` : info.service === "mongodb" ? " · the driver routes" : " · no load balancer"}
       </h4>
       <ReplicationDiagram
         engine={info.service}
         sync={topo.sync}
         primary={node(primary)}
-        replicas={replicas.map(node)}
+        replicas={others.map(node)}
         balancer={topo.balancer ? { ...node(topo.balancer), kind: topo.balancer.kind } : null}
         driverRoutes={info.service === "mongodb"}
+        writers={multi ? "multi" : "single"}
       />
       <div style={{ overflowX: "auto" }}>
         <table className="table">
@@ -258,7 +312,8 @@ export function ReplicasPanel({ info, onChanged }: { info: OnPremService; onChan
                   {m.replication || ""}
                 </td>
                 <td>
-                  {m.role === "replica" && replicas.length > 1 && (
+                  {((m.role === "replica" && replicas.length > 1) ||
+                    (multi && m.role === "primary" && m.name !== "primary" && others.length > 1)) && (
                     <button type="button" className="btn btn-sm btn-danger" disabled={busy} onClick={() => void remove(m.name)}>
                       Remove
                     </button>
@@ -275,13 +330,17 @@ export function ReplicasPanel({ info, onChanged }: { info: OnPremService; onChan
           <EnumSelect
             value={server}
             onChange={setServer}
-            options={[{ value: "", label: free.length ? "Server for a new replica…" : "No free saved server (add one below)" }, ...free.map((s) => ({ value: s.name, label: `${s.name} (${s.host})` }))]}
+            options={[{ value: "", label: free.length ? (multi ? "Server for another primary…" : "Server for a new replica…") : "No free saved server (add one below)" }, ...free.map((s) => ({ value: s.name, label: `${s.name} (${s.host})` }))]}
           />
         )}
         <button type="button" className="btn btn-sm btn-primary" disabled={busy || (!topo.local && !server)} onClick={() => void add()}>
-          + Add read replica
+          {multi ? "+ Add primary" : "+ Add read replica"}
         </button>
-        <span className="muted small">It copies the current data, then follows the primary; the load balancer starts sending it reads.</span>
+        <span className="muted small">
+          {multi
+            ? "It copies the current data, then accepts writes with the other primaries."
+            : "It copies the current data, then follows the primary; the load balancer starts sending it reads."}
+        </span>
       </div>
       {error && <div className="form-error">{error}</div>}
       {jobId && <JobConsole job={job} />}

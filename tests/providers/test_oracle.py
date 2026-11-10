@@ -63,7 +63,9 @@ def test_render_with_image_build(make_project, render):
     rule = res["oci_events_rule"]["worker-uploads".replace("-", "_")]
     cond = json.loads(rule["condition"])
     assert cond["data"]["additionalDetails"]["bucketName"] == "uploads"
+    assert "com.oraclecloud.objectstorage.createobject" in cond["eventType"]
     assert "com.oraclecloud.objectstorage.deleteobject" in cond["eventType"]
+    assert "com.oraclecloud.objectstorage.updateobject" not in cond["eventType"]
     assert rule["actions"]["actions"][0]["action_type"] == "FAAS"
 
     build = project.work_dir / "build"

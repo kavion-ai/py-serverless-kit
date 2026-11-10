@@ -1755,8 +1755,12 @@ class Host:
             events: List[Tuple[str, str, int]] = []
             for key, (mtime, size) in current.items():
                 old = previous.get(key)
-                if old is None or old != (mtime, size):
+                if old is None:
                     events.append((key, "created", size))
+                elif old != (mtime, size):
+                    # "changed" is decided per consumer: updated only when that consumer asked for it, otherwise
+                    # created, so a trigger that lists only created still runs when a file is overwritten.
+                    events.append((key, "changed", size))
             for key in previous:
                 if key not in current:
                     events.append((key, "deleted", 0))
@@ -1766,11 +1770,17 @@ class Host:
             ok = True
             for function, ev in consumers:
                 wanted = set(ev.get("events") or ["created"])
-                records = [
-                    Record(id=f"{bucket}/{key}", bucket=bucket, key=key, size=size, action=action, source="onprem.storage")
-                    for key, action, size in events
-                    if action in wanted and _key_selected(key, ev)
-                ]
+                records = []
+                for key, action, size in events:
+                    if action == "changed":
+                        action = "updated" if "updated" in wanted else "created"
+                    if action in wanted and _key_selected(key, ev):
+                        records.append(
+                            Record(
+                                id=f"{bucket}/{key}", bucket=bucket, key=key, size=size, action=action,
+                                source="onprem.storage",
+                            )
+                        )
                 if not records:
                     continue
                 try:

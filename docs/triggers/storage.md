@@ -16,7 +16,7 @@ events:
   - storage:
       bucket: uploads-bucket
       existing: false                  # true: the bucket already exists
-      events: [created, deleted]       # default [created]
+      events: [created, deleted]       # default [created]; the cloud must support each action
       prefix: incoming/                # only keys that start with this
       suffix: .csv                     # only keys that end with this
   - storage: {resource: uploads, prefix: in/}       # a resources: entry of type storage
@@ -27,11 +27,23 @@ events:
 | `bucket` | | native bucket (container) name |
 | `resource` | | key of a `resources:` entry of type `storage` |
 | `existing` | `false` | `true`: pskit attaches the trigger, never creates or deletes the bucket |
-| `events` | `[created]` | `created`, `deleted` or both |
+| `events` | `[created]` | `created`, `updated` and/or `deleted`, limited to what that provider fires |
 | `prefix`, `suffix` | | key filters |
 
 On premises only, `bucket` and `resource` may be combined: the trigger watches bucket `bucket` on the storage
 service (endpoint, keys, driver) of resource `resource`. Elsewhere that is an error.
+
+Which actions each provider fires:
+
+| Provider | `events` |
+|---|---|
+| aws, gcp, alibaba, tencent, huawei | `created`, `deleted` |
+| azure | `created`, `updated`. The blob trigger fires on create and on replace whenever either is listed. It cannot subscribe to deletes, and it cannot subscribe to only one of the two |
+| oracle | `created`, `updated`, `deleted` |
+| onprem | `created`, `updated`, `deleted`. A file change is reported as `created` unless that function lists `updated` |
+| ibm, digitalocean, cloudflare | no storage trigger |
+
+`pskit resources onprem create` with `--attach` accepts `--storage-events created,updated` for a storage service.
 
 ## Read storage records in the handler
 
@@ -131,7 +143,7 @@ Bucket names are global on most clouds; pick a unique name. pskit never deletes 
 |---|---|
 | `storage event needs 'bucket' or 'resource'` | set one |
 | `storage event sets both 'resource: x' and 'bucket: y'; another bucket on a resource's service is on-premises only` | use one of them |
-| `Azure blob triggers only fire on created/updated blobs` | remove `deleted` |
+| `Azure Functions storage triggers fire on created, updated; deleted is not among them` | drop `deleted` |
 | `container name 'X' must be 3-63 lowercase letters, digits, dashes` (Azure) | rename |
 | `COS bucket 'x' must be '<name>-<APPID>'` (Tencent) | add your APPID |
 | `OCI Events rules cannot filter by prefix/suffix; filter in the handler` | filter in code |

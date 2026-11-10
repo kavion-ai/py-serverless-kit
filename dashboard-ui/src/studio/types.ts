@@ -48,6 +48,10 @@ export interface ProviderMeta {
   max_timeout: number;
   /** A storage event may name a storage resource (the service) and another bucket on it. */
   storage_service_buckets?: boolean;
+  /** A queue event may name a queue resource (the service) and another queue on it. */
+  queue_service_queues?: boolean;
+  /** Storage actions this provider can fire. Empty when storage is not a capability. */
+  storage_events?: string[];
   notes?: string;
   options: Field[];
   regions?: { id: string; label: string }[];
@@ -427,6 +431,12 @@ export interface OnPremReplicationInfo {
   routing: string;
   /** Every member can run on this machine to try it out. */
   local: boolean;
+  /** MySQL and MariaDB can run with several primaries. */
+  multi?: boolean;
+  /** MongoDB always elects a new primary. */
+  failover_always?: boolean;
+  failover_note?: string;
+  multi_note?: string;
 }
 
 export interface OnPremReplicaMember {
@@ -446,6 +456,10 @@ export interface OnPremTopology {
   mode: "replicated";
   engine: string;
   sync: "async" | "sync";
+  /** off keeps the primary you picked; auto promotes one when it stops answering. */
+  failover?: "off" | "auto";
+  /** single: one primary. multi: every member accepts writes (MySQL, MariaDB). */
+  write?: "single" | "multi";
   local: boolean;
   replica_set?: string;
   members: OnPremReplicaMember[];

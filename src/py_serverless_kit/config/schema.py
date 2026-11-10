@@ -123,6 +123,9 @@ class ScheduleEvent(_Model):
 
 
 class QueueEvent(_Model):
+    """``name`` alone, ``resource`` alone, or both: the queue ``name`` on the queue service (endpoint, keys,
+    driver) of resource ``resource``. Combining them is on-premises only."""
+
     name: str = ""
     resource: Optional[str] = Field(None, description="key of a `resources:` entry of type queue")
     existing: bool = False
@@ -147,7 +150,10 @@ class StorageEvent(_Model):
     bucket: str = ""
     resource: Optional[str] = Field(None, description="key of a `resources:` entry of type storage")
     existing: bool = False
-    events: List[Literal["created", "deleted"]] = Field(default=["created"])
+    events: List[Literal["created", "updated", "deleted"]] = Field(
+        default=["created"],
+        description="object actions. Which of created, updated and deleted a provider accepts depends on the cloud",
+    )
     prefix: Optional[str] = None
     suffix: Optional[str] = None
 
@@ -736,8 +742,8 @@ class ServiceConfig(_Model):
                 attr = "bucket" if ev.type == "storage" else "name"
                 native = res.native_name(key)
                 current = getattr(ev.config, attr)
-                if ev.type == "storage" and current and current != native:
-                    # Another bucket on the resource's storage service (providers that cannot say so reject it).
+                if ev.type in ("storage", "queue") and current and current != native:
+                    # Another bucket or queue on the resource's service (providers that cannot say so reject it).
                     ev.config.existing = res.external
                     continue
                 if current and current != native:

@@ -2260,7 +2260,12 @@ def apply_to_raw(raw: Dict[str, Any], entry: Dict[str, Any], attach: Optional[Li
                     override["events"] = copy.deepcopy(base_fn.get("events") or [])
                 events = override["events"]
             if not any(isinstance(e, dict) and (e.get(kind) or {}).get("resource") == key for e in events):
-                events.append({kind: {"resource": key}})
+                body: Dict[str, Any] = {"resource": key}
+                if kind == "queue" and entry.get("queue_name"):
+                    body["name"] = str(entry["queue_name"])
+                if kind == "storage" and entry.get("storage_events"):
+                    body["events"] = list(entry["storage_events"])
+                events.append({kind: body})
     # An alert function made for this service (create form: "Create a new function"): added once, never replaced.
     alert: Dict[str, Any] = entry["alert"] if isinstance(entry.get("alert"), dict) else {}
     if alert.get("function") and alert.get("function_handler"):

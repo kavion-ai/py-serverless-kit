@@ -6,6 +6,24 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [3.0.0] - 2026-11-10
+
+### Added
+- **Queue trigger: name a queue on a queue service.** On premises, a queue event may set both `resource` (the queue
+  service) and `name` (the queue on it: Redis key, SQS queue, Azure queue, and the other queue drivers). Studio shows
+  **Queue name** on that form. `pskit resources onprem create --attach` takes `--queue`. Other clouds still reject a
+  name that is not the resource's own queue.
+- **Storage trigger actions follow the cloud.** AWS, GCP, Alibaba, Tencent and Huawei fire on `created` and `deleted`.
+  Azure fires on `created` and `updated` (one blob trigger for either; deletes are rejected). Oracle fires on
+  `created`, `updated` and `deleted`. On premises, a file change is `updated` only when that function lists `updated`.
+  Studio **Fire on** lists the actions for the selected provider. `--storage-events` sets them when attaching an
+  on-prem storage service.
+- **On-prem database failover and several primaries.** `topology.failover: auto` (studio **If the primary dies**,
+  CLI `--failover auto`) promotes a replica when the primary stops answering. PostgreSQL with pgpool-II promotes
+  inside the load balancer; MySQL and MariaDB run a watcher. MongoDB already elects a primary. `topology.write: multi`
+  (studio **Writers**, CLI `--write multi`) is MySQL and MariaDB: every member accepts writes. PostgreSQL and MongoDB
+  keep a single primary.
+
 ## [2.13.2] - 2026-11-06
 
 ### Changed

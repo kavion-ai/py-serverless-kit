@@ -50,7 +50,7 @@ the same data; `smtp` shows only in `pskit providers --json`). A trigger the pro
 | `http` | yes | yes | yes | yes | yes | yes (1) | yes | yes | yes | yes | yes |
 | `schedule` | yes | yes | yes | yes | yes | yes | no | no | yes | yes | yes |
 | `queue` | SQS | Storage Queue | Pub/Sub | no | no | no | no | no | no | no | yes (2) |
-| `storage` | S3 | Blob (created only) | Cloud Storage | OSS | COS | OBS | Object Storage | no | no | no | yes (2) |
+| `storage` | S3 (created, deleted) | Blob (created, updated) | Cloud Storage (created, deleted) | OSS (created, deleted) | COS (created, deleted) | OBS (created, deleted) | Object Storage (created, updated, deleted) | no | no | no | yes (2) |
 | `topic` | SNS | Service Bus | Pub/Sub | MNS | no | SMN | no | no | no | no | yes (2) |
 | `smtp` | no | no | no | no | no | no | no | no | no | no | yes (3) |
 

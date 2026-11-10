@@ -413,7 +413,7 @@ Connection values become environment variables. They're stored in Terraform stat
 | `pskit does not create `database` resources; set `external: true`` | database / cache / custom are always external |
 | `function 'x' uses unknown resource 'y'` | add `y` under `resources:` or fix the key |
 | `function 'x' has a queue event on resource 'y', which is a storage` | the resource `type` must match the event kind |
-| `set either `name` or `resource` on the queue event, not both` | drop the event's `name` / `bucket` |
+| `another queue on a resource's service is on-premises only` | on this cloud use `name` or `resource`. On premises, `name` is another queue on that queue service |
 | `managed queue resources that no event uses are not supported on X yet` | create it outside pskit, set `external: true` and `name` |
 | `resource 'x' is not bound to this function` (runtime) | add the function to the resource's `functions:` list, or remove the list |
 | `the redis driver needs url: redis://host:6379/0` | set `options.url` (or `connection.url`) |

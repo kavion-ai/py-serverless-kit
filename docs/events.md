@@ -23,7 +23,7 @@ Support at a glance (the full detail is below and in [providers.md](providers.md
 | `http` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓¹ | ✓ | ✓ |
 | `schedule` | ✓ | ✓ | ✓ | ✓ | – | – | ✓ | ✓ | ✓ | ✓ | ✓ |
 | `queue` | ✓ SQS | ✓ Pub/Sub | ✓ Storage Queue | – | – | – | – | – | – | – | ✓ files |
-| `storage` | ✓ S3 | ✓ GCS | ✓ Blob (created only) | ✓ OSS | ✓ Object Storage | – | – | ✓ COS | ✓ OBS | – | ✓ directory |
+| `storage` | ✓ S3 | ✓ GCS | ✓ Blob (created, updated) | ✓ OSS | ✓ Object Storage | – | – | ✓ COS | ✓ OBS | – | ✓ directory |
 | `topic` | ✓ SNS | ✓ Pub/Sub | ✓ Service Bus | ✓ MNS | – | – | – | – | ✓ SMN | – | ✓ files |
 | `smtp` | – | – | – | – | – | – | – | – | – | – | ✓ SMTP service |
 
@@ -159,23 +159,23 @@ On GCP a "queue" is a Pub/Sub topic with a push trigger, because GCP has no SQS-
 - storage:
     bucket: uploads-bucket
     existing: false                    # true = bucket already exists
-    events: [created, deleted]         # default [created]
+    events: [created, deleted]         # default [created]; each cloud accepts its own set
     prefix: incoming/
     suffix: .csv
 ```
 
-Each record has `bucket`, `key`, `size` and `action` (`"created"` / `"deleted"`).
+Each record has `bucket`, `key`, `size` and `action` (`"created"`, `"updated"` or `"deleted"`). `events` lists which of those run the function. The form and `pskit validate` offer only the actions that cloud can fire.
 
 | Provider | Service | Filters | Notes |
 |---|---|---|---|
-| aws | S3 notification | native | created buckets block public access |
-| gcp | Cloud Storage via Eventarc | applied by the runtime | `created` and `deleted` become separate deployments |
-| azure | Blob trigger in the app's storage account | path pattern | **created/updated only**; container name 3–63 lowercase; `existing` buckets in another account need `options.storage_connection` |
-| alibaba | OSS trigger | native | |
-| oracle | Events rule | not supported (warning) – filter in your handler | bucket must have "Emit Object Events" enabled |
-| tencent | COS trigger | native | bucket name must be `<name>-<APPID>`, e.g. `uploads-1250000000` |
-| huawei | OBS trigger | native | |
-| onprem | a directory of files | prefix/suffix in the host | `created` and `deleted`. `builtin` creates the directory; `{use: directory, path}` uses one you already have. The first start records current files and does not emit them |
+| aws | S3 notification | native | `created`, `deleted`. Created buckets block public access |
+| gcp | Cloud Storage via Eventarc | applied by the runtime | `created`, `deleted`, one deployment each |
+| azure | Blob trigger in the app's storage account | path pattern | `created`, `updated`. The trigger fires on create and on replace whenever either is listed; it cannot subscribe to deletes. Container name 3–63 lowercase. `existing` buckets in another account need `options.storage_connection` |
+| alibaba | OSS trigger | native | `created`, `deleted` |
+| oracle | Events rule | not supported (warning) – filter in your handler | `created`, `updated`, `deleted` (createobject, updateobject, deleteobject). The bucket must have "Emit Object Events" enabled |
+| tencent | COS trigger | native | `created`, `deleted`. Bucket name must be `<name>-<APPID>`, e.g. `uploads-1250000000` |
+| huawei | OBS trigger | native | `created`, `deleted` |
+| onprem | a directory of files, or a bucket on a storage service | prefix/suffix in the host | `created`, `updated`, `deleted`. A change is reported as `created` unless that function's `events` lists `updated`. `builtin` creates the directory; `{use: directory, path}` uses one you already have. The first start records current files and does not emit them |
 
 Example: [`examples/05-storage-events`](../examples/05-storage-events).
 
@@ -220,7 +220,7 @@ functions:
       - storage: {resource: uploads, prefix: in/}
 ```
 
-The event uses the resource's native name and `existing: <external>`. The functions also get the resource's connection details. On premises, a resource can move the queue to Redis or the bucket to an S3-compatible store, and a storage event may set both `resource` and `bucket`: that bucket on the resource's storage service ([details](resources.md#storage-drivers)).
+The event uses the resource's native name and `existing: <external>`. The functions also get the resource's connection details. On premises, a resource can move the queue to Redis or the bucket to an S3-compatible store. A storage event may set both `resource` and `bucket`: that bucket on the resource's storage service. A queue event may set both `resource` and `name`: that queue on the resource's queue service (Redis key, SQS queue, Azure queue, and the other queue drivers). On every other provider, combining them is an error ([details](resources.md#storage-drivers)).
 
 ## Provider-specific behaviour worth knowing
 

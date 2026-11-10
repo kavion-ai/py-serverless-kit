@@ -72,6 +72,7 @@ def test_plan_places_members_and_the_balancer_on_their_servers(root):
         ("r2", "replica", "db3", "10.0.0.13", 5432),
     ]
     assert topo["balancer"]["server"] == "lb1" and topo["balancer"]["port"] == 6432
+    assert topo["failover"] == "off" and topo["write"] == "single"
     # The functions use the load balancer; the primary is the service's own target (console, logs, backup).
     assert (req["address"], req["port"]) == ("10.0.0.20", 6432)
     assert req["target"]["host"] == "10.0.0.11" and req["container"] == "pskit-shop-orders"
@@ -114,6 +115,8 @@ def test_catalog_says_which_databases_replicate():
     assert {k for k, v in info.items() if v} == {"postgres", "mysql", "mariadb", "mongodb"}
     assert info["postgres"]["balancer"] == "pgpool-II" and info["mysql"]["balancer"] == "ProxySQL"
     assert info["mongodb"]["balancer"] == "" and info["mongodb"]["local"] is False
+    assert info["mysql"]["multi"] is True and info["postgres"]["multi"] is False
+    assert info["mongodb"]["failover_always"] is True
 
 
 # ----------------------------------------------------------------------------------------------- create
@@ -136,6 +139,8 @@ def test_postgres_primary_replicas_and_pgpool(root):
     pgpool = fake.having("10.0.0.20", "bitnamilegacy/pgpool")[-1]
     assert "PGPOOL_BACKEND_NODES=0:10.0.0.11:5432:0,1:10.0.0.12:5432:1,2:10.0.0.13:5432:1" in pgpool
     assert "0.0.0.0:6432:5432" in pgpool
+    assert "PGPOOL_HEALTH_CHECK" not in pgpool
+    assert not fake.having("pskit.member=failover")
     env = _env(root)
     password = env["PSKIT_ORDERS_PASSWORD"]
     assert env["PSKIT_ORDERS_URL"] == f"postgresql://pskit:{password}@10.0.0.20:6432/orders"
@@ -175,6 +180,7 @@ def test_mysql_family_follows_the_primary_behind_proxysql(root, service):
     assert 'address="10.0.0.11", port=3306, hostgroup=10' in config
     assert 'address="10.0.0.12", port=3306, hostgroup=20, weight=1000' in config
     assert 'match_digest="^SELECT", destination_hostgroup=20' in config
+    assert 'mysql_ifaces="127.0.0.1:6032"' in config
     assert _env(root)["PSKIT_ORDERS_URL"].endswith("@10.0.0.20:6033/orders")
 
 
@@ -250,3 +256,94 @@ def test_status_reports_members_and_balancer_separately(root):
     assert [m["name"] for m in out["members"]] == ["primary", "r1", "r2"]
     assert out["balancer"]["name"] == "lb" and out["balancer"]["state"] == "running"
     assert all("target" not in m for m in out["members"])
+
+
+# ----------------------------------------------------------------------------------------------- failover and multi-primary
+
+
+def test_plan_refuses_several_primaries_where_the_engine_has_one(root):
+    with pytest.raises(svc.ServiceError, match="one primary"):
+        svc.check_request(_body(write="multi"), root, RAW)
+    with pytest.raises(svc.ServiceError, match="one primary"):
+        svc.check_request(_body("mongodb", balancer="", write="multi"), root, RAW)
+    with pytest.raises(svc.ServiceError, match="failover must be off or auto"):
+        svc.check_request(_body(failover="yes"), root, RAW)
+    with pytest.raises(svc.ServiceError, match="write must be single or multi"):
+        svc.check_request(_body(write="all"), root, RAW)
+
+
+def test_mongodb_always_records_automatic_failover(root):
+    req = svc.check_request(_body("mongodb", balancer="", failover="off"), root, RAW)
+    assert req["topology"]["failover"] == "auto"
+    assert req["topology"]["write"] == "single"
+
+
+def test_postgres_automatic_failover_arms_pgpool_and_keeps_secrets_out_of_the_log(root):
+    fake = FakeShell()
+    lines: List[str] = []
+    svc.create(root, _body(failover="auto"), RAW, lines.append, run=fake, wait_seconds=1)
+    pgpool = fake.having("10.0.0.20", "bitnamilegacy/pgpool")[-1]
+    assert "PGPOOL_HEALTH_CHECK_PERIOD=10" in pgpool
+    assert "PGPOOL_FAILOVER_ON_BACKEND_ERROR=on" in pgpool
+    assert fake.having("10.0.0.20", "pgpool failover command installed")
+    assert not fake.having("pskit.member=failover")
+    entry = svc.load_state(root)["services"]["orders"]
+    secret = entry["topology"]["secrets"]["replication_password"]
+    assert secret not in "\n".join(lines)
+    assert entry["env"]["PSKIT_ORDERS_PASSWORD"] not in "\n".join(lines)
+    assert entry["resource"]["connection"]["failover"] == "auto"
+
+
+def test_mysql_automatic_failover_starts_a_watcher_beside_proxysql(root):
+    fake = FakeShell()
+    lines: List[str] = []
+    svc.create(root, _body("mysql", failover="auto"), RAW, lines.append, run=fake, wait_seconds=1)
+    assert fake.having("10.0.0.20", "network", "create", "pskit-shop-orders-lb")
+    assert fake.having("10.0.0.20", "pskit.member=failover")
+    proxy = fake.having("10.0.0.20", "proxysql/proxysql")[-1]
+    encoded = proxy.split("PSKIT_LB_SECRET_CONFIG=")[1].split("'")[0].split(" ")[0]
+    config = base64.b64decode(encoded).decode("utf-8")
+    assert 'mysql_ifaces="0.0.0.0:6032"' in config
+    entry = svc.load_state(root)["services"]["orders"]
+    assert entry["topology"]["watcher"]["container"] == "pskit-shop-orders-failover"
+    secret = entry["topology"]["secrets"]["replication_password"]
+    assert secret not in "\n".join(lines) and entry["env"]["PSKIT_ORDERS_PASSWORD"] not in "\n".join(lines)
+    public = svc.public_entry(entry)
+    assert "secrets" not in public["topology"]
+    assert secret not in json.dumps(public)
+
+
+def test_mysql_multi_primary_uses_a_ring_and_equal_writers(root):
+    fake = FakeShell()
+    lines: List[str] = []
+    entry = svc.create(root, _body("mysql", write="multi"), RAW, lines.append, run=fake, wait_seconds=1)
+    assert [m["name"] for m in entry["topology"]["members"]] == ["primary", "p1", "p2"]
+    primary_run = fake.having("10.0.0.11", "pskit.member=primary")[0]
+    second_run = fake.having("10.0.0.12", "pskit.member=p1", "docker", "run")[0]
+    assert "--server-id=1" in primary_run and "--server-id=2" in second_run
+    assert "--read-only=ON" not in primary_run and "--read-only=ON" not in second_run
+    assert "--auto-increment-increment=3" in primary_run
+    assert "--auto-increment-offset=1" in primary_run and "--auto-increment-offset=2" in second_run
+    assert fake.having("10.0.0.13", "SOURCE_HOST='10.0.0.12'")
+    assert fake.having("10.0.0.11", "SOURCE_HOST='10.0.0.13'")
+    proxy = fake.having("10.0.0.20", "proxysql/proxysql")[-1]
+    encoded = proxy.split("PSKIT_LB_SECRET_CONFIG=")[1].split("'")[0].split(" ")[0]
+    config = base64.b64decode(encoded).decode("utf-8")
+    assert 'address="10.0.0.11", port=3306, hostgroup=10' in config
+    assert 'address="10.0.0.12", port=3306, hostgroup=10' in config
+    assert "weight=1000" not in config
+    assert 'mysql_ifaces="127.0.0.1:6032"' in config
+    assert entry["resource"]["connection"]["write"] == "multi"
+    assert entry["env"]["PSKIT_ORDERS_READ_URLS"] == ""
+    secret = entry["topology"]["secrets"]["replication_password"]
+    assert secret not in "\n".join(lines)
+
+
+def test_multi_primary_firewall_lets_every_primary_reach_the_others(root):
+    req = svc.check_request(_body("mysql", write="multi"), root, RAW)
+    entry = {"service": "mysql", "key": "orders", "topology": req["topology"]}
+    rules = rep.rules(entry, [network.who("app1", "10.0.0.50")])
+    flat = {(r["address"], r["port"], tuple(s["address"] for s in r["sources"])) for r in rules}
+    assert ("10.0.0.11", "3306", ("10.0.0.12", "10.0.0.13")) in flat
+    assert ("10.0.0.12", "3306", ("10.0.0.11", "10.0.0.13")) in flat
+    assert ("10.0.0.13", "3306", ("10.0.0.11", "10.0.0.12")) in flat

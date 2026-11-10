@@ -232,7 +232,6 @@ def test_record_lists_resources_without_values(make_project):
         ("{db: {type: database}}", "[]", "external: true"),
         ("{q: {type: queue}}", "[{storage: {resource: q}}]", "which is a queue"),
         ("{}", "[{queue: {resource: nope}}]", "unknown resource 'nope'"),
-        ("{q: {type: queue, name: a}}", "[{queue: {resource: q, name: b}}]", "not both"),
         ("{q: {type: queue, functions: [ghost]}}", "[]", "unknown function 'ghost'"),
         ("{a-b: {type: queue}, a_b: {type: queue}}", "[]", "same variable prefix"),
         ("{q: {type: queue, connection: {name: x}}}", "[]", "reserved"),
@@ -251,6 +250,20 @@ def test_schema_errors(make_project, resources, events, message):
               w: {{handler: app.handlers.worker, events: {events}}}
             """
         )
+
+
+def test_queue_event_name_on_a_resource_is_onprem_only(make_project):
+    project = make_project(
+        """
+        service: res
+        provider: {name: aws}
+        resources: {q: {type: queue, name: a}}
+        functions:
+          w: {handler: app.handlers.worker, events: [{queue: {resource: q, name: b}}]}
+        """
+    )
+    errors = [i.message for i in project.validate() if i.level == "error"]
+    assert len([e for e in errors if "another queue" in e and "on-premises only" in e]) == 1, errors
 
 
 def test_storage_event_bucket_on_a_resource_is_onprem_only(make_project):

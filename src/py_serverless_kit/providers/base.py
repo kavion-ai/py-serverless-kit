@@ -170,6 +170,11 @@ class Provider(ABC):
     standalone_resources: ClassVar[bool] = False
     # A storage event may name a storage resource (the service) and another bucket on it.
     storage_service_buckets: ClassVar[bool] = False
+    # A queue event may name a queue resource (the service) and another queue on it.
+    queue_service_queues: ClassVar[bool] = False
+    # Storage actions this provider can subscribe to. Overwrite is ``created`` where the cloud has no
+    # separate update event (S3 ObjectCreated, GCS finalized, OSS/COS/OBS ObjectCreated).
+    storage_events: ClassVar[Tuple[str, ...]] = ("created", "deleted")
     # Embedded workflows on a cloud function are capped by that function's timeout.
     # A long-running host (on-premises) sets this to False.
     warn_on_embedded_workflow: ClassVar[bool] = True
@@ -296,6 +301,32 @@ class Provider(ABC):
                                 where,
                             )
                         )
+            if not self.queue_service_queues:
+                for qev in fn.events_of("queue"):
+                    res = config.resources.get(qev.resource or "")
+                    if res is not None and qev.name and qev.name != res.native_name(str(qev.resource)):
+                        issues.append(
+                            Issue(
+                                "error",
+                                f"queue event sets both `resource: {qev.resource}` and `name: {qev.name}`; "
+                                f"another queue on a resource's service is on-premises only. On "
+                                f"{self.display_name} use one of them",
+                                where,
+                            )
+                        )
+            allowed = set(self.storage_events)
+            for sev in fn.events_of("storage"):
+                bad = [action for action in sev.events if action not in allowed]
+                if bad:
+                    listed = ", ".join(self.storage_events) if self.storage_events else "none"
+                    issues.append(
+                        Issue(
+                            "error",
+                            f"{self.display_name} storage triggers fire on {listed}; "
+                            f"{', '.join(bad)} is not among them",
+                            where,
+                        )
+                    )
             if config.timeout_of(fn) > self.max_timeout:
                 issues.append(
                     Issue(
@@ -430,6 +461,8 @@ class Provider(ABC):
             "node_runtimes": sorted(self.node_runtimes, key=lambda rt: int(rt[6:])),
             "max_timeout": self.max_timeout,
             "storage_service_buckets": self.storage_service_buckets,
+            "queue_service_queues": self.queue_service_queues,
+            "storage_events": list(self.storage_events),
             "terraform_provider": self.terraform_source,
             "notes": self.notes,
         }

@@ -21,6 +21,8 @@ export interface ReplicationDiagramProps {
   balancer: (DiagramNode & { kind: string }) | null;
   /** MongoDB: the driver routes from one replica set URL. */
   driverRoutes?: boolean;
+  /** multi: every member on the right accepts writes (MySQL, MariaDB). */
+  writers?: "single" | "multi";
   /** Show a "+ more replicas later" slot. */
   growable?: boolean;
 }
@@ -84,7 +86,7 @@ function Label({ x, y, text, color, anchor = "middle" }: { x: number; y: number;
   );
 }
 
-export function ReplicationDiagram({ engine, sync, primary, replicas, balancer, driverRoutes, growable }: ReplicationDiagramProps) {
+export function ReplicationDiagram({ engine, sync, primary, replicas, balancer, driverRoutes, writers, growable }: ReplicationDiagramProps) {
   const lb = balancer;
   const shown = replicas.length ? replicas : [{ title: "pick a server", detail: "" }];
   const slots = shown.length + (growable ? 1 : 0);
@@ -99,11 +101,14 @@ export function ReplicationDiagram({ engine, sync, primary, replicas, balancer, 
   const repMid = (i: number) => repY(i) + REP_H / 2;
   const primMidY = primY + primH / 2;
   const front = lb ? { x: W / 2, y: lbY + 58 } : { x: W / 2, y: funcY + 42 };
+  const multi = writers === "multi";
   const syncLabel = sync === "sync" ? "sync: commit waits for a replica" : "async: copied right after commit";
   const dash = sync === "sync" ? undefined : "6 5";
+  const sideRole = (i: number) =>
+    multi ? `Primary ${i + 2} · writes` : driverRoutes ? `Secondary ${i + 1} · reads` : `Replica ${i + 1} · reads`;
 
   return (
-    <svg className="replication-diagram" viewBox={`0 0 ${W} ${height}`} width="100%" role="img" aria-label={`${engine}: primary with ${replicas.length} read replicas, ${sync} replication`}>
+    <svg className="replication-diagram" viewBox={`0 0 ${W} ${height}`} width="100%" role="img" aria-label={multi ? `${engine}: ${replicas.length + 1} primaries, ${sync} replication` : `${engine}: primary with ${replicas.length} read replicas, ${sync} replication`}>
       <defs>
         {(["write", "read", "repl"] as const).map((k) => (
           <marker key={k} id={`arrow-${k}`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -164,13 +169,13 @@ export function ReplicationDiagram({ engine, sync, primary, replicas, balancer, 
 
       <Box x={COL_L} y={primY} w={BOX_W} h={primH} role="Primary · writes" node={primary} accent={COLORS.write} />
       {shown.map((r, i) => (
-        <Box key={i} x={COL_R} y={repY(i)} w={BOX_W} h={REP_H} role={driverRoutes ? `Secondary ${i + 1} · reads` : `Replica ${i + 1} · reads`} node={r} accent={COLORS.read} />
+        <Box key={i} x={COL_R} y={repY(i)} w={BOX_W} h={REP_H} role={sideRole(i)} node={r} accent={multi ? COLORS.write : COLORS.read} />
       ))}
       {growable && (
         <g>
           <rect x={COL_R} y={repY(shown.length)} width={BOX_W} height={REP_H} rx={10} fill="none" stroke="var(--line-strong)" strokeDasharray="5 4" />
           <text x={COL_R + BOX_W / 2} y={repY(shown.length) + 29} fontSize={11.5} textAnchor="middle" fill="var(--muted)">
-            + more replicas later, on demand
+            {multi ? "+ more primaries later, on demand" : "+ more replicas later, on demand"}
           </text>
         </g>
       )}
@@ -180,7 +185,7 @@ export function ReplicationDiagram({ engine, sync, primary, replicas, balancer, 
         <line x1={0} y1={0} x2={26} y2={0} stroke={COLORS.write} strokeWidth={2.2} />
         <text x={32} y={4}>writes → primary</text>
         <line x1={150} y1={0} x2={176} y2={0} stroke={COLORS.read} strokeWidth={2.2} />
-        <text x={182} y={4}>reads → replicas</text>
+        <text x={182} y={4}>{multi ? "writes → every primary" : "reads → replicas"}</text>
         <line x1={300} y1={0} x2={326} y2={0} stroke={COLORS.repl} strokeWidth={2} strokeDasharray={dash} />
         <text x={332} y={4}>{syncLabel}</text>
       </g>

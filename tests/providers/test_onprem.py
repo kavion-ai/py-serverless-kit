@@ -517,6 +517,47 @@ def test_storage_event_watches_another_bucket_on_a_resource_service(make_project
     assert own["bucket"] == "store" and own["driver"]["bucket"] == "files"
 
 
+def test_queue_event_names_another_queue_on_a_resource_service(make_project):
+    import json as _json
+
+    from py_serverless_kit.core.deployer import Deployer
+
+    project = make_project(
+        """
+        service: drv
+        provider: {name: onprem}
+        resources:
+          jobs: {type: queue, external: true, options: {driver: redis, url: "redis://redis:6379/0", key: jobs}}
+        functions:
+          w: {handler: app.handlers.worker, events: [{queue: {resource: jobs, name: invoices}},
+                                                     {queue: {resource: jobs}}]}
+        """
+    )
+    assert not [i for i in project.validate() if i.level == "error"]
+    Deployer(project, echo=lambda _m: None).package(skip_deps=True)
+    spec = _json.loads((project.work_dir / "onprem_app" / "pskit_host.json").read_text("utf-8"))
+    invoices, own = spec["functions"]["w"]["events"]
+    assert invoices["name"] == "invoices"
+    assert invoices["driver"] == {**spec["resources"]["jobs"]["driver"], "key": "invoices"}
+    assert invoices["driver"]["url"] == "redis://redis:6379/0"
+    assert own["name"] == "jobs" and own["driver"]["key"] == "jobs"
+
+
+def test_queue_event_name_on_a_directory_resource_is_an_error(make_project):
+    project = make_project(
+        """
+        service: drv
+        provider: {name: onprem}
+        resources:
+          jobs: {type: queue, options: {driver: directory, path: ./drop}}
+        functions:
+          w: {handler: app.handlers.worker, events: [{queue: {resource: jobs, name: other}}]}
+        """
+    )
+    errors = [i.message for i in project.validate() if i.level == "error"]
+    assert any("is one folder" in e for e in errors), errors
+
+
 def test_storage_event_bucket_on_a_directory_resource_is_an_error(make_project):
     project = make_project(
         """

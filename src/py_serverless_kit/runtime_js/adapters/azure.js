@@ -129,6 +129,15 @@ async function queue(message, ctx, fn) {
   return execute(toQueueEvent(message, ctx, fn), makeContext(fn, meta(ctx).id || (ctx && ctx.invocationId), message), fn);
 }
 
+function blobAction(m) {
+  // updated when creation and last-modified differ. The trigger often omits both; then the action stays created.
+  const props = (m && m.properties) || m || {};
+  const created = props.creationTime || props.creation_time;
+  const modified = props.lastModified || props.last_modified;
+  if (created && modified && String(created) !== String(modified)) return "updated";
+  return "created";
+}
+
 function toBlobEvent(blob, ctx, fn, bucket) {
   const m = meta(ctx);
   const name = String(m.blobTrigger || m.name || "");
@@ -138,7 +147,7 @@ function toBlobEvent(blob, ctx, fn, bucket) {
     bucket,
     key,
     size: Buffer.isBuffer(blob) ? blob.length : (m.properties && m.properties.length) || null,
-    action: "created",
+    action: blobAction(m),
     attributes: { uri: m.uri || null },
     source: "azure.storage.blob",
     raw: blob,

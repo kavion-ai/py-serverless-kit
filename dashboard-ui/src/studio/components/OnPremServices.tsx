@@ -344,6 +344,8 @@ export function CreateDrawer({
   const [lbServer, setLbServer] = useState("");
   const [lbLocal, setLbLocal] = useState(true);
   const [lbPort, setLbPort] = useState<number | undefined>(undefined);
+  const [failover, setFailover] = useState<"off" | "auto">("off");
+  const [writeMode, setWriteMode] = useState<"single" | "multi">("single");
   // Optional for databases: a dump to start from, and alerts.
   const [dataImport, setDataImport] = useState("");
   const [alert, setAlert] = useState<AlertDraft>(EMPTY_ALERT);
@@ -381,6 +383,8 @@ export function CreateDrawer({
     setAlert(EMPTY_ALERT);
     setRepOn("servers");
     setLbPort(undefined);
+    setFailover("off");
+    setWriteMode("single");
     if (c.kind === "runtime") {
       setTarget(ssh);
       setWhere((w) => (w === "local" ? "ssh" : w));
@@ -431,7 +435,9 @@ export function CreateDrawer({
         : !primaryServer
           ? "pick the server that takes the writes"
           : !replicaServers.length
-            ? "pick at least one server for a read replica"
+            ? repInfo?.multi && writeMode === "multi"
+              ? "pick at least one other primary"
+              : "pick at least one server for a read replica"
             : null;
   const sshError =
     replicated
@@ -497,6 +503,8 @@ export function CreateDrawer({
       const topology: JsonObject = {
         mode: "replicated",
         sync,
+        failover: repInfo.failover_always ? "auto" : failover,
+        write: repInfo.multi && writeMode === "multi" ? "multi" : "single",
         primary: repLocal ? "local" : primaryServer,
         replicas: repLocal ? Array.from({ length: localReplicas || 1 }, () => "local") : replicaServers,
         balancer: !repInfo.balancer ? "" : repLocal ? (lbLocal ? "local" : "") : lbServer,
@@ -660,6 +668,10 @@ export function CreateDrawer({
               setLbLocal={setLbLocal}
               lbPort={lbPort}
               setLbPort={setLbPort}
+              failover={failover}
+              setFailover={setFailover}
+              write={writeMode}
+              setWrite={setWriteMode}
               error={topologyError}
             />
           )}

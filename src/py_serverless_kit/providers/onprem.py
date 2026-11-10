@@ -236,6 +236,45 @@ def service_bucket(driver: Dict[str, Any], bucket: str) -> Dict[str, Any]:
     return {**driver, ("container" if use == "azure_blob" else "bucket"): bucket}
 
 
+def service_queue(driver: Dict[str, Any], name: str) -> Dict[str, Any]:
+    """``driver`` (a queue resource's binding) pointed at another queue ``name`` on the same service.
+
+    A built-in queue has no driver fields: the host uses the event's ``name``. A directory resource is one
+    folder. Cloud drivers retarget the field that names the queue (Redis key, SQS name, Azure queue, ...).
+    """
+    use = str(driver.get("use") or "builtin")
+    if use == "builtin":
+        return dict(driver)
+    if use == "directory":
+        raise ValueError(
+            "a `directory` queue resource is one folder, not a service with queues; "
+            "drop `name` from the event or give the resource the builtin or a queue driver"
+        )
+    out = dict(driver)
+    if use in ("redis", "redis_stream"):
+        out["key"] = name
+    elif use == "sqs":
+        out["name"] = name
+        url = str(out.get("queue_url") or "")
+        if url:
+            base, _sep, _last = url.rstrip("/").rpartition("/")
+            if base:
+                out["queue_url"] = base + "/" + name
+    elif use in ("azure_queue", "mns", "pskit_host", "custom"):
+        out["queue"] = name
+    elif use == "pubsub":
+        old = str(out.get("subscription") or "")
+        if str(out.get("topic") or "") == old and old:
+            out["topic"] = name
+        out["subscription"] = name
+    elif use == "cloudflare_queue":
+        # queue_id is the queue's id on the account, which is what the event's name means here.
+        out["queue_id"] = name
+    else:
+        raise ValueError(f"queue driver {use!r} has no separate queue name; drop `name` or use the resource's queue")
+    return out
+
+
 def _safe_name(value: str, what: str) -> Optional[str]:
     text = str(value)
     if not text or text in (".", "..") or "/" in text or "\\" in text:
@@ -262,6 +301,8 @@ class OnPremProvider(Provider):
     max_timeout = 3600
     warn_on_embedded_workflow = False
     storage_service_buckets = True
+    queue_service_queues = True
+    storage_events = ("created", "updated", "deleted")
     standalone_resources = True
     notes = (
         "Runs a long-lived Python process. Default `options.deploy.method` is `local` "
@@ -482,6 +523,14 @@ class OnPremProvider(Provider):
                             service_bucket(drivers[key], sev.bucket)
                         except ValueError as exc:
                             issues.append(Issue("error", f"bucket {sev.bucket} on resource {key}: {exc}",
+                                                f"functions.{name}"))
+                for qev in fn.events_of("queue"):
+                    key = str(qev.resource or "")
+                    if key in drivers and qev.name != config.resources[key].native_name(key):
+                        try:
+                            service_queue(drivers[key], qev.name)
+                        except ValueError as exc:
+                            issues.append(Issue("error", f"queue {qev.name} on resource {key}: {exc}",
                                                 f"functions.{name}"))
         for name, fn in config.functions.items():
             for ev in fn.events_of("http"):
@@ -817,6 +866,9 @@ class OnPremProvider(Provider):
                     if ev.type == "storage" and body.get("bucket") != resources[res_key]["name"]:
                         # Another bucket on that resource's storage service.
                         body["driver"] = service_bucket(body["driver"], str(body["bucket"]))
+                    if ev.type == "queue" and body.get("name") != resources[res_key]["name"]:
+                        # Another queue on that resource's queue service.
+                        body["driver"] = service_queue(body["driver"], str(body["name"]))
                 events.append(body)
             functions[name] = {
                 "handler": fn.handler,

@@ -55,7 +55,7 @@ functions:
       - storage: {resource: invoices, prefix: incoming/, suffix: .pdf}
 ```
 
-- Azure blob triggers fire on **created / updated** blobs only; `events: [deleted]` is a validation error.
+- Azure blob triggers fire on **created** and **updated** blobs. `events: [deleted]` is a validation error. Listing `created` or `updated` deploys the same trigger: Azure cannot subscribe to only one of them, and it cannot subscribe to deletes.
 - `storage_connection` is shared by every external queue and container of the service: keep them in the same storage
   account, or use the SDK with `connection_string_env` for the others (no trigger).
 

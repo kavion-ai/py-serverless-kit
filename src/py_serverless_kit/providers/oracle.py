@@ -19,7 +19,8 @@ from .terraform_doc import TerraformDoc, escape, ref, tf_id
 
 FUNCTION = "oci_functions_function"
 _EVENT_TYPES = {
-    "created": ["com.oraclecloud.objectstorage.createobject", "com.oraclecloud.objectstorage.updateobject"],
+    "created": ["com.oraclecloud.objectstorage.createobject"],
+    "updated": ["com.oraclecloud.objectstorage.updateobject"],
     "deleted": ["com.oraclecloud.objectstorage.deleteobject"],
 }
 
@@ -38,6 +39,7 @@ class OracleProvider(Provider):
     terraform_local_name = "oci"
     default_region = "us-ashburn-1"
     capabilities = frozenset({HTTP, STORAGE})
+    storage_events = ("created", "updated", "deleted")
     max_name_length = 100
     runtimes = {"python3.9": "3.9", "python3.11": "3.11"}
     # Node.js: fnproject/node:<major>(-dev) images with the @fnproject/fdk package.

@@ -7,7 +7,7 @@ generated ``function_app.py`` that registers a decorated wrapper per trigger:
   configured paths are served as-is, without Azure's default ``/api`` prefix);
 * ``schedule`` -> ``@app.timer_trigger`` (NCRONTAB, always UTC on Linux Consumption);
 * ``queue``    -> Storage Queue in the app's storage account;
-* ``storage``  -> Blob trigger on a container in the app's storage account (created only);
+* ``storage``  -> Blob trigger on a container in the app's storage account (created and updated, not deleted);
 * ``topic``    -> Service Bus topic + one subscription per function.
 
 Node.js services get a generated ``pskit_entry.js`` (``app.http()``, ``app.timer()``, ...
@@ -103,6 +103,9 @@ class AzureProvider(Provider):
     extra_requirements = ["azure-functions"]
     max_timeout = 600
     standalone_resources = True
+    # The blob trigger fires when a blob is created or replaced. It cannot subscribe to deletes, and it
+    # cannot subscribe to only one of created and updated: listing either deploys the same trigger.
+    storage_events = ("created", "updated")
     notes = (
         "Linux Consumption Function App, Python v2 model. Workflows use the embedded engine; "
         "`engine: native` compiles them to Azure Logic Apps (opt-in)."
@@ -371,8 +374,6 @@ class AzureProvider(Provider):
                             where,
                         )
                     )
-                if "deleted" in ev.events:
-                    issues.append(Issue("error", "Azure blob triggers only fire on created/updated blobs", where))
             for ev in fn.events_of("topic"):
                 if ev.existing and not (opts.get("servicebus_namespace_id") and opts.get("servicebus_connection")):
                     issues.append(
