@@ -302,7 +302,7 @@ def _run(argv, data: Path, *extra, **env):
 
 
 def _crypto():
-    spec = importlib.util.spec_from_file_location("sm_server", SOURCE / "python" / "server.py")
+    spec = importlib.util.spec_from_file_location("sm_ciphers", SOURCE / "python" / "smserver" / "ciphers.py")
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
@@ -508,7 +508,8 @@ def test_create_over_ssh_copies_with_scp_then_docker_cp(tmp_path, monkeypatch):
     entry, calls = _create(tmp_path, service="secretsmanager-node", target=SSH)
     texts = [" ".join(c) for c in calls]
     scps = [t for t in texts if t.startswith("scp") or " scp " in t]
-    assert sorted(t.rsplit("/", 1)[-1] for t in scps) == ["index.html", "server.js"]
+    assert sorted(t.rsplit("/", 1)[-1] for t in scps) == ["lib", "package.json", "server.js", "ui"]
+    assert all(" -r " in t for t in scps if t.endswith(("/lib", "/ui")))
     remote = f"/tmp/pskit-{entry['container']}-app"
     assert any(f"'cp' '{remote}/.' '{entry['container']}:/app'" in t for t in texts)
     create = next(t for t in texts if "docker 'create'" in t)
@@ -519,7 +520,12 @@ def test_create_over_ssh_copies_with_scp_then_docker_cp(tmp_path, monkeypatch):
 def test_copied_files_are_the_repository_copy():
     files = onprem_secretsmanager.app_files("secretsmanager-node")
     assert files["server.js"] == (SOURCE / "nodejs" / "server.js").read_bytes()
-    assert files["index.html"] == (SOURCE / "ui" / "index.html").read_bytes()
+    assert files["lib/main.js"] == (SOURCE / "nodejs" / "lib" / "main.js").read_bytes()
+    assert files["ui/index.html"] == (SOURCE / "ui" / "index.html").read_bytes()
+    assert any(name.startswith("ui/assets/js/") for name in files) and "Dockerfile" not in files
+    python = onprem_secretsmanager.app_files("secretsmanager")
+    assert python["server.py"] == (SOURCE / "python" / "server.py").read_bytes()
+    assert "smserver/main.py" in python and not any("__pycache__" in name for name in python)
 
 
 def test_usage_guide_and_browser_use_the_service_keys(tmp_path, monkeypatch):

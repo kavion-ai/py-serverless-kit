@@ -15,13 +15,14 @@ from __future__ import annotations
 
 import copy
 import fnmatch
+import json
 import threading
 import time
 import uuid
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
-from typing import Any, Callable, Dict, List, Optional
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
 from .context import Context
 from .event import Event, EventType
@@ -47,6 +48,34 @@ class WorkflowCancelled(WorkflowFailed):
 
 
 TIMEOUT_ERROR = "States.Timeout"
+# One state's output in an execution record. Long values are cut so a run of many
+# steps cannot fill the on-prem history file or a cloud function's response.
+_OUTPUT_LIMIT = 2048
+
+
+def clip_output(value: Any) -> Tuple[Any, bool]:
+    """JSON-safe copy of one state's output. The second value is True when it was cut."""
+    try:
+        text = json.dumps(value, default=str, ensure_ascii=False)
+    except (TypeError, ValueError):
+        text = json.dumps(str(value))
+    if len(text) <= _OUTPUT_LIMIT:
+        return json.loads(text), False
+    return text[:_OUTPUT_LIMIT] + "…", True
+
+
+def _output_fields(value: Any) -> Dict[str, Any]:
+    output, truncated = clip_output(value)
+    fields: Dict[str, Any] = {"output": output}
+    if truncated:
+        fields["output_truncated"] = True
+    return fields
+
+
+def _task_fields(state: Dict[str, Any]) -> Dict[str, Any]:
+    if state.get("type") == "task" and state.get("function"):
+        return {"function": state["function"]}
+    return {}
 
 
 _ID_LOCK = threading.Lock()
@@ -236,7 +265,9 @@ class WorkflowEngine:
                 self._record(name, kind, event="fail", error=state.get("error", "States.Fail"))
                 raise WorkflowFailed(state.get("error", "States.Fail"), state.get("cause", ""), self.history)
             if kind == "choice":
-                name = self._choose(state, data)
+                chosen = self._choose(state, data)
+                self._record(name, kind, event="exit", next=chosen, **_output_fields(data))
+                name = chosen
                 continue
             began = time.perf_counter()
             try:
@@ -250,14 +281,27 @@ class WorkflowEngine:
                 )
                 if handler is None:
                     raise WorkflowFailed(_error_name(exc), str(exc), self.history) from exc
-                self._record(name, kind, event="caught", error=_error_name(exc))
+                caught: Dict[str, Any] = {"event": "caught", "error": _error_name(exc)}
+                caught.update(_task_fields(state))
+                if handler.get("next"):
+                    caught["next"] = handler["next"]
+                self._record(name, kind, **caught)
                 info = {"error": _error_name(exc), "cause": str(exc)}
                 data = set_path(data, handler.get("result_path", "$.error"), info)
                 name = handler["next"]
                 continue
-            self._record(name, kind, event="exit", duration_ms=round((time.perf_counter() - began) * 1000, 2))
+            left: Dict[str, Any] = {
+                "event": "exit",
+                "duration_ms": round((time.perf_counter() - began) * 1000, 2),
+            }
+            left.update(_task_fields(state))
+            left.update(_output_fields(data))
             if state.get("end") or not state.get("next"):
+                left["end"] = True
+                self._record(name, kind, **left)
                 return data
+            left["next"] = state["next"]
+            self._record(name, kind, **left)
             name = state["next"]
         return data
 
@@ -419,6 +463,7 @@ def orchestrate(event: Event, context: Context) -> Any:
             "error": exc.error,
             "cause": exc.cause,
             "duration_ms": round((time.perf_counter() - started) * 1000, 2),
+            "history": engine.history,
         }
         context.logger.error("workflow failed", extra=failure)
         if event.http is not None:
@@ -430,5 +475,6 @@ def orchestrate(event: Event, context: Context) -> Any:
         "status": "SUCCEEDED",
         "output": output,
         "duration_ms": round((time.perf_counter() - started) * 1000, 2),
+        "history": engine.history,
     }
     return body

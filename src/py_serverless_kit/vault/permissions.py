@@ -245,6 +245,14 @@ def studio_permission(method: str, parts: Sequence[str]) -> Optional[Tuple[str, 
         return "shell", "r" if method == "GET" else "u"
     if head == "hana":
         return "hana", "r" if method == "GET" else "u"
+    if head == "workflow-test":
+        if method == "GET" and (not rest or len(rest) == 1):
+            return "test", "r"
+        if method == "POST" and not rest:
+            return "test", "c"
+        if method == "POST" and len(rest) == 2 and rest[1] == "cancel":
+            return "test", "u"
+        return ADMIN_ONLY
     if head == "jobs":
         if method == "DELETE":
             return "deploy", "d"

@@ -93,6 +93,10 @@ test("sequence, choice and pass", async () => {
   assert.deepEqual(Object.keys(first), ["ts", "state", "type", "event"]);
   assert.match(first.ts, /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{6}\+00:00$/);
   assert.deepEqual(engine.history.map((h) => [h.state, h.event]).slice(0, 3), [["Inc", "enter"], ["Inc", "exit"], ["Check", "enter"]]);
+  const exited = engine.history.find((h) => h.state === "Inc" && h.event === "exit");
+  assert.equal(exited.function, "inc");
+  assert.deepEqual(exited.output, { n: 1 });
+  assert.equal(exited.next, "Check");
 });
 
 test("retry then success", async () => {

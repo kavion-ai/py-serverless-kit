@@ -506,7 +506,8 @@ def test_create_over_ssh_copies_with_scp_then_docker_cp(tmp_path, monkeypatch):
     entry, calls = _create(tmp_path, service="s3-node", target=SSH)
     texts = [" ".join(c) for c in calls]
     scps = [t for t in texts if t.startswith("scp") or " scp " in t]
-    assert sorted(t.rsplit("/", 1)[-1] for t in scps) == ["index.html", "server.js"]
+    assert sorted(t.rsplit("/", 1)[-1] for t in scps) == ["lib", "package.json", "server.js", "ui"]
+    assert all(" -r " in t for t in scps if t.endswith(("/lib", "/ui")))
     create = next(t for t in texts if "docker 'create'" in t)
     assert "'node:22-alpine' 'node' '/app/server.js'" in create and "'0.0.0.0:9000:9000'" in create
     assert entry["env"]["PSKIT_FILES_URL"] == "http://20.40.60.80:9000"
@@ -515,7 +516,11 @@ def test_create_over_ssh_copies_with_scp_then_docker_cp(tmp_path, monkeypatch):
 def test_copied_files_are_the_repository_copy():
     files = onprem_s3.app_files("s3")
     assert files["server.py"] == (SOURCE / "python" / "server.py").read_bytes()
-    assert files["index.html"] == (SOURCE / "ui" / "index.html").read_bytes()
+    assert files["s3server/main.py"] == (SOURCE / "python" / "s3server" / "main.py").read_bytes()
+    assert files["ui/index.html"] == (SOURCE / "ui" / "index.html").read_bytes()
+    assert "ui/assets/js/app.js" in files and not any("__pycache__" in name for name in files)
+    node = onprem_s3.app_files("s3-node")
+    assert {"server.js", "package.json", "lib/main.js", "ui/index.html"} <= set(node)
 
 
 def test_usage_guide_and_browser_use_the_service_keys(tmp_path, monkeypatch):
@@ -558,3 +563,181 @@ def test_private_bucket_refuses_requests_without_keys_but_share_links_work_until
             onprem_browser.browse(entry, "s3", "share", {"bucket": "media", "key": "open.txt", "expires": bad})
     console = _console_post(server, "Presign", {"bucket": "media", "key": "open.txt", "expires": 90})
     assert console["expires"] == 90 and "X-Amz-Expires=90&" in console["url"]
+
+
+# ----------------------------------------------------------------------------- AWS-like policies, console contract
+
+
+def _put_policy(server, bucket, statements):
+    body = json.dumps({"Version": "2012-10-17", "Statement": statements}).encode()
+    server.ok("PUT", bucket, query={"policy": ""}, body=body, expect=(200, 204))
+
+
+@pytest.mark.parametrize("argv", IMPLS)
+def test_bucket_policy_deny_applies_to_signed_requests_and_share_links(tmp_path, argv):
+    server = Server(argv, tmp_path / "data", S3_CREDENTIALS="AKIDREADER:reader-secret")
+    try:
+        server.ok("PUT", "vault")
+        server.ok("PUT", "vault", "secret.txt", body=b"top")
+        server.ok("PUT", "vault", "public/info.txt", body=b"info")
+        arn = "arn:aws:s3:::vault"
+        _put_policy(server, "vault", [
+            {"Sid": "ReaderReadOnly", "Effect": "Deny", "Principal": {"AWS": "arn:aws:iam::000000000000:user/AKIDREADER"},
+             "NotAction": ["s3:GetObject", "s3:ListBucket"], "Resource": [arn, arn + "/*"]},
+            {"Sid": "NoDeleteForAnyone", "Effect": "Deny", "Principal": "*", "Action": "s3:DeleteObject",
+             "Resource": arn + "/secret.txt"},
+            {"Sid": "PublicFolder", "Effect": "Allow", "Principal": "*", "Action": "s3:GetObject",
+             "Resource": arn + "/public/*"},
+        ])
+        # the owner key: denied only where a Deny names everyone
+        assert server.code("DELETE", "vault", "secret.txt") == (403, "AccessDenied")
+        server.ok("DELETE", "vault", "public/info.txt", expect=(204,))
+        server.ok("PUT", "vault", "public/info.txt", body=b"info")
+        # the reader key: read-only
+        assert server.ok("GET", "vault", "secret.txt", access="AKIDREADER", secret="reader-secret")[1] == b"top"
+        assert server.code("PUT", "vault", "x.txt", body=b"no", access="AKIDREADER", secret="reader-secret") == (
+            403, "AccessDenied")
+        # anonymous: only the public folder
+        assert server.call("GET", "vault", "public/info.txt", signed=False)[2] == b"info"
+        assert server.call("GET", "vault", "secret.txt", signed=False)[0] == 403
+        # a presigned link is a signed request: a Deny for everyone stops it
+        _put_policy(server, "vault", [{"Effect": "Deny", "Principal": "*", "Action": "s3:GetObject",
+                                       "Resource": arn + "/secret.txt"}])
+        assert server.raw("GET", server.presign("GET", "vault", "secret.txt"))[0] == 403
+        # the owner can always replace the policy
+        server.ok("DELETE", "vault", query={"policy": ""}, expect=(204,))
+        assert server.raw("GET", server.presign("GET", "vault", "secret.txt"))[2] == b"top"
+    finally:
+        server.stop()
+
+
+def test_bucket_policy_conditions(server):
+    server.ok("PUT", "cond")
+    server.ok("PUT", "cond", "a.txt", body=b"a")
+    arn = "arn:aws:s3:::cond"
+    _put_policy(server, "cond", [
+        {"Effect": "Allow", "Principal": "*", "Action": "s3:GetObject", "Resource": arn + "/*",
+         "Condition": {"IpAddress": {"aws:SourceIp": ["127.0.0.0/8", "::1/128"]}}},
+        {"Effect": "Deny", "Principal": "*", "Action": "s3:GetObject", "Resource": arn + "/*",
+         "Condition": {"StringLike": {"aws:UserAgent": "*BadBot*"}}},
+    ])
+    assert server.call("GET", "cond", "a.txt", signed=False)[2] == b"a"
+    # behind a local proxy the first X-Forwarded-For address is the client
+    assert server.call("GET", "cond", "a.txt", signed=False, headers={"X-Forwarded-For": "10.9.8.7"})[0] == 403
+    assert server.call("GET", "cond", "a.txt", headers={"User-Agent": "BadBot/1.0"})[0] == 403
+    assert server.ok("GET", "cond", "a.txt", headers={"User-Agent": "GoodClient/1.0"})[1] == b"a"
+    # restricted to an address range: not public
+    assert server.xml("GET", "cond", query={"policyStatus": ""}).findtext("IsPublic") == "false"
+    _put_policy(server, "cond", [{"Effect": "Deny", "Principal": "*", "Action": "s3:*", "Resource": [arn, arn + "/*"],
+                                  "Condition": {"Bool": {"aws:SecureTransport": "false"}}}])
+    assert server.code("GET", "cond", "a.txt") == (403, "AccessDenied")
+    assert server.ok("GET", "cond", "a.txt", headers={"X-Forwarded-Proto": "https"})[1] == b"a"
+    _put_policy(server, "cond", [{"Effect": "Deny", "NotPrincipal": {"AWS": [ACCESS]}, "Action": "s3:GetObject",
+                                  "Resource": arn + "/*"}])
+    assert server.ok("GET", "cond", "a.txt")[1] == b"a"
+
+
+def test_console_open_and_download_are_presigned_like_aws(server):
+    server.ok("PUT", "docs")
+    server.ok("PUT", "docs", "reports/today report.txt", body=b"hello", headers={"content-type": "text/plain"})
+    server.ok("PUT", "docs", "page.html", body=b"<script>1</script>", headers={"content-type": "text/html"})
+    opener = _console(server)
+    req = urllib.request.Request(server.url + "/ui/login", method="POST", headers={"Content-Type": "application/json"},
+                                 data=json.dumps({"user": ACCESS, "password": SECRET}).encode())
+    csrf = json.loads(opener.open(req, timeout=5).read())["csrf"]
+    common = {"bucket": "docs", "host": server.host, "scheme": "http", "expires": 300}
+    opened = _console_post(server, "Presign", {**common, "key": "reports/today report.txt", "disposition": "inline"},
+                           opener, csrf)["url"]
+    assert "X-Amz-Signature=" in opened and "response-content-disposition=inline" in opened
+    status, headers, body = server.raw("GET", opened)
+    assert status == 200 and body == b"hello" and headers["content-disposition"] == "inline"
+    got = _console_post(server, "Presign", {**common, "key": "reports/today report.txt", "disposition": "attachment"},
+                        opener, csrf)["url"]
+    status, headers, body = server.raw("GET", got)
+    assert status == 200 and headers["content-disposition"] == "attachment; filename*=UTF-8''today%20report.txt"
+    tampered = opened.replace("response-content-disposition=inline", "response-content-disposition=attachment")
+    assert server.raw("GET", tampered)[0] == 403
+    # a page from a bucket cannot act as the console (same origin): it is sandboxed
+    html = _console_post(server, "Presign", {**common, "key": "page.html", "disposition": "inline"}, opener, csrf)["url"]
+    assert "sandbox" in server.raw("GET", html)[1].get("content-security-policy", "")
+    assert "sandbox" not in server.raw("GET", opened)[1].get("content-security-policy", "")
+    # a private bucket (block all public access) still opens through the signed link, never without it
+    block = "".join(f"<{n}>true</{n}>" for n in ("BlockPublicAcls", "IgnorePublicAcls", "BlockPublicPolicy",
+                                                  "RestrictPublicBuckets"))
+    _console_post(server, "PutBucketSetting", {"bucket": "docs", "setting": "publicAccessBlock",
+                                               "value": f"<PublicAccessBlockConfiguration>{block}</PublicAccessBlockConfiguration>"},
+                  opener, csrf)
+    assert server.raw("GET", opened)[2] == b"hello"
+    assert server.raw("GET", server.url + "/docs/reports/today%20report.txt")[0] == 403
+
+
+def test_console_bucket_access_empty_and_versions_by_folder(server):
+    opener = _console(server)
+    req = urllib.request.Request(server.url + "/ui/login", method="POST", headers={"Content-Type": "application/json"},
+                                 data=json.dumps({"user": ACCESS, "password": SECRET}).encode())
+    csrf = json.loads(opener.open(req, timeout=5).read())["csrf"]
+
+    def api(op, body):
+        return _console_post(server, op, body, opener, csrf)
+
+    api("CreateBucket", {"bucket": "media", "versioning": True})
+    for key in ("a.txt", "a.txt", "dir/b.txt", "dir/sub/c.txt"):
+        server.ok("PUT", "media", key, body=b"x")
+    buckets = {b["name"]: b for b in api("ListBuckets", {})["buckets"]}
+    assert buckets["media"]["access"] == "objects-can-be-public"
+    assert buckets["media"]["publicBlock"] == {"BlockPublicAcls": False, "IgnorePublicAcls": False,
+                                               "BlockPublicPolicy": False, "RestrictPublicBuckets": False}
+    info = api("BucketInfo", {"bucket": "media"})
+    assert info["arn"] == "arn:aws:s3:::media" and info["access"] == "objects-can-be-public"
+    assert info["ownership"] == "" and info["account"] == "000000000000"
+    assert info["websiteHosts"] == ["media.s3-website.localhost"]
+    api("PutBucketSetting", {"bucket": "media", "setting": "policy", "value": json.dumps({
+        "Version": "2012-10-17", "Statement": [{"Effect": "Allow", "Principal": "*", "Action": "s3:GetObject",
+                                                "Resource": "arn:aws:s3:::media/*"}]})})
+    assert api("BucketInfo", {"bucket": "media"})["access"] == "public"
+    top = api("ListVersions", {"bucket": "media", "prefix": "", "delimiter": "/"})
+    assert top["folders"] == ["dir/"] and [v["key"] for v in top["versions"]] == ["a.txt", "a.txt"]
+    inner = api("ListVersions", {"bucket": "media", "prefix": "dir/", "delimiter": "/"})
+    assert inner["folders"] == ["dir/sub/"] and [v["key"] for v in inner["versions"]] == ["dir/b.txt"]
+    assert len(api("ListVersions", {"bucket": "media", "prefix": ""})["versions"]) == 4
+    api("DeleteObjects", {"bucket": "media", "objects": [{"key": "a.txt"}]})   # a delete marker
+    out = api("EmptyBucket", {"bucket": "media"})
+    assert out["deleted"] == 5 and out["errors"] == []
+    assert api("BucketInfo", {"bucket": "media"})["stats"]["versions"] == 0
+    assert api("DeleteBucket", {"bucket": "media"})["deleted"] == "media"
+
+
+def test_console_static_assets(server):
+    with urllib.request.urlopen(server.url + "/ui/", timeout=5) as resp:  # noqa: S310 - local test server
+        page = resp.read().decode()
+        csp = resp.headers["Content-Security-Policy"]
+    assert "script-src 'self'" in csp and "unsafe-inline" not in csp.split("script-src", 1)[1].split(";", 1)[0]
+    assert 'src="assets/js/app.js"' in page or "src=\"/ui/assets/js/app.js\"" in page
+    status, headers, body = server.raw("GET", server.url + "/ui/assets/js/app.js")
+    assert status == 200 and headers["content-type"].startswith("text/javascript") and body
+    assert headers["x-content-type-options"] == "nosniff"
+    status, headers, _ = server.raw("GET", server.url + "/ui/assets/css/theme.css")
+    assert status == 200 and headers["content-type"].startswith("text/css")
+    for bad in ("/ui/assets/%2e%2e/index.html", "/ui/assets/js/%2e%2e/%2e%2e/index.html", "/ui/assets/js/nope.js",
+                "/ui/assets/.hidden", "/ui/assets/js%5capp.js"):
+        assert server.raw("GET", server.url + bad)[0] == 404, bad
+
+def test_bucket_policy_deny_covers_settings_and_object_subresources(server):
+    server.ok("PUT", "locked-down")
+    server.ok("PUT", "locked-down", "k", body=b"v")
+    arn = "arn:aws:s3:::locked-down"
+    _put_policy(server, "locked-down", [{"Effect": "Deny", "Principal": "*", "Action": [
+        "s3:PutObjectTagging", "s3:PutObjectAcl", "s3:PutBucketCORS", "s3:DeleteBucket"], "Resource": [arn, arn + "/*"]}])
+    tags = b"<Tagging><TagSet><Tag><Key>a</Key><Value>b</Value></Tag></TagSet></Tagging>"
+    assert server.code("PUT", "locked-down", "k", query={"tagging": ""}, body=tags) == (403, "AccessDenied")
+    assert server.code("PUT", "locked-down", "k", query={"acl": ""}, headers={"x-amz-acl": "private"}) == (
+        403, "AccessDenied")
+    cors = (b"<CORSConfiguration><CORSRule><AllowedOrigin>*</AllowedOrigin><AllowedMethod>GET</AllowedMethod>"
+            b"</CORSRule></CORSConfiguration>")
+    assert server.code("PUT", "locked-down", query={"cors": ""}, body=cors) == (403, "AccessDenied")
+    server.ok("GET", "locked-down", "k", query={"tagging": ""})           # reads were not denied
+    assert server.code("DELETE", "locked-down", "k", query={"tagging": ""}, signed=False)[0] == 403
+    server.ok("DELETE", "locked-down", "k", expect=(204,))
+    assert server.code("DELETE", "locked-down") == (403, "AccessDenied")
+    server.ok("DELETE", "locked-down", query={"policy": ""}, expect=(204,))  # the owner can always repair it
+    server.ok("DELETE", "locked-down", expect=(204,))

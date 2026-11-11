@@ -57,7 +57,7 @@ The AWS-compatible servers appear in the on-prem service catalog (`pskit resourc
 ## Python or Node.js: how to choose an implementation
 
 The Python and Node.js implementations of each AWS-compatible server are line-for-line ports of each other. They have
-the same operations, the same environment variables, the same web console page (`ui/index.html`), the same error
+the same operations, the same environment variables, the same web console (`ui/`), the same error
 codes and the same data format on disk, so you can stop one and start the other on the same data volume.
 
 | | Python (`s3`, `secretsmanager`) | Node.js (`s3-node`, `secretsmanager-node`) |

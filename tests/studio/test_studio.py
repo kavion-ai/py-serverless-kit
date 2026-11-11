@@ -375,6 +375,70 @@ def test_build_argv():
         build_argv("invoke", args={"function": "hello", "data": "@/etc/passwd"})
 
 
+def _wait_workflow(base, run_id, timeout=10):
+    deadline = time.time() + timeout
+    snap = {}
+    while time.time() < deadline:
+        status, snap = call(base, "GET", f"/api/workflow-test/{run_id}")
+        assert status == 200, snap
+        if snap["status"] != "RUNNING":
+            return snap
+        time.sleep(0.05)
+    raise AssertionError(snap)
+
+
+def test_workflow_test_shows_each_function_output_and_next(studio):
+    base, root, _httpd = studio
+    (root / "app" / "handlers.py").write_text(
+        "def hello(event, ctx):\n"
+        "    data = dict(event.data or {})\n"
+        "    data['n'] = int(data.get('n') or 0) + 1\n"
+        "    return data\n",
+        encoding="utf-8",
+    )
+    status, info = call(base, "GET", "/api/workflow-test?workflow=flow&provider=aws&stage=dev")
+    assert status == 200
+    assert [item["id"] for item in info["targets"]] == ["local", "deployed"]
+    assert info["targets"][0]["trace"] == "full" and info["targets"][0]["available"] is True
+    assert info["targets"][1]["available"] is False and "not deployed" in info["targets"][1]["reason"]
+    assert call(base, "GET", "/api/workflow-test?workflow=missing")[0] == 404
+
+    status, started = call(base, "POST", "/api/workflow-test", {"workflow": "flow", "target": "local", "input": {"n": 1}})
+    assert status == 200 and started["status"] in ("RUNNING", "SUCCEEDED")
+    done = started if started["status"] != "RUNNING" else _wait_workflow(base, started["run_id"])
+    assert done["status"] == "SUCCEEDED" and done["output"] == {"n": 2} and done["trace"] == "full"
+    assert done["steps"] == [
+        {
+            "state": "Go",
+            "type": "task",
+            "status": "done",
+            "output_known": True,
+            "function": "step",
+            "output": {"n": 2},
+            "duration_ms": done["steps"][0]["duration_ms"],
+            "end": True,
+        }
+    ]
+    assert call(base, "POST", "/api/workflow-test", {"workflow": "nope", "target": "local"})[0] == 404
+
+
+def test_workflow_test_can_be_cancelled_and_is_exclusive(studio):
+    base, root, _httpd = studio
+    (root / "pskit.yml").write_text(
+        "service: studio-demo\nprovider: {name: aws, region: us-east-1}\n"
+        "workflows:\n  flow:\n    start_at: Go\n    states:\n      Go: {type: wait, seconds: 30, end: true}\n",
+        encoding="utf-8",
+    )
+    status, started = call(base, "POST", "/api/workflow-test", {"workflow": "flow", "target": "local", "sleep": True, "input": {}})
+    assert status == 200 and started["run_id"]
+    assert call(base, "POST", "/api/workflow-test", {"workflow": "flow", "target": "local", "input": {}})[0] == 409
+    status, cancelled = call(base, "POST", f"/api/workflow-test/{started['run_id']}/cancel", {})
+    assert status == 200 and cancelled["cancel_requested"] is True
+    done = _wait_workflow(base, started["run_id"])
+    assert done["status"] == "CANCELLED"
+    assert done["steps"][0]["state"] == "Go" and done["steps"][0]["status"] == "cancelled"
+
+
 def test_validate_job_end_to_end(studio):
     base, _root, _httpd = studio
     status, started = call(base, "POST", "/api/jobs", {"command": "validate"})

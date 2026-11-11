@@ -49,6 +49,9 @@ class Studio:
         self.root = Path(root).resolve()
         self.token = token if token is not None else secrets.token_urlsafe(24)
         self.jobs = JobManager(self.root)
+        from .workflow_test import WorkflowRuns
+
+        self.workflow_runs = WorkflowRuns()
         self.auth: Optional[Auth] = Auth(self.root, self.jobs.any_running) if auth else None
         self.terminal_urls: Dict[str, str] = {}  # browser terminal name -> its secret URL (known only here)
         self.vscode = VSCode(self.root, image=vscode_image)
@@ -554,6 +557,19 @@ def make_handler(app: Studio) -> type:
             if len(parts) == 3 and parts[0] == "jobs" and parts[2] == "cancel" and method == "POST":
                 self._body()
                 return 200, app.jobs.cancel(parts[1])
+            if parts == ["workflow-test"] and method == "GET":
+                from .workflow_test import describe
+
+                provider = _param(params, "provider") or str((app.raw_config().get("provider") or {}).get("name") or "")
+                stage = _param(params, "stage") or str((app.raw_config().get("provider") or {}).get("stage") or "dev")
+                return 200, describe(root, provider, stage, _param(params, "workflow") or "")
+            if parts == ["workflow-test"] and method == "POST":
+                return 200, app.workflow_runs.start(root, _obj(self._body()))
+            if len(parts) == 2 and parts[0] == "workflow-test" and method == "GET":
+                return 200, app.workflow_runs.get(parts[1])
+            if len(parts) == 3 and parts[0] == "workflow-test" and parts[2] == "cancel" and method == "POST":
+                self._body()
+                return 200, app.workflow_runs.cancel(parts[1])
             if parts == ["vscode"] and method == "GET":
                 return 200, app.vscode.status()
             if parts == ["vscode", "start"] and method == "POST":

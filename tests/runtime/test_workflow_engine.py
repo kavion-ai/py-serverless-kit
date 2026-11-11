@@ -57,6 +57,31 @@ def test_rules(rule, expected):
     assert evaluate_rule(rule, {"n": 2, "s": "abc", "none": None}) is expected
 
 
+def test_history_records_the_function_output_and_next_state():
+    definition = {
+        "start_at": "Inc",
+        "states": {
+            "Inc": {"type": "task", "function": "inc", "next": "Check"},
+            "Check": {"type": "choice", "choices": [{"variable": "$.n", "lt": 1, "next": "Inc"}], "default": "End"},
+            "End": {"type": "succeed"},
+        },
+    }
+    run, _calls = make_runner()
+    engine = WorkflowEngine(definition, run)
+    assert engine.run({"n": 0}) == {"n": 1}
+    left = next(item for item in engine.history if item["event"] == "exit" and item["state"] == "Inc")
+    assert left["function"] == "inc" and left["output"] == {"n": 1} and left["next"] == "Check"
+    chosen = next(item for item in engine.history if item["state"] == "Check" and item["event"] == "exit")
+    assert chosen["next"] == "End"
+    huge = WorkflowEngine(
+        {"start_at": "T", "states": {"T": {"type": "task", "function": "blob", "end": True}}},
+        lambda _fn, _data: "x" * 5000,
+    )
+    assert huge.run({}) == "x" * 5000
+    clipped = next(item for item in huge.history if item["event"] == "exit")
+    assert clipped["output_truncated"] is True and clipped["output"].endswith("…") and len(clipped["output"]) < 5000
+
+
 def test_sequence_choice_and_pass():
     definition = {
         "start_at": "Inc",

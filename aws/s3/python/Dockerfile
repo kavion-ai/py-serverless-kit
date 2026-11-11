@@ -6,7 +6,9 @@ FROM python:3.12-alpine
 RUN addgroup -S -g 10001 app && adduser -S -u 10001 -G app -h /app app \
     && mkdir -p /data && chown app:app /data
 WORKDIR /app
-COPY python/server.py ui/index.html /app/
+COPY python/server.py /app/
+COPY python/s3server /app/s3server
+COPY ui /app/ui
 
 ENV S3_PORT=9000 S3_BIND=0.0.0.0 S3_DATA_DIR=/data PYTHONUNBUFFERED=1
 USER app

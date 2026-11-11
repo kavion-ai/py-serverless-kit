@@ -129,7 +129,8 @@ Two sections at the bottom of the studio Deploy page run code on this machine:
   function's first trigger, `http`, `schedule`, `queue`, `storage`, `topic`, `smtp`, `invoke`), the **Path** for
   HTTP, the **Payload (JSON)**, then **Invoke**.
 - **Run a workflow locally** (`pskit workflow run --history`), when workflows exist: pick the **Workflow**, type the
-  **Input (JSON)**, then **Run**.
+  **Input (JSON)**, then **Run**. For a live trace of each function and its output, use **Test** on the
+  [Workflows page](workflows.md#run-a-workflow-from-studio-or-the-terminal).
 
 The [Test page](test.md) has a fuller version of local and deployed tests.
 

@@ -30,8 +30,7 @@ Rules the S3 server applies:
 - The credential scope's service must be `s3` (or `s3-object-lambda`) and its date must match the request date. Any
   region name is accepted.
 - `SignedHeaders` must include `host` and only headers that were sent.
-- Every valid key has full access to every bucket. Bucket policies and ACLs only decide what unsigned (anonymous)
-  requests may do.
+- Every valid key belongs to the bucket owner's account, so it may do anything a bucket policy does not explicitly`n  `Deny`. Unsigned (anonymous) requests need a policy `Allow` or a public ACL. See *Bucket policies* below.
 
 ## S3 server bucket operations
 
@@ -74,8 +73,27 @@ The S3 server answers `NotImplemented` (HTTP 501) for:
 - `If-None-Match` on a write with a value other than `*`;
 - other `x-amz-content-sha256` streaming modes than the three listed above.
 
-Notifications, replication and logging configurations are stored and returned, not acted on. Bucket policies are
-evaluated for anonymous requests only.
+Notifications, replication and logging configurations are stored and returned, not acted on (the console hides them).
+
+## S3 server bucket policies
+
+Bucket policies are evaluated like Amazon S3 for every request, signed or anonymous, presigned URLs included:
+
+- A matching `Deny` refuses the request, also for signed requests. A signed request may always read, replace or
+  delete the bucket policy itself, so the owner can repair a policy that locks everyone out.
+- Otherwise a signed request is allowed. An anonymous request needs a matching `Allow` (ignored when
+  `RestrictPublicBuckets` is on) or a public ACL.
+- Bucket settings and object subresources (tagging, ACL, retention, legal hold, restore) always need a signed request;
+  a `Deny` still applies to them.
+- `Principal` / `NotPrincipal`: `*`, the account id, `arn:aws:iam::<account>:root`, an access key id or
+  `arn:aws:iam::<account>:user/<access key id>`. `Action` / `NotAction` and `Resource` / `NotResource` take `*` and `?`.
+- `Condition`: the String, Numeric, Date, `Bool`, `IpAddress` / `NotIpAddress` and `Null` operators, with `IfExists` and
+  `ForAnyValue:` / `ForAllValues:`. Keys include `aws:SourceIp`, `aws:SecureTransport`, `aws:Referer`, `aws:UserAgent`,
+  `aws:CurrentTime`, `aws:EpochTime`, `aws:PrincipalType`, `aws:username`, `s3:authType`, `s3:signatureversion`, `s3:prefix`,
+  `s3:x-amz-acl`, `s3:x-amz-server-side-encryption`, `s3:ExistingObjectTag/<key>`. `X-Forwarded-For` and
+  `X-Forwarded-Proto` are trusted only from a proxy on the same host (loopback).
+
+The full rules are in `aws/s3/ARCHITECTURE.md`.
 
 ## S3 server lifecycle rules, website hosting and public access
 
@@ -109,7 +127,7 @@ The S3 server reads these environment variables (pskit sets the first group itse
 | `S3_DOMAIN` | `localhost` | comma-separated domains for virtual-hosted style (`<bucket>.<domain>`) |
 | `S3_UI` | `on` | `off` removes the web console |
 | `S3_UI_PASSWORD` | | a console password other than the secret keys |
-| `S3_UI_FILE` | | path of another console page to serve instead of `index.html` |
+| `S3_UI_DIR` | | folder of another console (`index.html` and `assets/`) to serve instead of `ui/` |
 | `S3_MAX_OBJECT_SIZE` | 5 GiB | largest single PUT, part or copy |
 | `S3_MIN_PART_SIZE` | 5 MiB | smallest multipart part except the last |
 | `S3_LIFECYCLE_INTERVAL` | `3600` | seconds between lifecycle sweeps |

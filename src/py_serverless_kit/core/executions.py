@@ -22,6 +22,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
+from ..runtime.workflow import clip_output
 from .onprem_control import HostControl, HostUnavailable, control_for
 
 EXECUTION_STATUSES = ("RUNNING", "SUCCEEDED", "FAILED", "TIMED_OUT", "CANCELLED", "ABORTED")
@@ -284,6 +285,11 @@ class AwsBackend(ExecutionBackend):
                 entry.update(
                     state=exited.get("name"), type=kind[: -len("StateExited")].lower() or "state", event="exit"
                 )
+                if exited.get("output") not in (None, ""):
+                    output, truncated = clip_output(_loads(exited.get("output")))
+                    entry["output"] = output
+                    if truncated or (exited.get("outputDetails") or {}).get("truncated"):
+                        entry["output_truncated"] = True
             elif kind.endswith("Failed") or kind.endswith("TimedOut") or kind.endswith("Aborted"):
                 details = next((v for k, v in ev.items() if k.endswith("EventDetails") and isinstance(v, dict)), {})
                 entry.update(state=current, type="task", event="fail", error=details.get("error"))
@@ -509,7 +515,7 @@ class EmbeddedCloudBackend(ExecutionBackend):
         return body
 
 
-def backend_for(record: Dict[str, Any], root: Path) -> ExecutionBackend:
+def backend_for(record: Dict[str, Any], root: Path, server: Optional[str] = None) -> ExecutionBackend:
     """Pick the execution backend for one deployment record (``deployment.json``)."""
     if not record.get("workflows"):
         return UnsupportedBackend(record, "this deployment has no workflows")
@@ -517,7 +523,7 @@ def backend_for(record: Dict[str, Any], root: Path) -> ExecutionBackend:
         return UnsupportedBackend(record, "not deployed yet; run `pskit deploy` (or `pskit workflow run --local`)")
     provider = record.get("provider")
     if provider == "onprem":
-        control = control_for(record, root)
+        control = control_for(record, root, server)
         if control is None:
             return UnsupportedBackend(record, "the on-prem host address is unknown; run `pskit deploy`")
         return OnPremBackend(record, control)

@@ -139,8 +139,9 @@ pskit workflow run order-pipeline -i @input.json --history --sleep
 
 `--history` prints every state the run entered and left. The command exits with code 2 when the run fails.
 
-In studio: **Deploy** → expand **Run a workflow locally** → pick the **Workflow**, type the **Input (JSON)** → click
-**Run**. The output appears in the job console (it runs `pskit workflow run --history`).
+In studio: **Workflows** → **Test** on a card, or **Test** in the editor, runs it and follows each function, its
+output and the next state. **Deploy** → expand **Run a workflow locally** still runs `pskit workflow run` and prints
+the log.
 
 ## Start a deployed workflow
 
@@ -187,8 +188,11 @@ pskit workflow status <execution-id> -w order-pipeline --json
 | `-w, --workflow` | `status`, `cancel` | the workflow name; helps AWS and GCP find the id |
 | `--history`, `--watch`, `--json` | `status` | print the history, poll until done, raw JSON |
 
-History is kept by the on-prem host, AWS Step Functions and Google Cloud Workflows. An embedded orchestrator on a
-cloud keeps no history: the run lives in one function call. AWS and GCP need the matching extra:
+History is kept by the on-prem host, AWS Step Functions and Google Cloud Workflows. On premises, an `exit` event
+includes the function and its output (clipped at 2048 characters) after you redeploy this runtime. AWS includes a
+state's output when Step Functions returns it. GCP reports the current step only. An embedded orchestrator on a
+cloud returns `history` in the start response after you deploy this runtime; older deployments return only the
+final result, and there is still no list of past runs and no cancel. AWS and GCP need the matching extra:
 `pip install "py-serverless-kit[aws]"` or `"py-serverless-kit[gcp]"`.
 
 ## Cancel a running workflow execution

@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import { Modal } from "../../components/Drawer";
 import { EmptyState } from "../../components/Feedback";
 import { isEnabled } from "../compat";
@@ -12,6 +12,7 @@ import { useStudio } from "../store";
 import type { Issue, Json, JsonObject } from "../types";
 import { asArray, asObject, getIn, NAME_RE, parseWhere, pathKey, setIn, str, uniqueName, type Path } from "../util";
 import { deleteState, layout, newState, NODE_H, NODE_W, renameState, ruleLabel } from "./flow";
+import { WorkflowTestPanel, type TraceMark } from "./WorkflowTest";
 
 const TYPE_INFO: Record<string, { icon: string; blurb: string }> = {
   task: { icon: "λ", blurb: "Call a function" },
@@ -36,6 +37,7 @@ function WorkflowList() {
   const toast = useToast();
   const [creating, setCreating] = useState(false);
   const [newName, setNewName] = useState("");
+  const [testing, setTesting] = useState<string | null>(null);
   const workflows = Object.entries(asObject(draft.workflows));
   const native = (provider?.capabilities || []).includes("workflow_native");
   const nameError = !NAME_RE.test(newName) ? "letters, digits, - and _; start with a letter" : newName in asObject(draft.workflows) ? "already exists" : null;
@@ -101,6 +103,9 @@ function WorkflowList() {
                   <span className="badge badge-info">{engine}</span>
                   <EnableControl section="workflows" name={name} compact />
                   <span className="grow" />
+                  <button type="button" className="btn btn-sm" hidden={!can("test", "c")} onClick={() => setTesting(name)}>
+                    Test
+                  </button>
                   <button
                     type="button"
                     className="btn btn-sm btn-danger"
@@ -145,6 +150,9 @@ function WorkflowList() {
           />
         </FormRow>
       </Modal>
+      <Modal open={testing !== null} title={testing ? `Test ${testing}` : "Test"} onClose={() => setTesting(null)}>
+        {testing && <WorkflowTestPanel key={testing} name={testing} />}
+      </Modal>
     </div>
   );
 }
@@ -153,12 +161,20 @@ function WorkflowList() {
 
 function WorkflowEditor({ name }: { name: string }) {
   const studio = useStudio();
+  const { can } = useAuth();
   const { draft, edit, meta, provider, issuesAt } = studio;
   const toast = useToast();
   const confirm = useConfirm();
   // Path from the workflow root to the definition being edited (for parallel branches / map iterators).
   const [nested, setNested] = useState<Path>([]);
   const [selected, setSelected] = useState<string | null>(null);
+  const [testing, setTesting] = useState(false);
+  const [marks, setMarks] = useState<Record<string, TraceMark>>({});
+  const onTrace = useCallback((next: Record<string, TraceMark>) => setMarks(next), []);
+  useEffect(() => {
+    setTesting(false);
+    setMarks({});
+  }, [name]);
   const root: Path = ["workflows", name];
   const wf = asObject(getIn(draft, root));
   if (!getIn(draft, root)) {
@@ -230,6 +246,19 @@ function WorkflowEditor({ name }: { name: string }) {
           </span>
         }
         subtitle={str(wf.description) || undefined}
+        actions={
+          <button
+            type="button"
+            className="btn"
+            hidden={!can("test", "c")}
+            onClick={() => {
+              setTesting((open) => !open);
+              setMarks({});
+            }}
+          >
+            {testing ? "Close test" : "Test"}
+          </button>
+        }
       />
       {nested.length === 0 && (
         <Section title="Settings" defaultOpen={false} hint={`engine ${str(wf.engine, "auto")}${wf.timeout ? ` · timeout ${str(wf.timeout)}s` : ""}`}>
@@ -286,11 +315,15 @@ function WorkflowEditor({ name }: { name: string }) {
             <span className="muted small">Starts at</span>
             <EnumSelect value={str(def.start_at)} options={Object.keys(states)} onChange={(s) => setDef({ ...def, start_at: s })} />
           </div>
-          <FlowDiagram def={def} selected={selected} onSelect={setSelected} issuesFor={stateIssues} />
+          <FlowDiagram def={def} selected={selected} onSelect={setSelected} issuesFor={stateIssues} marks={marks} />
           <InlineIssues issues={allIssues.filter((i) => i.where && !Object.keys(states).some((s) => pathKey(parseWhere(i.where || "")).startsWith(pathKey([...defPath, "states", s]))))} />
         </div>
         <div className="card wf-inspector">
-          {selected && selected in states ? (
+          {testing ? (
+            <div className="inspector">
+              <WorkflowTestPanel key={name} name={name} onTrace={onTrace} />
+            </div>
+          ) : selected && selected in states ? (
             <StateInspector
               key={`${pathKey(defPath)}:${selected}`}
               name={selected}
@@ -333,11 +366,13 @@ function FlowDiagram({
   selected,
   onSelect,
   issuesFor,
+  marks = {},
 }: {
   def: JsonObject;
   selected: string | null;
   onSelect: (name: string) => void;
   issuesFor: (state: string) => Issue[];
+  marks?: Record<string, TraceMark>;
 }) {
   const { nodes, edges, width, height } = useMemo(() => layout(def), [def]);
   const byName = new Map(nodes.map((n) => [n.name, n]));
@@ -391,7 +426,7 @@ function FlowDiagram({
           return (
             <g
               key={n.name}
-              className={`flow-n flow-n-${n.type}${n.name === selected ? " selected" : ""}${n.unreachable ? " unreachable" : ""}${errs ? " has-error" : ""}`}
+              className={`flow-n flow-n-${n.type}${n.name === selected ? " selected" : ""}${n.unreachable ? " unreachable" : ""}${errs ? " has-error" : ""}${marks[n.name] ? ` trace-${marks[n.name]}` : ""}`}
               transform={`translate(${n.x},${n.y})`}
               tabIndex={0}
               role="button"

@@ -11,6 +11,7 @@ execution record up to date in a store while it runs::
 process stopped mid-run). :class:`FileExecutionStore` keeps one JSON file per
 execution, so records survive a restart of the on-prem host;
 :class:`MemoryExecutionStore` is for tests and short-lived processes.
+An ``exit`` event may also include ``function``, a clipped ``output`` and ``next`` or ``end``.
 """
 
 from __future__ import annotations

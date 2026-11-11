@@ -402,7 +402,9 @@ class WorkflowEngine {
         throw new WorkflowFailed(state.error || "States.Fail", state.cause || "", this.history);
       }
       if (kind === "choice") {
-        name = this._choose(state, data);
+        const chosen = this._choose(state, data);
+        this._record(name, kind, Object.assign({ event: "exit", next: chosen }, outputFields(data)));
+        name = chosen;
         continue;
       }
       const began = nowMs();
@@ -417,14 +419,27 @@ class WorkflowEngine {
           failed.original = err;
           throw failed;
         }
-        this._record(name, kind, { event: "caught", error: errName });
+        const caught = { event: "caught", error: errName };
+        if (kind === "task" && state.function) caught.function = state.function;
+        if (handler.next) caught.next = handler.next;
+        this._record(name, kind, caught);
         const info = { error: errName, cause: errorText(err) };
         data = setPath(data, handler.result_path === undefined ? "$.error" : handler.result_path, info);
         name = handler.next;
         continue;
       }
-      this._record(name, kind, { event: "exit", duration_ms: round2(nowMs() - began) });
-      if (state.end || !state.next) return data;
+      const left = Object.assign(
+        { event: "exit", duration_ms: round2(nowMs() - began) },
+        kind === "task" && state.function ? { function: state.function } : {},
+        outputFields(data),
+      );
+      if (state.end || !state.next) {
+        left.end = true;
+        this._record(name, kind, left);
+        return data;
+      }
+      left.next = state.next;
+      this._record(name, kind, left);
       name = state.next;
     }
     return data;
@@ -502,6 +517,28 @@ function inProcessRunner(provider = "local") {
   };
 }
 
+const OUTPUT_LIMIT = 2048;
+
+/** JSON-safe copy of one state's output. `truncated` is true when the text was cut. */
+function clipOutput(value) {
+  let text;
+  try {
+    text = JSON.stringify(value);
+  } catch (err) {
+    text = JSON.stringify(String(value));
+  }
+  if (text === undefined) text = "null";
+  if (text.length <= OUTPUT_LIMIT) return { output: JSON.parse(text), truncated: false };
+  return { output: text.slice(0, OUTPUT_LIMIT) + "…", truncated: true };
+}
+
+function outputFields(value) {
+  const clipped = clipOutput(value);
+  const fields = { output: clipped.output };
+  if (clipped.truncated) fields.output_truncated = true;
+  return fields;
+}
+
 let EXECUTOR = null;
 
 /** Route orchestrator calls through an executor with `knows(name)`, `start(name, data, opts)`, `resultBody(record)`. */
@@ -568,6 +605,7 @@ async function orchestrate(event, context) {
       error: err.error,
       cause: err.cause,
       duration_ms: round2(nowMs() - started),
+      history: engine.history,
     };
     context.logger.error("workflow failed", failure);
     if (event.http) return Response.json(failure, 500);
@@ -579,6 +617,7 @@ async function orchestrate(event, context) {
     status: "SUCCEEDED",
     output,
     duration_ms: round2(nowMs() - started),
+    history: engine.history,
   };
 }
 

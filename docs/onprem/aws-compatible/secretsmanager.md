@@ -5,8 +5,8 @@ put_secret, boto3 secretsmanager endpoint_url, client-secrets-manager, master ke
 AWSCURRENT AWSPREVIOUS, InvalidSignatureException
 
 The AWS Secrets Manager compatible server is pskit's own implementation of the AWS Secrets Manager API, in the
-repository folder `aws/secretsmanager` (`python/server.py` and `nodejs/server.js`, both with the console page
-`ui/index.html`). boto3, the AWS SDKs, the AWS CLI and pskit's `get_secret()` / `getSecret()` work with it unchanged
+repository folder `aws/secretsmanager` (`python/server.py` + the `smserver/` package and `nodejs/server.js` +
+`lib/`, both serving the console in `ui/`; see `aws/secretsmanager/ARCHITECTURE.md`). boto3, the AWS SDKs, the AWS CLI and pskit's `get_secret()` / `getSecret()` work with it unchanged
 once they point at its endpoint and sign with a key it knows. Unlike LocalStack, it checks every request's SigV4
 signature and encrypts the values at rest.
 
@@ -309,7 +309,7 @@ warning and stores values in plain text. Settings:
 | `SM_PORT` / `SM_BIND` | `4584` / `0.0.0.0` | where it listens |
 | `SM_DATA_DIR` | `./data` (`/data` in the images) | holds `secretsmanager.json` |
 | `SM_REGION` / `SM_ACCOUNT_ID` | `us-east-1` / `000000000000` | for ARNs (a request's own region wins) |
-| `SM_UI` / `SM_UI_PASSWORD` / `SM_UI_FILE` | `on` / / | the console, another console password, another console page |
+| `SM_UI` / `SM_UI_PASSWORD` / `SM_UI_DIR` | `on` / / | the console, another console password, another console folder (`index.html` + `assets/`) |
 | `SM_MASTER_KEY`, `SM_MASTER_KEYS`, `SM_MASTER_KEY_ID`, `SM_ENCRYPTION` | | encryption at rest (above) |
 
 ## Troubleshoot the Secrets Manager server

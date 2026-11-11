@@ -113,9 +113,14 @@ The **Settings** section at the top of the editor (closed by default) has **Desc
 
 ## Run a workflow from studio or the terminal
 
-Studio runs a workflow locally from the [Deploy page](deploy.md#invoke-a-function-or-run-a-workflow-locally): **Run a
-workflow locally**, pick the **Workflow**, type the **Input (JSON)** and click **Run**. It runs
-`pskit workflow run <name> --history`.
+**Test** on a workflow card, or **Test** in the editor, runs that workflow and follows it: which function ran, what it
+returned, and which state ran next. The diagram highlights the states as they finish. **This machine** uses the
+handlers on disk (save first, or test without saving). **Deployed** runs the stage you picked, as far as that engine
+can report: live history on premises and on AWS, the current step on GCP, and the final result on the other clouds.
+**Honour wait states** is off unless you turn it on.
+
+The [Deploy page](deploy.md#invoke-a-function-or-run-a-workflow-locally) still has **Run a workflow locally**. It runs
+`pskit workflow run <name> --history` and prints the log.
 
 ```bash
 pskit workflow run order -i '{"id": 1}' --history          # locally

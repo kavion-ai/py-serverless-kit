@@ -11,5 +11,9 @@
   "scripts": {
     "start": "node server.js",
     "check": "node server.js --check"
-  }
+  },
+  "files": [
+    "server.js",
+    "lib/"
+  ]
 }

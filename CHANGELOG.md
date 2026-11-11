@@ -6,6 +6,41 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [3.1.0] - 2026-11-11
+
+### Changed
+- **Secrets Manager server: split into modules, new console.** `aws/secretsmanager` is no longer one file per
+  server: `python/server.py` runs the `smserver/` package and `nodejs/server.js` runs `lib/` (same API, data file and
+  settings). The web console is rebuilt from reusable components (`ui/assets/`, ES modules, no inline scripts) and
+  laid out like the AWS console with its own colors, light and dark: a secrets table, a *Store a new secret* wizard,
+  and per-secret tabs for versions, tags and resource permissions. `SM_UI_FILE` is replaced by `SM_UI_DIR`. pskit
+  copies the whole tree into the container; re-create a running `secretsmanager` service to get the new console.
+- **S3 server: split into modules, AWS-style console, bucket policies like AWS.** `aws/s3` now runs
+  `python/server.py` → `s3server/` and `nodejs/server.js` → `lib/` (same API, data layout and settings; see
+  `aws/s3/ARCHITECTURE.md`). The console is rebuilt from reusable components (`ui/assets/`, ES modules, no inline
+  scripts) and laid out like the AWS S3 console with its own colors: bucket list with access status, create / empty /
+  delete pages, Objects / Properties / Permissions / Management tabs, upload page, object page, versions, static
+  website hosting, a lifecycle rule form, CORS as JSON, and a bucket policy editor with a list of policy examples.
+  Settings the server only stored (acceleration, requester pays, default encryption, replication, notifications,
+  logging) are no longer in the console. `S3_UI_FILE` is replaced by `S3_UI_DIR`; re-create a running `s3` / `s3-node`
+  service to get the new console.
+
+### Fixed
+- **S3 server: Open and Download no longer use the console's own link.** They now use 5-minute presigned S3 URLs
+  (signed `response-content-disposition`), like the AWS console, so the address only works while it is valid and a
+  bucket policy `Deny` stops it. HTML, XML and SVG objects fetched path-style on the console's address get a
+  `sandbox` Content-Security-Policy so they cannot use the console session.
+- **S3 server: bucket policies are evaluated like Amazon S3.** A `Deny` now applies to signed requests and presigned
+  URLs too, and to bucket settings and object tagging / ACL / retention / legal hold / restore. Principals (account,
+  access key, user ARN), `NotPrincipal`, `NotAction`, `NotResource` and conditions (`aws:SourceIp`,
+  `aws:SecureTransport`, `aws:Referer`, `aws:UserAgent`, `aws:CurrentTime`, `s3:x-amz-acl`, ... with `IfExists` and
+  `ForAnyValue` / `ForAllValues`) are supported. Before, policies only applied to anonymous requests and statements
+  with a `Condition` were ignored. A signed request can always replace the policy.
+
+### Added
+- **Studio Workflows: Test.** On the workflow list and in the editor, **Test** runs the workflow and shows a live trace: which state ran, which function it called, what that function returned, and which state runs next. **This machine** always uses the embedded engine and the handlers on disk. A deployed stage can be tested too, as far as that engine reports: on premises and AWS Step Functions follow the run live (AWS includes each state's output when Step Functions returns it; on premises includes each function's output after you redeploy this runtime); Google Cloud Workflows shows the current step and the final output; other clouds return the final result. After you redeploy this runtime, an embedded cloud orchestrator also returns the step history in that response. Older deployments still return only the final result.
+- Workflow history `exit` events now include the function (for a task), a clipped output (2048 characters) and the next state or `end`. Choice states record the branch they took. Cloud orchestrator responses include `history`. On-premises hosts and already deployed functions pick this up after `pskit deploy`.
+
 ## [3.0.0] - 2026-11-10
 
 ### Added

@@ -6,7 +6,9 @@ FROM node:22-alpine
 RUN addgroup -S -g 10001 app && adduser -S -u 10001 -G app -h /app app \
     && mkdir -p /data && chown app:app /data
 WORKDIR /app
-COPY nodejs/server.js nodejs/package.json ui/index.html /app/
+COPY nodejs/server.js nodejs/package.json /app/
+COPY nodejs/lib /app/lib
+COPY ui /app/ui
 
 ENV S3_PORT=9000 S3_BIND=0.0.0.0 S3_DATA_DIR=/data NODE_ENV=production
 USER app

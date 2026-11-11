@@ -1,7 +1,8 @@
 """The ``s3`` / ``s3-node`` on-prem services: pskit's Amazon S3 compatible server.
 
-The server's code lives in ``aws/s3`` at the repository root: ``python/server.py`` (standard library only),
-``nodejs/server.js`` (no npm packages), the web console ``ui/index.html`` and a Dockerfile for each. The wheel ships
+The server's code lives in ``aws/s3`` at the repository root: ``python/server.py`` + ``python/s3server/`` (standard
+library only), ``nodejs/server.js`` + ``nodejs/lib/`` (no npm packages), the web console ``ui/`` (``index.html`` and
+``assets/``) and a Dockerfile for each (see ``aws/s3/ARCHITECTURE.md``). The wheel ships
 that folder as ``py_serverless_kit/aws`` (hatch ``force-include``); a source checkout reads it in place.
 
 Like the Secrets Manager server (``core/onprem_secretsmanager.py``), it runs on the stock ``python:3.12-alpine`` /
@@ -40,11 +41,27 @@ def script_name(service: str) -> str:
     return Path(SERVICES[service]["file"]).name
 
 
+_SKIP_PARTS = {"__pycache__", "node_modules", "data"}
+
+
+def _tree(root: Path, into: str = "") -> Dict[str, bytes]:
+    """Every file under ``root`` keyed by its POSIX path (prefixed by ``into``), caches and hidden files left out."""
+    out: Dict[str, bytes] = {}
+    for path in sorted(root.rglob("*")):
+        rel = path.relative_to(root)
+        if not path.is_file() or any(p in _SKIP_PARTS or p.startswith(".") for p in rel.parts):
+            continue
+        if path.suffix in (".pyc", ".pyo") or path.name == "Dockerfile":
+            continue
+        out[into + rel.as_posix()] = path.read_bytes()
+    return out
+
+
 def app_files(service: str) -> Dict[str, bytes]:
-    """The files of ``/app`` in the container: the server and the console page."""
+    """The files of ``/app`` in the container: the server with its modules, and the console under ``ui/``."""
     base = source_dir()
-    return {script_name(service): (base / SERVICES[service]["file"]).read_bytes(),
-            "index.html": (base / UI_FILE).read_bytes()}
+    server_dir = (base / SERVICES[service]["file"]).parent
+    return {**_tree(server_dir), **_tree(base / "ui", "ui/")}
 
 
 def health(service: str) -> str:

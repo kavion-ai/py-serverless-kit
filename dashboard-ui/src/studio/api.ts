@@ -28,6 +28,7 @@ import type {
   FsListing,
   FunctionSplitResult,
   Job,
+  Json,
   JsonObject,
   Meta,
   NamedBalancer,
@@ -302,6 +303,12 @@ export const api = {
       query: { provider, stage },
     }),
   testGuide: (provider: string, stage: string) => request<TestGuide>("GET", "/api/test-guide", undefined, { query: { provider, stage } }),
+  workflowTestOptions: (workflow: string, provider: string, stage: string) =>
+    request<WorkflowTestOptions>("GET", "/api/workflow-test", undefined, { query: { workflow, provider, stage } }),
+  workflowTestStart: (body: { workflow: string; provider?: string; stage?: string; target: "local" | "deployed"; input?: Json; sleep?: boolean; server?: string }) =>
+    request<WorkflowRun>("POST", "/api/workflow-test", body),
+  workflowTestGet: (runId: string) => request<WorkflowRun>("GET", `/api/workflow-test/${encodeURIComponent(runId)}`),
+  workflowTestCancel: (runId: string) => request<WorkflowRun>("POST", `/api/workflow-test/${encodeURIComponent(runId)}/cancel`, {}),
   resourceTestGuide: (provider: string, stage: string) =>
     request<ResourceTestGuide>("GET", "/api/resource-test-guide", undefined, { query: { provider, stage } }),
   testEvents: () => request<Record<string, SavedTestEvent[]>>("GET", "/api/test-events"),
@@ -506,6 +513,61 @@ export const api = {
     request<{ ok: boolean }>("POST", `/api/hana/turns/${encodeURIComponent(turn)}/answer`, { pending_id: pendingId, decision, text }),
   hanaStopTurn: (turn: string) => request<{ ok: boolean }>("POST", `/api/hana/turns/${encodeURIComponent(turn)}/stop`, {}),
 };
+
+export interface WorkflowTestTarget {
+  id: "local" | "deployed";
+  label: string;
+  available: boolean;
+  trace: "full" | "states" | "result";
+  note?: string;
+  reason?: string;
+  engine?: string;
+  console?: string | null;
+}
+
+export interface WorkflowTestOptions {
+  workflow: string;
+  provider: string;
+  stage: string;
+  targets: WorkflowTestTarget[];
+}
+
+export interface WorkflowStep {
+  state: string;
+  type?: string;
+  function?: string;
+  status: "running" | "done" | "failed" | "caught" | "retrying" | "cancelled";
+  duration_ms?: number;
+  output?: Json;
+  output_known: boolean;
+  output_truncated?: boolean;
+  next?: string;
+  end?: boolean;
+  error?: string;
+  attempt?: number;
+}
+
+export interface WorkflowRun {
+  run_id: string;
+  workflow: string;
+  target: "local" | "deployed";
+  status: string;
+  trace: "full" | "states" | "result";
+  execution_id?: string | null;
+  current_state?: string | null;
+  started_at?: string;
+  stopped_at?: string | null;
+  duration_ms?: number;
+  input?: Json;
+  output?: Json;
+  error?: string | null;
+  cause?: string | null;
+  console?: string | null;
+  note?: string;
+  poll_error?: string | null;
+  cancel_requested?: boolean;
+  steps: WorkflowStep[];
+}
 
 export function errorMessage(exc: unknown): string {
   if (exc instanceof ApiError) return exc.message;

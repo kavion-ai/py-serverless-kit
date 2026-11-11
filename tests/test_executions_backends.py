@@ -73,7 +73,11 @@ class FakeSfn:
                 {"type": "ExecutionStarted", "timestamp": T0},
                 {"type": "TaskStateEntered", "timestamp": T0, "stateEnteredEventDetails": {"name": "Charge"}},
                 {"type": "TaskFailed", "timestamp": T0, "taskFailedEventDetails": {"error": "Payment.Declined"}},
-                {"type": "TaskStateExited", "timestamp": T0, "stateExitedEventDetails": {"name": "Charge"}},
+                {
+                    "type": "TaskStateExited",
+                    "timestamp": T0,
+                    "stateExitedEventDetails": {"name": "Charge", "output": "{\"charged\": true}"},
+                },
             ]
         }
 
@@ -99,6 +103,7 @@ def test_aws_backend_maps_step_functions():
     assert detail["workflow"] == "orders" and detail["input"] == {"order": 1}
     assert detail["error"] == "Payment.Declined"
     assert [h["event"] for h in detail["history"]] == ["enter", "fail", "exit"]
+    assert detail["history"][-1]["output"] == {"charged": True}
 
     started = backend.start("orders", {"x": 1})
     assert started["execution_id"] == EXEC and json.loads(sfn.calls[-1][1]["input"]) == {"x": 1}

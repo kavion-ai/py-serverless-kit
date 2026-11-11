@@ -1,12 +1,13 @@
 """The ``secretsmanager`` / ``secretsmanager-node`` on-prem services: pskit's AWS Secrets Manager compatible server.
 
-The server's code lives in ``aws/secretsmanager`` at the repository root: ``python/server.py`` (standard library
-only), ``nodejs/server.js`` (no npm packages), the web console ``ui/index.html`` and a Dockerfile for each. The wheel
+The server's code lives in ``aws/secretsmanager`` at the repository root: ``python/server.py`` + ``python/smserver/``
+(standard library only), ``nodejs/server.js`` + ``nodejs/lib/`` (no npm packages), the web console ``ui/``
+(``index.html`` and ``assets/``) and a Dockerfile for each (see ``aws/secretsmanager/ARCHITECTURE.md``). The wheel
 ships that folder as ``py_serverless_kit/aws`` (hatch ``force-include``); a source checkout reads it in place.
 
 pskit runs it on the stock ``python:3.12-alpine`` / ``node:22-alpine`` image, so nothing has to be built or pushed:
-``docker create`` makes the container, ``docker cp`` puts the server and the console page in ``/app`` (over SSH they
-are copied to the server with scp first) and ``docker start`` runs it. They are too large for an environment variable
+``docker create`` makes the container, ``docker cp`` puts the server, its modules and the console in ``/app`` (over
+SSH they are copied to the server with scp first) and ``docker start`` runs it. They are too large for an environment variable
 (Windows command lines stop at 32 KB, an SSH command at 128 KB). Clients sign with SigV4 using the service's user as
 the access key ID and its password as the secret access key, which also sign in to the console at ``/ui/``.
 """
@@ -40,11 +41,29 @@ def script_name(service: str) -> str:
     return Path(SERVICES[service]["file"]).name
 
 
+_SKIP_PARTS = {"__pycache__", "node_modules", "data"}
+
+
+def _tree(root: Path, into: str = "") -> Dict[str, bytes]:
+    """Every file under ``root`` keyed by its POSIX path (prefixed by ``into``), caches, hidden files and the
+    Dockerfile left out."""
+    out: Dict[str, bytes] = {}
+    for path in sorted(root.rglob("*")):
+        rel = path.relative_to(root)
+        if not path.is_file() or any(p in _SKIP_PARTS or p.startswith(".") for p in rel.parts):
+            continue
+        if path.suffix in (".pyc", ".pyo") or path.name == "Dockerfile":
+            continue
+        out[into + rel.as_posix()] = path.read_bytes()
+    return out
+
+
 def app_files(service: str) -> Dict[str, bytes]:
-    """The files of ``/app`` in the container: the server and the console page."""
+    """The files of ``/app`` in the container: the server with its modules (``smserver/`` or ``lib/``), and the
+    console under ``ui/`` (``index.html``, ``assets/...``)."""
     base = source_dir()
-    return {script_name(service): (base / SERVICES[service]["file"]).read_bytes(),
-            "index.html": (base / UI_FILE).read_bytes()}
+    server_dir = (base / SERVICES[service]["file"]).parent
+    return {**_tree(server_dir), **_tree(base / "ui", "ui/")}
 
 
 def health(service: str) -> str:
@@ -98,14 +117,19 @@ def start_with_app(req: Dict[str, Any], target: Dict[str, Any], sh: Any, create:
     with tempfile.TemporaryDirectory() as tmp:
         app = Path(tmp) / "app"
         app.mkdir()
-        for name, data in files.items():
-            (app / name).write_bytes(data)
+        for name, data in files.items():  # names may contain "/" (a module tree)
+            dest = app / name
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            dest.write_bytes(data)
         if target.get("method") == "ssh":
             remote = f"/tmp/pskit-{container}-app"  # noqa: S108 - removed right after
             sh(_ssh_argv(target, f"rm -rf {remote} && mkdir -p {remote}"), show=False)
             ssh = ssh_options(target)
             for name in sorted(os.listdir(app)):
-                sh(scp_argv(ssh, str(app / name), f"{remote}/{name}"))
+                argv = scp_argv(ssh, str(app / name), f"{remote}/{name}")
+                if (app / name).is_dir():
+                    argv.insert(argv.index("scp") + 1, "-r")
+                sh(argv)
             sh(docker_argv(target, ["cp", f"{remote}/.", f"{container}:/app"]))
             sh(_ssh_argv(target, f"rm -rf {remote}"), check=False, show=False)
         else:

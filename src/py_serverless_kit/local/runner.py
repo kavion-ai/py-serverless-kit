@@ -184,23 +184,33 @@ class LocalRunner:
                 pass
         self._workers.clear()
 
-    def run_workflow(self, name: str, data: Any, *, sleep: bool = False) -> Dict[str, Any]:
+    def run_workflow(
+        self,
+        name: str,
+        data: Any,
+        *,
+        sleep: bool = False,
+        on_change: Optional[Any] = None,
+        cancel_event: Optional[Any] = None,
+    ) -> Dict[str, Any]:
         wf = self.project.config.workflows.get(name)
         if wf is None:
             known = ", ".join(sorted(self.project.config.workflows)) or "<none>"
             raise KeyError(f"unknown workflow {name!r}; known: {known}")
+        extra: Dict[str, Any] = {}
+        if on_change is not None:
+            extra["on_change"] = on_change
+        if cancel_event is not None:
+            extra["cancel_event"] = cancel_event
+        pause = time.sleep if sleep else (lambda _seconds: None)
         if self.language == "node":
 
             def task(function: str, payload: Any) -> Any:
                 return self.invoke(function, Event(type=EventType.WORKFLOW, function=function, data=payload))
 
-            engine = WorkflowEngine(definition_dict(wf), task, sleep=time.sleep if sleep else (lambda _seconds: None))
+            engine = WorkflowEngine(definition_dict(wf), task, sleep=pause, **extra)
             return {"output": engine.run(data), "history": engine.history}
-        engine = WorkflowEngine(
-            definition_dict(wf),
-            in_process_runner("local"),
-            sleep=time.sleep if sleep else (lambda _seconds: None),
-        )
+        engine = WorkflowEngine(definition_dict(wf), in_process_runner("local"), sleep=pause, **extra)
         with self.environment():
             output = engine.run(data)
         return {"output": output, "history": engine.history}

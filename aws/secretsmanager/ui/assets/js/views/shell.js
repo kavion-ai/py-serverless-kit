@@ -1,0 +1,108 @@
+// The signed-in layout: top bar, side navigation, flashbar and the page area that views render into.
+
+import { logout } from "../core/api.js";
+import { h } from "../core/dom.js";
+import { icon } from "../core/icons.js";
+import { current } from "../core/router.js";
+import { emit, on, prefs, session } from "../core/state.js";
+import { cycleTheme, currentTheme, THEME_ICON, THEME_LABEL } from "../core/theme.js";
+import { copyButton } from "../components/copy-button.js";
+import { clearFlash, flashArea } from "../components/flash.js";
+
+let pageEl = null;
+let offRoute = null;
+
+/** Render a page (replaces the previous one). */
+export function showPage(...nodes) {
+  if (!pageEl) return;
+  pageEl.replaceChildren(...nodes.flat().filter(Boolean));
+  window.scrollTo({ top: 0 });
+}
+
+export function renderShell(root) {
+  const narrow = () => window.matchMedia("(max-width: 900px)").matches;
+  const nav = h("nav", { class: "sidenav", "aria-label": "Secrets Manager", id: "sidenav" });
+  const scrim = h("div", { class: "scrim", onclick: () => setNav(false) });
+  let navOpen = !narrow() && prefs.get("nav", "open") !== "closed";
+
+  function setNav(open, remember = true) {
+    navOpen = open;
+    nav.classList.toggle("open", open);
+    nav.classList.toggle("collapsed", !open);
+    scrim.classList.toggle("show", open && narrow());
+    menuBtn.setAttribute("aria-expanded", String(open));
+    if (remember && !narrow()) prefs.set("nav", open ? "open" : "closed");
+  }
+
+  const themeBtn = h("button", { type: "button", class: "tb-btn", onclick: () => drawTheme(cycleTheme()) });
+  const drawTheme = (t) => {
+    themeBtn.replaceChildren(icon(THEME_ICON[t]));
+    themeBtn.title = THEME_LABEL[t];
+    themeBtn.setAttribute("aria-label", `${THEME_LABEL[t]} (change)`);
+  };
+  drawTheme(currentTheme());
+
+  const menuBtn = h("button", {
+    type: "button", class: "tb-btn", "aria-label": "Show or hide the navigation", title: "Navigation",
+    "aria-controls": "sidenav", onclick: () => setNav(!navOpen),
+  }, icon("menu"));
+
+  const topbar = h("header", { class: "topbar" },
+    menuBtn,
+    h("a", { class: "brand", href: "#/secrets" }, h("span", { class: "logo" }, icon("lock")), "Secrets Manager"),
+    h("span", { class: "spacer" }),
+    themeBtn,
+    session.auth
+      ? [h("span", { class: "who", title: session.user }, session.user ? `Signed in as ${session.user}` : "Signed in"),
+        h("button", {
+          type: "button", class: "tb-btn",
+          onclick: async () => {
+            try {
+              await logout();
+            } finally {
+              emit("signed-out", "You signed out.");
+            }
+          },
+        }, icon("signOut"), "Sign out")]
+      : h("span", { class: "who" }, "Authentication off"));
+
+  const link = (href, label, match) => h("a", { class: "nav", href, dataset: { match } }, label);
+  nav.append(
+    h("h2", {}, "Secrets Manager"),
+    link("#/secrets", "Secrets", "^/secrets"),
+    link("#/quick-start", "Quick start", "^/quick-start"),
+    h("div", { class: "section" }, "Server endpoint"),
+    h("div", { class: "endpoint" }, h("span", {}, window.location.origin), copyButton(window.location.origin, { label: "Copy endpoint" })),
+    h("div", { class: "section" }, "Region"),
+    h("div", { class: "endpoint" }, h("span", {}, "any (signed region is used)")));
+
+  const highlight = () => {
+    const { path } = current();
+    for (const a of nav.querySelectorAll("a.nav")) a.classList.toggle("active", new RegExp(a.dataset.match).test(path));
+  };
+  if (offRoute) offRoute();
+  offRoute = on("route", () => {
+    highlight();
+    clearFlashOnNavigate();
+    if (narrow()) setNav(false, false);
+  });
+
+  pageEl = h("div", { class: "page", id: "page" });
+  const content = h("main", { class: "content", id: "main" }, h("div", { class: "content-inner" }, flashArea(), pageEl));
+  root.replaceChildren(h("div", { class: "shell" }, topbar, h("div", { class: "body" }, nav, scrim, content)));
+  setNav(navOpen, false);
+  highlight();
+}
+
+// Notifications are cleared when you move to another page, except right after keepFlash() (e.g. "Secret stored"
+// shown on the page you land on).
+let keep = false;
+function clearFlashOnNavigate() {
+  if (keep) keep = false;
+  else clearFlash();
+}
+
+/** Call before navigating when a notification should stay on the next page. */
+export function keepFlash() {
+  keep = true;
+}

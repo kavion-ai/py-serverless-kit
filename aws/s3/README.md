@@ -4,9 +4,11 @@ A self-hosted server that speaks the **Amazon S3 API**, in two interchangeable i
 
 | | Path | Needs | Docker image (build it) |
 |---|---|---|---|
-| Python | `python/server.py` | Python 3.9+, standard library only | `python/Dockerfile` (`python:3.12-alpine`) |
-| Node.js | `nodejs/server.js` | Node.js 18+, no npm packages | `nodejs/Dockerfile` (`node:22-alpine`) |
-| Web console | `ui/index.html` | served by both at `/ui/` | included in both images |
+| Python | `python/server.py` + `python/s3server/` | Python 3.9+, standard library only | `python/Dockerfile` (`python:3.12-alpine`) |
+| Node.js | `nodejs/server.js` + `nodejs/lib/` | Node.js 18+, no npm packages | `nodejs/Dockerfile` (`node:22-alpine`) |
+| Web console | `ui/` (`index.html`, `assets/css`, `assets/js` ES modules) | served by both at `/ui/` | included in both images |
+
+The module layout, the console API and the exact bucket policy rules are in [ARCHITECTURE.md](ARCHITECTURE.md).
 
 boto3, the AWS SDKs (JavaScript v3, Java, Go, .NET ...), the AWS CLI (`aws s3` and `aws s3api`), rclone, s3cmd and
 pskit's `s3` storage driver work with it unchanged: give them its endpoint and an access key / secret key it knows.
@@ -53,6 +55,7 @@ The images run as an unprivileged user (uid 10001), keep the data in `/data` and
 | `S3_DOMAIN` | `localhost` | domains for virtual-hosted style (`<bucket>.<domain>`), comma-separated |
 | `S3_UI` | `on` | `off` removes the web console |
 | `S3_UI_PASSWORD` | | a console password other than the secret keys |
+| `S3_UI_DIR` | `ui/` next to the server | another console folder (`index.html` + `assets/`) |
 | `S3_MAX_OBJECT_SIZE` | 5 GiB | the largest single PUT, part or copy |
 | `S3_MIN_PART_SIZE` | 5 MiB | the smallest multipart part except the last |
 | `S3_LIFECYCLE_INTERVAL` | `3600` | seconds between lifecycle sweeps |
@@ -105,7 +108,7 @@ Path-style addressing (`http://host:9000/bucket/key`) works everywhere. Virtual-
 | Writes | user metadata, Content-Type / Cache-Control / Content-Disposition / Content-Encoding / Content-Language / Expires, storage classes, tags, ACLs, website redirects, conditional writes (`If-None-Match: *`, `If-Match`), `Content-MD5` and checksums CRC32, CRC32C, CRC64NVME, SHA1, SHA256 (header or trailer) |
 | Multipart | CreateMultipartUpload, UploadPart, UploadPartCopy (ranges), CompleteMultipartUpload (composite and full-object checksums), AbortMultipartUpload |
 | Versioning | Enabled / Suspended, version ids, `null` versions, delete markers, GET / DELETE of a version |
-| Access | bucket policies (statements for `Principal: "*"` decide what unsigned requests may do), canned and grant ACLs, public access block, ownership controls (BucketOwnerEnforced), policy status, presigned URLs (V4 and V2), POST policy uploads |
+| Access | bucket policies evaluated like AWS (`Deny` for signed requests too, principals, `Not*`, conditions such as `aws:SourceIp` / `aws:SecureTransport`), canned and grant ACLs, public access block, ownership controls (BucketOwnerEnforced), policy status, presigned URLs (V4 and V2), POST policy uploads |
 | Bucket settings | tagging, CORS (applied to preflight and responses), lifecycle (applied: expiration by days or date, noncurrent version expiration, expired delete markers, abort incomplete uploads, transitions change the storage class), website (served at `/-/website/<bucket>/` and `<bucket>.s3-website.<domain>`: index and error documents, redirects, routing rules), default encryption, object lock (default retention), accelerate, request payment, logging, notification, replication, metrics, analytics, inventory, intelligent-tiering (stored and returned) |
 | Object lock | retention (GOVERNANCE with `x-amz-bypass-governance-retention`, COMPLIANCE), legal hold, enforced on version deletes |
 
@@ -115,27 +118,42 @@ RestoreObject), but a restore is immediate. Notifications, replication and loggi
 
 ## Web console
 
-Open `http://127.0.0.1:9000/ui/` and sign in with an access key ID and its secret access key (or the
-`S3_UI_PASSWORD`). Buckets: create (versioning, object lock), delete (optionally emptying it first), and every setting:
-versioning, tags, default encryption, website hosting, object lock, block public access (*Block all* makes the
-bucket private), bucket policy, object
-ownership, ACL, CORS, lifecycle (with *Run lifecycle now*), unfinished multipart uploads, replication, notifications,
-logging. Objects: browse folders, search, upload files and whole folders (drag and drop, with progress), create
-folders, download, preview images, video, audio and text, share links (presigned GET or PUT, valid for a preset or any custom time from 1 second to 7 days), copy,
-move and rename (also folders), delete, versions (download, delete, make current, show deleted objects), metadata and
-storage class, tags, ACLs, object lock retention and legal hold.
+Open `http://127.0.0.1:9000/ui/` and sign in with an access key ID and its secret access key (or the`
+S3_UI_PASSWORD`).
+
+The console is laid out like the Amazon S3 console (its own colors): a bucket list, then a bucket's **Objects**,
+**Properties**, **Permissions** and **Management** tabs, and full pages for creating and editing.
+
+- Buckets: list with each bucket's access (*Public*, *Objects can be public*, *Bucket and objects not public*), copy
+  ARN, create (object ownership, block public access on by default, versioning, tags, object lock), empty, delete.
+- Properties: versioning, tags, object lock default retention, static website hosting (index and error documents,
+  redirection rules, or redirect all requests; shows the website endpoint).
+- Permissions: block public access, bucket policy (JSON editor with a list of **policy examples** to pick from: public
+  read, public folder, HTTPS only, IP range, deny deletes, read-only key, referer, time window, ...), object ownership,
+  ACL (when ACLs are enabled), CORS (JSON, like AWS).
+- Management: lifecycle rules (form for expiration, transitions, noncurrent versions, delete markers, incomplete
+  uploads) and *Run lifecycle now*.
+- Objects: browse folders, find by prefix, *Show versions*, upload page (files and folders, drag and drop, progress),
+  create folder, copy, move, rename, delete, edit storage class, metadata and tags, share with a presigned URL (1 second
+  to 7 days), object page with properties, ACL, versions, object lock retention and legal hold, and previews.
+- **Open** and **Download** use presigned URLs valid for 5 minutes, like the AWS console. They work on a private bucket,
+  a bucket policy `Deny` stops them, and the address without its signature is refused.
+
+Settings the server only stores (transfer acceleration, requester pays, default encryption, replication,
+notifications, logging, inventory) are not in the console; the S3 API still accepts them.
 
 The session lives in an `HttpOnly`, `SameSite=Strict` cookie for 12 hours and every console request carries a
 token only the page knows, so other sites cannot use it. Ten failed sign-ins from one address lock that address out
-for five minutes. The page sets a strict Content-Security-Policy and cannot be framed; downloads are sent as
-attachments (only images, video, audio, plain text and PDF can be previewed inline).
+for five minutes. The page sets a strict Content-Security-Policy (no inline scripts) and cannot be framed. An HTML,
+XML or SVG object fetched path-style on the console's address is sent with a `sandbox` CSP, so a page from a bucket
+cannot use the console's session.
 
 ## Security notes
 
 - Run it behind TLS (a reverse proxy) when clients reach it over a network you do not trust: SigV4 protects the
   keys and the request from changes, not the object data.
-- Every valid key has full access to every bucket; bucket policies and ACLs only decide what unsigned (anonymous)
-  requests may do.
+- Every valid key belongs to the owner's account: it may do anything a bucket policy does not explicitly `Deny`.
+  A signed request can always replace the bucket policy, so a policy cannot lock the owner out.
 - Objects are plain files on disk, **not encrypted at rest** (SSE headers are accepted and returned): protect the
   disk, the volume and backups.
 

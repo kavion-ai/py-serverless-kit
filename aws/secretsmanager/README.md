@@ -4,9 +4,11 @@ A self-hosted server that speaks the **AWS Secrets Manager API**, in two interch
 
 | | Path | Needs | Docker image (build it) |
 |---|---|---|---|
-| Python | `python/server.py` | Python 3.9+, standard library only | `python/Dockerfile` (`python:3.12-alpine`) |
-| Node.js | `nodejs/server.js` | Node.js 18+, no npm packages | `nodejs/Dockerfile` (`node:22-alpine`) |
-| Web console | `ui/index.html` | served by both at `/ui/` | included in both images |
+| Python | `python/server.py` + `python/smserver/` | Python 3.9+, standard library only | `python/Dockerfile` (`python:3.12-alpine`) |
+| Node.js | `nodejs/server.js` + `nodejs/lib/` | Node.js 18+, no npm packages | `nodejs/Dockerfile` (`node:22-alpine`) |
+| Web console | `ui/index.html` + `ui/assets/` (ES modules, no build step) | served by both at `/ui/` | included in both images |
+
+How the code is laid out, and the rules that keep the two servers identical: [ARCHITECTURE.md](ARCHITECTURE.md).
 
 boto3, the AWS SDKs (JavaScript v3, Java, Go, .NET ...), the AWS CLI and pskit's `get_secret()` work with it
 unchanged: give them its endpoint and an access key / secret key it knows. Every request is checked with
@@ -51,6 +53,7 @@ The images run as an unprivileged user (uid 10001), keep the data in `/data` and
 | `SM_REGION` / `SM_ACCOUNT_ID` | `us-east-1` / `000000000000` | for ARNs (a request's own region wins) |
 | `SM_UI` | `on` | `off` removes the web console |
 | `SM_UI_PASSWORD` | | a console password other than the secret keys |
+| `SM_UI_DIR` | `ui` next to the server, else `../ui` | the console's folder (`index.html` and `assets/`) |
 | `SM_MASTER_KEY` | | encrypts the values at rest: 32 random bytes in base64 (`openssl rand -base64 32`), key id `default` |
 | `SM_MASTER_KEYS` | | more master keys: `id1:base64key,id2:base64key` (`KmsKeyId` picks one) |
 | `SM_MASTER_KEY_ID` | `default` | the master key of secrets without a `KmsKeyId`; changing it rewraps on the next start |
@@ -104,9 +107,10 @@ Not supported: RotateSecret, CancelRotateSecret and replica regions (they answer
 ## Web console
 
 Open `http://127.0.0.1:4584/ui/` and sign in with an access key ID and its secret access key (or the
-`SM_UI_PASSWORD`). You can list and filter secrets, create them (key/value pairs or plaintext, *Generate password*),
-show and copy values, save a new version, make an old version current, edit the description and tags, delete with
-a recovery window and restore.
+`SM_UI_PASSWORD`). It is laid out like the AWS console (with its own colors, light and dark): a secrets table with
+filter and paging, a *Store a new secret* wizard (key/value pairs or plaintext, *Generate password*, tags, resource
+policy, review with sample code), and a page per secret with *Retrieve secret value*, editing as a new version, the
+versions (make an old one current), tags, resource permissions, and delete with a recovery window or restore.
 
 The session lives in an `HttpOnly`, `SameSite=Strict` cookie for 12 hours and every console request carries a
 token only the page knows, so other sites cannot use it. Ten failed sign-ins from one address lock that address out
@@ -137,7 +141,7 @@ secretsmanager.json           -> only ciphertext, the wrapped data key, nonces a
 | `aes-256-cbc-hmac` | AES-256-CBC + HMAC-SHA256, encrypt-then-MAC | for policies that require CBC; keys split from the data key with HKDF-SHA256 |
 
 Every version records its algorithm and master key id, so changing `SM_ENCRYPTION` affects only new versions.
-The Python server has no third-party packages: AES, GCM, ChaCha20 and Poly1305 are written out in `server.py` and
+The Python server has no third-party packages: AES, GCM, ChaCha20 and Poly1305 are written out in `smserver/ciphers.py` and
 checked against the FIPS-197, NIST SP 800-38D and RFC 8439 test vectors and against Node.js's `crypto`. The Node.js
 server uses `crypto`. Both read what the other wrote.
 

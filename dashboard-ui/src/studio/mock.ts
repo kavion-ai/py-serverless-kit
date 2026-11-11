@@ -210,6 +210,129 @@ function startJob(command: string, lines: string[], fail = false): string {
   return id;
 }
 
+interface MockStep {
+  state: string;
+  type: string;
+  function?: string;
+  status: string;
+  output?: unknown;
+  output_known: boolean;
+  next?: string;
+  end?: boolean;
+  error?: string;
+  duration_ms?: number;
+}
+
+interface MockRun {
+  run_id: string;
+  workflow: string;
+  target: "local" | "deployed";
+  status: string;
+  trace: "full";
+  input: unknown;
+  output: unknown;
+  error: string | null;
+  steps: MockStep[];
+  phase: number;
+  cancel_requested: boolean;
+  started_at: string;
+  stopped_at: string | null;
+  duration_ms: number | null;
+  current_state: string | null;
+  note: string;
+}
+
+const wfRuns: Record<string, MockRun> = {};
+let wfSeq = 0;
+
+function mockWorkflowPlan(name: string, input: unknown): MockStep[] {
+  const data = isObject(input as never) ? { ...(input as JsonObject) } : {};
+  if (name === "fulfil") {
+    const fail = data.fail === true || data.paid === false;
+    const charged = { ...data, paid: !fail };
+    const steps: MockStep[] = [
+      { state: "Charge", type: "task", function: "charge", status: "done", output: charged, output_known: true, next: "Paid?", duration_ms: 4 },
+      { state: "Paid?", type: "choice", status: "done", output: charged, output_known: true, next: fail ? "Failed" : "Ship", duration_ms: 0 },
+    ];
+    if (fail) steps.push({ state: "Failed", type: "fail", status: "failed", output_known: false, error: "Payment.Failed", end: true });
+    else steps.push({ state: "Ship", type: "task", function: "ship", status: "done", output: charged, output_known: true, end: true, duration_ms: 3 });
+    return steps;
+  }
+  const wf = asObject(asObject(asObject(project).workflows)[name]);
+  const start = str(wf.start_at, "Start");
+  const state = asObject(asObject(wf.states)[start]);
+  return [
+    {
+      state: start,
+      type: str(state.type, "pass"),
+      function: state.function ? str(state.function) : undefined,
+      status: "done",
+      output: data,
+      output_known: true,
+      end: true,
+      duration_ms: 1,
+    },
+  ];
+}
+
+function advanceMockRun(run: MockRun): MockRun {
+  if (run.status !== "RUNNING") return run;
+  if (run.cancel_requested) {
+    run.status = "CANCELLED";
+    run.error = "States.Cancelled";
+    run.stopped_at = new Date().toISOString();
+    run.current_state = null;
+    const open = run.steps.find((step) => step.status === "running" || step.status === "retrying");
+    if (open) open.status = "cancelled";
+    return run;
+  }
+  const plan = mockWorkflowPlan(run.workflow, run.input);
+  run.phase += 1;
+  const shown = plan.slice(0, run.phase);
+  const last = shown[shown.length - 1];
+  if (shown.length < plan.length && last) {
+    const running: MockStep = { ...last, status: "running", output_known: false };
+    delete running.output;
+    delete running.next;
+    delete running.end;
+    run.steps = [...shown.slice(0, -1), running];
+    run.current_state = last.state;
+    return run;
+  }
+  run.steps = shown;
+  const failed = shown.some((step) => step.status === "failed");
+  run.status = failed ? "FAILED" : "SUCCEEDED";
+  run.output = failed ? null : shown[shown.length - 1]?.output ?? null;
+  run.error = failed ? "Payment.Failed" : null;
+  run.stopped_at = new Date().toISOString();
+  run.duration_ms = 12;
+  run.current_state = null;
+  return run;
+}
+
+function publicMockRun(run: MockRun): Record<string, unknown> {
+  return {
+    run_id: run.run_id,
+    workflow: run.workflow,
+    target: run.target,
+    status: run.status,
+    trace: run.trace,
+    execution_id: null,
+    current_state: run.current_state,
+    started_at: run.started_at,
+    stopped_at: run.stopped_at,
+    duration_ms: run.duration_ms,
+    input: run.input,
+    output: run.output,
+    error: run.error,
+    cause: null,
+    console: null,
+    note: run.note,
+    cancel_requested: run.cancel_requested,
+    steps: run.steps,
+  };
+}
+
 export async function mockRequest<T>(method: string, path: string, body?: unknown, query?: Record<string, string | number | undefined | null>): Promise<T> {
   await sleep(120 + Math.random() * 150);
   const b = (isObject(body as never) ? body : {}) as JsonObject;
@@ -402,6 +525,69 @@ export async function mockRequest<T>(method: string, path: string, body?: unknow
     vscode.running = false;
     vscode.url = null;
     return r({ ...vscode });
+  }
+  if (path === "/api/workflow-test" && method === "GET") {
+    const workflow = String(q.workflow || "");
+    if (!asObject(asObject(project).workflows)[workflow]) throw new ApiError(404, `unknown workflow ${workflow}`);
+    const provider = String(q.provider || "aws");
+    const stage = String(q.stage || "dev");
+    return r({
+      workflow,
+      provider,
+      stage,
+      targets: [
+        { id: "local", label: "This machine", available: true, trace: "full", note: "Runs here with your handlers. Each function, its output, and the next state." },
+        {
+          id: "deployed",
+          label: `Deployed ${provider}/${stage}`,
+          available: false,
+          trace: "result",
+          reason: "This stage is not deployed. Deploy it, then test the live workflow here.",
+        },
+      ],
+    });
+  }
+  if (path === "/api/workflow-test" && method === "POST") {
+    const workflow = str(b.workflow);
+    if (!asObject(asObject(project).workflows)[workflow]) throw new ApiError(404, `unknown workflow ${workflow}`);
+    const target = str(b.target) === "deployed" ? "deployed" : "local";
+    if (target === "local" && Object.values(wfRuns).some((run) => run.status === "RUNNING" && run.target === "local")) {
+      throw new ApiError(409, "a workflow test is already running on this machine", { code: "busy" });
+    }
+    const id = `wf-${++wfSeq}`;
+    const run: MockRun = {
+      run_id: id,
+      workflow,
+      target,
+      status: "RUNNING",
+      trace: "full",
+      input: b.input ?? {},
+      output: null,
+      error: null,
+      steps: [],
+      phase: 0,
+      cancel_requested: false,
+      started_at: new Date().toISOString(),
+      stopped_at: null,
+      duration_ms: null,
+      current_state: null,
+      note: "",
+    };
+    wfRuns[id] = advanceMockRun(run);
+    return r(publicMockRun(run));
+  }
+  if (path.startsWith("/api/workflow-test/") && method === "POST" && path.endsWith("/cancel")) {
+    const id = decodeURIComponent(path.slice("/api/workflow-test/".length, -"/cancel".length));
+    const run = wfRuns[id];
+    if (!run) throw new ApiError(404, `unknown workflow test ${id}`);
+    run.cancel_requested = true;
+    return r(publicMockRun(advanceMockRun(run)));
+  }
+  if (path.startsWith("/api/workflow-test/") && method === "GET") {
+    const id = decodeURIComponent(path.slice("/api/workflow-test/".length));
+    const run = wfRuns[id];
+    if (!run) throw new ApiError(404, `unknown workflow test ${id}`);
+    return r(publicMockRun(advanceMockRun(run)));
   }
   throw new ApiError(404, `mock: no route for ${method} ${path}`);
 }

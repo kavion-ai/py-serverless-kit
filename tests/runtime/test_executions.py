@@ -215,6 +215,7 @@ def test_cloud_orchestrator_returns_execution_id(manifest, monkeypatch):
     monkeypatch.setattr(wf_mod, "in_process_runner", lambda provider: lambda fn, data: {"ok": True})
     body = wf_mod.orchestrate(_http(), Context(function="flow-orchestrator"))
     assert body["status"] == "SUCCEEDED" and valid_id(body["execution_id"]) and body["output"] == {"ok": True}
+    assert body["history"][-1]["event"] == "exit" and body["history"][-1]["output"] == {"ok": True}
 
     def boom(fn, data):
         raise RuntimeError("no")
@@ -223,7 +224,7 @@ def test_cloud_orchestrator_returns_execution_id(manifest, monkeypatch):
     resp = wf_mod.orchestrate(_http(), Context(function="flow-orchestrator"))
     assert isinstance(resp, Response) and resp.status == 500
     failure = json.loads(resp.render()[2])
-    assert failure["status"] == "FAILED" and valid_id(failure["execution_id"])
+    assert failure["status"] == "FAILED" and valid_id(failure["execution_id"]) and failure["history"]
 
 
 def test_orchestrator_with_executor_is_async_unless_waiting(manifest, monkeypatch):

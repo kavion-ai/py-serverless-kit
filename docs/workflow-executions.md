@@ -7,7 +7,7 @@ Every workflow run has an **execution id**. You get it back when you start a run
 | on-premises (embedded engine in the host) | `202` + `execution_id` at once; `?wait=true` for the result | yes, persisted on the host | yes |
 | AWS Step Functions (native) | execution ARN | yes, through the Step Functions API | yes (`StopExecution`) |
 | Google Cloud Workflows (native) | execution resource name | yes, through the Executions API | yes |
-| embedded orchestrator on a cloud function | the result **and** `execution_id` (synchronous) | no: the run lives in one function call | no |
+| embedded orchestrator on a cloud function | the result **and** `execution_id` (synchronous). After this runtime is deployed, the body also includes `history` | that response only; older deployments return the final result; nothing is listed later | no |
 
 ## Starting a run
 
@@ -53,10 +53,10 @@ The body is the workflow input. With no body, the query parameters (except `wait
 On the other clouds the run happens inside the orchestrator function, so the response always carries the result:
 
 ```json
-{"execution_id": "019a15d2...", "workflow": "ping", "status": "SUCCEEDED", "output": {...}, "duration_ms": 12.4}
+{"execution_id": "019a15d2...", "workflow": "ping", "status": "SUCCEEDED", "output": {...}, "duration_ms": 12.4, "history": []}
 ```
 
-A failure answers `500` with `status` set to `FAILED` (or `TIMED_OUT`), plus `error`, `cause` and `execution_id`. No history is kept. `pskit workflow start` posts to the orchestrator's HTTP URL and prints this result. `pskit workflow executions` explains why there's nothing to list.
+A failure answers `500` with `status` set to `FAILED` (or `TIMED_OUT`), plus `error`, `cause`, `execution_id` and `history`. `history` is the steps of that one call. Deployments from before this runtime return the final result without it. Nothing is stored, so `pskit workflow executions` still has nothing to list, and the run cannot be cancelled. `pskit workflow start` posts to the orchestrator's HTTP URL and prints this result.
 
 ## The execution record
 
@@ -77,7 +77,7 @@ A failure answers `500` with `status` set to `FAILED` (or `TIMED_OUT`), plus `er
   "cause": null,
   "history": [
     {"ts": "...", "state": "Validate", "type": "task", "event": "enter"},
-    {"ts": "...", "state": "Validate", "type": "task", "event": "exit", "duration_ms": 4.1},
+    {"ts": "...", "state": "Validate", "type": "task", "event": "exit", "duration_ms": 4.1, "function": "validate", "output": {"ok": true}, "next": "Charge"},
     {"ts": "...", "state": "Charge", "type": "task", "event": "enter"}
   ]
 }
@@ -92,7 +92,7 @@ A failure answers `500` with `status` set to `FAILED` (or `TIMED_OUT`), plus `er
 | `CANCELLED` | stopped by a cancel request (`error: States.Cancelled`) |
 | `ABORTED` | the host stopped while it was running (on-premises), or the run was stopped on AWS |
 
-History events: `enter` and `exit` (with `duration_ms`) for each state, `caught` when a `catch` rule routed an error, `retry` with `attempt` and `error`, and `fail` for a `fail` state. Long runs keep the newest 1000 entries and set `history_truncated` to the number dropped. List calls return the summary fields only (no `input`, `output`, `history`).
+History events: `enter` and `exit` (with `duration_ms`) for each state, `caught` when a `catch` rule routed an error, `retry` with `attempt` and `error`, and `fail` for a `fail` state. An `exit` may also include `function` (a task), `output` (clipped at 2048 characters, with `output_truncated` when it was cut) and `next` or `end`. A choice records an `exit` with the branch it took. On premises those fields appear after you redeploy this runtime. AWS `StateExited` events include the state output when Step Functions returns it. GCP history is still the current step only. Long runs keep the newest 1000 entries and set `history_truncated` to the number dropped. List calls return the summary fields only (no `input`, `output`, `history`).
 
 Execution ids from the embedded engine are hex strings that sort by start time. AWS ids are execution ARNs. GCP ids are `projects/.../workflows/.../executions/...`.
 
@@ -137,7 +137,7 @@ pip install "py-serverless-kit[gcp]"   # google-cloud-workflows: list/get/create
 | Credentials | `AWS_PROFILE`, env keys, SSO, instance role | `gcloud auth application-default login`, `GOOGLE_APPLICATION_CREDENTIALS` |
 | Permissions | `states:ListExecutions`, `DescribeExecution`, `GetExecutionHistory`, `StartExecution`, `StopExecution` | `workflows.executions.list/get/create/cancel` (e.g. role Workflows Invoker + Viewer) |
 | Status mapping | `PENDING_REDRIVE` → `RUNNING`; a `CANCELLED` filter queries `ABORTED` | `ACTIVE`/`QUEUED` → `RUNNING`, `UNAVAILABLE` → `FAILED` |
-| History | `StateEntered`/`StateExited`/`*Failed` events (up to 1000) | the current step(s) only |
+| History | `StateEntered`/`StateExited`/`*Failed` events (up to 1000). A `StateExited` event includes that state's output when AWS returns it | the current step(s) only |
 | `console` | link to the execution in the Step Functions console | link to the execution in the Cloud console |
 
 The state machine / workflow id comes from `deployment.json` (`pskit info`), so deploy first. Without the extra, commands fail with a message naming the `pip install` to run.
