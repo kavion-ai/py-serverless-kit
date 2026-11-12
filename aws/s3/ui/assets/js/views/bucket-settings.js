@@ -27,7 +27,7 @@ import { jsonEditor } from "../components/json-editor.js";
 import { kvList } from "../components/kv-list.js";
 import { confirmModal } from "../components/modal.js";
 import { flash } from "../components/toast.js";
-import { CORS_EXAMPLES } from "../data/cors-examples.js";
+import { CORS_EXAMPLES } from "../examples/cors-examples.js";
 import { setPage, refreshBuckets } from "./shell.js";
 import { bucketCrumbs, bucketHref, bucketPath, editHref, loadBucketInfo, showLoadError } from "./common.js";
 import { bpaForm, ownershipForm } from "./forms.js";

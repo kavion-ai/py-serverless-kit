@@ -11,7 +11,7 @@ import { jsonEditor, prettyJson } from "../components/json-editor.js";
 import { copyable } from "../components/copy-button.js";
 import { confirmModal } from "../components/modal.js";
 import { flash } from "../components/toast.js";
-import { POLICY_EXAMPLES, checkPolicy } from "../data/policy-examples.js";
+import { POLICY_EXAMPLES, checkPolicy } from "../examples/policy-examples.js";
 import { setPage, refreshBuckets } from "./shell.js";
 import { bucketCrumbs, bucketHref, bucketPath, editHref, loadBucketInfo, showLoadError } from "./common.js";
 

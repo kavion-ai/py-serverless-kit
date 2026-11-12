@@ -1,52 +1,56 @@
-/* Color tokens and base typography. Teal and indigo accents on neutral slate; dark mode follows the system. */
+/* Color tokens and base typography, shared with the Secrets Manager console: violet accent on a cool neutral.
+   Light is the default; dark follows the OS unless the viewer picked a theme (data-theme on <html>, core/theme.js). */
 
 :root {
   --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
 
-  --bg: #f4f6f8;
+  --bg: #f6f5fa;
   --surface: #ffffff;
-  --surface-2: #f8fafc;
-  --surface-hover: #f1f5f9;
-  --border: #d5dbe3;
-  --border-strong: #94a3b8;
-  --text: #0f172a;
-  --text-muted: #5b6676;
-  --text-subtle: #7b8696;
+  --surface-2: #f1eff8;
+  --surface-hover: #ece8f8;
+  --border: #dcd8e6;
+  --border-strong: #b9b3c9;
+  --text: #1c1830;
+  --text-muted: #5f5a73;
+  --text-subtle: #8a8599;
 
-  --primary: #0f766e;
-  --primary-hover: #115e59;
+  --primary: #5b3fd6;
+  --primary-hover: #4730b0;
+  --primary-active: #3a2696;
   --primary-text: #ffffff;
-  --primary-soft: #e6f4f2;
-  --link: #4338ca;
-  --link-hover: #3730a3;
-  --focus: #6366f1;
+  --primary-soft: #ece7ff;
+  --link: #5b3fd6;
+  --link-hover: #4730b0;
+  --focus: #7c5cff;
 
-  --topbar-bg: #134e4a;
-  --topbar-text: #ecfdf5;
-  --topbar-muted: #a7d7d0;
-  --topbar-hover: rgba(255, 255, 255, 0.1);
+  --topbar-bg: #1f1633;
+  --topbar-text: #f2eefc;
+  --topbar-muted: #b8acd6;
+  --topbar-hover: #33284f;
+  --logo-gradient: linear-gradient(135deg, #7c5cff, #c255d9);
 
-  --success: #15803d;
-  --success-bg: #ecfdf3;
-  --success-border: #86d6a4;
-  --error: #b91c1c;
-  --error-bg: #fef2f2;
-  --error-border: #f3a5a5;
-  --warning: #a35200;
-  --warning-bg: #fff7eb;
-  --warning-border: #f2c27a;
-  --info: #3b50c4;
-  --info-bg: #eef1ff;
-  --info-border: #a9b4f2;
-  --neutral: #64748b;
+  --success: #12804a;
+  --success-bg: #e3f5ea;
+  --success-border: #12804a;
+  --error: #c42b3b;
+  --error-bg: #fde8ea;
+  --error-border: #c42b3b;
+  --warning: #9a5b00;
+  --warning-bg: #fff3dc;
+  --warning-border: #9a5b00;
+  --info: #5b3fd6;
+  --info-bg: #efeaff;
+  --info-border: #5b3fd6;
+  --neutral: #6c6780;
 
-  --selected: #eef1ff;
-  --selected-border: #6c7ae0;
-  --shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.08);
-  --shadow-lg: 0 10px 30px rgba(15, 23, 42, 0.2);
-  --radius: 8px;
+  --selected: #ece7ff;
+  --selected-border: #5b3fd6;
+  --shadow: 0 1px 2px rgba(31, 22, 51, .08), 0 1px 4px rgba(31, 22, 51, .06);
+  --shadow-lg: 0 8px 28px rgba(31, 22, 51, .22);
+  --radius: 10px;
   --radius-sm: 6px;
+  --radius-lg: 16px;
   --radius-pill: 999px;
 
   --space-1: 4px;
@@ -58,56 +62,91 @@
   --space-8: 32px;
 
   --topbar-h: 48px;
-  --nav-w: 260px;
+  --nav-w: 250px;
 
   color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0b1016;
-    --surface: #131a22;
-    --surface-2: #18212b;
-    --surface-hover: #1c2632;
-    --border: #2a3644;
-    --border-strong: #4a5a6c;
-    --text: #e5ebf1;
-    --text-muted: #9aa7b6;
-    --text-subtle: #7c8a9a;
-
-    --primary: #2bb3a3;
-    --primary-hover: #4ccbbb;
-    --primary-text: #04201d;
-    --primary-soft: #0f2e2b;
-    --link: #a5b0ff;
-    --link-hover: #c4cbff;
-    --focus: #8b97ff;
-
-    --topbar-bg: #0c2624;
-    --topbar-text: #e6fbf6;
-    --topbar-muted: #8cc7bd;
-
-    --success: #4ade80;
-    --success-bg: #0f2a1a;
-    --success-border: #1f6b3d;
-    --error: #ff8a80;
-    --error-bg: #2d1414;
-    --error-border: #7a2b2b;
-    --warning: #fbbf5b;
-    --warning-bg: #2c2110;
-    --warning-border: #7a5517;
-    --info: #a5b0ff;
-    --info-bg: #171c3a;
-    --info-border: #3d4a99;
-    --neutral: #94a3b8;
-
-    --selected: #1a2040;
-    --selected-border: #6c7ae0;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.6);
-
+  :root:not([data-theme="light"]) {
+    --bg: #120f1c;
+    --surface: #1b1729;
+    --surface-2: #231e35;
+    --surface-hover: #2b2541;
+    --border: #342d4b;
+    --border-strong: #4a4166;
+    --text: #ece9f6;
+    --text-muted: #aaa3c0;
+    --text-subtle: #7f7896;
+    --primary: #9c84ff;
+    --primary-hover: #b4a1ff;
+    --primary-active: #c7b9ff;
+    --primary-text: #160f2b;
+    --primary-soft: #2c2350;
+    --link: #b3a1ff;
+    --link-hover: #c7b9ff;
+    --focus: #b4a1ff;
+    --topbar-bg: #0d0a16;
+    --topbar-hover: #241c38;
+    --success: #4fd08b;
+    --success-bg: #133524;
+    --success-border: #4fd08b;
+    --error: #ff7b88;
+    --error-bg: #3d1820;
+    --error-border: #ff7b88;
+    --warning: #ffc35c;
+    --warning-bg: #3a2a10;
+    --warning-border: #ffc35c;
+    --info: #b3a1ff;
+    --info-bg: #2a2248;
+    --info-border: #b3a1ff;
+    --neutral: #9e98b3;
+    --selected: #2c2350;
+    --selected-border: #9c84ff;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .5);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, .5);
     color-scheme: dark;
   }
+}
+
+:root[data-theme="dark"] {
+  --bg: #120f1c;
+  --surface: #1b1729;
+  --surface-2: #231e35;
+  --surface-hover: #2b2541;
+  --border: #342d4b;
+  --border-strong: #4a4166;
+  --text: #ece9f6;
+  --text-muted: #aaa3c0;
+  --text-subtle: #7f7896;
+  --primary: #9c84ff;
+  --primary-hover: #b4a1ff;
+  --primary-active: #c7b9ff;
+  --primary-text: #160f2b;
+  --primary-soft: #2c2350;
+  --link: #b3a1ff;
+  --link-hover: #c7b9ff;
+  --focus: #b4a1ff;
+  --topbar-bg: #0d0a16;
+  --topbar-hover: #241c38;
+  --success: #4fd08b;
+  --success-bg: #133524;
+  --success-border: #4fd08b;
+  --error: #ff7b88;
+  --error-bg: #3d1820;
+  --error-border: #ff7b88;
+  --warning: #ffc35c;
+  --warning-bg: #3a2a10;
+  --warning-border: #ffc35c;
+  --info: #b3a1ff;
+  --info-bg: #2a2248;
+  --info-border: #b3a1ff;
+  --neutral: #9e98b3;
+  --selected: #2c2350;
+  --selected-border: #9c84ff;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .5);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, .5);
+  color-scheme: dark;
 }
 
 *,
@@ -141,6 +180,7 @@ p {
 a {
   color: var(--link);
   text-decoration: none;
+  font-weight: 600;
 }
 
 a:hover {
@@ -185,7 +225,21 @@ code, pre, .mono {
 .indent { margin-left: 26px; }
 
 .boot {
-  padding: 48px;
-  text-align: center;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
   color: var(--text-muted);
 }
+
+.boot__spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }

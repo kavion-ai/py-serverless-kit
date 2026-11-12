@@ -1,4 +1,4 @@
-/* Page layout: top bar, side navigation, breadcrumbs, content, login page. */
+/* Page layout (styled like the Secrets Manager console): top bar, side navigation, breadcrumbs, content, login page. */
 
 .layout {
   min-height: 100vh;
@@ -16,61 +16,61 @@
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  padding: 0 var(--space-4) 0 var(--space-2);
+  padding: 0 var(--space-4);
   background: var(--topbar-bg);
   color: var(--topbar-text);
 }
 
-.topbar__menu {
+.topbar__btn {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
+  gap: 6px;
+  height: 32px;
+  padding: 0 10px;
   border: 0;
   border-radius: var(--radius-sm);
   background: transparent;
-  color: inherit;
+  color: var(--topbar-text);
   cursor: pointer;
+  white-space: nowrap;
 }
 
-.topbar__menu:hover { background: var(--topbar-hover); }
+.topbar__btn:hover { background: var(--topbar-hover); }
 
 .topbar__brand {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  color: inherit;
+  gap: 10px;
+  color: var(--topbar-text);
   font-weight: 700;
   font-size: 15px;
   white-space: nowrap;
 }
 
-.topbar__brand:hover { color: inherit; text-decoration: none; }
-.topbar__product { font-weight: 400; color: var(--topbar-muted); font-size: 13px; }
+.topbar__brand:hover { color: var(--topbar-text); text-decoration: none; }
+
+.topbar__logo {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  display: grid;
+  place-items: center;
+  background: var(--logo-gradient);
+  color: #fff;
+}
+
 .topbar__spacer { flex: 1; }
 
-.topbar__chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 3px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: var(--radius-pill);
-  font-size: 12px;
-  color: var(--topbar-text);
+.topbar__who {
+  color: var(--topbar-muted);
+  font-size: 13px;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 30vw;
 }
 
-.topbar__chip--warn { border-color: #fbbf5b; color: #fde3b0; }
-
-.btn--topbar {
-  background: transparent;
-  border-color: transparent;
-  color: var(--topbar-text);
-}
-
-.btn--topbar:hover:not(:disabled) { background: var(--topbar-hover); border-color: transparent; color: var(--topbar-text); }
+.topbar__who--warn { color: #ffc35c; }
 
 /* ---------------------------------------------------------------- body and side navigation */
 
@@ -101,10 +101,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-2) var(--space-5);
-  font-weight: 700;
-  font-size: 16px;
+  padding: 4px var(--space-5) var(--space-3);
+  margin-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border);
 }
+
+.sidenav__header h2 { font-size: 16px; }
 
 .sidenav__close {
   display: none;
@@ -126,50 +128,50 @@
   align-items: center;
   gap: var(--space-2);
   padding: 6px var(--space-5);
-  color: var(--text);
+  color: var(--text-muted);
+  font-weight: 500;
   border-left: 3px solid transparent;
   overflow: hidden;
 }
 
 .sidenav a span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .sidenav a:hover { background: var(--surface-hover); text-decoration: none; color: var(--text); }
-.sidenav a.is-active { border-left-color: var(--primary); color: var(--primary); font-weight: 600; background: var(--primary-soft); }
-.sidenav a .icon { flex: none; color: var(--text-muted); }
+.sidenav a.is-active { border-left-color: var(--primary); color: var(--primary); font-weight: 700; }
+.sidenav a .icon { flex: none; color: var(--text-subtle); }
+.sidenav a.is-active .icon { color: var(--primary); }
 
 .sidenav__section {
-  margin: var(--space-4) var(--space-5) var(--space-1);
-  padding-top: var(--space-3);
-  border-top: 1px solid var(--border);
+  padding: var(--space-3) var(--space-5) 4px;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
 }
 
 .sidenav__buckets a { font-size: 13px; }
 .sidenav__empty { padding: 6px var(--space-5); color: var(--text-subtle); font-size: 13px; }
 .sidenav__more { color: var(--link) !important; }
 
-.sidenav__footer {
-  margin-top: auto;
-  padding: var(--space-4) var(--space-5) var(--space-2);
-  border-top: 1px solid var(--border);
-  font-size: 12px;
-  color: var(--text-muted);
+.sidenav__endpoint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px var(--space-5);
+  padding: 8px 10px;
+  background: var(--surface-2);
+  border-radius: var(--radius-sm);
 }
 
-.sidenav__label { margin-bottom: 4px; }
-.sidenav__endpoint { display: flex; align-items: center; gap: 4px; }
-.sidenav__endpoint code { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; color: var(--text); }
-.sidenav__meta { margin-top: 4px; }
+.sidenav__endpoint code { flex: 1; min-width: 0; font-size: 12px; color: var(--text); word-break: break-all; }
+.sidenav__meta { color: var(--text-muted); font-size: 12px; }
 
 .layout__scrim { display: none; }
 
 .layout__main {
   flex: 1;
   min-width: 0;
-  padding: var(--space-4) var(--space-6) var(--space-8);
+  padding: var(--space-5) var(--space-8) 48px;
 }
 
 .layout__content:focus { outline: none; }
@@ -199,7 +201,7 @@
 
 .field-row > .select { width: auto; flex: none; }
 
-/* ---------------------------------------------------------------- login */
+/* ---------------------------------------------------------------- login (centered card, as in Secrets Manager) */
 
 .login {
   min-height: 100vh;
@@ -207,28 +209,37 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--space-6) var(--space-4);
-  background: linear-gradient(160deg, var(--topbar-bg) 0, var(--topbar-bg) 220px, var(--bg) 220px);
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: radial-gradient(1200px 600px at 10% -10%, var(--primary-soft), transparent), var(--bg);
 }
 
 .login__card {
-  width: 100%;
-  max-width: 400px;
-  padding: var(--space-8) var(--space-6);
+  width: min(420px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: 28px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
 }
 
-.login__brand { display: flex; align-items: center; gap: var(--space-3); color: var(--primary); margin-bottom: var(--space-6); }
-.login__name { font-weight: 700; font-size: 16px; color: var(--text); }
-.login__product { color: var(--text-muted); font-size: 13px; }
-.login__title { font-size: 22px; margin-bottom: 4px; }
-.login__hint { color: var(--text-muted); margin-bottom: var(--space-4); }
-.login__notice:not(:empty) { margin-bottom: var(--space-4); }
+.login__brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; }
+.login__logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  background: var(--logo-gradient);
+  color: #fff;
+}
+.login__hint { color: var(--text-muted); }
+.login__notice:empty { display: none; }
 .login__form { display: flex; flex-direction: column; gap: var(--space-4); }
-.login__footer { margin-top: var(--space-4); color: var(--text-muted); font-size: 12px; text-align: center; }
+.login__footer { color: var(--text-subtle); font-size: 12px; text-align: center; }
 
 /* ---------------------------------------------------------------- responsive */
 
@@ -249,18 +260,16 @@
     position: fixed;
     inset: var(--topbar-h) 0 0 0;
     z-index: 20;
-    background: rgba(15, 23, 42, 0.4);
+    background: rgba(0, 0, 0, .35);
   }
 
   .sidenav__close { display: inline-flex; }
   .layout__main { padding: var(--space-3) var(--space-3) var(--space-8); }
   .editor-layout { grid-template-columns: minmax(0, 1fr); }
-  .topbar__product { display: none; }
+  .topbar__who { display: none; }
 }
 
 @media (max-width: 560px) {
   .topbar { gap: var(--space-2); padding-right: var(--space-2); }
-  .topbar__name { display: none; }
-  .topbar__chip span { max-width: 90px; overflow: hidden; text-overflow: ellipsis; }
   .field-row { flex-wrap: wrap; }
 }

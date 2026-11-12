@@ -8,6 +8,7 @@ import { ageFlashes, clearFlashes } from "./components/toast.js";
 import { alert } from "./components/alert.js";
 import { ensureShell, teardownShell, closeMobileNav, setSignOutHandler, refreshBuckets } from "./views/shell.js";
 import { renderLogin } from "./views/login.js";
+import { applyTheme } from "./core/theme.js";
 import * as buckets from "./views/buckets.js";
 import * as createBucket from "./views/create-bucket.js";
 import * as bucketDanger from "./views/bucket-danger.js";
@@ -21,6 +22,7 @@ import * as policyEditor from "./views/policy-editor.js";
 import * as lifecycleRule from "./views/lifecycle-rule.js";
 
 const app = document.getElementById("app");
+applyTheme();
 
 function showLogin(message) {
   teardownShell();

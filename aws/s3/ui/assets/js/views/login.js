@@ -48,13 +48,12 @@ export function renderLogin(app, message, onSignedIn) {
       h(
         "div",
         { class: "login__card" },
-        h("div", { class: "login__brand" }, icon("logo", { size: 32 }), h("div", {}, h("div", { class: "login__name" }, "Object Storage"), h("div", { class: "login__product" }, "S3 console"))),
-        h("h1", { class: "login__title" }, "Sign in"),
-        h("p", { class: "login__hint" }, pw ? "Sign in with the console password." : "Sign in with an access key ID and its secret access key."),
+        h("div", { class: "login__brand" }, h("span", { class: "login__logo" }, icon("bucket", { size: 18 })), "S3"),
+        h("p", { class: "login__hint" }, pw ? "Sign in with the console password." : "Sign in with an access key ID and its secret access key, the same keys your SDK signs with."),
         notice,
         form,
+        h("p", { class: "login__footer" }, `Endpoint ${location.origin} · Region ${state.session.region}`),
       ),
-      h("p", { class: "login__footer" }, `Endpoint ${location.origin} · Region ${state.session.region}`),
     ),
   );
   document.title = "Sign in | S3 console";

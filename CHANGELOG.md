@@ -6,6 +6,21 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [3.1.1] - 2026-11-12
+
+### Changed
+- **S3 console: same look as the Secrets Manager console.** The S3 console now uses the Secrets Manager palette and
+  layout: a violet theme with matching dark colors, a light / dark / automatic theme button, a top bar with
+  *Signed in as …* and **Sign out**, a side navigation with the server endpoint and region, Secrets Manager style
+  buttons, containers, tabs, alerts and notifications, and a centered sign-in card. Pages and features are unchanged.
+  Re-create a running `s3` / `s3-node` service to get the new look.
+
+### Fixed
+- **S3 console stuck on "Loading the S3 console…".** The policy and CORS example modules lived in
+  `ui/assets/js/data/`, a folder name that the container copy, `.gitignore` and `.dockerignore` skip (it is reserved
+  for the server's storage). The browser got 404s for `policy-examples.js` and `cors-examples.js` and the console
+  never started. The folder is now `ui/assets/js/examples/`.
+
 ## [3.1.0] - 2026-11-11
 
 ### Changed

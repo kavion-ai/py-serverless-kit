@@ -6,9 +6,9 @@ import { api, logout } from "../core/api.js";
 import { current, href, seg } from "../core/router.js";
 import { breadcrumbs } from "../components/breadcrumbs.js";
 import { attachFlashbar } from "../components/toast.js";
-import { dropdown } from "../components/dropdown.js";
 import { icon } from "../components/icons.js";
 import { copyButton } from "../components/copy-button.js";
+import { cycleTheme, currentTheme, THEME_ICON, THEME_LABEL } from "../core/theme.js";
 
 let shell = null;
 let onSignOut = () => {};
@@ -34,33 +34,47 @@ export function closeMobileNav() {
   document.body.classList.remove("nav-open");
 }
 
+function themeButton() {
+  const btn = h("button", { type: "button", class: "topbar__btn", onclick: () => draw(cycleTheme()) });
+  const draw = (t) => {
+    mount(btn, icon(THEME_ICON[t], { size: 18 }));
+    btn.title = THEME_LABEL[t];
+    btn.setAttribute("aria-label", `${THEME_LABEL[t]} (change)`);
+  };
+  draw(currentTheme());
+  return btn;
+}
+
 function topBar() {
   const s = state.session;
   const user = s.auth
-    ? dropdown({
-        label: s.user || "Console user",
-        icon: "user",
-        variant: "topbar",
-        items: () => [
-          { header: s.user ? `Signed in as ${s.user}` : "Signed in with the console password" },
-          { divider: true },
+    ? [
+        h("span", { class: "topbar__who", title: s.user || "" }, s.user ? `Signed in as ${s.user}` : "Signed in"),
+        h(
+          "button",
           {
-            label: "Sign out",
-            onClick: async () => {
-              await logout();
-              onSignOut();
+            type: "button",
+            class: "topbar__btn",
+            onclick: async () => {
+              try {
+                await logout();
+              } finally {
+                onSignOut();
+              }
             },
           },
-        ],
-      })
-    : h("span", { class: "topbar__chip topbar__chip--warn", title: "S3_AUTH=off: anyone who reaches this server can use it" }, "Authentication off");
+          icon("sign-out", { size: 18 }),
+          "Sign out",
+        ),
+      ]
+    : h("span", { class: "topbar__who topbar__who--warn", title: "S3_AUTH=off: anyone who reaches this server can use it" }, "Authentication off");
   return h(
     "header",
     { class: "topbar" },
-    h("button", { type: "button", class: "topbar__menu", "aria-label": "Toggle navigation", onclick: toggleNav }, icon("menu", { size: 18 })),
-    h("a", { class: "topbar__brand", href: "#/buckets" }, icon("logo", { size: 22 }), h("span", { class: "topbar__name" }, "Object Storage"), h("span", { class: "topbar__product" }, "S3 console")),
+    h("button", { type: "button", class: "topbar__btn", "aria-label": "Show or hide the navigation", title: "Navigation", onclick: toggleNav }, icon("menu", { size: 18 })),
+    h("a", { class: "topbar__brand", href: "#/buckets" }, h("span", { class: "topbar__logo" }, icon("bucket", { size: 16 })), h("span", { class: "topbar__name" }, "S3")),
     h("div", { class: "topbar__spacer" }),
-    h("span", { class: "topbar__chip", title: "The region of this server" }, icon("globe", { size: 14 }), h("span", {}, s.region)),
+    themeButton(),
     user,
   );
 }
@@ -69,23 +83,20 @@ function sideNav() {
   const buckets = h("ul", { class: "sidenav__buckets" });
   const nav = h(
     "aside",
-    { class: "sidenav", "aria-label": "Navigation" },
+    { class: "sidenav", "aria-label": "S3" },
     h(
       "div",
       { class: "sidenav__header" },
-      h("span", {}, "S3 console"),
+      h("h2", {}, "S3"),
       h("button", { type: "button", class: "sidenav__close", "aria-label": "Close navigation", onclick: toggleNav }, icon("close", { size: 16 })),
     ),
     h("ul", { class: "sidenav__links" }, h("li", {}, h("a", { href: "#/buckets", dataset: { nav: "buckets" } }, "General purpose buckets"))),
     h("div", { class: "sidenav__section" }, "Buckets"),
     buckets,
-    h(
-      "div",
-      { class: "sidenav__footer" },
-      h("div", { class: "sidenav__label" }, "Endpoint for SDKs and the CLI"),
-      h("div", { class: "sidenav__endpoint" }, h("code", {}, location.origin), copyButton(location.origin, { title: "Copy endpoint" })),
-      h("div", { class: "sidenav__meta" }, `Region ${state.session.region}`, state.session.version ? ` · v${state.session.version}` : ""),
-    ),
+    h("div", { class: "sidenav__section" }, "Server endpoint"),
+    h("div", { class: "sidenav__endpoint" }, h("code", {}, location.origin), copyButton(location.origin, { title: "Copy endpoint" })),
+    h("div", { class: "sidenav__section" }, "Region"),
+    h("div", { class: "sidenav__endpoint" }, h("code", {}, state.session.region), state.session.version ? h("span", { class: "sidenav__meta" }, `v${state.session.version}`) : null),
   );
   nav.bucketList = buckets;
   return nav;

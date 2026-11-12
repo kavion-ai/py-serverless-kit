@@ -17,7 +17,7 @@ export const objectEditHref = (bucket, what, key, versionId) => href(bucketPath(
 
 export function rootCrumbs() {
   return [
-    { label: "Object Storage", href: "#/buckets" },
+    { label: "S3", href: "#/buckets" },
     { label: "Buckets", href: "#/buckets" },
   ];
 }

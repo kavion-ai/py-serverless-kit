@@ -48,7 +48,7 @@ aws/s3/
                               dropdown menu, toggle, json editor, tag editor, copy button, status badge
         views/                one file per page (buckets, create-bucket, bucket, objects, upload, object, properties,
                               permissions, management, policy editor, ...)
-        data/                 policy-examples.js, cors-examples.js
+        examples/             policy-examples.js, cors-examples.js
 ```
 
 Shared modules must not import route or console code (one direction: config/errors/util -> store/sigv4 ->
