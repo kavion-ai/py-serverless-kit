@@ -17,6 +17,7 @@
 #include "net.hpp"
 #include "rsa.hpp"
 #include "sender.hpp"
+#include "settings.hpp"
 #include "store.hpp"
 #include "util.hpp"
 
@@ -64,6 +65,7 @@ class SmtpClient {
   Conn conn;
   std::map<std::string, std::string> features;
   bool esmtp = false;
+  std::string last_reply;  // the text of the last EHLO answer
 
   void send(const std::string& line) {
     if (!conn.write_all(line + "\r\n")) throw Disconnected{"Server not connected"};
@@ -98,6 +100,7 @@ class SmtpClient {
   int ehlo(const std::string& name) {
     std::string text;
     int code = cmd("ehlo " + name, text);
+    last_reply = text;
     features.clear();
     esmtp = false;
     if (code != 250) return code;
@@ -168,7 +171,7 @@ void login(SmtpClient& c, const std::string& user, const std::string& password) 
 }
 
 Results session(const std::string& host, int port, const std::vector<std::string>& rcpts, const std::string& mail_from,
-                const std::string& raw, const std::string& tls, bool require_tls, bool verify,
+                const std::string& raw, const std::string& tls, bool require_tls, bool verify, const std::string& helo,
                 const std::string& user = "", const std::string& password = "") {
   Results results;
   SmtpClient c;
@@ -190,7 +193,7 @@ Results session(const std::string& host, int port, const std::vector<std::string
     throw HostFailed{"421 4.4.1 Connection to " + host + ":" + std::to_string(port) + " failed: " + e.message};
   }
   try {
-    c.ehlo(cfg.helo_name);
+    c.ehlo(helo);
     if (tls == "starttls" || tls == "opportunistic") {
       if (c.has("starttls")) {
         std::string text;
@@ -198,9 +201,9 @@ Results session(const std::string& host, int port, const std::vector<std::string
         if (code == 220 && !c.conn.start_tls_client(host, verify, error)) {
           if (require_tls || tls == "starttls") throw HostFailed{"421 4.4.2 " + host + ": " + error};
           c.conn.close();
-          return session(host, port, rcpts, mail_from, raw, "none", false, false);
+          return session(host, port, rcpts, mail_from, raw, "none", false, false, helo);
         }
-        c.ehlo(cfg.helo_name);
+        c.ehlo(helo);
       } else if (require_tls) {
         throw HostFailed{"421 4.7.10 " + host + " does not offer STARTTLS, which is required"};
       }
@@ -209,7 +212,7 @@ Results session(const std::string& host, int port, const std::vector<std::string
       try {
         login(c, user, password);
       } catch (const AuthFailed& e) {
-        throw HostFailed{text_of(e.code, e.text) + " (check SES_RELAY_USER / PASSWORD)"};
+        throw HostFailed{text_of(e.code, e.text) + " (check the relay user and password)"};
       }
     }
     std::string text;
@@ -255,11 +258,13 @@ Results session(const std::string& host, int port, const std::vector<std::string
 }
 
 Results relay(const std::vector<std::string>& rcpts, const std::string& mail_from, const std::string& raw,
-              const std::string& tls_policy) {
+              const std::string& tls_policy, const Json& conf) {
+  std::string tls = py_str(conf.get("RelayTls")), user = py_str(conf.get("RelayUser"));
   try {
-    return session(cfg.relay_host, cfg.relay_port, rcpts, mail_from, raw, cfg.relay_tls,
-                   tls_policy == "REQUIRE" || (cfg.relay_tls == "starttls" && !cfg.relay_user.empty()),
-                   cfg.relay_tls_verify, cfg.relay_user, cfg.relay_password);
+    return session(py_str(conf.get("RelayHost")), static_cast<int>(conf.get("RelayPort").num()), rcpts, mail_from, raw,
+                   tls, tls_policy == "REQUIRE" || (tls == "starttls" && !user.empty()),
+                   truthy(conf.get("RelayTlsVerify")), py_str(conf.get("HeloName")), user,
+                   py_str(conf.get("RelayPassword")));
   } catch (const HostFailed& e) {
     Results out;
     for (auto& r : rcpts) out.set(r, Result{"temp", e.message, ""});
@@ -268,7 +273,7 @@ Results relay(const std::vector<std::string>& rcpts, const std::string& mail_fro
 }
 
 Results direct(const std::string& domain, const std::vector<std::string>& rcpts, const std::string& mail_from,
-               const std::string& raw, const std::string& tls_policy) {
+               const std::string& raw, const std::string& tls_policy, const std::string& helo) {
   Results out;
   std::vector<std::pair<int, std::string>> hosts;
   try {
@@ -288,7 +293,7 @@ Results direct(const std::string& domain, const std::vector<std::string>& rcpts,
   for (size_t i = 0; i < hosts.size() && i < 5; ++i) {
     try {
       return session(hosts[i].second, cfg.direct_port, rcpts, mail_from, raw, "opportunistic", tls_policy == "REQUIRE",
-                     false);
+                     false, helo);
     } catch (const HostFailed& e) {
       last = e.message;
     }
@@ -542,11 +547,12 @@ void deliver(const std::string& message_id) {
       if ((s == "QUEUED" || s == "DELAYED") && next <= ts) due_rcpts.push_back(kv.first);
     }
     mail_from = str_or(rec.get("MailFrom"), py_str(rec.get("From")));
-    mode = str_or(rec.get("Delivery"), cfg.delivery);
     tls_policy = str_or(rec.get("TlsPolicy"), "OPTIONAL");
   }
   if (due_rcpts.empty()) return;
   std::string raw = store.raw(message_id);
+  Json conf = delivery_effective();  // the mode now: switching it applies to queued and delayed mail too
+  mode = py_str(conf.get("Mode"));
   Results results;
   std::vector<std::string> real, complaints;
   for (auto& r : due_rcpts) {
@@ -567,9 +573,9 @@ void deliver(const std::string& message_id) {
   if (!real.empty()) {
     if (mode == "capture") {
       for (auto& r : real)
-        results.set(r, Result{"ok", "250 2.0.0 Captured: kept on the server, not sent (SES_DELIVERY=capture)", ""});
+        results.set(r, Result{"ok", "250 2.0.0 Captured: kept on the server, not sent (delivery mode: capture)", ""});
     } else if (mode == "relay") {
-      results.update(relay(real, mail_from, raw, tls_policy));
+      results.update(relay(real, mail_from, raw, tls_policy, conf));
     } else {
       std::set<std::string> domains;
       for (auto& r : real) domains.insert(domain_of(r));
@@ -577,11 +583,105 @@ void deliver(const std::string& message_id) {
         std::vector<std::string> mine;
         for (auto& r : real)
           if (domain_of(r) == d) mine.push_back(r);
-        results.update(direct(d, mine, mail_from, raw, tls_policy));
+        results.update(direct(d, mine, mail_from, raw, tls_policy, py_str(conf.get("HeloName"))));
       }
     }
   }
   record(message_id, results, complaints);
+}
+
+Json test_connection(const Json& conf, const std::string& domain) {
+  Json steps = Json::array();
+  auto result = [&](bool ok, const std::string& message) {
+    Json out = Json::object();
+    out["Ok"] = ok;
+    out["Message"] = message;
+    out["Steps"] = steps;
+    return out;
+  };
+  std::string mode = py_str(conf.get("Mode"));
+  if (mode == "capture") return result(true, "Capture mode sends nothing, so there is no connection to test.");
+  std::string helo = py_str(conf.get("HeloName"));
+  bool verify = truthy(conf.get("RelayTlsVerify"));
+  std::vector<std::string> targets;
+  int port;
+  std::string tls, user;
+  if (mode == "relay") {
+    targets.push_back(py_str(conf.get("RelayHost")));
+    port = static_cast<int>(conf.get("RelayPort").num());
+    tls = py_str(conf.get("RelayTls"));
+    user = py_str(conf.get("RelayUser"));
+  } else {
+    port = cfg.direct_port;
+    tls = "opportunistic";
+    try {
+      for (auto& h : dns_mx(domain))
+        if (targets.size() < 3) targets.push_back(h.second);
+      steps.push("MX of " + domain + ": " + join(targets, ", "));
+    } catch (const DnsError& e) {
+      return result(false, "DNS lookup of the MX hosts of " + domain + " failed: " + e.message);
+    }
+  }
+  std::string last;
+  for (auto& target : targets) {
+    SmtpClient c;
+    std::string error, text;
+    bool connected = false;
+    int fd = connect_to(target, port, 15, error);
+    if (fd >= 0) {
+      c.conn.attach(fd);
+      c.conn.set_timeout(15);
+      try {
+        if (tls != "tls" || c.conn.start_tls_client(target, verify, error)) {
+          int code = c.reply(text);
+          if (code == 220) connected = true;
+          else error = "(" + std::to_string(code) + ", " + py_repr_str(text) + ")";
+        }
+      } catch (const Disconnected& e) {
+        error = e.message;
+      }
+    }
+    if (!connected) {
+      last = "Cannot connect to " + target + ":" + std::to_string(port) + ": " + error;
+      if (mode == "direct")
+        last += " (is outbound port 25 blocked? Most clouds block it: use a relay, or ask them to open it)";
+      steps.push(last);
+      continue;
+    }
+    try {
+      int code = c.ehlo(helo);
+      std::string banner = c.last_reply;
+      std::string first = split(text_of(code, banner), '\n')[0].substr(0, 120);
+      steps.push("Connected to " + target + ":" + std::to_string(port) + (tls == "tls" ? " over TLS" : "") + ": " +
+                 first);
+      if ((tls == "starttls" || tls == "opportunistic") && c.has("starttls")) {
+        std::string t2;
+        if (c.cmd("STARTTLS", t2) == 220 && !c.conn.start_tls_client(target, mode == "relay" && verify, error))
+          throw Disconnected{error};
+        c.ehlo(helo);
+        steps.push("STARTTLS: encrypted");
+      } else if (tls == "starttls") {
+        return result(false, target + " does not offer STARTTLS. Pick TLS (port 465) or none.");
+      }
+      if (!user.empty()) {
+        login(c, user, py_str(conf.get("RelayPassword")));
+        steps.push("Logged in as " + user);
+      }
+      try {
+        c.cmd("QUIT", text);
+      } catch (const Disconnected&) {
+      }
+      return result(true, mode == "relay" ? "Relay works: mail will be sent through it."
+                                          : "Direct delivery works: " + target + " accepted the connection on port " +
+                                                std::to_string(port) + ".");
+    } catch (const AuthFailed& e) {
+      return result(false, "Login refused: " + text_of(e.code, e.text));
+    } catch (const Disconnected& e) {
+      last = target + ": " + e.message;
+      steps.push(last);
+    }
+  }
+  return result(false, last.empty() ? "No server answered." : last);
 }
 
 }  // namespace ses

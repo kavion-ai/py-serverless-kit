@@ -96,3 +96,11 @@ fieldset.checks legend { font-weight: 700; padding: 0 4px; }
 /* Table cells: wrap long words (addresses, subjects) without squeezing a column to one character. */
 table.tbl td.cell-wrap { word-break: normal; overflow-wrap: anywhere; min-width: 180px; }
 .nowrap { white-space: nowrap; }
+
+/* ---- delivery settings ---- */
+a.endpoint-link { color: var(--text); font-weight: 400; }
+a.endpoint-link:hover { text-decoration: none; background: var(--surface-hover); outline: 1px solid var(--accent); }
+.tile-current { color: var(--accent); font-weight: 600; font-size: 12px; }
+.tile input[type=radio] { margin-top: 3px; }
+ul.tight-list, ol.steps-list { margin: 4px 0 0; padding-left: 20px; }
+ol.steps-list li { font-size: 12px; word-break: break-word; }

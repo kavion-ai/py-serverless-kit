@@ -51,6 +51,8 @@ class Store:
         self.configuration_sets: Dict[str, Dict[str, Any]] = {}
         self.suppressed: Dict[str, Dict[str, Any]] = {}
         self.messages: Dict[str, Dict[str, Any]] = {}
+        # Delivery settings saved in the console (settings.py); empty: the environment's.
+        self.delivery: Dict[str, Any] = {}
         if path.is_file():
             data = json.loads(path.read_text("utf-8") or "{}")
             self.account.update(data.get("account") or {})
@@ -58,6 +60,7 @@ class Store:
             self.templates = data.get("templates") or {}
             self.configuration_sets = data.get("configuration_sets") or {}
             self.suppressed = data.get("suppressed") or {}
+            self.delivery = data.get("delivery") or {}
         if messages_dir.is_dir():
             for item in sorted(messages_dir.glob("*.json")):
                 try:
@@ -71,7 +74,7 @@ class Store:
             write_json(self.path, {
                 "format": FORMAT, "account": self.account, "identities": self.identities,
                 "templates": self.templates, "configuration_sets": self.configuration_sets,
-                "suppressed": self.suppressed,
+                "suppressed": self.suppressed, "delivery": self.delivery,
             })
 
     # ------------------------------------------------------------------ messages

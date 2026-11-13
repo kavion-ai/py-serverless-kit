@@ -12,6 +12,7 @@ import { DELIVERY_LABEL, serverInfo } from "./common.js";
 
 let pageEl = null;
 let offRoute = null;
+let offInfo = null;
 
 /** Render a page (replaces the previous one). */
 export function showPage(...nodes) {
@@ -79,6 +80,7 @@ export function renderShell(root) {
     link("#/configuration-sets", "Configuration sets", "^/configuration-sets"),
     link("#/suppression", "Suppression list", "^/suppression"),
     link("#/smtp", "SMTP settings", "^/smtp"),
+    link("#/delivery", "Delivery settings", "^/delivery"),
     h("div", { class: "section" }, "Sending"),
     link("#/send", "Send test email", "^/send"),
     link("#/messages", "Messages", "^/messages"),
@@ -87,11 +89,14 @@ export function renderShell(root) {
     h("div", { class: "section" }, "Region"),
     h("div", { class: "endpoint" }, regionBox),
     h("div", { class: "section" }, "Delivery mode"),
-    h("div", { class: "endpoint" }, deliveryBox));
-  serverInfo().then((info) => {
+    h("a", { class: "endpoint endpoint-link", href: "#/delivery", title: "Change the delivery mode" }, deliveryBox));
+  const drawInfo = (info) => {
     regionBox.textContent = info.Region || "-";
-    deliveryBox.textContent = DELIVERY_LABEL[info.Delivery] || info.Delivery || "-";
-  }).catch(() => {
+    deliveryBox.textContent = `${DELIVERY_LABEL[info.Delivery] || info.Delivery || "-"}${info.DeliverySource === "console" ? " (set in the console)" : ""}`;
+  };
+  if (offInfo) offInfo();
+  offInfo = on("server-info", drawInfo);
+  serverInfo().then(drawInfo).catch(() => {
     regionBox.textContent = "-";
     deliveryBox.textContent = "-";
   });

@@ -19,7 +19,7 @@ import threading
 from typing import Any, Dict, List, Optional, Tuple
 
 from . import dns
-from .config import ACCOUNT, DELIVERY, DKIM_CHECK, HELO_NAME, REGION, RELAY_HOST, VERIFY, log
+from .config import ACCOUNT, DKIM_CHECK, REGION, VERIFY, log
 from .errors import bad_request
 from .rsa import Key
 from .store import db
@@ -253,16 +253,20 @@ def dns_records(rec: Dict[str, Any]) -> List[Dict[str, str]]:
                     "Value": f"v=DKIM1; k=rsa; p={dk['PublicKey']}", "Purpose": "DKIM", "Status": dk["Status"]})
     out.append({"Type": "TXT", "Name": f"_amazonses.{name}", "Value": rec.get("VerificationToken") or "",
                 "Purpose": "Verification", "Status": rec["VerificationStatus"]})
-    if DELIVERY == "relay":
-        spf = f"v=spf1 include:<your relay provider's SPF domain> ~all  (relay: {RELAY_HOST})"
+    from .settings import effective
+
+    delivery = effective()
+    helo = delivery["HeloName"]
+    if delivery["Mode"] == "relay":
+        spf = f"v=spf1 include:<your relay provider's SPF domain> ~all  (relay: {delivery['RelayHost']})"
     else:
-        spf = f"v=spf1 a:{HELO_NAME} ~all"
+        spf = f"v=spf1 a:{helo} ~all"
     out.append({"Type": "TXT", "Name": name, "Value": spf, "Purpose": "SPF (recommended)", "Status": ""})
     out.append({"Type": "TXT", "Name": f"_dmarc.{name}", "Value": f"v=DMARC1; p=none; rua=mailto:postmaster@{name}",
                 "Purpose": "DMARC (recommended)", "Status": ""})
     mail_from = (rec.get("MailFrom") or {}).get("MailFromDomain")
     if mail_from:
-        out.append({"Type": "MX", "Name": mail_from, "Value": f"10 {HELO_NAME}", "Purpose": "Custom MAIL FROM",
+        out.append({"Type": "MX", "Name": mail_from, "Value": f"10 {helo}", "Purpose": "Custom MAIL FROM",
                     "Status": (rec.get("MailFrom") or {}).get("MailFromDomainStatus", "")})
         out.append({"Type": "TXT", "Name": mail_from, "Value": spf, "Purpose": "Custom MAIL FROM (SPF)", "Status": ""})
     return out

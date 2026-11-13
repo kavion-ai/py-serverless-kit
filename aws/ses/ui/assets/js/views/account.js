@@ -54,18 +54,21 @@ function deliveryBanner(info) {
   if (info.Delivery === "capture") {
     return alert("warning", "Capture mode: mail is kept, not sent",
       "Every accepted message is stored on this server and marked delivered, but nothing leaves it. "
-      + "Read captured messages under Messages. Set SES_DELIVERY=relay or direct to really send mail.",
-      h("div", { style: "margin-top:8px" }, button("View messages", { onClick: () => navigate("/messages") })));
+      + "Read captured messages under Messages. Choose relay or direct delivery to really send mail.",
+      h("div", { class: "row", style: "margin-top:8px" },
+        button("Change delivery mode", { variant: "primary", onClick: () => navigate("/delivery") }),
+        button("View messages", { onClick: () => navigate("/messages") })));
   }
+  const change = h("div", { style: "margin-top:8px" }, button("Change delivery mode", { onClick: () => navigate("/delivery") }));
   if (info.Delivery === "relay") {
     const relay = info.Relay || {};
     return alert("info", "Relay mode: mail is sent through an SMTP relay",
       `Messages are handed to ${relay.Host || "the relay"}:${relay.Port || ""} (${relay.Tls || "starttls"}`
-      + `${relay.User ? `, as ${relay.User}` : ""}).`);
+      + `${relay.User ? `, as ${relay.User}` : ""}).`, change);
   }
   return alert("info", "Direct mode: mail is sent straight to the recipients' mail servers",
     `This server looks up each recipient domain's MX hosts and connects on port ${info.DirectPort || 25} as `
-    + `${info.HeloName || "this host"}. Publish SPF and DKIM records for your domains so the mail is accepted.`);
+    + `${info.HeloName || "this host"}. Publish SPF and DKIM records for your domains so the mail is accepted.`, change);
 }
 
 function draw(stats, info) {
@@ -96,7 +99,8 @@ function draw(stats, info) {
       { label: "Enforcement status", value: badge("success", account.EnforcementStatus === "HEALTHY" ? "Healthy" : (account.EnforcementStatus || "-")) }],
     [{ label: "Account type", value: account.ProductionAccessEnabled ? badge("success", "Production") : badge("warning", "Sandbox") },
       { label: "Region", value: info.Region }],
-    [{ label: "Delivery mode", value: DELIVERY_LABEL[info.Delivery] || info.Delivery },
+    [{ label: "Delivery mode", value: h("span", {}, DELIVERY_LABEL[info.Delivery] || info.Delivery, " ",
+      h("a", { href: "#/delivery" }, info.DeliverySource === "console" ? "(set in the console: change)" : "(change)")) },
       { label: "Identity verification", value: VERIFY_LABEL[info.Verify] || info.Verify }],
     [{ label: "Message retention", value: `${number(info.RetentionDays)} days` },
       { label: "Server version", value: `${info.Version || "-"} (${info.Implementation || "-"})` }],

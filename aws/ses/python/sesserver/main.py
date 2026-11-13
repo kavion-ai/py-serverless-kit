@@ -7,7 +7,7 @@ import sys
 import threading
 from http.server import ThreadingHTTPServer
 
-from . import identities, sender
+from . import identities, sender, settings
 from .config import (
     AUTH,
     BIND,
@@ -93,11 +93,13 @@ def main() -> int:
         except OSError as exc:
             print(f"ses: cannot listen for SMTP on {SMTP_BIND}:{SMTP_PORT}: {exc}", file=sys.stderr)
             return 2
+    conf = settings.effective()
     server = ThreadingHTTPServer((BIND, PORT), Handler)
     server.daemon_threads = True
     log(f"SES compatible server {VERSION} (Python) on {BIND}:{PORT}"
         + (f", SMTP {SMTP_BIND}:{SMTP_PORT}" if smtp_server else "")
-        + f", data {DATA_DIR}, delivery {DELIVERY}" + (f" via {RELAY_HOST}" if DELIVERY == "relay" else "")
+        + f", data {DATA_DIR}, delivery {conf['Mode']}" + (f" via {conf['RelayHost']}" if conf["Mode"] == "relay" else "")
+        + (" (set in the console)" if conf["Source"] == "console" else "")
         + f", verify {VERIFY}, {len(store.identities)} identities, {len(store.messages)} messages, auth {AUTH}"
         + (", console /ui/" if UI_ON else ""))
     if AUTH == "off":

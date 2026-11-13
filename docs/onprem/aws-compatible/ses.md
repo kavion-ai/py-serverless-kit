@@ -35,7 +35,8 @@ SES works.
    (`rsa-sha256`, `relaxed/relaxed`) with the From domain's key once its DKIM record is verified.
 3. **Suppression**: recipients on the suppression list (for the reasons the account or the configuration set
    suppresses) are dropped with a `Bounce` event of subtype `OnAccountSuppressionList`.
-4. **Queue and deliver**: `relay`, `direct` (MX hosts in preference order, STARTTLS when offered, required with the
+4. **Queue and deliver** in the mode in effect (the console's *Delivery settings*, else `SES_DELIVERY`; read again
+   on every attempt, so switching it also sends mail already queued): `relay`, `direct` (MX hosts in preference order, STARTTLS when offered, required with the
    configuration set's `TlsPolicy: REQUIRE`) or `capture`. A 5xx answer bounces the recipient and adds it to the
    suppression list; a 4xx answer or a connection failure retries after 1, 5, 15, 30 and then every 60 minutes until
    `SES_RETRY_HOURS` (or the configuration set's `MaxDeliverySeconds`).

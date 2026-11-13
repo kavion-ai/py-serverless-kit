@@ -7,6 +7,7 @@
 #include "config.hpp"
 #include "dns.hpp"
 #include "errors.hpp"
+#include "settings.hpp"
 #include "store.hpp"
 #include "util.hpp"
 
@@ -288,15 +289,18 @@ Json dns_records(const Json& rec) {
                  "DKIM", dk.get("Status")));
   out.push(row("TXT", "_amazonses." + name, str_or(rec.get("VerificationToken")), "Verification",
                rec.get("VerificationStatus")));
-  std::string spf = cfg.delivery == "relay"
-                        ? "v=spf1 include:<your relay provider's SPF domain> ~all  (relay: " + cfg.relay_host + ")"
-                        : "v=spf1 a:" + cfg.helo_name + " ~all";
+  Json delivery = delivery_effective();
+  std::string helo = py_str(delivery.get("HeloName"));
+  std::string spf = py_str(delivery.get("Mode")) == "relay"
+                        ? "v=spf1 include:<your relay provider's SPF domain> ~all  (relay: " +
+                              py_str(delivery.get("RelayHost")) + ")"
+                        : "v=spf1 a:" + helo + " ~all";
   out.push(row("TXT", name, spf, "SPF (recommended)", ""));
   out.push(row("TXT", "_dmarc." + name, "v=DMARC1; p=none; rua=mailto:postmaster@" + name, "DMARC (recommended)", ""));
   const Json& mf = rec.get("MailFrom");
   std::string mail_from = mf.is_obj() ? str_or(mf.get("MailFromDomain")) : "";
   if (!mail_from.empty()) {
-    out.push(row("MX", mail_from, "10 " + cfg.helo_name, "Custom MAIL FROM",
+    out.push(row("MX", mail_from, "10 " + helo, "Custom MAIL FROM",
                  mf.has("MailFromDomainStatus") ? mf.get("MailFromDomainStatus") : Json("")));
     out.push(row("TXT", mail_from, spf, "Custom MAIL FROM (SPF)", ""));
   }

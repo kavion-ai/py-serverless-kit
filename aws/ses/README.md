@@ -94,7 +94,7 @@ ses.send_email(FromEmailAddress="no-reply@example.com", Destination={"ToAddresse
 | `SES_TLS_CERT` / `SES_TLS_KEY` | | PEM files: the SMTP endpoint offers STARTTLS |
 | `SES_SMTP_REQUIRE_TLS` | `off` | `on`: no AUTH before STARTTLS |
 | `SES_SMTP_HOST` | | the SMTP host name the console shows |
-| `SES_DELIVERY` | `relay` with `SES_RELAY_HOST`, else `direct` | `relay`, `direct` or `capture` |
+| `SES_DELIVERY` | `relay` with `SES_RELAY_HOST`, else `direct` | `relay`, `direct` or `capture`: the mode the server starts in (the console's *Delivery settings* override it) |
 | `SES_RELAY_HOST` / `SES_RELAY_PORT` | / `587` | the relay (smarthost) |
 | `SES_RELAY_USER` / `SES_RELAY_PASSWORD` | | the relay's login (AUTH needs TLS) |
 | `SES_RELAY_TLS` / `SES_RELAY_TLS_VERIFY` | `tls` on 465, else `starttls` / `on` | `starttls`, `tls` or `none`; certificate check |
@@ -111,6 +111,15 @@ ses.send_email(FromEmailAddress="no-reply@example.com", Destination={"ToAddresse
 | `SES_DKIM_CHECK` | `on` | look up DKIM and verification records in DNS (`off`: DKIM signs at once) |
 | `SES_EVENTS_URL` / `SES_EVENTS_TOKEN` | | POST every event as JSON here, with `Authorization: Bearer <token>` |
 
+## Choosing the delivery mode in the console
+
+**Delivery settings** in the console picks the mode: *Capture*, *Relay* (with provider presets for Microsoft 365,
+Google Workspace, SendGrid, Amazon SES and Mailgun, or your own host, port, TLS and login) or *Direct* (with the
+HELO name). *Test connection* tries the settings without sending anything (relay: connect, TLS, log in; direct:
+reach an MX host on port 25). *Save* applies them at once, and queued or delayed mail is retried right away. The
+choice is kept in `ses.json` (the relay password too, mode 600; it is never shown again) and wins over the `SES_*`
+variables until *Reset to server default*.
+
 ## Sending real mail: DNS and network
 
 1. **Create the domain identity** and publish the records its console page lists at your DNS provider: the DKIM
@@ -124,7 +133,8 @@ ses.send_email(FromEmailAddress="no-reply@example.com", Destination={"ToAddresse
 
 ## Data
 
-`SES_DATA_DIR/ses.json` holds the account settings, identities (with their DKIM private keys), templates,
-configuration sets and the suppression list (mode 600). Each message is `messages/<id>.json` (envelope, status per
+`SES_DATA_DIR/ses.json` holds the account settings, the delivery settings chosen in the console (with the relay
+password), identities (with their DKIM private keys), templates, configuration sets and the suppression list (mode
+600). Each message is `messages/<id>.json` (envelope, status per
 recipient, events) and `messages/<id>.eml` (the message as sent). Back the folder up; both servers read and write the
 same files, so you can switch between them.

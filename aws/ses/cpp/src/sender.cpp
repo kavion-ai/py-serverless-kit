@@ -10,6 +10,7 @@
 #include "events.hpp"
 #include "identities.hpp"
 #include "mime.hpp"
+#include "settings.hpp"
 #include "store.hpp"
 #include "util.hpp"
 
@@ -183,7 +184,7 @@ std::string accept(const AcceptArgs& a) {
   rec["Headers"] = heads.get("headers");
   rec["CommonHeaders"] = heads.get("commonHeaders");
   rec["HeadersTruncated"] = heads.get("headersTruncated");
-  rec["Delivery"] = cfg.delivery;
+  rec["Delivery"] = delivery_effective().get("Mode");
   rec["TlsPolicy"] = cs && truthy(cs->get("TlsPolicy")) ? py_str(cs->get("TlsPolicy")) : "OPTIONAL";
   rec["Deadline"] = deadline;
   rec["Recipients"] = Json::object();

@@ -1,4 +1,5 @@
-"""The delivery worker: takes queued recipients and sends them on, as ``SES_DELIVERY`` says.
+"""The delivery worker: takes queued recipients and sends them on, in the delivery mode in effect
+(``settings.effective()``: the console's *Delivery settings*, else ``SES_DELIVERY``), read again on every attempt.
 
 ``relay``    one SMTP session with ``SES_RELAY_HOST`` (STARTTLS or TLS, AUTH when a user is set) for all recipients
 ``direct``   per recipient domain: its MX hosts in preference order (no MX: the domain itself), port
@@ -22,21 +23,8 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 from typing import Any, Dict, List, Optional, Set, Tuple
 
-from . import dns, events
-from .config import (
-    DELIVERY,
-    DELIVERY_THREADS,
-    DIRECT_PORT,
-    HELO_NAME,
-    RELAY_HOST,
-    RELAY_PASSWORD,
-    RELAY_PORT,
-    RELAY_TLS,
-    RELAY_TLS_VERIFY,
-    RELAY_USER,
-    SIMULATOR,
-    log,
-)
+from . import dns, events, settings
+from .config import DELIVERY_THREADS, DIRECT_PORT, SIMULATOR, log
 from .sender import PENDING, overall
 from .store import db
 from .util import domain_of, now
@@ -127,11 +115,12 @@ def deliver(message_id: str) -> None:
             return
         due = [r for r, st in rec["Recipients"].items()
                if st["Status"] in ("QUEUED", "DELAYED") and (st.get("NextAttempt") or 0) <= ts]
-        mail_from, mode, tls_policy = rec.get("MailFrom") or rec["From"], rec.get("Delivery") or DELIVERY, \
-            rec.get("TlsPolicy") or "OPTIONAL"
+        mail_from, tls_policy = rec.get("MailFrom") or rec["From"], rec.get("TlsPolicy") or "OPTIONAL"
     if not due:
         return
     raw = store.raw(message_id)
+    conf = settings.effective()  # the mode now: switching it applies to queued and delayed mail too
+    mode = conf["Mode"]
     results: Results = {}
     simulated = [r for r in due if domain_of(r) == SIMULATOR]
     real = [r for r in due if domain_of(r) != SIMULATOR]
@@ -149,13 +138,13 @@ def deliver(message_id: str) -> None:
     if real:
         if mode == "capture":
             for r in real:
-                results[r] = ("ok", "250 2.0.0 Captured: kept on the server, not sent (SES_DELIVERY=capture)", "")
+                results[r] = ("ok", "250 2.0.0 Captured: kept on the server, not sent (delivery mode: capture)", "")
         elif mode == "relay":
-            results.update(_relay(real, mail_from, raw, tls_policy))
+            results.update(_relay(real, mail_from, raw, tls_policy, conf))
         else:
             for domain in sorted({domain_of(r) for r in real}):
                 results.update(_direct(domain, [r for r in real if domain_of(r) == domain], mail_from, raw,
-                                       tls_policy))
+                                       tls_policy, conf["HeloName"]))
     _record(message_id, results, complaints)
 
 
@@ -254,16 +243,16 @@ def _text(code: int, msg: Any) -> str:
 
 
 def _session(host: str, port: int, rcpts: List[str], mail_from: str, raw: bytes, *, tls: str, require_tls: bool,
-             verify: bool, user: str = "", password: str = "") -> Results:
+             verify: bool, helo: str, user: str = "", password: str = "") -> Results:
     """One SMTP session. ``tls``: ``tls`` (implicit), ``starttls`` (when offered, required if ``require_tls``)
     or ``none``."""
     results: Results = {}
     try:
         if tls == "tls":
-            smtp: smtplib.SMTP = smtplib.SMTP_SSL(host, port, local_hostname=HELO_NAME, timeout=60,
+            smtp: smtplib.SMTP = smtplib.SMTP_SSL(host, port, local_hostname=helo, timeout=60,
                                                   context=_context(verify))
         else:
-            smtp = smtplib.SMTP(host, port, local_hostname=HELO_NAME, timeout=60)
+            smtp = smtplib.SMTP(host, port, local_hostname=helo, timeout=60)
     except (OSError, smtplib.SMTPException) as exc:
         raise _HostFailed(f"421 4.4.1 Connection to {host}:{port} failed: {exc}") from None
     try:
@@ -282,14 +271,15 @@ def _session(host: str, port: int, rcpts: List[str], mail_from: str, raw: bytes,
                     if require_tls or tls == "starttls":
                         raise
                     smtp.close()  # opportunistic TLS failed: deliver in plain text, as MTAs do
-                    return _session(host, port, rcpts, mail_from, raw, tls="none", require_tls=False, verify=False)
+                    return _session(host, port, rcpts, mail_from, raw, tls="none", require_tls=False, verify=False,
+                                    helo=helo)
             elif require_tls:
                 raise _HostFailed(f"421 4.7.10 {host} does not offer STARTTLS, which is required")
         if user:
             try:
                 smtp.login(user, password)
             except smtplib.SMTPAuthenticationError as exc:
-                raise _HostFailed(_text(exc.smtp_code, exc.smtp_error) + " (check SES_RELAY_USER / PASSWORD)") \
+                raise _HostFailed(_text(exc.smtp_code, exc.smtp_error) + " (check the relay user and password)") \
                     from None
         code, msg = smtp.mail(mail_from)
         if code >= 400:
@@ -326,16 +316,18 @@ def _session(host: str, port: int, rcpts: List[str], mail_from: str, raw: bytes,
             pass
 
 
-def _relay(rcpts: List[str], mail_from: str, raw: bytes, tls_policy: str) -> Results:
+def _relay(rcpts: List[str], mail_from: str, raw: bytes, tls_policy: str, conf: Dict[str, Any]) -> Results:
+    tls, user = str(conf["RelayTls"]), str(conf["RelayUser"])
     try:
-        return _session(RELAY_HOST, RELAY_PORT, rcpts, mail_from, raw, tls=RELAY_TLS,
-                        require_tls=tls_policy == "REQUIRE" or RELAY_TLS == "starttls" and bool(RELAY_USER),
-                        verify=RELAY_TLS_VERIFY, user=RELAY_USER, password=RELAY_PASSWORD)
+        return _session(str(conf["RelayHost"]), int(conf["RelayPort"]), rcpts, mail_from, raw, tls=tls,
+                        require_tls=tls_policy == "REQUIRE" or (tls == "starttls" and bool(user)),
+                        verify=bool(conf["RelayTlsVerify"]), helo=str(conf["HeloName"]), user=user,
+                        password=str(conf["RelayPassword"]))
     except _HostFailed as exc:
         return {r: ("temp", str(exc), "") for r in rcpts}
 
 
-def _direct(domain: str, rcpts: List[str], mail_from: str, raw: bytes, tls_policy: str) -> Results:
+def _direct(domain: str, rcpts: List[str], mail_from: str, raw: bytes, tls_policy: str, helo: str) -> Results:
     try:
         hosts = [h for _p, h in dns.mx(domain)]
     except dns.DnsError as exc:
@@ -348,7 +340,7 @@ def _direct(domain: str, rcpts: List[str], mail_from: str, raw: bytes, tls_polic
     for host in hosts[:5]:
         try:
             return _session(host, DIRECT_PORT, rcpts, mail_from, raw, tls="opportunistic",
-                            require_tls=tls_policy == "REQUIRE", verify=False)
+                            require_tls=tls_policy == "REQUIRE", verify=False, helo=helo)
         except _HostFailed as exc:
             last = str(exc)
     return {r: ("temp", last, "") for r in rcpts}
@@ -362,3 +354,66 @@ def worker() -> Worker:
     if _WORKER is None:
         _WORKER = Worker()
     return _WORKER
+
+
+def test_connection(conf: Dict[str, Any], domain: str = "gmail.com") -> Dict[str, Any]:
+    """Try the settings without sending anything: log in to the relay (TLS, AUTH), or reach an MX host of ``domain``
+    on the direct port. ``{"Ok": bool, "Message": str, "Steps": [str]}``."""
+    steps: List[str] = []
+    mode = conf["Mode"]
+    if mode == "capture":
+        return {"Ok": True, "Message": "Capture mode sends nothing, so there is no connection to test.", "Steps": []}
+    if mode == "relay":
+        host, port, tls, user = str(conf["RelayHost"]), int(conf["RelayPort"]), str(conf["RelayTls"]), \
+            str(conf["RelayUser"])
+        targets = [host]
+    else:
+        host, port, tls, user = "", DIRECT_PORT, "opportunistic", ""
+        try:
+            targets = [h for _p, h in dns.mx(domain)][:3]
+            steps.append(f"MX of {domain}: {', '.join(targets)}")
+        except dns.DnsError as exc:
+            return {"Ok": False, "Message": f"DNS lookup of the MX hosts of {domain} failed: {exc}", "Steps": steps}
+    last = ""
+    for target in targets:
+        try:
+            if tls == "tls":
+                smtp: smtplib.SMTP = smtplib.SMTP_SSL(target, port, local_hostname=str(conf["HeloName"]),
+                                                      timeout=15, context=_context(bool(conf["RelayTlsVerify"])))
+            else:
+                smtp = smtplib.SMTP(target, port, local_hostname=str(conf["HeloName"]), timeout=15)
+        except (OSError, smtplib.SMTPException) as exc:
+            last = f"Cannot connect to {target}:{port}: {exc}"
+            if mode == "direct":
+                last += " (is outbound port 25 blocked? Most clouds block it: use a relay, or ask them to open it)"
+            steps.append(last)
+            continue
+        try:
+            code, banner = smtp.ehlo()
+            steps.append(f"Connected to {target}:{port}" + (" over TLS" if tls == "tls" else "") +
+                         f": {_text(code, banner).splitlines()[0][:120]}")
+            if tls in ("starttls", "opportunistic") and smtp.has_extn("starttls"):
+                smtp.starttls(context=_context(mode == "relay" and bool(conf["RelayTlsVerify"])))
+                smtp.ehlo()
+                steps.append("STARTTLS: encrypted")
+            elif tls == "starttls":
+                return {"Ok": False, "Message": f"{target} does not offer STARTTLS. Pick TLS (port 465) or none.",
+                        "Steps": steps}
+            if user:
+                smtp.login(user, str(conf["RelayPassword"]))
+                steps.append(f"Logged in as {user}")
+            smtp.quit()
+            done = "Relay works: mail will be sent through it." if mode == "relay" else \
+                f"Direct delivery works: {target} accepted the connection on port {port}."
+            return {"Ok": True, "Message": done, "Steps": steps}
+        except smtplib.SMTPAuthenticationError as exc:
+            return {"Ok": False, "Message": f"Login refused: {_text(exc.smtp_code, exc.smtp_error)}", "Steps": steps}
+        except (OSError, smtplib.SMTPException, ssl.SSLError) as exc:
+            last = f"{target}: {exc}"
+            steps.append(last)
+        finally:
+            try:
+                smtp.close()
+            except OSError:
+                pass
+    return {"Ok": False, "Message": last or "No server answered.", "Steps": steps}

@@ -13,24 +13,18 @@ import copy
 import time
 from typing import Any, Callable, Dict, List, Optional, Tuple
 
-from . import identities, mime, sender, templates
+from . import identities, mime, sender, settings, templates
 from .config import (
     ACCOUNT,
     CREDENTIALS,
-    DELIVERY,
     DIRECT_PORT,
     DKIM_CHECK,
     EVENTS_URL,
-    HELO_NAME,
     MAX_24H,
     MAX_MESSAGE,
     MAX_RATE,
     NAME_RE,
     REGION,
-    RELAY_HOST,
-    RELAY_PORT,
-    RELAY_TLS,
-    RELAY_USER,
     RETENTION_DAYS,
     RETRY_HOURS,
     SANDBOX,
@@ -44,7 +38,7 @@ from .config import (
 )
 from .errors import ApiError, bad_request, exists, not_found
 from .store import db
-from .util import addresses, now
+from .util import addresses, is_domain, now
 
 Ctx = Dict[str, Any]
 Op = Callable[[Dict[str, Any], Ctx], Dict[str, Any]]
@@ -944,16 +938,72 @@ def identity_dns(params: Dict[str, Any], ctx: Ctx) -> Dict[str, Any]:
 
 @op("GetServerInfo", read=True)
 def server_info(params: Dict[str, Any], ctx: Ctx) -> Dict[str, Any]:
+    conf = settings.effective()
     return {
         "Version": VERSION, "Implementation": "Python", "Region": REGION, "AccountId": ACCOUNT,
-        "Delivery": DELIVERY, "Relay": {"Host": RELAY_HOST, "Port": RELAY_PORT, "Tls": RELAY_TLS,
-                                        "User": RELAY_USER} if DELIVERY == "relay" else None,
-        "DirectPort": DIRECT_PORT, "HeloName": HELO_NAME, "Verify": VERIFY, "Sandbox": SANDBOX,
+        "Delivery": conf["Mode"], "DeliverySource": conf["Source"],
+        "Relay": {"Host": conf["RelayHost"], "Port": conf["RelayPort"], "Tls": conf["RelayTls"],
+                  "User": conf["RelayUser"]} if conf["Mode"] == "relay" else None,
+        "DirectPort": DIRECT_PORT, "HeloName": conf["HeloName"], "Verify": VERIFY, "Sandbox": SANDBOX,
         "DkimCheck": DKIM_CHECK, "EventsWebhook": bool(EVENTS_URL), "RetentionDays": RETENTION_DAYS,
         "RetryHours": RETRY_HOURS, "MaxMessageBytes": MAX_MESSAGE,
         "Smtp": {"Enabled": SMTP_ON, "Port": SMTP_PORT, "Host": SMTP_HOST, "StartTls": bool(TLS_CERT),
                  "RequireTls": SMTP_REQUIRE_TLS},
     }
+
+
+@op("GetDeliverySettings", read=True)
+def get_delivery_settings(params: Dict[str, Any], ctx: Ctx) -> Dict[str, Any]:
+    """The settings in effect (no relay password), and the environment's (what *Reset* goes back to)."""
+    return {**settings.public(settings.effective()), "DirectPort": DIRECT_PORT,
+            "Environment": settings.public(settings.environment())}
+
+
+@op("PutDeliverySettings")
+def put_delivery_settings(params: Dict[str, Any], ctx: Ctx) -> Dict[str, Any]:
+    """Save the mode (capture / relay / direct) and its settings; the next delivery attempt uses them, queued and
+    delayed mail included."""
+    values = settings.check(params)
+    settings.save(values)
+    _retry_waiting()
+    return get_delivery_settings({}, ctx)
+
+
+@op("TestDeliverySettings")
+def test_delivery_settings(params: Dict[str, Any], ctx: Ctx) -> Dict[str, Any]:
+    """Try settings (the given ones, else those in effect) without saving them or sending anything."""
+    from .delivery import test_connection
+
+    conf = {**settings.effective(), **settings.check(params)} if params.get("Mode") else settings.effective()
+    domain = str(params.get("TestDomain") or "gmail.com").strip().lower()
+    if not is_domain(domain):
+        raise bad_request("TestDomain must be a domain name.")
+    return test_connection(conf, domain)
+
+
+@op("ResetDeliverySettings")
+def reset_delivery_settings(params: Dict[str, Any], ctx: Ctx) -> Dict[str, Any]:
+    """Forget the console's settings: back to the environment's (SES_DELIVERY, SES_RELAY_*)."""
+    settings.reset()
+    _retry_waiting()
+    return get_delivery_settings({}, ctx)
+
+
+def _retry_waiting() -> None:
+    """After a mode change, try delayed recipients again now instead of at their next retry time."""
+    store = db()
+    with store.lock:
+        for rec in store.messages.values():
+            if rec.get("Status") in ("QUEUED", "DELAYED"):
+                changed = False
+                for st in rec["Recipients"].values():
+                    if st["Status"] in ("QUEUED", "DELAYED"):
+                        st["NextAttempt"] = now()
+                        changed = True
+                if changed:
+                    store.save_message(rec)
+    if sender._wake:  # noqa: SLF001 - the worker's wake-up
+        sender._wake()  # noqa: SLF001
 
 
 @op("GetStatistics", read=True)

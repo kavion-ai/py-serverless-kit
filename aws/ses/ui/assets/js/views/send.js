@@ -15,7 +15,7 @@ import { jsonEditor } from "../components/json-editor.js";
 import { pageHeader } from "../components/page-header.js";
 import { segmented } from "../components/segmented.js";
 import { listAllIdentities } from "./identities.js";
-import { serverInfo, SIMULATOR, splitAddresses } from "./common.js";
+import { deliveryLink, serverInfo, SIMULATOR, splitAddresses } from "./common.js";
 import { showPage } from "./shell.js";
 
 // The form survives leaving and coming back while the console is open (not the attachments).
@@ -243,7 +243,8 @@ export function renderSend(query) {
       sandboxNote.append(alert("info", "Sandbox", "Recipients must be verified identities or mailbox simulator addresses."));
     }
     if (info.Delivery === "capture") {
-      sandboxNote.append(alert("info", "Capture mode: mail is kept, not sent", "The message is stored and shown under Messages; nothing leaves the server."));
+      sandboxNote.append(alert("info", "Capture mode: mail is kept, not sent", "The message is stored and shown under Messages; nothing leaves the server. ",
+        deliveryLink()));
     }
   }).catch(() => {});
 }

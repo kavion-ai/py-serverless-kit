@@ -6,6 +6,25 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [3.1.3] - 2026-11-13
+
+### Added
+- **SES console: choose the delivery mode.** A new *Delivery settings* page in the SES console picks **Capture**
+  (keep mail, send nothing), **Relay** (send through your mail provider: presets for Microsoft 365, Google
+  Workspace, SendGrid, Amazon SES SMTP and Mailgun, or your own host, port, TLS and login) or **Direct** (to the
+  recipients' MX hosts, with the HELO name). *Test connection* tries the settings without sending anything (relay:
+  connect, TLS, log in; direct: reach an MX host on port 25). *Save* applies them at once: queued and delayed mail
+  is retried right away. The choice is kept in `ses.json` (the relay password too, mode 600, never shown again),
+  survives restarts and wins over `SES_DELIVERY` / `SES_RELAY_*` until *Reset to server default*. Both servers
+  (Python and C++) have it; the dashboard, send and message pages link to it instead of asking for `SES_DELIVERY`.
+  Re-create a running `ses` / `ses-cpp` service once to get it.
+
+### Changed
+- New console operations `GetDeliverySettings`, `PutDeliverySettings`, `TestDeliverySettings` and
+  `ResetDeliverySettings`; `GetServerInfo` reports the mode in effect and where it comes from (`DeliverySource`).
+- The delivery worker reads the mode on every attempt instead of the mode a message was accepted in.
+- pskit's notes and *How to use* for a capture-mode SES service point to the console's *Delivery settings*.
+
 ## [3.1.2] - 2026-11-13
 
 ### Added

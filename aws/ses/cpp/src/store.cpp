@@ -55,6 +55,7 @@ void Store::load() {
     load_table(data, "templates", templates);
     load_table(data, "configuration_sets", configuration_sets);
     load_table(data, "suppressed", suppressed);
+    delivery = data.get("delivery").is_obj() ? data.get("delivery") : Json::object();
   }
   if (is_dir(cfg.messages_dir)) {
     for (const std::string& name : list_dir(cfg.messages_dir)) {
@@ -83,6 +84,7 @@ void Store::save() {
   data["templates"] = table_json(templates);
   data["configuration_sets"] = table_json(configuration_sets);
   data["suppressed"] = table_json(suppressed);
+  data["delivery"] = delivery.is_obj() ? delivery : Json::object();
   write_atomic(cfg.store_file, dump_json_file(data));
 }
 

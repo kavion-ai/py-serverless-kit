@@ -19,6 +19,7 @@
 #include "identities.hpp"
 #include "net.hpp"
 #include "sender.hpp"
+#include "settings.hpp"
 #include "sigv4.hpp"
 #include "smtp.hpp"
 #include "store.hpp"
@@ -72,8 +73,10 @@ int main(int argc, char** argv) {
   std::string line = "SES compatible server " + std::string(VERSION) + " (C++) on " + cfg.bind + ":" +
                      std::to_string(cfg.port);
   if (cfg.smtp_on) line += ", SMTP " + cfg.smtp_bind + ":" + std::to_string(cfg.smtp_port);
-  line += ", data " + cfg.data_dir + ", delivery " + cfg.delivery;
-  if (cfg.delivery == "relay") line += " via " + cfg.relay_host;
+  Json conf = delivery_effective();
+  line += ", data " + cfg.data_dir + ", delivery " + py_str(conf.get("Mode"));
+  if (py_str(conf.get("Mode")) == "relay") line += " via " + py_str(conf.get("RelayHost"));
+  if (py_str(conf.get("Source")) == "console") line += " (set in the console)";
   line += ", verify " + cfg.verify + ", " + std::to_string(store.identities.size()) + " identities, " +
           std::to_string(store.messages.size()) + " messages, auth " + cfg.auth;
   if (cfg.ui_on) line += ", console /ui/";

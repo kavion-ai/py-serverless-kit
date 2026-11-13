@@ -15,8 +15,8 @@ import threading
 import time
 from typing import Any, Callable, Deque, Dict, List, Optional
 
-from . import dkim, events, identities, mime
-from .config import DELIVERY, MAX_24H, MAX_MESSAGE, MAX_RATE, MAX_RECIPIENTS, RETRY_HOURS, SANDBOX, SIMULATOR, VERIFY
+from . import dkim, events, identities, mime, settings
+from .config import MAX_24H, MAX_MESSAGE, MAX_RATE, MAX_RECIPIENTS, RETRY_HOURS, SANDBOX, SIMULATOR, VERIFY
 from .errors import ApiError, bad_request, not_found, rejected
 from .store import db
 from .util import address, domain_of, message_id, now
@@ -142,7 +142,7 @@ def accept(*, operation: str, caller: str, source_ip: str, source: str, to: List
             "ConfigurationSetName": configuration_set_name or "", "Tags": message_tags, "Size": len(raw),
             "DkimDomain": signer[0] if signer else "", "Headers": heads["headers"],
             "CommonHeaders": heads["commonHeaders"], "HeadersTruncated": heads["headersTruncated"],
-            "Delivery": DELIVERY, "TlsPolicy": (cs or {}).get("TlsPolicy") or "OPTIONAL", "Deadline": deadline,
+            "Delivery": settings.effective()["Mode"], "TlsPolicy": (cs or {}).get("TlsPolicy") or "OPTIONAL", "Deadline": deadline,
             "Recipients": {}, "Events": [],
         }
         suppressed = []

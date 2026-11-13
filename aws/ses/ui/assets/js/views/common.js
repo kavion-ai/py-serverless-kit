@@ -3,12 +3,13 @@
 
 import { call } from "../core/api.js";
 import { h } from "../core/dom.js";
+import { emit } from "../core/state.js";
 import { badge } from "../components/badge.js";
 import { container } from "../components/container.js";
 
 let infoPromise = null;
 
-/** GetServerInfo, asked once per console load (the settings come from the server's environment). */
+/** GetServerInfo, cached for the console's lifetime; refreshServerInfo() asks again (after the delivery mode changes). */
 export function serverInfo() {
   if (!infoPromise) {
     infoPromise = call("GetServerInfo").catch((err) => {
@@ -21,6 +22,19 @@ export function serverInfo() {
 
 export function forgetServerInfo() {
   infoPromise = null;
+}
+
+/** Ask the server again and tell listeners ("server-info": the side navigation's boxes). */
+export function refreshServerInfo() {
+  infoPromise = null;
+  const p = serverInfo();
+  p.then((info) => emit("server-info", info)).catch(() => {});
+  return p;
+}
+
+/** A link to the Delivery settings page. */
+export function deliveryLink(label = "Change delivery mode") {
+  return h("a", { href: "#/delivery" }, label);
 }
 
 export const DELIVERY_LABEL = {

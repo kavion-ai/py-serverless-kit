@@ -725,6 +725,63 @@ def test_web_console_login_csrf_and_operations(server):
     assert _console_call(server, "ListMessages", {})["Total"] == 0
 
 
+def _console_error(server, operation, payload):
+    with pytest.raises(urllib.error.HTTPError) as err:
+        _console_call(server, operation, payload)
+    return err.value.code, json.loads(err.value.read() or b"{}")
+
+
+def test_delivery_mode_is_chosen_in_the_console(impl, tmp_path):
+    sink = SmtpSink()
+    data = tmp_path / "data"
+    srv = Server(impl, data)  # started in capture mode (SES_DELIVERY=capture)
+    try:
+        got = _console_call(srv, "GetDeliverySettings", {})
+        assert got["Mode"] == "capture" and got["Source"] == "environment" and "RelayPassword" not in got
+        srv.v2.create_email_identity(EmailIdentity="example.com")
+        captured = srv.wait(_send(srv.v2, ["first@dest.org"]))
+        assert captured["Recipients"]["first@dest.org"]["Response"].startswith("250 2.0.0 Captured")
+        assert sink.messages == []
+        # Bad settings are refused; a relay login needs TLS.
+        assert _console_error(srv, "PutDeliverySettings", {"Mode": "pigeon"})[0] == 400
+        assert _console_error(srv, "PutDeliverySettings", {"Mode": "relay"})[0] == 400
+        code, body = _console_error(srv, "PutDeliverySettings", {
+            "Mode": "relay", "RelayHost": "127.0.0.1", "RelayPort": sink.port, "RelayTls": "none",
+            "RelayUser": "u", "RelayPassword": "p"})
+        assert code == 400 and "TLS" in body["message"]
+        # A relay that does not answer: the mail waits (DELAYED) ...
+        dead = _free_port()
+        _console_call(srv, "PutDeliverySettings", {"Mode": "relay", "RelayHost": "127.0.0.1", "RelayPort": dead,
+                                                   "RelayTls": "none"})
+        assert _console_call(srv, "TestDeliverySettings", {})["Ok"] is False
+        waiting = _send(srv.v2, ["second@dest.org"])
+        assert srv.wait(waiting, done=("DELAYED",))["Delivery"] == "relay"
+        # ... and goes out as soon as the settings are fixed, without waiting for its retry time.
+        relay = {"Mode": "relay", "RelayHost": "127.0.0.1", "RelayPort": sink.port, "RelayTls": "none"}
+        tested = _console_call(srv, "TestDeliverySettings", relay)
+        assert tested["Ok"] is True and tested["Steps"], tested
+        saved = _console_call(srv, "PutDeliverySettings", relay)
+        assert saved["Mode"] == "relay" and saved["Source"] == "console" and saved["RelayPort"] == sink.port
+        assert srv.wait(waiting, done=("DELIVERED",))["Recipients"]["second@dest.org"]["Response"].startswith("250")
+        assert srv.wait(_send(srv.v2, ["third@dest.org"]))["Status"] == "DELIVERED"
+        assert sorted(m["to"][0] for m in sink.messages) == ["second@dest.org", "third@dest.org"]
+        info = _console_call(srv, "GetServerInfo", {})
+        assert info["Delivery"] == "relay" and info["DeliverySource"] == "console"
+    finally:
+        srv.stop()
+    srv = Server(impl, data)  # the console's choice survives a restart and wins over SES_DELIVERY
+    try:
+        got = _console_call(srv, "GetDeliverySettings", {})
+        assert got["Mode"] == "relay" and got["Source"] == "console" and got["Environment"]["Mode"] == "capture"
+        assert "RelayPassword" not in got and "RelayPassword" not in got["Environment"]  # only RelayPasswordSet
+        reset = _console_call(srv, "ResetDeliverySettings", {})
+        assert reset["Mode"] == "capture" and reset["Source"] == "environment"
+        assert _console_call(srv, "TestDeliverySettings", {})["Ok"] is True  # capture: nothing to test
+    finally:
+        srv.stop()
+        sink.close()
+
+
 def test_data_survives_a_restart_and_is_shared(tmp_path):
     impls = [p.values[0] for p in IMPLS if not p.marks]
     data = tmp_path / "data"

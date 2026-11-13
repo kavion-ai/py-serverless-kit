@@ -19,6 +19,7 @@ class Store {
   std::recursive_mutex lock;
   Json account;
   std::map<std::string, Json> identities, templates, configuration_sets, suppressed, messages;
+  Json delivery = Json::object();  // delivery settings saved in the console (settings.cpp); {}: the environment's
 
   void load();  // throws std::runtime_error
   void save();

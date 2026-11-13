@@ -49,8 +49,12 @@ pskit resources onprem create mail --service ses-cpp --server prod1 --ses-delive
 | `--ses-verify auto\|dns\|manual\|off` | how sender identities are verified (default `auto`: at once) |
 | `--helo-name NAME` | the name it greets other mail servers with (match the server's reverse DNS) |
 
-To change these later, remove the service and create it again with the same key; the data volume (identities, DKIM
-keys, templates, messages) stays.
+`--ses-delivery` and the relay options only set the mode the server **starts** in. Change it any time in the console:
+**Delivery settings** > *Capture*, *Relay* (presets for Microsoft 365, Google Workspace, SendGrid, Amazon SES,
+Mailgun, or your own host) or *Direct* > **Test connection** > **Save**. It applies at once (queued and delayed mail
+is retried right away) and survives restarts; *Reset to server default* goes back to the options above. To change
+`--ses-verify` or the ports, remove the service and create it again with the same key; the data volume (identities,
+DKIM keys, templates, messages, delivery settings) stays.
 
 ## What the resource gives your code
 
@@ -86,6 +90,8 @@ the AWS CLI, with your service's values.
 ## First steps after creating it
 
 1. Open the console (`http://<address>:4579/ui/`, the service's user and password).
-2. **Identities > Create identity**: your domain. Publish the DKIM, SPF and DMARC records it lists.
-3. **Send test email** to `success@simulator.amazonses.com` (never leaves the server) and to yourself.
-4. **Messages** shows each message, its per-recipient result (the receiving server's answer) and its events.
+2. **Delivery settings**: pick *Relay* and your provider (or *Direct*), **Test connection**, **Save**. In *Capture*
+   (the default) mail is only kept in the console.
+3. **Identities > Create identity**: your domain. Publish the DKIM, SPF and DMARC records it lists.
+4. **Send test email** to `success@simulator.amazonses.com` (never leaves the server) and to yourself.
+5. **Messages** shows each message, its per-recipient result (the receiving server's answer) and its events.

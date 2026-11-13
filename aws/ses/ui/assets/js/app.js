@@ -8,6 +8,7 @@ import { applyTheme } from "./core/theme.js";
 import { alert } from "./components/alert.js";
 import { renderAccount } from "./views/account.js";
 import { renderConfigSet, renderConfigSets, renderCreateConfigSet } from "./views/config-sets.js";
+import { renderDelivery } from "./views/delivery.js";
 import { renderCreateIdentity, renderIdentities } from "./views/identities.js";
 import { renderIdentity } from "./views/identity-detail.js";
 import { renderLogin } from "./views/login.js";
@@ -40,6 +41,7 @@ route(/^\/configuration-sets\/create\/?$/, () => renderCreateConfigSet());
 route(/^\/configuration-sets\/([^/]+)\/?$/, (m) => renderConfigSet(name(m)));
 route(/^\/suppression\/?$/, () => renderSuppression());
 route(/^\/smtp\/?$/, () => renderSmtp());
+route(/^\/delivery\/?$/, () => renderDelivery());
 route(/.*/, () => renderNotFound());
 
 let started = false;

@@ -14,6 +14,7 @@ Clients sign with SigV4 using the service's user as the access key ID and its pa
 (boto3 ``ses`` / ``sesv2``, the AWS SDKs and CLI). The SMTP endpoint (port 2587) takes the same user with the SES SMTP
 password derived from the secret key. Mail goes out through a relay (``ses_delivery: relay``), straight to the
 recipients' MX hosts (``direct``) or stays in the console (``capture``, the default: nothing leaves until you choose).
+The mode given here is where the server starts; the console's *Delivery settings* page changes it at any time.
 """
 
 from __future__ import annotations
@@ -202,8 +203,9 @@ def usage_markdown(entry: Dict[str, Any], prefix: str) -> str:
     ses = entry.get("ses") or {"delivery": "capture", "verify": "auto"}
     env_file = str(entry.get("env_file") or ".env.onprem")
     delivery = {
-        "capture": "**capture**: mail is accepted, signed and kept in the console, and *nothing is sent*. Good for "
-                   "development; create the service again with `ses_delivery: direct` or `relay` to send for real.",
+        "capture": "**capture**: mail is accepted, signed and kept in the console, and *nothing is sent*. To send "
+                   "for real, open the console's **Delivery settings**, pick *Relay* (your mail provider) or "
+                   "*Direct*, click *Test connection*, then *Save*: it applies at once, queued mail included.",
         "direct": "**direct**: the server delivers to each recipient domain's MX hosts on port 25. The server needs "
                   "outbound port 25 (most clouds block it: ask your provider, or use a relay), a public IP with "
                   "reverse DNS matching its HELO name, and SPF / DKIM records for your domains.",

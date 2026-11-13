@@ -1531,8 +1531,8 @@ def _connection(req: Dict[str, Any], password: str) -> Tuple[Dict[str, Any], Dic
         env.update(ses["env"])
         res["connection"] = ses["connection"]
         if (req.get("ses") or {}).get("delivery", "capture") == "capture":
-            notes.append("delivery is capture: mail is kept in the SES console and not sent; create the service "
-                         "again with --ses-delivery direct or relay to send for real")
+            notes.append("delivery is capture: mail is kept in the SES console and not sent; to send for real, "
+                         "pick Relay or Direct in the console's Delivery settings (it applies at once)")
         notes.append(f"verify a sender domain or address in the SES console ({res['connection']['console_url']}) "
                      "before sending")
     elif service == "memcached":

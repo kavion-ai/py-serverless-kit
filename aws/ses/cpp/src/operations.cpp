@@ -13,6 +13,8 @@
 #include "identities.hpp"
 #include "mime.hpp"
 #include "sender.hpp"
+#include "delivery.hpp"
+#include "settings.hpp"
 #include "sigv4.hpp"
 #include "store.hpp"
 #include "templates.hpp"
@@ -1056,6 +1058,61 @@ OP(GetEmailIdentityDnsRecords) {
   return out;
 }
 
+// After a mode change, try waiting recipients again now instead of at their next retry time.
+void retry_waiting() {
+  for (auto& kv : S().messages) {
+    Json& rec = kv.second;
+    std::string status = str_or(rec.get("Status"));
+    if (status != "QUEUED" && status != "DELAYED") continue;
+    bool changed = false;
+    for (auto& r : rec["Recipients"].items()) {
+      std::string st = str_or(r.second.get("Status"));
+      if (st == "QUEUED" || st == "DELAYED") {
+        r.second["NextAttempt"] = now();
+        changed = true;
+      }
+    }
+    if (changed) S().save_message(kv.first);
+  }
+  wake_worker();
+}
+
+OP(GetDeliverySettings) {
+  UNUSED;
+  Json out = delivery_public(delivery_effective());
+  out["DirectPort"] = cfg.direct_port;
+  out["Environment"] = delivery_public(delivery_environment());
+  return out;
+}
+
+OP(PutDeliverySettings) {
+  Json values = delivery_check(params);
+  delivery_save(values);
+  retry_waiting();
+  Json none = obj();
+  return op_GetDeliverySettings(none, ctx);
+}
+
+OP(ResetDeliverySettings) {
+  UNUSED;
+  delivery_save(obj());
+  retry_waiting();
+  Json none = obj();
+  return op_GetDeliverySettings(none, ctx);
+}
+
+// Runs without the store lock: it may wait on the network for a while.
+Json test_delivery_settings(Json& params, const Ctx&) {
+  Json conf = delivery_effective();
+  if (truthy(params.get("Mode"))) {
+    Json checked = delivery_check(params);
+    for (auto& kv : checked.items()) conf[kv.first] = kv.second;
+  }
+  std::string domain = lower(strip(str_or(params.get("TestDomain"), "gmail.com")));
+  if (!is_domain(domain)) throw bad_request("TestDomain must be a domain name.");
+  return test_connection(conf, domain);
+}
+
 OP(GetServerInfo) {
   UNUSED;
   Json out = obj();
@@ -1063,19 +1120,21 @@ OP(GetServerInfo) {
   out["Implementation"] = "C++";
   out["Region"] = cfg.region;
   out["AccountId"] = cfg.account;
-  out["Delivery"] = cfg.delivery;
-  if (cfg.delivery == "relay") {
+  Json conf = delivery_effective();
+  out["Delivery"] = conf.get("Mode");
+  out["DeliverySource"] = conf.get("Source");
+  if (py_str(conf.get("Mode")) == "relay") {
     Json relay = obj();
-    relay["Host"] = cfg.relay_host;
-    relay["Port"] = cfg.relay_port;
-    relay["Tls"] = cfg.relay_tls;
-    relay["User"] = cfg.relay_user;
+    relay["Host"] = conf.get("RelayHost");
+    relay["Port"] = conf.get("RelayPort");
+    relay["Tls"] = conf.get("RelayTls");
+    relay["User"] = conf.get("RelayUser");
     out["Relay"] = relay;
   } else {
     out["Relay"] = Json();
   }
   out["DirectPort"] = cfg.direct_port;
-  out["HeloName"] = cfg.helo_name;
+  out["HeloName"] = conf.get("HeloName");
   out["Verify"] = cfg.verify;
   out["Sandbox"] = cfg.sandbox;
   out["DkimCheck"] = cfg.dkim_check;
@@ -1209,6 +1268,9 @@ std::map<std::string, Op> build_ops() {
   REG(GetServerInfo);
   REG(GetStatistics);
   REG(GetSmtpCredentials);
+  REG(GetDeliverySettings);
+  REG(PutDeliverySettings);
+  REG(ResetDeliverySettings);
 #undef REG
   return t;
 }
@@ -1410,13 +1472,14 @@ std::string send_message(const SendArgs& a) {
 
 Json run_unlocked(const std::string& name, Json& params, const Ctx& ctx) {
   if (name == "CheckEmailIdentity") return check_email_identity(params, ctx);
+  if (name == "TestDeliverySettings") return test_delivery_settings(params, ctx);
   auto it = ops().find(name);
   if (it == ops().end()) throw ApiError("BadRequestException", "Unknown operation " + name + ".", 400, "InvalidAction");
   return it->second(params, ctx);
 }
 
 Json run(const std::string& name, Json params, const Ctx& ctx) {
-  if (name == "CheckEmailIdentity") return run_unlocked(name, params, ctx);
+  if (name == "CheckEmailIdentity" || name == "TestDeliverySettings") return run_unlocked(name, params, ctx);
   std::lock_guard<std::recursive_mutex> guard(db().lock);
   return run_unlocked(name, params, ctx);
 }

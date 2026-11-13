@@ -18,7 +18,7 @@ import { confirm } from "../components/modal.js";
 import { pageHeader } from "../components/page-header.js";
 import { table } from "../components/table.js";
 import { tabs } from "../components/tabs.js";
-import { DELIVERY_LABEL, loadingPanel, messageStatus } from "./common.js";
+import { DELIVERY_LABEL, deliveryLink, loadingPanel, messageStatus } from "./common.js";
 import { renderNotFound } from "./not-found.js";
 import { keepFlash, showPage } from "./shell.js";
 
@@ -109,7 +109,8 @@ function draw(id, msg, tab) {
   tags.length ? h("div", { style: "margin-top:16px" }, h("div", { class: "kv-label" }, "Message tags"), h("div", {}, tags)) : null);
 
   const banner = msg.Delivery === "capture"
-    ? alert("info", "Captured: this message was kept, not sent", "The server runs in capture mode, so the message was stored and marked delivered without leaving the server.")
+    ? alert("info", "Captured: this message was kept, not sent", "The server was in capture mode, so the message was stored and marked delivered without leaving the server. ",
+      deliveryLink())
     : null;
 
   const rcpt = table({
