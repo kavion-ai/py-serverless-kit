@@ -976,7 +976,7 @@ def _prepare_remote_dir(
 
 
 def _check_identity(ssh: Dict[str, Any], *, required: bool = False) -> None:
-    """Check the SSH login before a deploy: a key file, a password (``sshpass``), or the agent/default key.
+    """Check the SSH login before a deploy: a key file, a password (sshpass or askpass), or the agent/default key.
 
     ``required`` is kept for callers; an empty key now means the SSH agent or ``~/.ssh/id_*``.
     """
@@ -1001,29 +1001,26 @@ def ssh_auth_problem(ssh: Dict[str, Any]) -> Optional[str]:
         return f"SSH password file not found: {password_file}"
     if not password_file and not os.environ.get("SSHPASS"):
         return "SSH password login: set the SSHPASS environment variable, or options.deploy.password_file"
-    if not shutil.which("sshpass"):
-        return (
-            "SSH password login uses sshpass, which is not installed on this machine "
-            "(Linux: apt install sshpass / dnf install sshpass; macOS: brew install hudochenkov/sshpass/sshpass). "
-            "On Windows, or to stop using the password: run `pskit resources onprem ssh-key user@host` once "
-            "(it asks the password one time and installs a key), then use that key."
-        )
     return None
 
 
 def _sshpass(ssh: Dict[str, Any]) -> List[str]:
-    """``sshpass`` in front of ssh/scp when the server takes a password (never on the command line)."""
+    """The password wrapper in front of ssh/scp when the server takes a password (never on the command line).
+
+    ``sshpass`` when installed, else pskit's own askpass wrapper (works on Windows; needs OpenSSH 8.4+).
+    """
     if not uses_password(ssh):
         return []
-    password_file = str(ssh.get("password_file") or "")
-    return ["sshpass", "-f", password_file] if password_file else ["sshpass", "-e"]
+    from ..core.ssh_password import prefix
+
+    return prefix(str(ssh.get("password_file") or ""))
 
 
 def _ssh_options(ssh: Dict[str, Any], *, port_flag: str) -> List[str]:
     password = uses_password(ssh)
     argv = [
         "-o",
-        # sshpass answers the password prompt, which BatchMode would switch off.
+        # sshpass / askpass answers the password prompt, which BatchMode would switch off.
         "BatchMode=no" if password else "BatchMode=yes",
         "-o",
         "ConnectTimeout=20",
@@ -1095,7 +1092,9 @@ def _run(
 
 
 def _annotate_ssh_error(argv: Sequence[str], err: str) -> str:
-    if argv and argv[0] == "sshpass":
+    from ..core.ssh_password import is_wrapper
+
+    if is_wrapper(argv):
         if "permission denied" in err.lower():
             return err + "\nThe server rejected the SSH password: check the user, the password, and that the server allows "
             "PasswordAuthentication (many cloud images only accept keys)."

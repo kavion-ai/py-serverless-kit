@@ -13,6 +13,7 @@ implementations, one in Python and one in Node.js.
 | [s3.md](s3.md) | The S3 server: create it, the web console, clients (boto3, JavaScript, AWS CLI, handlers), troubleshooting |
 | [s3-api-reference.md](s3-api-reference.md) | Every supported S3 operation, authentication, settings, error codes, data layout |
 | [secretsmanager.md](secretsmanager.md) | The Secrets Manager server: create it, API coverage, encryption at rest, clients, troubleshooting |
+| [ses.md](ses.md) | The Amazon SES server (Python / C++): sending API v1 + v2, SMTP endpoint, identities and DKIM, delivery (relay, direct, capture), console |
 
 ## Why pskit has its own AWS-compatible servers
 
@@ -43,9 +44,9 @@ They are made for production use on your own servers, not only for tests. Put th
 clients reach them over a network you do not trust: SigV4 protects the keys and the request from changes, not the data
 in the response.
 
-## The four AWS-compatible service names
+## The AWS-compatible service names
 
-The AWS-compatible servers appear in the on-prem service catalog (`pskit resources onprem catalog`) under four names:
+The AWS-compatible servers appear in the on-prem service catalog (`pskit resources onprem catalog`) under these names (the SES server's second implementation is in C++, not Node.js):
 
 | pskit service | Studio card | Implementation | Default port | Use as (resource type) |
 |---|---|---|---|---|
@@ -53,6 +54,8 @@ The AWS-compatible servers appear in the on-prem service catalog (`pskit resourc
 | `s3-node` | Object storage > **Amazon S3 compatible (Node.js)** | `aws/s3/nodejs/server.js` | 9000 | Bucket (`storage`) |
 | `secretsmanager` | Secret managers > **AWS Secrets Manager compatible (Python)** | `aws/secretsmanager/python/server.py` | 4584 | Secret manager (`custom`) |
 | `secretsmanager-node` | Secret managers > **AWS Secrets Manager compatible (Node.js)** | `aws/secretsmanager/nodejs/server.js` | 4584 | Secret manager (`custom`) |
+| `ses` | Mail > **Amazon SES compatible (Python)** | `aws/ses/python/server.py` | 4579 (+ SMTP 2587) | Custom (`custom`) |
+| `ses-cpp` | Mail > **Amazon SES compatible (C++)** | `aws/ses/cpp/` (compiled in the container) | 4579 (+ SMTP 2587) | Custom (`custom`) |
 
 ## Python or Node.js: how to choose an implementation
 

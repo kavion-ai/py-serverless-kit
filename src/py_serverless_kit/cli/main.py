@@ -1010,9 +1010,9 @@ def resources_onprem_catalog(as_json: bool) -> None:
 @click.option("--bind", default=None, help="Interface the port listens on (default: 0.0.0.0 over SSH, else 127.0.0.1).")
 @click.option("--ssh", "ssh", default=None, help="user@host[:port] of the server. Default: options.deploy, else here.")
 @click.option("--pem", default=None, help="Private key for --ssh (empty: the SSH agent or your default key).")
-@click.option("--ssh-password-file", default=None, help="SSH with a password read from this file (uses sshpass).")
+@click.option("--ssh-password-file", default=None, help="SSH with a password read from this file.")
 @click.option("--ssh-password-env", default=None,
-              help="SSH with a password from this environment variable (uses sshpass; never stored).")
+              help="SSH with a password from this environment variable (never stored).")
 @click.option("--sudo", is_flag=True, help="Run docker / installs with sudo -n on the server.")
 @click.option("--local", "local", is_flag=True, help="Create it on this machine even if the functions deploy over SSH.")
 @click.option("--server", "server", default=None, help="A saved SSH server (pskit resources onprem servers list).")
@@ -1028,6 +1028,17 @@ def resources_onprem_catalog(as_json: bool) -> None:
 @click.option("--domains", default=None, help="smtp: the domains it receives mail for, comma separated.")
 @click.option("--functions-url", default=None, help="smtp: the pskit host's URL (default: found from the deploy).")
 @click.option("--max-size-mb", type=float, default=None, help="smtp: largest mail accepted (default 25).")
+@click.option("--ses-delivery", type=click.Choice(["capture", "direct", "relay"]), default=None,
+              help="ses: capture (default with no --relay: keep mail in the console, send nothing), direct (to the "
+                   "recipients' MX hosts) or relay (through --relay).")
+@click.option("--relay", "relay_host", default=None, help="ses: the SMTP relay host[:port] mail is sent through.")
+@click.option("--relay-user", default=None, help="ses: the relay's login.")
+@click.option("--relay-password-env", default=None, help="ses: read the relay's password from this variable.")
+@click.option("--relay-tls", type=click.Choice(["starttls", "tls", "none"]), default=None,
+              help="ses: how to talk to the relay (default: tls on port 465, else starttls).")
+@click.option("--ses-verify", type=click.Choice(["auto", "dns", "manual", "off"]), default=None,
+              help="ses: how sender identities are verified (default auto: at once).")
+@click.option("--helo-name", default=None, help="ses: the host name it greets other mail servers with.")
 @click.option("--gui", is_flag=True, help="Also start its web UI (Adminer, Redis Commander, Kafka UI, Mongo Express).")
 @click.option("--gui-login", type=click.Choice(["password", "none"]), default=None,
               help="Web UI sign-in: password (default) or none (keep it on 127.0.0.1, a private network or a tunnel).")
@@ -1090,6 +1101,13 @@ def resources_onprem_create(  # noqa: PLR0913
     domains: Optional[str],
     functions_url: Optional[str],
     max_size_mb: Optional[float],
+    ses_delivery: Optional[str],
+    relay_host: Optional[str],
+    relay_user: Optional[str],
+    relay_password_env: Optional[str],
+    relay_tls: Optional[str],
+    ses_verify: Optional[str],
+    helo_name: Optional[str],
     replicas: tuple,
     primary: Optional[str],
     balancer: Optional[str],
@@ -1175,6 +1193,13 @@ def resources_onprem_create(  # noqa: PLR0913
         "domains": domains,
         "functions_url": functions_url,
         "max_size_mb": max_size_mb,
+        "ses_delivery": ses_delivery,
+        "relay_host": relay_host,
+        "relay_user": relay_user,
+        "relay_password": _env_value(relay_password_env) if relay_password_env else None,
+        "relay_tls": relay_tls,
+        "ses_verify": ses_verify,
+        "helo_name": helo_name,
         "topology": topology,
         "import": {"path": import_file} if import_file else None,
         "alert": {"webhook": alert_webhook or "", "function": alert_function or ""}
@@ -1532,8 +1557,8 @@ def resources_onprem_servers_list(as_json: bool, config_path: Optional[str]) -> 
 @click.option("--pem", default=None, help="Private key file (empty: the SSH agent or your default key).")
 @click.option("--ssh-key-env", default=None, help="Save the private key text in this variable (encrypted in a vault).")
 @click.option("--ssh-key-stdin", is_flag=True, help="Save the private key text read from stdin (encrypted in a vault).")
-@click.option("--ssh-password-env", default=None, help="Log in with the password in this variable (sshpass).")
-@click.option("--ssh-password-file", default=None, help="Log in with the password in this file (sshpass).")
+@click.option("--ssh-password-env", default=None, help="Log in with the password in this variable.")
+@click.option("--ssh-password-file", default=None, help="Log in with the password in this file.")
 @click.option("--sudo", is_flag=True, help="Run docker / installs with sudo -n.")
 @click.option("--description", default="", help="A note shown in the studio.")
 @click.option("--home", default=None, help="Where pskit keeps files there. Default: /home/<user> (/root for root).")
@@ -1807,7 +1832,7 @@ def resources_onprem_terminal(  # noqa: PLR0913
 @resources_onprem.command("ssh-key", short_help="Install an SSH key on a server that takes a password (once).")
 @click.argument("destination")
 @click.option("--key", "key_path", default=None, help="Key to install (default: ~/.ssh/pskit_ed25519, created if missing).")
-@click.option("--password-env", default=None, help="Send the password from this variable (needs sshpass); default: asked.")
+@click.option("--password-env", default=None, help="Send the password from this variable; default: asked.")
 def resources_onprem_ssh_key(destination: str, key_path: Optional[str], password_env: Optional[str]) -> None:
     """Log in to DESTINATION (user@host[:port]) with its password once and install a key, then use the key.
 

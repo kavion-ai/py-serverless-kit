@@ -114,7 +114,7 @@ The **Test** page (or **Test** on a function row) sends events to a function:
   tunnel command. The create form's **Web UI login** chooses *With password* (generated or yours) or *Without
   password*; **Details > Check web UI** finds out why a UI does not open (container, port, server, this machine,
   Azure NSG / AWS security group / GCP firewall, ufw) and prints the fix. *SSH server* targets log in with a key
-  file, the SSH agent / default key, or a password (sshpass; on Windows install a key once with
+  file, the SSH agent / default key, or a password (any OS; or install a key once with
   `pskit resources onprem ssh-key user@host`).
 - **On-prem services → Browse / Browse secrets**: pskit's own UI where a service has none (or a limited one):
   buckets and objects for MinIO, RustFS, LocalStack, LocalEmu and fake-gcs-server (upload, download, folders,

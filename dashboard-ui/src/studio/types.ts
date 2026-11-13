@@ -587,7 +587,7 @@ export interface OnPremTarget {
   port?: number;
   identity_file?: string;
   sudo?: boolean;
-  /** key: the .pem below; agent: the SSH agent / default key; password: sshpass (studio saves it in .pskit/ssh). */
+  /** key: the .pem below; agent: the SSH agent / default key; password: sshpass or pskit's askpass helper (studio saves it in .pskit/ssh). */
   auth?: "key" | "agent" | "password";
   password?: string;
   password_file?: string;

@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import shutil
+import subprocess
 import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -108,6 +110,32 @@ def test_studio_deploy_job_passes_the_machine():
 
 
 # ----------------------------------------------------------------------------- software installs
+
+
+def test_cpp_toolchain_installs_in_one_click(tmp_path):
+    item = next(c for c in svc.catalog() if c["id"] == "cpp")
+    assert item["kind"] == "runtime" and item["group"] == "Languages" and item["versions"][0] == "system"
+    base = rts.install_script("cpp", rts.check_version("cpp", None))
+    for pkg in ("build-essential", "libssl-dev", "gcc-c++", "openssl-devel", "build-base", "openssl-dev", "cmake"):
+        assert pkg in base
+    assert "gcc-toolset" not in base and "apt-get install -y -q g++-" not in base  # system: no extra GCC
+    gcc13 = rts.install_script("cpp", "13")
+    assert "apt-get install -y -q g++-13" in gcc13 and "gcc-toolset-13-gcc-c++" in gcc13
+    assert "/usr/local/bin/$t-13" in gcc13
+    with pytest.raises(ValueError):
+        rts.check_version("cpp", "13; reboot")
+    sh = shutil.which("sh")
+    if sh:  # the uploaded scripts (shared header + install) are valid POSIX sh
+        from py_serverless_kit.providers.onprem_remote import _docker_shell_header
+
+        for script in (_docker_shell_header() + base, _docker_shell_header() + gcc13):
+            assert subprocess.run([sh, "-n"], input=script, text=True, check=False).returncode == 0
+    srv.save_server(tmp_path, "build1", {"host": "10.0.0.7", "user": "ubuntu"})
+    fake = FakeDocker()
+    entry = svc.create(tmp_path, {"key": "cxx", "service": "cpp", "version": "13", "target": {"server": "build1"}},
+                       RAW, lambda _l: None, run=fake)
+    assert entry["kind"] == "runtime" and entry["service"] == "cpp" and entry["version"] == "13"
+    assert any(c[0] == "scp" and any("pskit-install-cpp.sh" in a for a in c) for c in fake.calls)
 
 
 def test_runtime_catalog_and_versions(tmp_path):

@@ -14,7 +14,7 @@ how to install each tool on Windows, macOS and Linux.
 | [Node.js and npm](#nodejs-and-npm) | 18 or newer. We suggest 22 | Node.js and TypeScript projects | Python projects |
 | [Docker](#docker) | Current | One-click services on this machine, `method: docker`, cluster deploys (the image is built on your machine), Full VS Code, Hana with Docker, Oracle images | Cloud deploys in most other cases, and on-prem deploys as a local process or over SSH |
 | [OpenSSH client](#openssh-client) | Current | Deploying to, or managing, your own servers | Cloud projects and this machine |
-| [sshpass](#sshpass) | Current | Saved servers that log in with a password | Key or SSH agent logins |
+| [sshpass](#sshpass) | Current | Optional for password logins (pskit falls back to its askpass helper) | Always optional |
 | [Git](#git) | Current | Sharing a team project | Working alone |
 | [Cloud CLI](#cloud-clis) | Current | Signing in and looking at resources. **DigitalOcean needs `doctl` to deploy** | Other clouds can use credentials in environment variables |
 
@@ -285,14 +285,15 @@ sudo dnf install -y openssh-clients
 
 ## sshpass
 
-Only for [saved servers that log in with a password](onprem/servers.md#log-in-to-a-server-with-a-password). Keys are safer.
+Optional. [Password logins](onprem/servers.md#log-in-to-a-server-with-a-password) use sshpass when it is installed,
+and otherwise pskit's own askpass helper, which needs only OpenSSH 8.4+ (so Windows needs nothing extra). Keys are safer.
 
 ```bash
 sudo apt install -y sshpass        # Debian, Ubuntu
 sudo dnf install -y sshpass        # RHEL family, Fedora, Amazon Linux
 ```
 
-See that guide for macOS and Windows.
+macOS: `brew install hudochenkov/sshpass/sshpass`. Windows: not needed.
 
 ## Git
 

@@ -45,6 +45,7 @@ link opens a page with the ports, the studio steps, the CLI command, what pskit 
 | [OpenBao (Vault-compatible secrets)](openbao.md) | `openbao` | secrets | 8200 |
 | [Infisical (secrets manager with web UI)](infisical.md) | `infisical` | secrets | 8080 |
 | [SMTP server (receive mail, Node.js)](smtp.md) | `smtp` | smtp | 25 |
+| [Amazon SES compatible (send mail, Python / C++)](ses.md) | `ses`, `ses-cpp` | custom | 4579 |
 | [Mailpit (SMTP)](mailpit.md) | `mailpit` | custom | 1025 |
 | [Grafana (dashboards)](grafana.md) | `grafana` | custom | 3000 |
 | [Prometheus (metrics)](prometheus.md) | `prometheus` | custom | 9090 |
@@ -82,7 +83,7 @@ short note, the port and the web UI.
 | Monitoring & tracing | Grafana, Prometheus, Uptime Kuma, Jaeger |
 | Identity & search | Keycloak, Meilisearch, Typesense |
 | Automation, web & tools | Mailpit, n8n, Portainer, Gitea, Nginx Proxy Manager |
-| Install on a server: ... | Docker, Python, Node.js, Java, Go, nginx, Caddy, Certbot, PM2, Git, basic tools |
+| Install on a server: ... | Docker, Python, Node.js, Java, Go, C / C++ (GCC), nginx, Caddy, Certbot, PM2, Git, basic tools |
 
 ## Create an on-prem service in studio
 

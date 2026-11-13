@@ -310,7 +310,7 @@ pskit resources onprem remove jobs --delete-data --save
 | `create KEY --service S` | start it (or install the runtime) and record it in `.pskit/onprem-services.json` |
 | `--role` | what the resource is used as: `queue`, `stream` (Redis / Valkey stream), `cache`, `database`, `storage`, `custom` |
 | `--ssh user@host[:port] --pem FILE --sudo` | create it on that server (default: `provider.options.deploy` when it targets one, else this machine); `--local` forces this machine. Without `--pem`: the SSH agent / default key |
-| `--ssh-password-env VAR`, `--ssh-password-file FILE` | log in with a password instead of a key (through `sshpass`; never on a command line) |
+| `--ssh-password-env VAR`, `--ssh-password-file FILE` | log in with a password instead of a key (sshpass if installed, else pskit's askpass helper; works on Windows; never on a command line) |
 | `--gui`, `--gui-login password\|none`, `--gui-password-env VAR` | also start the companion web UI (Adminer, Redis Commander, Kafka UI, Mongo Express), with a generated password, your own, or none |
 | `--user`, `--password`, `--password-env VAR` | credentials to create (default user `pskit`, Redis `default`; default password generated) |
 | `--port`, `--address`, `--bind`, `--image` | published port, address functions use, interface to listen on, Docker image |

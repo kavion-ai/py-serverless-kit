@@ -1,0 +1,39 @@
+# Run one of the two servers (they are interchangeable and read the same data files):
+#   SES_SECRET_ACCESS_KEY=change-me-please docker compose up -d ses-python
+#   SES_SECRET_ACCESS_KEY=change-me-please docker compose up -d ses-cpp
+# API: http://127.0.0.1:4579   SMTP: 127.0.0.1:2587   Console: http://127.0.0.1:4579/ui/
+# (access key ID pskit, the secret key as password)
+#
+# Delivery: SES_DELIVERY=capture keeps mail in the console; direct sends to the recipients' MX hosts (needs outbound
+# port 25); relay sends through SES_RELAY_HOST (e.g. smtp.office365.com:587 with SES_RELAY_USER / _PASSWORD).
+x-common: &common
+  restart: unless-stopped
+  environment:
+    SES_ACCESS_KEY_ID: ${SES_ACCESS_KEY_ID:-pskit}
+    SES_SECRET_ACCESS_KEY: ${SES_SECRET_ACCESS_KEY:?set SES_SECRET_ACCESS_KEY}
+    SES_REGION: ${SES_REGION:-us-east-1}
+    SES_DELIVERY: ${SES_DELIVERY:-capture}
+    SES_RELAY_HOST: ${SES_RELAY_HOST:-}
+    SES_RELAY_PORT: ${SES_RELAY_PORT:-587}
+    SES_RELAY_USER: ${SES_RELAY_USER:-}
+    SES_RELAY_PASSWORD: ${SES_RELAY_PASSWORD:-}
+    SES_HELO_NAME: ${SES_HELO_NAME:-}
+    SES_VERIFY: ${SES_VERIFY:-auto}
+  ports:
+    - "127.0.0.1:4579:4579"
+    - "127.0.0.1:2587:2587"
+  volumes:
+    - ses-data:/data
+
+services:
+  ses-python:
+    <<: *common
+    build: {context: ., dockerfile: python/Dockerfile}
+    image: pskit/ses:python
+  ses-cpp:
+    <<: *common
+    build: {context: ., dockerfile: cpp/Dockerfile}
+    image: pskit/ses:cpp
+
+volumes:
+  ses-data:

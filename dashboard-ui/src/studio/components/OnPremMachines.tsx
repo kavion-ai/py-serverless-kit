@@ -393,7 +393,7 @@ export function ServerForm({ initial, taken, onClose, onSaved }: { initial: OnPr
         {auth === "password" && (
           <FormRow
             label="SSH password"
-            help="Saved in .pskit/ssh/ (owner-only, out of git) and used through sshpass (Linux / macOS). On Windows run pskit resources onprem ssh-key user@host once and use the key."
+            help="Saved in .pskit/ssh/ (owner-only, out of git). Works on Windows, macOS and Linux (sshpass if installed, else pskit's askpass helper). To switch to a key: pskit resources onprem ssh-key user@host once."
           >
             <TextInput mono type="password" value={password} placeholder={initial?.password_file ? "unchanged" : ""} onChange={setPassword} />
           </FormRow>

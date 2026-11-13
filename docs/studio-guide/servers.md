@@ -25,7 +25,7 @@ The studio **Add a server** drawer saves one SSH machine and tests it.
    | **SSH port** | Default 22 |
    | **Log in with** | **Key file (.pem)**, **SSH agent / default key** or **Password** |
    | **Private key (.pem)** | The key file, e.g. `~/.ssh/server.pem` |
-   | **SSH password** | Saved in `.pskit/ssh/` (owner-only, out of git) and used through `sshpass` (Linux / macOS) |
+   | **SSH password** | Saved in `.pskit/ssh/` (owner-only, out of git); works on Windows, macOS and Linux (sshpass if installed, else pskit's askpass helper) |
    | **Use sudo** | The user is not root and not in the docker group |
 
 3. Optional, under **On this server (optional)**:
@@ -39,7 +39,7 @@ The studio **Add a server** drawer saves one SSH machine and tests it.
 
 4. Click **Save and test**. Studio saves the server and logs in once.
 
-On Windows, `sshpass` is not available: install a key once with `pskit resources onprem ssh-key user@host`, then use
+To stop using the password, install a key once with `pskit resources onprem ssh-key user@host`, then use
 **Key file**.
 
 From the terminal:

@@ -33,3 +33,5 @@ dashboard-ui/dist-studio/
 .vscode/
 .DS_Store
 yt_project_exp
+# The C++ SES server's build output (make -C aws/ses/cpp); never in the wheel or sdist
+aws/ses/cpp/build/

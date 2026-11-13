@@ -36,7 +36,7 @@ from urllib.parse import quote, urlsplit
 
 from . import onprem_monitor as monitor
 from . import onprem_replication as replication
-from . import onprem_s3, onprem_secretsmanager, onprem_smtp
+from . import onprem_s3, onprem_secretsmanager, onprem_ses, onprem_smtp
 from .onprem_apps import DEFAULT_USERS, NO_AUTH_APPS, SELF_LOGIN, apps
 from .onprem_browser import browsers_for
 from .onprem_runtimes import RUNTIME_SPECS, check_version, install_script
@@ -565,6 +565,30 @@ for _name, _s3 in onprem_s3.SERVICES.items():
         gui=({"port": onprem_s3.PORT, "path": "/ui/", "label": "S3 console", "login": "user"},),
     )
 
+# Built by core/onprem_ses.py from aws/ses: pskit's Amazon SES compatible server (API port + SMTP endpoint).
+for _name, _ses in onprem_ses.SERVICES.items():
+    SERVICES[_name] = _svc(
+        f"Amazon SES compatible ({_ses['lang']})",
+        _ses["image"],
+        onprem_ses.PORT,
+        ("custom",),
+        extra_ports=(onprem_ses.SMTP_PORT,),
+        data="/data",
+        health=onprem_ses.health(_name),
+        backup="tar czf - -C /data --exclude=.build .",
+        backup_ext="tar.gz",
+        notes=f"pskit's own Amazon SES server ({_ses['lang']}, code in aws/ses): the SES v1 and v2 APIs with SigV4 "
+        "authentication (user = access key ID, password = secret access key) and an SES-style SMTP endpoint (port "
+        "2587). boto3 (ses / sesv2), the AWS SDKs, nodemailer and the AWS CLI work with its endpoint. Identities, "
+        "DKIM signing, templates, bulk sending, configuration sets, suppression list, quotas, mailbox simulator. "
+        "Delivery: capture (keep mail, send nothing), direct (MX) or through your relay. Its own web console (/ui/) "
+        "signs in with the same user and password."
+        + (" The first start compiles the server in the container (a few minutes); later starts reuse the build."
+           if _name == "ses-cpp" else ""),
+        gui=({"port": onprem_ses.PORT, "path": "/ui/", "label": "SES console", "login": "user"},),
+        group="Mail",
+    )
+
 for _name, _path in (("azurite", "/"), ("fake-gcs", "/storage/v1/b"), ("elasticmq", "/"), ("mailpit", "/")):
     SERVICES[_name]["ready_path"] = _path
 
@@ -861,10 +885,10 @@ def install_ssh_key(
 ) -> Path:
     """Create ``~/.ssh/pskit_ed25519`` (if missing) and add its public key to the server's authorized_keys.
 
-    Logs in with the password once: through sshpass when ``password`` is given, else ssh asks for it in the
+    Logs in with the password once: sent for you when ``password`` is given (sshpass, or pskit's askpass wrapper
+    where sshpass is missing, e.g. Windows), else ssh asks for it in the
     terminal. Then checks that the key alone logs in. Returns the private key path.
     """
-    import shutil
     import tempfile
 
     normalize_target({**target, "method": "ssh"}, Path.cwd())  # validates host / user / port
@@ -886,13 +910,14 @@ def install_ssh_key(
                "(grep -qxF \"$k\" ~/.ssh/authorized_keys || printf '%s\\n' \"$k\" >> ~/.ssh/authorized_keys)")
     emit(f"Installing {public.name} on {dest}" + ("" if password else " (enter the SSH password when asked)"))
     if password:
-        if not shutil.which("sshpass"):
-            raise ServiceError("sending the password needs sshpass; leave the password out and type it when ssh asks")
+        from .ssh_password import prefix
+
         with tempfile.TemporaryDirectory() as tmp:
             secret = Path(tmp) / "p"
             secret.write_bytes(password.encode("utf-8"))
             with open(public, "rb") as handle:
-                done = call(["sshpass", "-f", str(secret), "ssh", *opts, dest, command], stdin=handle)  # noqa: S603
+                done = call([*prefix(str(secret)), "ssh", *opts, "-o", "NumberOfPasswordPrompts=1", dest, command],  # noqa: S603
+                            stdin=handle)
     else:
         with open(public, "rb") as handle:
             done = call(["ssh", *opts, dest, command], stdin=handle)  # noqa: S603
@@ -1246,6 +1271,10 @@ def check_request(body: Dict[str, Any], root: Path, raw: Optional[Dict[str, Any]
     if service == "smtp":
         extra["smtp"] = onprem_smtp.check(body, raw, root, target)
         extra["token"] = onprem_smtp.admin_token(raw, root, env_file_of(raw))
+    if service in onprem_ses.SERVICES:
+        extra["ses"] = onprem_ses.check(body)
+        if body.get("relay_password"):
+            extra["relay_password"] = str(body["relay_password"])
     out = {
         **extra,
         "user": user or DEFAULT_USER.get(service, "pskit"),
@@ -1497,6 +1526,15 @@ def _connection(req: Dict[str, Any], password: str) -> Tuple[Dict[str, Any], Dic
         env.update(s3["env"])
         res["options"] = s3["options"]
         res["connection"] = s3["connection"]
+    elif service in onprem_ses.SERVICES:
+        ses = onprem_ses.resource(req, password, prefix)
+        env.update(ses["env"])
+        res["connection"] = ses["connection"]
+        if (req.get("ses") or {}).get("delivery", "capture") == "capture":
+            notes.append("delivery is capture: mail is kept in the SES console and not sent; create the service "
+                         "again with --ses-delivery direct or relay to send for real")
+        notes.append(f"verify a sender domain or address in the SES console ({res['connection']['console_url']}) "
+                     "before sending")
     elif service == "memcached":
         res["connection"] = {"host": addr, "port": port}
     elif service == "mailpit":
@@ -1702,6 +1740,11 @@ def create(
         onprem_secretsmanager.launch(req, password, target, sh)
     elif req["service"] in onprem_s3.SERVICES:
         onprem_s3.launch(req, password, target, sh)
+    elif req["service"] in onprem_ses.SERVICES:
+        onprem_ses.launch(req, password, target, sh)
+        if req["service"] == "ses-cpp":
+            emit("compiling the C++ server in the container (the first start takes a few minutes)...")
+            wait_seconds = max(wait_seconds, 900)
     else:
         sh(docker_argv(target, run_args(req, password)))
     if req["service"] == "smtp":
@@ -1752,6 +1795,8 @@ def create(
         entry["sidecars"] = [f"{req['container']}-{side['name']}" for side in spec["sidecars"]]
     if req.get("smtp"):
         entry["smtp"] = req["smtp"]
+    if req.get("ses"):
+        entry["ses"] = req["ses"]
     if req.get("alert"):
         entry["alert"] = req["alert"]
     state = load_state(root)
@@ -2391,6 +2436,8 @@ def service_usage(root: Path, key: str, *, reveal: bool = False, probe: bool = T
     elif entry["service"] in onprem_s3.SERVICES:
         bucket = str((res.get("options") or {}).get("bucket") or key)
         md.append(onprem_s3.usage_markdown(entry, _var_prefix(key), bucket))
+    elif entry["service"] in onprem_ses.SERVICES:
+        md.append(onprem_ses.usage_markdown(entry, _var_prefix(key)))
     else:
         flavor = flavor_for(str(res.get("type")), res.get("options") or {}, res.get("connection") or {},
                             entry["service"])

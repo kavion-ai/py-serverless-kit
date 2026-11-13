@@ -307,15 +307,32 @@ def test_password_login_goes_through_sshpass(tmp_path: Path, monkeypatch):
     assert all("s3cret" not in " ".join(c) for c in proc.calls)
 
 
-def test_password_login_needs_sshpass(tmp_path: Path, monkeypatch):
+def test_password_login_works_without_sshpass(tmp_path: Path, monkeypatch):
+    """No sshpass (Windows): ssh/scp go through pskit's askpass wrapper instead, password still off the command line."""
+    import sys
+
+    from py_serverless_kit.core import ssh_password
     from py_serverless_kit.providers import onprem_remote
 
-    monkeypatch.setattr(onprem_remote.shutil, "which", lambda name: None)
+    monkeypatch.setattr(ssh_password.shutil, "which", lambda name: None)
     monkeypatch.setenv("SSHPASS", "x")
-    problem = onprem_remote.ssh_auth_problem({"host": "h", "user": "u", "auth": "password"})
-    assert problem and "sshpass" in problem and "ssh-key" in problem
+    assert onprem_remote.ssh_auth_problem({"host": "h", "user": "u", "auth": "password"}) is None
     monkeypatch.delenv("SSHPASS")
     assert "SSHPASS" in (onprem_remote.ssh_auth_problem({"host": "h", "user": "u", "auth": "password"}) or "")
+
+    root = tmp_path / "onprem_app"
+    root.mkdir()
+    secret = tmp_path / "server.pass"
+    secret.write_text("s3cret", "utf-8")
+    spec = _remote_spec(tmp_path / "missing.pem")
+    spec["deploy"]["ssh"].update({"identity_file": "", "password_file": str(secret)})
+    proc = _Proc()
+    apply_docker(root, spec, run=proc)
+    wrapper = [sys.executable, "-m", ssh_password.MODULE, "-f", str(secret)]
+    remote = [c for c in proc.calls if c[:5] == wrapper]
+    assert remote and all(c[5] in ("ssh", "scp") and ssh_password.is_wrapper(c) for c in remote)
+    assert all("BatchMode=no" in c and "PubkeyAuthentication=no" in c for c in remote)
+    assert all("s3cret" not in " ".join(c) for c in proc.calls)
 
 
 def test_destroy_docker_remote_does_not_install(tmp_path: Path):

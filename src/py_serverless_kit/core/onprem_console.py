@@ -284,7 +284,9 @@ def interactive_argv(root: Path, key: str, *, shell: bool = False) -> List[str]:
 
     entry = _entry(root, key)
     argv = docker_argv(entry["target"], interactive_args(entry, shell=shell))
-    if "ssh" in argv and argv[0] in ("ssh", "sshpass"):
+    from .ssh_password import is_wrapper
+
+    if "ssh" in argv and (argv[0] == "ssh" or is_wrapper(argv)):
         argv.insert(argv.index("ssh") + 1, "-t")
     return argv
 

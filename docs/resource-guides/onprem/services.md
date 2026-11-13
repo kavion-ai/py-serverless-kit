@@ -469,12 +469,11 @@ The *SSH server* target (and `provider.options.deploy` for the functions) logs i
 *SSH agent / default key* is what `ssh user@host` does in a terminal: the agent, `~/.ssh/id_ed25519` /
 `id_rsa`, and `~/.ssh/config` (`Host` aliases, `IdentityFile`, jump hosts).
 
-Password logins go through **sshpass**, so the password never appears on a command line or in the state. Install it
-on the machine that runs pskit: `sudo apt install sshpass`, `sudo dnf install sshpass`, or
-`brew install hudochenkov/sshpass/sshpass`. The server must allow `PasswordAuthentication` (many cloud images allow
-keys only).
+Password logins work on Windows, macOS and Linux: through sshpass when it is installed, otherwise through pskit's
+askpass helper (needs only OpenSSH 8.4+). The password never appears on a command line or in the state. The server
+must allow `PasswordAuthentication` (many cloud images allow keys only).
 
-**On Windows** (no sshpass), or to stop typing passwords: install a key once. pskit creates
+To stop typing passwords: install a key once. pskit creates
 `~/.ssh/pskit_ed25519`, logs in with the password one time (ssh asks for it in the terminal), adds the key to
 `authorized_keys`, and checks that the key works:
 
@@ -491,7 +490,7 @@ provider:
       method: ssh
       host: 13.72.87.80
       user: azureuser
-      pem: ~/.ssh/pskit_ed25519            # or: password_file: ~/.ssh/server.pass  (sshpass)
+      pem: ~/.ssh/pskit_ed25519            # or: password_file: ~/.ssh/server.pass
 ```
 
 ## Use it from any program
@@ -737,6 +736,6 @@ Data directories are copied while the service runs. For Kafka and NATS, stop pro
 | `sqs: ... QueueDoesNotExist` (ElasticMQ) | ElasticMQ forgets queues on restart; redeploy so the sqs driver gets `create_queue` (the default for non-AWS endpoints since 1.3.1) |
 | `environment variable PSKIT_..._URL ... is not set on the host` | `provider.options.env_file` is missing or the file was deleted; recreate the service or add the line |
 | the web UI does not open | `pskit resources onprem gui <key> --check` (studio: *Details > Check web UI*), see [The UI does not open](#the-ui-does-not-open) |
-| `SSH password login uses sshpass, which is not installed` | install sshpass, or `pskit resources onprem ssh-key user@host` once and use the key |
+| `Permission denied (password)` | wrong user or password, or the server has `PasswordAuthentication no`; or `pskit resources onprem ssh-key user@host` once and use the key |
 | `The server rejected the SSH password` | wrong user / password, or the server only accepts keys (`PasswordAuthentication no`) |
 | `Permission denied (publickey)` | pick the right key file, or *SSH agent / default key*, or install a key with `ssh-key` |

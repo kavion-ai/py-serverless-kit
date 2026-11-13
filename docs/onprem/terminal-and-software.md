@@ -1,6 +1,6 @@
 # Terminal, console and software on on-prem servers
 
-Search terms: install Docker, install Python, install Node.js, nginx, Caddy, Certbot, PM2, Java, Go, runtime, shell,
+Search terms: install Docker, install Python, install Node.js, install C++, g++, GCC, CMake, nginx, Caddy, Certbot, PM2, Java, Go, runtime, shell,
 console, terminal, ttyd, redis-cli, psql, SSH tunnel, browser terminal
 
 pskit can install software on a saved SSH server, run commands there, and open a console or a full browser terminal
@@ -20,6 +20,7 @@ removed.
 | Node.js | `nodejs` | 22 (default), 24, 20, 18 | Node.js and npm from NodeSource (apt / dnf); Alpine installs its own version |
 | Java (OpenJDK) | `java` | 21 (default), 17 | headless OpenJDK runtime |
 | Go | `go` | 1.23.4 (default), 1.22.10 | the official toolchain in `/usr/local/go`, linked into `/usr/local/bin` |
+| C / C++ (GCC) | `cpp` | `system` (default), 14, 13, 12 | GCC (`gcc`, `g++`), make, CMake, pkg-config, gdb and the OpenSSL headers (plus Ninja on apt and apk). A version adds that GCC as `g++-N` (apt `g++-N`; RHEL / Alma / Rocky `gcc-toolset-N`, linked into `/usr/local/bin`); `g++` stays the distribution's. Alpine installs its own GCC |
 | nginx | `nginx` | none | nginx from the distribution, enabled and started |
 | Caddy | `caddy` | 2.8.4 | the `caddy` binary in `/usr/local/bin` |
 | Certbot (Let's Encrypt) | `certbot` | none | certbot with its nginx plugin where the distribution has it (dnf needs EPEL) |
@@ -57,6 +58,8 @@ the entry in pskit's list.
 pskit resources onprem create docker --service docker --server edge1
 pskit resources onprem create py312 --service python --version 3.12 --server edge1
 pskit resources onprem create node --service nodejs --version 20 --server edge1
+pskit resources onprem create cxx --service cpp --server edge1              # GCC, make, CMake, OpenSSL headers
+pskit resources onprem create gcc13 --service cpp --version 13 --server edge1 # also g++-13
 pskit resources onprem create web --service nginx --server edge1
 pskit resources onprem create pm2 --service pm2 --ssh ubuntu@10.0.0.5 --pem ~/.ssh/key.pem --sudo
 pskit resources onprem status node            # runs the version check

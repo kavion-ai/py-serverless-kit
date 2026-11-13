@@ -135,6 +135,38 @@ def _java(version: str) -> str:
     )
 
 
+# Compiler, build tools, debugger and the OpenSSL headers (the C++ SES server and most C++ services need them).
+_CPP_BASE = _pkg(
+    "build-essential g++ make cmake ninja-build pkg-config libssl-dev gdb",
+    "gcc gcc-c++ make cmake pkgconf-pkg-config openssl-devel gdb",  # ninja-build is in CRB on RHEL: not here
+    "build-base g++ make cmake samurai pkgconf openssl-dev gdb",
+)
+
+
+def _cpp(version: str) -> str:
+    """``system``: the distribution's GCC with make, CMake, Ninja, pkg-config, gdb and the OpenSSL headers. A GCC
+    major (``14``, ``13``, ``12``): also that GCC as ``g++-N`` / ``gcc-N`` (apt: ``g++-N``; dnf: the
+    ``gcc-toolset-N`` of RHEL-family systems, linked into /usr/local/bin). ``g++`` stays the distribution's."""
+    script = _CPP_BASE + "pm_install\n"
+    if version and version != "system":
+        script += (
+            "if command -v apt-get >/dev/null 2>&1; then\n"
+            f"  as_root apt-get install -y -q g++-{version} || {{ echo 'pskit: this distribution has no g++-{version} "
+            "package; pick another version or system' >&2; exit 1; }\n"
+            "elif command -v dnf >/dev/null 2>&1 || command -v yum >/dev/null 2>&1; then\n"
+            f"  pm=$(command -v dnf || command -v yum); as_root \"$pm\" install -y gcc-toolset-{version}-gcc-c++ || "
+            f"{{ echo 'pskit: no gcc-toolset-{version} here (RHEL, Alma and Rocky have it; Fedora ships one GCC)' >&2; "
+            "exit 1; }\n"
+            f"  for t in gcc g++; do as_root ln -sf /opt/rh/gcc-toolset-{version}/root/usr/bin/$t "
+            f"/usr/local/bin/$t-{version}; done\n"
+            "else\n"
+            "  echo 'pskit: Alpine installs its own GCC version (apk), not a chosen one'\n"
+            "fi\n"
+            f"command -v g++-{version} >/dev/null 2>&1 && g++-{version} --version | head -1\n"
+        )
+    return script + "g++ --version | head -1\nmake --version | head -1\ncmake --version | head -1\n"
+
+
 RUNTIME_SPECS: Dict[str, Dict[str, Any]] = {
     "python": {
         "label": "Python 3",
@@ -171,6 +203,17 @@ RUNTIME_SPECS: Dict[str, Dict[str, Any]] = {
         "versions": ["1.23.4", "1.22.10"],
         "check": "go version",
         "script": _go,
+    },
+    "cpp": {
+        "label": "C / C++ (GCC)",
+        "group": "Languages",
+        "notes": "GCC (gcc, g++), make, CMake, Ninja, pkg-config, gdb and the OpenSSL headers from the distribution's "
+        "packages. A version adds that GCC as g++-N (apt, or gcc-toolset-N on RHEL / Alma / Rocky). Builds the C++ "
+        "SES server (make -C aws/ses/cpp) and other native code on the server.",
+        "versions": ["system", "14", "13", "12"],
+        "check": "g++ --version | head -1; for v in 14 13 12; do command -v g++-$v >/dev/null 2>&1 && "
+        "g++-$v --version | head -1; done; cmake --version | head -1",
+        "script": _cpp,
     },
     "nginx": {
         "label": "nginx",

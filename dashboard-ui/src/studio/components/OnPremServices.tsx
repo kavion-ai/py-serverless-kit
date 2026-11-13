@@ -798,7 +798,7 @@ export function CreateDrawer({
               {sshAuth === "password" && (
                 <FormRow
                   label="SSH password"
-                  help="Saved in .pskit/ssh/ (out of git, owner-only) and sent with sshpass, which must be installed here (Linux / macOS). On Windows, install a key once instead: pskit resources onprem ssh-key user@host, then pick Key file."
+                  help="Saved in .pskit/ssh/ (out of git, owner-only). Works on Windows, macOS and Linux (sshpass if installed, else pskit's askpass helper). To switch to a key: pskit resources onprem ssh-key user@host, then pick Key file."
                 >
                   <TextInput mono type="password" value={sshPassword} placeholder={ssh.password_file ? "saved: " + ssh.password_file : ""} onChange={setSshPassword} />
                 </FormRow>

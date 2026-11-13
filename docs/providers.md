@@ -506,7 +506,7 @@ deploy:
   user: pskit
   port: 22
   pem: ${env:PSKIT_SSH_KEY}       # or identity_file. Empty: the SSH agent / default key (deploy asks in a terminal)
-  # password_file: ~/.ssh/server.pass   # password login through sshpass (or auth: password + $SSHPASS)
+  # password_file: ~/.ssh/server.pass   # password login (or auth: password + $SSHPASS)
   known_hosts: accept-new         # accept-new | ignore | path to a known_hosts file
   path: /opt/pskit/orders
   python: bundle                  # auto | system | bundle
@@ -523,7 +523,7 @@ deploy:
   host: 10.0.1.12
   user: pskit
   port: 22
-  pem: ${env:PSKIT_SSH_KEY}          # or identity_file; or password_file (sshpass); or nothing (agent)
+  pem: ${env:PSKIT_SSH_KEY}          # or identity_file; or password_file; or nothing (agent)
   image: pskit/orders:dev
   install_docker: true               # default for a remote host
   sudo: true                         # default; needed to install and start dockerd
@@ -542,9 +542,10 @@ SSH and `scp` write `pskit-run.sh` plus `release.tar.gz` (the staged bundle, `on
 Remote Docker (`method: docker` plus `host`, or `docker_host: ssh://user@host`) builds `pskit-<service>-<stage>` locally, saves it to a tar, and `scp`s that tar to `pskit-images/<container>/` in the SSH user's home. A script on the server installs Docker when it is missing (apt, dnf, yum, or apk), waits until `docker info` succeeds, runs `docker load` and `docker run`, and deletes the tar. The deploy fails if the container does not answer `/__pskit/health`, and the failure includes `docker logs`. The SSH user needs passwordless `sudo` (`sudo -n`) when Docker must be installed or when the user cannot talk to the daemon (`sudo` defaults to true). A key must be accepted by `ssh -o BatchMode=yes` (no passphrase prompt; load a protected key into the agent instead).
 
 SSH login options, for `ssh`, `scp` and remote `docker`: `pem` / `identity_file` (a key file); nothing (the SSH agent,
-`~/.ssh/id_*` and `~/.ssh/config`, or `auth: agent`); or a password through **sshpass** with `password_file: <file>`
-or `auth: password` plus the `SSHPASS` environment variable. The password never appears on a command line, in
-`pskit_host.json` or in Terraform state. sshpass is not available on Windows: run
+`~/.ssh/id_*` and `~/.ssh/config`, or `auth: agent`); or a password with `password_file: <file>`
+or `auth: password` plus the `SSHPASS` environment variable (sent through sshpass when installed, else pskit's askpass
+helper, which works on Windows with OpenSSH 8.4+). The password never appears on a command line, in
+`pskit_host.json` or in Terraform state. To switch to a key, run
 `pskit resources onprem ssh-key user@host` once (it asks the password, installs `~/.ssh/pskit_ed25519`) and set `pem`
 to that key. On Windows, if OpenSSH says the key is unprotected, restrict it with `icacls`. Set `install_docker: false` to refuse a server that does not already have Docker. A server whose package manager is not apt, dnf, yum, or apk is reported and left unchanged.
 

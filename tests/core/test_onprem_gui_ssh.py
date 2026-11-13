@@ -158,6 +158,9 @@ def test_gui_check_verdicts(tmp_path):
 
 
 def test_ssh_password_is_kept_out_of_state_and_command_lines(tmp_path, monkeypatch):
+    from py_serverless_kit.core import ssh_password
+
+    monkeypatch.setattr(ssh_password.shutil, "which", lambda name: "/usr/bin/" + name)
     target = svc.normalize_target({"method": "ssh", "host": "10.0.0.5", "user": "ubuntu", "password": "S3cret!pw"}, tmp_path)
     secret = Path(target["password_file"])
     assert target["auth"] == "password" and secret.parent == tmp_path / ".pskit" / "ssh"
@@ -177,9 +180,10 @@ def test_ssh_password_is_kept_out_of_state_and_command_lines(tmp_path, monkeypat
 
     from py_serverless_kit.providers import onprem_remote
 
+    # No sshpass (e.g. Windows) is fine now: pskit's askpass wrapper sends the password instead.
     monkeypatch.setattr(onprem_remote.shutil, "which", lambda _n: None)
-    with pytest.raises(svc.ServiceError, match="ssh-key"):
-        svc.check_ssh_login(target)
+    svc.check_ssh_login(target)
+    assert svc.docker_argv(target, ["ps"])[2] == "py_serverless_kit.core.ssh_password"
 
 
 def test_deploy_options_take_a_password_file(tmp_path):

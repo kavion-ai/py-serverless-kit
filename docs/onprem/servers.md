@@ -80,11 +80,17 @@ Running `servers add` again with the same name replaces the entry.
 
 ## Log in to a server with a password
 
-A password login uses **sshpass**, so the password never appears on a command line. sshpass must be installed on the
-machine that runs pskit (`sudo apt install sshpass`, `sudo dnf install sshpass`, or
-`brew install hudochenkov/sshpass/sshpass`), and the server must allow `PasswordAuthentication`.
+A password login works on Windows, macOS and Linux. pskit sends the password through sshpass when it is installed,
+otherwise through its own askpass helper, which needs only the OpenSSH client (8.4 or newer: built into Windows 10/11,
+current macOS and Linux). The password never appears on a command line. The server must allow
+`PasswordAuthentication`.
 
-On Windows (no sshpass), or to stop using the password, install a key once. `ssh-key` creates
+```powershell
+$env:SRV_PASS = "your-password"                                    # PowerShell (bash: export SRV_PASS=...)
+pskit resources onprem servers add nkorserv --ssh nkor@192.168.0.240 --ssh-password-env SRV_PASS
+```
+
+To stop using the password, install a key once. `ssh-key` creates
 `~/.ssh/pskit_ed25519` when missing, logs in with the password one time (ssh asks for it in this terminal), adds the
 public key to `~/.ssh/authorized_keys` on the server and checks that the key alone logs in:
 
@@ -93,7 +99,7 @@ pskit resources onprem ssh-key azureuser@13.72.87.80              # add :2222 fo
 pskit resources onprem servers add az1 --ssh azureuser@13.72.87.80 --pem ~/.ssh/pskit_ed25519
 ```
 
-`--key PATH` installs another key; `--password-env VAR` sends the password from a variable (needs sshpass).
+`--key PATH` installs another key; `--password-env VAR` sends the password from a variable instead of asking.
 
 ## Test a server connection
 

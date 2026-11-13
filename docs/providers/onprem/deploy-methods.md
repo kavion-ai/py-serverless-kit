@@ -93,10 +93,10 @@ The SSH login for `ssh` and remote `docker` uses one of these:
 |---|---|
 | Key file | `pem` (or `identity_file`). Must work with `ssh -o BatchMode=yes` (no passphrase prompt; load a protected key into the agent). |
 | SSH agent / default keys | no key set (or `auth: agent`); `~/.ssh/config` applies. `pskit deploy` in a terminal asks for a `.pem` path; Enter keeps the agent. |
-| Password | `password_file: <file>`, or `auth: password` plus `SSHPASS` in the environment. Uses `sshpass`; the password never appears on a command line or in Terraform state. |
+| Password | `password_file: <file>`, or `auth: password` plus `SSHPASS` in the environment. Uses sshpass when installed, else pskit's askpass helper (OpenSSH 8.4+, works on Windows); the password never appears on a command line or in Terraform state. |
 
-`sshpass` does not exist on Windows: run `pskit resources onprem ssh-key user@host` once (it asks the password and
-installs `~/.ssh/pskit_ed25519`), then set `pem` to that key. If Windows OpenSSH says the key is unprotected, restrict it
+To switch to a key, run `pskit resources onprem ssh-key user@host` once (it asks the password and installs
+`~/.ssh/pskit_ed25519`), then set `pem` to that key. If Windows OpenSSH says the key is unprotected, restrict it
 with `icacls`. More: [onprem/servers.md](../../onprem/servers.md).
 
 ## Run the on-prem host in Docker (method docker)

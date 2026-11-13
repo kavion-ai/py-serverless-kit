@@ -6,6 +6,34 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [3.1.2] - 2026-11-13
+
+### Added
+- **SSH password login without sshpass, on Windows too.** Saved servers, service targets and on-prem deploys that
+  log in with a password no longer need `sshpass`: when it is missing, pskit answers the password prompt with its own
+  askpass helper (`python -m py_serverless_kit.core.ssh_password`, OpenSSH 8.4+ `SSH_ASKPASS_REQUIRE=force`). Works
+  with Windows OpenSSH and Git for Windows' ssh. The password still never appears on a command line; tunnels started
+  by studio stop cleanly on Windows. `pskit resources onprem ssh-key --password-env` works without sshpass as well.
+- **Amazon SES compatible server (`aws/ses`), in Python and C++.** Send mail on your own servers with code written
+  for SES: the SES v1 (`ses`) and v2 (`sesv2`) APIs with SigV4 authentication, and an SES-style SMTP endpoint
+  (port 2587, `AUTH` with the SES SMTP password derived from the secret key). Identities with DKIM signing
+  (generated or your own key) and DNS verification, templates (the Handlebars subset SES uses), bulk sending,
+  configuration sets, the account suppression list, sending quotas, the mailbox simulator, and events
+  (`SES_EVENTS_URL`, SES event publishing format). Mail is queued and delivered through a relay, straight to the
+  recipients' MX hosts, or kept for inspection (`capture`), with retries, bounces and per-recipient results. Its web
+  console (`/ui/`) has an account dashboard, identities with the DNS records to publish, a send-test page, the
+  message log with previews and events, templates, configuration sets, the suppression list and SMTP settings. The
+  Python server uses only the standard library; the C++ server needs only OpenSSL. Both read the same data files.
+- **On-prem services `ses` and `ses-cpp`** (*Mail* in the catalog): `pskit resources onprem create mail --service
+  ses` runs it on a stock image (the C++ server is compiled in the container on its first start). New options:
+  `--ses-delivery`, `--relay`, `--relay-user`, `--relay-password-env`, `--relay-tls`, `--ses-verify`, `--helo-name`.
+  The resource adds `PSKIT_<KEY>_URL`, `_ACCESS_KEY`, `_SECRET_KEY`, `_SMTP_HOST`, `_SMTP_PORT`, `_SMTP_USER` and
+  `_SMTP_PASSWORD` to the env file.
+- **One-click C / C++ toolchain on a server** (`--service cpp`, studio: *Install on a server* > **C / C++ (GCC)**):
+  GCC (`gcc`, `g++`), make, CMake, pkg-config, gdb and the OpenSSL headers from the distribution (apt, dnf, yum or
+  apk). `--version 14|13|12` also installs that GCC as `g++-N` (apt, or `gcc-toolset-N` on RHEL / Alma / Rocky).
+  It builds the C++ SES server (`make -C aws/ses/cpp`) and other native code on the server.
+
 ## [3.1.1] - 2026-11-12
 
 ### Changed
