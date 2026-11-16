@@ -82,12 +82,14 @@ def build_argv(
         return ["validate", *common]
     if command == "info":
         return ["info", *common]
-    if command == "package":
-        return ["package", *common] + (["--skip-deps"] if args.get("skip_deps") else [])
-    if command == "plan":
-        return ["plan", *common] + (["--skip-deps"] if args.get("skip_deps") else [])
-    if command == "deploy":
-        return ["deploy", *common] + (["--skip-deps"] if args.get("skip_deps") else [])
+    if command in ("package", "plan", "deploy"):
+        argv = [command, *common] + (["--skip-deps"] if args.get("skip_deps") else [])
+        package_type = args.get("package_type")
+        if package_type:
+            if package_type not in ("zip", "image", "auto"):
+                raise StudioError(400, "package_type must be zip, image or auto")
+            argv += ["--package-type", str(package_type)]
+        return argv
     if command == "resource-send":
         argv = ["resources", "send", *common, _flag_value(args.get("resource"), "resource"), "--json"]
         if args.get("data") is not None:

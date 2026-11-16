@@ -24,6 +24,7 @@ from typing import Any, Dict, List, Optional
 from ..config.schema import ServiceConfig
 from . import schedule as sched
 from .base import HTTP, SCHEDULE, Issue, Provider, ProviderError, RenderContext
+from .container import MB, PackageLimits
 from .terraform_doc import TerraformDoc, escape, ref
 
 SCRIPT = "cloudflare_workers_script"
@@ -212,6 +213,9 @@ class CloudflareProvider(Provider):
         "options.workers_subdomain for URLs) or options.zone_id + functions.<fn>.options.route; schedules via "
         "Cron Triggers. Needs options.account_id and CLOUDFLARE_API_TOKEN."
     )
+    # Workers script size after compression: 10 MB on the Paid plan (3 MB on Free).
+    package_limits = PackageLimits(zip_compressed=10 * MB, reference="Workers Paid plan; 3 MB on Free")
+    image_soon = "Cloudflare Containers"
 
     # ------------------------------------------------------------------ bundle
     def shim_files(self, config: ServiceConfig) -> Dict[str, str]:

@@ -31,6 +31,7 @@ link opens a page with the ports, the studio steps, the CLI command, what pskit 
 | [MySQL](mysql.md) | `mysql` | database | 3306 |
 | [MariaDB](mariadb.md) | `mariadb` | database | 3306 |
 | [MongoDB](mongodb.md) | `mongodb` | database | 27017 |
+| [Elasticsearch (search and analytics)](elasticsearch.md) | `elasticsearch` | database | 9200 |
 | [Qdrant (vector database)](qdrant.md) | `qdrant` | database | 6333 |
 | [ClickHouse (analytics database)](clickhouse.md) | `clickhouse` | database | 8123 |
 | [Neo4j (graph database)](neo4j.md) | `neo4j` | database | 7687 |

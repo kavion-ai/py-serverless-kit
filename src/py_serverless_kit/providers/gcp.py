@@ -42,6 +42,7 @@ from ..workflows import definition_dict
 from ..workflows.gcp import compile_gcp
 from . import schedule as sched
 from .base import HTTP, QUEUE, SCHEDULE, STORAGE, TOPIC, WORKFLOW_NATIVE, Issue, Provider, RenderContext, stable_suffix
+from .container import MB, PackageLimits
 from .terraform_doc import TerraformDoc, escape, ref, tf_id
 
 FN = "google_cloudfunctions2_function"
@@ -142,6 +143,15 @@ class GcpProvider(Provider):
     max_timeout = 3600
     standalone_resources = True
     notes = "Cloud Functions gen2 (Cloud Run). Requires options.project. Queues map to Pub/Sub topics."
+    # https://cloud.google.com/functions/quotas (100 MB compressed sources, 500 MB with modules)
+    package_limits = PackageLimits(
+        zip_compressed=100 * MB, zip_unpacked=500 * MB, reference="Cloud Run functions deployment size quota"
+    )
+    image_soon = "Artifact Registry + Cloud Run services"
+    monitoring = {
+        "logs": "Cloud Logging (built into Cloud Run functions; pskit creates no log resources)",
+        "metrics": "Cloud Monitoring (built in, always on)",
+    }
 
     # ------------------------------------------------------------------ bundle
     def node_package(self, config: ServiceConfig) -> Dict[str, Any]:

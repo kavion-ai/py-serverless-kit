@@ -1,5 +1,6 @@
 import type { LogsResponse, LogStream } from "../types";
 import type {
+  DeployResources,
   BalancerAction,
   ClusterAction,
   ClusterAlertEntry,
@@ -302,6 +303,8 @@ export const api = {
     request<{ deployed: CloudResourceRow[]; kept: CloudResourceRow[]; reason?: string }>("GET", "/api/cloud-resources", undefined, {
       query: { provider, stage },
     }),
+  deployResources: (provider: string, stage: string) =>
+    request<DeployResources>("GET", "/api/deploy-resources", undefined, { query: { provider, stage } }),
   testGuide: (provider: string, stage: string) => request<TestGuide>("GET", "/api/test-guide", undefined, { query: { provider, stage } }),
   workflowTestOptions: (workflow: string, provider: string, stage: string) =>
     request<WorkflowTestOptions>("GET", "/api/workflow-test", undefined, { query: { workflow, provider, stage } }),

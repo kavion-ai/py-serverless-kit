@@ -6,9 +6,11 @@ Usage::
     python scripts/validate_all_providers.py --provider gcp  # one provider
     python scripts/validate_all_providers.py --keep          # keep the temp dirs
     python scripts/validate_all_providers.py --language node # only the Node.js variant
+    python scripts/validate_all_providers.py --package zip   # skip the container-image variants
 
 Each provider is rendered as a Python and as a Node.js service (providers without
-Node.js support are skipped for the latter).
+Node.js support are skipped for the latter). Providers with container-image deploys
+(``package.type: image``: AWS/ECR, Azure/ACR) are rendered as an image variant too.
 
 Needs terraform (or tofu, via PSKIT_TERRAFORM_BIN) and network access to download
 provider plugins. Set TF_PLUGIN_CACHE_DIR to reuse plugin downloads between runs.
@@ -71,12 +73,15 @@ exports.step = async (event, ctx) => event.data;
 LANGUAGES = ("python", "node")
 
 
-def project_yaml(name: str, language: str = "python") -> str:
-    text = _project_yaml(name)
-    if language == "python":
-        return text
-    config = json.loads(text)
-    config["provider"]["runtime"] = get_provider(name).default_runtime_for(language)
+PACKAGE_TYPES = ("zip", "image")
+
+
+def project_yaml(name: str, language: str = "python", package_type: str = "zip") -> str:
+    config = json.loads(_project_yaml(name))
+    if language != "python":
+        config["provider"]["runtime"] = get_provider(name).default_runtime_for(language)
+    if package_type != "zip":
+        config["package"] = {"type": package_type}
     return json.dumps(config, indent=2)
 
 
@@ -182,12 +187,14 @@ def _project_yaml(name: str) -> str:
     return json.dumps(config, indent=2)  # JSON is valid YAML
 
 
-def validate(name: str, keep: bool, language: str = "python") -> bool:
+def validate(name: str, keep: bool, language: str = "python", package_type: str = "zip") -> bool:
     if language == "node" and not get_provider(name).node_runtimes:
         print(f"[{name}/node] skipped: no Node.js support")
         return True
     label = name if language == "python" else f"{name}/{language}"
-    tmp = Path(tempfile.mkdtemp(prefix=f"pskit-validate-{name}-{language}-"))
+    if package_type != "zip":
+        label += f"/{package_type}"
+    tmp = Path(tempfile.mkdtemp(prefix=f"pskit-validate-{name}-{language}-{package_type}-"))
     try:
         (tmp / "app").mkdir()
         if language == "node":
@@ -195,7 +202,7 @@ def validate(name: str, keep: bool, language: str = "python") -> bool:
         else:
             (tmp / "app" / "__init__.py").write_text("")
             (tmp / "app" / "handlers.py").write_text(textwrap.dedent(HANDLERS))
-        (tmp / "pskit.yml").write_text(project_yaml(name, language))
+        (tmp / "pskit.yml").write_text(project_yaml(name, language, package_type))
         project = Project.load(cwd=tmp)
         errors = [str(i) for i in project.validate() if i.level == "error"]
         if errors:
@@ -226,6 +233,10 @@ def main() -> int:
     parser.add_argument(
         "--language", choices=(*LANGUAGES, "all"), default="all", help="runtime language variant(s) (default: all)"
     )
+    parser.add_argument(
+        "--package", choices=(*PACKAGE_TYPES, "all"), default="all",
+        help="zip and/or container-image variants (default: all; images only where the provider has them)",
+    )
     args = parser.parse_args()
     try:
         find_binary()
@@ -234,7 +245,14 @@ def main() -> int:
         return 2
     names = args.provider or available()
     languages = LANGUAGES if args.language == "all" else (args.language,)
-    results = {f"{n}/{lang}": validate(n, args.keep, lang) for n in names for lang in languages}
+    kinds = PACKAGE_TYPES if args.package == "all" else (args.package,)
+    results = {
+        f"{n}/{lang}/{kind}": validate(n, args.keep, lang, kind)
+        for n in names
+        for lang in languages
+        for kind in kinds
+        if kind == "zip" or get_provider(n).image_registry
+    }
     failed = [n for n, ok in results.items() if not ok]
     print(
         f"\n{len(results) - len(failed)}/{len(results)} provider variants valid"

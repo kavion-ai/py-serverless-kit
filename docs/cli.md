@@ -56,11 +56,14 @@ pskit validate --provider azure --stage prod
 
 ## `pskit package`
 
-Build `.pskit/<provider>-<stage>/artifact.zip` and `main.tf.json` without calling the cloud.
+Build `.pskit/<provider>-<stage>/artifact.zip` and `main.tf.json` without calling the cloud. Prints the bundle size
+against the provider's deployment limits, and every resource the deploy creates with what it is for (also saved as
+`resources.json`).
 
 | Flag | |
 |---|---|
 | `--skip-deps` | don't pip-install `requirements.txt` into the bundle |
+| `--package-type zip\|image\|auto` | override `package.type`: ship a container image (ECR on AWS, ACR on Azure) instead of a zip, or `auto` to switch only when the zip is too big. See [package size](package-size-and-monitoring.md) |
 
 ## `pskit plan`
 
@@ -70,10 +73,13 @@ Package, `terraform init`, then `terraform plan`.
 |---|---|
 | `--skip-deps` | as above |
 | `--destroy` | plan a destroy |
+| `--package-type zip\|image\|auto` | override `package.type`: ship a container image (ECR on AWS, ACR on Azure) instead of a zip, or `auto` to switch only when the zip is too big. See [package size](package-size-and-monitoring.md) |
 
 ## `pskit deploy`
 
 Package, then `terraform init` and `terraform apply`. Saves `deployment.json`, prints endpoints and ids, and regenerates the dashboard.
+Before applying it prints the size notes and the described resource list, and **stops when a zip is over the
+provider's limit** (use `--package-type image` / `auto` there).
 
 | Flag | |
 |---|---|
@@ -81,6 +87,7 @@ Package, then `terraform init` and `terraform apply`. Saves `deployment.json`, p
 | `--confirm` | run `terraform plan -out tfplan`, then apply that plan instead of `-auto-approve` |
 | `--upgrade` | `terraform init -upgrade` (update provider plugins) |
 | `--no-dashboard` | don't regenerate `.pskit/dashboard/index.html` |
+| `--package-type zip\|image\|auto` | override `package.type`: ship a container image (ECR on AWS, ACR on Azure) instead of a zip, or `auto` to switch only when the zip is too big. See [package size](package-size-and-monitoring.md) |
 
 Hooks `before_package`, `after_package`, `before_deploy` and `after_deploy` run around these steps.
 

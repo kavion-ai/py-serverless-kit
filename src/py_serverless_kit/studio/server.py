@@ -455,6 +455,10 @@ def make_handler(app: Studio) -> type:
                     return 200, system.test_events(root)
                 if method == "PUT":
                     return 200, system.save_test_events(root, _obj(self._body()).get("events"))
+            if parts == ["deploy-resources"] and method == "GET":
+                provider = _param(params, "provider") or str((app.raw_config().get("provider") or {}).get("name") or "")
+                stage = _param(params, "stage") or str((app.raw_config().get("provider") or {}).get("stage") or "dev")
+                return 200, system.deploy_resources(root, provider, stage)
             if parts == ["cloud-resources"] and method == "GET":
                 provider = _param(params, "provider") or str((app.raw_config().get("provider") or {}).get("name") or "")
                 stage = _param(params, "stage") or str((app.raw_config().get("provider") or {}).get("stage") or "dev")

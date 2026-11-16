@@ -227,7 +227,13 @@ PROVIDER_OPTIONS: Dict[str, List[Dict[str, Any]]] = {
         ),
         field("resource_group", "Resource group", help="Existing resource group (default: one is created)."),
         suggest(
-            field("plan_sku", "Plan SKU", default="Y1", help="Y1 = consumption, EP* = elastic premium, B/S/P = dedicated."),
+            field(
+                "plan_sku",
+                "Plan SKU",
+                default="Y1",
+                help="Y1 = consumption, EP* = elastic premium, B/S/P = dedicated. Container images (package type "
+                "image) need EP*/B/S/P; left empty they use EP1.",
+            ),
             ["Y1", "EP1", "EP2", "EP3", "B1", "B2", "B3", "S1", "S2", "P1v3", "P2v3"],
         ),
         field("app_insights", "Application Insights", "bool", default=True),
@@ -238,6 +244,13 @@ PROVIDER_OPTIONS: Dict[str, List[Dict[str, Any]]] = {
         ),
         field("servicebus_namespace_id", "Service Bus namespace ID", help="For existing topics."),
         field("servicebus_connection", "Service Bus connection setting", help="For existing topics."),
+        field(
+            "acr_resource_group",
+            "ACR resource group",
+            help="Resource group of an existing registry named in package.image.repository (default: the app's).",
+        ),
+        suggest(field("acr_sku", "ACR SKU", default="Basic", help="SKU of the registry pskit creates for images."),
+                ["Basic", "Standard", "Premium"]),
     ],
     "gcp": [
         field("project", "Project", required=True, default="${env:GOOGLE_CLOUD_PROJECT}", help="GCP project id."),
@@ -587,6 +600,8 @@ def build_meta() -> Dict[str, Any]:
                 "queue_service_queues": bool(desc.get("queue_service_queues")),
                 "storage_events": list(desc.get("storage_events") or []) if "storage" in desc["capabilities"] else [],
                 "notes": desc["notes"],
+                "package": desc.get("package") or {},
+                "monitoring": desc.get("monitoring") or {},
                 "options": PROVIDER_OPTIONS.get(name, []),
                 "regions": REGIONS.get(name, []),
                 "trigger_support": trigger_support(prov, name),

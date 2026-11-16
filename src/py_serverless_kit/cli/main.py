@@ -375,40 +375,58 @@ def validate(project) -> None:  # noqa: ANN001
 
 
 # ----------------------------------------------------------------------------- package / plan / deploy / remove
+def package_type_option(fn: Callable[..., Any]) -> Callable[..., Any]:
+    """``--package-type zip|image|auto``: override ``package.type`` of pskit.yml for one run."""
+    return click.option(
+        "--package-type",
+        "package_type",
+        default=None,
+        type=click.Choice(["zip", "image", "auto"]),
+        help="zip, image (container image: Amazon ECR on AWS, ACR on Azure; needs Docker) or auto (image only when "
+        "the zip is over the provider's size limit). Default: package.type in pskit.yml (zip).",
+    )(fn)
+
+
 @cli.command()
 @project_options
 @click.option("--skip-deps", is_flag=True, help="Do not pip-install requirements into the bundle.")
-def package(project, skip_deps: bool) -> None:  # noqa: ANN001
+@package_type_option
+def package(project, skip_deps: bool, package_type: Optional[str]) -> None:  # noqa: ANN001
     """Build the artifact and Terraform (no cloud calls).
 
-    Writes .pskit/<provider>-<stage>/artifact.zip and main.tf.json.
+    Writes .pskit/<provider>-<stage>/artifact.zip and main.tf.json, and prints the bundle size against the
+    provider's deployment limits. With --package-type image it also writes the image's Dockerfile.pskit.
 
     
     Examples:
       pskit package
       pskit package -p gcp -s prod --skip-deps
+      pskit package -p aws --package-type image
     """
     from ..core.deployer import Deployer
 
-    result = Deployer(project, echo=echo).package(skip_deps=skip_deps)
-    ok(f"Packaged into {project.work_dir} ({result.resource_count} terraform resources)")
+    result = Deployer(project, echo=echo, package_type=package_type).package(skip_deps=skip_deps)
+    kind = "container image" if result.package and result.package.type == "image" else "zip"
+    ok(f"Packaged into {project.work_dir} as a {kind} ({result.resource_count} terraform resources)")
 
 
 @cli.command()
 @project_options
 @click.option("--skip-deps", is_flag=True)
 @click.option("--destroy", is_flag=True, help="Plan a destroy instead.")
-def plan(project, skip_deps: bool, destroy: bool) -> None:  # noqa: ANN001
+@package_type_option
+def plan(project, skip_deps: bool, destroy: bool, package_type: Optional[str]) -> None:  # noqa: ANN001
     """Show the terraform plan (what would change).
 
     
     Examples:
       pskit plan -s dev
       pskit plan --destroy
+      pskit plan --package-type image
     """
     from ..core.deployer import Deployer
 
-    changed = Deployer(project, echo=echo).plan(skip_deps=skip_deps, destroy=destroy)
+    changed = Deployer(project, echo=echo, package_type=package_type).plan(skip_deps=skip_deps, destroy=destroy)
     ok("Plan has changes." if changed else "No changes.")
 
 
@@ -418,20 +436,31 @@ def plan(project, skip_deps: bool, destroy: bool) -> None:  # noqa: ANN001
 @click.option("--confirm", is_flag=True, help="Show the plan and apply it (instead of -auto-approve).")
 @click.option("--upgrade", is_flag=True, help="terraform init -upgrade (update provider plugins).")
 @click.option("--no-dashboard", is_flag=True, help="Do not regenerate the dashboard.")
-def deploy(project, skip_deps: bool, confirm: bool, upgrade: bool, no_dashboard: bool) -> None:  # noqa: ANN001
+@package_type_option
+def deploy(  # noqa: ANN001
+    project, skip_deps: bool, confirm: bool, upgrade: bool, no_dashboard: bool, package_type: Optional[str]
+) -> None:
     """Package and deploy with terraform apply.
+
+    Before applying, pskit prints the bundle size against the provider's limits and stops when a zip is over
+    them. Deploy a large bundle as a container image instead (Amazon ECR on AWS, Azure Container Registry on
+    Azure; other clouds coming soon): --package-type image, or package.type in pskit.yml.
 
     
     Examples:
       pskit deploy
       pskit deploy -s prod --confirm      # review the plan first
       pskit deploy -p onprem --skip-deps
+      pskit deploy -p aws --package-type image   # Lambda from an ECR image
+      pskit deploy --package-type auto           # image only when the zip is too big
     """
     from ..core.deployer import Deployer
     from ..dashboard.generator import write_dashboard
 
     _ask_onprem_pem(project)
-    record = Deployer(project, echo=echo).deploy(skip_deps=skip_deps, auto_approve=not confirm, upgrade=upgrade)
+    record = Deployer(project, echo=echo, package_type=package_type).deploy(
+        skip_deps=skip_deps, auto_approve=not confirm, upgrade=upgrade
+    )
     where = (record.get("deployed_on") or {}).get("label") or record["region"]
     ok(f"\nDeployed {record['service']} ({record['stage']}) to {record['provider_display']} {where}")
     _print_record(record)
@@ -3664,7 +3693,8 @@ def providers(as_json: bool) -> None:
         click.echo(json.dumps(rows, indent=2))
         return
     cols = ["http", "schedule", "queue", "storage", "topic", "workflow_native"]
-    echo(f"{'provider':<14}{'tier':<14}" + "".join(f"{c.replace('workflow_native', 'workflows'):<11}" for c in cols))
+    echo(f"{'provider':<14}{'tier':<14}" + "".join(f"{c.replace('workflow_native', 'workflows'):<11}" for c in cols)
+         + "images")
     for r in rows:
         caps = set(r.get("capabilities", []))
         line = f"{r['name']:<14}{r.get('tier', ''):<14}"
@@ -3673,6 +3703,8 @@ def providers(as_json: bool) -> None:
                 line += f"{'native' if c in caps else 'embedded':<11}"
             else:
                 line += f"{'yes' if c in caps else '-':<11}"
+        pkg = r.get("package") or {}
+        line += pkg.get("image_registry") or ("soon" if pkg.get("image_soon") else "-")
         echo(line)
 
 

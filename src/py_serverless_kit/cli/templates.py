@@ -122,6 +122,12 @@ provider:
   environment:
     LOG_LEVEL: INFO
 {options}
+# Code ships as a zip. Too big for the cloud's limit? Deploy a container image instead
+# (Amazon ECR on AWS, Azure Container Registry on Azure; needs Docker):
+# package:
+#   type: image        # zip (default) | image | auto
+# Logs / metrics services are on by default; switch them off per function with
+#   monitoring: {{logs: false, metrics: false}}
 functions:
   hello:
     handler: app.handlers.hello
@@ -216,6 +222,12 @@ provider:
   environment:
     LOG_LEVEL: INFO
 {options}
+# Code ships as a zip. Too big for the cloud's limit? Deploy a container image instead
+# (Amazon ECR on AWS, Azure Container Registry on Azure; needs Docker):
+# package:
+#   type: image        # zip (default) | image | auto
+# Logs / metrics services are on by default; switch them off per function with
+#   monitoring: {{logs: false, metrics: false}}
 functions:
   hello:
     handler: src.handlers.hello

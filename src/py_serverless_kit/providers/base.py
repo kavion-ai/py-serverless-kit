@@ -16,10 +16,14 @@ import re
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, ClassVar, Dict, FrozenSet, List, Optional, Tuple
+from typing import TYPE_CHECKING, Any, ClassVar, Dict, FrozenSet, List, Optional, Tuple
 
 from ..config.schema import EVENT_RESOURCE_TYPES, FunctionConfig, ResourceConfig, ServiceConfig, WorkflowConfig
+from .container import PackageLimits
 from .terraform_doc import TerraformDoc
+
+if TYPE_CHECKING:  # pragma: no cover
+    from .container import ImageBuild
 
 # Capability flags ------------------------------------------------------------
 HTTP = "http"
@@ -56,6 +60,7 @@ class Artifact:
     file_count: int = 0
     build_dir: Optional[Path] = None
     skip_deps: bool = False  # built without installing dependencies (pskit package --skip-deps, tests)
+    unpacked_size: int = 0  # bytes of every file in the bundle (the platforms' "unzipped" limit)
 
 
 @dataclass
@@ -78,6 +83,9 @@ class RenderContext:
     artifact: Artifact
     region: str
     workflow_engines: Dict[str, str] = field(default_factory=dict)
+    # "zip" or "image" (package.type resolved for this deploy, see providers/container.py::plan_package)
+    package_type: str = "zip"
+    image: Optional[ImageBuild] = None
 
     @property
     def service(self) -> str:
@@ -179,6 +187,17 @@ class Provider(ABC):
     # A long-running host (on-premises) sets this to False.
     warn_on_embedded_workflow: ClassVar[bool] = True
     notes: ClassVar[str] = ""
+    # Deployment size limits (providers/container.py). ``None``: not checked.
+    package_limits: ClassVar[Optional[PackageLimits]] = None
+    # Registry of container-image deploys (``package.type: image``), e.g. "Amazon ECR". Empty: zip only.
+    image_registry: ClassVar[str] = ""
+    # Not yet supported: what image deploys will use here, for the "coming soon" messages.
+    image_soon: ClassVar[str] = ""
+    # What `monitoring.logs` / `monitoring.metrics` mean on this cloud (docs, studio, notes). Empty: the platform's
+    # built-in service. `monitoring_controls` lists the switches pskit can act on here (it creates something for
+    # them); turning off any other one only gives a warning.
+    monitoring: ClassVar[Dict[str, str]] = {}
+    monitoring_controls: ClassVar[FrozenSet[str]] = frozenset()
 
     # ------------------------------------------------------------ naming
     def physical_name(self, service: str, stage: str, logical: str) -> str:
@@ -351,6 +370,8 @@ class Provider(ABC):
                     )
                 )
         issues.extend(self.resource_validation(config))
+        issues.extend(self.package_validation(config))
+        issues.extend(self.monitoring_validation(config))
         issues.extend(self.extra_validation(config))
         return issues
 
@@ -395,6 +416,60 @@ class Provider(ABC):
 
     def extra_validation(self, config: ServiceConfig) -> List[Issue]:
         return []
+
+    # ------------------------------------------------------------ logs / metrics
+    def monitoring_text(self, kind: str) -> str:
+        return self.monitoring.get(kind) or f"{self.display_name}'s own {kind} (pskit creates no {kind} resources here)"
+
+    def monitoring_validation(self, config: ServiceConfig) -> List[Issue]:
+        """Warn about `monitoring` switches this provider cannot turn off (the platform always has them)."""
+        issues: List[Issue] = []
+        for kind, of in (("logs", config.logs_of), ("metrics", config.metrics_of)):
+            if kind in self.monitoring_controls:
+                continue
+            off = sorted(name for name, fn in config.functions.items() if not of(fn))
+            if off:
+                issues.append(Issue(
+                    "warning",
+                    f"monitoring.{kind}: false has no effect on {self.display_name}, where pskit creates nothing for "
+                    f"{kind}: {self.monitoring_text(kind)} (functions: {', '.join(off)})",
+                    f"monitoring.{kind}",
+                ))
+        return issues
+
+    # ------------------------------------------------------------ package size / container images
+    def zip_limits(self, config: ServiceConfig) -> Tuple[Optional[int], Optional[int]]:
+        """``(compressed, unpacked)`` byte limits of a zip deploy with this config (``None`` = unchecked)."""
+        del config
+        limits = self.package_limits
+        return (limits.zip_compressed, limits.zip_unpacked) if limits else (None, None)
+
+    def image_base(self, config: ServiceConfig) -> str:
+        """The base image (``FROM``) of a container-image deploy."""
+        raise ProviderError(f"{self.display_name} has no container-image deploys in pskit yet")
+
+    def image_dockerfile(self, config: ServiceConfig, build_dir: Path) -> str:
+        """The Dockerfile that turns the bundle in ``build_dir`` into this platform's function image."""
+        raise ProviderError(f"{self.display_name} has no container-image deploys in pskit yet")
+
+    def package_validation(self, config: ServiceConfig) -> List[Issue]:
+        issues: List[Issue] = []
+        kind = config.package.type
+        if kind == "image" and not self.image_registry:
+            soon = f" ({self.image_soon})" if self.image_soon else ""
+            issues.append(Issue(
+                "error",
+                f"container-image deploys are not available on {self.display_name} yet; coming soon{soon}. "
+                "Use `package.type: zip` (or `auto`, which stays a zip here)",
+                "package.type",
+            ))
+        elif kind == "auto" and not self.image_registry and self.package_limits is not None:
+            issues.append(Issue(
+                "warning",
+                f"package.type auto stays a zip on {self.display_name}: container-image deploys are coming soon",
+                "package.type",
+            ))
+        return issues
 
     def validate_files(self, config: ServiceConfig, root: Path) -> List[Issue]:
         """Checks that need the project directory (files the config points at)."""
@@ -465,4 +540,25 @@ class Provider(ABC):
             "storage_events": list(self.storage_events),
             "terraform_provider": self.terraform_source,
             "notes": self.notes,
+            "package": self.describe_package(),
+            "monitoring": {
+                "logs": self.monitoring_text("logs"),
+                "metrics": self.monitoring_text("metrics"),
+                "controls": sorted(self.monitoring_controls),
+            },
+        }
+
+    def describe_package(self) -> Dict[str, Any]:
+        """Package types, registry and size limits (``pskit providers``, the studio's Deploy page)."""
+        limits = self.package_limits
+        return {
+            "types": ["zip", "image", "auto"] if self.image_registry else ["zip"],
+            "image_registry": self.image_registry,
+            "image_soon": self.image_soon,
+            "limits": {
+                "zip_compressed": limits.zip_compressed if limits else None,
+                "zip_unpacked": limits.zip_unpacked if limits else None,
+                "image": limits.image if limits else None,
+                "reference": limits.reference if limits else "",
+            },
         }

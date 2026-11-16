@@ -121,6 +121,15 @@ class Project:
         config, engines = expand(config, prov)
         return cls(loaded=loaded, provider=prov, config=config, engines=engines)
 
+    def use_package_type(self, package_type: str) -> None:
+        """Override ``package.type`` (``zip`` / ``image`` / ``auto``) for this run, e.g. ``--package-type image``."""
+        from ..config.schema import PACKAGE_TYPES
+
+        if package_type not in PACKAGE_TYPES:
+            raise ValueError(f"package type must be one of {', '.join(PACKAGE_TYPES)}, not {package_type!r}")
+        package = self.config.package.model_copy(update={"type": package_type})
+        self.config = self.config.model_copy(update={"package": package})
+
     # ---------------------------------------------------------------- paths
     @property
     def root(self) -> Path:

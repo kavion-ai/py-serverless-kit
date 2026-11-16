@@ -471,19 +471,21 @@ Teams that build on AWS Lambda and Step Functions end up with code full of API G
 
 ## Supported providers
 
-| Provider | Tier | HTTP | Schedule | Queue | Storage | Topic | Workflows | Python | Node.js |
-|---|---|:-:|:-:|:-:|:-:|:-:|---|---|---|
-| AWS Lambda | stable | ✅ | ✅ | ✅ SQS | ✅ S3 | ✅ SNS | native (Step Functions) | 3.9–3.13 | 18, 20, 22 |
-| Google Cloud Functions | stable | ✅ | ✅ | ✅ Pub/Sub | ✅ GCS | ✅ Pub/Sub | native (Cloud Workflows) | 3.9–3.13 | 18, 20, 22 |
-| Azure Functions | stable | ✅ | ✅ | ✅ Storage Queue | ✅ Blob | ✅ Service Bus | embedded, or Logic Apps | 3.9–3.12 | 18, 20, 22 |
-| Alibaba Function Compute | beta | ✅ | ✅ | – | ✅ OSS | ✅ MNS | embedded | 3.9, 3.10, 3.12 | 18, 20 |
-| Huawei FunctionGraph | beta | ✅ | ✅ | – | ✅ OBS | ✅ SMN | embedded | 3.9, 3.10, 3.12 | 18 |
-| Tencent SCF | beta | ✅ | ✅ | – | ✅ COS | – | embedded | 3.9, 3.10 | 18 |
-| DigitalOcean Functions | beta | ✅ | ✅ | – | – | – | embedded | 3.9, 3.11 | 18 |
-| IBM Code Engine | beta | ✅ | – | – | – | – | embedded | 3.11 | 18, 20 |
-| Oracle Cloud Functions | experimental | ✅ | – | – | ✅ | – | embedded | 3.9, 3.11 | 18, 20 |
-| Cloudflare Workers | experimental | ✅ | ✅ | – | – | – | embedded | 3.11–3.13 | 18, 20, 22 |
-| On-premises | experimental | ✅ | ✅ | ✅ files | ✅ directory | ✅ files | embedded (local, SSH, Docker or cluster) | 3.9–3.14 | 18–24 |
+| Provider | Tier | HTTP | Schedule | Queue | Storage | Topic | Workflows | Python | Node.js | Container images |
+|---|---|:-:|:-:|:-:|:-:|:-:|---|---|---|---|
+| AWS Lambda | stable | ✅ | ✅ | ✅ SQS | ✅ S3 | ✅ SNS | native (Step Functions) | 3.9–3.13 | 18, 20, 22 | ✅ ECR |
+| Google Cloud Functions | stable | ✅ | ✅ | ✅ Pub/Sub | ✅ GCS | ✅ Pub/Sub | native (Cloud Workflows) | 3.9–3.13 | 18, 20, 22 | soon |
+| Azure Functions | stable | ✅ | ✅ | ✅ Storage Queue | ✅ Blob | ✅ Service Bus | embedded, or Logic Apps | 3.9–3.12 | 18, 20, 22 | ✅ ACR |
+| Alibaba Function Compute | beta | ✅ | ✅ | – | ✅ OSS | ✅ MNS | embedded | 3.9, 3.10, 3.12 | 18, 20 | soon |
+| Huawei FunctionGraph | beta | ✅ | ✅ | – | ✅ OBS | ✅ SMN | embedded | 3.9, 3.10, 3.12 | 18 | soon |
+| Tencent SCF | beta | ✅ | ✅ | – | ✅ COS | – | embedded | 3.9, 3.10 | 18 | soon |
+| DigitalOcean Functions | beta | ✅ | ✅ | – | – | – | embedded | 3.9, 3.11 | 18 | – |
+| IBM Code Engine | beta | ✅ | – | – | – | – | embedded | 3.11 | 18, 20 | soon |
+| Oracle Cloud Functions | experimental | ✅ | – | – | ✅ | – | embedded | 3.9, 3.11 | 18, 20 | always (OCIR) |
+| Cloudflare Workers | experimental | ✅ | ✅ | – | – | – | embedded | 3.11–3.13 | 18, 20, 22 | soon |
+| On-premises | experimental | ✅ | ✅ | ✅ files | ✅ directory | ✅ files | embedded (local, SSH, Docker or cluster) | 3.9–3.14 | 18–24 | – |
+
+Before every deploy pskit checks the bundle against each cloud's size limits (Lambda: 250 MB unzipped) and lists every resource it creates with what it is for. Bundles too big for a zip deploy as container images (`package.type: image` or `--package-type image`: Amazon ECR on AWS, Azure Container Registry on Azure), and the logs / metrics services can be switched off per function. See [package size, images, logs & metrics](https://github.com/kavion-ai/py-serverless-kit/blob/main/docs/package-size-and-monitoring.md).
 
 On premises, queues can also live in Redis or other drivers, storage in MinIO or any S3-compatible store, and functions can be triggered by e-mail.
 

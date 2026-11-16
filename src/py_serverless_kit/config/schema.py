@@ -258,6 +258,29 @@ class DlqConfig(_Model):
     max_retries: int = Field(4, ge=0, le=99, description="retries after the first delivery before a message is moved")
 
 
+class MonitoringConfig(_Model):
+    """``monitoring``: the logs / metrics services a provider creates next to a function.
+
+    Both are on by default. ``provider.monitoring`` sets the default of every function and
+    ``functions.<name>.monitoring`` overrides it for one function. What each switch controls differs per
+    cloud (see ``pskit providers --json`` / docs/providers.md); where logs or metrics are built into the platform
+    and pskit creates nothing for them, turning them off only produces a warning.
+    """
+
+    logs: Optional[bool] = Field(None, description="log storage for the function (e.g. CloudWatch log group); default on")
+    metrics: Optional[bool] = Field(
+        None, description="metrics / tracing service (e.g. Application Insights); default on"
+    )
+
+    @model_validator(mode="before")
+    @classmethod
+    def _flag(cls, v: Any) -> Any:
+        """``monitoring: false`` / ``true`` is short for both switches."""
+        if isinstance(v, bool):
+            return {"logs": v, "metrics": v}
+        return v
+
+
 class FunctionConfig(_Model):
     handler: str
     description: str = ""
@@ -272,6 +295,9 @@ class FunctionConfig(_Model):
     architecture: Optional[Literal["x86_64", "arm64"]] = None
     iam: IamConfig = Field(default_factory=IamConfig)
     dlq: Optional[DlqConfig] = Field(None, description="send messages that keep failing to a dead-letter queue")
+    monitoring: MonitoringConfig = Field(
+        default_factory=MonitoringConfig, description="logs / metrics services for this function (default: on)"
+    )
     options: Dict[str, Any] = Field(default_factory=dict)
 
     @field_validator("dlq", mode="before")
@@ -347,6 +373,9 @@ class ProviderConfig(_Model):
     tags: Dict[str, str] = Field(default_factory=dict)
     iam: IamConfig = Field(default_factory=IamConfig)
     log_retention_days: Optional[int] = 14
+    monitoring: MonitoringConfig = Field(
+        default_factory=MonitoringConfig, description="default logs / metrics switches of every function (default: on)"
+    )
     options: Dict[str, Any] = Field(default_factory=dict)
     state: StateBackend = Field(default_factory=StateBackend)
     terraform: TerraformSettings = Field(default_factory=TerraformSettings)
@@ -390,7 +419,33 @@ class NodePackageConfig(_Model):
     npm_args: List[str] = Field(default_factory=list)
 
 
+PackageType = Literal["zip", "image", "auto"]
+PACKAGE_TYPES: Tuple[str, ...] = ("zip", "image", "auto")
+
+
+class ImagePackageConfig(_Model):
+    """``package.image``: how a container-image deployment is built (``package.type: image`` / ``auto``)."""
+
+    repository: Optional[str] = Field(
+        None,
+        description="existing registry repository to push to (AWS: ECR repository name; Azure: registry name). "
+        "Default: pskit creates one per stage",
+    )
+    base_image: Optional[str] = Field(None, description="override the provider's base image (FROM line)")
+    dockerfile_lines: List[str] = Field(
+        default_factory=list, description="extra Dockerfile instructions added before the code is copied (e.g. RUN yum ...)"
+    )
+    keep: int = Field(10, ge=1, le=1000, description="images kept in a pskit-created repository (older are expired)")
+    scan_on_push: bool = True
+
+
 class PackageConfig(_Model):
+    type: PackageType = Field(
+        "zip",
+        description="zip (default), image (container image in the cloud's registry: ECR on AWS, ACR on Azure) or "
+        "auto (zip, switching to an image when the bundle exceeds the zip limit)",
+    )
+    image: ImagePackageConfig = Field(default_factory=ImagePackageConfig)
     source: str = "."
     include: List[str] = Field(default_factory=lambda: ["**/*"])
     exclude: List[str] = Field(default_factory=list)
@@ -817,6 +872,20 @@ class ServiceConfig(_Model):
 
     def runtime_of(self, fn: FunctionConfig) -> str:
         return fn.runtime or self.provider.runtime
+
+    def logs_of(self, fn: FunctionConfig) -> bool:
+        """Whether the provider's log service is set up for ``fn`` (function, then provider, then on)."""
+        for value in (fn.monitoring.logs, self.provider.monitoring.logs):
+            if value is not None:
+                return value
+        return True
+
+    def metrics_of(self, fn: FunctionConfig) -> bool:
+        """Whether the provider's metrics / tracing service is set up for ``fn`` (function, then provider, then on)."""
+        for value in (fn.monitoring.metrics, self.provider.monitoring.metrics):
+            if value is not None:
+                return value
+        return True
 
     def architecture_of(self, fn: FunctionConfig) -> str:
         return fn.architecture or self.provider.architecture

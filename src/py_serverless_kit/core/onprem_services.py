@@ -654,6 +654,21 @@ COMPANIONS: Dict[str, Dict[str, Any]] = {
         "auth_env": ("AUTH_TYPE", "SPRING_SECURITY_USER_NAME", "SPRING_SECURITY_USER_PASSWORD"),
         "open_env": {"AUTH_TYPE": "DISABLED"},
     },
+    "kibana": {
+        "label": "Kibana",
+        "image": "docker.elastic.co/kibana/kibana:8.15.3",
+        "port": 5601,
+        "default_port": 5601,
+        "for": ("elasticsearch",),
+        "env": {
+            "ELASTICSEARCH_HOSTS": "http://{target}:{target_port}",
+            "ELASTICSEARCH_USERNAME": "kibana_system",
+            "ELASTICSEARCH_PASSWORD": "{password}",
+        },
+        "login": "user elastic and the service password (Kibana's sign-in page; it starts in about a minute)",
+        # Kibana always asks for an Elasticsearch login.
+        "auth_env": (),
+    },
     "mongo-express": {
         "label": "Mongo Express",
         "image": "mongo-express:1.0.2",

@@ -8,6 +8,7 @@ import { ComboInput, EnumSelect, FieldForm, FormRow, KeyValueEditor, NumberInput
 import { DiffView, InlineIssues, PageHeader } from "../components/Misc";
 import { isEnabled } from "../compat";
 import { EnableControl } from "../components/EnableControl";
+import { LogsMetricsSection } from "../components/LogsMetrics";
 import { GroupBadge, readPlacement, renameInPlacement, RunsOnField, usePlacementTargets } from "../components/Placement";
 import { useOnPremServers } from "../components/ServerPicker";
 import {
@@ -958,6 +959,12 @@ function FunctionWizard({ name: existing }: { name: string | null }) {
               </FormRow>
             </div>
           </Section>
+          <LogsMetricsSection
+            value={fn.monitoring}
+            providerMonitoring={asObject(draft.provider).monitoring}
+            provider={provider}
+            onChange={(v) => setField("monitoring", v)}
+          />
           <IamSection value={asObject(fn.iam)} onChange={(v) => setField("iam", v)} />
           {(meta.function_fields || []).length > 0 && (
             <Section title="Provider-specific options" defaultOpen={!!fn.options} hint="functions.<name>.options">

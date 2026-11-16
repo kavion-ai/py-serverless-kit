@@ -242,6 +242,21 @@ def _text(code: int, msg: Any) -> str:
     return f"{code} {' '.join(text.split())}".strip()
 
 
+def _login(smtp: smtplib.SMTP, user: str, password: str) -> None:
+    """``smtp.login``, but stopping at the first refusal. smtplib tries the next mechanism after a 535, and servers such
+    as Gmail hang up after one, so the refusal turned into "Connection unexpectedly closed"."""
+    smtp.ehlo_or_helo_if_needed()
+    if not smtp.has_extn("auth"):
+        raise smtplib.SMTPNotSupportedError("SMTP AUTH extension not supported by server.")
+    advertised = smtp.esmtp_features["auth"].upper().split()
+    for mech in ("CRAM-MD5", "PLAIN", "LOGIN"):
+        if mech in advertised:
+            smtp.user, smtp.password = user, password
+            smtp.auth(mech, getattr(smtp, "auth_" + mech.lower().replace("-", "_")), initial_response_ok=True)
+            return
+    raise smtplib.SMTPException("No suitable authentication method found.")
+
+
 def _session(host: str, port: int, rcpts: List[str], mail_from: str, raw: bytes, *, tls: str, require_tls: bool,
              verify: bool, helo: str, user: str = "", password: str = "") -> Results:
     """One SMTP session. ``tls``: ``tls`` (implicit), ``starttls`` (when offered, required if ``require_tls``)
@@ -277,7 +292,7 @@ def _session(host: str, port: int, rcpts: List[str], mail_from: str, raw: bytes,
                 raise _HostFailed(f"421 4.7.10 {host} does not offer STARTTLS, which is required")
         if user:
             try:
-                smtp.login(user, password)
+                _login(smtp, user, password)
             except smtplib.SMTPAuthenticationError as exc:
                 raise _HostFailed(_text(exc.smtp_code, exc.smtp_error) + " (check the relay user and password)") \
                     from None
@@ -400,7 +415,7 @@ def test_connection(conf: Dict[str, Any], domain: str = "gmail.com") -> Dict[str
                 return {"Ok": False, "Message": f"{target} does not offer STARTTLS. Pick TLS (port 465) or none.",
                         "Steps": steps}
             if user:
-                smtp.login(user, str(conf["RelayPassword"]))
+                _login(smtp, user, str(conf["RelayPassword"]))
                 steps.append(f"Logged in as {user}")
             smtp.quit()
             done = "Relay works: mail will be sent through it." if mode == "relay" else \

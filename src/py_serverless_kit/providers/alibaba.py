@@ -47,6 +47,7 @@ class AlibabaProvider(Provider):
         "FC 3.0 with one HTTP trigger per function (fcapp.run URL); schedules via timer triggers; "
         "OSS and MNS-topic triggers; workflows run on the embedded engine."
     )
+    image_soon = "Alibaba Container Registry + Function Compute custom containers"
 
     # ------------------------------------------------------------------ bundle
     def shim_files(self, config: ServiceConfig) -> Dict[str, str]:

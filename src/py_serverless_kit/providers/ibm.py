@@ -44,6 +44,7 @@ class IbmProvider(Provider):
         "subscriptions). Code is uploaded inline as a base64 data URL, so keep bundles small or set "
         "options.code_reference to a code bundle image. Auth: set IC_API_KEY."
     )
+    image_soon = "IBM Container Registry + Code Engine"
 
     # ------------------------------------------------------------------ bundle
     def shim_files(self, config: ServiceConfig) -> Dict[str, str]:

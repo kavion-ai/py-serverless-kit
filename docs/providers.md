@@ -27,6 +27,10 @@ Run `pskit providers` (or `pskit providers --json`) to print this matrix from th
 - Every provider gets `provider.region` (or its default region), `provider.options` (below), and `functions.<fn>.options`, which is merged into that provider's function resource as an escape hatch.
 - Resources are tagged or labelled with `pskit-service`, `pskit-stage` and `managed-by: py-serverless-kit` where the cloud supports tags.
 - With no pinned `runtime`, pskit picks python3.12 or the newest version below it that the cloud supports (see [configuration.md](configuration.md#default-runtime)).
+- Before every deploy pskit checks the bundle against the cloud's deployment size limits and lists every resource it
+  creates, with what it is for. Large bundles deploy as **container images** on AWS (Amazon ECR) and Azure (ACR),
+  with more clouds coming soon. Logs and metrics services are on by default and can be switched off per function
+  (`monitoring`). See [package size, container images, logs & metrics](package-size-and-monitoring.md).
 
 Every generated configuration (all 11 providers) passes `terraform validate`. The repository's `scripts/validate_all_providers.py` re-checks this in CI. On-premises uses Terraform's built-in provider, so that check does not download a plugin for it.
 
@@ -38,6 +42,8 @@ Every generated configuration (all 11 providers) passes `terraform validate`. Th
 - **Credentials:** standard AWS chain (`aws configure`, SSO, `AWS_PROFILE`, env keys, OIDC in CI)
 - **Dependencies:** pip-installed into the zip as manylinux wheels (`x86_64` or `arm64`); Node.js: `npm install --omit=dev` into the zip
 - **Node.js:** `nodejs18`, `nodejs20`, `nodejs22` → `nodejs18.x` / `nodejs20.x` / `nodejs22.x`. Generated `pskit_entry.js`, Lambda handler `pskit_entry.handler` (same as Python)
+- **Size limits / images:** 250 MB unzipped (50 MB zipped with `artifact_upload: direct`). `package.type: image` deploys every function from one **Amazon ECR** image (up to 10 GB), built with local Docker and pinned by digest ([details](package-size-and-monitoring.md#aws-lambda--amazon-ecr))
+- **Logs & metrics:** `monitoring.logs: false` drops the function's CloudWatch log group and its permission to write logs; Lambda metrics are always on
 
 | Trigger | Implementation |
 |---|---|
@@ -116,6 +122,8 @@ Functions with several triggers are **split into multiple Cloud Functions** auto
 - **Terraform:** `hashicorp/azurerm >= 4.9` (needs a subscription id)
 - **Credentials:** `az login` + `ARM_SUBSCRIPTION_ID`, or service principal env vars
 - **Dependencies:** remote Oryx build from `requirements.txt` (`azure-functions` is added automatically); Node.js: from `package.json` (`@azure/functions` v4 is added)
+- **Size limits / images:** 1 GB package. `package.type: image` runs the Function App as a custom container from **Azure Container Registry** (Elastic Premium `EP1` by default: Consumption plans cannot run containers). Options `acr_sku`, `acr_resource_group` ([details](package-size-and-monitoring.md#azure-functions--azure-container-registry))
+- **Logs & metrics:** `monitoring.logs: false` sets the function's log level to `None` in `host.json`; Application Insights and Log Analytics are left out when every function has logs and metrics off (or `options.app_insights: false`)
 - **Node.js:** `nodejs18`, `nodejs20`, `nodejs22` → `application_stack.node_version` `18` / `20` / `22`. Generated `pskit_entry.js` (the package's `main`) uses the v4 programming model: one `app.http()` / `app.timer()` / `app.storageQueue()` / `app.storageBlob()` / `app.serviceBusTopic()` per trigger, the same function names and routes as `function_app.py`, including the `_pskit/invoke/<fn>` routes for invoke-only and Logic Apps task functions. Several `Set-Cookie` headers are all kept (Python keeps only the last)
 
 ```yaml

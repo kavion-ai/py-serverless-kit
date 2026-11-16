@@ -44,6 +44,7 @@ class TencentProvider(Provider):
         "HTTP via an API Gateway service (one API per route, released to `release`); "
         "timer and COS triggers; COS bucket names must include the APPID suffix (name-1250000000)."
     )
+    image_soon = "Tencent Container Registry (TCR) + SCF image functions"
 
     # ------------------------------------------------------------------ bundle
     def shim_files(self, config: ServiceConfig) -> Dict[str, str]:

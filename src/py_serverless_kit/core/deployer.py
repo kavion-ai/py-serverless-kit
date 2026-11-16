@@ -11,6 +11,7 @@ from typing import Any, Callable, Dict, List, Optional
 
 from ..packaging.builder import build_artifact
 from ..providers.base import Artifact, Issue, RenderContext
+from ..providers.container import PackagePlan, plan_package
 from ..terraform.runner import TerraformRunner
 from .describe import RECORD_FILE, build_record
 from .project import Project
@@ -28,10 +29,21 @@ class PackageResult:
     tf_file: Path
     resource_count: int
     warnings: List[str] = field(default_factory=list)
+    package: Optional[PackagePlan] = None  # zip or image, and the size notes printed
+    resources: List[Dict[str, Any]] = field(default_factory=list)  # what Terraform manages, described
 
 
 class Deployer:
-    def __init__(self, project: Project, echo: Echo = print, runner: Optional[TerraformRunner] = None) -> None:
+    def __init__(
+        self,
+        project: Project,
+        echo: Echo = print,
+        runner: Optional[TerraformRunner] = None,
+        package_type: Optional[str] = None,
+    ) -> None:
+        """``package_type`` (``--package-type``) overrides ``package.type`` of pskit.yml for this run."""
+        if package_type:
+            project.use_package_type(package_type)
         self.project = project
         self.echo = echo
         self._runner = runner
@@ -71,7 +83,8 @@ class Deployer:
                 raise DeployError(f"hook {name} failed ({proc.returncode}): {cmd}")
 
     # ---------------------------------------------------------------- steps
-    def package(self, *, skip_deps: bool = False) -> PackageResult:
+    def package(self, *, skip_deps: bool = False, strict: bool = False) -> PackageResult:
+        """Build the bundle and Terraform. ``strict`` (deploy) stops when the zip is over the provider's size limit."""
         project = self.project
         self.check()
         project.work_dir.mkdir(parents=True, exist_ok=True)
@@ -81,6 +94,14 @@ class Deployer:
             f"Packaging {project.config.service} for {project.provider.display_name} ({project.config.provider.stage})"
         )
         artifact = build_artifact(project, skip_deps=skip_deps, log=self.echo)
+        plan = self.package_plan(artifact, strict=strict and not skip_deps)
+        image = None
+        if plan.type == "image":
+            from ..packaging.image import prepare_image
+
+            image = prepare_image(project.provider, project.config, artifact)
+            self.echo(f"  image: {image.base_image} -> tag {image.tag} ({image.platform}), "
+                      f"{image.context}/{image.dockerfile}")
         ctx = RenderContext(
             config=project.config,
             provider=project.provider,
@@ -89,6 +110,8 @@ class Deployer:
             artifact=artifact,
             region=project.region,
             workflow_engines=dict(project.engines),
+            package_type=plan.type,
+            image=image,
         )
         doc = project.provider.render(ctx)
         tf_file = project.work_dir / "main.tf.json"
@@ -96,9 +119,43 @@ class Deployer:
         warnings = list(getattr(doc, "warnings", []))
         for w in warnings:
             self.echo(f"  WARNING: {w}")
+        resources = self.describe_resources(doc.to_dict(), plan)
         self.echo(f"  terraform: {doc.count()} resource(s) -> {tf_file.relative_to(project.root)}")
         self.run_hook("after_package")
-        return PackageResult(artifact=artifact, tf_file=tf_file, resource_count=doc.count(), warnings=warnings)
+        return PackageResult(artifact=artifact, tf_file=tf_file, resource_count=doc.count(), warnings=warnings,
+                             package=plan, resources=resources)
+
+    def describe_resources(self, tf: Dict[str, Any], plan: PackagePlan) -> List[Dict[str, Any]]:
+        """Print what each generated resource is for and save it as resources.json (studio's Deploy page)."""
+        from ..providers import descriptions
+
+        summary = descriptions.summarize(tf)
+        for line in descriptions.lines(summary):
+            self.echo(f"  {line}")
+        cfg = self.project.config
+        prov = self.project.provider
+        descriptions.save(self.project.work_dir, summary, {
+            "provider": cfg.provider.name,
+            "provider_display": prov.display_name,
+            "stage": cfg.provider.stage,
+            "package_type": plan.type,
+            "monitoring": {
+                name: {"logs": cfg.logs_of(fn), "metrics": cfg.metrics_of(fn)} for name, fn in sorted(cfg.functions.items())
+            },
+            "monitoring_text": {"logs": prov.monitoring_text("logs"), "metrics": prov.monitoring_text("metrics")},
+        })
+        return summary
+
+    def package_plan(self, artifact: Artifact, *, strict: bool = False) -> PackagePlan:
+        """Zip or image for this deploy, with the size notes (see providers/container.py)."""
+        plan = plan_package(self.project.provider, self.project.config, artifact)
+        for note in plan.notes:
+            self.echo(f"  NOTE: {note}" if note.level == "info" else f"  {note}")
+        if strict and plan.errors:
+            raise DeployError(
+                f"the bundle is too big for a zip deploy on {self.project.provider.display_name}; see the notes above"
+            )
+        return plan
 
     def plan(self, *, skip_deps: bool = False, destroy: bool = False) -> bool:
         self.package(skip_deps=skip_deps)
@@ -108,7 +165,7 @@ class Deployer:
     def deploy(self, *, skip_deps: bool = False, auto_approve: bool = True, upgrade: bool = False) -> Dict[str, Any]:
         if self.project.config.provider.name == "onprem":
             self._onprem_services_follow()  # before packaging: the env file shipped has the new addresses
-        result = self.package(skip_deps=skip_deps)
+        result = self.package(skip_deps=skip_deps, strict=True)
         self.run_hook("before_deploy")
         self.echo("Running terraform init")
         self.runner.init(upgrade=upgrade)
@@ -125,11 +182,7 @@ class Deployer:
         record = build_record(
             self.project,
             outputs,
-            artifact={
-                "sha256": result.artifact.sha256,
-                "size": result.artifact.size,
-                "files": result.artifact.file_count,
-            },
+            artifact=_artifact_record(result),
         )
         if self.project.config.provider.name == "onprem":
             self._remember_onprem(record)
@@ -381,6 +434,17 @@ class Deployer:
         if path.is_file():
             return json.loads(path.read_text("utf-8"))
         return None
+
+
+def _artifact_record(result: PackageResult) -> Dict[str, Any]:
+    out: Dict[str, Any] = {
+        "sha256": result.artifact.sha256,
+        "size": result.artifact.size,
+        "unpacked_size": result.artifact.unpacked_size,
+        "files": result.artifact.file_count,
+        "package_type": result.package.type if result.package else "zip",
+    }
+    return out
 
 
 def _write_gitignore(pskit_dir: Path) -> None:

@@ -127,7 +127,9 @@ struct AuthFailed {
   std::string text;
 };
 
-// smtplib.SMTP.login: CRAM-MD5, PLAIN, LOGIN in that order of preference
+// smtplib.SMTP.login: CRAM-MD5, PLAIN, LOGIN in that order of preference, but stopping at the first refusal:
+// servers such as Gmail hang up after a 535, so trying the next mechanism only hides the refusal behind a
+// "connection closed" error.
 void login(SmtpClient& c, const std::string& user, const std::string& password) {
   if (!c.has("auth")) throw Disconnected{"SMTP AUTH extension not supported by server."};
   std::vector<std::string> advertised = split_ws(upper(c.features["auth"]));
@@ -135,8 +137,8 @@ void login(SmtpClient& c, const std::string& user, const std::string& password) 
   for (const char* m : {"CRAM-MD5", "PLAIN", "LOGIN"})
     if (std::find(advertised.begin(), advertised.end(), m) != advertised.end()) methods.push_back(m);
   if (methods.empty()) throw Disconnected{"No suitable authentication method found."};
-  AuthFailed last{535, ""};
-  for (auto& m : methods) {
+  {
+    const std::string& m = methods.front();
     std::string text;
     int code;
     int challenges;
@@ -165,9 +167,8 @@ void login(SmtpClient& c, const std::string& user, const std::string& password) 
       if (challenges > 5) throw Disconnected{"Server AUTH mechanism infinite loop."};
     }
     if (code == 235 || code == 503) return;
-    last = AuthFailed{code, text};
+    throw AuthFailed{code, text};
   }
-  throw last;
 }
 
 Results session(const std::string& host, int port, const std::vector<std::string>& rcpts, const std::string& mail_from,

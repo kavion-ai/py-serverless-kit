@@ -14,7 +14,7 @@ from typing import Any, Callable, Dict, Tuple
 SELF_LOGIN: Tuple[str, ...] = ("uptime-kuma", "n8n", "portainer", "gitea", "nginx-proxy-manager")
 # Services with no authentication at all (keep them on 127.0.0.1 or a private network).
 NO_AUTH_APPS: Tuple[str, ...] = ("localemu", "prometheus", "mosquitto", "jaeger")
-DEFAULT_USERS = {"neo4j": "neo4j"}
+DEFAULT_USERS = {"neo4j": "neo4j", "elasticsearch": "elastic"}
 
 _WEB = {"URL": "http://{address}:{port}"}
 _WEB_LOGIN = {"URL": "http://{address}:{port}", "USER": "{user}", "PASSWORD": "{password}"}
@@ -152,6 +152,35 @@ def apps(svc: Callable[..., Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
             group="Identity",
         ),
         # ------------------------------------------------------------------ search and vector databases
+        "elasticsearch": svc(
+            "Elasticsearch (search and analytics)",
+            "docker.elastic.co/elasticsearch/elasticsearch:8.15.3",
+            9200,
+            ("database",),
+            data="/usr/share/elasticsearch/data",
+            # The image runs as elasticsearch (uid 1000, group 0): a host directory must be writable by it.
+            data_owner="1000:0",
+            env={
+                "discovery.type": "single-node",
+                "cluster.name": "pskit-{name}",
+                "ELASTIC_PASSWORD": "{password}",
+                "xpack.security.enabled": "true",
+                "xpack.security.http.ssl.enabled": "false",
+                "xpack.security.transport.ssl.enabled": "false",
+                "ES_JAVA_OPTS": "-Xms1g -Xmx1g",
+            },
+            health='curl -fsu "elastic:$ELASTIC_PASSWORD" localhost:9200/_cluster/health >/dev/null',
+            # Kibana signs in to Elasticsearch as kibana_system: give it the service password.
+            init='curl -fsu "elastic:$ELASTIC_PASSWORD" -X POST localhost:9200/_security/user/kibana_system/_password '
+            '-H "Content-Type: application/json" -d "{\\"password\\":\\"$ELASTIC_PASSWORD\\"}" >/dev/null',
+            notes="Full-text search, logs and analytics with the Elasticsearch REST API on the port. User elastic, "
+            "the password is the service password. Web UI: Kibana (Also start its web UI). Needs about 2 GB of "
+            "memory (1 GB heap).",
+            connect={"env": {"URL": "http://{address}:{port}", "USER": "elastic", "PASSWORD": "{password}"},
+                     "connection": {"url": "http://{address}:{port}", "user": "elastic", "url_env": "{prefix}_URL",
+                                    "password_env": "{prefix}_PASSWORD"}},
+            group="Search",
+        ),
         "meilisearch": svc(
             "Meilisearch (search engine)",
             "getmeili/meilisearch:v1.11",

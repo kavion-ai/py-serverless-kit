@@ -171,6 +171,7 @@ _READS: Dict[str, Tuple[str, str]] = {
     "test-guide": ("test", "r"),
     "resource-test-guide": ("resources", "r"),
     "cloud-resources": ("resources", "r"),
+    "deploy-resources": ("deploy", "r"),
     "resource-guides": ("resources", "r"),
     "resource-bindings": ("resources", "r"),
     "onprem-firewall": ("network", "r"),

@@ -6,6 +6,63 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [3.2.0] - 2026-11-16
+
+### Added
+- **Container-image deploys** (`package.type: image`, or `--package-type image` on `pskit package` / `plan` /
+  `deploy`): bundles too big for a zip deploy ship as a container image built from the same bundle with the local
+  Docker daemon and pushed by Terraform (`kreuzwerker/docker`, which logs in to the registry itself).
+  - **AWS:** an Amazon ECR repository (scan on push, lifecycle policy keeping `package.image.keep` images) and Lambda
+    functions with `package_type = "Image"`, pinned to the pushed digest. Images can be up to 10 GB instead of the
+    250 MB unzipped zip limit.
+  - **Azure:** an Azure Container Registry, with the Function App running the image (`application_stack.docker`).
+    The plan defaults to Elastic Premium `EP1`, because Consumption plans cannot run containers. New options
+    `acr_sku` and `acr_resource_group`.
+  - `package.type: auto` stays a zip and switches to an image only when the bundle is over the zip limit.
+    `package.image` has `repository` (an existing ECR repository or registry), `base_image`, `dockerfile_lines`,
+    `keep` and `scan_on_push`.
+  - GCP, Cloudflare, Alibaba, Tencent, Huawei and IBM: *coming soon*. There, `package.type: image` is a validation
+    error that names what the image deploy will use.
+- **Deployment size checks on every package / plan / deploy:** the zipped and unzipped size against the provider's
+  limits (AWS 250 MB unzipped, or 50 MB zipped with `artifact_upload: direct`; Azure 1 GB; GCP 100 MB compressed /
+  500 MB with modules; Cloudflare 10 MB), with a warning from 80 %. `pskit deploy` stops before Terraform when a zip
+  is over a limit and says how to deploy an image instead.
+- **Logs & metrics switches, on by default** (`provider.monitoring`, `functions.<name>.monitoring: {logs, metrics}`
+  or `false`):
+  - AWS `logs: false` drops the function's CloudWatch log group, and the function runs with a role that cannot write
+    logs.
+  - Azure `logs: false` sets the function's log level to `None` in `host.json`. Application Insights and Log
+    Analytics are left out when every function has both switches off.
+  - Where logs or metrics are built into the platform, a switch that is off has no effect, and validation warns.
+- **Every resource described before a deploy:** `pskit package` / `plan` / `deploy` list every Terraform resource
+  grouped by kind, with what it is for and the setting that leaves out the optional ones. The list is saved as
+  `.pskit/<provider>-<stage>/resources.json`. Every resource type of every built-in provider has a description.
+- **Studio:**
+  - Deploy page: a *Packaging* panel (Zip / Container image / Auto, with the provider's limits and "coming soon").
+  - Deploy page: a *What a deploy creates* panel (with *Refresh*); the Deploy confirmation lists the resources too.
+  - Each function: a *Logs & metrics* section with two switches.
+  - New endpoint `GET /api/deploy-resources`.
+- `pskit providers` shows an `images` column, and `--json` includes `package` (types, registry, limits) and
+  `monitoring`. `deployment.json` records `package_type` and `unpacked_size`.
+- `scripts/validate_all_providers.py` validates an image variant of AWS and Azure (`--package zip|image|all`).
+- Docs: new [package size, images, logs & metrics](docs/package-size-and-monitoring.md) guide. The configuration,
+  CLI, providers and studio docs and the README matrix are updated.
+
+### Changed
+- The build log shows the unzipped size next to the zipped size.
+- `pskit init` templates mention `package.type` and `monitoring` in comments.
+
+## [3.1.4] - 2026-11-13
+
+### Added
+- **Elasticsearch one-click service** (`--service elasticsearch`, studio: *Identity & search* > **Elasticsearch
+  (search and analytics)**): the official `docker.elastic.co/elasticsearch/elasticsearch:8.15.3` image, single node,
+  security on (user `elastic`, the service password), plain HTTP on 9200, data in a volume, a health check, and
+  `PSKIT_<KEY>_URL` / `_USER` / `_PASSWORD` in the env file. About 2 GB of memory (1 GB heap).
+- **Kibana as its web UI** (*Also start its web UI* / `--gui`): `docker.elastic.co/kibana/kibana:8.15.3` on a private
+  network with Elasticsearch, signed in as `kibana_system` (pskit sets that user's password when it creates the
+  service); you sign in to Kibana as `elastic` with the service password.
+
 ## [3.1.3] - 2026-11-13
 
 ### Added

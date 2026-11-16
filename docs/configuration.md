@@ -46,6 +46,7 @@ extends: base.yml               # inherit another file (see below)
 | `iam.statements` | list of `{effect, actions, resources}` | `[]` | AWS-style; `effect` defaults to `Allow`, `resources` to `["*"]`. Ignored (with a warning) on clouds that don't map it |
 | `iam.role` | string | — | use an existing role / agency instead of creating one |
 | `log_retention_days` | int or null | `14` | AWS CloudWatch log group retention |
+| `monitoring` | `{logs, metrics}` or bool | both on | default logs / metrics switches of every function, see [logs & metrics](package-size-and-monitoring.md#3-logs--metrics-on-by-default-off-per-function) |
 | `options` | mapping | `{}` | provider-specific settings, see [providers.md](providers.md). On-premises: `deploy.method` is `local`, `ssh`, `scp` (same as `ssh`), or `docker`. Remote SSH copies one archive and waits for `/__pskit/health`. Remote Docker uses `deploy.host` and `deploy.pem` (a `.pem` key; `pskit deploy` asks when it is missing) and installs Docker on the server when it is absent. `python: bundle` ships an interpreter when the server has none. `placement` puts groups of functions on different servers ([placement](placement.md)); `balancer` puts the project on a shared load balancer by path ([load balancers](load-balancers.md)) |
 | `state` | mapping | local state | see [state](#state-remote-terraform-backend) |
 | `terraform` | mapping | | see [terraform](#terraform) |
@@ -98,6 +99,7 @@ functions:
     events:
       - http: POST /orders
     dlq: {queue: orders-dlq, max_retries: 3}   # failed queue messages: see dead-letter-queues.md
+    monitoring: {logs: true, metrics: false}  # provider logs / metrics services (default: both on)
     options: {}                     # merged into the provider's function resource (escape hatch)
 ```
 
@@ -112,6 +114,7 @@ functions:
 | `concurrency` | int ≥ 0 | — |
 | `iam` | like `provider.iam` | statements are added to the provider-level ones; a dedicated role is created (AWS) |
 | `dlq` | `true`, a queue name, or `{queue, max_retries}` | off. Queue triggers only; AWS, Azure, GCP and on premises. See [dead-letter queues](dead-letter-queues.md) |
+| `monitoring` | `{logs, metrics}` or bool | inherit `provider.monitoring` (on). `false` = both off. What each switch removes per cloud: [logs & metrics](package-size-and-monitoring.md#3-logs--metrics-on-by-default-off-per-function) |
 | `options` | mapping | `{}` |
 
 Event syntax is in [events.md](events.md). Deployed functions are named `<service>-<stage>-<function>`, lowercased, with invalid characters replaced and long names shortened with a stable hash.
@@ -151,6 +154,12 @@ resources:
 
 | Key | Default | Notes |
 |---|---|---|
+| `type` | `zip` | `zip`, `image` (container image: Amazon ECR on AWS, Azure Container Registry on Azure; needs Docker) or `auto` (image only when the zip is over the provider's limit). `--package-type` overrides it. See [package size & container images](package-size-and-monitoring.md) |
+| `image.repository` | created by pskit | existing ECR repository (AWS) / registry name (Azure) |
+| `image.base_image` | provider's base image | replaces the `FROM` line |
+| `image.dockerfile_lines` | `[]` | extra Dockerfile instructions before the code is copied |
+| `image.keep` | `10` | images kept in a pskit-created ECR repository |
+| `image.scan_on_push` | `true` | ECR image scanning |
 | `source` | `.` | directory (relative to the config) whose files are bundled |
 | `include` | `["**/*"]` | gitignore-style globs (`**` = any depth) |
 | `exclude` | `[]` | added to the default excludes below |
@@ -190,7 +199,7 @@ providers:
       create-order: {memory: 1024}
 ```
 
-The block for the active provider (`provider.name` or `--provider`) is deep-merged into the config. Inside a block, `ProviderConfig` keys (`region`, `stage`, `runtime`, `memory`, `timeout`, `architecture`, `environment`, `tags`, `iam`, `log_retention_days`, `options`, `state`, `terraform`) may be written directly as shorthand for `provider: {...}`.
+The block for the active provider (`provider.name` or `--provider`) is deep-merged into the config. Inside a block, `ProviderConfig` keys (`region`, `stage`, `runtime`, `memory`, `timeout`, `architecture`, `environment`, `tags`, `iam`, `log_retention_days`, `monitoring`, `options`, `state`, `terraform`) may be written directly as shorthand for `provider: {...}`.
 
 #### Switch something off on one cloud
 

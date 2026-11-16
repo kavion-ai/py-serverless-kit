@@ -25,13 +25,19 @@ or the ``ARM_SUBSCRIPTION_ID`` environment variable.
 Options: ``subscription_id``, ``resource_group`` (existing), ``plan_sku`` (default Y1),
 ``app_insights`` (default true), ``storage_connection`` (app-setting name for
 ``existing`` queues / buckets in another account), ``servicebus_namespace_id`` and
-``servicebus_connection`` (for ``existing`` topics).
+``servicebus_connection`` (for ``existing`` topics), ``acr_resource_group`` (resource group of an existing
+registry named by ``package.image.repository``).
+
+``package.type: image`` deploys the Function App as a custom container: pskit creates an Azure Container
+Registry (admin login on), builds the image from the bundle with the local Docker daemon, pushes it and points
+the app at it. Consumption plans cannot run custom containers, so the plan defaults to Elastic Premium ``EP1``.
 """
 
 from __future__ import annotations
 
 import json
 import re
+from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from ..config.schema import ServiceConfig, WorkflowConfig
@@ -51,6 +57,7 @@ from .base import (
     RenderContext,
     stable_suffix,
 )
+from .container import GB, PackageLimits, docker_registry, push_image
 from .terraform_doc import TerraformDoc, escape, ref, tf_id
 
 APP = "azurerm_linux_function_app"
@@ -60,6 +67,10 @@ DEFAULT_CONNECTION = "AzureWebJobsStorage"
 SERVICEBUS_SETTING = "PSKIT_SERVICEBUS"
 NODE_ENTRY = "pskit_entry.js"
 NODE_HTTP_METHODS = ("GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS")
+WWWROOT = "/home/site/wwwroot"
+# Plans that cannot run a custom container (Linux Consumption, Flex Consumption).
+CONSUMPTION_SKUS = ("Y1", "FC1")
+IMAGE_PLAN_SKU = "EP1"
 
 
 def py_ident(text: str) -> str:
@@ -108,8 +119,91 @@ class AzureProvider(Provider):
     storage_events = ("created", "updated")
     notes = (
         "Linux Consumption Function App, Python v2 model. Workflows use the embedded engine; "
-        "`engine: native` compiles them to Azure Logic Apps (opt-in)."
+        "`engine: native` compiles them to Azure Logic Apps (opt-in). Large bundles deploy as a container "
+        "image from Azure Container Registry (package.type: image, Elastic Premium plan)."
     )
+    # https://learn.microsoft.com/azure/azure-functions/run-functions-from-deployment-package
+    package_limits = PackageLimits(zip_compressed=1 * GB, reference="Azure Functions deployment package limit")
+    image_registry = "Azure Container Registry (ACR)"
+    monitoring = {
+        "logs": "the function's logs in Application Insights (off: host.json log level None for its functions)",
+        "metrics": "Application Insights + Log Analytics workspace of the Function App (shared by all functions: "
+                   "left out when no function needs them)",
+    }
+    monitoring_controls = frozenset({"logs", "metrics"})
+
+    # ------------------------------------------------------------------ logs / metrics
+    @staticmethod
+    def wants_insights(config: ServiceConfig) -> bool:
+        """Application Insights is created while any function keeps metrics, or logs (they are stored there)."""
+        if not config.provider.options.get("app_insights", True):
+            return False
+        return any(config.metrics_of(fn) or config.logs_of(fn) for fn in config.functions.values())
+
+    def _monitoring_validation(self, config: ServiceConfig) -> List[Issue]:
+        fns = config.functions
+        no_metrics = sorted(n for n, fn in fns.items() if not config.metrics_of(fn))
+        if no_metrics and self.wants_insights(config):
+            keep = sorted(n for n, fn in fns.items() if config.metrics_of(fn) or config.logs_of(fn))
+            return [Issue(
+                "warning",
+                f"monitoring.metrics is off for {', '.join(no_metrics)}, but one Function App shares one Application "
+                f"Insights: it stays for {', '.join(keep)} (turn metrics and logs off on every function to drop it)",
+                "monitoring.metrics",
+            )]
+        return []
+
+    # ------------------------------------------------------------------ container images
+    def image_base(self, config: ServiceConfig) -> str:
+        if config.package.image.base_image:
+            return config.package.image.base_image
+        version = self.runtime_id(config.provider.runtime)
+        if config.language == "node":
+            return f"mcr.microsoft.com/azure-functions/node:4-node{version}"
+        return f"mcr.microsoft.com/azure-functions/python:4-python{version}"
+
+    def image_dockerfile(self, config: ServiceConfig, build_dir: Path) -> str:
+        from ..packaging.image import dockerfile
+
+        body = [
+            f"ENV AzureWebJobsScriptRoot={WWWROOT} \\",
+            "    AzureFunctionsJobHost__Logging__Console__IsEnabled=true",
+        ]
+        if (build_dir / "requirements.txt").is_file():
+            body += ["COPY requirements.txt /", "RUN pip install --no-cache-dir -r /requirements.txt"]
+        body.append(f"COPY . {WWWROOT}")
+        if config.language == "node" and (build_dir / "package.json").is_file():
+            body.append(f"RUN cd {WWWROOT} && npm install --omit=dev --no-audit --no-fund")
+        return dockerfile(self.image_base(config), config.package.image.dockerfile_lines, body)
+
+    def plan_sku(self, ctx: RenderContext) -> str:
+        return str(ctx.opt("plan_sku") or (IMAGE_PLAN_SKU if ctx.package_type == "image" else "Y1"))
+
+    def _image_validation(self, config: ServiceConfig) -> List[Issue]:
+        sku = str(config.provider.options.get("plan_sku") or "")
+        if config.package.type == "image":
+            if sku.upper() in CONSUMPTION_SKUS:
+                return [Issue(
+                    "error",
+                    f"plan_sku {sku} (Consumption) cannot run custom containers; use {IMAGE_PLAN_SKU} (Elastic "
+                    "Premium) or a dedicated SKU such as B1 / S1 / P1v3, or package.type: zip",
+                    "provider.options.plan_sku",
+                )]
+            if not sku:
+                return [Issue(
+                    "warning",
+                    f"package.type image runs on an Elastic Premium plan ({IMAGE_PLAN_SKU}, billed per hour, not per "
+                    "call); set provider.options.plan_sku to choose another non-Consumption plan",
+                    "provider.options.plan_sku",
+                )]
+        if config.package.type == "auto" and sku.upper() in CONSUMPTION_SKUS:
+            return [Issue(
+                "warning",
+                f"package.type auto cannot switch to an image on plan_sku {sku} (Consumption): a bundle over the zip "
+                "limit fails to deploy",
+                "provider.options.plan_sku",
+            )]
+        return []
 
     # ------------------------------------------------------------------ workflows
     def workflow_engine(self, wf: WorkflowConfig) -> str:
@@ -199,9 +293,18 @@ class AzureProvider(Provider):
             "extensionBundle": {"id": "Microsoft.Azure.Functions.ExtensionBundle", "version": "[4.*, 5.0.0)"},
             "extensions": extensions,
             "functionTimeout": _hms(min(timeout, self.max_timeout)),
-            "logging": {"logLevel": {"default": "Information"}},
+            "logging": {"logLevel": self._log_levels(config)},
         }
         return json.dumps(host, indent=2) + "\n"
+
+    def _log_levels(self, config: ServiceConfig) -> Dict[str, str]:
+        """``monitoring.logs: false`` -> log level None for every Azure function of that function."""
+        levels = {"default": "Information"}
+        for reg in self.registrations(config):
+            fn = config.functions.get(reg["function"])
+            if fn is not None and not config.logs_of(fn):
+                levels[f"Function.{reg['ident']}"] = "None"
+        return levels
 
     def _node_shim(self, config: ServiceConfig) -> str:
         """Node.js v4 programming model: one ``app.<trigger>()`` registration per function."""
@@ -389,6 +492,8 @@ class AzureProvider(Provider):
                         Issue("warning", "topic.filter is not applied on Azure Service Bus subscriptions", where)
                     )
         issues.extend(self._workflow_validation(config))
+        issues.extend(self._image_validation(config))
+        issues.extend(self._monitoring_validation(config))
         return issues
 
     def _workflow_validation(self, config: ServiceConfig) -> List[Issue]:
@@ -456,7 +561,7 @@ class AzureProvider(Provider):
                 "resource_group_name": rg_name,
                 "location": loc,
                 "os_type": "Linux",
-                "sku_name": ctx.opt("plan_sku", "Y1"),
+                "sku_name": self.plan_sku(ctx),
                 "tags": tags,
             },
         )
@@ -466,7 +571,7 @@ class AzureProvider(Provider):
                 ("node_version" if cfg.language == "node" else "python_version"): self.runtime_id(cfg.provider.runtime)
             },
         }
-        if ctx.opt("app_insights", True):
+        if self.wants_insights(cfg):
             law = doc.resource(
                 "azurerm_log_analytics_workspace",
                 "logs",
@@ -573,6 +678,9 @@ class AzureProvider(Provider):
                 )
 
         app_name = self.app_name(ctx.service, ctx.stage)
+        image_deps: List[str] = []
+        if ctx.package_type == "image":
+            image_deps = self._container(doc, ctx, rg_name, loc, tags, site_config, settings)
         body: Dict[str, Any] = {
             "name": app_name,
             "resource_group_name": rg_name,
@@ -587,6 +695,9 @@ class AzureProvider(Provider):
             "site_config": site_config,
             "tags": tags,
         }
+        if image_deps:
+            del body["zip_deploy_file"]  # the code is in the image
+            body["depends_on"] = image_deps
         app = doc.resource(APP, "app", body)
         host = "https://" + ref(app, "default_hostname")
 
@@ -612,6 +723,58 @@ class AzureProvider(Provider):
             {"functions": fn_out, "workflows": wf_out, "endpoint": host},
             description="py-serverless-kit deployment summary",
         )
+
+    def _container(
+        self,
+        doc: TerraformDoc,
+        ctx: RenderContext,
+        rg_name: str,
+        loc: str,
+        tags: Dict[str, str],
+        site_config: Dict[str, Any],
+        settings: Dict[str, str],
+    ) -> List[str]:
+        """``package.type: image``: ACR, the image pushed into it, and the app's container settings."""
+        image_cfg = ctx.config.package.image
+        if image_cfg.repository:
+            acr = doc.data(
+                "azurerm_container_registry",
+                "acr",
+                {"name": image_cfg.repository, "resource_group_name": ctx.opt("acr_resource_group") or rg_name},
+            )
+        else:
+            base = re.sub(r"[^a-z0-9]", "", ctx.prefix.lower())[:38] or "pskit"
+            acr = doc.resource(
+                "azurerm_container_registry",
+                "acr",
+                {
+                    "name": (base + stable_suffix(ctx.prefix, loc, "acr", length=8))[:50],
+                    "resource_group_name": rg_name,
+                    "location": loc,
+                    "sku": ctx.opt("acr_sku", "Basic"),
+                    "admin_enabled": True,
+                    "tags": tags,
+                },
+            )
+        server = ref(acr, "login_server")
+        docker_registry(doc, server, ref(acr, "admin_username"), ref(acr, "admin_password"))
+        repo = re.sub(r"[^a-z0-9._-]", "-", ctx.prefix.lower()).strip("-") or "pskit"
+        image = push_image(doc, ctx, f"{server}/{repo}")
+        site_config["application_stack"] = {
+            "docker": [
+                {
+                    "registry_url": "https://" + server,
+                    "image_name": repo,
+                    "image_tag": image["tag"],
+                    "registry_username": ref(acr, "admin_username"),
+                    "registry_password": ref(acr, "admin_password"),
+                }
+            ]
+        }
+        for key in ("SCM_DO_BUILD_DURING_DEPLOYMENT", "ENABLE_ORYX_BUILD"):
+            settings.pop(key, None)  # nothing to build on the server: dependencies are in the image
+        settings["WEBSITES_ENABLE_APP_SERVICE_STORAGE"] = "false"
+        return [image["resource"]]
 
     # ------------------------------------------------------------------ Logic Apps
     def _logic_apps(self, doc: TerraformDoc, ctx: RenderContext, rg_name: str, app: str, host: str) -> Dict[str, Any]:

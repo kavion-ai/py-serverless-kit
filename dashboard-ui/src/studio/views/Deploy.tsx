@@ -10,6 +10,8 @@ import { DeployedBadge, ServerSelect, useServerChoice } from "../components/Serv
 import { DeployedGroups, PlacementEditor, readPlacement } from "../components/Placement";
 import { targetLabel } from "../placement";
 import { FirewallPanel } from "../components/FirewallPanel";
+import { PackagingPanel } from "../components/Packaging";
+import { DeployResourcesPanel, ResourceSummary } from "../components/DeployResources";
 import { useJob } from "../jobs";
 import { useAuth } from "../auth";
 import { useStudio } from "../store";
@@ -171,6 +173,9 @@ export function DeployView() {
       }
     }
     const prod = /^prod/i.test(target.stage);
+    // Before a cloud deploy: what it creates, each resource described (resources.json of the last package).
+    const summary =
+      command === "deploy" && !onprem ? <ResourceSummary data={await api.deployResources(target.provider, target.stage).catch(() => null)} /> : null;
     if (command === "remove" || (command === "deploy" && prod)) {
       const typed = `${target.provider}/${target.stage}`;
       const ok = await confirm({
@@ -180,7 +185,12 @@ export function DeployView() {
             ? deleteData
               ? "Every function, trigger and managed resource of this stage is destroyed, including buckets, queues and topics and their data. External resources are left alone."
               : "Functions, triggers and gateways are destroyed. Managed buckets, queues and topics are kept (with their data) and pskit stops managing them."
-            : "This is a production stage.",
+            : (
+                <div className="stack">
+                  <p>This is a production stage.</p>
+                  {summary}
+                </div>
+              ),
         typed,
         confirmLabel: command === "remove" ? "Remove" : "Deploy",
         danger: true,
@@ -217,7 +227,9 @@ export function DeployView() {
             This stage is deployed on <b>{movingFrom}</b> now. Deploying it on <b>{onCluster ? `cluster ${chosenCluster}` : machine === "local" ? "this machine" : machine}</b> moves it
             there (remove it from the old place first if it should no longer run there).
           </p>
-        ) : undefined,
+        ) : (
+          summary ?? undefined
+        ),
         confirmLabel: "Deploy",
       });
       if (ok !== "confirm") return;
@@ -355,6 +367,7 @@ export function DeployView() {
           )}
         </div>
       )}
+      <PackagingPanel provider={targetMeta} draft={draft} onChange={replace} />
       {onprem && (
         <Section title="Where functions run" hint="provider.options.placement">
           <PlacementEditor />
@@ -376,6 +389,13 @@ export function DeployView() {
         />
         <span className="muted small">Applies to the Remove action. External resources are never deleted.</span>
       </div>
+      <DeployResourcesPanel
+        provider={target.provider}
+        stage={target.stage}
+        refreshKey={finished ? jobId : null}
+        busy={running || !mayRun("package")}
+        onPackage={() => void run("package", { skip_deps: true })}
+      />
       {(() => {
         const cancel = jobId ? () => void api.cancelJob(jobId).catch((exc: unknown) => toast(errorMessage(exc), "err")) : undefined;
         const command = job.command || launched;

@@ -53,10 +53,52 @@ export interface ProviderMeta {
   /** Storage actions this provider can fire. Empty when storage is not a capability. */
   storage_events?: string[];
   notes?: string;
+  /** Package types (zip / image / auto), container registry and deployment size limits. */
+  package?: ProviderPackage;
+  /** What monitoring.logs / monitoring.metrics mean here; `controls` = the switches pskit can act on. */
+  monitoring?: { logs: string; metrics: string; controls: string[] };
   options: Field[];
   regions?: { id: string; label: string }[];
   /** Trigger options this provider rejects (error) or ignores (warning), per event type. */
   trigger_support?: Partial<Record<EventType, TriggerRule[]>>;
+}
+
+export type PackageType = "zip" | "image" | "auto";
+
+/** One resource type a deploy creates (providers/descriptions.py). */
+export interface DeployResource {
+  type: string;
+  category: string;
+  category_label: string;
+  description: string;
+  count: number;
+  names: string[];
+  /** The pskit.yml setting that leaves it out; empty = always needed. */
+  optional: string;
+}
+
+/** resources.json of the last package / plan / deploy of a provider/stage. */
+export interface DeployResources {
+  resources: DeployResource[];
+  reason?: string;
+  provider?: string;
+  provider_display?: string;
+  stage?: string;
+  package_type?: PackageType;
+  monitoring?: Record<string, { logs: boolean; metrics: boolean }>;
+  monitoring_text?: { logs: string; metrics: string };
+  packaged_at?: number | null;
+}
+
+export interface ProviderPackage {
+  /** ["zip"] or ["zip", "image", "auto"] when the provider deploys container images. */
+  types: PackageType[];
+  /** e.g. "Amazon ECR"; empty when container images are not supported (yet). */
+  image_registry: string;
+  /** What container-image deploys will use on this provider ("coming soon"). */
+  image_soon: string;
+  /** Bytes; null = not checked. */
+  limits: { zip_compressed: number | null; zip_unpacked: number | null; image: number | null; reference: string };
 }
 
 export interface TriggerRule {

@@ -268,9 +268,21 @@ def _finish(work: Path, build_dir: Path, log, skip_deps: bool = False) -> Artifa
     count = _write_zip(build_dir, zip_path)
     sha_hex, sha_b64 = digest(zip_path)
     size = zip_path.stat().st_size
-    log(f"  artifact {zip_path.name}: {count} files, {size / 1024:.1f} KiB, sha256 {sha_hex[:12]}")
+    unpacked = unpacked_size(build_dir)
+    log(f"  artifact {zip_path.name}: {count} files, {size / 1024:.1f} KiB "
+        f"({unpacked / 1024:.1f} KiB unzipped), sha256 {sha_hex[:12]}")
     return Artifact(path=zip_path, sha256=sha_hex, sha256_b64=sha_b64, size=size, file_count=count, build_dir=build_dir,
-                    skip_deps=skip_deps)
+                    skip_deps=skip_deps, unpacked_size=unpacked)
+
+
+def unpacked_size(build_dir: Path) -> int:
+    """Bytes of the files that go into the zip (what platforms call the unzipped size)."""
+    total = 0
+    for path in build_dir.rglob("*"):
+        rel = path.relative_to(build_dir).as_posix()
+        if path.is_file() and "/__pycache__/" not in f"/{rel}" and not rel.endswith(".pyc"):
+            total += path.stat().st_size
+    return total
 
 
 # --------------------------------------------------------------------- Node.js / TypeScript

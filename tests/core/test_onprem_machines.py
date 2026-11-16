@@ -505,3 +505,18 @@ def test_remove_server_in_a_cluster_is_refused_and_warns_about_references(tmp_pa
                         "saved server"]
     with pytest.raises(srv.ServerError, match="Did you mean VM_01_2cpu"):
         srv.remove_server(tmp_path, "VM_01")
+
+
+def test_elasticsearch_with_kibana_is_one_click(tmp_path):
+    item = next(c for c in svc.catalog() if c["id"] == "elasticsearch")
+    assert item["group"] == "Search" and item["port"] == 9200 and item["companion"] == "Kibana"
+    assert item["default_user"] == "elastic" and item["image"].startswith("docker.elastic.co/elasticsearch/")
+    fake = FakeDocker()
+    entry = svc.create(tmp_path, {"key": "search", "service": "elasticsearch", "password": "Es-pass-1234"}, RAW,
+                       lambda _l: None, run=fake, wait_seconds=1)
+    run = next(c for c in fake.calls if c[:2] == ["docker", "run"])
+    env = dict(run[i + 1].split("=", 1) for i, a in enumerate(run) if a == "-e")
+    assert env["ELASTIC_PASSWORD"] == "Es-pass-1234" and env["discovery.type"] == "single-node"
+    assert env["xpack.security.enabled"] == "true" and env["cluster.name"] == "pskit-search"
+    assert any("kibana_system/_password" in " ".join(c) for c in fake.calls)  # Kibana's login is set up
+    assert entry["env"]["PSKIT_SEARCH_USER"] == "elastic" and entry["env"]["PSKIT_SEARCH_URL"].endswith(":9200")

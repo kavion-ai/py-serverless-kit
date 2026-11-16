@@ -58,6 +58,7 @@ class HuaweiProvider(Provider):
         "HTTP needs a dedicated APIG instance (options.apig_instance_id); timers, OBS and SMN triggers; "
         "workflows run on the embedded engine."
     )
+    image_soon = "SWR + FunctionGraph container images"
 
     # ------------------------------------------------------------------ bundle
     def shim_files(self, config: ServiceConfig) -> Dict[str, str]:

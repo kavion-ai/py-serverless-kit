@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 from ..config.schema import FunctionConfig, QueueEvent, ResourceConfig, ServiceConfig
@@ -12,11 +13,16 @@ from ..workflows import definition_dict
 from ..workflows.asl import compile_asl
 from . import schedule as sched
 from .base import ALL_CAPABILITIES, Issue, Provider, RenderContext
+from .container import GB, MB, PackageLimits, docker_registry, push_image
 from .terraform_doc import TerraformDoc, escape, ref, tf_id
 
 LAMBDA = "aws_lambda_function"
+ENTRY_HANDLER = "pskit_entry.handler"
+ECR_REPO = "aws_ecr_repository"
 BASIC_EXEC = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 SQS_EXEC = "arn:aws:iam::aws:policy/service-role/AWSLambdaSQSQueueExecutionRole"
+# What SQS_EXEC grants besides logs: used instead of it for functions with `monitoring.logs: false`.
+SQS_POLL_ACTIONS = ["sqs:ReceiveMessage", "sqs:DeleteMessage", "sqs:GetQueueAttributes"]
 RESOURCE_ACTIONS = {
     "storage": ["s3:GetObject", "s3:PutObject", "s3:DeleteObject", "s3:ListBucket"],
     "queue": [
@@ -65,7 +71,48 @@ class AwsProvider(Provider):
     vendor_dependencies = True
     max_timeout = 900
     standalone_resources = True
-    notes = "HTTP via API Gateway HTTP API; schedules via EventBridge Scheduler; workflows via Step Functions."
+    notes = (
+        "HTTP via API Gateway HTTP API; schedules via EventBridge Scheduler; workflows via Step Functions. "
+        "Bundles over Lambda's 250 MB unzipped limit deploy as container images in Amazon ECR (package.type: image)."
+    )
+    # https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html
+    package_limits = PackageLimits(
+        zip_compressed=50 * MB, zip_unpacked=250 * MB, image=10 * GB, reference="AWS Lambda deployment package quotas"
+    )
+    image_registry = "Amazon ECR"
+    monitoring = {
+        "logs": "CloudWatch Logs: the log group /aws/lambda/<function> (retention provider.log_retention_days) and the "
+                "role's permission to write to it",
+        "metrics": "CloudWatch Lambda metrics (built in, free, always on)",
+    }
+    monitoring_controls = frozenset({"logs"})
+
+    # ------------------------------------------------------------------ package size / images
+    def zip_limits(self, config: ServiceConfig) -> Tuple[Optional[int], Optional[int]]:
+        # 50 MB zipped applies to a zip sent inline (artifact_upload: direct); through S3 only the unzipped limit.
+        compressed, unpacked = super().zip_limits(config)
+        direct = config.provider.options.get("artifact_upload", "s3") == "direct"
+        return (compressed if direct else None), unpacked
+
+    def image_base(self, config: ServiceConfig) -> str:
+        if config.package.image.base_image:
+            return config.package.image.base_image
+        runtime = config.provider.runtime
+        if runtime.startswith("nodejs"):
+            return f"public.ecr.aws/lambda/nodejs:{runtime[6:]}"
+        return f"public.ecr.aws/lambda/python:{runtime[6:]}"
+
+    def image_dockerfile(self, config: ServiceConfig, build_dir: Path) -> str:
+        from ..packaging.image import dockerfile
+
+        body: List[str] = []
+        if (build_dir / "requirements.txt").is_file():  # package.vendor: false - install in the image instead
+            body += [
+                'COPY requirements.txt "${LAMBDA_TASK_ROOT}/"',
+                'RUN pip install --no-cache-dir -r "${LAMBDA_TASK_ROOT}/requirements.txt" -t "${LAMBDA_TASK_ROOT}"',
+            ]
+        body += ['COPY . "${LAMBDA_TASK_ROOT}/"', f'CMD ["{ENTRY_HANDLER}"]']
+        return dockerfile(self.image_base(config), config.package.image.dockerfile_lines, body)
 
     # ------------------------------------------------------------------ bundle
     def node_package(self, config: ServiceConfig) -> Dict[str, Any]:
@@ -103,6 +150,8 @@ class AwsProvider(Provider):
             issues.append(
                 Issue("error", "artifact_upload must be 's3' or 'direct'", "provider.options.artifact_upload")
             )
+        if config.package.type in ("image", "auto"):
+            issues.extend(self._image_validation(config))
         for name, fn in config.functions.items():
             for queue in fn.events_of("queue"):
                 if queue.existing and queue.dead_letter:
@@ -127,12 +176,44 @@ class AwsProvider(Provider):
                     )
         return issues
 
+    def _image_validation(self, config: ServiceConfig) -> List[Issue]:
+        """One image serves every function: they share one architecture and one runtime."""
+        issues: List[Issue] = []
+        archs = {config.architecture_of(fn) for fn in config.functions.values()}
+        if len(archs) > 1:
+            issues.append(Issue(
+                "error",
+                f"container images are built for one architecture, but functions use {', '.join(sorted(archs))}; "
+                "set the same `architecture` on every function (or use package.type: zip)",
+                "package.type",
+            ))
+        runtimes = {config.runtime_of(fn) for fn in config.functions.values()}
+        if len(runtimes) > 1:
+            issues.append(Issue(
+                "error",
+                f"container images have one runtime, but functions use {', '.join(sorted(runtimes))}; "
+                "remove the per-function `runtime` (or use package.type: zip)",
+                "package.type",
+            ))
+        for name, fn in config.functions.items():
+            if "layers" in fn.options:
+                issues.append(Issue(
+                    "warning",
+                    "Lambda layers cannot be added to container-image functions; add their files to the image "
+                    "(package.image.dockerfile_lines) instead",
+                    f"functions.{name}.options.layers",
+                ))
+        return issues
+
     # ------------------------------------------------------------------ render
     def render_resources(self, doc: TerraformDoc, ctx: RenderContext) -> None:
         cfg = ctx.config
         has = {e.type for fn in cfg.functions.values() for e in fn.events}
         self._resources(doc, ctx)
         shared_users = [n for n, f in ctx.function_items() if not (f.iam.statements or f.iam.role)]
+        logging = [n for n in shared_users if cfg.logs_of(cfg.functions[n])]
+        quiet = [n for n in shared_users if not cfg.logs_of(cfg.functions[n])]
+        # Functions with `monitoring.logs: false` share a role that cannot write CloudWatch Logs.
         shared_role = self._role(
             doc,
             ctx,
@@ -140,9 +221,26 @@ class AwsProvider(Provider):
             cfg.provider.iam.statements,
             "queue" in has,
             cfg.provider.iam.role,
-            self._resource_statements(ctx, shared_users),
+            self._resource_statements(ctx, logging if quiet else shared_users),
         )
-        code = self._code_source(doc, ctx)
+        quiet_role = shared_role
+        if quiet and not cfg.provider.iam.role:
+            quiet_role = self._role(
+                doc,
+                ctx,
+                "lambda-nologs",
+                cfg.provider.iam.statements,
+                any(cfg.functions[n].events_of("queue") for n in quiet),
+                None,
+                self._resource_statements(ctx, quiet),
+                logs=False,
+            )
+        elif quiet:
+            doc.warnings.append(
+                f"AWS: monitoring.logs is off for {', '.join(quiet)}, but role {cfg.provider.iam.role} is not managed "
+                "by pskit: remove its CloudWatch Logs permissions yourself (no log group is created)"
+            )
+        code = self._image_source(doc, ctx) if ctx.package_type == "image" else self._code_source(doc, ctx)
 
         fn_out: Dict[str, Dict[str, Any]] = {}
         arns: Dict[str, str] = {}
@@ -150,7 +248,7 @@ class AwsProvider(Provider):
         s3_notifications: Dict[str, List[Tuple[str, Any]]] = {}
 
         for name, fn in ctx.function_items():
-            role = shared_role
+            role = shared_role if cfg.logs_of(fn) else quiet_role
             if fn.iam.statements or fn.iam.role:
                 role = self._role(
                     doc,
@@ -160,6 +258,7 @@ class AwsProvider(Provider):
                     bool(fn.events_of("queue")),
                     fn.iam.role,
                     self._resource_statements(ctx, [name]),
+                    logs=cfg.logs_of(fn),
                 )
             lam = self._function(doc, ctx, name, fn, role, code)
             arns[name] = ref(lam, "arn")
@@ -207,12 +306,18 @@ class AwsProvider(Provider):
         sqs: bool,
         existing: Optional[str],
         resource_statements: Optional[List[Dict[str, Any]]] = None,
+        logs: bool = True,
     ) -> str:
-        """Return a Terraform expression for the role ARN."""
+        """Return a Terraform expression for the role ARN. ``logs=False``: no CloudWatch Logs permissions."""
         if existing:
             if resource_statements:
                 doc.warnings.append(
                     f"AWS: role {existing} is not managed by pskit; grant it access to the bound resources yourself"
+                )
+            if not logs and label.startswith("fn-"):
+                doc.warnings.append(
+                    f"AWS: monitoring.logs is off for {label[3:]}, but role {existing} is not managed by pskit: remove "
+                    "its CloudWatch Logs permissions yourself (no log group is created)"
                 )
             return existing
         role = doc.resource(
@@ -220,12 +325,23 @@ class AwsProvider(Provider):
             label,
             {"name": ctx.physical_name(label)[:64], "assume_role_policy": _assume("lambda.amazonaws.com")},
         )
-        doc.resource(
-            "aws_iam_role_policy_attachment", f"{label}-basic", {"role": ref(role, "name"), "policy_arn": BASIC_EXEC}
-        )
-        if sqs:
+        if logs:
+            doc.resource(
+                "aws_iam_role_policy_attachment", f"{label}-basic", {"role": ref(role, "name"), "policy_arn": BASIC_EXEC}
+            )
+        if sqs and logs:
             doc.resource(
                 "aws_iam_role_policy_attachment", f"{label}-sqs", {"role": ref(role, "name"), "policy_arn": SQS_EXEC}
+            )
+        elif sqs:  # the managed SQS policy also grants CloudWatch Logs: only its queue actions
+            doc.resource(
+                "aws_iam_role_policy",
+                f"{label}-sqs",
+                {
+                    "name": "pskit-sqs-poll",
+                    "role": ref(role, "id"),
+                    "policy": _policy([{"Effect": "Allow", "Action": SQS_POLL_ACTIONS, "Resource": "*"}]),
+                },
             )
         if statements:
             doc.resource(
@@ -294,6 +410,49 @@ class AwsProvider(Provider):
         )
         return {"s3_bucket": ref(obj, "bucket"), "s3_key": ref(obj, "key")}
 
+    def _image_source(self, doc: TerraformDoc, ctx: RenderContext) -> Dict[str, Any]:
+        """``package.type: image``: an ECR repository, the image built and pushed into it, Lambda pinned to its digest."""
+        image_cfg = ctx.config.package.image
+        if image_cfg.repository:
+            repo = doc.data(ECR_REPO, "functions", {"name": image_cfg.repository})
+        else:
+            repo = doc.resource(
+                ECR_REPO,
+                "functions",
+                {
+                    "name": re.sub(r"[^a-z0-9._/-]", "-", ctx.prefix.lower()).strip("-") + "-functions",
+                    "image_tag_mutability": "MUTABLE",
+                    "force_delete": True,
+                    "image_scanning_configuration": [{"scan_on_push": image_cfg.scan_on_push}],
+                    "tags": ctx.tags(),
+                },
+            )
+            doc.resource(
+                "aws_ecr_lifecycle_policy",
+                "functions",
+                {
+                    "repository": ref(repo, "name"),
+                    "policy": json.dumps({
+                        "rules": [{
+                            "rulePriority": 1,
+                            "description": f"keep the last {image_cfg.keep} pskit images",
+                            "selection": {"tagStatus": "any", "countType": "imageCountMoreThan",
+                                          "countNumber": image_cfg.keep},
+                            "action": {"type": "expire"},
+                        }]
+                    }),
+                },
+            )
+        token = doc.data("aws_ecr_authorization_token", "registry", {})
+        docker_registry(
+            doc,
+            address="${replace(" + token + '.proxy_endpoint, "https://", "")}',
+            username=ref(token, "user_name"),
+            password=ref(token, "password"),
+        )
+        image = push_image(doc, ctx, ref(repo, "repository_url"))
+        return {"package_type": "Image", "image_uri": image["uri"], "image_config": [{"command": [ENTRY_HANDLER]}]}
+
     def _function(
         self,
         doc: TerraformDoc,
@@ -306,7 +465,7 @@ class AwsProvider(Provider):
         cfg = ctx.config
         phys = ctx.physical_name(name)
         depends: List[str] = []
-        if cfg.provider.log_retention_days:
+        if cfg.provider.log_retention_days and cfg.logs_of(fn):
             lg = doc.resource(
                 "aws_cloudwatch_log_group",
                 f"logs-{name}",
@@ -317,10 +476,7 @@ class AwsProvider(Provider):
             "function_name": phys,
             "description": fn.description[:256],
             "role": role_arn,
-            "handler": "pskit_entry.handler",
-            "runtime": self.runtime_id(cfg.runtime_of(fn)),
-            **code,
-            "source_code_hash": ctx.artifact.sha256_b64,
+            **self._code_fields(ctx, fn, code),
             "memory_size": cfg.memory_of(fn),
             "timeout": cfg.timeout_of(fn),
             "architectures": [cfg.architecture_of(fn)],
@@ -333,6 +489,16 @@ class AwsProvider(Provider):
             body["depends_on"] = depends
         body.update(fn.options)  # escape hatch: vpc_config, layers, tracing_config, ...
         return doc.resource(LAMBDA, name, body)
+
+    def _code_fields(self, ctx: RenderContext, fn: FunctionConfig, code: Dict[str, Any]) -> Dict[str, Any]:
+        if code.get("package_type") == "Image":
+            return dict(code)  # handler and runtime come from the image (CMD / base image)
+        return {
+            "handler": ENTRY_HANDLER,
+            "runtime": self.runtime_id(ctx.config.runtime_of(fn)),
+            **code,
+            "source_code_hash": ctx.artifact.sha256_b64,
+        }
 
     def _api(self, doc: TerraformDoc, ctx: RenderContext) -> str:
         cors_cfgs = [
