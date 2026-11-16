@@ -256,3 +256,12 @@ def test_node_render_runtime_and_entry_points(make_project, render):
     fn = tf["resource"]["google_cloudfunctions2_function"]["hello"]
     assert fn["build_config"]["runtime"] == "nodejs20"
     assert fn["build_config"]["entry_point"] == "pskit_http"
+
+
+def test_source_bucket_reuses_an_existing_bucket(make_project, render):
+    """options.source_bucket: the code zip goes to your bucket, and pskit creates no code bucket."""
+    tf = render(make_project(full_config("gcp", "europe-west1", {"project": "p", "source_bucket": "my-src"})))
+    res = tf["resource"]
+    assert "source" not in res.get("google_storage_bucket", {})
+    obj = res["google_storage_bucket_object"]["source"]
+    assert obj["bucket"] == "my-src" and obj["name"].endswith(".zip") and "/source-" in obj["name"]

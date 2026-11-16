@@ -486,10 +486,12 @@ def deploy(  # noqa: ANN001
         path = write_dashboard(project.root)
         echo(f"\nDashboard: {path.as_uri()}")
     if deployer.not_deployed:
-        # Last, so it is what you see: what was not deployed and why.
+        # Last, so it is what you see: what was not deployed and why. One stream (stdout), so the lines stay in
+        # order; stderr and stdout interleave out of order in terminals, CI logs and the studio's job log.
         echo("")
         for line in deployer.report():
-            (echo if line.startswith(" ") else fail)(line)
+            click.secho(line, fg=None if line.startswith(" ") else "red")
+        sys.stdout.flush()
         sys.exit(1)
 
 

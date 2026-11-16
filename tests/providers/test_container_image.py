@@ -70,6 +70,9 @@ def test_aws_image_renders_ecr_and_image_lambda(make_project):
     build = res["docker_image"]["function"]
     assert build["build"][0]["dockerfile"] == DOCKERFILE
     assert build["build"][0]["platform"] == "linux/amd64"
+    # A single image manifest: with attestations BuildKit pushes an OCI index that Lambda rejects
+    # ("The image manifest, config or layer media type ... is not supported").
+    assert build["build"][0]["provenance"] == "false" and build["build"][0]["sbom"] == "false"
     assert build["name"].startswith("${aws_ecr_repository.functions.repository_url}:")
 
     for name in ("hello", "worker"):
@@ -233,8 +236,8 @@ def test_aws_mixes_zip_and_image_functions(make_project):
     assert result.package.functions == {"hello": "image", "worker": "zip"}
     fns = tf["resource"]["aws_lambda_function"]
     assert fns["hello"]["package_type"] == "Image" and "handler" not in fns["hello"]
-    assert fns["worker"]["handler"] == "pskit_entry.handler" and "s3_key" in fns["worker"]
-    assert "aws_s3_object" in tf["resource"] and "docker_image" in tf["resource"]
+    assert fns["worker"]["handler"] == "pskit_entry.handler" and fns["worker"]["filename"].endswith("artifact.zip")
+    assert "aws_s3_object" not in tf["resource"] and "docker_image" in tf["resource"]  # small zip: no code bucket
 
 
 def test_image_checks_only_apply_to_image_functions(make_project):

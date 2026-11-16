@@ -25,7 +25,7 @@ and `deploy` print the zipped and unzipped size against those caps:
 
 | Provider | Zip limits pskit checks | Container images |
 |---|---|---|
-| `aws` | 250 MB unzipped; 50 MB zipped with `options.artifact_upload: direct` (S3 upload, the default, has no zipped limit) | **Amazon ECR**, up to 10 GB |
+| `aws` | 250 MB unzipped; 50 MB zipped with `options.artifact_upload: direct` (the default `auto` sends zips over 50 MB through S3 instead) | **Amazon ECR**, up to 10 GB |
 | `azure` | 1 GB package | **Azure Container Registry (ACR)** |
 | `gcp` | 100 MB compressed, 500 MB uncompressed with modules | coming soon (Artifact Registry + Cloud Run) |
 | `cloudflare` | 10 MB compressed (Workers Paid; 3 MB on Free) | coming soon (Cloudflare Containers) |
@@ -60,7 +60,7 @@ package:
 | `auto` | A zip, switching to an image only when the bundle is over a zip limit. On clouds without image support it stays a zip (with a warning). |
 
 Override it for one run with `--package-type zip|image|auto` on `pskit package`, `plan` or `deploy`. The flag applies
-to every function. In the studio, open **Deploy → Packaging**.
+to every function. In the studio, choose it in each function's editor (**Package type**, below).
 
 ### Per function: `functions.<name>.package_type`
 
@@ -83,12 +83,18 @@ functions:
   Different `package_type` values are an error; set `package.type` instead.
 - **Clouds without images:** `package_type: image` on a function is an error **for that function only**.
   `pskit deploy` skips it and deploys the others (see [partial deploys](#5-partial-deploys-what-was-not-deployed-and-why)).
-- In the studio, each function's editor has **Package type** (inherit / Zip / Image / Auto).
+- In the studio, each function's editor has **Package type** (inherit / Zip / Image / Auto), with the size limits.
+  On Azure, choosing it there sets `package.type` for every function.
 
 ### What you need
 
-- **Docker running** where pskit runs. Terraform's `kreuzwerker/docker` provider builds the image and pushes it. It
-  logs in to the registry itself (an ECR token, or the ACR admin login), so no `docker login` is needed.
+- **Docker running** where pskit runs. Terraform's `kreuzwerker/docker` provider (4.3.0 or later) builds the image
+  and pushes it. It logs in to the registry itself (an ECR token, or the ACR admin login), so no `docker login` is
+  needed.
+- The image is built **without provenance or SBOM attestations** (`provenance: false`, `sbom: false`). With them,
+  BuildKit and Docker Desktop's containerd image store push an OCI image index holding an extra `unknown/unknown`
+  manifest, and Lambda rejects it: `The image manifest, config or layer media type for the source image ... is not
+  supported`.
 - The handler code does not change: the image holds the same bundle (your code, the pskit runtime, the shim and
   the dependencies) as the zip.
 

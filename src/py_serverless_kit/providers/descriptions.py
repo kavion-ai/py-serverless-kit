@@ -51,7 +51,8 @@ RESOURCES: Dict[str, Tuple[str, str, str]] = {
     "aws_sqs_queue": ("messaging", "SQS queue (and dead-letter queue)", ""),
     "aws_sns_topic": ("messaging", "SNS topic", ""),
     "aws_sns_topic_subscription": ("triggers", "subscribes a function to an SNS topic", ""),
-    "aws_s3_bucket": ("storage", "S3 bucket (your storage resources, or the private bucket holding the code zip)", ""),
+    "aws_s3_bucket": ("storage", "S3 bucket (your storage resources, or the private bucket for a code zip over 50 MB)",
+                      ""),
     "aws_s3_bucket_public_access_block": ("storage", "blocks public access to the bucket", ""),
     "aws_s3_bucket_notification": ("triggers", "sends S3 object events to the functions", ""),
     "aws_s3_object": ("code", "the uploaded code zip (artifact.zip)", ""),
@@ -77,7 +78,8 @@ RESOURCES: Dict[str, Tuple[str, str, str]] = {
     "azurerm_container_registry": ("code", "Azure Container Registry holding the Function App image", IMAGE),
     # ---------------------------------------------------------------- GCP
     "google_cloudfunctions2_function": ("compute", "Cloud Run function (2nd gen) running your handler", ""),
-    "google_storage_bucket": ("storage", "Cloud Storage bucket (your storage resources, or the code bucket)", ""),
+    "google_storage_bucket": ("storage", "Cloud Storage bucket (your storage resources, or the code bucket Cloud "
+                              "Functions builds from)", "code bucket: provider.options.source_bucket reuses yours"),
     "google_storage_bucket_object": ("code", "the uploaded source zip", ""),
     "google_service_account": ("access", "service account that schedules, triggers and workflows call with", ""),
     "google_project_iam_member": ("access", "project role for a service account", ""),

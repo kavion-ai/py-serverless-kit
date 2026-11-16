@@ -9,7 +9,7 @@ import { DiffView, InlineIssues, PageHeader } from "../components/Misc";
 import { isEnabled } from "../compat";
 import { EnableControl } from "../components/EnableControl";
 import { LogsMetricsSection } from "../components/LogsMetrics";
-import { FunctionPackageField } from "../components/Packaging";
+import { FunctionPackageField, withSharedPackageType } from "../components/Packaging";
 import { GroupBadge, readPlacement, renameInPlacement, RunsOnField, usePlacementTargets } from "../components/Placement";
 import { useOnPremServers } from "../components/ServerPicker";
 import {
@@ -598,6 +598,11 @@ function FunctionWizard({ name: existing }: { name: string | null }) {
     raw = syncProviderOverrides(raw as JsonObject, meta.providers, existing, name, asArray(original?.events), events.map(eventToRaw), providerName, skipped);
     if (existing && existing !== name) raw = renameInPlacement(raw as JsonObject, existing, name);
     raw = withRunsOn(raw as JsonObject);
+    // One-host providers (Azure) ship every function the same way: the choice becomes package.type.
+    const kind = str(body.package_type);
+    if (provider?.shared_function_host && (kind === "zip" || kind === "image" || kind === "auto")) {
+      raw = withSharedPackageType(raw as JsonObject, kind);
+    }
     replace(raw as JsonObject);
     const sub = !existing && subproject && !!subprojectFolder(str(body.handler));
     const types = events.map((e) => e.type);
@@ -791,7 +796,7 @@ function FunctionWizard({ name: existing }: { name: string | null }) {
               {providerName !== "onprem" && (
                 <FormRow
                   label="Package type"
-                  help="How this function's code ships: inherit package.type, a zip, or a container image (Amazon ECR on AWS) for a big function. A function that cannot deploy is skipped and reported; the others still deploy."
+                  help="How this function's code ships: inherit package.type, a zip, or a container image (Amazon ECR on AWS, Azure Container Registry on Azure) for a big function. A function that cannot deploy is skipped and reported; the others still deploy."
                 >
                   <FunctionPackageField value={str(fn.package_type) || undefined} draft={draft} provider={provider} onChange={(v) => setField("package_type", v)} />
                 </FormRow>

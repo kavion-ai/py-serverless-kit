@@ -28,7 +28,7 @@ from ..providers.terraform_doc import tf_id
 _REF = re.compile(r"\b((?:data\.)?[a-z][a-z0-9_]*\.[A-Za-z_][A-Za-z0-9_-]*)")
 _ERROR_WITH = re.compile(r"^\s*with ([^\s,]+),?\s*$")
 _INDEX = re.compile(r"\[[^\]]*\]$")
-MAX_REASON = 400
+MAX_REASON = 2000  # long enough for a whole AWS error (request id, image digest, message)
 
 CONFIG = "configuration"
 SIZE = "package size"

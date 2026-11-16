@@ -245,23 +245,31 @@ class GcpProvider(Provider):
         project = ctx.opt("project", "")
         region = ctx.region
 
-        src_bucket = doc.resource(
-            "google_storage_bucket",
-            "source",
-            {
-                "name": f"{ctx.prefix[:45]}-src-{stable_suffix(project, ctx.prefix, length=8)}",
-                "location": region.upper(),
-                "uniform_bucket_level_access": True,
-                "force_destroy": True,
-                "labels": labels(ctx.tags()),
-            },
-        )
+        # Cloud Functions (2nd gen) only builds from a zip in Cloud Storage (there is no inline upload), so the
+        # code needs a bucket: options.source_bucket reuses one you have, otherwise pskit creates a private one.
+        existing_src = ctx.opt("source_bucket")
+        if existing_src:
+            src_bucket_name = escape(str(existing_src))
+        else:
+            src_bucket = doc.resource(
+                "google_storage_bucket",
+                "source",
+                {
+                    "name": f"{ctx.prefix[:45]}-src-{stable_suffix(project, ctx.prefix, length=8)}",
+                    "location": region.upper(),
+                    "uniform_bucket_level_access": True,
+                    "force_destroy": True,
+                    "labels": labels(ctx.tags()),
+                },
+            )
+            src_bucket_name = ref(src_bucket, "name")
         src_obj = doc.resource(
             "google_storage_bucket_object",
             "source",
             {
-                "name": f"source-{ctx.artifact.sha256[:16]}.zip",
-                "bucket": ref(src_bucket, "name"),
+                "name": f"{ctx.prefix}/source-{ctx.artifact.sha256[:16]}.zip" if existing_src
+                else f"source-{ctx.artifact.sha256[:16]}.zip",
+                "bucket": src_bucket_name,
                 "source": "${path.module}/artifact.zip",
             },
         )
@@ -324,7 +332,7 @@ class GcpProvider(Provider):
             ids: List[str] = []
             out: Dict[str, Any] = {}
             for dep in deployments:
-                res = self._function(doc, ctx, name, fn, dep, src_bucket, src_obj, invoker_email, depends)
+                res = self._function(doc, ctx, name, fn, dep, src_obj, invoker_email, depends)
                 ids.append(ref(res, "name"))
                 service = ref(res, "service_config[0].service")
                 doc.resource(
@@ -467,7 +475,6 @@ class GcpProvider(Provider):
         name: str,
         fn: FunctionConfig,
         dep: Deployment,
-        src_bucket: str,
         src_obj: str,
         invoker_email: str,
         depends: List[str],
@@ -493,7 +500,7 @@ class GcpProvider(Provider):
             "build_config": {
                 "runtime": self.runtime_id(cfg.runtime_of(fn)),
                 "entry_point": "pskit_http" if dep.kind == "http" or dep.pushed else "pskit_event",
-                "source": {"storage_source": {"bucket": ref(src_bucket, "name"), "object": ref(src_obj, "name")}},
+                "source": {"storage_source": {"bucket": ref(src_obj, "bucket"), "object": ref(src_obj, "name")}},
             },
             "service_config": service_config,
         }

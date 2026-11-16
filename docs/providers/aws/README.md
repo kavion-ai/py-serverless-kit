@@ -94,7 +94,7 @@ provider:
     assume_role_arn: arn:aws:iam::123456789012:role/deployer
     allowed_account_ids: ["123456789012"]
     artifact_bucket: my-deploy-bucket
-    artifact_upload: s3            # s3 (default) | direct
+    artifact_upload: auto          # auto (default) | direct | s3
 ```
 
 Every key outside `options` is shared by all providers; see [configuration.md](../../configuration.md#provider).
@@ -109,13 +109,17 @@ The AWS `provider.options` keys change how Terraform signs in and where the code
 | `profile` | none (credential chain) | AWS CLI profile written into the Terraform `provider "aws"` block |
 | `assume_role_arn` | none | Terraform assumes this role to deploy (`assume_role { role_arn }`) |
 | `allowed_account_ids` | none | list of account ids; Terraform refuses to touch any other account |
-| `artifact_bucket` | a new private bucket | existing S3 bucket for the code zip. The deploying identity then needs only `s3:PutObject` there |
-| `artifact_upload` | `s3` | `s3`: upload `artifact.zip` once to S3 and point every Lambda at it. `direct`: send the zip inline in each CreateFunction call (only for small bundles). Any other value is a validation error |
+| `artifact_bucket` | none | existing S3 bucket for the code zip (implies the S3 upload). The deploying identity then needs only `s3:PutObject` there |
+| `artifact_upload` | `auto` | `auto`: send the zip inside the Lambda request, so **no S3 bucket** is created; above Lambda's 50 MB inline limit (or with `artifact_bucket`) it goes through S3. `direct`: always inline (a zip over 50 MB is an error before Terraform runs). `s3`: always through S3. Any other value is a validation error |
 
-With `artifact_upload: s3` and no `artifact_bucket`, pskit creates a private bucket named `<service>-<stage>-code-...`
-(public access blocked, `force_destroy: true`) and uploads `artifact-<hash>.zip`. This avoids Lambda's 50 MB inline
-limit and the Terraform error `decomposing request: bufio.Scanner: token too long`. The deploying identity needs
-`s3:CreateBucket` and `s3:PutObject`.
+Through S3 with no `artifact_bucket`, pskit creates a private bucket named `<service>-<stage>-code-...` (public access
+blocked, `force_destroy: true`), uploads `artifact-<hash>.zip` once and points every function at it. The deploying
+identity then needs `s3:CreateBucket` and `s3:PutObject`. Functions shipped as container images (`package_type:
+image`) need neither: their code is in Amazon ECR.
+
+Before 3.2.2 the default was `s3`. That was a workaround for the AWS provider error `decomposing request:
+bufio.Scanner: token too long` on inline uploads, which current AWS providers (6.x) no longer raise. The first deploy
+after upgrading moves the code inline and removes the code bucket; set `artifact_upload: s3` to keep it.
 
 Per-function escape hatch: `functions.<fn>.options` is merged as-is into that function's `aws_lambda_function`
 resource, for example `layers`, `vpc_config` or `tracing_config`:

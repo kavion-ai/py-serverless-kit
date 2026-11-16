@@ -37,7 +37,12 @@ NEAR_LIMIT = 0.8  # warn from 80 % of a limit
 
 DOCKER_PROVIDER = "docker"
 DOCKER_SOURCE = "kreuzwerker/docker"
-DOCKER_VERSION = ">= 3.0.2"
+# 4.3.0 added ``build.provenance`` / ``build.sbom``. Without them, Docker Desktop's containerd image store and
+# BuildKit push an OCI image *index* holding an attestation manifest (platform unknown/unknown), which AWS Lambda
+# rejects ("The image manifest, config or layer media type ... is not supported").
+DOCKER_VERSION = ">= 4.3.0"
+# Build settings that change what is pushed. They are part of the image tag, so changing them rebuilds the image.
+BUILD_SETTINGS = {"provenance": "false", "sbom": "false"}
 DOCKERFILE = "Dockerfile.pskit"
 DOCKERIGNORE = ".dockerignore"
 
@@ -212,7 +217,8 @@ def remedy(provider: Provider) -> str:
 
 def image_tag(artifact: Artifact, dockerfile: str) -> str:
     """A content tag: the same bundle and Dockerfile always give the same tag (no needless redeploys)."""
-    return hashlib.sha256(f"{artifact.sha256}\n{dockerfile}".encode()).hexdigest()[:20]
+    settings = ",".join(f"{k}={v}" for k, v in sorted(BUILD_SETTINGS.items()))
+    return hashlib.sha256(f"{artifact.sha256}\n{dockerfile}\n{settings}".encode()).hexdigest()[:20]
 
 
 # ------------------------------------------------------------------ terraform
@@ -236,6 +242,8 @@ def push_image(doc: TerraformDoc, ctx: RenderContext, repository_url: str, label
         "context": "${abspath(path.module)}/" + image.context,
         "dockerfile": image.dockerfile,
         "platform": image.platform,
+        # One plain image manifest, with no attestation index: the only kind Lambda can run.
+        **BUILD_SETTINGS,
     }
     local = doc.resource(
         "docker_image",

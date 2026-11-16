@@ -79,7 +79,7 @@ def test_existing_resources_and_iam(make_project, render):
         )
     )
     assert "aws_sqs_queue" not in tf["resource"]
-    assert set(tf["resource"]["aws_s3_bucket"]) == {"pskit_artifacts"}  # only the code bucket, not existing-b
+    assert "aws_s3_bucket" not in tf["resource"]  # not existing-b, and a small zip needs no code bucket
     assert set(tf["data"]) == {"aws_sqs_queue", "aws_s3_bucket", "aws_sns_topic"}
     fn = tf["resource"]["aws_lambda_function"]["a"]
     assert fn["role"] == "${aws_iam_role.fn-a.arn}".replace("fn-a", "fn_a")
@@ -185,7 +185,19 @@ def test_default_runtime_follows_provider(make_project):
     assert any(i.where == "provider.runtime" and i.level == "error" for i in pinned.validate())
 
 
-def test_artifact_uploaded_to_s3_by_default(make_project, render):
+def test_small_zip_is_sent_inline_by_default(make_project, render):
+    """artifact_upload: auto - a zip under Lambda's 50 MB inline limit needs no S3 bucket."""
+    res = render(make_project(full_config("aws", "eu-west-1")))["resource"]
+    assert "aws_s3_object" not in res and "pskit_artifacts" not in res.get("aws_s3_bucket", {})
+    for lam in res["aws_lambda_function"].values():
+        assert lam["filename"] == "${path.module}/artifact.zip"
+        assert lam["source_code_hash"]
+
+
+def test_big_zip_goes_through_s3(make_project, render, monkeypatch):
+    from py_serverless_kit.providers import aws
+
+    monkeypatch.setattr(aws, "INLINE_ZIP_LIMIT", 1)  # every zip is "over 50 MB"
     tf = render(make_project(full_config("aws", "eu-west-1")))
     res = tf["resource"]
     bucket = res["aws_s3_bucket"]["pskit_artifacts"]
@@ -196,7 +208,7 @@ def test_artifact_uploaded_to_s3_by_default(make_project, render):
     assert obj["source"] == "${path.module}/artifact.zip"
     assert obj["key"].startswith("demo-dev/artifact-") and obj["key"].endswith(".zip")
     for lam in res["aws_lambda_function"].values():
-        assert "filename" not in lam  # inline upload breaks on large zips ("bufio.Scanner: token too long")
+        assert "filename" not in lam
         assert lam["s3_bucket"] == "${aws_s3_object.artifact.bucket}"
         assert lam["s3_key"] == "${aws_s3_object.artifact.key}"
         assert lam["source_code_hash"]
@@ -212,6 +224,10 @@ def test_artifact_bucket_and_direct_upload_options(make_project, render):
     res = render(make_project(yaml % "artifact_bucket: my-deploys"))["resource"]
     assert "pskit_artifacts" not in res.get("aws_s3_bucket", {})
     assert res["aws_s3_object"]["artifact"]["bucket"] == "my-deploys"
+
+    res = render(make_project(yaml % "artifact_upload: s3"))["resource"]
+    assert res["aws_s3_object"]["artifact"]["bucket"] == "${aws_s3_bucket.pskit_artifacts.id}"
+    assert "filename" not in res["aws_lambda_function"]["a"]
 
     res = render(make_project(yaml % "artifact_upload: direct"))["resource"]
     assert "aws_s3_object" not in res

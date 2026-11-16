@@ -6,6 +6,35 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [3.2.2] - 2026-11-16
+
+### Fixed
+- **AWS image functions failed to deploy:** `InvalidParameterValueException: The image manifest, config or layer media
+  type for the source image ... is not supported`. With BuildKit or Docker Desktop's containerd image store, the
+  image was pushed as an OCI image index holding a provenance attestation (platform `unknown/unknown`), which Lambda
+  rejects. Images are now built with `provenance: false` and `sbom: false`, which pushes one plain image manifest.
+  This was checked against a local registry. `kreuzwerker/docker` must be 4.3.0 or later. The image tag includes these
+  build settings, so the next deploy rebuilds an image pushed before and retries the failed function.
+- `terraform init` runs again with `-upgrade` when `.terraform.lock.hcl` pins a provider below a version pskit now
+  requires ("locked provider ... does not match configured version constraint").
+- The "Not deployed" report of `pskit deploy` was printed partly on stderr, so its lines came out of order in
+  terminals and in the studio's log. It is now all on stdout, in order. Reasons are no longer cut at 400 characters, so
+  the whole cloud error shows in the CLI, `deployment.json` and the studio.
+
+### Changed
+- **AWS: no S3 bucket for code by default.** The new default `provider.options.artifact_upload: auto` sends the zip
+  inside the Lambda request (`filename`), up to Lambda's 50 MB inline limit. Only bigger zips, `artifact_upload: s3`,
+  or an `artifact_bucket` go through S3. The old default `s3` was a workaround for `bufio.Scanner: token too long`,
+  which the AWS provider (6.x) no longer raises: inline uploads of 40 KB to 30 MB reach the Lambda API, also with
+  `TF_LOG=DEBUG`. The first deploy after upgrading removes the `<service>-<stage>-code-*` bucket. Set
+  `artifact_upload: s3` to keep it.
+- GCP: `provider.options.source_bucket` puts the code zip in an existing Cloud Storage bucket, so pskit creates no
+  code bucket. Cloud Functions only builds from Cloud Storage, so GCP code always needs a bucket. Azure, Alibaba,
+  Tencent, Huawei, IBM, Cloudflare and DigitalOcean already upload the code directly, with no bucket.
+- Studio: the *Packaging* section is gone from the Deploy page. The package type is chosen only in each function's
+  editor (*Package type*), which now shows the size limits. On Azure that choice sets `package.type` for every
+  function, because one Function App runs them all.
+
 ## [3.2.1] - 2026-11-16
 
 ### Added

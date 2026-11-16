@@ -88,12 +88,14 @@ provider:
   options:
     project: ${env:GOOGLE_CLOUD_PROJECT}                               # required
     service_account: runtime@my-project.iam.gserviceaccount.com        # optional runtime identity
+    source_bucket: my-build-sources                                    # optional: existing bucket for the code zip
 ```
 
 | Option | Default | What it does |
 |---|---|---|
 | `project` | none (validation error) | GCP project id; also written into the Terraform `provider "google"` block |
 | `service_account` | the project's default compute service account | email of an existing service account the functions run as (`service_config.service_account_email`) |
+| `source_bucket` | a new private `<prefix>-src-*` bucket | existing Cloud Storage bucket for the code zip (`<prefix>/source-<hash>.zip`). Cloud Functions only builds from a zip in Cloud Storage, so the code always needs a bucket; this one stops pskit from creating its own |
 
 `concurrency` becomes `max_instance_count`. `architecture`, `log_retention_days` and `iam` are not used on GCP;
 `iam.statements` warn: grant roles to `options.service_account` instead. `functions.<fn>.options` is merged as-is into

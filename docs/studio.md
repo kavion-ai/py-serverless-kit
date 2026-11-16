@@ -54,10 +54,12 @@ asks first.
 - **Logs** shows the logs of the deployed provider/stage (on-prem, AWS, GCP and Azure with a Log Analytics workspace). You can list the stored log streams and delete the ones you select, or all of them (AWS and on-prem). Each function's **Logging** section sets its log level and can show its live logs.
 - **Private key**: the SSH key field has **Browse…**, which lists folders on the machine running studio (it starts in `~/.ssh`). Only names and sizes are listed; file contents are never read.
 - **Provider differences**: trigger types the provider can't run aren't offered. Options it rejects (for example `auth: jwt` on Azure) or ignores (a timezone on Azure timers) are listed on each trigger, worked out from the provider's own validation.
-- **Packaging** (Deploy page, clouds): choose *Zip*, *Container image* (Amazon ECR on AWS, Azure Container Registry on Azure) or *Auto* (`package.type`), with the provider's deployment size limits. Clouds without image deploys yet show *coming soon*. See [package size, images, logs & metrics](package-size-and-monitoring.md).
 - **What a deploy creates** (Deploy page): every resource of the last Package / Plan / Deploy, grouped, with what it is for and the setting that removes the optional ones; *Refresh* runs `pskit package --skip-deps`. The Deploy confirmation lists it too before anything is applied.
-- **Package type** (each function, clouds): inherit / Zip / Image / Auto (`functions.<name>.package_type`). On Azure
-  every function ships the same way, so it is set on the Deploy page.
+- **Package type** (each function's editor, clouds): inherit / Zip / Image (Amazon ECR on AWS, Azure Container
+  Registry on Azure) / Auto (`functions.<name>.package_type`), with the provider's deployment size limits. This is the
+  only place it is chosen. On Azure every function runs in one Function App, so the choice sets `package.type` for
+  every function. Clouds without image deploys yet show *coming soon*. See
+  [package size, images, logs & metrics](package-size-and-monitoring.md).
 - **Not deployed** (Deploy page): after a partial deploy, the functions that were not deployed with the step and the
   reason; the others were deployed.
 - **Logs & metrics** (each function): two switches, on by default, for the logs and metrics services the provider creates next to the function (`functions.<name>.monitoring`); each says what it controls on the provider in the top bar and when it is built into the platform.

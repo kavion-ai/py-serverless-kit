@@ -10,7 +10,6 @@ import { DeployedBadge, ServerSelect, useServerChoice } from "../components/Serv
 import { DeployedGroups, PlacementEditor, readPlacement } from "../components/Placement";
 import { targetLabel } from "../placement";
 import { FirewallPanel } from "../components/FirewallPanel";
-import { PackagingPanel } from "../components/Packaging";
 import { DeployResourcesPanel, ResourceSummary } from "../components/DeployResources";
 import { useJob } from "../jobs";
 import { useAuth } from "../auth";
@@ -367,7 +366,6 @@ export function DeployView() {
           )}
         </div>
       )}
-      <PackagingPanel provider={targetMeta} draft={draft} onChange={replace} />
       {onprem && (
         <Section title="Where functions run" hint="provider.options.placement">
           <PlacementEditor />

@@ -65,7 +65,7 @@ provider:
     assume_role_arn: arn:aws:iam::123456789012:role/deployer
     allowed_account_ids: ["123456789012"]
     artifact_bucket: my-deploy-bucket   # optional: upload code here instead of a pskit-created bucket
-    artifact_upload: s3            # s3 (default) | direct (inline zip; only for small bundles)
+    artifact_upload: auto          # auto (default: inline, S3 above 50 MB) | direct | s3
   iam:
     statements:
       - {actions: ["dynamodb:GetItem"], resources: ["arn:aws:dynamodb:*:*:table/orders"]}
@@ -79,7 +79,7 @@ functions:
 
 **Resources:** `aws_lambda_function`, `aws_iam_role` (+ policies), `aws_cloudwatch_log_group`, `aws_apigatewayv2_*`, `aws_lambda_permission`, `aws_scheduler_schedule`, `aws_sqs_queue`, `aws_lambda_event_source_mapping`, `aws_s3_bucket*`, `aws_sns_topic*`, `aws_sfn_state_machine`, `aws_s3_object` (the code artifact).
 
-**Code upload:** the artifact is uploaded once to S3 (a private `<service>-<stage>-code-*` bucket created by pskit, or `options.artifact_bucket`) and every function reads it from there. This avoids the 50 MB inline limit and the AWS provider error `decomposing request: bufio.Scanner: token too long` that inline uploads hit with larger bundles. The deploying identity needs `s3:CreateBucket`/`PutObject` (or just `PutObject` on `artifact_bucket`).
+**Code upload:** zips up to 50 MB go inside the Lambda request, so no S3 bucket is created (`artifact_upload: auto`, the default). Larger zips, `artifact_upload: s3` or an `options.artifact_bucket` go through S3: a private `<service>-<stage>-code-*` bucket created by pskit (or `artifact_bucket`), uploaded once and read by every function. The deploying identity then needs `s3:CreateBucket`/`PutObject` (or just `PutObject` on `artifact_bucket`). Container-image functions need no code upload at all.
 
 **Limits:** `auth: key` isn't available on HTTP APIs. Integration timeout is capped at 30 s by API Gateway.
 

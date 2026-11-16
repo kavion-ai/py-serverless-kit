@@ -55,6 +55,15 @@ def _policy(statements: List[Dict[str, Any]]) -> str:
     return json.dumps({"Version": "2012-10-17", "Statement": statements})
 
 
+ARTIFACT_UPLOADS = ("auto", "direct", "s3")
+INLINE_ZIP_LIMIT = 50 * MB  # Lambda's limit for a zip sent in the request itself
+
+
+def artifact_upload(options: Dict[str, Any]) -> str:
+    """``provider.options.artifact_upload`` (``auto`` when unset)."""
+    return str(options.get("artifact_upload") or "auto")
+
+
 class AwsProvider(Provider):
     name = "aws"
     display_name = "AWS Lambda"
@@ -90,8 +99,9 @@ class AwsProvider(Provider):
     # ------------------------------------------------------------------ package size / images
     def zip_limits(self, config: ServiceConfig) -> Tuple[Optional[int], Optional[int]]:
         # 50 MB zipped applies to a zip sent inline (artifact_upload: direct); through S3 only the unzipped limit.
+        # `auto` (the default) switches to S3 above 50 MB, so only `direct` has a zipped limit.
         compressed, unpacked = super().zip_limits(config)
-        direct = config.provider.options.get("artifact_upload", "s3") == "direct"
+        direct = artifact_upload(config.provider.options) == "direct"
         return (compressed if direct else None), unpacked
 
     def image_base(self, config: ServiceConfig) -> str:
@@ -146,9 +156,9 @@ class AwsProvider(Provider):
 
     def extra_validation(self, config: ServiceConfig) -> List[Issue]:
         issues = []
-        if config.provider.options.get("artifact_upload", "s3") not in ("s3", "direct"):
+        if artifact_upload(config.provider.options) not in ARTIFACT_UPLOADS:
             issues.append(
-                Issue("error", "artifact_upload must be 's3' or 'direct'", "provider.options.artifact_upload")
+                Issue("error", "artifact_upload must be 'auto', 'direct' or 's3'", "provider.options.artifact_upload")
             )
         if any(config.package_type_of(fn) in ("image", "auto") for fn in config.functions.values()):
             issues.extend(self._image_validation(config))
@@ -372,12 +382,18 @@ class AwsProvider(Provider):
     def _code_source(self, doc: TerraformDoc, ctx: RenderContext) -> Dict[str, Any]:
         """Where Lambda gets its code from.
 
-        By default the artifact is uploaded once to S3 and every function points at it. Sending the zip inline
-        (``filename``) puts the whole base64 payload in the CreateFunction request, which fails for larger
-        bundles with ``decomposing request: bufio.Scanner: token too long`` in the AWS provider and is capped
-        at 50 MB by Lambda. ``options.artifact_upload: direct`` restores the inline upload.
+        ``options.artifact_upload``:
+
+        * ``auto`` (default): the zip goes inline in the CreateFunction / UpdateFunctionCode request (``filename``),
+          so no bucket is created, unless it is over Lambda's 50 MB inline limit or ``artifact_bucket`` is set;
+          then it goes through S3.
+        * ``direct``: always inline (a zip over 50 MB is an error before Terraform runs).
+        * ``s3``: always uploaded once to S3 (a private ``<service>-<stage>-code-*`` bucket, or ``artifact_bucket``),
+          with every function pointing at it.
         """
-        if ctx.opt("artifact_upload", "s3") == "direct":
+        mode = artifact_upload(ctx.config.provider.options)
+        inline_ok = ctx.artifact.size <= INLINE_ZIP_LIMIT and not ctx.opt("artifact_bucket")
+        if mode == "direct" or (mode == "auto" and inline_ok):
             return {"filename": "${path.module}/artifact.zip"}
         existing = ctx.opt("artifact_bucket")
         if existing:

@@ -1,4 +1,4 @@
-import { Section, Segmented } from "./Forms";
+import { Segmented } from "./Forms";
 import type { JsonObject, PackageType, ProviderMeta } from "../types";
 import { asObject, str } from "../util";
 
@@ -29,8 +29,26 @@ export function withPackageType(draft: JsonObject, kind: PackageType): JsonObjec
 }
 
 /**
- * Function editor: `functions.<name>.package_type` (inherit = `package.type`). Image / auto need a provider with
- * container images; one-host providers (Azure) ship every function the same way, so it is set on the Deploy page.
+ * `shared_function_host` providers (Azure: one Function App) ship every function the same way: a package type chosen
+ * in one function's editor becomes `package.type` and the per-function values are dropped.
+ */
+export function withSharedPackageType(draft: JsonObject, kind: PackageType): JsonObject {
+  const next = withPackageType(draft, kind);
+  const functions = asObject(next.functions);
+  const cleaned: JsonObject = {};
+  for (const [name, fn] of Object.entries(functions)) {
+    const body: JsonObject = { ...asObject(fn) };
+    delete body.package_type;
+    cleaned[name] = body;
+  }
+  if (Object.keys(functions).length) next.functions = cleaned;
+  return next;
+}
+
+/**
+ * Function editor: `functions.<name>.package_type` (inherit = `package.type`), the only place the package type is
+ * chosen. Image / auto need a provider with container images. On one-host providers (Azure) the choice applies to
+ * every function (`package.type`, see {@link withSharedPackageType}).
  */
 export function FunctionPackageField({
   value,
@@ -43,11 +61,19 @@ export function FunctionPackageField({
   provider: ProviderMeta | undefined;
   onChange: (v: PackageType | undefined) => void;
 }) {
-  const registry = provider?.package?.image_registry || "";
+  const pkg = provider?.package;
+  const registry = pkg?.image_registry || "";
   const shared = !!provider?.shared_function_host;
   const inherited = packageTypeOf(draft);
   const current = value === "zip" || value === "image" || value === "auto" ? value : "inherit";
-  const soon = `Container images on ${provider?.display_name || "this provider"}: coming soon`;
+  const effective = current === "inherit" ? inherited : current;
+  const name = provider?.display_name || "this provider";
+  const soon = `Container images on ${name}: coming soon${pkg?.image_soon ? ` (${pkg.image_soon})` : ""}`;
+  const limits = pkg?.limits;
+  const zipLimits = [
+    limits?.zip_compressed ? `${formatLimit(limits.zip_compressed)} zipped` : "",
+    limits?.zip_unpacked ? `${formatLimit(limits.zip_unpacked)} unzipped` : "",
+  ].filter(Boolean);
   return (
     <div className="stack">
       <Segmented<string>
@@ -56,93 +82,29 @@ export function FunctionPackageField({
         onChange={(v) => onChange(v === "inherit" ? undefined : (v as PackageType))}
         options={[
           { value: "inherit", label: `inherit (${inherited})` },
-          { value: "zip", label: "Zip", disabled: shared && current !== "zip", title: shared ? "Set it for every function on the Deploy page" : "Ship this function as a zip" },
-          { value: "image", label: "Image", disabled: !registry || (shared && current !== "image"), title: registry ? `Ship this function as an image in ${registry}` : soon },
-          { value: "auto", label: "Auto", disabled: !registry || (shared && current !== "auto"), title: registry ? "Zip, or an image when the bundle is over the zip limit" : soon },
+          { value: "zip", label: "Zip", title: "Ship the code as a zip" },
+          { value: "image", label: registry ? `Image (${registry.replace(/ \(.*\)$/, "")})` : "Image", disabled: !registry, title: registry ? `Build an image with Docker and push it to ${registry}` : soon },
+          { value: "auto", label: "Auto", disabled: !registry, title: registry ? "Zip, or an image when the bundle is over the zip limit" : soon },
         ]}
       />
-      {shared && <span className="muted small">{provider?.display_name} runs every function on one host, so they all ship the same way: choose it on the Deploy page (Packaging).</span>}
-      {!registry && !shared && <span className="muted small">{soon}.</span>}
-    </div>
-  );
-}
-
-/**
- * How the code ships: a zip, or a container image in the cloud's registry (Amazon ECR, Azure Container Registry).
- * Shows the provider's size limits so a large bundle can switch to an image before a deploy fails.
- */
-export function PackagingPanel({
-  provider,
-  draft,
-  onChange,
-}: {
-  provider: ProviderMeta | undefined;
-  draft: JsonObject;
-  onChange: (next: JsonObject) => void;
-}) {
-  if (!provider || provider.name === "onprem") return null;
-  const pkg = provider.package;
-  const current = packageTypeOf(draft);
-  const registry = pkg?.image_registry || "";
-  const limits = pkg?.limits;
-  const zipLimits = [
-    limits?.zip_compressed ? `${formatLimit(limits.zip_compressed)} zipped` : "",
-    limits?.zip_unpacked ? `${formatLimit(limits.zip_unpacked)} unzipped` : "",
-  ].filter(Boolean);
-  const soonTitle = `Container images on ${provider.display_name}: coming soon${pkg?.image_soon ? ` (${pkg.image_soon})` : ""}`;
-  return (
-    <Section title="Packaging" hint={`package.type: ${current}`} defaultOpen={current !== "zip"}>
-      <div className="stack">
-        <div className="row-gap wrap">
-          <Segmented<PackageType>
-            label="Package type"
-            value={current}
-            onChange={(v) => onChange(withPackageType(draft, v))}
-            options={[
-              { value: "zip", label: "Zip", title: "Upload the bundle as a zip (default)" },
-              { value: "image", label: registry ? `Container image (${registry.replace(/ \(.*\)$/, "")})` : "Container image", disabled: !registry, title: registry ? `Build an image with Docker and push it to ${registry}` : soonTitle },
-              { value: "auto", label: "Auto", disabled: !registry, title: registry ? "Zip, switching to an image when the bundle is over the zip limit" : soonTitle },
-            ]}
-          />
-          {!registry && <span className="badge badge-off">images coming soon</span>}
-        </div>
-        <ul className="bullets small">
-          <li>
-            <b>Zip</b>
-            {zipLimits.length ? (
-              <>
-                : up to {zipLimits.join(", ")} on {provider.display_name}
-                {limits?.reference ? <span className="muted"> ({limits.reference})</span> : null}.
-              </>
-            ) : (
-              <>: no size limit checked by pskit on {provider.display_name}.</>
-            )}{" "}
-            Package and Deploy print the bundle size against these limits; Deploy stops when a zip is over them.
-          </li>
-          {registry ? (
-            <li>
-              <b>Container image</b>: pskit builds the bundle into an image with your local Docker, pushes it to <b>{registry}</b>
-              {limits?.image ? <> (images up to {formatLimit(limits.image)})</> : null} and points the functions at it. Needs Docker running where
-              pskit runs. <b>Auto</b> stays a zip until the bundle is too big. One-off: <code className="mono">pskit deploy --package-type image</code>.
-              {!provider.shared_function_host && <> A single function can differ: <i>Package type</i> in its editor (<code className="mono">functions.&lt;name&gt;.package_type</code>).</>}
-            </li>
-          ) : (
-            <li>{soonTitle}. Until then, keep the bundle small with <code className="mono">package.exclude</code> and fewer dependencies.</li>
-          )}
-          {provider.name === "azure" && current !== "zip" && (
-            <li>
-              Consumption plans cannot run containers: the app runs on Elastic Premium <b>EP1</b> unless <code className="mono">provider.options.plan_sku</code> is
-              another non-Consumption plan (EP2/EP3, B1, S1, P1v3...).
-            </li>
-          )}
-        </ul>
-        {current !== "zip" && !registry && (
-          <div className="hint-box warn">
-            pskit.yml asks for <code className="mono">package.type: {current}</code>, which {provider.display_name} does not support yet.
-            {current === "image" ? " Validate and Deploy fail until it is Zip." : " It stays a zip here."}
-          </div>
+      <span className="muted small">
+        Zip: {zipLimits.length ? <>up to {zipLimits.join(", ")}</> : <>no size limit checked by pskit</>} on {name}.
+        {registry ? (
+          <> Image: built with your local Docker (needs Docker running) and pushed to {registry}{limits?.image ? <>, up to {formatLimit(limits.image)}</> : null}.</>
+        ) : (
+          <> {soon}.</>
         )}
-      </div>
-    </Section>
+      </span>
+      {shared && (
+        <span className="muted small">
+          {name} runs every function in one app, so this choice applies to <b>every</b> function (<code className="mono">package.type</code>).
+        </span>
+      )}
+      {provider?.name === "azure" && effective !== "zip" && (
+        <span className="muted small">
+          Consumption plans cannot run containers: the app runs on Elastic Premium <b>EP1</b> unless <code className="mono">provider.options.plan_sku</code> is another non-Consumption plan.
+        </span>
+      )}
+    </div>
   );
 }

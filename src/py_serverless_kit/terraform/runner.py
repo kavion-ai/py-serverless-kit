@@ -82,7 +82,19 @@ class TerraformRunner:
             args.append("-upgrade")
         if reconfigure:
             args.append("-reconfigure")
-        self._run(args)
+        if upgrade:
+            self._run(args)
+            return
+        code, output = self._run_tee(args)
+        if code == 0:
+            return
+        # A pskit upgrade raised a provider's minimum version (e.g. kreuzwerker/docker >= 4.3.0) above the one in
+        # .terraform.lock.hcl: let terraform select the newer version instead of failing.
+        if "does not match configured version constraint" in output:
+            self.echo("  a provider's required version changed; running terraform init -upgrade")
+            self._run([*args, "-upgrade"])
+            return
+        raise TerraformError(f"`init -input=false` failed with exit code {code}", output)
 
     def validate(self) -> None:
         self._run(["validate", "-no-color"])

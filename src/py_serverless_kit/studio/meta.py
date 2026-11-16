@@ -214,7 +214,11 @@ _COMMON_PROVIDER = [
 PROVIDER_OPTIONS: Dict[str, List[Dict[str, Any]]] = {
     "aws": [
         field("artifact_bucket", "Artifact bucket", help="Existing bucket for code uploads (default: one is created)."),
-        field("artifact_upload", "Artifact upload", "enum", default="s3", options=["s3", "direct"]),
+        field(
+            "artifact_upload", "Artifact upload", "enum", default="auto", options=["auto", "direct", "s3"],
+            help="auto: the zip goes in the Lambda request (no bucket), through S3 only above 50 MB. "
+                 "s3: always through an S3 bucket.",
+        ),
         field("assume_role_arn", "Assume role ARN", help="Role Terraform assumes to deploy."),
     ],
     "azure": [
@@ -255,6 +259,9 @@ PROVIDER_OPTIONS: Dict[str, List[Dict[str, Any]]] = {
     "gcp": [
         field("project", "Project", required=True, default="${env:GOOGLE_CLOUD_PROJECT}", help="GCP project id."),
         field("service_account", "Service account", help="Existing service account email."),
+        field("source_bucket", "Source bucket",
+              help="Existing Cloud Storage bucket for the code zip (default: pskit creates one; Cloud Functions "
+                   "only builds from Cloud Storage)."),
     ],
     "alibaba": [field("profile", "CLI profile", help="Alibaba Cloud CLI profile with credentials.")],
     "oracle": [
