@@ -150,7 +150,7 @@ class AwsProvider(Provider):
             issues.append(
                 Issue("error", "artifact_upload must be 's3' or 'direct'", "provider.options.artifact_upload")
             )
-        if config.package.type in ("image", "auto"):
+        if any(config.package_type_of(fn) in ("image", "auto") for fn in config.functions.values()):
             issues.extend(self._image_validation(config))
         for name, fn in config.functions.items():
             for queue in fn.events_of("queue"):
@@ -177,25 +177,26 @@ class AwsProvider(Provider):
         return issues
 
     def _image_validation(self, config: ServiceConfig) -> List[Issue]:
-        """One image serves every function: they share one architecture and one runtime."""
+        """One image serves every image function: they share one architecture and one runtime."""
         issues: List[Issue] = []
-        archs = {config.architecture_of(fn) for fn in config.functions.values()}
+        imaged = {n: fn for n, fn in config.functions.items() if config.package_type_of(fn) in ("image", "auto")}
+        archs = {config.architecture_of(fn) for fn in imaged.values()}
         if len(archs) > 1:
             issues.append(Issue(
                 "error",
-                f"container images are built for one architecture, but functions use {', '.join(sorted(archs))}; "
-                "set the same `architecture` on every function (or use package.type: zip)",
+                f"container images are built for one architecture, but image functions use "
+                f"{', '.join(sorted(archs))}; set the same `architecture` on them (or ship some as zip)",
                 "package.type",
             ))
-        runtimes = {config.runtime_of(fn) for fn in config.functions.values()}
+        runtimes = {config.runtime_of(fn) for fn in imaged.values()}
         if len(runtimes) > 1:
             issues.append(Issue(
                 "error",
-                f"container images have one runtime, but functions use {', '.join(sorted(runtimes))}; "
-                "remove the per-function `runtime` (or use package.type: zip)",
+                f"container images have one runtime, but image functions use {', '.join(sorted(runtimes))}; "
+                "remove the per-function `runtime` (or ship some as zip)",
                 "package.type",
             ))
-        for name, fn in config.functions.items():
+        for name, fn in imaged.items():
             if "layers" in fn.options:
                 issues.append(Issue(
                     "warning",
@@ -240,7 +241,9 @@ class AwsProvider(Provider):
                 f"AWS: monitoring.logs is off for {', '.join(quiet)}, but role {cfg.provider.iam.role} is not managed "
                 "by pskit: remove its CloudWatch Logs permissions yourself (no log group is created)"
             )
-        code = self._image_source(doc, ctx) if ctx.package_type == "image" else self._code_source(doc, ctx)
+        # zip and image functions can be mixed (functions.<name>.package_type): build each source once.
+        zip_code = self._code_source(doc, ctx) if ctx.any_zip else {}
+        image_code = self._image_source(doc, ctx) if ctx.any_image else {}
 
         fn_out: Dict[str, Dict[str, Any]] = {}
         arns: Dict[str, str] = {}
@@ -260,6 +263,7 @@ class AwsProvider(Provider):
                     self._resource_statements(ctx, [name]),
                     logs=cfg.logs_of(fn),
                 )
+            code = image_code if ctx.package_of(name) == "image" else zip_code
             lam = self._function(doc, ctx, name, fn, role, code)
             arns[name] = ref(lam, "arn")
             out: Dict[str, Any] = {

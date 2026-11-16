@@ -1,12 +1,14 @@
 # Package size, container images, logs & metrics
 
-Three things pskit shows you **before** a deploy, on every cloud:
+What pskit checks and shows around a deploy, on every cloud:
 
 1. how big the bundle is compared with the provider's deployment limits;
 2. whether the code ships as a **zip** or as a **container image** (Amazon ECR on AWS, Azure Container Registry on
    Azure; more clouds coming soon);
 3. every resource the deploy creates, what each one is for, and which ones are optional. That includes the logs and
-   metrics services, which you can switch off per function.
+   metrics services, which you can switch off per function;
+4. after the deploy: the functions that could **not** be deployed, and why. One failing function does not stop the
+   others.
 
 ## 1. Deployment size limits
 
@@ -57,8 +59,31 @@ package:
 | `image` | pskit builds a container image from the same bundle with your **local Docker**, pushes it to the cloud's registry and points the functions at it. |
 | `auto` | A zip, switching to an image only when the bundle is over a zip limit. On clouds without image support it stays a zip (with a warning). |
 
-Override it for one run with `--package-type zip|image|auto` on `pskit package`, `plan` or `deploy`. In the studio,
-open **Deploy → Packaging**.
+Override it for one run with `--package-type zip|image|auto` on `pskit package`, `plan` or `deploy`. The flag applies
+to every function. In the studio, open **Deploy → Packaging**.
+
+### Per function: `functions.<name>.package_type`
+
+Only one function is big? Ship just that one as an image and keep the others as zips:
+
+```yaml
+package:
+  type: zip                 # the default for every function
+functions:
+  api:
+    handler: app.api.handler           # zip
+  report:
+    handler: app.report.build          # pandas + matplotlib: too big for a zip
+    package_type: image                # zip | image | auto, for this function only
+```
+
+- **AWS:** zip and image functions mix freely. Every image function runs the same image (built once), so only the
+  image functions need to share an `architecture` and `runtime`.
+- **Azure (and other one-host providers):** one Function App runs every function, so they all ship the same way.
+  Different `package_type` values are an error; set `package.type` instead.
+- **Clouds without images:** `package_type: image` on a function is an error **for that function only**.
+  `pskit deploy` skips it and deploys the others (see [partial deploys](#5-partial-deploys-what-was-not-deployed-and-why)).
+- In the studio, each function's editor has **Package type** (inherit / Zip / Image / Auto).
 
 ### What you need
 
@@ -160,3 +185,39 @@ The same list is saved as `.pskit/<provider>-<stage>/resources.json`. In the stu
 creates** shows it with a *Refresh* button (it runs `pskit package --skip-deps`), and the Deploy confirmation lists it
 before anything is applied. Every resource type of every built-in provider has a description. Types pskit does not
 know (from `terraform.extra` or third-party providers) are listed with a generic one, so the list is always complete.
+
+## 5. Partial deploys: what was not deployed, and why
+
+One function that cannot be deployed no longer stops the others. `pskit deploy` deploys everything it can, then
+lists what it could not deploy, with the reason, as the **last** thing it prints:
+
+```text
+Deployed part (dev) to AWS Lambda us-east-1 (partly)
+...
+Deployed 2 of 3 function(s). Not deployed (1):
+  worker  [terraform apply]
+      reason: aws_lambda_function.worker: creating Lambda Function (part-dev-worker): ... Unzipped size must be smaller than 262144000 bytes
+      Terraform kept everything that does not depend on it; the failed part is retried on the next deploy
+Fix the reasons above and run `pskit deploy` again; the deployed functions are not touched twice.
+```
+
+The exit status is **1** when anything was not deployed, so CI still notices.
+
+| When | What counts | What happens to it |
+|---|---|---|
+| **configuration** (before Terraform) | an error about one function only: `functions.<name>...`, such as an unsupported trigger option, `auth: jwt` on Azure, or `package_type: image` on a cloud without images | skipped: it is left out of the bundle and the Terraform |
+| **package size** (before Terraform) | the bundle is over the zip limit for the zip functions while other functions ship as images | the zip functions are skipped; the image functions deploy |
+| **terraform apply** | Terraform reports an error on one of the function's resources, or on a resource it needs (found through the dependency graph of `main.tf.json`) | Terraform finishes everything that does not depend on it; the failed part is retried on the next deploy |
+
+- **A skipped function keeps what was deployed before.** When something is skipped, pskit applies only the resources
+  it rendered (`terraform apply -target=...`), so Terraform does not destroy the skipped function's earlier version.
+  It is listed in `deployment.json` with `"status": "not_updated"`. The exception is a provider where one host runs
+  every function (Azure Function App, on premises, DigitalOcean): the redeployed host no longer contains it, and the
+  report says so.
+- Errors shared by every function (a role, the API, the Function App, missing credentials) still fail the deploy:
+  `no function was deployed`, with the reasons.
+- When every function has a configuration error, nothing is skipped and the errors are reported as before.
+- `deployment.json` gets `"status": "partial"` and `not_deployed: {<function>: {step, reason, previous}}`. The
+  studio's Deploy page shows it above **What a deploy creates**.
+- `pskit deploy --all-or-nothing` keeps the old behaviour: any error stops the deploy before Terraform, and a
+  Terraform error is raised as it is.

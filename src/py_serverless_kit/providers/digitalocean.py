@@ -29,6 +29,7 @@ class DigitalOceanProvider(Provider):
     name = "digitalocean"
     display_name = "DigitalOcean Functions"
     tier = "beta"
+    shared_function_host = True
     terraform_source = "terraform.io/builtin/terraform"  # terraform_data + doctl, no cloud provider plugin
     default_region = ""
     capabilities = frozenset({HTTP, SCHEDULE})

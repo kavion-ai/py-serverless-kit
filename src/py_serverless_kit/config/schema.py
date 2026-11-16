@@ -258,6 +258,10 @@ class DlqConfig(_Model):
     max_retries: int = Field(4, ge=0, le=99, description="retries after the first delivery before a message is moved")
 
 
+PackageType = Literal["zip", "image", "auto"]
+PACKAGE_TYPES: Tuple[str, ...] = ("zip", "image", "auto")
+
+
 class MonitoringConfig(_Model):
     """``monitoring``: the logs / metrics services a provider creates next to a function.
 
@@ -297,6 +301,9 @@ class FunctionConfig(_Model):
     dlq: Optional[DlqConfig] = Field(None, description="send messages that keep failing to a dead-letter queue")
     monitoring: MonitoringConfig = Field(
         default_factory=MonitoringConfig, description="logs / metrics services for this function (default: on)"
+    )
+    package_type: Optional[PackageType] = Field(
+        None, description="zip / image / auto for this function only (default: package.type)"
     )
     options: Dict[str, Any] = Field(default_factory=dict)
 
@@ -417,10 +424,6 @@ class NodePackageConfig(_Model):
         None, description="bundle each entry into one file with esbuild (default: only where the platform needs it)"
     )
     npm_args: List[str] = Field(default_factory=list)
-
-
-PackageType = Literal["zip", "image", "auto"]
-PACKAGE_TYPES: Tuple[str, ...] = ("zip", "image", "auto")
 
 
 class ImagePackageConfig(_Model):
@@ -872,6 +875,10 @@ class ServiceConfig(_Model):
 
     def runtime_of(self, fn: FunctionConfig) -> str:
         return fn.runtime or self.provider.runtime
+
+    def package_type_of(self, fn: FunctionConfig) -> str:
+        """``zip`` / ``image`` / ``auto`` requested for ``fn`` (``auto`` is resolved after the build)."""
+        return fn.package_type or self.package.type
 
     def logs_of(self, fn: FunctionConfig) -> bool:
         """Whether the provider's log service is set up for ``fn`` (function, then provider, then on)."""

@@ -100,6 +100,7 @@ functions:
       - http: POST /orders
     dlq: {queue: orders-dlq, max_retries: 3}   # failed queue messages: see dead-letter-queues.md
     monitoring: {logs: true, metrics: false}  # provider logs / metrics services (default: both on)
+    package_type: image             # this function only: zip | image | auto (default: package.type)
     options: {}                     # merged into the provider's function resource (escape hatch)
 ```
 
@@ -114,6 +115,7 @@ functions:
 | `concurrency` | int ≥ 0 | — |
 | `iam` | like `provider.iam` | statements are added to the provider-level ones; a dedicated role is created (AWS) |
 | `dlq` | `true`, a queue name, or `{queue, max_retries}` | off. Queue triggers only; AWS, Azure, GCP and on premises. See [dead-letter queues](dead-letter-queues.md) |
+| `package_type` | `zip` \| `image` \| `auto` | inherit `package.type`. Ship only this function as a container image (AWS); one-host providers such as Azure need the same value for every function. See [per function](package-size-and-monitoring.md#per-function-functionsnamepackage_type) |
 | `monitoring` | `{logs, metrics}` or bool | inherit `provider.monitoring` (on). `false` = both off. What each switch removes per cloud: [logs & metrics](package-size-and-monitoring.md#3-logs--metrics-on-by-default-off-per-function) |
 | `options` | mapping | `{}` |
 

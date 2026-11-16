@@ -29,6 +29,45 @@ export function withPackageType(draft: JsonObject, kind: PackageType): JsonObjec
 }
 
 /**
+ * Function editor: `functions.<name>.package_type` (inherit = `package.type`). Image / auto need a provider with
+ * container images; one-host providers (Azure) ship every function the same way, so it is set on the Deploy page.
+ */
+export function FunctionPackageField({
+  value,
+  draft,
+  provider,
+  onChange,
+}: {
+  value: string | undefined;
+  draft: JsonObject;
+  provider: ProviderMeta | undefined;
+  onChange: (v: PackageType | undefined) => void;
+}) {
+  const registry = provider?.package?.image_registry || "";
+  const shared = !!provider?.shared_function_host;
+  const inherited = packageTypeOf(draft);
+  const current = value === "zip" || value === "image" || value === "auto" ? value : "inherit";
+  const soon = `Container images on ${provider?.display_name || "this provider"}: coming soon`;
+  return (
+    <div className="stack">
+      <Segmented<string>
+        label="Package type"
+        value={current}
+        onChange={(v) => onChange(v === "inherit" ? undefined : (v as PackageType))}
+        options={[
+          { value: "inherit", label: `inherit (${inherited})` },
+          { value: "zip", label: "Zip", disabled: shared && current !== "zip", title: shared ? "Set it for every function on the Deploy page" : "Ship this function as a zip" },
+          { value: "image", label: "Image", disabled: !registry || (shared && current !== "image"), title: registry ? `Ship this function as an image in ${registry}` : soon },
+          { value: "auto", label: "Auto", disabled: !registry || (shared && current !== "auto"), title: registry ? "Zip, or an image when the bundle is over the zip limit" : soon },
+        ]}
+      />
+      {shared && <span className="muted small">{provider?.display_name} runs every function on one host, so they all ship the same way: choose it on the Deploy page (Packaging).</span>}
+      {!registry && !shared && <span className="muted small">{soon}.</span>}
+    </div>
+  );
+}
+
+/**
  * How the code ships: a zip, or a container image in the cloud's registry (Amazon ECR, Azure Container Registry).
  * Shows the provider's size limits so a large bundle can switch to an image before a deploy fails.
  */
@@ -85,6 +124,7 @@ export function PackagingPanel({
               <b>Container image</b>: pskit builds the bundle into an image with your local Docker, pushes it to <b>{registry}</b>
               {limits?.image ? <> (images up to {formatLimit(limits.image)})</> : null} and points the functions at it. Needs Docker running where
               pskit runs. <b>Auto</b> stays a zip until the bundle is too big. One-off: <code className="mono">pskit deploy --package-type image</code>.
+              {!provider.shared_function_host && <> A single function can differ: <i>Package type</i> in its editor (<code className="mono">functions.&lt;name&gt;.package_type</code>).</>}
             </li>
           ) : (
             <li>{soonTitle}. Until then, keep the bundle small with <code className="mono">package.exclude</code> and fewer dependencies.</li>

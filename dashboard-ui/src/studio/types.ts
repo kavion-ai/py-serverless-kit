@@ -55,6 +55,8 @@ export interface ProviderMeta {
   notes?: string;
   /** Package types (zip / image / auto), container registry and deployment size limits. */
   package?: ProviderPackage;
+  /** One host runs every function (Azure, on premises, DigitalOcean): one package type for all of them. */
+  shared_function_host?: boolean;
   /** What monitoring.logs / monitoring.metrics mean here; `controls` = the switches pskit can act on. */
   monitoring?: { logs: string; metrics: string; controls: string[] };
   options: Field[];
@@ -88,6 +90,12 @@ export interface DeployResources {
   monitoring?: Record<string, { logs: boolean; metrics: boolean }>;
   monitoring_text?: { logs: string; metrics: string };
   packaged_at?: number | null;
+  /** deployment.json of the last deploy: status ("deployed" | "partial" | "removed") and what was not deployed. */
+  last_deploy?: {
+    status?: string;
+    deployed_at?: string;
+    not_deployed: Record<string, { step: string; reason: string; previous?: string }>;
+  } | null;
 }
 
 export interface ProviderPackage {

@@ -11,9 +11,11 @@ from typing import Any, Callable, Dict, List, Optional
 
 from ..packaging.builder import build_artifact
 from ..providers.base import Artifact, Issue, RenderContext
-from ..providers.container import PackagePlan, plan_package
-from ..terraform.runner import TerraformRunner
+from ..providers.container import PackagePlan, package_summary, plan_package
+from ..terraform.runner import TerraformError, TerraformRunner
+from . import partial
 from .describe import RECORD_FILE, build_record
+from .partial import NotDeployed
 from .project import Project
 
 Echo = Callable[[str], None]
@@ -40,13 +42,21 @@ class Deployer:
         echo: Echo = print,
         runner: Optional[TerraformRunner] = None,
         package_type: Optional[str] = None,
+        keep_going: bool = False,
     ) -> None:
-        """``package_type`` (``--package-type``) overrides ``package.type`` of pskit.yml for this run."""
+        """``package_type`` (``--package-type``) overrides ``package.type`` of pskit.yml for this run.
+
+        ``keep_going`` (``pskit deploy`` without ``--all-or-nothing``): a function that cannot be deployed is skipped
+        or reported, and the others are deployed (core/partial.py). ``not_deployed`` lists them afterwards.
+        """
         if package_type:
             project.use_package_type(package_type)
         self.project = project
         self.echo = echo
         self._runner = runner
+        self.keep_going = keep_going
+        self.not_deployed: List[NotDeployed] = []
+        self._all_functions: List[str] = sorted(project.config.functions)
 
     # ---------------------------------------------------------------- helpers
     @property
@@ -58,11 +68,29 @@ class Deployer:
 
     def check(self) -> List[Issue]:
         issues = self.project.validate()
+        if self.keep_going:
+            issues = self._skip_function_errors(issues)
         errors = [i for i in issues if i.level == "error"]
         for issue in issues:
             self.echo(f"  {issue}")
         if errors:
             raise DeployError(f"{len(errors)} configuration error(s); fix them and retry")
+        return issues
+
+    def _skip(self, name: str, step: str, reason: str) -> None:
+        self.not_deployed.append(NotDeployed(name, step, reason))
+        self.echo(f"  SKIP: functions.{name} is not deployed ({step}): {reason}")
+        self.project.drop_functions([name])
+
+    def _skip_function_errors(self, issues: List[Issue]) -> List[Issue]:
+        """Partial deploy: skip the functions whose own configuration is wrong, until the rest validates."""
+        for _round in range(len(self.project.config.functions) + 1):
+            scoped = partial.function_errors(issues, self.project.config.functions)
+            if not scoped or len(scoped) >= len(self.project.config.functions):
+                break  # nothing to skip, or nothing would be left: report every error as usual
+            for name, messages in sorted(scoped.items()):
+                self._skip(name, partial.CONFIG, "; ".join(messages))
+            issues = self.project.validate()
         return issues
 
     def run_hook(self, name: str) -> None:
@@ -96,7 +124,7 @@ class Deployer:
         artifact = build_artifact(project, skip_deps=skip_deps, log=self.echo)
         plan = self.package_plan(artifact, strict=strict and not skip_deps)
         image = None
-        if plan.type == "image":
+        if plan.needs_image:
             from ..packaging.image import prepare_image
 
             image = prepare_image(project.provider, project.config, artifact)
@@ -112,6 +140,7 @@ class Deployer:
             workflow_engines=dict(project.engines),
             package_type=plan.type,
             image=image,
+            function_packages=dict(plan.functions),
         )
         doc = project.provider.render(ctx)
         tf_file = project.work_dir / "main.tf.json"
@@ -151,6 +180,14 @@ class Deployer:
         plan = plan_package(self.project.provider, self.project.config, artifact)
         for note in plan.notes:
             self.echo(f"  NOTE: {note}" if note.level == "info" else f"  {note}")
+        if strict and self.keep_going and plan.too_big and len(plan.too_big) < len(plan.functions):
+            # Partial deploy: the zip functions cannot go, the image functions can.
+            for name, reason in sorted(plan.too_big.items()):
+                self._skip(name, partial.SIZE, reason)
+                plan.functions.pop(name, None)
+            plan.too_big = {}
+            plan.type = package_summary(plan.functions)
+            plan.notes = [n for n in plan.notes if n.level != "error"]
         if strict and plan.errors:
             raise DeployError(
                 f"the bundle is too big for a zip deploy on {self.project.provider.display_name}; see the notes above"
@@ -165,25 +202,41 @@ class Deployer:
     def deploy(self, *, skip_deps: bool = False, auto_approve: bool = True, upgrade: bool = False) -> Dict[str, Any]:
         if self.project.config.provider.name == "onprem":
             self._onprem_services_follow()  # before packaging: the env file shipped has the new addresses
+        previous = self.load_record() or {}
         result = self.package(skip_deps=skip_deps, strict=True)
         self.run_hook("before_deploy")
         self.echo("Running terraform init")
         self.runner.init(upgrade=upgrade)
-        if auto_approve:
-            self.echo("Running terraform apply")
-            self.runner.apply(auto_approve=True)
-        else:
-            changed = self.runner.plan(out="tfplan")
-            if not changed:
-                self.echo("No changes.")
+        # Functions skipped before Terraform keep what was deployed before: apply only what was rendered.
+        targets = partial.resource_addresses(json.loads(result.tf_file.read_text("utf-8"))) if self.not_deployed \
+            else None
+        if targets:
+            self.echo(f"  applying {len(targets)} resource(s) only, so the skipped functions are left as they are")
+        try:
+            if auto_approve:
+                self.echo("Running terraform apply")
+                self.runner.apply(auto_approve=True, targets=targets)
             else:
-                self.runner.apply(plan_file="tfplan")
-        outputs = self.runner.output()
+                changed = self.runner.plan(out="tfplan", targets=targets)
+                if not changed:
+                    self.echo("No changes.")
+                else:
+                    self.runner.apply(plan_file="tfplan")
+        except TerraformError as exc:
+            self._apply_failed(exc, result)
+        try:
+            outputs = self.runner.output()
+        except TerraformError:
+            if not self.not_deployed:
+                raise
+            outputs = {}  # a failed first apply writes no outputs
         record = build_record(
             self.project,
             outputs,
             artifact=_artifact_record(result),
+            status="partial" if self.not_deployed else "deployed",
         )
+        self._record_not_deployed(record, previous)
         if self.project.config.provider.name == "onprem":
             self._remember_onprem(record)
             self._onprem_balancers(record)
@@ -196,6 +249,52 @@ class Deployer:
                                network.deployment(self.project.root, self.project.work_dir))
         self.run_hook("after_deploy")
         return record
+
+    def _apply_failed(self, exc: TerraformError, result: PackageResult) -> None:
+        """Partial deploy: which functions the failed apply did not deploy, and why. Re-raises when unknown."""
+        if not self.keep_going or not exc.output:
+            raise exc
+        tf = json.loads(result.tf_file.read_text("utf-8"))
+        functions = sorted(self.project.config.functions)
+        failed = partial.failed_functions(tf, functions, partial.parse_errors(exc.output))
+        if not failed:
+            raise exc  # nothing attributable to a function (e.g. a workflow or a shared resource only)
+        for name, reason in sorted(failed.items()):
+            self.not_deployed.append(NotDeployed(
+                name, partial.TERRAFORM, reason,
+                "Terraform kept everything that does not depend on it; the failed part is retried on the next deploy",
+            ))
+        if len(failed) == len(functions):
+            raise DeployError("no function was deployed:\n" + "\n".join(partial.report_lines(self.not_deployed,
+                                                                                            len(self._all_functions))))
+
+    def _record_not_deployed(self, record: Dict[str, Any], previous: Dict[str, Any]) -> None:
+        """deployment.json: ``not_deployed`` with the reasons; skipped functions keep their previous entry."""
+        if not self.not_deployed:
+            return
+        before = {f.get("name"): f for f in previous.get("functions") or [] if isinstance(f, dict)}
+        shared = self.project.provider.shared_function_host
+        host = self.project.provider.display_name
+        listed = {f["name"] for f in record["functions"]}
+        for item in self.not_deployed:
+            if item.step != partial.TERRAFORM:
+                if item.function not in before:
+                    item.previous = "it has never been deployed on this stage"
+                elif shared:
+                    item.previous = f"its previous version left {host}: one host runs every function"
+                else:
+                    item.previous = "the version deployed before is still running, unchanged"
+                    if item.function not in listed:
+                        record["functions"].append({**before[item.function], "status": "not_updated"})
+            for entry in record["functions"]:
+                if entry.get("name") == item.function and item.step == partial.TERRAFORM:
+                    entry["status"] = "not_deployed"
+        record["functions"].sort(key=lambda f: str(f.get("name")))
+        record["not_deployed"] = {n.function: n.as_dict() for n in sorted(self.not_deployed, key=lambda n: n.function)}
+
+    def report(self) -> List[str]:
+        """The "Not deployed" lines printed at the end of a partial deploy."""
+        return partial.report_lines(self.not_deployed, len(self._all_functions))
 
     def remove(self, *, auto_approve: bool = True, keep_resources: bool = False) -> List[str]:
         """Destroy the stage. With ``keep_resources`` managed buckets, queues and topics stay in the

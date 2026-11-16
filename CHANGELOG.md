@@ -6,7 +6,7 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
-## [3.2.0] - 2026-11-16
+## [3.2.1] - 2026-11-16
 
 ### Added
 - **Container-image deploys** (`package.type: image`, or `--package-type image` on `pskit package` / `plan` /
@@ -23,6 +23,21 @@ All notable changes to this project are documented here. The format follows [Kee
     `keep` and `scan_on_push`.
   - GCP, Cloudflare, Alibaba, Tencent, Huawei and IBM: *coming soon*. There, `package.type: image` is a validation
     error that names what the image deploy will use.
+- **Package type per function** (`functions.<name>.package_type: zip | image | auto`, studio: *Package type* in the
+  function editor): ship only the big function as an image. On AWS, zip and image functions mix in one deploy (the
+  image is built once). Azure runs every function in one Function App, so they need the same value. On clouds without
+  images it is an error for that function only. `--package-type` still applies to every function.
+- **Partial deploys:** a function that cannot be deployed no longer stops the others.
+  - Skipped before Terraform: a configuration error about one function only, or a zip over the size limit while other
+    functions ship as images.
+  - Reported after Terraform: a Terraform error on the function's own resources or on one it depends on (matched
+    through the dependency graph of `main.tf.json`). Terraform still finishes everything else.
+  - The rest are deployed. `pskit deploy` prints the functions that were not deployed and why, as its last output,
+    and exits with status 1.
+  - A skipped function keeps its earlier deployment: the apply targets only the rendered resources. The exception is
+    one-host providers (Azure, on premises, DigitalOcean), where the report says it left the host.
+  - `deployment.json` gets `status: partial` and `not_deployed`. The studio's Deploy page shows them.
+  - `--all-or-nothing` restores the old behaviour.
 - **Deployment size checks on every package / plan / deploy:** the zipped and unzipped size against the provider's
   limits (AWS 250 MB unzipped, or 50 MB zipped with `artifact_upload: direct`; Azure 1 GB; GCP 100 MB compressed /
   500 MB with modules; Cloudflare 10 MB), with a warning from 80 %. `pskit deploy` stops before Terraform when a zip
@@ -50,6 +65,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ### Changed
 - The build log shows the unzipped size next to the zipped size.
+- `terraform apply` output is still streamed, and is also kept so its errors can be matched to functions.
+  `TerraformRunner.apply` / `plan` take `targets`.
 - `pskit init` templates mention `package.type` and `monitoring` in comments.
 
 ## [3.1.4] - 2026-11-13

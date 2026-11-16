@@ -200,7 +200,7 @@ class FakeRunner(TerraformRunner):
     def init(self, upgrade=False, reconfigure=False):
         self.calls.append("init")
 
-    def apply(self, plan_file=None, auto_approve=True):
+    def apply(self, plan_file=None, auto_approve=True, targets=None):
         self.calls.append("apply")
 
     def destroy(self, auto_approve=True):

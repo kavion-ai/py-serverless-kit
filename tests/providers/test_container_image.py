@@ -153,7 +153,7 @@ def test_plan_notes_sizes_and_near_limit():
     aws = get_provider("aws")
     from py_serverless_kit.config.schema import ServiceConfig
 
-    cfg = ServiceConfig.model_validate({"service": "svc", "provider": {"name": "aws"}, "functions": {}})
+    cfg = ServiceConfig.model_validate({"service": "svc", "provider": {"name": "aws"}, "functions": {"f": {"handler": "a.b"}}})
     plan = plan_package(aws, cfg, fake_artifact(40 * MB, 220 * MB))
     assert plan.type == "zip"
     assert "250.0 MB" in str(plan.notes[0])
@@ -223,3 +223,44 @@ def test_studio_job_passes_package_type():
     assert build_argv("deploy", "aws", "dev", {"package_type": "image"})[-2:] == ["--package-type", "image"]
     with pytest.raises(StudioError):
         build_argv("deploy", "aws", "dev", {"package_type": "tar"})
+
+
+# --------------------------------------------------------------------------- per function
+def test_aws_mixes_zip_and_image_functions(make_project):
+    yml = config(kind="zip").replace("handler: app.handlers.hello", "handler: app.handlers.hello\n    package_type: image")
+    result, tf = package(make_project(yml))
+    assert result.package.type == "mixed"
+    assert result.package.functions == {"hello": "image", "worker": "zip"}
+    fns = tf["resource"]["aws_lambda_function"]
+    assert fns["hello"]["package_type"] == "Image" and "handler" not in fns["hello"]
+    assert fns["worker"]["handler"] == "pskit_entry.handler" and "s3_key" in fns["worker"]
+    assert "aws_s3_object" in tf["resource"] and "docker_image" in tf["resource"]
+
+
+def test_image_checks_only_apply_to_image_functions(make_project):
+    yml = config(kind="zip").replace(
+        "handler: app.handlers.hello", "handler: app.handlers.hello\n    package_type: image"
+    ).replace("handler: app.handlers.worker", "handler: app.handlers.worker\n    architecture: arm64")
+    assert not [i for i in make_project(yml).validate() if i.level == "error"]
+
+
+def test_package_type_flag_overrides_functions_too(make_project):
+    yml = config(kind="zip").replace("handler: app.handlers.hello", "handler: app.handlers.hello\n    package_type: image")
+    result, _tf = package(make_project(yml), package_type="zip")
+    assert result.package.type == "zip"
+
+
+def test_azure_needs_one_package_type(make_project):
+    yml = config("azure", kind="zip", options=AZ).replace(
+        "handler: app.handlers.hello", "handler: app.handlers.hello\n    package_type: image"
+    )
+    issues = make_project(yml).validate()
+    assert any(i.level == "error" and "one Function App hosts every function" in i.message for i in issues)
+
+
+def test_unsupported_image_per_function_is_scoped(make_project):
+    yml = config("gcp", kind="zip", options="options: {project: p}").replace(
+        "handler: app.handlers.worker", "handler: app.handlers.worker\n    package_type: image"
+    )
+    errors = [i for i in make_project(yml).validate() if i.level == "error"]
+    assert [i.where for i in errors] == ["functions.worker.package_type"]

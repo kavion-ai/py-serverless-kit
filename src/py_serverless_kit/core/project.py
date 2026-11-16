@@ -122,13 +122,25 @@ class Project:
         return cls(loaded=loaded, provider=prov, config=config, engines=engines)
 
     def use_package_type(self, package_type: str) -> None:
-        """Override ``package.type`` (``zip`` / ``image`` / ``auto``) for this run, e.g. ``--package-type image``."""
+        """Override ``package.type`` (``zip`` / ``image`` / ``auto``) for this run, e.g. ``--package-type image``.
+
+        It applies to every function: ``functions.<name>.package_type`` is ignored for the run.
+        """
         from ..config.schema import PACKAGE_TYPES
 
         if package_type not in PACKAGE_TYPES:
             raise ValueError(f"package type must be one of {', '.join(PACKAGE_TYPES)}, not {package_type!r}")
         package = self.config.package.model_copy(update={"type": package_type})
-        self.config = self.config.model_copy(update={"package": package})
+        functions = {
+            name: fn.model_copy(update={"package_type": None}) if fn.package_type else fn
+            for name, fn in self.config.functions.items()
+        }
+        self.config = self.config.model_copy(update={"package": package, "functions": functions})
+
+    def drop_functions(self, names: List[str]) -> None:
+        """Leave functions out of this run (a partial deploy skips the ones that cannot deploy)."""
+        functions = {n: fn for n, fn in self.config.functions.items() if n not in set(names)}
+        self.config = self.config.model_copy(update={"functions": functions})
 
     # ---------------------------------------------------------------- paths
     @property

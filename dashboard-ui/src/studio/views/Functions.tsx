@@ -9,6 +9,7 @@ import { DiffView, InlineIssues, PageHeader } from "../components/Misc";
 import { isEnabled } from "../compat";
 import { EnableControl } from "../components/EnableControl";
 import { LogsMetricsSection } from "../components/LogsMetrics";
+import { FunctionPackageField } from "../components/Packaging";
 import { GroupBadge, readPlacement, renameInPlacement, RunsOnField, usePlacementTargets } from "../components/Placement";
 import { useOnPremServers } from "../components/ServerPicker";
 import {
@@ -787,6 +788,14 @@ function FunctionWizard({ name: existing }: { name: string | null }) {
                   onChange={(v) => setField("timeout", v === "" ? undefined : Number(v))}
                 />
               </FormRow>
+              {providerName !== "onprem" && (
+                <FormRow
+                  label="Package type"
+                  help="How this function's code ships: inherit package.type, a zip, or a container image (Amazon ECR on AWS) for a big function. A function that cannot deploy is skipped and reported; the others still deploy."
+                >
+                  <FunctionPackageField value={str(fn.package_type) || undefined} draft={draft} provider={provider} onChange={(v) => setField("package_type", v)} />
+                </FormRow>
+              )}
               <FormRow label="Architecture" help="The processor type. Keep inherit unless you know you need another. Example: arm64 is often cheaper on AWS.">
                 <Segmented
                   label="Architecture"

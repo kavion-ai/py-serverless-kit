@@ -602,6 +602,7 @@ def build_meta() -> Dict[str, Any]:
                 "notes": desc["notes"],
                 "package": desc.get("package") or {},
                 "monitoring": desc.get("monitoring") or {},
+                "shared_function_host": bool(desc.get("shared_function_host")),
                 "options": PROVIDER_OPTIONS.get(name, []),
                 "regions": REGIONS.get(name, []),
                 "trigger_support": trigger_support(prov, name),

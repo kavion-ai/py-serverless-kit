@@ -131,6 +131,7 @@ class AzureProvider(Provider):
                    "left out when no function needs them)",
     }
     monitoring_controls = frozenset({"logs", "metrics"})
+    shared_function_host = True
 
     # ------------------------------------------------------------------ logs / metrics
     @staticmethod
@@ -177,11 +178,20 @@ class AzureProvider(Provider):
         return dockerfile(self.image_base(config), config.package.image.dockerfile_lines, body)
 
     def plan_sku(self, ctx: RenderContext) -> str:
-        return str(ctx.opt("plan_sku") or (IMAGE_PLAN_SKU if ctx.package_type == "image" else "Y1"))
+        return str(ctx.opt("plan_sku") or (IMAGE_PLAN_SKU if ctx.any_image else "Y1"))
 
     def _image_validation(self, config: ServiceConfig) -> List[Issue]:
         sku = str(config.provider.options.get("plan_sku") or "")
-        if config.package.type == "image":
+        kinds = {config.package_type_of(fn) for fn in config.functions.values()} or {config.package.type}
+        if len(kinds) > 1:
+            return [Issue(
+                "error",
+                "one Function App hosts every function, so they ship the same way: functions ask for "
+                f"{', '.join(sorted(kinds))}. Set package.type for all of them instead of functions.<name>.package_type",
+                "package.type",
+            )]
+        kind = kinds.pop()
+        if kind == "image":
             if sku.upper() in CONSUMPTION_SKUS:
                 return [Issue(
                     "error",
@@ -196,7 +206,7 @@ class AzureProvider(Provider):
                     "call); set provider.options.plan_sku to choose another non-Consumption plan",
                     "provider.options.plan_sku",
                 )]
-        if config.package.type == "auto" and sku.upper() in CONSUMPTION_SKUS:
+        if kind == "auto" and sku.upper() in CONSUMPTION_SKUS:
             return [Issue(
                 "warning",
                 f"package.type auto cannot switch to an image on plan_sku {sku} (Consumption): a bundle over the zip "
@@ -679,7 +689,7 @@ class AzureProvider(Provider):
 
         app_name = self.app_name(ctx.service, ctx.stage)
         image_deps: List[str] = []
-        if ctx.package_type == "image":
+        if ctx.any_image:
             image_deps = self._container(doc, ctx, rg_name, loc, tags, site_config, settings)
         body: Dict[str, Any] = {
             "name": app_name,

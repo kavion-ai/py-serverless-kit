@@ -83,9 +83,23 @@ class RenderContext:
     artifact: Artifact
     region: str
     workflow_engines: Dict[str, str] = field(default_factory=dict)
-    # "zip" or "image" (package.type resolved for this deploy, see providers/container.py::plan_package)
+    # "zip", "image" or "mixed" (resolved for this deploy, see providers/container.py::plan_package)
     package_type: str = "zip"
     image: Optional[ImageBuild] = None
+    # function -> "zip" | "image" (functions.<name>.package_type / package.type with auto resolved)
+    function_packages: Dict[str, str] = field(default_factory=dict)
+
+    def package_of(self, function: str) -> str:
+        """``zip`` or ``image``: how ``function`` ships in this deploy."""
+        return self.function_packages.get(function, "image" if self.package_type == "image" else "zip")
+
+    @property
+    def any_image(self) -> bool:
+        return self.package_type in ("image", "mixed")
+
+    @property
+    def any_zip(self) -> bool:
+        return self.package_type in ("zip", "mixed")
 
     @property
     def service(self) -> str:
@@ -197,6 +211,9 @@ class Provider(ABC):
     # built-in service. `monitoring_controls` lists the switches pskit can act on here (it creates something for
     # them); turning off any other one only gives a warning.
     monitoring: ClassVar[Dict[str, str]] = {}
+    # One host runs every function (Azure Function App, on premises, DigitalOcean package): a function skipped by a
+    # partial deploy leaves it instead of keeping its previous version (core/partial.py).
+    shared_function_host: ClassVar[bool] = False
     monitoring_controls: ClassVar[FrozenSet[str]] = frozenset()
 
     # ------------------------------------------------------------ naming
@@ -455,15 +472,25 @@ class Provider(ABC):
     def package_validation(self, config: ServiceConfig) -> List[Issue]:
         issues: List[Issue] = []
         kind = config.package.type
+        soon = f" ({self.image_soon})" if self.image_soon else ""
         if kind == "image" and not self.image_registry:
-            soon = f" ({self.image_soon})" if self.image_soon else ""
             issues.append(Issue(
                 "error",
                 f"container-image deploys are not available on {self.display_name} yet; coming soon{soon}. "
                 "Use `package.type: zip` (or `auto`, which stays a zip here)",
                 "package.type",
             ))
-        elif kind == "auto" and not self.image_registry and self.package_limits is not None:
+        if not self.image_registry:
+            # Per function: an error on that function only, so `pskit deploy` skips it and deploys the others.
+            for name, fn in sorted(config.functions.items()):
+                if fn.package_type == "image":
+                    issues.append(Issue(
+                        "error",
+                        f"container-image deploys are not available on {self.display_name} yet; coming soon{soon}. "
+                        "Remove `package_type: image` (or use zip) for this function",
+                        f"functions.{name}.package_type",
+                    ))
+        if kind == "auto" and not self.image_registry and self.package_limits is not None:
             issues.append(Issue(
                 "warning",
                 f"package.type auto stays a zip on {self.display_name}: container-image deploys are coming soon",
@@ -541,6 +568,7 @@ class Provider(ABC):
             "terraform_provider": self.terraform_source,
             "notes": self.notes,
             "package": self.describe_package(),
+            "shared_function_host": self.shared_function_host,
             "monitoring": {
                 "logs": self.monitoring_text("logs"),
                 "metrics": self.monitoring_text("metrics"),

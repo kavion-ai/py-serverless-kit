@@ -81,12 +81,16 @@ Package, then `terraform init` and `terraform apply`. Saves `deployment.json`, p
 Before applying it prints the size notes and the described resource list, and **stops when a zip is over the
 provider's limit** (use `--package-type image` / `auto` there).
 
+A function that cannot be deployed does not stop the others: they are deployed, and the ones that were not are listed
+**at the end** with the reason (exit status 1). See [partial deploys](package-size-and-monitoring.md#5-partial-deploys-what-was-not-deployed-and-why).
+
 | Flag | |
 |---|---|
 | `--skip-deps` | don't vendor dependencies |
 | `--confirm` | run `terraform plan -out tfplan`, then apply that plan instead of `-auto-approve` |
 | `--upgrade` | `terraform init -upgrade` (update provider plugins) |
 | `--no-dashboard` | don't regenerate `.pskit/dashboard/index.html` |
+| `--all-or-nothing` | stop at the first function that cannot be deployed (no partial deploy) |
 | `--package-type zip\|image\|auto` | override `package.type`: ship a container image (ECR on AWS, ACR on Azure) instead of a zip, or `auto` to switch only when the zip is too big. See [package size](package-size-and-monitoring.md) |
 
 Hooks `before_package`, `after_package`, `before_deploy` and `after_deploy` run around these steps.

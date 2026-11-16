@@ -436,9 +436,20 @@ def plan(project, skip_deps: bool, destroy: bool, package_type: Optional[str]) -
 @click.option("--confirm", is_flag=True, help="Show the plan and apply it (instead of -auto-approve).")
 @click.option("--upgrade", is_flag=True, help="terraform init -upgrade (update provider plugins).")
 @click.option("--no-dashboard", is_flag=True, help="Do not regenerate the dashboard.")
+@click.option(
+    "--all-or-nothing",
+    is_flag=True,
+    help="Stop at the first function that cannot be deployed (default: skip it, deploy the others, report it).",
+)
 @package_type_option
 def deploy(  # noqa: ANN001
-    project, skip_deps: bool, confirm: bool, upgrade: bool, no_dashboard: bool, package_type: Optional[str]
+    project,
+    skip_deps: bool,
+    confirm: bool,
+    upgrade: bool,
+    no_dashboard: bool,
+    all_or_nothing: bool,
+    package_type: Optional[str],
 ) -> None:
     """Package and deploy with terraform apply.
 
@@ -453,20 +464,33 @@ def deploy(  # noqa: ANN001
       pskit deploy -p onprem --skip-deps
       pskit deploy -p aws --package-type image   # Lambda from an ECR image
       pskit deploy --package-type auto           # image only when the zip is too big
+      pskit deploy --all-or-nothing              # no partial deploys
+
+    
+    A function that cannot be deployed (its own configuration error, a zip over the size limit while others ship as
+    images, or a Terraform error on its resources) does not stop the others: they are deployed, and the ones that
+    were not are listed at the end with the reason (exit status 1). A skipped function keeps the version deployed
+    before, except where one host runs every function (Azure, on premises, DigitalOcean).
     """
     from ..core.deployer import Deployer
     from ..dashboard.generator import write_dashboard
 
     _ask_onprem_pem(project)
-    record = Deployer(project, echo=echo, package_type=package_type).deploy(
-        skip_deps=skip_deps, auto_approve=not confirm, upgrade=upgrade
-    )
+    deployer = Deployer(project, echo=echo, package_type=package_type, keep_going=not all_or_nothing)
+    record = deployer.deploy(skip_deps=skip_deps, auto_approve=not confirm, upgrade=upgrade)
     where = (record.get("deployed_on") or {}).get("label") or record["region"]
-    ok(f"\nDeployed {record['service']} ({record['stage']}) to {record['provider_display']} {where}")
+    partly = " (partly)" if deployer.not_deployed else ""
+    ok(f"\nDeployed {record['service']} ({record['stage']}) to {record['provider_display']} {where}{partly}")
     _print_record(record)
     if not no_dashboard:
         path = write_dashboard(project.root)
         echo(f"\nDashboard: {path.as_uri()}")
+    if deployer.not_deployed:
+        # Last, so it is what you see: what was not deployed and why.
+        echo("")
+        for line in deployer.report():
+            (echo if line.startswith(" ") else fail)(line)
+        sys.exit(1)
 
 
 @cli.command()

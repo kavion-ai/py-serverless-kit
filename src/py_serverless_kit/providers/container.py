@@ -74,15 +74,33 @@ class PackageNote:
 
 @dataclass
 class PackagePlan:
-    """How this deploy ships its code: ``type`` is ``zip`` or ``image`` (``auto`` is resolved here)."""
+    """How this deploy ships its code.
+
+    ``functions`` maps every function to ``zip`` or ``image`` (``package.type`` / ``functions.<n>.package_type``
+    with ``auto`` resolved). ``type`` sums it up: ``zip``, ``image`` or ``mixed``. ``too_big`` lists the zip
+    functions that cannot deploy because the bundle is over a zip limit (with the reason).
+    """
 
     type: str
     requested: str
     notes: List[PackageNote] = field(default_factory=list)
+    functions: Dict[str, str] = field(default_factory=dict)
+    too_big: Dict[str, str] = field(default_factory=dict)
 
     @property
     def errors(self) -> List[PackageNote]:
         return [n for n in self.notes if n.level == "error"]
+
+    @property
+    def needs_image(self) -> bool:
+        return "image" in self.functions.values() or (not self.functions and self.type == "image")
+
+    @property
+    def needs_zip(self) -> bool:
+        return "zip" in self.functions.values() or (not self.functions and self.type == "zip")
+
+    def of(self, function: str) -> str:
+        return self.functions.get(function, "image" if self.type == "image" else "zip")
 
 
 def human(size: int) -> str:
@@ -112,8 +130,13 @@ def _exceeded(provider: Provider, config: ServiceConfig, artifact: Artifact) -> 
     return found
 
 
+def package_summary(kinds: Dict[str, str]) -> str:
+    found = set(kinds.values())
+    return found.pop() if len(found) == 1 else ("mixed" if found else "zip")
+
+
 def plan_package(provider: Provider, config: ServiceConfig, artifact: Artifact) -> PackagePlan:
-    """Pick zip or image for this deploy and explain the size against the provider's limits."""
+    """Pick zip or image for every function and explain the bundle size against the provider's limits."""
     requested = config.package.type
     name = provider.display_name
     checks = _exceeded(provider, config, artifact)
@@ -122,11 +145,13 @@ def plan_package(provider: Provider, config: ServiceConfig, artifact: Artifact) 
     can_image = supports_image(provider)
     limits = provider.package_limits
 
-    chosen = "zip"
-    if requested == "image" or (requested == "auto" and over and can_image):
-        chosen = "image"
-    plan = PackagePlan(type=chosen, requested=requested)
-    if not checks and not can_image and requested == "zip":
+    asked = {fn_name: config.package_type_of(fn) for fn_name, fn in sorted(config.functions.items())}
+    kinds = {
+        fn_name: "image" if kind == "image" or (kind == "auto" and over and can_image) else "zip"
+        for fn_name, kind in asked.items()
+    }
+    plan = PackagePlan(type=package_summary(kinds), requested=requested, functions=kinds)
+    if not checks and not can_image and set(asked.values()) <= {"zip"}:
         return plan  # nothing to check here (e.g. on premises)
 
     sizes = f"bundle {human(artifact.size)} zipped"
@@ -138,22 +163,35 @@ def plan_package(provider: Provider, config: ServiceConfig, artifact: Artifact) 
     if artifact.skip_deps:
         plan.notes.append(PackageNote("info", "built with --skip-deps: the real bundle is larger once dependencies are installed"))
 
-    if chosen == "image":
+    images = sorted(n for n, k in kinds.items() if k == "image")
+    zips = sorted(n for n, k in kinds.items() if k == "zip")
+    if images:
         cap = f" (images up to {human(limits.image)})" if limits and limits.image else ""
-        why = "the bundle exceeds the zip limit, so " if requested == "auto" else ""
-        plan.notes.append(PackageNote("info", f"package.type {requested}: {why}deploying as a container image to "
-                                              f"{provider.image_registry}{cap}; needs a running Docker daemon"))
+        auto = [n for n in images if asked[n] == "auto"]
+        why = f" ({', '.join(auto)}: auto, the bundle is over the zip limit)" if auto else ""
+        who = "every function" if not zips else ", ".join(images)
+        plan.notes.append(PackageNote("info", f"container image for {who}{why}: pushed to {provider.image_registry}"
+                                              f"{cap}; needs a running Docker daemon"))
+    if images and zips:
+        plan.notes.append(PackageNote("info", f"zip for {', '.join(zips)}"))
+    if not zips:
         return plan
 
     for label, size, limit in over:
-        plan.notes.append(PackageNote("error", f"the bundle is {human(size)} {label}, over {name}'s {human(limit)} "
-                                               f"limit{_ref(limits)}. {remedy(provider)}"))
+        msg = f"the bundle is {human(size)} {label}, over {name}'s {human(limit)} limit{_ref(limits)}"
+        for fn_name in zips:
+            plan.too_big[fn_name] = f"{msg}; deploy it as an image (functions.{fn_name}.package_type: image)" \
+                if can_image else msg
+        who = "" if not images else f" for the zip functions ({', '.join(zips)})"
+        plan.notes.append(PackageNote("error", f"{msg}{who}. {remedy(provider)}"))
     for label, size, limit in near:
         plan.notes.append(PackageNote("warning", f"the bundle is {human(size)} {label}, {size * 100 // limit}% of "
                                                  f"{name}'s {human(limit)} limit. {remedy(provider)}"))
-    if requested == "auto" and not over and can_image:
-        plan.notes.append(PackageNote("info", f"package.type auto: within the zip limits, deploying a zip "
-                                              f"(switches to a {provider.image_registry} image when it is over)"))
+    auto_zip = [n for n in zips if asked[n] == "auto"]
+    if auto_zip and not over and can_image:
+        plan.notes.append(PackageNote("info", f"package type auto ({', '.join(auto_zip)}): within the zip limits, "
+                                              f"deploying a zip (switches to a {provider.image_registry} image when "
+                                              "it is over)"))
     return plan
 
 
@@ -165,7 +203,8 @@ def remedy(provider: Provider) -> str:
     """What to do about a bundle that is too big, for this provider."""
     if supports_image(provider):
         return (f"Deploy it as a container image in {provider.image_registry}: set `package.type: image` (or `auto`) "
-                "in pskit.yml, or run with `--package-type image`. Smaller zips: `package.exclude` unused files.")
+                "in pskit.yml, `package_type: image` on the big functions only, or run with `--package-type image`. "
+                "Smaller zips: `package.exclude` unused files.")
     soon = f" ({provider.image_soon})" if provider.image_soon else ""
     return (f"Container-image deploys on {provider.display_name} are coming soon{soon}; until then trim the bundle "
             "with `package.exclude` and fewer dependencies.")

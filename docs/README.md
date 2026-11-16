@@ -47,7 +47,7 @@ Hana, the studio assistant, searches all of these pages before she answers. Afte
 | [Using resources from code](resource-usage.md) | Libraries to install (Python / Node.js) for every resource type and provider, handler code, local and deployed tests |
 | [Resource guides](resource-guides/README.md) | Step by step, per cloud and type: create a queue, bucket, topic, database, cache or other service in the console, find its details and add it to `pskit.yml` |
 | [Providers](providers.md) | Capability matrix plus one section per cloud: options, credentials, resources, limits |
-| [Package size, images, logs & metrics](package-size-and-monitoring.md) | Deployment size limits per cloud, `package.type: image` (Amazon ECR / Azure Container Registry), per-function logs & metrics, the resource list shown before every deploy |
+| [Package size, images, logs & metrics](package-size-and-monitoring.md) | Deployment size limits per cloud, `package.type: image` (Amazon ECR / Azure Container Registry) for the whole service or per function, per-function logs & metrics, the resource list shown before every deploy, partial deploys (what was not deployed and why) |
 | [CLI reference](cli.md) | Every `pskit` command and flag |
 | [Local development](local-development.md) | `pskit dev`, `pskit invoke`, `.env`, testing with `LocalRunner` |
 | [Accounts and team setup](studio-guide/accounts-and-team.md) | Step by step: just me or a team at the first start, the admin account, what the master key and recovery code do, how data is protected, how user permissions work |

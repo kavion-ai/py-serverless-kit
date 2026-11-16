@@ -25,3 +25,13 @@ test("groupResources keeps the server order", () => {
   const groups = groupResources([row("a", "Functions"), row("b", "Functions"), row("c", "Logs & metrics")]);
   assert.deepEqual(groups.map((g) => [g.label, g.rows.length]), [["Functions", 2], ["Logs & metrics", 1]]);
 });
+
+test("notDeployedOf lists the last deploy's failures by name", async () => {
+  const { notDeployedOf } = await import("../components/DeployResources");
+  assert.deepEqual(notDeployedOf(null), []);
+  const data = {
+    resources: [],
+    last_deploy: { status: "partial", not_deployed: { worker: { step: "terraform apply", reason: "boom" }, api: { step: "configuration", reason: "bad" } } },
+  };
+  assert.deepEqual(notDeployedOf(data).map((i) => [i.name, i.step]), [["api", "configuration"], ["worker", "terraform apply"]]);
+});

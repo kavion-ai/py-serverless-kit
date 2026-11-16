@@ -286,6 +286,7 @@ class OnPremProvider(Provider):
     name = "onprem"
     display_name = "On-premises"
     tier = "experimental"
+    shared_function_host = True
     terraform_source = "terraform.io/builtin/terraform"
     default_region = "local"
     capabilities = frozenset({HTTP, SCHEDULE, QUEUE, STORAGE, TOPIC, SMTP})

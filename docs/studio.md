@@ -56,6 +56,10 @@ asks first.
 - **Provider differences**: trigger types the provider can't run aren't offered. Options it rejects (for example `auth: jwt` on Azure) or ignores (a timezone on Azure timers) are listed on each trigger, worked out from the provider's own validation.
 - **Packaging** (Deploy page, clouds): choose *Zip*, *Container image* (Amazon ECR on AWS, Azure Container Registry on Azure) or *Auto* (`package.type`), with the provider's deployment size limits. Clouds without image deploys yet show *coming soon*. See [package size, images, logs & metrics](package-size-and-monitoring.md).
 - **What a deploy creates** (Deploy page): every resource of the last Package / Plan / Deploy, grouped, with what it is for and the setting that removes the optional ones; *Refresh* runs `pskit package --skip-deps`. The Deploy confirmation lists it too before anything is applied.
+- **Package type** (each function, clouds): inherit / Zip / Image / Auto (`functions.<name>.package_type`). On Azure
+  every function ships the same way, so it is set on the Deploy page.
+- **Not deployed** (Deploy page): after a partial deploy, the functions that were not deployed with the step and the
+  reason; the others were deployed.
 - **Logs & metrics** (each function): two switches, on by default, for the logs and metrics services the provider creates next to the function (`functions.<name>.monitoring`); each says what it controls on the provider in the top bar and when it is built into the platform.
 - **Enable / disable**: functions and workflows can be disabled everywhere (`enabled: false`) or only on the current provider (`providers.<cloud>...enabled: false`). A single trigger can be disabled on one provider too. The Deploy page and the provider switch list everything that won't run on the target and offer to disable it there. On premises, **Where functions run** on the Deploy page has the same switch for every function, with all functions on one target or split across servers.
 

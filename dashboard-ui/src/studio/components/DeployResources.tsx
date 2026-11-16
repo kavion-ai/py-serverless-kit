@@ -14,6 +14,37 @@ export function groupResources(rows: DeployResource[]): { label: string; rows: D
   return groups;
 }
 
+/** The functions the last deploy could not deploy, sorted by name. */
+export function notDeployedOf(data: DeployResources | null): { name: string; step: string; reason: string; previous?: string }[] {
+  const nd = data?.last_deploy?.not_deployed || {};
+  return Object.keys(nd)
+    .sort()
+    .map((name) => ({ name, ...nd[name] }));
+}
+
+/** Last deploy: the functions that were not deployed and why (a partial deploy deploys the others). */
+export function NotDeployedBox({ data }: { data: DeployResources | null }) {
+  const items = notDeployedOf(data);
+  if (!items.length) return null;
+  return (
+    <div className="hint-box warn stack not-deployed">
+      <b>
+        Last deploy{data?.last_deploy?.deployed_at ? ` (${data.last_deploy.deployed_at})` : ""}: {items.length} function{items.length === 1 ? " was" : "s were"} not deployed. The
+        others were deployed.
+      </b>
+      <ul className="bullets small">
+        {items.map((i) => (
+          <li key={i.name}>
+            <b className="mono">{i.name}</b> <span className="badge badge-err">{i.step}</span> {i.reason}
+            {i.previous ? <span className="muted"> ({i.previous})</span> : null}
+          </li>
+        ))}
+      </ul>
+      <span className="small">Fix the reasons and deploy again. Deploy with <code className="mono">pskit deploy --all-or-nothing</code> to stop at the first one instead.</span>
+    </div>
+  );
+}
+
 /**
  * "What a deploy creates": every resource of the last Package / Plan / Deploy with what it is for, which ones are
  * optional (and the pskit.yml switch that removes them), and the functions with logs / metrics switched off.
@@ -60,6 +91,7 @@ export function DeployResourcesPanel({
       }
     >
       {error && <div className="hint-box warn">{error}</div>}
+      <NotDeployedBox data={data} />
       {!rows.length ? (
         <p className="muted">{data?.reason || "Run Package to see every resource a deploy creates, with what each one is for."}</p>
       ) : (

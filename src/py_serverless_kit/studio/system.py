@@ -270,9 +270,16 @@ def deploy_resources(root: Path, provider: str, stage: str) -> Dict[str, Any]:
         raise StudioError(400, "invalid provider or stage")
     work = root / ".pskit" / f"{provider}-{stage}"
     data = descriptions.load(work)
+    record = deployment_record(root, provider, stage) or {}
+    last = {
+        "status": record.get("status"),
+        "deployed_at": record.get("deployed_at"),
+        "not_deployed": record.get("not_deployed") or {},
+    } if record else None
     if not data:
-        return {"resources": [], "reason": f"{provider}/{stage} has not been packaged yet: run Package to see what a "
-                                           "deploy creates"}
+        return {"resources": [], "last_deploy": last,
+                "reason": f"{provider}/{stage} has not been packaged yet: run Package to see what a deploy creates"}
+    data["last_deploy"] = last
     tf = work / "main.tf.json"
     data["packaged_at"] = (work / descriptions.RESOURCES_FILE).stat().st_mtime if tf.is_file() else None
     return data
