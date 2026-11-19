@@ -6,6 +6,20 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [3.2.4] - 2026-11-19
+
+### Fixed
+- **Azure deploys failed with `a resource with the ID ... already exists - to be managed via Terraform this resource
+  needs to be imported into the State`** for a resource that an earlier deploy of the same service had created but
+  not recorded: a deploy that failed half-way (for example on an App Service quota error), or a region change whose
+  delete Azure had not finished (Application Insights, Log Analytics workspace). 3.2.3 only imported resources that
+  failed during the same deploy, so every later deploy stopped at this error until the resource was imported by hand.
+  `pskit deploy` now imports such a resource and checks its tags. It keeps the resource only when the tags are
+  `managed-by: py-serverless-kit` plus this service's `pskit-service` and `pskit-stage`, and then applies again
+  without waiting. A resource without those tags is removed from the state again, left untouched in the cloud, and
+  the original error is reported, so pskit still never takes over a resource it did not create
+  (`terraform/transient.py`, `core/deployer.py`).
+
 ## [3.2.3] - 2026-11-18
 
 ### Fixed

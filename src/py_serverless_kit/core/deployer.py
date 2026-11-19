@@ -266,17 +266,38 @@ class Deployer:
                 fix = transient.recovery(partial.parse_errors(exc.output), seen) if exc.output else None
                 if fix is None or attempt == len(self.retry_delays):
                     raise
-                delay = self.retry_delays[attempt]
                 for reason in fix.reasons:
                     self.echo(f"  {reason}")
-                self.echo(f"  the cloud is still settling: applying again in {delay:g}s "
-                          f"(retry {attempt + 1} of {len(self.retry_delays)})")
-                time.sleep(delay)
+                if fix.settling or fix.imports:
+                    delay = self.retry_delays[attempt]
+                    self.echo(f"  the cloud is still settling: applying again in {delay:g}s "
+                              f"(retry {attempt + 1} of {len(self.retry_delays)})")
+                    time.sleep(delay)
+                else:
+                    self.echo(f"  applying again (retry {attempt + 1} of {len(self.retry_delays)})")
                 for address in fix.untaint:
                     self.runner.untaint(address)
                 for address, resource_id in fix.imports:
                     self.echo(f"  terraform import {address}")
                     self.runner.import_resource(address, resource_id)
+                for address, resource_id in fix.adopt:
+                    self._adopt(address, resource_id, exc)
+
+    def _adopt(self, address: str, resource_id: str, exc: TerraformError) -> None:
+        """Import a resource an earlier deploy of this service and stage left behind; re-raise ``exc`` otherwise."""
+        cfg = self.project.config
+        self.echo(f"  terraform import {address}")
+        try:
+            self.runner.import_resource(address, resource_id)
+        except TerraformError:
+            raise exc from None
+        tags = transient.resource_tags(self.runner.state_pull(), address)
+        if not transient.owned_by(tags, cfg.service, cfg.provider.stage):
+            self.runner.state_rm([address])
+            self.echo(f"  {address}: not tagged pskit-service={cfg.service}, pskit-stage={cfg.provider.stage}; "
+                      "left untouched (delete or rename it in the cloud, or import it yourself)")
+            raise exc
+        self.echo(f"  {address}: left behind by an earlier deploy of this service; managed again")
 
     def _apply_failed(self, exc: TerraformError, result: PackageResult) -> None:
         """Partial deploy: which functions the failed apply did not deploy, and why. Re-raises when unknown."""

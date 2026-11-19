@@ -115,10 +115,41 @@ def test_root_object_absent_is_transient_without_untaint():
     assert fix is not None and fix.untaint == [] and seen == {"azurerm_application_insights.ai"}
 
 
-def test_already_exists_is_imported_only_after_a_transient_failure_of_the_same_address():
-    assert transient.recovery(partial.parse_errors(AI_EXISTS), set()) is None  # never adopt an unknown resource
+def test_already_exists_is_imported_at_once_after_a_transient_failure_of_the_same_address():
     fix = transient.recovery(partial.parse_errors(AI_EXISTS), {"azurerm_application_insights.ai"})
-    assert fix is not None and fix.imports == [("azurerm_application_insights.ai", AI_ID)]
+    assert fix is not None and fix.imports == [("azurerm_application_insights.ai", AI_ID)] and fix.adopt == []
+
+
+def test_unknown_already_exists_is_only_an_adopt_candidate():
+    fix = transient.recovery(partial.parse_errors(AI_EXISTS), set())
+    assert fix is not None
+    assert fix.imports == [] and fix.adopt == [("azurerm_application_insights.ai", AI_ID)]
+    assert not fix.settling  # nothing to wait for
+
+
+def test_already_exists_mixed_with_a_real_error_is_not_retried():
+    assert transient.recovery(partial.parse_errors(AI_EXISTS + QUOTA), set()) is None
+
+
+def _state(tags):
+    return {"resources": [
+        {"mode": "data", "type": "azurerm_application_insights", "name": "ai", "instances": [{"attributes": {}}]},
+        {"mode": "managed", "type": "azurerm_application_insights", "name": "ai",
+         "instances": [{"attributes": {"id": AI_ID, "tags": tags}}]},
+    ]}
+
+
+OURS = {"managed-by": "py-serverless-kit", "pskit-service": "part", "pskit-stage": "dev", "team": "x"}
+
+
+def test_resource_tags_and_ownership():
+    tags = transient.resource_tags(_state(OURS), "azurerm_application_insights.ai")
+    assert transient.owned_by(tags, "part", "dev")
+    assert not transient.owned_by(tags, "part", "prod")
+    assert not transient.owned_by(tags, "other", "dev")
+    assert not transient.owned_by({"pskit-service": "part", "pskit-stage": "dev"}, "part", "dev")
+    assert not transient.owned_by(None, "part", "dev")
+    assert transient.resource_tags(_state(OURS), "azurerm_storage_account.app") is None
 
 
 @pytest.mark.parametrize("output", [QUOTA, DATA_404, LIST_KEYS_404 + QUOTA, "", "Error: something else\n"])
@@ -149,6 +180,52 @@ def test_deploy_gives_up_after_the_last_retry(make_project):
     with pytest.raises(DeployError):
         d.deploy(skip_deps=True)
     assert runner.applies == 3  # first apply + 2 retries
+
+
+class AdoptRunner(SequenceRunner):
+    """Imports land in a fake state carrying ``tags``; ``state rm`` drops them again."""
+
+    def __init__(self, work_dir, failures, tags):
+        super().__init__(work_dir, failures)
+        self.tags = tags
+        self.imported = set()
+
+    def import_resource(self, address, resource_id):
+        super().import_resource(address, resource_id)
+        self.imported.add(address)
+
+    def state_pull(self):
+        return _state(self.tags) if "azurerm_application_insights.ai" in self.imported else {}
+
+    def state_rm(self, addresses):
+        self.calls.append(("state_rm", *addresses))
+        self.imported.difference_update(addresses)
+
+
+def adopt_deployer(project, failures, tags, keep_going=True):
+    runner = AdoptRunner(project.work_dir, failures, tags)
+    d = Deployer(project, echo=lambda _m: None, runner=runner, keep_going=keep_going)
+    d.retry_delays = (0, 0)
+    return d, runner
+
+
+def test_deploy_adopts_a_resource_left_by_an_earlier_deploy(make_project):
+    d, runner = adopt_deployer(make_project(YML), [AI_EXISTS], OURS)
+    record = d.deploy(skip_deps=True)
+    assert runner.applies == 2
+    assert runner.calls == [("import", "azurerm_application_insights.ai", AI_ID)]
+    assert record["status"] == "deployed" and not d.not_deployed
+
+
+@pytest.mark.parametrize("tags", [{}, {**OURS, "pskit-stage": "prod"}, {**OURS, "pskit-service": "someone-else"}])
+def test_deploy_never_keeps_a_resource_it_did_not_create(make_project, tags):
+    d, runner = adopt_deployer(make_project(YML), [AI_EXISTS], tags, keep_going=False)
+    with pytest.raises(TerraformError):
+        d.deploy(skip_deps=True)
+    assert runner.applies == 1
+    assert runner.calls == [("import", "azurerm_application_insights.ai", AI_ID),
+                            ("state_rm", "azurerm_application_insights.ai")]
+    assert runner.imported == set()
 
 
 def test_real_error_fails_at_once(make_project):
