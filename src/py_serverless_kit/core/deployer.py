@@ -5,13 +5,15 @@ from __future__ import annotations
 import json
 import os
 import subprocess
+import time
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional
+from typing import Any, Callable, Dict, List, Optional, Set, Tuple
 
 from ..packaging.builder import build_artifact
 from ..providers.base import Artifact, Issue, RenderContext
 from ..providers.container import PackagePlan, package_summary, plan_package
+from ..terraform import transient
 from ..terraform.runner import TerraformError, TerraformRunner
 from . import partial
 from .describe import RECORD_FILE, build_record
@@ -36,6 +38,9 @@ class PackageResult:
 
 
 class Deployer:
+    # Seconds to wait before each new apply after errors the cloud resolves by itself (terraform/transient.py).
+    retry_delays: Tuple[float, ...] = (20.0, 45.0)
+
     def __init__(
         self,
         project: Project,
@@ -213,15 +218,7 @@ class Deployer:
         if targets:
             self.echo(f"  applying {len(targets)} resource(s) only, so the skipped functions are left as they are")
         try:
-            if auto_approve:
-                self.echo("Running terraform apply")
-                self.runner.apply(auto_approve=True, targets=targets)
-            else:
-                changed = self.runner.plan(out="tfplan", targets=targets)
-                if not changed:
-                    self.echo("No changes.")
-                else:
-                    self.runner.apply(plan_file="tfplan")
+            self._apply(targets, auto_approve)
         except TerraformError as exc:
             self._apply_failed(exc, result)
         try:
@@ -249,6 +246,37 @@ class Deployer:
                                network.deployment(self.project.root, self.project.work_dir))
         self.run_hook("after_deploy")
         return record
+
+    def _apply(self, targets: Optional[List[str]], auto_approve: bool) -> None:
+        """terraform apply, applied again after errors that only mean the cloud was not consistent yet."""
+        seen: Set[str] = set()
+        for attempt in range(len(self.retry_delays) + 1):
+            try:
+                if auto_approve:
+                    self.echo("Running terraform apply")
+                    self.runner.apply(auto_approve=True, targets=targets)
+                else:
+                    changed = self.runner.plan(out="tfplan", targets=targets)
+                    if not changed:
+                        self.echo("No changes.")
+                    else:
+                        self.runner.apply(plan_file="tfplan")
+                return
+            except TerraformError as exc:
+                fix = transient.recovery(partial.parse_errors(exc.output), seen) if exc.output else None
+                if fix is None or attempt == len(self.retry_delays):
+                    raise
+                delay = self.retry_delays[attempt]
+                for reason in fix.reasons:
+                    self.echo(f"  {reason}")
+                self.echo(f"  the cloud is still settling: applying again in {delay:g}s "
+                          f"(retry {attempt + 1} of {len(self.retry_delays)})")
+                time.sleep(delay)
+                for address in fix.untaint:
+                    self.runner.untaint(address)
+                for address, resource_id in fix.imports:
+                    self.echo(f"  terraform import {address}")
+                    self.runner.import_resource(address, resource_id)
 
     def _apply_failed(self, exc: TerraformError, result: PackageResult) -> None:
         """Partial deploy: which functions the failed apply did not deploy, and why. Re-raises when unknown."""

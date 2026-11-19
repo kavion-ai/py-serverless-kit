@@ -237,6 +237,11 @@ The Azure provider rejects or changes these settings:
 - `topic.filter` is not applied on Service Bus subscriptions (warning).
 - One `functionTimeout` for the whole app: the largest function timeout, capped at 600 s.
 - Do not put your own `function_app.py` or `host.json` at the project root: pskit generates them.
+- Azure Resource Manager can answer `404` for a resource it has just created (`listing Keys for Storage Account ...
+  ResourceNotFound`, or `Root object was present, but now absent` for Application Insights). `pskit deploy` applies
+  again, up to 2 times (after 20 s, then 45 s), when every error of the apply is of this kind. Before that it untaints
+  the resources that were created and imports the ones Azure created but Terraform did not record. Other errors fail
+  at once.
 
 ## Complete minimal Azure example project
 

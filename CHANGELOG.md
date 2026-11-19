@@ -6,6 +6,20 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [3.2.3] - 2026-11-18
+
+### Fixed
+- **Azure deploys failed with a 404 for a resource the same apply had just created**, for example
+  `listing Keys for Storage Account ... unexpected status 404 ... ResourceNotFound` (a storage account read 0.2 s after
+  Azure reported it created) or `Provider produced inconsistent result after apply ... Root object was present, but
+  now absent` (Application Insights). Azure Resource Manager does not return a new resource right away, and `azurerm`
+  does not retry those reads. The next deploy then failed with `a resource with the ID ... already exists`, or replaced
+  the tainted resource and hit the same timing again. `pskit deploy` now applies again, up to 2 times (after 20 s,
+  then 45 s), when every error of a failed apply is of this kind. Before applying again it untaints the resources that
+  were created, and imports the ones Azure created but Terraform did not record. Only resources that failed this way
+  during the same deploy are imported, so pskit never takes over a resource it did not create. Any other error
+  (quota, permissions, invalid arguments, a 404 from a data source) still fails at once (`terraform/transient.py`).
+
 ## [3.2.2] - 2026-11-16
 
 ### Fixed

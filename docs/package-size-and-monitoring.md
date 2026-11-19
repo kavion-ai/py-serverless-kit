@@ -213,7 +213,7 @@ The exit status is **1** when anything was not deployed, so CI still notices.
 |---|---|---|
 | **configuration** (before Terraform) | an error about one function only: `functions.<name>...`, such as an unsupported trigger option, `auth: jwt` on Azure, or `package_type: image` on a cloud without images | skipped: it is left out of the bundle and the Terraform |
 | **package size** (before Terraform) | the bundle is over the zip limit for the zip functions while other functions ship as images | the zip functions are skipped; the image functions deploy |
-| **terraform apply** | Terraform reports an error on one of the function's resources, or on a resource it needs (found through the dependency graph of `main.tf.json`) | Terraform finishes everything that does not depend on it; the failed part is retried on the next deploy |
+| **terraform apply** | Terraform reports an error on one of the function's resources, or on a resource it needs (found through the dependency graph of `main.tf.json`) | Terraform finishes everything that does not depend on it; the failed part is retried on the next deploy. When every error only means the cloud has not returned a resource it just created yet (Azure `404` / `Root object was present, but now absent`), pskit applies again in the same deploy first: up to 2 times, after 20 s and 45 s |
 
 - **A skipped function keeps what was deployed before.** When something is skipped, pskit applies only the resources
   it rendered (`terraform apply -target=...`), so Terraform does not destroy the skipped function's earlier version.

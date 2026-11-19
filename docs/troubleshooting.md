@@ -49,6 +49,13 @@ options with the install steps for your OS.
 **State conflicts / "resource already exists" after deploying from another machine**
 : The default state lives in `.pskit/` on one machine. Configure `provider.state` with a remote backend (S3 + DynamoDB lock, GCS, `azurerm`, …), then `terraform init -migrate-state` via `pskit tf -- init -migrate-state`.
 
+**`unexpected status 404 ... ResourceNotFound` or `Root object was present, but now absent` on Azure, for a resource the same apply created**
+: Azure did not return the new resource yet. `pskit deploy` waits and applies again by itself (up to 2 times, after
+  20 s and 45 s), untainting what was created and importing what Azure created but Terraform did not record. If it
+  still fails, run `pskit deploy` again. A later `a resource with the ID ... already exists` for a resource from an
+  older failed deploy needs `pskit tf -- import <address> <id>`: pskit only imports resources it created in the same
+  deploy.
+
 **Changed nothing but Terraform wants to update the function**
 : The artifact is deterministic, so a real diff means a source file, dependency or `pskit_manifest.json` changed. Inspect `.pskit/<provider>-<stage>/build/`.
 

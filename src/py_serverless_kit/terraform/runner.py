@@ -158,6 +158,14 @@ class TerraformRunner:
         if addresses:
             self._run(["state", "rm", "-no-color", *addresses], capture=True)
 
+    def untaint(self, address: str) -> None:
+        """Keep a resource whose create reported an error; nothing happens when it is not tainted or not there."""
+        self._run(["untaint", "-no-color", "-allow-missing", address], capture=True, check=False)
+
+    def import_resource(self, address: str, resource_id: str) -> None:
+        """Record an existing cloud resource under ``address`` (``terraform import``)."""
+        self._run(["import", "-input=false", "-no-color", address, resource_id], capture=True)
+
     def output(self) -> Dict[str, Any]:
         proc = self._run(["output", "-json", "-no-color"], capture=True)
         try:
